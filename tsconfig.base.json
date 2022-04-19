@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@porrtal/shell": ["libs/porrtal/shell/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

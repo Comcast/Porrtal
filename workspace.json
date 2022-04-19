@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "porrtal-app": "apps/porrtal-app",
-    "porrtal-app-e2e": "apps/porrtal-app-e2e"
+    "porrtal-app-e2e": "apps/porrtal-app-e2e",
+    "porrtal-shell": "libs/porrtal/shell"
   }
 }

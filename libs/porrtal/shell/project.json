@@ -1,0 +1,43 @@
+{
+  "root": "libs/porrtal/shell",
+  "sourceRoot": "libs/porrtal/shell/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/porrtal/shell",
+        "tsConfig": "libs/porrtal/shell/tsconfig.lib.json",
+        "project": "libs/porrtal/shell/package.json",
+        "entryFile": "libs/porrtal/shell/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/porrtal/shell/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/porrtal/shell/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/porrtal/shell"],
+      "options": {
+        "jestConfig": "libs/porrtal/shell/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
