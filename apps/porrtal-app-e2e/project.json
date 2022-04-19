@@ -1,0 +1,28 @@
+{
+  "root": "apps/porrtal-app-e2e",
+  "sourceRoot": "apps/porrtal-app-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/porrtal-app-e2e/cypress.json",
+        "devServerTarget": "porrtal-app:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "porrtal-app:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/porrtal-app-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["porrtal-app"]
+}
