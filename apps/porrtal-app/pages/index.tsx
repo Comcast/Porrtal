@@ -1,3 +1,4 @@
+import { ShellLayout } from '@porrtal/shell';
 import styles from './index.module.scss';
 
 export function Index() {
@@ -9,6 +10,7 @@ export function Index() {
   return (
     <div className={styles.page}>
       Porrtal Rocks !! :)
+      <ShellLayout />
     </div>
   );
 }
