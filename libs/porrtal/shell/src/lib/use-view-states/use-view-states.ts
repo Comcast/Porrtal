@@ -32,9 +32,10 @@ export function useViewStates(): UseViewStates {
     searchItems: [] as ViewState[]
   } as ShellPaneItems);
 
-  const launchViewState = useCallback((viewState: ViewState) => setShellPaneItems((origShellPaneItems: ShellPaneItems) => ({
-    ...origShellPaneItems,
-    navItems: [...origShellPaneItems.navItems, viewState]
+  const launchViewState = useCallback((viewState: ViewState) =>
+    setShellPaneItems((origShellPaneItems: ShellPaneItems) => ({
+      ...origShellPaneItems,
+      navItems: [...origShellPaneItems.navItems, viewState]
   })), []);
   return { ...shellPaneItems, launchViewState };
 }

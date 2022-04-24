@@ -1,18 +1,19 @@
 import { ViewState } from '../use-view-states/use-view-states';
-import styles from './shell-main.module.scss';
+import styles from './view-stack.module.scss';
 
 /* eslint-disable-next-line */
-export interface ShellMainProps {
+export interface ViewStackProps {
+  arrange: 'tabs-top' | 'tabs-left' | 'cards';
   items: ViewState[];
 }
 
-export function ShellMain(props: ShellMainProps) {
+export function ViewStack(props: ViewStackProps) {
   return (
     <div className={styles['container']}>
-      <h1>Welcome to ShellMain!</h1>
+      <h1>Welcome to ViewStack!</h1>
       {props.items.map(item => <p key={item.key}>{item.displayText}</p>)}
     </div>
   );
 }
 
-export default ShellMain;
+export default ViewStack;

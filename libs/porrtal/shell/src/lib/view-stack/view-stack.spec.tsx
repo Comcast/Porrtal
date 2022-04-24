@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import ShellMain from './shell-main';
+import ViewStack from './view-stack';
 
-describe('ShellMain', () => {
+describe('ViewStack', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<ShellMain />);
+    const { baseElement } = render(<ViewStack />);
     expect(baseElement).toBeTruthy();
   });
 });
