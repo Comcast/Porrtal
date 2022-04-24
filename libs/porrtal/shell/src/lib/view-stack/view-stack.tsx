@@ -1,4 +1,4 @@
-import { Tab, Tabs } from '@mui/material';
+import { Icon, Tab, Tabs } from '@mui/material';
 import React, { useState } from 'react';
 import { ViewState } from '../use-view-states/use-view-states';
 import styles from './view-stack.module.scss';
@@ -14,13 +14,24 @@ export function ViewStack(props: ViewStackProps) {
 
   const handleChange = (event: React.SyntheticEvent, newIndex: number) => {
     setCurrentIndex(newIndex);
-  }
+  };
 
   return (
     <div className={styles['container']}>
       <h1>Welcome to ViewStack!</h1>
-      <Tabs value={currentIndex} onChange={handleChange}>
-        {props.items.map(item => <Tab label={item.displayText}></Tab>)}
+      <Tabs
+        value={currentIndex}
+        variant="scrollable"
+        scrollButtons="auto"
+        onChange={handleChange}>
+        {props.items.map((item) => (
+          <Tab
+            key={item.key}
+            icon={<Icon>{item.displayIcon}</Icon>}
+            iconPosition="start"
+            label={item.displayText}
+          ></Tab>
+        ))}
       </Tabs>
     </div>
   );
