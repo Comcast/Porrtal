@@ -1,3 +1,5 @@
+import { Tab, Tabs } from '@mui/material';
+import React, { useState } from 'react';
 import { ViewState } from '../use-view-states/use-view-states';
 import styles from './view-stack.module.scss';
 
@@ -8,10 +10,18 @@ export interface ViewStackProps {
 }
 
 export function ViewStack(props: ViewStackProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleChange = (event: React.SyntheticEvent, newIndex: number) => {
+    setCurrentIndex(newIndex);
+  }
+
   return (
     <div className={styles['container']}>
       <h1>Welcome to ViewStack!</h1>
-      {props.items.map(item => <p key={item.key}>{item.displayText}</p>)}
+      <Tabs value={currentIndex} onChange={handleChange}>
+        {props.items.map(item => <Tab label={item.displayText}></Tab>)}
+      </Tabs>
     </div>
   );
 }
