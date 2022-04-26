@@ -1,6 +1,7 @@
 import { Icon, Tab, Tabs } from '@mui/material';
 import React, { useState } from 'react';
 import { ViewState } from '../use-view-states/use-view-states';
+import ViewHost from '../view-host/view-host';
 import styles from './view-stack.module.scss';
 
 /* eslint-disable-next-line */
@@ -18,21 +19,42 @@ export function ViewStack(props: ViewStackProps) {
 
   return (
     <div className={styles['container']}>
-      <h1>Welcome to ViewStack!</h1>
-      <Tabs
-        value={currentIndex}
-        variant="scrollable"
-        scrollButtons="auto"
-        onChange={handleChange}>
-        {props.items.map((item) => (
-          <Tab
-            key={item.key}
-            icon={<Icon>{item.displayIcon}</Icon>}
-            iconPosition="start"
-            label={item.displayText}
-          ></Tab>
+      <div>
+        <Tabs
+          value={currentIndex}
+          variant="scrollable"
+          scrollButtons="auto"
+          onChange={handleChange}
+        >
+          {props.items.map((item) => (
+            <Tab
+              key={item.key}
+              icon={<Icon>{item.displayIcon}</Icon>}
+              iconPosition="start"
+              label={item.displayText}
+            ></Tab>
+          ))}
+        </Tabs>
+      </div>
+      <div className={styles['view-host-container']}>
+        {props.items.map((item, index) => (
+          <ViewHost
+            viewState={item}
+            zIndex={index === currentIndex ? 10 : 0}
+          ></ViewHost>
         ))}
-      </Tabs>
+        <div
+          style={{
+            zIndex: 5,
+            backgroundColor: 'white',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0
+           }}
+        ></div>
+      </div>
     </div>
   );
 }

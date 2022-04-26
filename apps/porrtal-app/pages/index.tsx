@@ -9,7 +9,6 @@ export function Index() {
    */
   return (
     <div className={styles.page}>
-      Porrtal Rocks !! :)
       <ShellLayout />
     </div>
   );

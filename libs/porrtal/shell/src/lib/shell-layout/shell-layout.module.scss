@@ -1,4 +1,5 @@
 .container {
+  background-color: gray;
   display: grid;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
@@ -9,34 +10,41 @@
     "nav main right"
     "nav bottom bottom"
     "footer footer footer";
+    gap: 4px;
 }
 
 .banner {
   grid-area: banner;
-  background-color: aqua;
+  position: relative;
+  background-color: white;
 }
 
 .nav {
   grid-area: nav;
-  background-color: aquamarine;
+  position: relative;
+  background-color: white;
 }
 
 .main {
   grid-area: main;
-  background-color: cornflowerblue;
+  position: relative;
+  background-color: white;
 }
 
 .right {
   grid-area: right;
-  background-color: cadetblue;
+  position: relative;
+  background-color: white;
 }
 
 .bottom {
   grid-area: bottom;
-  background-color: darkcyan;
+  position: relative;
+  background-color: white;
 }
 
 .footer {
   grid-area: footer;
-  background-color: darkgray;
+  position: relative;
+  background-color: white;
 }
