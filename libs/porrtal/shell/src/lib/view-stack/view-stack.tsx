@@ -1,6 +1,6 @@
 import { Icon, Tab, Tabs } from '@mui/material';
 import React, { useState } from 'react';
-import { ViewState } from '../use-view-states/use-view-states';
+import { ViewState } from '@porrtal/api';
 import ViewHost from '../view-host/view-host';
 import styles from './view-stack.module.scss';
 

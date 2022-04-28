@@ -1,4 +1,4 @@
-import { ViewState } from 'libs/porrtal/shell/src/lib/use-view-states/use-view-states';
+import { ViewState } from '@porrtal/api';
 import styles from './test-comps-first-test-comp.module.scss';
 
 /* eslint-disable-next-line */
