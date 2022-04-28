@@ -1,8 +1,9 @@
-import { Icon, Tab, Tabs } from '@mui/material';
+import { Box, Icon, Tab, Tabs } from '@mui/material';
 import React, { useState } from 'react';
 import { ViewState } from '@porrtal/api';
 import ViewHost from '../view-host/view-host';
 import styles from './view-stack.module.scss';
+import { relative } from 'path';
 
 /* eslint-disable-next-line */
 export interface ViewStackProps {
@@ -19,7 +20,7 @@ export function ViewStack(props: ViewStackProps) {
 
   return (
     <div className={styles['container']}>
-      <div>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'gainsboro' }}>
         <Tabs
           value={currentIndex}
           variant="scrollable"
@@ -29,13 +30,13 @@ export function ViewStack(props: ViewStackProps) {
           {props.items.map((item) => (
             <Tab
               key={item.key}
-              icon={<Icon>{item.displayIcon}</Icon>}
+              icon={<Icon style={{position: 'relative', top: '3px'}}>{item.displayIcon}</Icon>}
               iconPosition="start"
-              label={item.displayText}
+              label={<span>{item.displayText}&nbsp;<Icon style={{position: 'relative', top: '5px'}}>clear</Icon></span>}
             ></Tab>
           ))}
         </Tabs>
-      </div>
+      </Box>
       <div className={styles['view-host-container']}>
         {props.items.map((item, index) => (
           <ViewHost
@@ -52,8 +53,8 @@ export function ViewStack(props: ViewStackProps) {
             top: 0,
             left: 0,
             bottom: 0,
-            right: 0
-           }}
+            right: 0,
+          }}
         ></div>
       </div>
     </div>
