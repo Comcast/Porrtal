@@ -39,6 +39,7 @@ export function ViewStack(props: ViewStackProps) {
       <div className={styles['view-host-container']}>
         {props.items.map((item, index) => (
           <ViewHost
+            key={item.key}
             viewState={item}
             zIndex={index === currentIndex ? 10 : 0}
           ></ViewHost>

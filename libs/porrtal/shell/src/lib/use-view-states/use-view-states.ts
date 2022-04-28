@@ -1,9 +1,11 @@
 import { useState, useCallback } from 'react';
-import { testMainItems, testNavItems } from './test-view-states';
+import { testComponents, testMainItems, testNavItems } from './test-view-states';
+import { ViewState } from '@porrtal/api';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface UseViewStates extends ShellPaneItems {
   launchViewState: (viewState: ViewState, pane: ShellPane) => void;
+  registerComponentFactory: (componentName: string, componentFactory: () => void) => void;
 }
 
 export interface ShellPaneItems {
@@ -12,16 +14,16 @@ export interface ShellPaneItems {
   rightItems: ViewState[];
   bottomItems: ViewState[];
   searchItems: ViewState[];
-}
-
-export interface ViewState {
-  key: string;
-  componentName: string;
-  displayText: string;
-  displayIcon: string;
+  componentFactoryDictionary: {
+    [componentName: string]: () => void;
+  };
 }
 
 export type ShellPane = 'nav' | 'main' | 'right' | 'bottom' | 'search';
+
+export interface PorrtalComponentProps {
+  viewState: ViewState;
+}
 
 export function useViewStates(): UseViewStates {
   const [shellPaneItems, setShellPaneItems] = useState({
@@ -29,7 +31,8 @@ export function useViewStates(): UseViewStates {
     mainItems: [...testMainItems] as ViewState[],
     rightItems: [] as ViewState[],
     bottomItems: [] as ViewState[],
-    searchItems: [] as ViewState[]
+    searchItems: [] as ViewState[],
+    componentFactoryDictionary: {...testComponents}
   } as ShellPaneItems);
 
   const launchViewState = useCallback((viewState: ViewState) =>
@@ -37,7 +40,15 @@ export function useViewStates(): UseViewStates {
       ...origShellPaneItems,
       navItems: [...origShellPaneItems.navItems, viewState]
   })), []);
-  return { ...shellPaneItems, launchViewState };
+
+  const registerComponentFactory = useCallback((componentName: string, componentFactory: () => void) => {
+    setShellPaneItems((origShellPaneItems: ShellPaneItems) => ({
+      ...origShellPaneItems,
+      componentFactoryDictionary: {...origShellPaneItems.componentFactoryDictionary, [componentName]: componentFactory}
+    }))
+  }, [])
+
+  return { ...shellPaneItems, launchViewState, registerComponentFactory, componentFactoryDictionary: {} };
 }
 
 export default useViewStates;

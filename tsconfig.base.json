@@ -15,7 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@porrtal/shell": ["libs/porrtal/shell/src/index.ts"]
+      "@porrtal/api": ["libs/porrtal/api/src/index.ts"],
+      "@porrtal/shell": ["libs/porrtal/shell/src/index.ts"],
+      "@test-comps/first-test-comp": [
+        "libs/test-comps/first-test-comp/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

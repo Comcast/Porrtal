@@ -1,8 +1,10 @@
 {
   "version": 2,
   "projects": {
+    "porrtal-api": "libs/porrtal/api",
     "porrtal-app": "apps/porrtal-app",
     "porrtal-app-e2e": "apps/porrtal-app-e2e",
-    "porrtal-shell": "libs/porrtal/shell"
+    "porrtal-shell": "libs/porrtal/shell",
+    "test-comps-first-test-comp": "libs/test-comps/first-test-comp"
   }
 }
