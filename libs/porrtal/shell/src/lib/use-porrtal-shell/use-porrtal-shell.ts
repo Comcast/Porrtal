@@ -45,7 +45,25 @@ const reducer: Reducer<UsePorrtalShellState, PorrtalShellAction> = (state, actio
             ]
           }
 
-      }
+          case 'right':
+            return {
+              ...state,
+              rightItems: [
+                ...state.rightItems,
+                action.viewState
+              ]
+            }
+
+            case 'bottom':
+              return {
+                ...state,
+                bottomItems: [
+                  ...state.bottomItems,
+                  action.viewState
+                ]
+              }
+
+            }
       break;
 
     case 'registerComponent':

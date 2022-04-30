@@ -9,21 +9,45 @@ export interface TestCompsFirstTestCompProps {
 }
 
 export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
-
   const dispatch = useContext(PorrtalShellDispatch);
 
   return (
     <div className={styles['container']}>
       <h1>Welcome to TestCompsFirstTestComp!</h1>
-      <button onClick={() => { dispatch({type: 'launchViewState', viewState: {
-    key: 'one-main',
-    porrtalViewPane: 'main',
-    componentName: 'one',
-    componentImport: () => import('@test-comps/first-test-comp'),
-    displayText: 'one',
-    displayIcon: 'home'
-  }}
-)}}>launch</button>
+      <button
+        onClick={() => {
+          dispatch({
+            type: 'launchViewState',
+            viewState: {
+              key: 'one-main',
+              porrtalViewPane: 'right',
+              componentName: 'one',
+              componentImport: () => import('@test-comps/first-test-comp'),
+              displayText: 'one',
+              displayIcon: 'home',
+            },
+          });
+        }}
+      >
+        launch right
+      </button>
+      <button
+        onClick={() => {
+          dispatch({
+            type: 'launchViewState',
+            viewState: {
+              key: 'one-main',
+              porrtalViewPane: 'bottom',
+              componentName: 'one',
+              componentImport: () => import('@test-comps/first-test-comp'),
+              displayText: 'one',
+              displayIcon: 'home',
+            },
+          });
+        }}
+      >
+        launch bottom
+      </button>
     </div>
   );
 }
