@@ -1,16 +1,25 @@
-import { ShellLayout } from '@porrtal/shell';
+import {
+  PorrtalShellDispatch,
+  PorrtalShellState,
+  ShellLayout,
+  UsePorrtalShell,
+  usePorrtalShell,
+} from '@porrtal/shell';
 import styles from './index.module.scss';
+import { testPorrtalShellState } from './test-view-states';
 
 export function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.scss file.
-   */
+
+  const porrtalShell: UsePorrtalShell = usePorrtalShell(testPorrtalShellState);
+
   return (
-    <div className={styles.page}>
-      <ShellLayout />
-    </div>
+    <PorrtalShellState.Provider value={porrtalShell.state}>
+      <PorrtalShellDispatch.Provider value={porrtalShell.dispatch}>
+      <div className={styles.page}>
+        <ShellLayout />
+      </div>
+      </PorrtalShellDispatch.Provider>
+    </PorrtalShellState.Provider>
   );
 }
 

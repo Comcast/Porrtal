@@ -1,4 +1,5 @@
-import useViewStates from '../use-view-states/use-view-states';
+import { useContext } from 'react';
+import { PorrtalShellState } from '../use-porrtal-shell/use-porrtal-shell';
 import ViewStack from '../view-stack/view-stack';
 import styles from './shell-layout.module.scss';
 
@@ -6,7 +7,7 @@ import styles from './shell-layout.module.scss';
 export interface ShellLayoutProps {}
 
 export function ShellLayout(props: ShellLayoutProps) {
-  const { navItems, mainItems, rightItems, bottomItems } = useViewStates();
+  const { navItems, mainItems, rightItems, bottomItems } = useContext(PorrtalShellState);
   return (
     <div className={styles['container']}>
       <div className={styles['banner']}>banner</div>

@@ -1,9 +1,9 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import useViewStates from './use-view-states';
+import usePorrtalShell from './use-porrtal-shell';
 
-describe('useViewStates', () => {
+describe('usePorrtalShell', () => {
   it('should render successfully', () => {
-    const { result } = renderHook(() => useViewStates());
+    const { result } = renderHook(() => usePorrtalShell());
 
     expect(result.current.count).toBe(0);
 
