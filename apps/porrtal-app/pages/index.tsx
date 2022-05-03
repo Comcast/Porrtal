@@ -13,7 +13,11 @@ export function Index() {
   const porrtalShell: UsePorrtalShell = usePorrtalShell(testPorrtalShellState);
 
   return (
-    <Auth0Provider domain="" clientId="" redirectUri="http://localhost:4200">
+    <Auth0Provider
+      domain="dev-b6h3bfnp.us.auth0.com"
+      clientId="uP4eHSspiDjg6E7GKU5LjdFPn0WwEKTq"
+      redirectUri="http://localhost:4200"
+    >
       <PorrtalShellState.Provider value={porrtalShell.state}>
         <PorrtalShellDispatch.Provider value={porrtalShell.dispatch}>
           <div className={styles.page}>
