@@ -1,1 +1,1 @@
-export * from './lib/porrtal-user';
+export * from './lib/login-button/login-button';

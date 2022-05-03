@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import PorrtalUser from './porrtal-user';
+import LoginButton from './login-button';
 
-describe('PorrtalUser', () => {
+describe('LoginButton', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<PorrtalUser />);
+    const { baseElement } = render(<LoginButton />);
     expect(baseElement).toBeTruthy();
   });
 });
