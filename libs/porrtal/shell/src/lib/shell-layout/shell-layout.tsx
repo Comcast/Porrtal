@@ -1,4 +1,4 @@
-import { LoginButton } from '@porrtal/user';
+import { UserBanner } from '@porrtal/user';
 import { useContext } from 'react';
 import { PorrtalShellState } from '../use-porrtal-shell/use-porrtal-shell';
 import ViewStack from '../view-stack/view-stack';
@@ -12,7 +12,8 @@ export function ShellLayout(props: ShellLayoutProps) {
   return (
     <div className={styles['container']}>
       <div className={styles['banner']}>
-        <LoginButton />
+        <div>image</div>
+        <UserBanner />
       </div>
       <div className={styles['nav']}>
         <ViewStack arrange="tabs-left" items={navItems} />

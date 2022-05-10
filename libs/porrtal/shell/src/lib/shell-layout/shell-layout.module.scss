@@ -17,6 +17,8 @@
   grid-area: banner;
   position: relative;
   background-color: white;
+  display: grid;
+  grid-template-columns: 1fr auto;
 }
 
 .nav {
