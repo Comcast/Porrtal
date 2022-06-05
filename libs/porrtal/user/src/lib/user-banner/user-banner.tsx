@@ -7,7 +7,7 @@ import styles from './user-banner.module.scss';
 export interface UserBannerProps {}
 
 export function UserBanner(props: UserBannerProps) {
-  const { isAuthenticated, isLoading, user} = useAuth0();
+  const { isAuthenticated, isLoading, user } = useAuth0();
 
   return (
     <div className={styles['container']}>

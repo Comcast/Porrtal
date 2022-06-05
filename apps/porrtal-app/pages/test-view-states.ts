@@ -3,7 +3,9 @@ import { ViewState } from '@porrtal/api';
 import { UsePorrtalShellState } from '@porrtal/shell';
 
 export const testComponents = {
-  "@test-comps/first-test-comp": (() => import('@test-comps/first-test-comp')) as unknown as PorrtalViewComponentFunction
+  "@test-comps/first-test-comp": (
+    () => import('@test-comps/first-test-comp')
+      ) as unknown as PorrtalViewComponentFunction
 }
 
 export const testNavItems = [
@@ -62,5 +64,3 @@ export const testPorrtalShellState: UsePorrtalShellState = {
   searchItems: [],
   componentFactoryDictionary: {}
 }
-
-

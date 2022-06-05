@@ -1,5 +1,4 @@
-import styles from './logout-button.module.scss';
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from '@auth0/auth0-react';
 
 /* eslint-disable-next-line */
 export interface LogoutButtonProps {}
