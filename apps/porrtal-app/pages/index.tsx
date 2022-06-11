@@ -6,6 +6,7 @@ import {
   UsePorrtalShell,
   usePorrtalShell,
 } from '@porrtal/shell';
+import { Auth0Adapter } from '@porrtal/user';
 import styles from './index.module.scss';
 import { testPorrtalShellState } from './test-view-states';
 
@@ -18,13 +19,15 @@ export function Index() {
       clientId="uP4eHSspiDjg6E7GKU5LjdFPn0WwEKTq"
       redirectUri="http://localhost:4200"
     >
-      <PorrtalShellState.Provider value={porrtalShell.state}>
-        <PorrtalShellDispatch.Provider value={porrtalShell.dispatch}>
-          <div className={styles.page}>
-            <ShellLayout />
-          </div>
-        </PorrtalShellDispatch.Provider>
-      </PorrtalShellState.Provider>
+      <Auth0Adapter>
+        <PorrtalShellState.Provider value={porrtalShell.state}>
+          <PorrtalShellDispatch.Provider value={porrtalShell.dispatch}>
+            <div className={styles.page}>
+              <ShellLayout />
+            </div>
+          </PorrtalShellDispatch.Provider>
+        </PorrtalShellState.Provider>
+      </Auth0Adapter>
     </Auth0Provider>
   );
 }

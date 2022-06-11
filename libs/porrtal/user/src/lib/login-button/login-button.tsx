@@ -1,12 +1,12 @@
-import { useAuth0 } from '@auth0/auth0-react';
+import useAuth from "../use-auth/use-auth";
 
 /* eslint-disable-next-line */
 export interface LoginButtonProps {}
 
 export function LoginButton(props: LoginButtonProps) {
-  const { loginWithRedirect } = useAuth0();
+  const auth = useAuth();
 
-  return <button onClick={() => loginWithRedirect()}>Log In</button>;
+  return <button onClick={() => auth?.loginWithRedirect()}>Log In</button>;
 }
 
 export default LoginButton;

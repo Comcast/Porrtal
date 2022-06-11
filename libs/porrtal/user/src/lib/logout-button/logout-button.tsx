@@ -1,13 +1,13 @@
-import { useAuth0 } from '@auth0/auth0-react';
+import useAuth from "../use-auth/use-auth";
 
 /* eslint-disable-next-line */
 export interface LogoutButtonProps {}
 
 export function LogoutButton(props: LogoutButtonProps) {
-  const { logout } = useAuth0();
+  const auth = useAuth();
 
   return (
-    <button onClick={() => logout({ returnTo: window.location.origin })}>
+    <button onClick={() => auth?.logout()}>
       Log Out
     </button>
   );
