@@ -1,4 +1,4 @@
-import { Auth0Provider } from '@auth0/auth0-react';
+import { Auth0Authentication } from '@porrtal/user';
 import {
   PorrtalShellDispatch,
   PorrtalShellState,
@@ -14,21 +14,19 @@ export function Index() {
   const porrtalShell: UsePorrtalShell = usePorrtalShell(testPorrtalShellState);
 
   return (
-    <Auth0Provider
+    <Auth0Authentication
       domain="dev-b6h3bfnp.us.auth0.com"
       clientId="uP4eHSspiDjg6E7GKU5LjdFPn0WwEKTq"
       redirectUri="http://localhost:4200"
     >
-      <Auth0Adapter>
-        <PorrtalShellState.Provider value={porrtalShell.state}>
-          <PorrtalShellDispatch.Provider value={porrtalShell.dispatch}>
-            <div className={styles.page}>
-              <ShellLayout />
-            </div>
-          </PorrtalShellDispatch.Provider>
-        </PorrtalShellState.Provider>
-      </Auth0Adapter>
-    </Auth0Provider>
+      <PorrtalShellState.Provider value={porrtalShell.state}>
+        <PorrtalShellDispatch.Provider value={porrtalShell.dispatch}>
+          <div className={styles.page}>
+            <ShellLayout />
+          </div>
+        </PorrtalShellDispatch.Provider>
+      </PorrtalShellState.Provider>
+    </Auth0Authentication>
   );
 }
 
