@@ -6,7 +6,6 @@ import {
   UsePorrtalShell,
   usePorrtalShell,
 } from '@porrtal/shell';
-import { Auth0Adapter } from '@porrtal/user';
 import styles from './index.module.scss';
 import { testPorrtalShellState } from './test-view-states';
 
