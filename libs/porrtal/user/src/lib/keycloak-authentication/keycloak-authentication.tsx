@@ -1,19 +1,29 @@
 import { ReactKeycloakProvider, useKeycloak } from '@react-keycloak/web';
 import { AuthContext } from '../use-auth/use-auth';
 import { AuthInterface } from '../auth-interface';
-import Keycloak, { KeycloakProfile } from 'keycloak-js';
-import { useCallback, useEffect, useState } from 'react';
+import Keycloak from 'keycloak-js';
+import { useEffect, useState } from 'react';
 
 export interface KeycloakAuthAdapterProps {
-  auth: AuthInterface;
+  redirectUri: string,
   children?: React.ReactChild | React.ReactChild[];
 }
 
 export function KeycloakAdapter(props: KeycloakAuthAdapterProps) {
-  console.log('auth', props.auth);
+  const { keycloak } = useKeycloak();
+  const auth: AuthInterface = {
+    user: {
+      name: keycloak?.tokenParsed?.['name'] ?? '',
+      email: keycloak?.tokenParsed?.['email'] ?? '',
+    },
+    loginWithRedirect: () =>
+      keycloak?.login({ redirectUri: props.redirectUri }),
+    logout: keycloak?.logout,
+    isAuthenticated: keycloak?.authenticated ?? false,
+  }
 
   return (
-    <AuthContext.Provider value={props.auth}>{props.children}</AuthContext.Provider>
+    <AuthContext.Provider value={auth}>{props.children}</AuthContext.Provider>
   );
 }
 
@@ -25,8 +35,8 @@ export interface KeycloakAuthenticationProps {
   children?: React.ReactChild | React.ReactChild[];
 }
 
-const eventLogger = (event: unknown, error: unknown, profile: KeycloakProfile | undefined) => {
-  console.log('onKeycloakEvent', event, error, profile);
+const eventLogger = (event: unknown, error: unknown) => {
+  console.log('onKeycloakEvent', event, error);
 };
 
 const tokenLogger = (tokens: unknown) => {
@@ -35,33 +45,6 @@ const tokenLogger = (tokens: unknown) => {
 
 export function KeycloakAuthentication(props: KeycloakAuthenticationProps) {
   const [keycloak, setKeycloak] = useState<Keycloak>();
-  const [auth, setAuth] = useState<AuthInterface>({
-    user: {
-      name: keycloak?.tokenParsed?.['name'] ?? '',
-      email: keycloak?.tokenParsed?.['email'] ?? '',
-    },
-    loginWithRedirect: () =>
-      keycloak?.login({ redirectUri: props.redirectUri }),
-    logout: keycloak?.logout,
-    isAuthenticated: keycloak?.authenticated ?? false,
-  });
-
-  const eventHandler = useCallback(
-    (event: unknown, error: unknown) => {
-      console.log('keycloak', keycloak);
-      eventLogger(event, error, keycloak?.profile);
-      setAuth({
-        user: {
-          name: keycloak?.tokenParsed?.['name'] ?? '',
-          email: keycloak?.tokenParsed?.['email'] ?? '',
-            },
-        loginWithRedirect: () =>
-          keycloak?.login({ redirectUri: props.redirectUri }),
-        logout: keycloak?.logout,
-        isAuthenticated: keycloak?.authenticated ?? false,
-      });
-    }, [keycloak, props]
-  );
 
   useEffect(
     () =>
@@ -78,11 +61,11 @@ export function KeycloakAuthentication(props: KeycloakAuthenticationProps) {
   return keycloak ? (
     <ReactKeycloakProvider
       authClient={keycloak}
-      onEvent={eventHandler}
+      onEvent={eventLogger}
       onTokens={tokenLogger}
       initOptions={{scope: 'openid email'}}
     >
-      <KeycloakAdapter auth={auth}>
+      <KeycloakAdapter redirectUri={props.redirectUri}>
         {props.children}
       </KeycloakAdapter>
     </ReactKeycloakProvider>
