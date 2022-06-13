@@ -3,7 +3,7 @@ export type AuthInterface = {
     name: string;
     email: string;
   },
-  loginWithRedirect: () => void;
-  logout: () => void;
+  loginWithRedirect?: () => void;
+  logout?: () => void;
   isAuthenticated: boolean;
 } | null
