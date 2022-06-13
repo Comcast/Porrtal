@@ -1,15 +1,15 @@
 import { ReactKeycloakProvider, useKeycloak } from '@react-keycloak/web';
-import { AuthContext } from '../use-auth/use-auth';
+import { AuthContext } from '../use-auth/auth-context';
 import { AuthInterface } from '../auth-interface';
 import Keycloak from 'keycloak-js';
 import { useEffect, useState } from 'react';
 
-export interface KeycloakAuthAdapterProps {
-  redirectUri: string,
+interface KeycloakAuthAdapterProps {
+  redirectUri: string;
   children?: React.ReactChild | React.ReactChild[];
 }
 
-export function KeycloakAdapter(props: KeycloakAuthAdapterProps) {
+function KeycloakAdapter(props: KeycloakAuthAdapterProps) {
   const { keycloak, initialized } = useKeycloak();
   const auth: AuthInterface = {
     user: {
@@ -20,8 +20,8 @@ export function KeycloakAdapter(props: KeycloakAuthAdapterProps) {
       keycloak?.login({ redirectUri: props.redirectUri }),
     logout: keycloak?.logout,
     isAuthenticated: keycloak?.authenticated ?? false,
-    isInitialized: initialized
-  }
+    isInitialized: initialized,
+  };
 
   return (
     <AuthContext.Provider value={auth}>{props.children}</AuthContext.Provider>
@@ -53,7 +53,7 @@ export function KeycloakAuthentication(props: KeycloakAuthenticationProps) {
         new Keycloak({
           realm: props.realm,
           clientId: props.clientId,
-          url: props.uri
+          url: props.uri,
         })
       ),
     [props]
@@ -64,7 +64,7 @@ export function KeycloakAuthentication(props: KeycloakAuthenticationProps) {
       authClient={keycloak}
       onEvent={eventLogger}
       onTokens={tokenLogger}
-      initOptions={{scope: 'openid email'}}
+      initOptions={{ scope: 'openid email' }}
     >
       <KeycloakAdapter redirectUri={props.redirectUri}>
         {props.children}

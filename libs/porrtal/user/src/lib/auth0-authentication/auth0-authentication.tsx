@@ -1,8 +1,14 @@
 import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
-import { AuthContext, AuthAdapterProps } from '../use-auth/use-auth';
+import { AuthContext } from '../use-auth/auth-context';
 import { AuthInterface } from '../auth-interface';
 
-export function Auth0Adapter(props: AuthAdapterProps) {
+interface Auth0AdapterProps {
+  children?:
+    | React.ReactChild
+    | React.ReactChild[];
+}
+
+function Auth0Adapter(props: Auth0AdapterProps) {
   const auth0 = useAuth0();
   const auth: AuthInterface = {
     user: auth0? auth0?.user as { name: string, email: string} : undefined,

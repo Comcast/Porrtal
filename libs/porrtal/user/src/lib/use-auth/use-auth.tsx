@@ -1,7 +1,6 @@
-import { createContext, useContext } from 'react';
+import { useContext } from 'react';
 import { AuthInterface } from '../auth-interface';
-
-export const AuthContext = createContext<AuthInterface>(null)
+import { AuthContext } from './auth-context';
 
 export function useAuth(): AuthInterface {
   const auth = useContext(AuthContext);
