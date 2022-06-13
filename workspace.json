@@ -7,6 +7,8 @@
     "porrtal-react-app": "apps/porrtal-react-app",
     "porrtal-react-app-e2e": "apps/porrtal-react-app-e2e",
     "porrtal-shell": "libs/porrtal/shell",
+    "porrtal-shell-blueprint": "libs/porrtal/shell-blueprint",
+    "porrtal-shell-material": "libs/porrtal/shell-material",
     "porrtal-user": "libs/porrtal/user",
     "test-comps-first-test-comp": "libs/test-comps/first-test-comp"
   }
