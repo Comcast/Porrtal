@@ -10,7 +10,7 @@ export interface KeycloakAuthAdapterProps {
 }
 
 export function KeycloakAdapter(props: KeycloakAuthAdapterProps) {
-  const { keycloak } = useKeycloak();
+  const { keycloak, initialized } = useKeycloak();
   const auth: AuthInterface = {
     user: {
       name: keycloak?.tokenParsed?.['name'] ?? '',
@@ -20,6 +20,7 @@ export function KeycloakAdapter(props: KeycloakAuthAdapterProps) {
       keycloak?.login({ redirectUri: props.redirectUri }),
     logout: keycloak?.logout,
     isAuthenticated: keycloak?.authenticated ?? false,
+    isInitialized: initialized
   }
 
   return (

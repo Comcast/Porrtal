@@ -9,13 +9,17 @@ export interface UserBannerProps {}
 export function UserBanner(props: UserBannerProps) {
   const auth = useAuth();
 
-  return (
-    <div className={styles['container']}>
-      {auth?.isAuthenticated && <span>{auth?.user?.email}</span>}
-      {!auth?.isAuthenticated && <LoginButton />}
-      {auth?.isAuthenticated && <LogoutButton />}
-    </div>
-  );
+  if (auth?.isInitialized) {
+    return (
+      <div className={styles['container']}>
+        {auth?.isAuthenticated && <span>{auth?.user?.email}</span>}
+        {!auth?.isAuthenticated && <LoginButton />}
+        {auth?.isAuthenticated && <LogoutButton />}
+      </div>
+    );
+  } else {
+    return <div className={styles['container']}>loading...</div>;
+  }
 }
 
 export default UserBanner;

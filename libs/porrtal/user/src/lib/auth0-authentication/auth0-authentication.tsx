@@ -3,7 +3,14 @@ import { AuthContext, AuthAdapterProps } from '../use-auth/use-auth';
 import { AuthInterface } from '../auth-interface';
 
 export function Auth0Adapter(props: AuthAdapterProps) {
-  const auth: AuthInterface = useAuth0();
+  const auth0 = useAuth0();
+  const auth: AuthInterface = {
+    user: auth0? auth0?.user as { name: string, email: string} : undefined,
+    loginWithRedirect: auth0?.loginWithRedirect,
+    logout: auth0?.logout,
+    isAuthenticated: auth0?.isAuthenticated,
+    isInitialized: auth0 ? !auth0?.isLoading : false
+  }
 
   return (
     <AuthContext.Provider value={auth}>

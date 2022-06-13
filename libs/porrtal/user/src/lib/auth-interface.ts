@@ -6,4 +6,5 @@ export type AuthInterface = {
   loginWithRedirect?: () => void;
   logout?: () => void;
   isAuthenticated: boolean;
+  isInitialized: boolean;
 } | null
