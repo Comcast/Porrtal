@@ -1,5 +1,5 @@
 import { ViewState } from "./view-state";
 
-export interface PorrtalViewComponentProps {
+export interface ViewComponentProps {
   viewState: ViewState;
 }

@@ -1,1 +1,1 @@
-export * from './lib/porrtal-shell-material';
+export * from './lib/shell-material';

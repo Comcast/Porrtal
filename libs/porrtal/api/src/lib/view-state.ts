@@ -1,11 +1,11 @@
-import { PorrtalViewComponentFunction } from "./porrtal-view-component-function";
-import { PorrtalViewPane } from "./porrtal-view-pane";
+import { ViewComponentFunction } from "./view-component-function";
+import { ViewPane } from "./view-pane";
 
 export interface ViewState {
   key: string;
-  porrtalViewPane: PorrtalViewPane;
+  viewPane: ViewPane;
   componentName: string;
-  componentImport: PorrtalViewComponentFunction;
+  componentImport?: ViewComponentFunction;
   displayText: string;
   displayIcon: string;
 }

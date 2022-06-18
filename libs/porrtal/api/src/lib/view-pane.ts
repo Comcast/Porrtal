@@ -1,2 +1,2 @@
-export type PorrtalViewPane =
+export type ViewPane =
   'nav' | 'main' | 'right' | 'bottom' | 'search';

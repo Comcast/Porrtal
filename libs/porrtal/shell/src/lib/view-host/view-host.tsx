@@ -18,9 +18,12 @@ export function ViewHost(props: ViewHostProps) {
   console.log(`in view host...`);
   const [DynComp, setDynComp] =
     useState<LazyExoticComponent<ComponentType<PorrtalViewComponentProps>>>();
+
   useEffect(() => {
-    setDynComp(React.lazy(props.viewState.componentImport));
-    console.log(`in view host use effect...`);
+    if (props.viewState.componentImport) {
+      setDynComp(React.lazy(props.viewState.componentImport));
+      console.log(`in view host use effect...`);
+    }
   }, [props.viewState.componentImport]);
   // const DynComp = React.lazy(props.viewState.componentImport);
   // props.viewState.componentImport().then((res) => { console.log(res)});
@@ -39,7 +42,13 @@ export function ViewHost(props: ViewHostProps) {
       <p>displayText: {props.viewState.displayText}</p>
       <p>displayIcon: {props.viewState.displayIcon}</p>
       {/* <DynComp viewState={props.viewState} /> */}
-      <div>{DynComp ? <DynComp viewState={props.viewState} /> : <div>loading...</div>}</div>
+      <div>
+        {DynComp ? (
+          <DynComp viewState={props.viewState} />
+        ) : (
+          <div>loading...</div>
+        )}
+      </div>
     </div>
   );
 }

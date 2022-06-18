@@ -1,5 +1,5 @@
 import { ViewState } from '@porrtal/api';
-import { PorrtalShellDispatch } from '@porrtal/shell';
+import { useShellDispatch } from '@porrtal/shell';
 import { useContext } from 'react';
 import styles from './test-comps-first-test-comp.module.scss';
 
@@ -9,7 +9,7 @@ export interface TestCompsFirstTestCompProps {
 }
 
 export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
-  const dispatch = useContext(PorrtalShellDispatch);
+  const dispatch = useShellDispatch();
 
   return (
     <div className={styles['container']}>
@@ -20,9 +20,8 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
             type: 'launchViewState',
             viewState: {
               key: 'one-main',
-              porrtalViewPane: 'right',
-              componentName: 'one',
-              componentImport: () => import('@test-comps/first-test-comp'),
+              viewPane: 'right',
+              componentName: '@test-comps/first-test-comp',
               displayText: 'one',
               displayIcon: 'home',
             },
@@ -37,9 +36,8 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
             type: 'launchViewState',
             viewState: {
               key: 'one-main',
-              porrtalViewPane: 'bottom',
-              componentName: 'one',
-              componentImport: () => import('@test-comps/first-test-comp'),
+              viewPane: 'bottom',
+              componentName: '@test-comps/first-test-comp',
               displayText: 'one',
               displayIcon: 'home',
             },

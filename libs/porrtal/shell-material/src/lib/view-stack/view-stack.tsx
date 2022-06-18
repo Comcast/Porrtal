@@ -1,15 +1,7 @@
 import { Box, Icon, Tab, Tabs } from '@mui/material';
 import React, { useState } from 'react';
-import { ViewState } from '@porrtal/api';
-import ViewHost from '../view-host/view-host';
+import { ViewHost, ViewStackProps } from '@porrtal/shell';
 import styles from './view-stack.module.scss';
-import { relative } from 'path';
-
-/* eslint-disable-next-line */
-export interface ViewStackProps {
-  arrange: 'tabs-top' | 'tabs-left' | 'cards';
-  items: ViewState[];
-}
 
 export function ViewStack(props: ViewStackProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
