@@ -1,4 +1,5 @@
-import { ViewComponentProps } from "./view-component-props";
+import { ViewComponentProps } from './view-component-props';
 
-export type ViewComponentFunction =
-  () => Promise<{ default: React.ComponentType<ViewComponentProps>; }>
+export type ViewComponentFunction = () => Promise<{
+  default: React.ComponentType<ViewComponentProps>;
+}>;

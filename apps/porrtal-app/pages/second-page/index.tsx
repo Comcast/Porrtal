@@ -12,7 +12,7 @@ export function Index() {
       redirectUri="http://localhost:4200/second-page"
     >
       <ShellState components={testComponents} views={testViews}>
-        <ShellMaterial></ShellMaterial>
+        <ShellMaterial />
       </ShellState>
     </KeycloakAuthentication>
   );

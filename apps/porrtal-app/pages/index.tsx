@@ -11,7 +11,7 @@ export function Index() {
       redirectUri="http://localhost:4200"
     >
       <ShellState components={testComponents} views={testViews}>
-        <ShellMaterial></ShellMaterial>
+        <ShellMaterial />
       </ShellState>
     </Auth0Authentication>
   );
