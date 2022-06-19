@@ -12,19 +12,37 @@ export function ViewStack(props: ViewStackProps) {
 
   return (
     <div className={styles['container']}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'gainsboro' }}>
+      <Box
+        sx={{
+          borderBottom: 1,
+          borderColor: 'divider',
+          backgroundColor: 'gainsboro',
+        }}
+      >
         <Tabs
           value={currentIndex}
           variant="scrollable"
           scrollButtons="auto"
           onChange={handleChange}
+          className={styles['tabs']}
         >
           {props.items.map((item) => (
             <Tab
               key={item.key}
-              icon={<Icon style={{position: 'relative', top: '3px'}}>{item.displayIcon}</Icon>}
+              icon={
+                <Icon style={{ position: 'relative', top: '3px' }}>
+                  {item.displayIcon}
+                </Icon>
+              }
               iconPosition="start"
-              label={<span>{item.displayText}&nbsp;<Icon style={{position: 'relative', top: '5px'}}>clear</Icon></span>}
+              label={
+                <span>
+                  {item.displayText}&nbsp;
+                  <Icon style={{ position: 'relative', top: '5px' }}>
+                    clear
+                  </Icon>
+                </span>
+              }
             ></Tab>
           ))}
         </Tabs>

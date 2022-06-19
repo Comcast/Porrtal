@@ -13,3 +13,9 @@
 .view-host-container {
   position: relative;
 }
+
+.tabs {
+  button {
+    min-height: 0;
+  }
+}

@@ -1,4 +1,3 @@
-import { Icon } from '@mui/material';
 import React, {
   ComponentType,
   LazyExoticComponent,
@@ -8,7 +7,6 @@ import React, {
 import { ViewComponentProps, ViewState } from '@porrtal/api';
 import styles from './view-host.module.scss';
 
-/* eslint-disable-next-line */
 export interface ViewHostProps {
   viewState: ViewState;
   zIndex: number;
