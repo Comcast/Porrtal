@@ -1,7 +1,8 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.container {
+  background-color: aquamarine;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  overflow: auto;
+}

@@ -45,6 +45,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       >
         launch bottom
       </button>
+      {['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'].map((item) => <p>{item}</p>)}
     </div>
   );
 }

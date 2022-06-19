@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { PorrtalViewComponentProps, ViewState } from '@porrtal/api';
+import { ViewComponentProps, ViewState } from '@porrtal/api';
 import styles from './view-host.module.scss';
 
 /* eslint-disable-next-line */
@@ -17,7 +17,7 @@ export interface ViewHostProps {
 export function ViewHost(props: ViewHostProps) {
   console.log(`in view host...`);
   const [DynComp, setDynComp] =
-    useState<LazyExoticComponent<ComponentType<PorrtalViewComponentProps>>>();
+    useState<LazyExoticComponent<ComponentType<ViewComponentProps>>>();
 
   useEffect(() => {
     if (props.viewState.componentImport) {
@@ -25,8 +25,6 @@ export function ViewHost(props: ViewHostProps) {
       console.log(`in view host use effect...`);
     }
   }, [props.viewState.componentImport]);
-  // const DynComp = React.lazy(props.viewState.componentImport);
-  // props.viewState.componentImport().then((res) => { console.log(res)});
 
   return (
     <div
@@ -34,15 +32,7 @@ export function ViewHost(props: ViewHostProps) {
       className={styles['container']}
       style={{ zIndex: props.zIndex }}
     >
-      <h1>
-        <Icon>{props.viewState.displayIcon}</Icon>
-        {props.viewState.key}
-      </h1>
-      <p>key: {props.viewState.key}</p>
-      <p>displayText: {props.viewState.displayText}</p>
-      <p>displayIcon: {props.viewState.displayIcon}</p>
-      {/* <DynComp viewState={props.viewState} /> */}
-      <div>
+      <div className={styles['innerContainer']}>
         {DynComp ? (
           <DynComp viewState={props.viewState} />
         ) : (
