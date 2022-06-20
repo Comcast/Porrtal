@@ -1,6 +1,6 @@
 import styles from './view-stack.module.scss';
-import { Tab, Tabs } from '@blueprintjs/core';
-import React, { useEffect, useState } from 'react';
+import { Tab, Tabs, Icon } from '@blueprintjs/core';
+import { useEffect, useState } from 'react';
 import { ViewHost, ViewStackProps } from '@porrtal/shell';
 
 export function ViewStack(props: ViewStackProps) {
@@ -28,7 +28,8 @@ export function ViewStack(props: ViewStackProps) {
         <Tab
           id={item.key}
           key={item.key}
-          title={<span>bong: {item.displayText}</span>}
+
+          title={<span><Icon icon={item.displayIcon} />&nbsp;{item.displayText}</span>}
           panel={
             <div className={styles['viewHostContainer']}>
               <ViewHost key={item.key} viewState={item} zIndex={0}></ViewHost>

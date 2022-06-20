@@ -1,4 +1,6 @@
 import '@blueprintjs/core/lib/css/blueprint.css';
+import '@blueprintjs/icons/lib/css/blueprint-icons.css';
+
 import { ShellState } from '@porrtal/shell';
 import { KeycloakAuthentication } from '@porrtal/user';
 import { testComponents, testViews } from '../test-view-states';
