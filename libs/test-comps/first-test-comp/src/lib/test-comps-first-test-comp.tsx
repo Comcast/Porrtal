@@ -1,8 +1,8 @@
 import { ViewState } from '@porrtal/api';
 import { useShellDispatch } from '@porrtal/shell';
 import styles from './test-comps-first-test-comp.module.scss';
+import { v4 as uuidv4 } from 'uuid';
 
-/* eslint-disable-next-line */
 export interface TestCompsFirstTestCompProps {
   viewState: ViewState;
 }
@@ -18,7 +18,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
           dispatch({
             type: 'launchViewState',
             viewState: {
-              key: 'one-main',
+              key: uuidv4(),
               viewPane: 'right',
               componentName: '@test-comps/first-test-comp',
               displayText: 'one',
@@ -34,7 +34,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
           dispatch({
             type: 'launchViewState',
             viewState: {
-              key: 'one-main',
+              key: uuidv4(),
               viewPane: 'bottom',
               componentName: '@test-comps/first-test-comp',
               displayText: 'one',
@@ -45,7 +45,20 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       >
         launch bottom
       </button>
-      {['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'].map((item) => <p>{item}</p>)}
+      {[
+        'one',
+        'two',
+        'three',
+        'four',
+        'five',
+        'six',
+        'seven',
+        'eight',
+        'nine',
+        'ten',
+      ].map((item) => (
+        <p key={item}>{item}</p>
+      ))}
     </div>
   );
 }

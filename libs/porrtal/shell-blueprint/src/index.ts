@@ -1,1 +1,1 @@
-export * from './lib/porrtal-shell-blueprint';
+export * from './lib/shell-blueprint/shell-blueprint';

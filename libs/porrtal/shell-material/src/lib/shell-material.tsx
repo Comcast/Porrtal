@@ -1,15 +1,9 @@
-import { ShellComponentsMaterial } from "./shell-components-material";
+import { ShellComponentsMaterial } from './shell-components-material';
 
 export interface ShellMaterialProps {
-  children?:
-    | React.ReactChild
-    | React.ReactChild[];
+  children?: React.ReactChild | React.ReactChild[];
 }
 
 export function ShellMaterial(props: ShellMaterialProps) {
-  return (
-    <ShellComponentsMaterial>
-      {props.children}
-    </ShellComponentsMaterial>
-  )
+  return <ShellComponentsMaterial>{props.children}</ShellComponentsMaterial>;
 }
