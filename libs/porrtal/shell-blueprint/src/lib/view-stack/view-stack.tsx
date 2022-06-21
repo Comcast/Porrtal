@@ -1,17 +1,18 @@
 import styles from './view-stack.module.scss';
 import { Tab, Tabs, Icon } from '@blueprintjs/core';
-import { useEffect, useState } from 'react';
-import { ViewHost, ViewStackProps } from '@porrtal/shell';
+import { useEffect } from 'react';
+import { useShellDispatch, ViewHost, ViewStackProps } from '@porrtal/shell';
 
 export function ViewStack(props: ViewStackProps) {
-  const [currentTabId, setCurrentTabId] = useState<string>(
-    props.items.length > 0 ? props.items[0].key : ''
-  );
+  const dispatch = useShellDispatch();
   useEffect(() => {
-    if (!currentTabId && props?.items?.length) {
-      setCurrentTabId(props.items[0].key);
+    if (!props.pane.currentKey && props?.pane?.viewStates?.length && dispatch) {
+      dispatch({
+        type: 'setCurrentViewStateKey',
+        key: props.pane.viewStates[0].key,
+      });
     }
-  }, [props.items, currentTabId]);
+  }, [props.pane, dispatch]);
 
   return (
     <Tabs
@@ -20,16 +21,23 @@ export function ViewStack(props: ViewStackProps) {
       key={'horizontal'}
       renderActiveTabPanelOnly={false}
       vertical={false}
-      onChange={(evt) => setCurrentTabId(evt.toLocaleString())}
-      selectedTabId={currentTabId}
+      onChange={(evt) => dispatch({
+        type: 'setCurrentViewStateKey',
+        key: evt.toLocaleString(),
+      })}
+      selectedTabId={props.pane.currentKey}
       className={styles['tabs']}
     >
-      {props.items.map((item) => (
+      {props.pane.viewStates.map((item) => (
         <Tab
           id={item.key}
           key={item.key}
-
-          title={<span><Icon icon={item.displayIcon} />&nbsp;{item.displayText}</span>}
+          title={
+            <span>
+              <Icon icon={item.displayIcon} />
+              &nbsp;{item.displayText}
+            </span>
+          }
           panel={
             <div className={styles['viewHostContainer']}>
               <ViewHost key={item.key} viewState={item} zIndex={0}></ViewHost>

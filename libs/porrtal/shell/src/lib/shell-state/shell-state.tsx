@@ -1,4 +1,10 @@
-import { ViewComponentFunction, ViewPane, ViewState } from '@porrtal/api';
+import {
+  ViewComponentFunction,
+  ViewState,
+  Panes,
+  PaneType,
+  Pane,
+} from '@porrtal/api';
 import {
   useReducer,
   Reducer,
@@ -13,16 +19,14 @@ export type ComponentFactoryDictionary = {
 };
 
 export interface UseShellState {
-  navItems: ViewState[];
-  mainItems: ViewState[];
-  rightItems: ViewState[];
-  bottomItems: ViewState[];
-  searchItems: ViewState[];
+  panes: Panes;
   components: ComponentFactoryDictionary;
 }
 
 export type ShellAction =
   | { type: 'launchViewState'; viewState: ViewState }
+  | { type: 'deleteViewState'; key: string }
+  | { type: 'setCurrentViewStateKey'; key: string, pane: Pane }
   | {
       type: 'registerComponent';
       componentRegistration: {
@@ -32,62 +36,66 @@ export type ShellAction =
     };
 
 const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
+  console.log('reducer', state, action);
   switch (action.type) {
-    case 'launchViewState':
-      switch (action.viewState.viewPane) {
-        case 'nav':
-          return {
-            ...state,
-            navItems: [
-              ...state.navItems,
-              {
-                ...action.viewState,
-                componentImport:
-                  state.components[action.viewState.componentName],
-              },
+    case 'launchViewState': {
+      const viewStates = state.panes[action.viewState.paneType].viewStates;
+      const viewState = action.viewState;
+      viewState.componentImport = state.components[viewState.componentName];
+      const retState: UseShellState = {
+        ...state,
+        panes: {
+          ...state.panes,
+          [action.viewState.paneType]: {
+            currentKey: action.viewState.key,
+            viewStates: [
+              ...viewStates,
+              viewState
             ],
-          };
+          },
+        },
+      };
+      return retState;
+    }
 
-        case 'main':
-          return {
-            ...state,
-            mainItems: [
-              ...state.mainItems,
-              {
-                ...action.viewState,
-                componentImport:
-                  state.components[action.viewState.componentName],
-              },
-            ],
-          };
-
-        case 'right':
-          return {
-            ...state,
-            rightItems: [
-              ...state.rightItems,
-              {
-                ...action.viewState,
-                componentImport:
-                  state.components[action.viewState.componentName],
-              },
-            ],
-          };
-
-        case 'bottom':
-          return {
-            ...state,
-            bottomItems: [
-              ...state.bottomItems,
-              {
-                ...action.viewState,
-                componentImport:
-                  state.components[action.viewState.componentName],
-              },
-            ],
-          };
+    case 'setCurrentViewStateKey': {
+      const paneType = Object.keys(state.panes).find(key => state.panes[key as PaneType] === action.pane);
+      if (!paneType) {
+        return state;
       }
-      break;
+      return {
+        ...state,
+        panes: {
+          ...state.panes,
+          [paneType]: {
+            ...action.pane,
+            currentKey: action.key
+          }
+        }
+      }
+    }
+
+    case 'deleteViewState': {
+      const target = {};
+      Object.assign(
+        target,
+        ...Object.keys(state.panes).map((paneType: string) => ({
+          [paneType]: {
+            ...state.panes[paneType as PaneType],
+            viewStates: state.panes[paneType as PaneType].viewStates.filter(
+              (item) => item.key !== action.key
+            ),
+            currentKey: computeCurrentKey(state, paneType, action)
+          },
+        }))
+      );
+
+      const retState: UseShellState = {
+        ...state,
+        panes: target as Panes,
+      };
+      return retState;
+    }
 
     case 'registerComponent':
       return {
@@ -102,15 +110,76 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
   return state;
 };
 
-// arg to createContext is used if no provider is defined https://stackoverflow.com/q/49949099/7085047
-const ShellStateContext = createContext<UseShellState>({
-  navItems: [] as ViewState[],
-  mainItems: [] as ViewState[],
-  rightItems: [] as ViewState[],
-  bottomItems: [] as ViewState[],
-  searchItems: [] as ViewState[],
+function computeCurrentKey(state: UseShellState, paneType: string, action: { type: 'deleteViewState'; key: string; }): string {
+  // if we aren't deleting the current one, keep the current one the same
+  if (state.panes[paneType as PaneType].currentKey !== action.key) {
+    return state.panes[paneType as PaneType].currentKey
+  }
+
+  // find the one that we are supposed to delete
+  const vsWithKey = state.panes[paneType as PaneType].viewStates.find(
+    (item) => item.key === action.key
+  );
+
+  // if we don't find one to delete that matches the key and the current is the key we didn't find
+  if (!vsWithKey) {
+    // if there are none in the array, set the current to nothing
+    if (state.panes[paneType as PaneType].viewStates.length < 1) {
+      return '';
+    }
+
+    // there are some in the array, set the current one to the first element
+    return state.panes[paneType as PaneType].viewStates[0].key;
+  }
+
+  // if the one we are deleting is the only one, set the current to nothing
+  if (vsWithKey && state.panes[paneType as PaneType].viewStates.length === 1) {
+    return '';
+  }
+
+  let vsIndex = state.panes[paneType as PaneType].viewStates.indexOf(vsWithKey);
+  if (vsIndex === state.panes[paneType as PaneType].viewStates.length - 1) {
+    vsIndex--;
+  } else {
+    vsIndex++;
+  }
+
+  return state.panes[paneType as PaneType].viewStates[vsIndex].key
+}
+
+const emptyUseShellState: UseShellState = {
+  panes: {
+    nav: {
+      viewStates: [] as ViewState[],
+      arrange: 'tabs-top',
+      currentKey: '',
+    },
+    main: {
+      viewStates: [] as ViewState[],
+      arrange: 'tabs-top',
+      currentKey: '',
+    },
+    bottom: {
+      viewStates: [] as ViewState[],
+      arrange: 'tabs-top',
+      currentKey: '',
+    },
+    right: {
+      viewStates: [] as ViewState[],
+      arrange: 'tabs-top',
+      currentKey: '',
+    },
+    search: {
+      viewStates: [] as ViewState[],
+      arrange: 'tabs-top',
+      currentKey: '',
+    },
+  },
   components: {},
-});
+};
+
+// arg to createContext is used if no provider is defined https://stackoverflow.com/q/49949099/7085047
+const ShellStateContext = createContext<UseShellState>(emptyUseShellState);
 
 // arg to createContext is used if no provider is defined https://stackoverflow.com/q/49949099/7085047
 const ShellDispatchContext = createContext<Dispatch<ShellAction>>(
@@ -126,13 +195,9 @@ export interface ShellStateProps {
 }
 
 export function ShellState(props: ShellStateProps) {
-  const initialState = useMemo(() => {
+  const initialState: UseShellState = useMemo(() => {
     let memoState = {
-      navItems: [] as ViewState[],
-      mainItems: [] as ViewState[],
-      rightItems: [] as ViewState[],
-      bottomItems: [] as ViewState[],
-      searchItems: [] as ViewState[],
+      ...emptyUseShellState,
       components: props.components,
     };
 

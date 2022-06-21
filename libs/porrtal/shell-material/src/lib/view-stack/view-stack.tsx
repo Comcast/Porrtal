@@ -1,13 +1,25 @@
 import { Box, Icon, Tab, Tabs } from '@mui/material';
-import React, { useState } from 'react';
-import { ViewHost, ViewStackProps } from '@porrtal/shell';
+import React, { useMemo } from 'react';
+import { useShellDispatch, ViewHost, ViewStackProps } from '@porrtal/shell';
 import styles from './view-stack.module.scss';
 
 export function ViewStack(props: ViewStackProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const dispatch = useShellDispatch();
+  const currentIndex = useMemo(() => {
+    for (let ii=0; ii < props.pane.viewStates.length; ii++) {
+      if (props.pane.viewStates[ii].key === props.pane.currentKey) {
+        return ii;
+      }
+    }
+    return -1;
+  }, [props.pane]);
 
   const handleChange = (event: React.SyntheticEvent, newIndex: number) => {
-    setCurrentIndex(newIndex);
+    dispatch({
+      type: 'setCurrentViewStateKey',
+      key: props.pane.viewStates[newIndex].key,
+      pane: props.pane
+    });
   };
 
   return (
@@ -26,7 +38,7 @@ export function ViewStack(props: ViewStackProps) {
           onChange={handleChange}
           className={styles['tabs']}
         >
-          {props.items.map((item) => (
+          {props.pane.viewStates.map((item, index) => (
             <Tab
               key={item.key}
               icon={
@@ -38,7 +50,13 @@ export function ViewStack(props: ViewStackProps) {
               label={
                 <span>
                   {item.displayText}&nbsp;
-                  <Icon style={{ position: 'relative', top: '5px' }}>
+                  <Icon
+                    style={{ position: 'relative', top: '5px' }}
+                    onClick={(evt) => {
+                      dispatch({ type: 'deleteViewState', key: item.key });
+                      evt.stopPropagation();
+                    }}
+                  >
                     clear
                   </Icon>
                 </span>
@@ -48,7 +66,7 @@ export function ViewStack(props: ViewStackProps) {
         </Tabs>
       </Box>
       <div className={styles['view-host-container']}>
-        {props.items.map((item, index) => (
+        {props.pane.viewStates.map((item, index) => (
           <ViewHost
             key={item.key}
             viewState={item}

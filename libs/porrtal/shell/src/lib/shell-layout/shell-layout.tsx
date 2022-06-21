@@ -8,7 +8,7 @@ import styles from './shell-layout.module.scss';
 export interface ShellLayoutProps {}
 
 export function ShellLayout(props: ShellLayoutProps) {
-  const { navItems, mainItems, rightItems, bottomItems } = useShellState();
+  const shellState = useShellState();
   const shellComponents = useShellComponents();
   if (shellComponents) {
     return (
@@ -18,16 +18,16 @@ export function ShellLayout(props: ShellLayoutProps) {
           <UserBanner />
         </div>
         <div className={styles['nav']}>
-          <shellComponents.ViewStack arrange="tabs-left" items={navItems} />
+          <shellComponents.ViewStack pane={shellState.panes.nav} />
         </div>
         <div className={styles['main']}>
-          <shellComponents.ViewStack arrange="tabs-top" items={mainItems} />
+          <shellComponents.ViewStack pane={shellState.panes.main} />
         </div>
         <div className={styles['right']}>
-          <shellComponents.ViewStack arrange="tabs-top" items={rightItems} />
+          <shellComponents.ViewStack pane={shellState.panes.right} />
         </div>
         <div className={styles['bottom']}>
-          <shellComponents.ViewStack arrange="tabs-top" items={bottomItems} />
+          <shellComponents.ViewStack pane={shellState.panes.bottom} />
         </div>
         <div className={styles['footer']}>footer</div>
       </div>

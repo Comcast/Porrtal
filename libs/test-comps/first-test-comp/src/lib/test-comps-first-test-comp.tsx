@@ -19,7 +19,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
             type: 'launchViewState',
             viewState: {
               key: uuidv4(),
-              viewPane: 'right',
+              paneType: 'right',
               componentName: '@test-comps/first-test-comp',
               displayText: 'one',
               displayIcon: 'home',
@@ -35,7 +35,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
             type: 'launchViewState',
             viewState: {
               key: uuidv4(),
-              viewPane: 'bottom',
+              paneType: 'bottom',
               componentName: '@test-comps/first-test-comp',
               displayText: 'one',
               displayIcon: 'home',

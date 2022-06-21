@@ -1,9 +1,7 @@
-import { ViewState } from '@porrtal/api';
+import { Pane } from '@porrtal/api';
 
-/* eslint-disable-next-line */
 export interface ViewStackProps {
-  arrange: 'tabs-top' | 'tabs-left' | 'cards';
-  items: ViewState[];
+  pane: Pane;
 }
 
 export type ViewStackComponent = (props: ViewStackProps) => JSX.Element;

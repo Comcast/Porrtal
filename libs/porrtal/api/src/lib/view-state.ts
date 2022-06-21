@@ -1,9 +1,9 @@
+import { PaneType } from './pane';
 import { ViewComponentFunction } from './view-component-function';
-import { ViewPane } from './view-pane';
 
 export interface ViewState {
   key: string;
-  viewPane: ViewPane;
+  paneType: PaneType;
   componentName: string;
   componentImport?: ViewComponentFunction;
   displayText: string;
