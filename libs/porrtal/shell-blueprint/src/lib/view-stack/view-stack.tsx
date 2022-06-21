@@ -9,6 +9,7 @@ export function ViewStack(props: ViewStackProps) {
     if (!props.pane.currentKey && props?.pane?.viewStates?.length && dispatch) {
       dispatch({
         type: 'setCurrentViewStateKey',
+        pane: props.pane,
         key: props.pane.viewStates[0].key,
       });
     }
@@ -23,6 +24,7 @@ export function ViewStack(props: ViewStackProps) {
       vertical={false}
       onChange={(evt) => dispatch({
         type: 'setCurrentViewStateKey',
+        pane: props.pane,
         key: evt.toLocaleString(),
       })}
       selectedTabId={props.pane.currentKey}
@@ -34,8 +36,12 @@ export function ViewStack(props: ViewStackProps) {
           key={item.key}
           title={
             <span>
-              <Icon icon={item.displayIcon} />
-              &nbsp;{item.displayText}
+              &nbsp;<Icon icon={item.displayIcon} />
+              &nbsp;{item.displayText}&nbsp;
+              <Icon icon="delete" onClick={(evt) => {
+                      dispatch({ type: 'deleteViewState', key: item.key });
+                      evt.stopPropagation();
+                    }} />
             </span>
           }
           panel={
