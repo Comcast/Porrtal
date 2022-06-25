@@ -26,7 +26,7 @@ export interface UseShellState {
 export type ShellAction =
   | { type: 'launchViewState'; viewState: ViewState }
   | { type: 'deleteViewState'; key: string }
-  | { type: 'setCurrentViewStateKey'; key: string, pane: Pane }
+  | { type: 'setCurrentViewStateByKey'; key: string, pane: Pane }
   | {
       type: 'registerComponent';
       componentRegistration: {
@@ -58,7 +58,7 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
       return retState;
     }
 
-    case 'setCurrentViewStateKey': {
+    case 'setCurrentViewStateByKey': {
       const paneType = Object.keys(state.panes).find(key => state.panes[key as PaneType] === action.pane);
       if (!paneType) {
         return state;

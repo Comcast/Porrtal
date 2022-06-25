@@ -16,7 +16,7 @@ export function ViewStack(props: ViewStackProps) {
 
   const handleChange = (event: React.SyntheticEvent, newIndex: number) => {
     dispatch({
-      type: 'setCurrentViewStateKey',
+      type: 'setCurrentViewStateByKey',
       key: props.pane.viewStates[newIndex].key,
       pane: props.pane
     });

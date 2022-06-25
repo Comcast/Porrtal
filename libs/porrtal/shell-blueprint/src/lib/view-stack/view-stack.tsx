@@ -8,7 +8,7 @@ export function ViewStack(props: ViewStackProps) {
   useEffect(() => {
     if (!props.pane.currentKey && props?.pane?.viewStates?.length && dispatch) {
       dispatch({
-        type: 'setCurrentViewStateKey',
+        type: 'setCurrentViewStateByKey',
         pane: props.pane,
         key: props.pane.viewStates[0].key,
       });
@@ -23,7 +23,7 @@ export function ViewStack(props: ViewStackProps) {
       renderActiveTabPanelOnly={false}
       vertical={false}
       onChange={(evt) => dispatch({
-        type: 'setCurrentViewStateKey',
+        type: 'setCurrentViewStateByKey',
         pane: props.pane,
         key: evt.toLocaleString(),
       })}
