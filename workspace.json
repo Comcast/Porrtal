@@ -9,6 +9,7 @@
     "porrtal-shell": "libs/porrtal/shell",
     "porrtal-shell-blueprint": "libs/porrtal/shell-blueprint",
     "porrtal-shell-material": "libs/porrtal/shell-material",
+    "porrtal-split": "libs/porrtal/split",
     "porrtal-user": "libs/porrtal/user",
     "test-comps-first-test-comp": "libs/test-comps/first-test-comp",
     "test-comps-second-test-comp": "libs/test-comps/second-test-comp"

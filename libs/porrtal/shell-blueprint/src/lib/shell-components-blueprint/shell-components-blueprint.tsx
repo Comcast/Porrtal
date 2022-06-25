@@ -1,4 +1,4 @@
-import { ShellComponents, ShellComponentsContext, ShellLayout } from '@porrtal/shell';
+import { ShellComponents, ShellComponentsContext, ShellLayoutSplitter } from '@porrtal/shell';
 import ViewStack from '../view-stack/view-stack';
 
 /* eslint-disable-next-line */
@@ -12,7 +12,7 @@ export function ShellComponentsBlueprint(props: ShellComponentsBlueprintProps) {
   };
   return (
     <ShellComponentsContext.Provider value={shellComponents}>
-      <ShellLayout>{props.children}</ShellLayout>
+      <ShellLayoutSplitter>{props.children}</ShellLayoutSplitter>
     </ShellComponentsContext.Provider>
   );
 }

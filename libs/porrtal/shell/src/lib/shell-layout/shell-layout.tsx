@@ -1,7 +1,6 @@
 import { useShellComponents } from '@porrtal/shell';
 import { UserBanner } from '@porrtal/user';
-import { useContext } from 'react';
-import { ShellState, useShellState } from '../shell-state/shell-state';
+import { useShellState } from '../shell-state/shell-state';
 import styles from './shell-layout.module.scss';
 
 /* eslint-disable-next-line */

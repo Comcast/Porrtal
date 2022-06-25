@@ -13,6 +13,7 @@
     "@blueprintjs/core": "^4.5.1",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@geoffcox/react-splitter": "^2.1.1",
     "@mui/material": "^5.6.2",
     "@nrwl/next": "13.10.2",
     "@react-keycloak/web": "^3.4.0",
@@ -22,6 +23,7 @@
     "next": "12.1.2",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-measure": "^2.5.2",
     "regenerator-runtime": "0.13.7",
     "tslib": "^2.0.0",
     "uuid": "^8.3.2"
@@ -41,6 +43,7 @@
     "@types/node": "16.11.7",
     "@types/react": "18.0.0",
     "@types/react-dom": "18.0.0",
+    "@types/react-measure": "^2.0.8",
     "@typescript-eslint/eslint-plugin": "~5.18.0",
     "@typescript-eslint/parser": "~5.18.0",
     "babel-jest": "27.2.3",

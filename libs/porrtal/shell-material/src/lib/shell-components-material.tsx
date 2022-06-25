@@ -1,7 +1,7 @@
 import {
   ShellComponents,
   ShellComponentsContext,
-  ShellLayout,
+  ShellLayoutSplitter,
 } from '@porrtal/shell';
 import ViewStack from './view-stack/view-stack';
 
@@ -15,7 +15,7 @@ export function ShellComponentsMaterial(props: ShellComponentsMaterialProps) {
   };
   return (
     <ShellComponentsContext.Provider value={shellComponents}>
-      <ShellLayout>{props.children}</ShellLayout>
+      <ShellLayoutSplitter>{props.children}</ShellLayoutSplitter>
     </ShellComponentsContext.Provider>
   );
 }

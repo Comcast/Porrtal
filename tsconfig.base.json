@@ -19,6 +19,7 @@
       "@porrtal/shell": ["libs/porrtal/shell/src/index.ts"],
       "@porrtal/shell-blueprint": ["libs/porrtal/shell-blueprint/src/index.ts"],
       "@porrtal/shell-material": ["libs/porrtal/shell-material/src/index.ts"],
+      "@porrtal/split": ["libs/porrtal/split/src/index.ts"],
       "@porrtal/user": ["libs/porrtal/user/src/index.ts"],
       "@test-comps/first-test-comp": [
         "libs/test-comps/first-test-comp/src/index.ts"
