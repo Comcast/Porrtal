@@ -18,24 +18,24 @@ export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
           <UserBanner />
         </div>
         <div className={styles['content']}>
-          <Split initialPrimarySize='30%' resetOnDoubleClick>
-            {shellState.panes.nav.viewStates.length && (
+          <Split initialPrimarySize="250px" resetOnDoubleClick>
+            {shellState.panes.nav.viewStates.length > 0 && (
               <div className={styles['nav']}>
                 <shellComponents.ViewStack pane={shellState.panes.nav} />
               </div>
             )}
-            <Split horizontal initialPrimarySize='70%' resetOnDoubleClick>
-              <Split initialPrimarySize='70%' resetOnDoubleClick>
+            <Split horizontal initialPrimarySize="70%" resetOnDoubleClick>
+              <Split initialPrimarySize="70%" resetOnDoubleClick>
                 <div className={styles['main']}>
                   <shellComponents.ViewStack pane={shellState.panes.main} />
                 </div>
-                {shellState.panes.right.viewStates.length && (
+                {shellState.panes.right.viewStates.length > 0 && (
                   <div className={styles['right']}>
                     <shellComponents.ViewStack pane={shellState.panes.right} />
                   </div>
                 )}
               </Split>
-              {shellState.panes.bottom.viewStates.length && (
+              {shellState.panes.bottom.viewStates.length > 0 && (
                 <div className={styles['bottom']}>
                   <shellComponents.ViewStack pane={shellState.panes.bottom} />
                 </div>

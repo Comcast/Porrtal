@@ -35,6 +35,12 @@
   grid-template-areas: "primary split secondary";
 }
 
+.react-split > .split-container.single {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "primary";
+}
+
 /* The primary pane. This is either the left or top depending on the split type */
 .react-split > .split-container > .primary {
   grid-area: primary;

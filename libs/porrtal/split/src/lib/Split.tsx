@@ -90,7 +90,9 @@ export type SplitProps = {
   onMeasuredSizesChanged?: (sizes: SplitMeasuredSizes) => void;
 };
 
-export const Split = (props: React.PropsWithChildren<SplitProps>): JSX.Element => {
+export const Split = (
+  props: React.PropsWithChildren<SplitProps>
+): JSX.Element => {
   const {
     horizontal = false,
     initialPrimarySize = '50%',
@@ -108,29 +110,41 @@ export const Split = (props: React.PropsWithChildren<SplitProps>): JSX.Element =
     onMeasuredSizesChanged,
   } = props;
 
-  const [contentMeasuredDimensions, setContentMeasuredDimensions] = React.useState<MeasuredDimensions>({
-    height: 0,
-    width: 0,
-  });
-  const [primaryMeasuredDimensions, setPrimaryMeasuredDimensions] = React.useState<MeasuredDimensions>({
-    height: 0,
-    width: 0,
-  });
-  const [splitterMeasuredDimensions, setSplitterMeasuredDimensions] = React.useState<MeasuredDimensions>({
-    height: 0,
-    width: 0,
-  });
+  const [contentMeasuredDimensions, setContentMeasuredDimensions] =
+    React.useState<MeasuredDimensions>({
+      height: 0,
+      width: 0,
+    });
+  const [primaryMeasuredDimensions, setPrimaryMeasuredDimensions] =
+    React.useState<MeasuredDimensions>({
+      height: 0,
+      width: 0,
+    });
+  const [splitterMeasuredDimensions, setSplitterMeasuredDimensions] =
+    React.useState<MeasuredDimensions>({
+      height: 0,
+      width: 0,
+    });
 
   const currentContentSize = React.useMemo(
-    () => (horizontal ? contentMeasuredDimensions.height : contentMeasuredDimensions.width),
+    () =>
+      horizontal
+        ? contentMeasuredDimensions.height
+        : contentMeasuredDimensions.width,
     [horizontal, contentMeasuredDimensions]
   );
   const currentPrimarySize = React.useMemo(
-    () => (horizontal ? primaryMeasuredDimensions.height : primaryMeasuredDimensions.width),
+    () =>
+      horizontal
+        ? primaryMeasuredDimensions.height
+        : primaryMeasuredDimensions.width,
     [horizontal, primaryMeasuredDimensions]
   );
   const currentSplitterSize = React.useMemo(
-    () => (horizontal ? splitterMeasuredDimensions.height : splitterMeasuredDimensions.width),
+    () =>
+      horizontal
+        ? splitterMeasuredDimensions.height
+        : splitterMeasuredDimensions.width,
     [horizontal, splitterMeasuredDimensions]
   );
 
@@ -142,7 +156,9 @@ export const Split = (props: React.PropsWithChildren<SplitProps>): JSX.Element =
 
   React.useEffect(() => {
     if (onSplitChanged) {
-      onSplitChanged(percent !== undefined ? `${percent}%` : initialPrimarySize);
+      onSplitChanged(
+        percent !== undefined ? `${percent}%` : initialPrimarySize
+      );
     }
   }, [percent, initialPrimarySize]);
 
@@ -151,24 +167,34 @@ export const Split = (props: React.PropsWithChildren<SplitProps>): JSX.Element =
       onMeasuredSizesChanged({
         primary: currentPrimarySize,
         splitter: currentSplitterSize,
-        secondary: currentContentSize - (currentPrimarySize + currentSplitterSize),
+        secondary:
+          currentContentSize - (currentPrimarySize + currentSplitterSize),
       });
     }
   }, [horizontal, currentContentSize, currentPrimarySize, currentSplitterSize]);
 
   const onMeasureContent = (contentRect: ContentRect) => {
     contentRect.bounds &&
-      setContentMeasuredDimensions({ height: contentRect.bounds.height, width: contentRect.bounds.width });
+      setContentMeasuredDimensions({
+        height: contentRect.bounds.height,
+        width: contentRect.bounds.width,
+      });
   };
 
   const onMeasurePrimary = (contentRect: ContentRect) => {
     contentRect.bounds &&
-      setPrimaryMeasuredDimensions({ height: contentRect.bounds.height, width: contentRect.bounds.width });
+      setPrimaryMeasuredDimensions({
+        height: contentRect.bounds.height,
+        width: contentRect.bounds.width,
+      });
   };
 
   const onMeasureSplitter = (contentRect: ContentRect) => {
     contentRect.bounds &&
-      setSplitterMeasuredDimensions({ height: contentRect.bounds.height, width: contentRect.bounds.width });
+      setSplitterMeasuredDimensions({
+        height: contentRect.bounds.height,
+        width: contentRect.bounds.width,
+      });
   };
 
   const onSplitPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
@@ -199,7 +225,7 @@ export const Split = (props: React.PropsWithChildren<SplitProps>): JSX.Element =
 
   const children = React.Children.toArray(props.children);
   const primaryChild = children.length > 0 ? children[0] : <div />;
-  const secondaryChild = children.length > 1 ? children[1] : <div />;
+  const secondaryChild = children.length > 1 ? children[1] : null;
 
   const renderSizes = {
     primary: percent !== undefined ? `${percent}%` : initialPrimarySize,
@@ -219,8 +245,12 @@ export const Split = (props: React.PropsWithChildren<SplitProps>): JSX.Element =
       return (
         <DefaultSplitter
           {...renderSplitterProps}
-          color={dragging ? defaultSplitterColors.drag : defaultSplitterColors.color}
-          hoverColor={dragging ? defaultSplitterColors.drag : defaultSplitterColors.hover}
+          color={
+            dragging ? defaultSplitterColors.drag : defaultSplitterColors.color
+          }
+          hoverColor={
+            dragging ? defaultSplitterColors.drag : defaultSplitterColors.hover
+          }
         />
       );
     });
@@ -238,35 +268,58 @@ export const Split = (props: React.PropsWithChildren<SplitProps>): JSX.Element =
     <Measure bounds onResize={onMeasureContent}>
       {({ measureRef: contentRef }) => (
         <div className={styles['react-split']} ref={contentRef}>
-          <div className={`${styles['split-container']} ${styles[horizontal ? 'horizontal' : 'vertical']}`} style={rootStyle}>
-            <div className={styles['primary']}>
-              <Measure bounds onResize={onMeasurePrimary}>
-                {({ measureRef: primaryRef }) => (
-                  <div className={styles['full-content']} ref={primaryRef}>
-                    {primaryChild}
-                  </div>
-                )}
-              </Measure>
-            </div>
-            <div
-              className={styles['splitter']}
-              tabIndex={-1}
-              onPointerDown={onSplitPointerDown}
-              onPointerUp={onSplitPointerUp}
-              onPointerMove={onSplitPointerMove}
-              onDoubleClick={onSplitDoubleClick}
-            >
-              <Measure bounds onResize={onMeasureSplitter}>
-                {({ measureRef: splitterRef }) => (
-                  <div className={styles['full-content']} ref={splitterRef}>
-                    {renderSplitVisual(renderSplitterProps)}
-                  </div>
-                )}
-              </Measure>
-            </div>
-            <div className={styles['secondary']}>
-              <div className={styles['full-content']}>{secondaryChild}</div>
-            </div>
+          <div
+            className={`${styles['split-container']} ${
+              styles[
+                primaryChild && secondaryChild
+                  ? horizontal
+                    ? 'horizontal'
+                    : 'vertical'
+                  : 'single'
+              ]
+            }`}
+            style={rootStyle}
+          >
+            {primaryChild ? (
+              <div className={styles['primary']}>
+                <Measure bounds onResize={onMeasurePrimary}>
+                  {({ measureRef: primaryRef }) => (
+                    <div className={styles['full-content']} ref={primaryRef}>
+                      {primaryChild}
+                    </div>
+                  )}
+                </Measure>
+              </div>
+            ) : (
+              ''
+            )}
+            {primaryChild && secondaryChild ? (
+              <div
+                className={styles['splitter']}
+                tabIndex={-1}
+                onPointerDown={onSplitPointerDown}
+                onPointerUp={onSplitPointerUp}
+                onPointerMove={onSplitPointerMove}
+                onDoubleClick={onSplitDoubleClick}
+              >
+                <Measure bounds onResize={onMeasureSplitter}>
+                  {({ measureRef: splitterRef }) => (
+                    <div className={styles['full-content']} ref={splitterRef}>
+                      {renderSplitVisual(renderSplitterProps)}
+                    </div>
+                  )}
+                </Measure>
+              </div>
+            ) : (
+              ''
+            )}
+            {secondaryChild ? (
+              <div className={styles['secondary']}>
+                <div className={styles['full-content']}>{secondaryChild}</div>
+              </div>
+            ) : (
+              ''
+            )}
           </div>
         </div>
       )}
