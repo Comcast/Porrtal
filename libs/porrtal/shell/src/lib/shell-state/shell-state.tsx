@@ -4,6 +4,7 @@ import {
   Panes,
   PaneType,
   Pane,
+  paneTypes,
 } from '@porrtal/api';
 import {
   useReducer,
@@ -39,10 +40,38 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
   console.log('reducer', state, action);
   switch (action.type) {
     case 'launchViewState': {
+
+      let retState: UseShellState = state;
+
+      // see if the key exists already (replace it if so)
+      if (paneTypes.some(paneType => {
+        const ii = state.panes[paneType].viewStates.findIndex(vs => vs.key === action.viewState.key);
+        if (ii >= 0) {
+          action.viewState.componentImport = state.components[action.viewState.componentName];
+          const newArray = [...state.panes[paneType].viewStates];
+          newArray.splice(ii, 1, action.viewState);
+          retState = {
+            ...state,
+            panes: {
+              ...state.panes,
+              [paneType]: {
+                currentKey: action.viewState.key,
+                viewStates: newArray
+              }
+            }
+          }
+          return true;
+        }
+        return false;
+      })) {
+        return retState;
+      }
+
+      // key didn't exist so add the view state to the requested pane
       const viewStates = state.panes[action.viewState.paneType].viewStates;
       const viewState = action.viewState;
       viewState.componentImport = state.components[viewState.componentName];
-      const retState: UseShellState = {
+      retState = {
         ...state,
         panes: {
           ...state.panes,

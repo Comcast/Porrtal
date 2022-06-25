@@ -45,6 +45,74 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       >
         launch bottom
       </button>
+      <br />
+      <button
+        onClick={() => {
+          dispatch({
+            type: 'launchViewState',
+            viewState: {
+              key: '7',
+              paneType: 'right',
+              componentName: '@test-comps/first-test-comp',
+              displayText: 'one',
+              displayIcon: 'home',
+            },
+          });
+        }}
+      >
+        launch key=7 right
+      </button>
+      <button
+        onClick={() => {
+          dispatch({
+            type: 'launchViewState',
+            viewState: {
+              key: '7',
+              paneType: 'bottom',
+              componentName: '@test-comps/first-test-comp',
+              displayText: 'one',
+              displayIcon: 'home',
+            },
+          });
+        }}
+      >
+        launch second key=7 bottom
+      </button>
+      <br />
+      <p>second component</p>
+      <button
+        onClick={() => {
+          dispatch({
+            type: 'launchViewState',
+            viewState: {
+              key: '7',
+              paneType: 'right',
+              componentName: '@test-comps/second-test-comp',
+              displayText: 'one',
+              displayIcon: 'home',
+            },
+          });
+        }}
+      >
+        launch second key=7 right
+      </button>
+      <button
+        onClick={() => {
+          dispatch({
+            type: 'launchViewState',
+            viewState: {
+              key: '7',
+              paneType: 'bottom',
+              componentName: '@test-comps/second-test-comp',
+              displayText: 'one',
+              displayIcon: 'home',
+            },
+          });
+        }}
+      >
+        launch key=7 bottom
+      </button>
+
       {[
         'one',
         'two',
