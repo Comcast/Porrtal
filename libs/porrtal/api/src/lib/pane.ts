@@ -4,9 +4,7 @@ import { ViewState } from "./view-state";
 //   'nav' | 'main' | 'right' | 'bottom' | 'search';
 
 export const paneTypes = ['nav', 'main', 'right', 'bottom', 'search'] as const;
-const tempPaneTypes = [...paneTypes];
-
-export type PaneType = typeof tempPaneTypes[0];
+export type PaneType = typeof paneTypes[number];
 
 export type Panes = {
   [key in PaneType]: Pane;
