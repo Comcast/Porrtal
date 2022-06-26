@@ -54,7 +54,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               key: '7',
               paneType: 'right',
               componentName: '@test-comps/first-test-comp',
-              displayText: 'one',
+              displayText: 'Seven-First',
               displayIcon: 'home',
             },
           });
@@ -70,13 +70,13 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               key: '7',
               paneType: 'bottom',
               componentName: '@test-comps/first-test-comp',
-              displayText: 'one',
+              displayText: 'Seven-First',
               displayIcon: 'home',
             },
           });
         }}
       >
-        launch second key=7 bottom
+        launch key=7 bottom
       </button>
       <br />
       <p>second component</p>
@@ -88,7 +88,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               key: '7',
               paneType: 'right',
               componentName: '@test-comps/second-test-comp',
-              displayText: 'one',
+              displayText: 'Seven-Second',
               displayIcon: 'home',
             },
           });
@@ -104,13 +104,13 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               key: '7',
               paneType: 'bottom',
               componentName: '@test-comps/second-test-comp',
-              displayText: 'one',
+              displayText: 'Seven-Second',
               displayIcon: 'home',
             },
           });
         }}
       >
-        launch key=7 bottom
+        launch second key=7 bottom
       </button>
 
       {[
