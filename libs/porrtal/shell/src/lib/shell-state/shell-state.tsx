@@ -26,6 +26,7 @@ export interface UseShellState {
 
 export type ShellAction =
   | { type: 'launchViewState'; viewState: ViewState }
+  | { type: 'moveView'; key: string; toPane: PaneType }
   | { type: 'deleteViewState'; key: string }
   | { type: 'setCurrentViewStateByKey'; key: string, pane: Pane }
   | {
@@ -86,6 +87,44 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
           },
         },
       };
+      return retState;
+    }
+
+    case 'moveView': {
+      let retState = state;
+      let foundView: ViewState | undefined;
+
+      paneTypes.some((paneType => {
+        foundView = state.panes[paneType].viewStates.find(vs => vs.key === action.key);
+        if (foundView) {
+          if (paneType === action.toPane) {
+            return true;
+          }
+
+          retState = {
+            ...state,
+            panes: {
+              ...state.panes,
+              [paneType]: {
+                currentKey: computeCurrentKey(state, paneType, {
+                  type: 'deleteViewState',
+                  key: action.key
+                }),
+                viewStates: [...state.panes[paneType].viewStates.filter(vs => vs.key !== action.key)],
+                paneType
+              },
+              [action.toPane]: {
+                viewStates: [...state.panes[action.toPane].viewStates, foundView],
+                currentKey: action.key,
+                paneType: action.toPane
+              }
+            }
+          }
+          return true;
+        } else {
+          return false;
+        }
+      }))
       return retState;
     }
 

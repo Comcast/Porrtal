@@ -60,7 +60,7 @@ export function ViewStack(props: ViewStackProps) {
               label={
                 <ContextMenu
                   menuItems={[
-                    <NestedMenuItem parentMenuOpen={true} label={'move to'}>
+                    <NestedMenuItem key={'move'} parentMenuOpen={true} label={'move to'}>
                       {paneTypes
                         .filter(
                           (paneType) =>
@@ -69,12 +69,14 @@ export function ViewStack(props: ViewStackProps) {
                         )
                         .map((paneType) => (
                           <IconMenuItem
+                            key={`move-to-${paneType}`}
                             leftIcon={<Icon>{moveIcons[paneType]}</Icon>}
                             label={`${paneType} pane`}
                             onClick={() =>
-                              alert(
-                                `move key ('${item.key}') from pane('${props.pane.paneType}') to pane('${paneType}')`
-                              )
+                              // alert(
+                              //   `move key ('${item.key}') from pane('${props.pane.paneType}') to pane('${paneType}')`
+                              // )
+                              dispatch({ type: 'moveView', key: item.key, toPane: paneType})
                             }
                           ></IconMenuItem>
                         ))}
