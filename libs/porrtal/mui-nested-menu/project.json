@@ -1,0 +1,45 @@
+{
+  "root": "libs/porrtal/mui-nested-menu",
+  "sourceRoot": "libs/porrtal/mui-nested-menu/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/porrtal/mui-nested-menu",
+        "tsConfig": "libs/porrtal/mui-nested-menu/tsconfig.lib.json",
+        "project": "libs/porrtal/mui-nested-menu/package.json",
+        "entryFile": "libs/porrtal/mui-nested-menu/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/porrtal/mui-nested-menu/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/porrtal/mui-nested-menu/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/porrtal/mui-nested-menu"],
+      "options": {
+        "jestConfig": "libs/porrtal/mui-nested-menu/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
