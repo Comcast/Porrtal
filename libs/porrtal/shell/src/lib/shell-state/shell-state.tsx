@@ -56,7 +56,8 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
               ...state.panes,
               [paneType]: {
                 currentKey: action.viewState.key,
-                viewStates: newArray
+                viewStates: newArray,
+                paneType
               }
             }
           }
@@ -81,6 +82,7 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
               ...viewStates,
               viewState
             ],
+            paneType: action.viewState.paneType
           },
         },
       };
@@ -98,7 +100,8 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
           ...state.panes,
           [paneType]: {
             ...action.pane,
-            currentKey: action.key
+            currentKey: action.key,
+            paneType
           }
         }
       }
@@ -114,7 +117,8 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
             viewStates: state.panes[paneType as PaneType].viewStates.filter(
               (item) => item.key !== action.key
             ),
-            currentKey: computeCurrentKey(state, paneType, action)
+            currentKey: computeCurrentKey(state, paneType, action),
+            paneType
           },
         }))
       );
@@ -182,26 +186,31 @@ const emptyUseShellState: UseShellState = {
       viewStates: [] as ViewState[],
       arrange: 'tabs-top',
       currentKey: '',
+      paneType: 'nav'
     },
     main: {
       viewStates: [] as ViewState[],
       arrange: 'tabs-top',
       currentKey: '',
+      paneType: 'main'
     },
     bottom: {
       viewStates: [] as ViewState[],
       arrange: 'tabs-top',
       currentKey: '',
+      paneType: 'bottom'
     },
     right: {
       viewStates: [] as ViewState[],
       arrange: 'tabs-top',
       currentKey: '',
+      paneType: 'right'
     },
     search: {
       viewStates: [] as ViewState[],
       arrange: 'tabs-top',
       currentKey: '',
+      paneType: 'search'
     },
   },
   components: {},

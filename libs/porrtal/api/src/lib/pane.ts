@@ -16,4 +16,5 @@ export type Pane = {
   arrange: PaneArrangement;
   currentKey: string;
   viewStates: ViewState[];
+  paneType: PaneType;
 }

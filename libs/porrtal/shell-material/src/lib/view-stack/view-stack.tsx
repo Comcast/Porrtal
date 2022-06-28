@@ -2,11 +2,13 @@ import { Box, Icon, Tab, Tabs } from '@mui/material';
 import React, { useMemo } from 'react';
 import { useShellDispatch, ViewHost, ViewStackProps } from '@porrtal/shell';
 import styles from './view-stack.module.scss';
+import { ContextMenu, NestedMenuItem, IconMenuItem } from 'mui-nested-menu';
+import { PaneType, paneTypes } from '@porrtal/api';
 
 export function ViewStack(props: ViewStackProps) {
   const dispatch = useShellDispatch();
   const currentIndex = useMemo(() => {
-    for (let ii=0; ii < props.pane.viewStates.length; ii++) {
+    for (let ii = 0; ii < props.pane.viewStates.length; ii++) {
       if (props.pane.viewStates[ii].key === props.pane.currentKey) {
         return ii;
       }
@@ -18,8 +20,16 @@ export function ViewStack(props: ViewStackProps) {
     dispatch({
       type: 'setCurrentViewStateByKey',
       key: props.pane.viewStates[newIndex].key,
-      pane: props.pane
+      pane: props.pane,
     });
+  };
+
+  const moveIcons: { [key in PaneType]: string } = {
+    nav: 'arrow_circle_left',
+    main: 'arrow_circle_up',
+    bottom: 'arrow_circle_down',
+    right: 'arrow_circle_right',
+    search: 'clear',
   };
 
   return (
@@ -48,18 +58,42 @@ export function ViewStack(props: ViewStackProps) {
               }
               iconPosition="start"
               label={
-                <span>
-                  {item.displayText}&nbsp;
-                  <Icon
-                    style={{ position: 'relative', top: '5px' }}
-                    onClick={(evt) => {
-                      dispatch({ type: 'deleteViewState', key: item.key });
-                      evt.stopPropagation();
-                    }}
-                  >
-                    clear
-                  </Icon>
-                </span>
+                <ContextMenu
+                  menuItems={[
+                    <NestedMenuItem parentMenuOpen={true} label={'move to'}>
+                      {paneTypes
+                        .filter(
+                          (paneType) =>
+                            paneType !== 'search' &&
+                            paneType !== props.pane.paneType
+                        )
+                        .map((paneType) => (
+                          <IconMenuItem
+                            leftIcon={<Icon>{moveIcons[paneType]}</Icon>}
+                            label={`${paneType} pane`}
+                            onClick={() =>
+                              alert(
+                                `move key ('${item.key}') from pane('${props.pane.paneType}') to pane('${paneType}')`
+                              )
+                            }
+                          ></IconMenuItem>
+                        ))}
+                    </NestedMenuItem>,
+                  ]}
+                >
+                  <span>
+                    {item.displayText}&nbsp;
+                    <Icon
+                      style={{ position: 'relative', top: '5px' }}
+                      onClick={(evt) => {
+                        dispatch({ type: 'deleteViewState', key: item.key });
+                        evt.stopPropagation();
+                      }}
+                    >
+                      clear
+                    </Icon>
+                  </span>
+                </ContextMenu>
               }
             ></Tab>
           ))}
