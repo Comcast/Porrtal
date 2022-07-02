@@ -10,7 +10,7 @@ export interface ShellLayoutSplitterProps {}
 export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
   const shellState = useShellState();
   const shellComponents = useShellComponents();
-  if (shellComponents && window) {
+  if (shellComponents && typeof window !== "undefined" && window) {
     return (
       <div className={styles['container']}>
         <div className={styles['banner']}>

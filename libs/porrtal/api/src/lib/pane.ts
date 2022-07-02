@@ -10,7 +10,8 @@ export type Panes = {
   [key in PaneType]: Pane;
 };
 
-export type PaneArrangement = 'tabs-top' | 'tabs-left' | 'cards';
+export const paneArrangements = ['tabs-top', 'tabs-left', 'cards']
+export type PaneArrangement = typeof paneArrangements[number];
 
 export type Pane = {
   arrange: PaneArrangement;
