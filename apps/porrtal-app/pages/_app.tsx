@@ -9,7 +9,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
         <title>Welcome to porrtal-app!</title>
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined"
         />
       </Head>
       <main className="app">

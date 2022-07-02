@@ -25,10 +25,10 @@ export function ViewStack(props: ViewStackProps) {
   };
 
   const moveIcons: { [key in PaneType]: string } = {
-    nav: 'arrow_circle_left',
-    main: 'arrow_circle_up',
-    bottom: 'arrow_circle_down',
-    right: 'arrow_circle_right',
+    nav: 'arrow_circle_left_outlined',
+    main: 'arrow_circle_up_outlined',
+    bottom: 'arrow_circle_down_outlined',
+    right: 'arrow_circle_right_outlined',
     search: 'clear',
   };
 
@@ -60,7 +60,12 @@ export function ViewStack(props: ViewStackProps) {
               label={
                 <ContextMenu
                   menuItems={[
-                    <NestedMenuItem key={'move'} parentMenuOpen={true} label={'move to'}>
+                    <NestedMenuItem
+                      key={'move'}
+                      leftIcon={<Icon>open_with</Icon>}
+                      parentMenuOpen={true}
+                      label={'Move to...'}
+                    >
                       {paneTypes
                         .filter(
                           (paneType) =>
@@ -70,13 +75,18 @@ export function ViewStack(props: ViewStackProps) {
                         .map((paneType) => (
                           <IconMenuItem
                             key={`move-to-${paneType}`}
-                            leftIcon={<Icon>{moveIcons[paneType]}</Icon>}
+                            leftIcon={
+                              <Icon className="material-icons-outlined">
+                                {moveIcons[paneType]}
+                              </Icon>
+                            }
                             label={`${paneType} pane`}
                             onClick={() =>
-                              // alert(
-                              //   `move key ('${item.key}') from pane('${props.pane.paneType}') to pane('${paneType}')`
-                              // )
-                              dispatch({ type: 'moveView', key: item.key, toPane: paneType})
+                              dispatch({
+                                type: 'moveView',
+                                key: item.key,
+                                toPane: paneType,
+                              })
                             }
                           ></IconMenuItem>
                         ))}

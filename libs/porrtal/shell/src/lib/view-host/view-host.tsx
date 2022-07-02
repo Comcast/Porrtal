@@ -9,7 +9,7 @@ import styles from './view-host.module.scss';
 
 export interface ViewHostProps {
   viewState: ViewState;
-  zIndex: number;
+  zIndex?: number;
 }
 
 export function ViewHost(props: ViewHostProps) {
@@ -28,7 +28,7 @@ export function ViewHost(props: ViewHostProps) {
     <div
       key={props.viewState.key}
       className={styles['container']}
-      style={{ zIndex: props.zIndex }}
+      style={props.zIndex === undefined ? {} : { zIndex: props.zIndex }}
     >
       <div className={styles['innerContainer']}>
         {DynComp ? (
