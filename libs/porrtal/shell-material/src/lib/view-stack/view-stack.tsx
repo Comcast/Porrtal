@@ -1,9 +1,14 @@
 import { Box, Icon, Tab, Tabs } from '@mui/material';
-import React, { useMemo } from 'react';
-import { useShellDispatch, ViewHost, ViewStackProps } from '@porrtal/shell';
+import React, { Dispatch, useMemo } from 'react';
+import {
+  ShellAction,
+  useShellDispatch,
+  ViewHost,
+  ViewStackProps,
+} from '@porrtal/shell';
 import styles from './view-stack.module.scss';
 import { ContextMenu, NestedMenuItem, IconMenuItem } from 'mui-nested-menu';
-import { paneArrangements, PaneType, paneTypes } from '@porrtal/api';
+import { paneArrangements, PaneType, paneTypes, ViewState } from '@porrtal/api';
 
 export function ViewStack(props: ViewStackProps) {
   const dispatch = useShellDispatch();
@@ -22,14 +27,6 @@ export function ViewStack(props: ViewStackProps) {
       key: props.pane.viewStates[newIndex].key,
       pane: props.pane,
     });
-  };
-
-  const moveIcons: { [key in PaneType]: string } = {
-    nav: 'arrow_circle_left_outlined',
-    main: 'arrow_circle_up_outlined',
-    bottom: 'arrow_circle_down_outlined',
-    right: 'arrow_circle_right_outlined',
-    search: 'clear',
   };
 
   return (
@@ -58,81 +55,11 @@ export function ViewStack(props: ViewStackProps) {
               }
               iconPosition="start"
               label={
-                <ContextMenu
-                  menuItems={[
-                    <NestedMenuItem
-                      key={'arrange'}
-                      leftIcon={<Icon>pivot_table_chart</Icon>}
-                      parentMenuOpen={true}
-                      label={'Arrange...'}
-                    >
-                      {paneArrangements.map((paneArrangement) => (
-                        <IconMenuItem
-                          key={`arrange-${paneArrangement}`}
-                          leftIcon={
-                            <Icon className="material-icons-outlined">
-                              {props.pane.arrange === paneArrangement
-                                ? 'done'
-                                : ''}
-                            </Icon>
-                          }
-                          label={`${paneArrangement}`}
-                          onClick={() =>
-                            dispatch({
-                              type: 'arrangePane',
-                              pane: props.pane,
-                              paneArrangement,
-                            })
-                          }
-                        ></IconMenuItem>
-                      ))}
-                    </NestedMenuItem>,
-                    <NestedMenuItem
-                      key={'move'}
-                      leftIcon={<Icon>open_with</Icon>}
-                      parentMenuOpen={true}
-                      label={'Move to...'}
-                    >
-                      {paneTypes
-                        .filter(
-                          (paneType) =>
-                            paneType !== 'search' &&
-                            paneType !== props.pane.paneType
-                        )
-                        .map((paneType) => (
-                          <IconMenuItem
-                            key={`move-to-${paneType}`}
-                            leftIcon={
-                              <Icon className="material-icons-outlined">
-                                {moveIcons[paneType]}
-                              </Icon>
-                            }
-                            label={`${paneType} pane`}
-                            onClick={() =>
-                              dispatch({
-                                type: 'moveView',
-                                key: item.key,
-                                toPane: paneType,
-                              })
-                            }
-                          ></IconMenuItem>
-                        ))}
-                    </NestedMenuItem>,
-                  ]}
-                >
-                  <span>
-                    {item.displayText}&nbsp;
-                    <Icon
-                      style={{ position: 'relative', top: '5px' }}
-                      onClick={(evt) => {
-                        dispatch({ type: 'deleteViewState', key: item.key });
-                        evt.stopPropagation();
-                      }}
-                    >
-                      clear
-                    </Icon>
-                  </span>
-                </ContextMenu>
+                <ViewStackContextMenu
+                  pane={props.pane}
+                  dispatch={dispatch}
+                  item={item}
+                ></ViewStackContextMenu>
               }
             ></Tab>
           ))}
@@ -163,3 +90,92 @@ export function ViewStack(props: ViewStackProps) {
 }
 
 export default ViewStack;
+
+function ViewStackContextMenu(
+  props: ViewStackProps & { dispatch: Dispatch<ShellAction> } & {
+    item: ViewState;
+  }
+) {
+  const moveIcons: { [key in PaneType]: string } = {
+    nav: 'arrow_circle_left_outlined',
+    main: 'arrow_circle_up_outlined',
+    bottom: 'arrow_circle_down_outlined',
+    right: 'arrow_circle_right_outlined',
+    search: 'clear',
+  };
+
+  return (
+    <ContextMenu
+      menuItems={[
+        <NestedMenuItem
+          key={'arrange'}
+          leftIcon={<Icon>pivot_table_chart</Icon>}
+          parentMenuOpen={true}
+          label={'Arrange...'}
+        >
+          {paneArrangements.map((paneArrangement) => (
+            <IconMenuItem
+              key={`arrange-${paneArrangement}`}
+              leftIcon={
+                <Icon className="material-icons-outlined">
+                  {props.pane.arrange === paneArrangement ? 'done' : ''}
+                </Icon>
+              }
+              label={`${paneArrangement}`}
+              onClick={() =>
+                props.dispatch({
+                  type: 'arrangePane',
+                  pane: props.pane,
+                  paneArrangement,
+                })
+              }
+            ></IconMenuItem>
+          ))}
+        </NestedMenuItem>,
+        <NestedMenuItem
+          key={'move'}
+          leftIcon={<Icon>open_with</Icon>}
+          parentMenuOpen={true}
+          label={'Move to...'}
+        >
+          {paneTypes
+            .filter(
+              (paneType) =>
+                paneType !== 'search' && paneType !== props.pane.paneType
+            )
+            .map((paneType) => (
+              <IconMenuItem
+                key={`move-to-${paneType}`}
+                leftIcon={
+                  <Icon className="material-icons-outlined">
+                    {moveIcons[paneType]}
+                  </Icon>
+                }
+                label={`${paneType} pane`}
+                onClick={() =>
+                  props.dispatch({
+                    type: 'moveView',
+                    key: props.item.key,
+                    toPane: paneType,
+                  })
+                }
+              ></IconMenuItem>
+            ))}
+        </NestedMenuItem>,
+      ]}
+    >
+      <span>
+        {props.item.displayText}&nbsp;
+        <Icon
+          style={{ position: 'relative', top: '5px' }}
+          onClick={(evt) => {
+            props.dispatch({ type: 'deleteViewState', key: props.item.key });
+            evt.stopPropagation();
+          }}
+        >
+          clear
+        </Icon>
+      </span>
+    </ContextMenu>
+  );
+}
