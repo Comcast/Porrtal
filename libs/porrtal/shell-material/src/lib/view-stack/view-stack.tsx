@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { useShellDispatch, ViewHost, ViewStackProps } from '@porrtal/shell';
 import styles from './view-stack.module.scss';
 import { ContextMenu, NestedMenuItem, IconMenuItem } from 'mui-nested-menu';
-import { PaneType, paneTypes } from '@porrtal/api';
+import { paneArrangements, PaneType, paneTypes } from '@porrtal/api';
 
 export function ViewStack(props: ViewStackProps) {
   const dispatch = useShellDispatch();
@@ -60,6 +60,33 @@ export function ViewStack(props: ViewStackProps) {
               label={
                 <ContextMenu
                   menuItems={[
+                    <NestedMenuItem
+                      key={'arrange'}
+                      leftIcon={<Icon>pivot_table_chart</Icon>}
+                      parentMenuOpen={true}
+                      label={'Arrange...'}
+                    >
+                      {paneArrangements.map((paneArrangement) => (
+                        <IconMenuItem
+                          key={`arrange-${paneArrangement}`}
+                          leftIcon={
+                            <Icon className="material-icons-outlined">
+                              {props.pane.arrange === paneArrangement
+                                ? 'done'
+                                : ''}
+                            </Icon>
+                          }
+                          label={`${paneArrangement}`}
+                          onClick={() =>
+                            dispatch({
+                              type: 'arrangePane',
+                              pane: props.pane,
+                              paneArrangement,
+                            })
+                          }
+                        ></IconMenuItem>
+                      ))}
+                    </NestedMenuItem>,
                     <NestedMenuItem
                       key={'move'}
                       leftIcon={<Icon>open_with</Icon>}

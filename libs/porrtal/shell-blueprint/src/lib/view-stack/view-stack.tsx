@@ -10,7 +10,12 @@ import {
 import { useEffect } from 'react';
 import { useShellDispatch, ViewHost, ViewStackProps } from '@porrtal/shell';
 import { ContextMenu2 } from '@blueprintjs/popover2';
-import { PaneArrangement, paneArrangements, PaneType, paneTypes } from '@porrtal/api';
+import {
+  PaneArrangement,
+  paneArrangements,
+  PaneType,
+  paneTypes,
+} from '@porrtal/api';
 
 export function ViewStack(props: ViewStackProps) {
   const dispatch = useShellDispatch();
@@ -33,9 +38,9 @@ export function ViewStack(props: ViewStackProps) {
   };
 
   const arrangeIcons: { [key in PaneArrangement]: string } = {
-    "tabs-top": '',
-    "tabs-left": '',
-    "cards": ''
+    'tabs-top': '',
+    'tabs-left': '',
+    cards: '',
   };
 
   return (
@@ -64,24 +69,35 @@ export function ViewStack(props: ViewStackProps) {
               content={
                 <Menu>
                   {/* <MenuDivider /> */}
-                  <MenuItem text="Arrange..." icon="column-layout" intent="primary">
-                    {paneArrangements
-                      .map((paneArrangement) => (
-                        <MenuItem
-                          key={`arrange-${paneArrangement}`}
-                          icon={props.pane.arrange === paneArrangement ? 'tick' : ''}
-                          text={`${paneArrangement}`}
-                          onClick={() =>
-                            dispatch({
-                              type: 'arrangePane',
-                              pane: props.pane,
-                              paneArrangement,
-                            })
-                          }
-                        />
-                      ))}
+                  <MenuItem
+                    key={'arrange'}
+                    text="Arrange..."
+                    icon="column-layout"
+                    intent="primary"
+                  >
+                    {paneArrangements.map((paneArrangement) => (
+                      <MenuItem
+                        key={`arrange-${paneArrangement}`}
+                        icon={
+                          props.pane.arrange === paneArrangement ? 'tick' : ''
+                        }
+                        text={`${paneArrangement}`}
+                        onClick={() =>
+                          dispatch({
+                            type: 'arrangePane',
+                            pane: props.pane,
+                            paneArrangement,
+                          })
+                        }
+                      />
+                    ))}
                   </MenuItem>
-                  <MenuItem text="Move to..." icon="move" intent="primary">
+                  <MenuItem
+                    key={'move'}
+                    text="Move to..."
+                    icon="move"
+                    intent="primary"
+                  >
                     {paneTypes
                       .filter(
                         (paneType) =>
