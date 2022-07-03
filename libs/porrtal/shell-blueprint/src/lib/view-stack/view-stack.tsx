@@ -22,6 +22,17 @@ export function ViewStack(props: ViewStackProps) {
     }
   }, [props.pane, dispatch]);
 
+  switch (props.pane.arrange) {
+    case 'tabs-top':
+      return <ViewStackTabsTop pane={props.pane} dispatch={dispatch} />;
+    }
+
+  return <div>ViewStack Arrangement ('{props.pane.arrange}') Not Supported.</div>
+}
+
+function ViewStackTabsTop(
+  props: ViewStackProps & { dispatch: Dispatch<ShellAction> }
+) {
   return (
     <Tabs
       animate={true}
@@ -30,7 +41,7 @@ export function ViewStack(props: ViewStackProps) {
       renderActiveTabPanelOnly={false}
       vertical={false}
       onChange={(evt) =>
-        dispatch({
+        props.dispatch({
           type: 'setCurrentViewStateByKey',
           pane: props.pane,
           key: evt.toLocaleString(),
@@ -46,7 +57,7 @@ export function ViewStack(props: ViewStackProps) {
           title={
             <ViewStackContextMenu
               pane={props.pane}
-              dispatch={dispatch}
+              dispatch={props.dispatch}
               item={item}
             ></ViewStackContextMenu>
           }

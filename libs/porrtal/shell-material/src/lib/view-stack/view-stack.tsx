@@ -29,6 +29,30 @@ export function ViewStack(props: ViewStackProps) {
     });
   };
 
+  switch (props.pane.arrange) {
+    case 'tabs-top':
+      return (
+        <ViewStackTabsTop
+          pane={props.pane}
+          currentIndex={currentIndex}
+          dispatch={dispatch}
+          handleChange={handleChange}
+        />
+      );
+  }
+
+  return (
+    <div>ViewStack Arrangement ('{props.pane.arrange}') Not Supported.</div>
+  );
+}
+
+function ViewStackTabsTop(
+  props: ViewStackProps & {
+    dispatch: Dispatch<ShellAction>;
+    currentIndex: number;
+    handleChange: (event: React.SyntheticEvent, newIndex: number) => void;
+  }
+) {
   return (
     <div className={styles['container']}>
       <Box
@@ -39,10 +63,10 @@ export function ViewStack(props: ViewStackProps) {
         }}
       >
         <Tabs
-          value={currentIndex}
+          value={props.currentIndex}
           variant="scrollable"
           scrollButtons="auto"
-          onChange={handleChange}
+          onChange={props.handleChange}
           className={styles['tabs']}
         >
           {props.pane.viewStates.map((item, index) => (
@@ -57,7 +81,7 @@ export function ViewStack(props: ViewStackProps) {
               label={
                 <ViewStackContextMenu
                   pane={props.pane}
-                  dispatch={dispatch}
+                  dispatch={props.dispatch}
                   item={item}
                 ></ViewStackContextMenu>
               }
@@ -70,7 +94,7 @@ export function ViewStack(props: ViewStackProps) {
           <ViewHost
             key={item.key}
             viewState={item}
-            zIndex={index === currentIndex ? 10 : 0}
+            zIndex={index === props.currentIndex ? 10 : 0}
           ></ViewHost>
         ))}
         <div
