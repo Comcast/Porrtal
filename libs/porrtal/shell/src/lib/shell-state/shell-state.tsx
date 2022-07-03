@@ -5,6 +5,7 @@ import {
   PaneType,
   Pane,
   paneTypes,
+  PaneArrangement,
 } from '@porrtal/api';
 import {
   useReducer,
@@ -28,7 +29,8 @@ export type ShellAction =
   | { type: 'launchViewState'; viewState: ViewState }
   | { type: 'moveView'; key: string; toPane: PaneType }
   | { type: 'deleteViewState'; key: string }
-  | { type: 'setCurrentViewStateByKey'; key: string, pane: Pane }
+  | { type: 'setCurrentViewStateByKey'; key: string; pane: Pane }
+  | { type: 'arrangePane'; pane: Pane; paneArrangement: PaneArrangement }
   | {
       type: 'registerComponent';
       componentRegistration: {
@@ -41,31 +43,36 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
   console.log('reducer', state, action);
   switch (action.type) {
     case 'launchViewState': {
-
       let retState: UseShellState = state;
 
       // see if the key exists already (replace it if so)
-      if (paneTypes.some(paneType => {
-        const ii = state.panes[paneType].viewStates.findIndex(vs => vs.key === action.viewState.key);
-        if (ii >= 0) {
-          action.viewState.componentImport = state.components[action.viewState.componentName];
-          const newArray = [...state.panes[paneType].viewStates];
-          newArray.splice(ii, 1, action.viewState);
-          retState = {
-            ...state,
-            panes: {
-              ...state.panes,
-              [paneType]: {
-                currentKey: action.viewState.key,
-                viewStates: newArray,
-                paneType
-              }
-            }
+      if (
+        paneTypes.some((paneType) => {
+          const ii = state.panes[paneType].viewStates.findIndex(
+            (vs) => vs.key === action.viewState.key
+          );
+          if (ii >= 0) {
+            action.viewState.componentImport =
+              state.components[action.viewState.componentName];
+            const newArray = [...state.panes[paneType].viewStates];
+            newArray.splice(ii, 1, action.viewState);
+            retState = {
+              ...state,
+              panes: {
+                ...state.panes,
+                [paneType]: {
+                  ...state.panes[paneType],
+                  currentKey: action.viewState.key,
+                  viewStates: newArray,
+                  paneType,
+                },
+              },
+            };
+            return true;
           }
-          return true;
-        }
-        return false;
-      })) {
+          return false;
+        })
+      ) {
         return retState;
       }
 
@@ -78,12 +85,10 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
         panes: {
           ...state.panes,
           [action.viewState.paneType]: {
+            ...state.panes[action.viewState.paneType],
             currentKey: action.viewState.key,
-            viewStates: [
-              ...viewStates,
-              viewState
-            ],
-            paneType: action.viewState.paneType
+            viewStates: [...viewStates, viewState],
+            paneType: action.viewState.paneType,
           },
         },
       };
@@ -94,8 +99,10 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
       let retState = state;
       let foundView: ViewState | undefined;
 
-      paneTypes.some((paneType => {
-        foundView = state.panes[paneType].viewStates.find(vs => vs.key === action.key);
+      paneTypes.some((paneType) => {
+        foundView = state.panes[paneType].viewStates.find(
+          (vs) => vs.key === action.key
+        );
         if (foundView) {
           if (paneType === action.toPane) {
             return true;
@@ -106,30 +113,41 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
             panes: {
               ...state.panes,
               [paneType]: {
+                ...state.panes[paneType],
                 currentKey: computeCurrentKey(state, paneType, {
                   type: 'deleteViewState',
-                  key: action.key
+                  key: action.key,
                 }),
-                viewStates: [...state.panes[paneType].viewStates.filter(vs => vs.key !== action.key)],
-                paneType
+                viewStates: [
+                  ...state.panes[paneType].viewStates.filter(
+                    (vs) => vs.key !== action.key
+                  ),
+                ],
+                paneType,
               },
               [action.toPane]: {
-                viewStates: [...state.panes[action.toPane].viewStates, foundView],
+                ...state.panes[action.toPane],
+                viewStates: [
+                  ...state.panes[action.toPane].viewStates,
+                  foundView,
+                ],
                 currentKey: action.key,
-                paneType: action.toPane
-              }
-            }
-          }
+                paneType: action.toPane,
+              },
+            },
+          };
           return true;
         } else {
           return false;
         }
-      }))
+      });
       return retState;
     }
 
     case 'setCurrentViewStateByKey': {
-      const paneType = Object.keys(state.panes).find(key => state.panes[key as PaneType] === action.pane);
+      const paneType = Object.keys(state.panes).find(
+        (key) => state.panes[key as PaneType] === action.pane
+      );
       if (!paneType) {
         return state;
       }
@@ -140,10 +158,10 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
           [paneType]: {
             ...action.pane,
             currentKey: action.key,
-            paneType
-          }
-        }
-      }
+            paneType,
+          },
+        },
+      };
     }
 
     case 'deleteViewState': {
@@ -157,7 +175,7 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
               (item) => item.key !== action.key
             ),
             currentKey: computeCurrentKey(state, paneType, action),
-            paneType
+            paneType,
           },
         }))
       );
@@ -166,6 +184,21 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
         ...state,
         panes: target as Panes,
       };
+      return retState;
+    }
+
+    case 'arrangePane': {
+      const retState = {
+        ...state,
+        panes: {
+          ...state.panes,
+          [action.pane.paneType]: {
+            ...state.panes[action.pane.paneType],
+            arrange: action.paneArrangement
+          },
+        },
+      };
+      console.log('arrange pane', action, retState);
       return retState;
     }
 
@@ -182,10 +215,14 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
   return state;
 };
 
-function computeCurrentKey(state: UseShellState, paneType: string, action: { type: 'deleteViewState'; key: string; }): string {
+function computeCurrentKey(
+  state: UseShellState,
+  paneType: string,
+  action: { type: 'deleteViewState'; key: string }
+): string {
   // if we aren't deleting the current one, keep the current one the same
   if (state.panes[paneType as PaneType].currentKey !== action.key) {
-    return state.panes[paneType as PaneType].currentKey
+    return state.panes[paneType as PaneType].currentKey;
   }
 
   // find the one that we are supposed to delete
@@ -216,40 +253,40 @@ function computeCurrentKey(state: UseShellState, paneType: string, action: { typ
     vsIndex++;
   }
 
-  return state.panes[paneType as PaneType].viewStates[vsIndex].key
+  return state.panes[paneType as PaneType].viewStates[vsIndex].key;
 }
 
 const emptyUseShellState: UseShellState = {
   panes: {
     nav: {
       viewStates: [] as ViewState[],
-      arrange: 'tabs-top',
+      arrange: 'tabs-left',
       currentKey: '',
-      paneType: 'nav'
+      paneType: 'nav',
     },
     main: {
       viewStates: [] as ViewState[],
       arrange: 'tabs-top',
       currentKey: '',
-      paneType: 'main'
+      paneType: 'main',
     },
     bottom: {
       viewStates: [] as ViewState[],
       arrange: 'tabs-top',
       currentKey: '',
-      paneType: 'bottom'
+      paneType: 'bottom',
     },
     right: {
       viewStates: [] as ViewState[],
       arrange: 'tabs-top',
       currentKey: '',
-      paneType: 'right'
+      paneType: 'right',
     },
     search: {
       viewStates: [] as ViewState[],
       arrange: 'tabs-top',
       currentKey: '',
-      paneType: 'search'
+      paneType: 'search',
     },
   },
   components: {},
