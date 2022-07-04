@@ -25,6 +25,9 @@ export function ViewStack(props: ViewStackProps) {
   switch (props.pane.arrange) {
     case 'tabs-top':
       return <ViewStackTabsTop pane={props.pane} dispatch={dispatch} />;
+
+    case 'tabs-left':
+      return <ViewStackTabsLeft pane={props.pane} dispatch={dispatch} />;
     }
 
   return <div>ViewStack Arrangement ('{props.pane.arrange}') Not Supported.</div>
@@ -48,7 +51,51 @@ function ViewStackTabsTop(
         })
       }
       selectedTabId={props.pane.currentKey}
-      className={styles['tabs']}
+      className={`${styles['tabs']} ${styles['tabs-top']}`}
+    >
+      {props.pane.viewStates.map((item) => (
+        <Tab
+          id={item.key}
+          key={item.key}
+          title={
+            <ViewStackContextMenu
+              pane={props.pane}
+              dispatch={props.dispatch}
+              item={item}
+            ></ViewStackContextMenu>
+          }
+          panel={
+            <div className={styles['viewHostContainer']}>
+              <ViewHost key={item.key} viewState={item}></ViewHost>
+            </div>
+          }
+          className={styles['tab']}
+        />
+      ))}
+      <Tabs.Expander />
+    </Tabs>
+  );
+}
+
+function ViewStackTabsLeft(
+  props: ViewStackProps & { dispatch: Dispatch<ShellAction> }
+) {
+  return (
+    <Tabs
+      animate={true}
+      id="ViewStack"
+      key={'horizontal'}
+      renderActiveTabPanelOnly={false}
+      vertical={true}
+      onChange={(evt) =>
+        props.dispatch({
+          type: 'setCurrentViewStateByKey',
+          pane: props.pane,
+          key: evt.toLocaleString(),
+        })
+      }
+      selectedTabId={props.pane.currentKey}
+      className={`${styles['tabs']} ${styles['tabs-left']}`}
     >
       {props.pane.viewStates.map((item) => (
         <Tab
@@ -142,14 +189,14 @@ function ViewStackContextMenu(
       <span>
         &nbsp;
         <Icon icon={props.item.displayIcon} />
-        &nbsp;{props.item.displayText}&nbsp;
-        <Icon
+        {props.pane.arrange !== 'tabs-left' && (<>&nbsp;{props.item.displayText}&nbsp;</>)}
+        {props.pane.arrange !== 'tabs-left' && (<Icon
           icon="delete"
           onClick={(evt) => {
             props.dispatch({ type: 'deleteViewState', key: props.item.key });
             evt.stopPropagation();
           }}
-        />
+        />)}
       </span>
     </ContextMenu2>
   );

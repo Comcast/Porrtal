@@ -39,6 +39,16 @@ export function ViewStack(props: ViewStackProps) {
           handleChange={handleChange}
         />
       );
+
+    case 'tabs-left':
+      return (
+        <ViewStackTabsTop
+          pane={props.pane}
+          currentIndex={currentIndex}
+          dispatch={dispatch}
+          handleChange={handleChange}
+        />
+      );
   }
 
   return (
@@ -47,6 +57,73 @@ export function ViewStack(props: ViewStackProps) {
 }
 
 function ViewStackTabsTop(
+  props: ViewStackProps & {
+    dispatch: Dispatch<ShellAction>;
+    currentIndex: number;
+    handleChange: (event: React.SyntheticEvent, newIndex: number) => void;
+  }
+) {
+  return (
+    <div className={styles['container']}>
+      <Box
+        sx={{
+          borderBottom: 1,
+          borderColor: 'divider',
+          backgroundColor: 'gainsboro',
+        }}
+      >
+        <Tabs
+          value={props.currentIndex}
+          variant="scrollable"
+          scrollButtons="auto"
+          onChange={props.handleChange}
+          className={styles['tabs']}
+        >
+          {props.pane.viewStates.map((item, index) => (
+            <Tab
+              key={item.key}
+              icon={
+                <Icon style={{ position: 'relative', top: '3px' }}>
+                  {item.displayIcon}
+                </Icon>
+              }
+              iconPosition="start"
+              label={
+                <ViewStackContextMenu
+                  pane={props.pane}
+                  dispatch={props.dispatch}
+                  item={item}
+                ></ViewStackContextMenu>
+              }
+            ></Tab>
+          ))}
+        </Tabs>
+      </Box>
+      <div className={styles['view-host-container']}>
+        {props.pane.viewStates.map((item, index) => (
+          <ViewHost
+            key={item.key}
+            viewState={item}
+            zIndex={index === props.currentIndex ? 10 : 0}
+          ></ViewHost>
+        ))}
+        <div
+          style={{
+            zIndex: 5,
+            backgroundColor: 'white',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+          }}
+        ></div>
+      </div>
+    </div>
+  );
+}
+
+function ViewStackTabsLeft(
   props: ViewStackProps & {
     dispatch: Dispatch<ShellAction>;
     currentIndex: number;
