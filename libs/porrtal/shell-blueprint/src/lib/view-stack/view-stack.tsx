@@ -7,7 +7,7 @@ import {
   ViewHost,
   ViewStackProps,
 } from '@porrtal/shell';
-import { ContextMenu2 } from '@blueprintjs/popover2';
+import { ContextMenu2, Tooltip2 } from '@blueprintjs/popover2';
 import { paneArrangements, PaneType, paneTypes, ViewState } from '@porrtal/api';
 
 export function ViewStack(props: ViewStackProps) {
@@ -28,9 +28,11 @@ export function ViewStack(props: ViewStackProps) {
 
     case 'tabs-left':
       return <ViewStackTabsLeft pane={props.pane} dispatch={dispatch} />;
-    }
+  }
 
-  return <div>ViewStack Arrangement ('{props.pane.arrange}') Not Supported.</div>
+  return (
+    <div>ViewStack Arrangement ('{props.pane.arrange}') Not Supported.</div>
+  );
 }
 
 function ViewStackTabsTop(
@@ -186,18 +188,27 @@ function ViewStackContextMenu(
         </Menu>
       }
     >
-      <span>
-        &nbsp;
-        <Icon icon={props.item.displayIcon} />
-        {props.pane.arrange !== 'tabs-left' && (<>&nbsp;{props.item.displayText}&nbsp;</>)}
-        {props.pane.arrange !== 'tabs-left' && (<Icon
-          icon="delete"
-          onClick={(evt) => {
-            props.dispatch({ type: 'deleteViewState', key: props.item.key });
-            evt.stopPropagation();
-          }}
-        />)}
-      </span>
+      {props.pane.arrange !== 'tabs-left' && (
+        <span>
+          &nbsp;
+          <Icon icon={props.item.displayIcon} />
+          &nbsp;{props.item.displayText}&nbsp;
+          <Icon
+            icon="delete"
+            onClick={(evt) => {
+              props.dispatch({ type: 'deleteViewState', key: props.item.key });
+              evt.stopPropagation();
+            }}
+          />
+        </span>
+      )}
+      {props.pane.arrange === 'tabs-left' && (
+        <Tooltip2 content={props.item.displayText}>
+          <span>
+            <Icon icon={props.item.displayIcon} />
+          </span>
+        </Tooltip2>
+      )}
     </ContextMenu2>
   );
 }
