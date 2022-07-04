@@ -160,7 +160,7 @@ export const Split = (
         percent !== undefined ? `${percent}%` : initialPrimarySize
       );
     }
-  }, [percent, initialPrimarySize]);
+  }, [percent, initialPrimarySize, onSplitChanged]);
 
   React.useEffect(() => {
     if (onMeasuredSizesChanged) {
@@ -171,7 +171,7 @@ export const Split = (
           currentContentSize - (currentPrimarySize + currentSplitterSize),
       });
     }
-  }, [horizontal, currentContentSize, currentPrimarySize, currentSplitterSize]);
+  }, [horizontal, currentContentSize, currentPrimarySize, currentSplitterSize, onMeasuredSizesChanged]);
 
   const onMeasureContent = (contentRect: ContentRect) => {
     contentRect.bounds &&

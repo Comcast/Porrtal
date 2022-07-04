@@ -1,5 +1,12 @@
 import styles from './view-stack.module.scss';
-import { Tab, Tabs, Icon, Menu, MenuItem } from '@blueprintjs/core';
+import {
+  Tab,
+  Tabs,
+  Icon,
+  Menu,
+  MenuItem,
+  MenuDivider,
+} from '@blueprintjs/core';
 import { Dispatch, useEffect } from 'react';
 import {
   ShellAction,
@@ -142,10 +149,19 @@ function ViewStackContextMenu(
     <ContextMenu2
       content={
         <Menu>
-          {/* <MenuDivider /> */}
+          <MenuItem
+            key={`close`}
+            icon={'delete'}
+            text={`close tab`}
+            onClick={(evt) => {
+              props.dispatch({ type: 'deleteViewState', key: props.item.key });
+              evt.stopPropagation();
+            }}
+          />
+          <MenuDivider />
           <MenuItem
             key={'arrange'}
-            text="Arrange..."
+            text="Arrange tabs..."
             icon="column-layout"
             intent="primary"
           >
