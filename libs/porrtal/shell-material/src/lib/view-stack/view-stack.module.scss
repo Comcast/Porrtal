@@ -5,9 +5,21 @@
   bottom: 0;
   right: 0;
   display: grid;
+  gap: 0 px;
+}
+
+.tabs-left {
+  grid-template-rows: 100%;
+  grid-template-columns: auto 1fr;
+}
+
+.tabs-top {
   grid-template-rows: auto 1fr;
   grid-template-columns: 100%;
-  gap: 0 px;
+}
+
+.tabs-left :global(.MuiTab-root) {
+  min-width: 0;
 }
 
 .view-host-container {

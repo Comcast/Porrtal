@@ -42,7 +42,7 @@ export function ViewStack(props: ViewStackProps) {
 
     case 'tabs-left':
       return (
-        <ViewStackTabsTop
+        <ViewStackTabsLeft
           pane={props.pane}
           currentIndex={currentIndex}
           dispatch={dispatch}
@@ -64,7 +64,7 @@ function ViewStackTabsTop(
   }
 ) {
   return (
-    <div className={styles['container']}>
+    <div className={`${styles['container']} ${styles[props.pane.arrange]}`}>
       <Box
         sx={{
           borderBottom: 1,
@@ -82,12 +82,6 @@ function ViewStackTabsTop(
           {props.pane.viewStates.map((item, index) => (
             <Tab
               key={item.key}
-              icon={
-                <Icon style={{ position: 'relative', top: '3px' }}>
-                  {item.displayIcon}
-                </Icon>
-              }
-              iconPosition="start"
               label={
                 <ViewStackContextMenu
                   pane={props.pane}
@@ -131,7 +125,7 @@ function ViewStackTabsLeft(
   }
 ) {
   return (
-    <div className={styles['container']}>
+    <div className={`${styles['container']} ${styles[props.pane.arrange]}`}>
       <Box
         sx={{
           borderBottom: 1,
@@ -145,15 +139,11 @@ function ViewStackTabsLeft(
           scrollButtons="auto"
           onChange={props.handleChange}
           className={styles['tabs']}
+          orientation="vertical"
         >
           {props.pane.viewStates.map((item, index) => (
             <Tab
               key={item.key}
-              icon={
-                <Icon style={{ position: 'relative', top: '3px' }}>
-                  {item.displayIcon}
-                </Icon>
-              }
               iconPosition="start"
               label={
                 <ViewStackContextMenu
@@ -265,18 +255,29 @@ function ViewStackContextMenu(
         </NestedMenuItem>,
       ]}
     >
-      <span>
-        {props.item.displayText}&nbsp;
-        <Icon
-          style={{ position: 'relative', top: '5px' }}
-          onClick={(evt) => {
-            props.dispatch({ type: 'deleteViewState', key: props.item.key });
-            evt.stopPropagation();
-          }}
-        >
-          clear
+      {props.pane.arrange !== 'tabs-left' && (
+        <span>
+          <Icon style={{ position: 'relative', top: '5px' }}>
+            {props.item.displayIcon}
+          </Icon>
+          &nbsp;
+          {props.item.displayText}&nbsp;
+          <Icon
+            style={{ position: 'relative', top: '5px' }}
+            onClick={(evt) => {
+              props.dispatch({ type: 'deleteViewState', key: props.item.key });
+              evt.stopPropagation();
+            }}
+          >
+            clear
+          </Icon>
+        </span>
+      )}
+      {props.pane.arrange === 'tabs-left' && (
+        <Icon style={{ position: 'relative', top: '3px' }}>
+          {props.item.displayIcon}
         </Icon>
-      </span>
+      )}
     </ContextMenu>
   );
 }
