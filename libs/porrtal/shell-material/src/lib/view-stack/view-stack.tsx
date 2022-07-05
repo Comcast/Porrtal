@@ -1,4 +1,4 @@
-import { Box, Icon, Tab, Tabs } from '@mui/material';
+import { Box, Divider, Icon, Tab, Tabs, Tooltip } from '@mui/material';
 import React, { Dispatch, useMemo } from 'react';
 import {
   ShellAction,
@@ -183,9 +183,7 @@ function ViewStackTabsLeft(
 export default ViewStack;
 
 function ViewStackContextMenu(
-  props: ViewStackProps & { dispatch: Dispatch<ShellAction> } & {
-    item: ViewState;
-  }
+  props: ViewStackProps & { dispatch: Dispatch<ShellAction>; item: ViewState }
 ) {
   const moveIcons: { [key in PaneType]: string } = {
     nav: 'arrow_circle_left_outlined',
@@ -198,6 +196,18 @@ function ViewStackContextMenu(
   return (
     <ContextMenu
       menuItems={[
+        <IconMenuItem
+          key="close-tab"
+          leftIcon={<Icon>clear</Icon>}
+          label="close tab"
+          onClick={
+            ((evt: React.MouseEvent<HTMLElement>) => {
+              props.dispatch({ type: 'deleteViewState', key: props.item.key });
+              evt.stopPropagation();
+            }) as () => void
+          }
+        ></IconMenuItem>,
+        <Divider key="divider-1" />,
         <NestedMenuItem
           key={'arrange'}
           leftIcon={<Icon>pivot_table_chart</Icon>}
@@ -274,9 +284,11 @@ function ViewStackContextMenu(
         </span>
       )}
       {props.pane.arrange === 'tabs-left' && (
-        <Icon style={{ position: 'relative', top: '3px' }}>
-          {props.item.displayIcon}
-        </Icon>
+        <Tooltip title={props.item.displayText} placement="right">
+          <Icon style={{ position: 'relative', top: '3px' }}>
+            {props.item.displayIcon}
+          </Icon>
+        </Tooltip>
       )}
     </ContextMenu>
   );

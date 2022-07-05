@@ -6,6 +6,8 @@ import {
   Menu,
   MenuItem,
   MenuDivider,
+  Card,
+  Button,
 } from '@blueprintjs/core';
 import { Dispatch, useEffect } from 'react';
 import {
@@ -35,6 +37,9 @@ export function ViewStack(props: ViewStackProps) {
 
     case 'tabs-left':
       return <ViewStackTabsLeft pane={props.pane} dispatch={dispatch} />;
+
+    case 'cards':
+      return <ViewStackCards pane={props.pane} dispatch={dispatch} />;
   }
 
   return (
@@ -127,6 +132,39 @@ function ViewStackTabsLeft(
       ))}
       <Tabs.Expander />
     </Tabs>
+  );
+}
+
+function ViewStackCards(
+  props: ViewStackProps & { dispatch: Dispatch<ShellAction> }
+) {
+  return (
+    <div className={styles['card-container']}>
+      <div className={styles['cards']}>
+        {props.pane.viewStates.map((item) => (
+          <Card id={item.key} key={item.key} className={`${styles['card']}`}>
+            <Button
+              onClick={(evt) =>
+                props.dispatch({
+                  type: 'setCurrentViewStateByKey',
+                  pane: props.pane,
+                  key: evt.toLocaleString(),
+                })
+              }
+            >
+              <ViewStackContextMenu
+                pane={props.pane}
+                dispatch={props.dispatch}
+                item={item}
+              ></ViewStackContextMenu>
+            </Button>
+            <div className={styles['viewHostContainer']}>
+              <ViewHost key={item.key} viewState={item}></ViewHost>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
   );
 }
 

@@ -40,3 +40,33 @@
   flex: 1 1 auto;
   padding-left: 0 !important;
 }
+
+.card-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  background-color: silver;
+}
+
+.cards {
+  width: 100%;
+  min-height: 100%;
+  padding: 10px;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  align-items: stretch;
+  // justify-items: stretch;
+  gap: 10px;
+}
+
+.card {
+  display: grid;
+  min-height: 250px;
+  grid-template-rows: auto 1fr;
+  margin: 0;
+  padding: 0;
+}

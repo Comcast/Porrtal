@@ -165,25 +165,38 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
     }
 
     case 'deleteViewState': {
-      const target = {};
-      Object.assign(
-        target,
-        ...Object.keys(state.panes).map((paneType: string) => ({
+      let retState = state;
+      let foundView: ViewState | undefined;
+
+      paneTypes.some((paneType) => {
+        foundView = state.panes[paneType].viewStates.find(
+          (vs) => vs.key === action.key
+        );
+        if (foundView) {
+          retState = {
+            ...state,
+            panes: {
+              ...state.panes,
           [paneType]: {
-            ...state.panes[paneType as PaneType],
-            viewStates: state.panes[paneType as PaneType].viewStates.filter(
-              (item) => item.key !== action.key
+                ...state.panes[paneType],
+                currentKey: computeCurrentKey(state, paneType, {
+                  type: 'deleteViewState',
+                  key: action.key,
+                }),
+                viewStates: [
+                  ...state.panes[paneType].viewStates.filter(
+                    (vs) => vs.key !== action.key
             ),
-            currentKey: computeCurrentKey(state, paneType, action),
+                ],
             paneType,
           },
-        }))
-      );
-
-      const retState: UseShellState = {
-        ...state,
-        panes: target as Panes,
+            },
       };
+          return true;
+        } else {
+          return false;
+        }
+      });
       return retState;
     }
 
@@ -194,7 +207,7 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
           ...state.panes,
           [action.pane.paneType]: {
             ...state.panes[action.pane.paneType],
-            arrange: action.paneArrangement
+            arrange: action.paneArrangement,
           },
         },
       };
