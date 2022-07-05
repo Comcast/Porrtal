@@ -144,11 +144,16 @@ function ViewStackCards(
         {props.pane.viewStates.map((item) => (
           <Card id={item.key} key={item.key} className={`${styles['card']}`}>
             <Button
+              className={
+                item.key === props.pane.currentKey
+                  ? styles['selected-card-button']
+                  : ''
+              }
               onClick={(evt) =>
                 props.dispatch({
                   type: 'setCurrentViewStateByKey',
                   pane: props.pane,
-                  key: evt.toLocaleString(),
+                  key: item.key,
                 })
               }
             >

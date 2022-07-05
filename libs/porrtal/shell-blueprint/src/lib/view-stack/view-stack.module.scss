@@ -70,3 +70,7 @@
   margin: 0;
   padding: 0;
 }
+
+.selected-card-button:global(.bp4-button) {
+  background-color: gainsboro;
+}
