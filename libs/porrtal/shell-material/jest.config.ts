@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'porrtal-shell-blueprint',
+/* eslint-disable */
+export default {
+  displayName: 'porrtal-shell-material',
   preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -10,5 +11,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../coverage/libs/porrtal/shell-blueprint',
+  coverageDirectory: '../../../coverage/libs/porrtal/shell-material',
 };

@@ -1,5 +1,5 @@
 {
-  "root": "libs/porrtal/api",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/porrtal/api/src",
   "projectType": "library",
   "tags": [],
@@ -35,7 +35,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/porrtal/api"],
       "options": {
-        "jestConfig": "libs/porrtal/api/jest.config.js",
+        "jestConfig": "libs/porrtal/api/jest.config.ts",
         "passWithNoTests": true
       }
     }

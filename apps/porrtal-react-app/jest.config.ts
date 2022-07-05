@@ -1,10 +1,11 @@
-module.exports = {
-  displayName: 'porrtal-app',
+/* eslint-disable */
+export default {
+  displayName: 'porrtal-react-app',
   preset: '../../jest.preset.js',
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nrwl/react/plugins/jest',
-    '^.+\\.[tj]sx?$': ['babel-jest', { presets: ['@nrwl/next/babel'] }],
+    '^.+\\.[tj]sx?$': 'babel-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/apps/porrtal-app',
+  coverageDirectory: '../../coverage/apps/porrtal-react-app',
 };

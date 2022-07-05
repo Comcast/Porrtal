@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'test-comps-first-test-comp',
+/* eslint-disable */
+export default {
+  displayName: 'test-comps-second-test-comp',
   preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -10,5 +11,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../coverage/libs/test-comps/first-test-comp',
+  coverageDirectory: '../../../coverage/libs/test-comps/second-test-comp',
 };

@@ -1,5 +1,5 @@
 {
-  "root": "apps/porrtal-react-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/porrtal-react-app/src",
   "projectType": "application",
   "targets": {
@@ -37,6 +37,12 @@
           "namedChunks": false,
           "extractLicenses": true,
           "vendorChunk": false
+        },
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
         }
       }
     },
@@ -50,8 +56,12 @@
         "production": {
           "buildTarget": "porrtal-react-app:build:production",
           "hmr": false
+        },
+        "development": {
+          "buildTarget": "porrtal-react-app:build:development"
         }
-      }
+      },
+      "defaultConfiguration": "development"
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -64,7 +74,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/porrtal-react-app"],
       "options": {
-        "jestConfig": "apps/porrtal-react-app/jest.config.js",
+        "jestConfig": "apps/porrtal-react-app/jest.config.ts",
         "passWithNoTests": true
       }
     }

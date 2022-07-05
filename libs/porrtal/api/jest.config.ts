@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'porrtal-user',
+/* eslint-disable */
+export default {
+  displayName: 'porrtal-api',
   preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -10,5 +11,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../coverage/libs/porrtal/user',
+  coverageDirectory: '../../../coverage/libs/porrtal/api',
 };

@@ -1,5 +1,5 @@
 {
-  "root": "libs/porrtal/shell-blueprint",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/porrtal/shell-blueprint/src",
   "projectType": "library",
   "tags": [],
@@ -37,7 +37,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/porrtal/shell-blueprint"],
       "options": {
-        "jestConfig": "libs/porrtal/shell-blueprint/jest.config.js",
+        "jestConfig": "libs/porrtal/shell-blueprint/jest.config.ts",
         "passWithNoTests": true
       }
     }

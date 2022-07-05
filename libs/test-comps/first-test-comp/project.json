@@ -1,5 +1,5 @@
 {
-  "root": "libs/test-comps/first-test-comp",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/test-comps/first-test-comp/src",
   "projectType": "library",
   "tags": [],
@@ -37,7 +37,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/test-comps/first-test-comp"],
       "options": {
-        "jestConfig": "libs/test-comps/first-test-comp/jest.config.js",
+        "jestConfig": "libs/test-comps/first-test-comp/jest.config.ts",
         "passWithNoTests": true
       }
     }

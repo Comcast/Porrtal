@@ -1,5 +1,6 @@
-module.exports = {
-  displayName: 'porrtal-shell',
+/* eslint-disable */
+export default {
+  displayName: 'test-comps-first-test-comp',
   preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
@@ -10,5 +11,5 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../coverage/libs/porrtal/shell',
+  coverageDirectory: '../../../coverage/libs/test-comps/first-test-comp',
 };

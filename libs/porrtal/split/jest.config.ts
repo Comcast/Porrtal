@@ -1,4 +1,5 @@
-module.exports = {
+/* eslint-disable */
+export default {
   displayName: 'porrtal-split',
   preset: '../../../jest.preset.js',
   globals: {

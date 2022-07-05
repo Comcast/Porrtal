@@ -13,5 +13,6 @@
     "porrtal-user": "libs/porrtal/user",
     "test-comps-first-test-comp": "libs/test-comps/first-test-comp",
     "test-comps-second-test-comp": "libs/test-comps/second-test-comp"
-  }
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }
