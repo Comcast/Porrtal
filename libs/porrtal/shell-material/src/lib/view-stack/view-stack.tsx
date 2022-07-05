@@ -1,4 +1,16 @@
-import { Box, Divider, Icon, Tab, Tabs, Tooltip } from '@mui/material';
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Divider,
+  Icon,
+  Tab,
+  Tabs,
+  Tooltip,
+} from '@mui/material';
 import React, { Dispatch, useMemo } from 'react';
 import {
   ShellAction,
@@ -43,6 +55,16 @@ export function ViewStack(props: ViewStackProps) {
     case 'tabs-left':
       return (
         <ViewStackTabsLeft
+          pane={props.pane}
+          currentIndex={currentIndex}
+          dispatch={dispatch}
+          handleChange={handleChange}
+        />
+      );
+
+    case 'cards':
+      return (
+        <ViewStackCards
           pane={props.pane}
           currentIndex={currentIndex}
           dispatch={dispatch}
@@ -175,6 +197,50 @@ function ViewStackTabsLeft(
             right: 0,
           }}
         ></div>
+      </div>
+    </div>
+  );
+}
+
+function ViewStackCards(
+  props: ViewStackProps & {
+    dispatch: Dispatch<ShellAction>;
+    currentIndex: number;
+    handleChange: (event: React.SyntheticEvent, newIndex: number) => void;
+  }
+) {
+  return (
+    <div className={styles['card-container']}>
+      <div className={styles['cards']}>
+        {props.pane.viewStates.map((item, index) => (
+          <Card id={item.key} key={item.key} className={`${styles['card']}`}>
+            <CardHeader
+              sx={{
+                padding: 0,
+                backgroundColor: index === props.currentIndex ? 'gainsboro' : ''
+               }}
+              title={
+                <Button
+                  onClick={(evt) => {
+                    props.handleChange(evt, index);
+                  }}
+                >
+                  <ViewStackContextMenu
+                    pane={props.pane}
+                    dispatch={props.dispatch}
+                    item={item}
+                  ></ViewStackContextMenu>
+                </Button>
+              }
+            ></CardHeader>
+            <CardContent sx={{ position: 'relative' }}>
+              <div className={styles['viewHostContainer']}>
+                <ViewHost key={item.key} viewState={item}></ViewHost>
+              </div>
+            </CardContent>
+            <CardActions></CardActions>
+          </Card>
+        ))}
       </div>
     </div>
   );
