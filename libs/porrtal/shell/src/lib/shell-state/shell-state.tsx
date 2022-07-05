@@ -336,6 +336,17 @@ export function ShellState(props: ShellStateProps) {
         }))
     );
 
+    // set current tab to first of each collection
+    paneTypes.forEach(paneType => {
+      if (memoState.panes[paneType].viewStates?.length > 0) {
+        memoState = reducer(memoState, {
+          type: 'setCurrentViewStateByKey',
+          key: memoState.panes[paneType].viewStates[0].key,
+          pane: memoState.panes[paneType]
+        })
+      }
+    });
+
     return memoState;
   }, [props.views, props.components]);
 
