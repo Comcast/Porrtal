@@ -4,7 +4,7 @@ import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 
 import { ShellState } from '@porrtal/shell';
 import { KeycloakAuthentication } from '@porrtal/user';
-import { testComponents, testViews } from '../test-view-states';
+import { testComponents, testViews } from '../../test-config/test-view-states';
 import { ShellBlueprint } from '@porrtal/shell-blueprint';
 import { useEffect, useState } from 'react';
 

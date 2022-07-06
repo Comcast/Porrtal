@@ -1,6 +1,6 @@
 import { Auth0Authentication } from '@porrtal/user';
 import { ShellState } from '@porrtal/shell';
-import { testComponents, testViews } from './test-view-states';
+import { testComponents, testViews } from '../test-config/test-view-states';
 import { ShellMaterial } from '@porrtal/shell-material';
 import { useEffect, useState } from 'react';
 

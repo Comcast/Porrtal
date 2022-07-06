@@ -2,7 +2,7 @@ import { ShellState } from '@porrtal/shell';
 import { ShellMaterial } from '@porrtal/shell-material';
 import { KeycloakAuthentication } from '@porrtal/user';
 import { useEffect, useState } from 'react';
-import { testComponents, testViews } from '../test-view-states';
+import { testComponents, testViews } from '../../test-config/test-view-states';
 
 export function Index() {
   const [isSSR, setIsSSR] = useState(true);
