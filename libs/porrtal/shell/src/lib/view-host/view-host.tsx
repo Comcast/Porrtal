@@ -1,6 +1,7 @@
 import React, {
   ComponentType,
   LazyExoticComponent,
+  Suspense,
   useEffect,
   useState,
 } from 'react';
@@ -32,7 +33,9 @@ export function ViewHost(props: ViewHostProps) {
     >
       <div className={styles['innerContainer']}>
         {DynComp ? (
-          <DynComp viewState={props.viewState} />
+          <Suspense fallback={<div>loading...</div>}>
+            <DynComp viewState={props.viewState} />
+          </Suspense>
         ) : (
           <div>loading...</div>
         )}
