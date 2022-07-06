@@ -8,6 +8,7 @@ import {
   MenuDivider,
   Card,
   Button,
+  IconName,
 } from '@blueprintjs/core';
 import { Dispatch, useEffect } from 'react';
 import {
@@ -211,7 +212,7 @@ function ViewStackContextMenu(
             {paneArrangements.map((paneArrangement) => (
               <MenuItem
                 key={`arrange-${paneArrangement}`}
-                icon={props.pane.arrange === paneArrangement ? 'tick' : ''}
+                icon={(props.pane.arrange === paneArrangement ? 'tick' : '') as IconName}
                 text={`${paneArrangement}`}
                 onClick={() =>
                   props.dispatch({
@@ -232,7 +233,7 @@ function ViewStackContextMenu(
               .map((paneType) => (
                 <MenuItem
                   key={`move-to-${paneType}`}
-                  icon={moveIcons[paneType]}
+                  icon={moveIcons[paneType] as IconName}
                   text={`${paneType} pane`}
                   onClick={() =>
                     props.dispatch({
@@ -250,7 +251,7 @@ function ViewStackContextMenu(
       {props.pane.arrange !== 'tabs-left' && (
         <span>
           &nbsp;
-          <Icon icon={props.item.displayIcon} />
+          <Icon icon={props.item.displayIcon as IconName} />
           &nbsp;{props.item.displayText}&nbsp;
           <Icon
             icon="delete"
@@ -264,7 +265,7 @@ function ViewStackContextMenu(
       {props.pane.arrange === 'tabs-left' && (
         <Tooltip2 content={props.item.displayText}>
           <span>
-            <Icon icon={props.item.displayIcon} />
+            <Icon icon={props.item.displayIcon as IconName} />
           </span>
         </Tooltip2>
       )}
