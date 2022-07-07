@@ -1,10 +1,8 @@
-export interface ReplaceParameter {
-  [key: string]: string | number | ReplaceParameter;
-}
+import { StateObject } from "@porrtal/api";
 
 export function replaceParameters(
   source: string,
-  parameters: ReplaceParameter
+  parameters: StateObject
 ): { replaced: string, warning: string } {
   const regex = /{([\w.]+)}/g;
   let warningString = '';
@@ -27,6 +25,8 @@ export function replaceParameters(
               return true;
 
             case 'number':
+            case 'bigint':
+            case 'boolean':
               if (index + 1 === p1Array.length) {
                 retString = innerValue.toString();
               } else {
