@@ -15,7 +15,8 @@ import {
   useContext,
   useMemo,
 } from 'react';
-import { StateObject } from '../shell-utilities/shell-utilities';
+import { StateObject } from '@porrtal/api';
+import { replaceParameters } from '../shell-utilities/shell-utilities';
 
 export type ComponentFactoryDictionary = {
   [componentName: string]: ViewComponentFunction;
@@ -45,25 +46,32 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
   switch (action.type) {
     case 'launchViewState': {
       let retState: UseShellState = state;
+      const newViewStateState = combineViewStateStateAndActionState(action.viewState.state, action.state);
+      const newDisplayTextResult = replaceParameters(action.viewState.displayText, newViewStateState ?? {});
+      const newViewState: ViewState = {
+        ...action.viewState,
+        displayText: newDisplayTextResult.replaced,
+        state: newViewStateState
+      }
 
       // see if the key exists already (replace it if so)
       if (
         paneTypes.some((paneType) => {
           const ii = state.panes[paneType].viewStates.findIndex(
-            (vs) => vs.key === action.viewState.key
+            (vs) => vs.key === newViewState.key
           );
           if (ii >= 0) {
-            action.viewState.componentImport =
-              state.components[action.viewState.componentName];
+            newViewState.componentImport =
+              state.components[newViewState.componentName];
             const newArray = [...state.panes[paneType].viewStates];
-            newArray.splice(ii, 1, action.viewState);
+            newArray.splice(ii, 1, newViewState);
             retState = {
               ...state,
               panes: {
                 ...state.panes,
                 [paneType]: {
                   ...state.panes[paneType],
-                  currentKey: action.viewState.key,
+                  currentKey: newViewState.key,
                   viewStates: newArray,
                   paneType,
                 },
@@ -78,9 +86,8 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
       }
 
       // key didn't exist so add the view state to the requested pane
-      const viewStates = state.panes[action.viewState.paneType].viewStates;
-      const viewState = action.viewState;
-      viewState.componentImport = state.components[viewState.componentName];
+      const viewStates = state.panes[newViewState.paneType].viewStates;
+      newViewState.componentImport = state.components[newViewState.componentName];
       retState = {
         ...state,
         panes: {
@@ -88,7 +95,7 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
           [action.viewState.paneType]: {
             ...state.panes[action.viewState.paneType],
             currentKey: action.viewState.key,
-            viewStates: [...viewStates, viewState],
+            viewStates: [...viewStates, newViewState],
             paneType: action.viewState.paneType,
           },
         },
@@ -373,3 +380,19 @@ export function useShellDispatch(): Dispatch<ShellAction> {
   const dispatch = useContext(ShellDispatchContext);
   return dispatch;
 }
+
+export function combineViewStateStateAndActionState(viewStateState: StateObject | undefined, actionState: StateObject | undefined) {
+  if (actionState === undefined || actionState === null) {
+    return viewStateState;
+  }
+
+  if (viewStateState === undefined || viewStateState === null) {
+    return actionState;
+  }
+
+  return {
+    ...viewStateState,
+    ...actionState
+  }
+}
+

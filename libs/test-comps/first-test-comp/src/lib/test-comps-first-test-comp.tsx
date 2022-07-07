@@ -21,8 +21,9 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               key: uuidv4(),
               paneType: 'right',
               componentName: '@test-comps/first-test-comp',
-              displayText: 'one',
+              displayText: 'one{a}{b.c}',
               displayIcon: 'home',
+              state: { a: ' bam!', b: { c: ' bambam!!' } }
             },
           });
         }}
