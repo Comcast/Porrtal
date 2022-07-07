@@ -15,6 +15,7 @@ export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
       <div className={styles['container']}>
         <div className={styles['banner']}>
           <div>image</div>
+          <shellComponents.Search />
           <UserBanner />
         </div>
         <div className={styles['content']}>

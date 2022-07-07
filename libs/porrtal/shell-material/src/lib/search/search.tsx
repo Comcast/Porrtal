@@ -1,8 +1,5 @@
 import styles from './search.module.scss';
 
-/* eslint-disable-next-line */
-export interface SearchProps {}
-
 export function Search(props: SearchProps) {
   return (
     <div className={styles['container']}>
