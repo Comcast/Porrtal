@@ -12,7 +12,7 @@ describe('Shell Utilities', () => {
     expect(result.warning).toBe(expectedWarningString);
   });
 
-  it('string with a string parameter should get replaced', () => {
+  it('string with a number parameter should get replaced', () => {
     const inputString = 'this {parm1} a test';
     const inputParameters = { parm1: 7.3 };
     const result = replaceParameters(inputString, inputParameters);
@@ -23,11 +23,45 @@ describe('Shell Utilities', () => {
     expect(result.warning).toBe(expectedWarningString);
   });
 
-  it('string with a number parameter should get replaced', () => {
+  it('string with a string parameter should get replaced', () => {
     const inputString = 'this {parm1} a test';
     const inputParameters = { parm1: 'is' };
     const result = replaceParameters(inputString, inputParameters);
     const expectedOutputString = 'this is a test';
+    expect(result.replaced).toBe(expectedOutputString);
+
+    const expectedWarningString = ''
+    expect(result.warning).toBe(expectedWarningString);
+  });
+
+  it('string with a bigint parameter should get replaced', () => {
+    const inputString = 'this {parm1} a test';
+    const inputParameters = { parm1: BigInt(7) };
+    const result = replaceParameters(inputString, inputParameters);
+    const expectedOutputString = 'this 7 a test';
+    expect(result.replaced).toBe(expectedOutputString);
+
+    const expectedWarningString = ''
+    expect(result.warning).toBe(expectedWarningString);
+  });
+
+  it('string with a boolean parameter should get replaced', () => {
+    const inputString = 'this {parm1} a test';
+    const inputParameters = { parm1: true };
+    const result = replaceParameters(inputString, inputParameters);
+    const expectedOutputString = 'this true a test';
+    expect(result.replaced).toBe(expectedOutputString);
+
+    const expectedWarningString = ''
+    expect(result.warning).toBe(expectedWarningString);
+  });
+
+  it('string with a date parameter should get replaced', () => {
+    const inputString = 'this {parm1} a test';
+    const theDate = Date();
+    const inputParameters = { parm1: theDate };
+    const result = replaceParameters(inputString, inputParameters);
+    const expectedOutputString = `this ${theDate} a test`;
     expect(result.replaced).toBe(expectedOutputString);
 
     const expectedWarningString = ''

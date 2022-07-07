@@ -1,6 +1,10 @@
 import { PaneType } from './pane';
 import { ViewComponentFunction } from './view-component-function';
 
+export interface StateObject {
+  [key: string]: string | number | bigint | boolean | StateObject;
+}
+
 export interface ViewState {
   key: string;
   paneType: PaneType;
@@ -8,4 +12,5 @@ export interface ViewState {
   componentImport?: ViewComponentFunction;
   displayText: string;
   displayIcon: string;
+  state?: StateObject;
 }

@@ -15,6 +15,7 @@ import {
   useContext,
   useMemo,
 } from 'react';
+import { StateObject } from '../shell-utilities/shell-utilities';
 
 export type ComponentFactoryDictionary = {
   [componentName: string]: ViewComponentFunction;
@@ -26,7 +27,7 @@ export interface UseShellState {
 }
 
 export type ShellAction =
-  | { type: 'launchViewState'; viewState: ViewState }
+  | { type: 'launchViewState'; viewState: ViewState; state?: StateObject }
   | { type: 'moveView'; key: string; toPane: PaneType }
   | { type: 'deleteViewState'; key: string }
   | { type: 'setCurrentViewStateByKey'; key: string; pane: Pane }
