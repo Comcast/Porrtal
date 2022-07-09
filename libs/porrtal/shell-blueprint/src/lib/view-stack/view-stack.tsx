@@ -193,16 +193,21 @@ function ViewStackContextMenu(
     <ContextMenu2
       content={
         <Menu>
-          <MenuItem
-            key={`close`}
-            icon={'cross'}
-            text={`close tab`}
-            onClick={(evt) => {
-              props.dispatch({ type: 'deleteViewState', key: props.item.key });
-              evt.stopPropagation();
-            }}
-          />
-          <MenuDivider />
+          {props.pane.paneType !== 'search' && (
+            <MenuItem
+              key={`close`}
+              icon={'cross'}
+              text={`close tab`}
+              onClick={(evt) => {
+                props.dispatch({
+                  type: 'deleteViewState',
+                  key: props.item.key,
+                });
+                evt.stopPropagation();
+              }}
+            />
+          )}
+          {props.pane.paneType !== 'search' && <MenuDivider />}
           <MenuItem
             key={'arrange'}
             text="Arrange tabs..."
@@ -212,7 +217,11 @@ function ViewStackContextMenu(
             {paneArrangements.map((paneArrangement) => (
               <MenuItem
                 key={`arrange-${paneArrangement}`}
-                icon={(props.pane.arrange === paneArrangement ? 'tick' : '') as IconName}
+                icon={
+                  (props.pane.arrange === paneArrangement
+                    ? 'tick'
+                    : '') as IconName
+                }
                 text={`${paneArrangement}`}
                 onClick={() =>
                   props.dispatch({
@@ -224,42 +233,59 @@ function ViewStackContextMenu(
               />
             ))}
           </MenuItem>
-          <MenuItem key={'move'} text="Move to..." icon="move" intent="primary">
-            {paneTypes
-              .filter(
-                (paneType) =>
-                  paneType !== 'search' && paneType !== props.pane.paneType
-              )
-              .map((paneType) => (
-                <MenuItem
-                  key={`move-to-${paneType}`}
-                  icon={moveIcons[paneType] as IconName}
-                  text={`${paneType} pane`}
-                  onClick={() =>
-                    props.dispatch({
-                      type: 'moveView',
-                      key: props.item.key,
-                      toPane: paneType,
-                    })
-                  }
-                />
-              ))}
-          </MenuItem>
+          {props.pane.paneType !== 'search' && (
+            <MenuItem
+              key={'move'}
+              text="Move to..."
+              icon="move"
+              intent="primary"
+            >
+              {paneTypes
+                .filter(
+                  (paneType) =>
+                    paneType !== 'search' && paneType !== props.pane.paneType
+                )
+                .map((paneType) => (
+                  <MenuItem
+                    key={`move-to-${paneType}`}
+                    icon={moveIcons[paneType] as IconName}
+                    text={`${paneType} pane`}
+                    onClick={() =>
+                      props.dispatch({
+                        type: 'moveView',
+                        key: props.item.key,
+                        toPane: paneType,
+                      })
+                    }
+                  />
+                ))}
+            </MenuItem>
+          )}
         </Menu>
       }
     >
       {props.pane.arrange !== 'tabs-left' && (
         <span>
-          &nbsp;
-          <Icon icon={props.item.displayIcon as IconName} />
-          &nbsp;{props.item.displayText}&nbsp;
-          <Icon
-            icon="cross"
-            onClick={(evt) => {
-              props.dispatch({ type: 'deleteViewState', key: props.item.key });
-              evt.stopPropagation();
-            }}
-          />
+          {props.item.displayIcon && (
+            <Icon
+              style={{ marginLeft: '3px', marginRight: '3px' }}
+              icon={props.item.displayIcon as IconName}
+            />
+          )}
+          <span>{props.item.displayText}</span>
+          {props.pane.paneType !== 'search' && (
+            <Icon
+              style={{ marginLeft: '5px' }}
+              icon="cross"
+              onClick={(evt) => {
+                props.dispatch({
+                  type: 'deleteViewState',
+                  key: props.item.key,
+                });
+                evt.stopPropagation();
+              }}
+            />
+          )}
         </span>
       )}
       {props.pane.arrange === 'tabs-left' && (
