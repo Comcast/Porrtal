@@ -10,3 +10,28 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+.search-dialog {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+}
+
+.search-portal {
+  bottom: 0;
+}
+
+.search-portal > :global(.bp4-overlay) {
+  position: absolute !important;
+}
+
+.search-popover {
+  bottom: 0;
+}
+
+.search-container {
+  position: relative;
+  // width: 80%;
+  // height: 500px;
+  background-color: white;
+}
