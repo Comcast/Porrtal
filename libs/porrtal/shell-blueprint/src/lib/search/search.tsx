@@ -14,13 +14,29 @@ export function Search(props: SearchProps) {
   const [bodyElement, setBodyElement] = useState<HTMLElement>();
   const divRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  useEffect(() => setBodyElement(document.body), []);
+  useEffect(() => {
+    setBodyElement(document.body);
+
+    const keyDownHandler = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isDialogOpen) {
+        event.preventDefault();
+        setIsDialogOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', keyDownHandler);
+
+    // 👇️ clean up event listener
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler);
+    };
+  }, [isDialogOpen]);
 
   if (shellComponents && typeof window !== 'undefined' && window) {
     return (
       <Popover2
         isOpen={isDialogOpen}
-        onOpened={(evt) => inputRef ? inputRef.current?.focus() : null}
+        onOpened={(evt) => (inputRef ? inputRef.current?.focus() : null)}
         enforceFocus={false}
         // onClose={(evt) => setIsDialogOpen(false)}
         content={
@@ -37,6 +53,7 @@ export function Search(props: SearchProps) {
           >
             <shellComponents.ViewStack
               pane={shellState.panes.search}
+              onClose={(evt) => setIsDialogOpen(false)}
             ></shellComponents.ViewStack>
           </div>
         }

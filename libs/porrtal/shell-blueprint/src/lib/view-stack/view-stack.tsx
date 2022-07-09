@@ -34,10 +34,22 @@ export function ViewStack(props: ViewStackProps) {
 
   switch (props.pane.arrange) {
     case 'tabs-top':
-      return <ViewStackTabsTop pane={props.pane} dispatch={dispatch} />;
+      return (
+        <ViewStackTabsTop
+          pane={props.pane}
+          dispatch={dispatch}
+          onClose={props.onClose}
+        />
+      );
 
     case 'tabs-left':
-      return <ViewStackTabsLeft pane={props.pane} dispatch={dispatch} />;
+      return (
+        <ViewStackTabsLeft
+          pane={props.pane}
+          dispatch={dispatch}
+          onClose={props.onClose}
+        />
+      );
 
     case 'cards':
       return <ViewStackCards pane={props.pane} dispatch={dispatch} />;
@@ -87,7 +99,15 @@ function ViewStackTabsTop(
           className={styles['tab']}
         />
       ))}
-      <Tabs.Expander />
+      {props.onClose && (
+        <>
+          <Tabs.Expander />
+          <Button onClick={(evt) => props.onClose ? props.onClose(evt) : null}>
+            <Icon icon="cross" />
+            <span>close</span>
+          </Button>
+        </>
+      )}
     </Tabs>
   );
 }
@@ -131,7 +151,14 @@ function ViewStackTabsLeft(
           className={styles['tab']}
         />
       ))}
-      <Tabs.Expander />
+      {props.onClose && (
+        <>
+          <Tabs.Expander />
+          <Button onClick={(evt) => props.onClose ? props.onClose(evt) : null}>
+            <Icon icon="cross" />
+          </Button>
+        </>
+      )}
     </Tabs>
   );
 }
