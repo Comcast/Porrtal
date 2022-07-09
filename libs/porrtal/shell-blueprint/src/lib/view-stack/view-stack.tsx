@@ -195,7 +195,7 @@ function ViewStackContextMenu(
         <Menu>
           <MenuItem
             key={`close`}
-            icon={'delete'}
+            icon={'cross'}
             text={`close tab`}
             onClick={(evt) => {
               props.dispatch({ type: 'deleteViewState', key: props.item.key });
@@ -254,7 +254,7 @@ function ViewStackContextMenu(
           <Icon icon={props.item.displayIcon as IconName} />
           &nbsp;{props.item.displayText}&nbsp;
           <Icon
-            icon="delete"
+            icon="cross"
             onClick={(evt) => {
               props.dispatch({ type: 'deleteViewState', key: props.item.key });
               evt.stopPropagation();

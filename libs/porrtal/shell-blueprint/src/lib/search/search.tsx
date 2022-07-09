@@ -11,23 +11,18 @@ export function Search(props: SearchProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const shellComponents = useShellComponents();
   const shellState = useShellState();
-  const [dialogBoundary, setDialogBoundary] = useState<HTMLElement>();
+  const [bodyElement, setBodyElement] = useState<HTMLElement>();
   const divRef = useRef<HTMLDivElement>(null);
-  useEffect(() => setDialogBoundary(document.body), []);
-  console.log('input group ref', divRef?.current?.offsetLeft);
+  const inputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => setBodyElement(document.body), []);
 
   if (shellComponents && typeof window !== 'undefined' && window) {
     return (
-      // <div className={styles['container']}>
       <Popover2
-        // className={styles['search-dialog']}
-        // boundary={dialogBoundary}
-        // portalContainer={dialogBoundary}
-        // targetTagName='div'
-        // popoverClassName={styles['search-popover']}
-        // portalClassName={styles['search-portal']}
         isOpen={isDialogOpen}
-        onClose={(evt) => setIsDialogOpen(false)}
+        onOpened={(evt) => inputRef ? inputRef.current?.focus() : null}
+        enforceFocus={false}
+        // onClose={(evt) => setIsDialogOpen(false)}
         content={
           <div
             className={styles['search-container']}
@@ -35,8 +30,8 @@ export function Search(props: SearchProps) {
               width: divRef.current
                 ? `${divRef.current.offsetLeft - 50}px`
                 : '700px',
-              height: dialogBoundary
-                ? `${dialogBoundary.offsetHeight - 50}px`
+              height: bodyElement
+                ? `${bodyElement.offsetHeight - 50}px`
                 : '700px',
             }}
           >
@@ -49,7 +44,9 @@ export function Search(props: SearchProps) {
       >
         <div ref={divRef}>
           <InputGroup
+            onChange={(evt) => setIsDialogOpen(true)}
             className={styles['search-input']}
+            inputRef={inputRef}
             leftElement={
               <Icon
                 onClick={(evt) => setIsDialogOpen(true)}
@@ -59,7 +56,6 @@ export function Search(props: SearchProps) {
           ></InputGroup>
         </div>
       </Popover2>
-      // </div>
     );
   } else {
     return <div></div>;
