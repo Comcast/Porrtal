@@ -14,9 +14,12 @@ import {
   createContext,
   useContext,
   useMemo,
+  ReactChild,
+  PropsWithChildren,
 } from 'react';
 import { StateObject } from '@porrtal/api';
 import { replaceParameters } from '../shell-utilities/shell-utilities';
+import SearchState from '../search-state/search-state';
 
 export type ComponentFactoryDictionary = {
   [componentName: string]: ViewComponentFunction;
@@ -46,13 +49,19 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
   switch (action.type) {
     case 'launchViewState': {
       let retState: UseShellState = state;
-      const newViewStateState = combineViewStateStateAndActionState(action.viewState.state, action.state);
-      const newDisplayTextResult = replaceParameters(action.viewState.displayText, newViewStateState ?? {});
+      const newViewStateState = combineViewStateStateAndActionState(
+        action.viewState.state,
+        action.state
+      );
+      const newDisplayTextResult = replaceParameters(
+        action.viewState.displayText,
+        newViewStateState ?? {}
+      );
       const newViewState: ViewState = {
         ...action.viewState,
         displayText: newDisplayTextResult.replaced,
-        state: newViewStateState
-      }
+        state: newViewStateState,
+      };
 
       // see if the key exists already (replace it if so)
       if (
@@ -87,7 +96,8 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
 
       // key didn't exist so add the view state to the requested pane
       const viewStates = state.panes[newViewState.paneType].viewStates;
-      newViewState.componentImport = state.components[newViewState.componentName];
+      newViewState.componentImport =
+        state.components[newViewState.componentName];
       retState = {
         ...state,
         panes: {
@@ -185,7 +195,7 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
             ...state,
             panes: {
               ...state.panes,
-          [paneType]: {
+              [paneType]: {
                 ...state.panes[paneType],
                 currentKey: computeCurrentKey(state, paneType, {
                   type: 'deleteViewState',
@@ -194,12 +204,12 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
                 viewStates: [
                   ...state.panes[paneType].viewStates.filter(
                     (vs) => vs.key !== action.key
-            ),
+                  ),
                 ],
-            paneType,
-          },
+                paneType,
+              },
             },
-      };
+          };
           return true;
         } else {
           return false;
@@ -326,10 +336,9 @@ const ShellDispatchContext = createContext<Dispatch<ShellAction>>(
 export interface ShellStateProps {
   views?: ViewState[];
   components: ComponentFactoryDictionary;
-  children?: React.ReactChild | React.ReactChild[];
 }
 
-export function ShellState(props: ShellStateProps) {
+export function ShellState(props: PropsWithChildren<ShellStateProps>) {
   const initialState: UseShellState = useMemo(() => {
     let memoState = {
       ...emptyUseShellState,
@@ -345,13 +354,13 @@ export function ShellState(props: ShellStateProps) {
     );
 
     // set current tab to first of each collection
-    paneTypes.forEach(paneType => {
+    paneTypes.forEach((paneType) => {
       if (memoState.panes[paneType].viewStates?.length > 0) {
         memoState = reducer(memoState, {
           type: 'setCurrentViewStateByKey',
           key: memoState.panes[paneType].viewStates[0].key,
-          pane: memoState.panes[paneType]
-        })
+          pane: memoState.panes[paneType],
+        });
       }
     });
 
@@ -365,7 +374,7 @@ export function ShellState(props: ShellStateProps) {
   return (
     <ShellStateContext.Provider value={state}>
       <ShellDispatchContext.Provider value={dispatch}>
-        {props.children}
+        <SearchState>{props.children}</SearchState>
       </ShellDispatchContext.Provider>
     </ShellStateContext.Provider>
   );
@@ -381,7 +390,10 @@ export function useShellDispatch(): Dispatch<ShellAction> {
   return dispatch;
 }
 
-export function combineViewStateStateAndActionState(viewStateState: StateObject | undefined, actionState: StateObject | undefined) {
+export function combineViewStateStateAndActionState(
+  viewStateState: StateObject | undefined,
+  actionState: StateObject | undefined
+) {
   if (actionState === undefined || actionState === null) {
     return viewStateState;
   }
@@ -392,7 +404,6 @@ export function combineViewStateStateAndActionState(viewStateState: StateObject 
 
   return {
     ...viewStateState,
-    ...actionState
-  }
+    ...actionState,
+  };
 }
-

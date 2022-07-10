@@ -1,6 +1,7 @@
 import { Icon, InputGroup } from '@blueprintjs/core';
 import { Popover2 } from '@blueprintjs/popover2';
-import { useShellComponents, useShellState } from '@porrtal/shell';
+import { useSearchText, useShellComponents, useShellState } from '@porrtal/shell';
+import { useIsSearchDialogOpen, useSearchAction } from '@porrtal/shell';
 import { useEffect, useRef, useState } from 'react';
 import styles from './search.module.scss';
 
@@ -8,34 +9,22 @@ import styles from './search.module.scss';
 export interface SearchProps {}
 
 export function Search(props: SearchProps) {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const shellComponents = useShellComponents();
   const shellState = useShellState();
-  const [bodyElement, setBodyElement] = useState<HTMLElement>();
   const divRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [bodyElement, setBodyElement] = useState<HTMLElement>();
+  const isSearchDialogOpen = useIsSearchDialogOpen();
+  const searchAction = useSearchAction();
+  const searchText = useSearchText();
   useEffect(() => {
     setBodyElement(document.body);
-
-    const keyDownHandler = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isDialogOpen) {
-        event.preventDefault();
-        setIsDialogOpen(false);
-      }
-    };
-
-    document.addEventListener('keydown', keyDownHandler);
-
-    // 👇️ clean up event listener
-    return () => {
-      document.removeEventListener('keydown', keyDownHandler);
-    };
-  }, [isDialogOpen]);
+  }, [isSearchDialogOpen]);
 
   if (shellComponents && typeof window !== 'undefined' && window) {
     return (
       <Popover2
-        isOpen={isDialogOpen}
+        isOpen={isSearchDialogOpen}
         onOpened={(evt) => (inputRef ? inputRef.current?.focus() : null)}
         enforceFocus={false}
         // onClose={(evt) => setIsDialogOpen(false)}
@@ -53,7 +42,7 @@ export function Search(props: SearchProps) {
           >
             <shellComponents.ViewStack
               pane={shellState.panes.search}
-              onClose={(evt) => setIsDialogOpen(false)}
+              onClose={(evt) => searchAction.closeSearchDialog()}
             ></shellComponents.ViewStack>
           </div>
         }
@@ -61,15 +50,19 @@ export function Search(props: SearchProps) {
       >
         <div ref={divRef}>
           <InputGroup
-            onChange={(evt) => setIsDialogOpen(true)}
+            onChange={(evt) => {
+              searchAction.openSearchDialog();
+              searchAction.setSearchText(evt.target.value);
+            }}
             className={styles['search-input']}
             inputRef={inputRef}
             leftElement={
               <Icon
-                onClick={(evt) => setIsDialogOpen(true)}
+                onClick={(evt) => searchAction.openSearchDialog()}
                 icon="search"
               ></Icon>
             }
+            value={searchText}
           ></InputGroup>
         </div>
       </Popover2>
