@@ -119,23 +119,4 @@ export function useSearchAction() {
   return state;
 }
 
-// export function useSearchTextDebounce(
-//   debounceMillis: number,
-//   doSearch: (searchText: string) => void
-// ) {
-//   const searchText = useSearchText();
-//   const [debouncedSearchText, setDebouncedSearchText] = useState(searchText);
-//   const timeout = useRef<NodeJS.Timeout>();
-
-//   useEffect(() => {
-//     clearTimeout(timeout.current);
-//     timeout.current = setTimeout(() => {
-//       // setDebouncedSearchText(searchText);
-//       doSearch(searchText);
-//     }, debounceMillis);
-//   }, [debounceMillis, searchText, setDebouncedSearchText, doSearch]);
-
-//   return; // debouncedSearchText;
-// }
-
 export default SearchState;

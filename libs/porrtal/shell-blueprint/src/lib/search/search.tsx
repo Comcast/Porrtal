@@ -10,7 +10,7 @@ export interface SearchProps {}
 
 export function Search(props: SearchProps) {
   const shellComponents = useShellComponents();
-  const searchInputRef = useRef<SearchInputRef>()
+  const searchInputRef = useRef<SearchInputRef>();
   const [bodyElement, setBodyElement] = useState<HTMLElement>();
   const isSearchDialogOpen = useIsSearchDialogOpen();
   useEffect(() => {
@@ -23,16 +23,20 @@ export function Search(props: SearchProps) {
     return (
       <Popover2
         isOpen={isSearchDialogOpen}
-        onOpened={(evt) => (searchInputRef.current ? searchInputRef.current.input?.focus() : null)}
+        onOpened={(evt) =>
+          searchInputRef.current ? searchInputRef.current.input?.focus() : null
+        }
         enforceFocus={false}
         content={
           <SearchViewStack
-              width={searchInputRef.current && searchInputRef.current.div
+            width={
+              searchInputRef.current && searchInputRef.current.div
                 ? `${searchInputRef.current.div.offsetLeft - 50}px`
-                : '700px'}
-              height={bodyElement
-                ? `${bodyElement.offsetHeight - 50}px`
-                : '700px'}
+                : '700px'
+            }
+            height={
+              bodyElement ? `${bodyElement.offsetHeight - 50}px` : '700px'
+            }
           ></SearchViewStack>
         }
         placement="left-start"

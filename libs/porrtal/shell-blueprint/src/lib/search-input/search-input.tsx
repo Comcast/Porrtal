@@ -1,22 +1,20 @@
 import { Icon, InputGroup } from '@blueprintjs/core';
 import { useSearchAction, useSearchText } from '@porrtal/shell';
-import { forwardRef, MutableRefObject, RefObject, useImperativeHandle, useRef } from 'react';
+import { forwardRef, useImperativeHandle, useRef } from 'react';
 import styles from './search-input.module.scss';
 
 /* eslint-disable-next-line */
-export interface SearchInputProps {
-  ref: MutableRefObject<SearchInputRef | undefined>;
-}
+export interface SearchInputProps {}
 
 export interface SearchInputRef {
   div: HTMLDivElement | null;
   input: HTMLInputElement | null;
 }
 
-export function SearchInput(
-  props: SearchInputProps,
-  ref: MutableRefObject<SearchInputRef | undefined>
-) {
+export const SearchInput = forwardRef<
+  SearchInputRef | undefined,
+  SearchInputProps
+>((props, ref) => {
   const divRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const searchAction = useSearchAction();
@@ -53,6 +51,6 @@ export function SearchInput(
       ></InputGroup>
     </div>
   );
-}
+});
 
-export default forwardRef(SearchInput);
+export default SearchInput;
