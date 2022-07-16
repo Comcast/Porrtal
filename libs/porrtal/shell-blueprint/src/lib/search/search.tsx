@@ -1,71 +1,43 @@
-import { Icon, InputGroup } from '@blueprintjs/core';
 import { Popover2 } from '@blueprintjs/popover2';
-import { useSearchText, useShellComponents, useShellState } from '@porrtal/shell';
-import { useIsSearchDialogOpen, useSearchAction } from '@porrtal/shell';
+import { useShellComponents } from '@porrtal/shell';
+import { useIsSearchDialogOpen } from '@porrtal/shell';
 import { useEffect, useRef, useState } from 'react';
-import styles from './search.module.scss';
+import SearchInput, { SearchInputRef } from '../search-input/search-input';
+import SearchViewStack from '../search-view-stack/search-view-stack';
 
 /* eslint-disable-next-line */
 export interface SearchProps {}
 
 export function Search(props: SearchProps) {
   const shellComponents = useShellComponents();
-  const shellState = useShellState();
-  const divRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const searchInputRef = useRef<SearchInputRef>()
   const [bodyElement, setBodyElement] = useState<HTMLElement>();
   const isSearchDialogOpen = useIsSearchDialogOpen();
-  const searchAction = useSearchAction();
-  const searchText = useSearchText();
   useEffect(() => {
     setBodyElement(document.body);
   }, [isSearchDialogOpen]);
+
+  console.log('search');
 
   if (shellComponents && typeof window !== 'undefined' && window) {
     return (
       <Popover2
         isOpen={isSearchDialogOpen}
-        onOpened={(evt) => (inputRef ? inputRef.current?.focus() : null)}
+        onOpened={(evt) => (searchInputRef.current ? searchInputRef.current.input?.focus() : null)}
         enforceFocus={false}
-        // onClose={(evt) => setIsDialogOpen(false)}
         content={
-          <div
-            className={styles['search-container']}
-            style={{
-              width: divRef.current
-                ? `${divRef.current.offsetLeft - 50}px`
-                : '700px',
-              height: bodyElement
+          <SearchViewStack
+              width={searchInputRef.current && searchInputRef.current.div
+                ? `${searchInputRef.current.div.offsetLeft - 50}px`
+                : '700px'}
+              height={bodyElement
                 ? `${bodyElement.offsetHeight - 50}px`
-                : '700px',
-            }}
-          >
-            <shellComponents.ViewStack
-              pane={shellState.panes.search}
-              onClose={(evt) => searchAction.closeSearchDialog()}
-            ></shellComponents.ViewStack>
-          </div>
+                : '700px'}
+          ></SearchViewStack>
         }
         placement="left-start"
       >
-        <div ref={divRef}>
-          <InputGroup
-            onChange={(evt) => {
-              console.log('input group on change')
-              searchAction.openSearchDialog();
-              searchAction.setSearchText(evt.target.value);
-            }}
-            className={styles['search-input']}
-            inputRef={inputRef}
-            leftElement={
-              <Icon
-                onClick={(evt) => searchAction.openSearchDialog()}
-                icon="search"
-              ></Icon>
-            }
-            value={searchText}
-          ></InputGroup>
-        </div>
+        <SearchInput ref={searchInputRef}></SearchInput>
       </Popover2>
     );
   } else {

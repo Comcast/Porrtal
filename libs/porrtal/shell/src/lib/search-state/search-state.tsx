@@ -37,11 +37,13 @@ const SearchActionContext = createContext<SearchAction>({
 });
 
 export function SearchState(props: PropsWithChildren<SearchStateProps>) {
-  const debounceMillis = 3000;
+  const debounceMillis = 500;
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [debouncedSearchText, setDebouncedSearchText] = useState(searchText);
   const timeout = useRef<NodeJS.Timeout>();
+
+  console.log('search state');
 
   useEffect(() => {
     clearTimeout(timeout.current);
