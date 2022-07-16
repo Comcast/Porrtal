@@ -4,6 +4,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 
@@ -18,6 +19,7 @@ export interface SearchAction {
 }
 
 const SearchTextContext = createContext<string>('');
+const DebouncedSearchTextContext = createContext<string>('');
 const IsSearchDialogOpenContext = createContext<boolean>(false);
 const SearchActionContext = createContext<SearchAction>({
   closeSearchDialog: () => {
@@ -31,12 +33,23 @@ const SearchActionContext = createContext<SearchAction>({
   },
   setSearchText: (searchText: string) => {
     // do nothing
-  }
+  },
 });
 
 export function SearchState(props: PropsWithChildren<SearchStateProps>) {
+  const debounceMillis = 3000;
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [searchText, setSearchText] = useState('');
+  const [debouncedSearchText, setDebouncedSearchText] = useState(searchText);
+  const timeout = useRef<NodeJS.Timeout>();
+
+  useEffect(() => {
+    clearTimeout(timeout.current);
+    timeout.current = setTimeout(() => {
+      setDebouncedSearchText(searchText);
+    }, debounceMillis);
+  }, [debounceMillis, searchText]);
+
   useEffect(() => {
     const keyDownHandler = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && isDialogOpen) {
@@ -53,34 +66,44 @@ export function SearchState(props: PropsWithChildren<SearchStateProps>) {
     };
   }, [isDialogOpen]);
 
-  const searchAction: SearchAction = useMemo(() => ({
-    closeSearchDialog: () => {
-      setIsDialogOpen(false);
-    },
-    openSearchDialog: () => {
-      setIsDialogOpen(true);
-    },
-    toggleSearchDialog: () => {
-      setIsDialogOpen((isDialogOpen) => !isDialogOpen);
-    },
-    setSearchText: (searchText: string) => {
-      setSearchText(searchText);
-    }
-  }), [setIsDialogOpen, setSearchText]);
+  const searchAction: SearchAction = useMemo(
+    () => ({
+      closeSearchDialog: () => {
+        setIsDialogOpen(false);
+      },
+      openSearchDialog: () => {
+        setIsDialogOpen(true);
+      },
+      toggleSearchDialog: () => {
+        setIsDialogOpen((isDialogOpen) => !isDialogOpen);
+      },
+      setSearchText: (searchText: string) => {
+        setSearchText(searchText);
+      },
+    }),
+    [setIsDialogOpen, setSearchText]
+  );
 
   return (
     <SearchTextContext.Provider value={searchText}>
-      <IsSearchDialogOpenContext.Provider value={isDialogOpen}>
-        <SearchActionContext.Provider value={searchAction}>
-          {props.children}
-        </SearchActionContext.Provider>
-      </IsSearchDialogOpenContext.Provider>
+      <DebouncedSearchTextContext.Provider value={debouncedSearchText}>
+        <IsSearchDialogOpenContext.Provider value={isDialogOpen}>
+          <SearchActionContext.Provider value={searchAction}>
+            {props.children}
+          </SearchActionContext.Provider>
+        </IsSearchDialogOpenContext.Provider>
+      </DebouncedSearchTextContext.Provider>
     </SearchTextContext.Provider>
   );
 }
 
 export function useSearchText() {
   const state = useContext(SearchTextContext);
+  return state;
+}
+
+export function useDebouncedSearchText() {
+  const state = useContext(DebouncedSearchTextContext);
   return state;
 }
 
@@ -93,5 +116,24 @@ export function useSearchAction() {
   const state = useContext(SearchActionContext);
   return state;
 }
+
+// export function useSearchTextDebounce(
+//   debounceMillis: number,
+//   doSearch: (searchText: string) => void
+// ) {
+//   const searchText = useSearchText();
+//   const [debouncedSearchText, setDebouncedSearchText] = useState(searchText);
+//   const timeout = useRef<NodeJS.Timeout>();
+
+//   useEffect(() => {
+//     clearTimeout(timeout.current);
+//     timeout.current = setTimeout(() => {
+//       // setDebouncedSearchText(searchText);
+//       doSearch(searchText);
+//     }, debounceMillis);
+//   }, [debounceMillis, searchText, setDebouncedSearchText, doSearch]);
+
+//   return; // debouncedSearchText;
+// }
 
 export default SearchState;
