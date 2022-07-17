@@ -49,6 +49,7 @@ export function ViewStack(props: ViewStackProps) {
           currentIndex={currentIndex}
           dispatch={dispatch}
           handleChange={handleChange}
+          onClose={props.onClose}
         />
       );
 
@@ -113,6 +114,15 @@ function ViewStackTabsTop(
               }
             ></Tab>
           ))}
+          {props.onClose && (
+            <Button
+              className={styles['view-stack-close-button']}
+              onClick={(evt) => (props.onClose ? props.onClose(evt) : null)}
+            >
+              <Icon>clear</Icon>
+              <span>close</span>
+            </Button>
+          )}
         </Tabs>
       </Box>
       <div className={styles['view-host-container']}>
@@ -217,8 +227,9 @@ function ViewStackCards(
             <CardHeader
               sx={{
                 padding: 0,
-                backgroundColor: index === props.currentIndex ? 'gainsboro' : ''
-               }}
+                backgroundColor:
+                  index === props.currentIndex ? 'gainsboro' : '',
+              }}
               title={
                 <Button
                   onClick={(evt) => {
