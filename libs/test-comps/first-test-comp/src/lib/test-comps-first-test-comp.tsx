@@ -1,5 +1,9 @@
 import { ViewState } from '@porrtal/api';
-import { useDebouncedSearchText, useShellDispatch } from '@porrtal/shell';
+import {
+  useDebouncedSearchText,
+  useSearchAction,
+  useShellDispatch,
+} from '@porrtal/shell';
 import styles from './test-comps-first-test-comp.module.scss';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -9,6 +13,7 @@ export interface TestCompsFirstTestCompProps {
 
 export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
   const dispatch = useShellDispatch();
+  const searchAction = useSearchAction();
   const searchText = useDebouncedSearchText();
   console.log('test comp', props.viewState.key, searchText);
 
@@ -32,6 +37,25 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       >
         launch right
       </button>
+      <button
+        onClick={() => {
+          dispatch({
+            type: 'launchViewState',
+            viewState: {
+              key: uuidv4(),
+              paneType: 'right',
+              componentName: '@test-comps/first-test-comp',
+              displayText: 'one{a}{b.c}',
+              displayIcon: 'home',
+              state: { a: ' bam!', b: { c: ' bambam!!' } },
+            },
+          });
+          searchAction?.closeSearchDialog();
+        }}
+      >
+        launch right and close search
+      </button>
+
       <button
         onClick={() => {
           dispatch({
