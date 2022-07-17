@@ -1,5 +1,5 @@
 import { ViewState } from '@porrtal/api';
-import { useShellDispatch } from '@porrtal/shell';
+import { useDebouncedSearchText, useShellDispatch } from '@porrtal/shell';
 import styles from './test-comps-first-test-comp.module.scss';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -9,6 +9,8 @@ export interface TestCompsFirstTestCompProps {
 
 export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
   const dispatch = useShellDispatch();
+  const searchText = useDebouncedSearchText();
+  console.log('test comp', props.viewState.key, searchText);
 
   return (
     <div className={styles['container']}>
@@ -23,7 +25,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               componentName: '@test-comps/first-test-comp',
               displayText: 'one{a}{b.c}',
               displayIcon: 'home',
-              state: { a: ' bam!', b: { c: ' bambam!!' } }
+              state: { a: ' bam!', b: { c: ' bambam!!' } },
             },
           });
         }}
@@ -113,6 +115,8 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       >
         launch second key=7 bottom
       </button>
+      <hr />
+      <div>search text: {searchText}</div>
 
       {[
         'one',

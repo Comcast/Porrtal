@@ -51,4 +51,11 @@ export const testViews: ViewState[] = [
     displayText: '@test-comps/first-test-comp',
     displayIcon: 'power',
   },
+  {
+    key: 'first-search-comp',
+    componentName: '@test-comps/first-test-comp',
+    paneType: 'search',
+    displayText: 'find stuff',
+    displayIcon: 'power',
+  },
 ];
