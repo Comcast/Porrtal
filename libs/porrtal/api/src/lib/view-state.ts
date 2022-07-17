@@ -12,5 +12,6 @@ export interface ViewState {
   componentImport?: ViewComponentFunction;
   displayText: string;
   displayIcon: string;
+  entityType: string;
   state?: StateObject;
 }
