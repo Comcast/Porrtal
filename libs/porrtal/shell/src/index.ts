@@ -5,3 +5,4 @@ export * from './lib/view-host/view-host';
 export * from './lib/view-stack-props';
 export * from './lib/search-props';
 export * from './lib/shell-components';
+export * from './lib/search-view-stack/search-view-stack';

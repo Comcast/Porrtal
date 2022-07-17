@@ -3,7 +3,7 @@ import { SearchProps, useShellComponents } from '@porrtal/shell';
 import { useIsSearchDialogOpen } from '@porrtal/shell';
 import { useEffect, useRef, useState } from 'react';
 import SearchInput, { SearchInputRef } from '../search-input/search-input';
-import SearchViewStack from '../search-view-stack/search-view-stack';
+import { SearchViewStack } from '@porrtal/shell';
 
 /* eslint-disable-next-line */
 export function Search(props: SearchProps) {

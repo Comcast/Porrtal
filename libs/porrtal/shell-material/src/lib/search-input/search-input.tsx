@@ -1,23 +1,44 @@
-import { Box, Button, Icon, InputAdornment, TextField } from '@mui/material';
+import { Box, Icon, TextField } from '@mui/material';
 import { useSearchAction, useSearchText } from '@porrtal/shell';
-import { useRef } from 'react';
+import { forwardRef, useImperativeHandle, useRef } from 'react';
 import styles from './search-input.module.scss';
 
 /* eslint-disable-next-line */
 export interface SearchInputProps {}
 
-export function SearchInput(props: SearchInputProps) {
+export interface SearchInputRef {
+  div: HTMLDivElement | null;
+  input: HTMLInputElement | null;
+}
+
+export const SearchInput = forwardRef<
+  SearchInputRef | undefined,
+  SearchInputProps
+>((props, ref) => {
   const divRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const searchAction = useSearchAction();
   const searchText = useSearchText();
+  useImperativeHandle(ref, () => ({
+    get div() {
+      return divRef.current;
+    },
+
+    get input() {
+      return inputRef.current;
+    },
+  }));
 
   return (
     <div ref={divRef}>
       <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
         <Icon
           className={styles['search-icon']}
-          onClick={(evt) => alert('hello')}
+          onClick={(evt) => {
+            evt.stopPropagation();
+            searchAction.openSearchDialog();
+            inputRef.current?.focus();
+          }}
         >
           search
         </Icon>
@@ -43,6 +64,6 @@ export function SearchInput(props: SearchInputProps) {
       </Box>
     </div>
   );
-}
+});
 
 export default SearchInput;
