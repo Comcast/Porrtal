@@ -35,7 +35,6 @@ export const SearchInput = forwardRef<
     <div ref={divRef}>
       <InputGroup
         onChange={(evt) => {
-          console.log('input group on change');
           searchAction.openSearchDialog();
           searchAction.setSearchText(evt.target.value);
         }}

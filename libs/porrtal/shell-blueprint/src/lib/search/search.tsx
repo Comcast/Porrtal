@@ -1,13 +1,11 @@
 import { Popover2 } from '@blueprintjs/popover2';
-import { useShellComponents } from '@porrtal/shell';
+import { SearchProps, useShellComponents } from '@porrtal/shell';
 import { useIsSearchDialogOpen } from '@porrtal/shell';
 import { useEffect, useRef, useState } from 'react';
 import SearchInput, { SearchInputRef } from '../search-input/search-input';
 import SearchViewStack from '../search-view-stack/search-view-stack';
 
 /* eslint-disable-next-line */
-export interface SearchProps {}
-
 export function Search(props: SearchProps) {
   const shellComponents = useShellComponents();
   const searchInputRef = useRef<SearchInputRef>();
