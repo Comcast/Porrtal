@@ -1,61 +1,79 @@
-import { ViewComponentFunction } from '@porrtal/api';
-import { ViewState } from '@porrtal/api';
+import { View } from '@porrtal/api';
+import { ComponentFactoryDictionary } from '@porrtal/shell';
 
-export const testComponents = {
-  '@test-comps/first-test-comp': (() =>
-    import('@test-comps/first-test-comp')) as unknown as ViewComponentFunction,
-  '@test-comps/second-test-comp': (() =>
-    import('@test-comps/second-test-comp')) as unknown as ViewComponentFunction,
+export const testComponents: ComponentFactoryDictionary = {
+  '@test-comps/first-test-comp': () => {
+    const ret = import('@test-comps/first-test-comp').then((module) => ({
+      default: module.TestCompsFirstTestComp,
+    }));
+    return ret;
+  },
+
+  '@test-comps/second-test-comp': () => import('@test-comps/second-test-comp'),
 };
 
-export const testViews: ViewState[] = [
+export const testViews: View[] = [
   {
-    key: 'one-nav',
-    componentName: '@test-comps/first-test-comp',
+    viewId: 'one-nav',
     paneType: 'nav',
-    displayText: 'one',
-    displayIcon: 'home',
+    launchAtStartup: true,
+    componentName: '@test-comps/first-test-comp',
+    keyTemplate: 'one-nav',
+    displayTextTemplate: 'one',
+    displayIconTemplate: 'home',
   },
   {
-    key: 'two-nav',
-    componentName: '@test-comps/first-test-comp',
+    viewId: 'two-nav',
     paneType: 'nav',
-    displayText: 'two',
-    displayIcon: 'settings',
+    launchAtStartup: true,
+    componentName: '@test-comps/first-test-comp',
+    keyTemplate: 'two-nav',
+    displayTextTemplate: 'two',
+    displayIconTemplate: 'settings',
   },
   {
-    key: 'one-main',
-    componentName: '@test-comps/first-test-comp',
+    viewId: 'one-main',
     paneType: 'main',
-    displayText: 'one',
-    displayIcon: 'home',
+    launchAtStartup: true,
+    componentName: '@test-comps/first-test-comp',
+    keyTemplate: 'one-main',
+    displayTextTemplate: 'one',
+    displayIconTemplate: 'home',
   },
   {
-    key: 'two-main',
-    componentName: '@test-comps/first-test-comp',
+    viewId: 'two-main',
     paneType: 'main',
-    displayText: 'two',
-    displayIcon: 'settings',
+    launchAtStartup: true,
+    componentName: '@test-comps/first-test-comp',
+    keyTemplate: 'two-main',
+    displayTextTemplate: 'two',
+    displayIconTemplate: 'settings',
   },
   {
-    key: 'three-main',
-    componentName: '@test-comps/first-test-comp',
+    viewId: 'three-main',
     paneType: 'main',
-    displayText: 'three',
-    displayIcon: 'account_circle',
+    launchAtStartup: true,
+    componentName: '@test-comps/first-test-comp',
+    keyTemplate: 'three-main',
+    displayTextTemplate: 'three',
+    displayIconTemplate: 'account_circle',
   },
   {
-    key: 'first-test-comp',
-    componentName: '@test-comps/first-test-comp',
+    viewId: 'first-test-comp',
     paneType: 'main',
-    displayText: '@test-comps/first-test-comp',
-    displayIcon: 'power',
+    launchAtStartup: true,
+    componentName: '@test-comps/first-test-comp',
+    keyTemplate: 'first-test-comp',
+    displayTextTemplate: '@test-comps/first-test-comp',
+    displayIconTemplate: 'power',
   },
   {
-    key: 'first-search-comp',
-    componentName: '@test-comps/first-test-comp',
+    viewId: 'first-search-comp',
     paneType: 'search',
-    displayText: 'find stuff',
-    displayIcon: 'power',
+    launchAtStartup: true,
+    componentName: '@test-comps/first-test-comp',
+    keyTemplate: 'first-search-comp',
+    displayTextTemplate: 'find stuff',
+    displayIconTemplate: 'power',
   },
 ];

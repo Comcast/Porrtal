@@ -1,13 +1,12 @@
+import { Button } from '@mui/material';
+import { EntityMenuProps } from '@porrtal/shell';
 import styles from './entity-menu.module.scss';
-
-/* eslint-disable-next-line */
-export interface EntityMenuProps {}
 
 export function EntityMenu(props: EntityMenuProps) {
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to EntityMenu!</h1>
-    </div>
+    <Button onClick={(evt) => alert(`show menu`)}>
+      {props.children}
+    </Button>
   );
 }
 

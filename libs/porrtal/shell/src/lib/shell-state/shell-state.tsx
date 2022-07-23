@@ -6,6 +6,7 @@ import {
   Pane,
   paneTypes,
   PaneArrangement,
+  View,
 } from '@porrtal/api';
 import {
   useReducer,
@@ -27,10 +28,12 @@ export type ComponentFactoryDictionary = {
 export interface UseShellState {
   panes: Panes;
   components: ComponentFactoryDictionary;
+  views: View[];
 }
 
 export type ShellAction =
-  | { type: 'launchViewState'; viewState: ViewState; state?: StateObject }
+  | { type: 'launchView'; viewId: string; state?: StateObject }
+  | { type: 'launchStartupViews' }
   | { type: 'moveView'; key: string; toPane: PaneType }
   | { type: 'deleteViewState'; key: string }
   | { type: 'setCurrentViewStateByKey'; key: string; pane: Pane }
@@ -41,25 +44,47 @@ export type ShellAction =
         componentName: string;
         viewComponentFunction: ViewComponentFunction;
       };
+    }
+  | {
+      type: 'registerView';
+      view: View;
     };
 
 const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
   console.log('reducer', state, action);
   switch (action.type) {
-    case 'launchViewState': {
+    case 'launchView': {
+      const view = state.views.find((view) => view.viewId === action.viewId);
+      if (!view) {
+        // todo: log error: view for viewId not found
+        return state;
+      }
       let retState: UseShellState = state;
-      const newViewStateState = combineViewStateStateAndActionState(
-        action.viewState.state,
+      const newState = combineViewStateStateAndActionState(
+        view.state,
         action.state
       );
-      const newDisplayTextResult = replaceParameters(
-        action.viewState.displayText,
-        newViewStateState ?? {}
+      const newKey = replaceParameters(
+        view.keyTemplate,
+        newState ?? {}
+      );
+      const newDisplayText = replaceParameters(
+        view.displayTextTemplate,
+        newState ?? {}
+      );
+      const newDisplayIcon = replaceParameters(
+        view.displayIconTemplate,
+        newState ?? {}
       );
       const newViewState: ViewState = {
-        ...action.viewState,
-        displayText: newDisplayTextResult.replaced,
-        state: newViewStateState,
+        key: newKey.replaced,
+        displayText: newDisplayText.replaced,
+        displayIcon: newDisplayIcon.replaced,
+        state: newState,
+
+        paneType: view.paneType,
+        componentImport: state.components[view.componentName],
+        view
       };
 
       // see if the key exists already (replace it if so)
@@ -69,8 +94,6 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
             (vs) => vs.key === newViewState.key
           );
           if (ii >= 0) {
-            newViewState.componentImport =
-              state.components[newViewState.componentName];
             const newArray = [...state.panes[paneType].viewStates];
             newArray.splice(ii, 1, newViewState);
             retState = {
@@ -95,17 +118,14 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
 
       // key didn't exist so add the view state to the requested pane
       const viewStates = state.panes[newViewState.paneType].viewStates;
-      newViewState.componentImport =
-        state.components[newViewState.componentName];
       retState = {
         ...state,
         panes: {
           ...state.panes,
-          [action.viewState.paneType]: {
-            ...state.panes[action.viewState.paneType],
-            currentKey: action.viewState.key,
+          [newViewState.paneType]: {
+            ...state.panes[newViewState.paneType],
+            currentKey: newViewState.key,
             viewStates: [...viewStates, newViewState],
-            paneType: action.viewState.paneType,
           },
         },
       };
@@ -114,16 +134,22 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
 
     case 'moveView': {
       let retState = state;
-      let foundView: ViewState | undefined;
+      let foundViewState: ViewState | undefined;
 
       paneTypes.some((paneType) => {
-        foundView = state.panes[paneType].viewStates.find(
+        foundViewState = state.panes[paneType].viewStates.find(
           (vs) => vs.key === action.key
         );
-        if (foundView) {
+        if (foundViewState) {
           if (paneType === action.toPane) {
-            return true;
+          // asking to move it to the pane it is already in (do nothing)
+          return true;
           }
+
+          foundViewState = {
+            ...foundViewState,
+            paneType: action.toPane
+          };
 
           retState = {
             ...state,
@@ -146,7 +172,7 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
                 ...state.panes[action.toPane],
                 viewStates: [
                   ...state.panes[action.toPane].viewStates,
-                  foundView,
+                  foundViewState,
                 ],
                 currentKey: action.key,
                 paneType: action.toPane,
@@ -241,6 +267,27 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
             action.componentRegistration.viewComponentFunction,
         },
       };
+
+    case 'registerView':
+      return {
+        ...state,
+        views: [
+          ...state.views,
+          action.view
+        ]
+      };
+
+    case 'launchStartupViews': {
+      state.views
+        .filter(view => view.launchAtStartup)
+        .forEach(view => {
+          state = reducer(state, {
+            type: 'launchView',
+            viewId: view.viewId
+          })
+        })
+    }
+
   }
   return state;
 };
@@ -320,6 +367,7 @@ const emptyUseShellState: UseShellState = {
     },
   },
   components: {},
+  views: [],
 };
 
 // arg to createContext is used if no provider is defined https://stackoverflow.com/q/49949099/7085047
@@ -333,7 +381,7 @@ const ShellDispatchContext = createContext<Dispatch<ShellAction>>(
 );
 
 export interface ShellStateProps {
-  views?: ViewState[];
+  views?: View[];
   components: ComponentFactoryDictionary;
 }
 
@@ -347,10 +395,14 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
     props.views?.forEach(
       (view) =>
         (memoState = reducer(memoState, {
-          type: 'launchViewState',
-          viewState: view,
+          type: 'registerView',
+          view: view,
         }))
     );
+
+    memoState = reducer(memoState, {
+      type: 'launchStartupViews',
+    });
 
     // set current tab to first of each collection
     paneTypes.forEach((paneType) => {
