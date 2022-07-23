@@ -1,9 +1,11 @@
+import { StateObject } from '@porrtal/api';
 import { ReactNode } from 'react';
 import { useShellComponents } from '../shell-components';
 // import { useShellState } from '../shell-state/shell-state';
 
 export interface EntityMenuProps {
   entityType: string;
+  state?: StateObject;
   children: ReactNode | undefined;
 }
 

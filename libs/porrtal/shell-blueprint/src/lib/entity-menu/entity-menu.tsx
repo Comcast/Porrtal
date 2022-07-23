@@ -1,12 +1,47 @@
-import styles from './entity-menu.module.scss';
-import { EntityMenuProps } from '@porrtal/shell';
-import { Button } from '@blueprintjs/core';
+import {
+  EntityMenuProps,
+  useShellDispatch,
+  useShellState,
+} from '@porrtal/shell';
+import { Button, IconName, Menu, MenuItem } from '@blueprintjs/core';
+import { Popover2 } from '@blueprintjs/popover2';
+import { useState } from 'react';
 
 export function EntityMenu(props: EntityMenuProps) {
+  const shellState = useShellState();
+  const dispatch = useShellDispatch();
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Button onClick={(evt) => alert(`show menu`)}>
-      {props.children}
-    </Button>
+    <Popover2 isOpen={isOpen}
+      content={
+        <Menu>
+          {shellState.views
+            .filter((view) => view.entityType === props.entityType)
+            .map((view) => (
+              <MenuItem
+                key={view.viewId}
+                icon={view.displayIconTemplate as IconName}
+                text={view.displayTextTemplate}
+                onClick={(evt) => {
+                  dispatch({
+                    type: 'launchView',
+                    viewId: view.viewId,
+                    state: props.state,
+                  });
+                  setIsOpen(false);
+                  evt.stopPropagation();
+                }}
+              />
+            ))}
+        </Menu>
+      }
+    >
+      <Button onClick={(evt) => setIsOpen(true)}>
+        {props.children}
+        <div>{JSON.stringify(props.state)}</div>
+      </Button>
+    </Popover2>
   );
 }
 
