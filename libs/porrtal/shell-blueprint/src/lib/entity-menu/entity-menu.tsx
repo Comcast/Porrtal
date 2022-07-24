@@ -3,17 +3,15 @@ import {
   useShellDispatch,
   useShellState,
 } from '@porrtal/shell';
-import { Button, IconName, Menu, MenuItem } from '@blueprintjs/core';
+import { IconName, Menu, MenuItem } from '@blueprintjs/core';
 import { Popover2, Classes } from '@blueprintjs/popover2';
-import { useState } from 'react';
 
 export function EntityMenu(props: EntityMenuProps) {
   const shellState = useShellState();
   const dispatch = useShellDispatch();
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Popover2 isOpen={isOpen}
+    <Popover2
       content={
         <Menu className={Classes.POPOVER2_DISMISS}>
           {shellState.views
@@ -29,18 +27,13 @@ export function EntityMenu(props: EntityMenuProps) {
                     viewId: view.viewId,
                     state: props.state,
                   });
-                  setIsOpen(false);
-                  evt.stopPropagation();
                 }}
               />
             ))}
         </Menu>
       }
     >
-      <Button onClick={(evt) => setIsOpen(true)}>
-        {props.children}
-        <div>{JSON.stringify(props.state)}</div>
-      </Button>
+      {props.children}
     </Popover2>
   );
 }
