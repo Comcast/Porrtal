@@ -17,7 +17,9 @@ export function EntityMenu(props: EntityMenuProps) {
 
   if (shellComponents && typeof window !== 'undefined' && window) {
     return (
-      <shellComponents.EntityMenu entityType="account">
+      <shellComponents.EntityMenu
+        entityType={props.entityType}
+        state={props.state}>
         {props.children}
       </shellComponents.EntityMenu>
     );
