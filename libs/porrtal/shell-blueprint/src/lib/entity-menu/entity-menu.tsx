@@ -4,7 +4,7 @@ import {
   useShellState,
 } from '@porrtal/shell';
 import { Button, IconName, Menu, MenuItem } from '@blueprintjs/core';
-import { Popover2 } from '@blueprintjs/popover2';
+import { Popover2, Classes } from '@blueprintjs/popover2';
 import { useState } from 'react';
 
 export function EntityMenu(props: EntityMenuProps) {
@@ -15,7 +15,7 @@ export function EntityMenu(props: EntityMenuProps) {
   return (
     <Popover2 isOpen={isOpen}
       content={
-        <Menu>
+        <Menu className={Classes.POPOVER2_DISMISS}>
           {shellState.views
             .filter((view) => view.entityType === props.entityType)
             .map((view) => (
