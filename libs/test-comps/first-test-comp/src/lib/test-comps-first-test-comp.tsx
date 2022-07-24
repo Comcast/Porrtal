@@ -195,6 +195,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       </button>
       <hr />
       <div>search text: {searchText}</div>
+      <div>state: {JSON.stringify(props.viewState?.state)}</div>
 
       {[
         'one',
