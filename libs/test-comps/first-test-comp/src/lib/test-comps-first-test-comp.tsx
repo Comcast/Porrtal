@@ -22,16 +22,23 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       <h1>Welcome to TestCompsFirstTestComp!</h1>
       <button
         onClick={() => {
+          const newViewId = uuidv4();
           dispatch({
-            type: 'launchViewState',
-            viewState: {
-              key: uuidv4(),
+            type: 'registerView',
+            view: {
+              viewId: newViewId,
+              keyTemplate: uuidv4(),
+              launchAtStartup: false,
               paneType: 'right',
               componentName: '@test-comps/first-test-comp',
-              displayText: 'one{a}{b.c}',
-              displayIcon: 'home',
+              displayTextTemplate: 'one{a}{b.c}',
+              displayIconTemplate: 'home',
               state: { a: ' bam!', b: { c: ' bambam!!' } },
             },
+          });
+          dispatch({
+            type: 'launchView',
+            viewId: newViewId,
           });
         }}
       >
@@ -39,16 +46,23 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       </button>
       <button
         onClick={() => {
+          const newViewId = uuidv4();
           dispatch({
-            type: 'launchViewState',
-            viewState: {
-              key: uuidv4(),
+            type: 'registerView',
+            view: {
+              viewId: newViewId,
+              keyTemplate: uuidv4(),
+              launchAtStartup: false,
               paneType: 'right',
               componentName: '@test-comps/first-test-comp',
-              displayText: 'one{a}{b.c}',
-              displayIcon: 'home',
+              displayTextTemplate: 'one{a}{b.c}',
+              displayIconTemplate: 'home',
               state: { a: ' bam!', b: { c: ' bambam!!' } },
             },
+          });
+          dispatch({
+            type: 'launchView',
+            viewId: newViewId,
           });
           searchAction?.closeSearchDialog();
         }}
@@ -58,15 +72,23 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
 
       <button
         onClick={() => {
+          const newViewId = uuidv4();
           dispatch({
-            type: 'launchViewState',
-            viewState: {
-              key: uuidv4(),
+            type: 'registerView',
+            view: {
+              viewId: newViewId,
+              keyTemplate: uuidv4(),
+              launchAtStartup: false,
               paneType: 'bottom',
               componentName: '@test-comps/first-test-comp',
-              displayText: 'one',
-              displayIcon: 'home',
+              displayTextTemplate: 'one',
+              displayIconTemplate: 'home',
+              state: {},
             },
+          });
+          dispatch({
+            type: 'launchView',
+            viewId: newViewId,
           });
         }}
       >
@@ -75,15 +97,23 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       <br />
       <button
         onClick={() => {
+          const newViewId = uuidv4();
           dispatch({
-            type: 'launchViewState',
-            viewState: {
-              key: '7',
+            type: 'registerView',
+            view: {
+              viewId: newViewId,
+              keyTemplate: '7',
+              launchAtStartup: false,
               paneType: 'right',
               componentName: '@test-comps/first-test-comp',
-              displayText: 'Seven-First',
-              displayIcon: 'home',
+              displayTextTemplate: 'Seven-First',
+              displayIconTemplate: 'home',
+              state: {},
             },
+          });
+          dispatch({
+            type: 'launchView',
+            viewId: newViewId,
           });
         }}
       >
@@ -91,15 +121,23 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       </button>
       <button
         onClick={() => {
+          const newViewId = uuidv4();
           dispatch({
-            type: 'launchViewState',
-            viewState: {
-              key: '7',
+            type: 'registerView',
+            view: {
+              viewId: newViewId,
+              keyTemplate: '7',
+              launchAtStartup: false,
               paneType: 'bottom',
               componentName: '@test-comps/first-test-comp',
-              displayText: 'Seven-First',
-              displayIcon: 'home',
+              displayTextTemplate: 'Seven-Bottom',
+              displayIconTemplate: 'home',
+              state: {},
             },
+          });
+          dispatch({
+            type: 'launchView',
+            viewId: newViewId,
           });
         }}
       >
@@ -109,15 +147,23 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       <p>second component</p>
       <button
         onClick={() => {
+          const newViewId = uuidv4();
           dispatch({
-            type: 'launchViewState',
-            viewState: {
-              key: '7',
+            type: 'registerView',
+            view: {
+              viewId: newViewId,
+              keyTemplate: '7',
+              launchAtStartup: false,
               paneType: 'right',
               componentName: '@test-comps/second-test-comp',
-              displayText: 'Seven-Second',
-              displayIcon: 'home',
+              displayTextTemplate: 'Seven-Second',
+              displayIconTemplate: 'home',
+              state: {},
             },
+          });
+          dispatch({
+            type: 'launchView',
+            viewId: newViewId,
           });
         }}
       >
@@ -125,15 +171,23 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       </button>
       <button
         onClick={() => {
+          const newViewId = uuidv4();
           dispatch({
-            type: 'launchViewState',
-            viewState: {
-              key: '7',
+            type: 'registerView',
+            view: {
+              viewId: newViewId,
+              keyTemplate: '7',
+              launchAtStartup: false,
               paneType: 'bottom',
               componentName: '@test-comps/second-test-comp',
-              displayText: 'Seven-Second',
-              displayIcon: 'home',
+              displayTextTemplate: 'Seven-Second',
+              displayIconTemplate: 'home',
+              state: {},
             },
+          });
+          dispatch({
+            type: 'launchView',
+            viewId: newViewId,
           });
         }}
       >
@@ -141,6 +195,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       </button>
       <hr />
       <div>search text: {searchText}</div>
+      <div>state: {JSON.stringify(props.viewState?.state)}</div>
 
       {[
         'one',

@@ -6,6 +6,7 @@ import {
 import ViewStack from './view-stack/view-stack';
 import { ReactChild } from 'react';
 import Search from './search/search';
+import EntityMenu from './entity-menu/entity-menu';
 
 export interface ShellComponentsMaterialProps {
   children?: ReactChild | ReactChild[];
@@ -14,7 +15,8 @@ export interface ShellComponentsMaterialProps {
 export function ShellComponentsMaterial(props: ShellComponentsMaterialProps) {
   const shellComponents: ShellComponents = {
     ViewStack,
-    Search
+    Search,
+    EntityMenu
   };
   return (
     <ShellComponentsContext.Provider value={shellComponents}>

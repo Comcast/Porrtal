@@ -1,61 +1,100 @@
-import { ViewComponentFunction } from '@porrtal/api';
-import { ViewState } from '@porrtal/api';
+import { View } from '@porrtal/api';
+import { ComponentFactoryDictionary } from '@porrtal/shell';
 
-export const testComponents = {
-  '@test-comps/first-test-comp': (() =>
-    import('@test-comps/first-test-comp')) as unknown as ViewComponentFunction,
-  '@test-comps/second-test-comp': (() =>
-    import('@test-comps/second-test-comp')) as unknown as ViewComponentFunction,
+export const testComponents: ComponentFactoryDictionary = {
+  '@test-comps/first-test-comp': () => {
+    const ret = import('@test-comps/first-test-comp').then((module) => ({
+      default: module.TestCompsFirstTestComp,
+    }));
+    return ret;
+  },
+
+  '@test-comps/second-test-comp': () => import('@test-comps/second-test-comp'),
 };
 
-export const testViews: ViewState[] = [
+export const testViews: View[] = [
   {
-    key: 'one-nav',
-    componentName: '@test-comps/first-test-comp',
+    viewId: 'one-nav',
     paneType: 'nav',
-    displayText: 'one',
-    displayIcon: 'home',
+    launchAtStartup: true,
+    componentName: '@test-comps/first-test-comp',
+    keyTemplate: 'one-nav',
+    displayTextTemplate: 'one',
+    displayIconTemplate: 'home',
   },
   {
-    key: 'two-nav',
-    componentName: '@test-comps/first-test-comp',
+    viewId: 'two-nav',
     paneType: 'nav',
-    displayText: 'two',
-    displayIcon: 'settings',
+    launchAtStartup: true,
+    componentName: '@test-comps/first-test-comp',
+    keyTemplate: 'two-nav',
+    displayTextTemplate: 'two',
+    displayIconTemplate: 'settings',
   },
   {
-    key: 'one-main',
-    componentName: '@test-comps/first-test-comp',
+    viewId: 'one-main',
     paneType: 'main',
-    displayText: 'one',
-    displayIcon: 'home',
+    launchAtStartup: true,
+    componentName: '@test-comps/first-test-comp',
+    keyTemplate: 'one-main',
+    displayTextTemplate: 'one',
+    displayIconTemplate: 'home',
   },
   {
-    key: 'two-main',
-    componentName: '@test-comps/first-test-comp',
+    viewId: 'account-one',
     paneType: 'main',
-    displayText: 'two',
-    displayIcon: 'settings',
+    launchAtStartup: false,
+    componentName: '@test-comps/first-test-comp',
+    entityType: 'account',
+    keyTemplate: 'account-one',
+    displayTextTemplate: 'account-one',
+    displayIconTemplate: 'settings',
   },
   {
-    key: 'three-main',
-    componentName: '@test-comps/first-test-comp',
+    viewId: 'account-two',
     paneType: 'main',
-    displayText: 'three',
-    displayIcon: 'account_circle',
+    launchAtStartup: false,
+    componentName: '@test-comps/first-test-comp',
+    entityType: 'account',
+    keyTemplate: 'account-two',
+    displayTextTemplate: 'account-two',
+    displayIconTemplate: 'settings',
   },
   {
-    key: 'first-test-comp',
-    componentName: '@test-comps/first-test-comp',
+    viewId: 'appointment-one',
     paneType: 'main',
-    displayText: '@test-comps/first-test-comp',
-    displayIcon: 'power',
+    launchAtStartup: false,
+    componentName: '@test-comps/first-test-comp',
+    entityType: 'appointment',
+    keyTemplate: 'appointment-one',
+    displayTextTemplate: 'appointment-one',
+    displayIconTemplate: 'settings',
   },
   {
-    key: 'first-search-comp',
+    viewId: 'three-main',
+    paneType: 'main',
+    launchAtStartup: true,
     componentName: '@test-comps/first-test-comp',
+    keyTemplate: 'three-main',
+    displayTextTemplate: 'three',
+    displayIconTemplate: 'account_circle',
+  },
+  {
+    viewId: 'first-test-comp',
+    paneType: 'main',
+    launchAtStartup: true,
+    componentName: '@test-comps/first-test-comp',
+    keyTemplate: 'first-test-comp',
+    displayTextTemplate: '@test-comps/first-test-comp',
+    displayIconTemplate: 'power',
+  },
+  {
+    viewId: 'first-search-comp',
     paneType: 'search',
-    displayText: 'find stuff',
-    displayIcon: 'power',
+    launchAtStartup: true,
+    componentName: '@test-comps/first-test-comp',
+    keyTemplate: 'first-search-comp',
+    displayTextTemplate: 'find stuff',
+    displayIconTemplate: 'power',
   },
 ];
