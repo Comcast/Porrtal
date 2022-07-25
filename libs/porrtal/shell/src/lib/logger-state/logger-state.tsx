@@ -15,6 +15,7 @@ export interface UseLoggerState {
 export type LoggerAction = { type: 'postEntry'; entry: LoggerEntry };
 
 const reducer: Reducer<UseLoggerState, LoggerAction> = (state, action) => {
+  console.log('logger reducer', state, action);
   switch (action.type) {
     case 'postEntry':
       return {

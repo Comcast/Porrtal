@@ -20,6 +20,7 @@ import {
 import { StateObject } from '@porrtal/api';
 import { replaceParameters } from '../shell-utilities/shell-utilities';
 import SearchState from '../search-state/search-state';
+import { LoggerState } from '../logger-state/logger-state';
 
 export type ComponentFactoryDictionary = {
   [componentName: string]: ViewComponentFunction;
@@ -63,10 +64,7 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
         view.state,
         action.state
       );
-      const newKey = replaceParameters(
-        view.keyTemplate,
-        newState ?? {}
-      );
+      const newKey = replaceParameters(view.keyTemplate, newState ?? {});
       const newDisplayText = replaceParameters(
         view.displayTextTemplate,
         newState ?? {}
@@ -83,7 +81,7 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
 
         paneType: view.paneType,
         componentImport: state.components[view.componentName],
-        view
+        view,
       };
 
       // see if the key exists already (replace it if so)
@@ -141,13 +139,13 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
         );
         if (foundViewState) {
           if (paneType === action.toPane) {
-          // asking to move it to the pane it is already in (do nothing)
-          return true;
+            // asking to move it to the pane it is already in (do nothing)
+            return true;
           }
 
           foundViewState = {
             ...foundViewState,
-            paneType: action.toPane
+            paneType: action.toPane,
           };
 
           retState = {
@@ -270,23 +268,19 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
     case 'registerView':
       return {
         ...state,
-        views: [
-          ...state.views,
-          action.view
-        ]
+        views: [...state.views, action.view],
       };
 
     case 'launchStartupViews': {
       state.views
-        .filter(view => view.launchAtStartup)
-        .forEach(view => {
+        .filter((view) => view.launchAtStartup)
+        .forEach((view) => {
           state = reducer(state, {
             type: 'launchView',
-            viewId: view.viewId
-          })
-        })
+            viewId: view.viewId,
+          });
+        });
     }
-
   }
   return state;
 };
@@ -422,7 +416,9 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
   return (
     <ShellStateContext.Provider value={state}>
       <ShellDispatchContext.Provider value={dispatch}>
-        <SearchState>{props.children}</SearchState>
+        <LoggerState>
+          <SearchState>{props.children}</SearchState>
+        </LoggerState>
       </ShellDispatchContext.Provider>
     </ShellStateContext.Provider>
   );

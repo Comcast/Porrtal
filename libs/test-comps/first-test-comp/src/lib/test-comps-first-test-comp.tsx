@@ -3,6 +3,7 @@ import {
   useDebouncedSearchText,
   useSearchAction,
   useShellDispatch,
+  useLoggerDispatch,
 } from '@porrtal/shell';
 import styles from './test-comps-first-test-comp.module.scss';
 import { v4 as uuidv4 } from 'uuid';
@@ -12,9 +13,11 @@ export interface TestCompsFirstTestCompProps {
 }
 
 export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
-  const dispatch = useShellDispatch();
+  const shellDispatch = useShellDispatch();
   const searchAction = useSearchAction();
   const searchText = useDebouncedSearchText();
+  const loggerDispatch = useLoggerDispatch();
+
   console.log('test comp', props.viewState.key, searchText);
 
   return (
@@ -23,7 +26,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       <button
         onClick={() => {
           const newViewId = uuidv4();
-          dispatch({
+          shellDispatch({
             type: 'registerView',
             view: {
               viewId: newViewId,
@@ -36,18 +39,18 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               state: { a: ' bam!', b: { c: ' bambam!!' } },
             },
           });
-          dispatch({
+          shellDispatch({
             type: 'launchView',
             viewId: newViewId,
           });
         }}
       >
         launch right
-      </button>
+      </button>&nbsp;
       <button
         onClick={() => {
           const newViewId = uuidv4();
-          dispatch({
+          shellDispatch({
             type: 'registerView',
             view: {
               viewId: newViewId,
@@ -60,7 +63,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               state: { a: ' bam!', b: { c: ' bambam!!' } },
             },
           });
-          dispatch({
+          shellDispatch({
             type: 'launchView',
             viewId: newViewId,
           });
@@ -68,12 +71,12 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
         }}
       >
         launch right and close search
-      </button>
+      </button>&nbsp;
 
       <button
         onClick={() => {
           const newViewId = uuidv4();
-          dispatch({
+          shellDispatch({
             type: 'registerView',
             view: {
               viewId: newViewId,
@@ -86,19 +89,19 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               state: {},
             },
           });
-          dispatch({
+          shellDispatch({
             type: 'launchView',
             viewId: newViewId,
           });
         }}
       >
         launch bottom
-      </button>
+      </button>&nbsp;
       <br />
       <button
         onClick={() => {
           const newViewId = uuidv4();
-          dispatch({
+          shellDispatch({
             type: 'registerView',
             view: {
               viewId: newViewId,
@@ -111,18 +114,18 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               state: {},
             },
           });
-          dispatch({
+          shellDispatch({
             type: 'launchView',
             viewId: newViewId,
           });
         }}
       >
         launch key=7 right
-      </button>
+      </button>&nbsp;
       <button
         onClick={() => {
           const newViewId = uuidv4();
-          dispatch({
+          shellDispatch({
             type: 'registerView',
             view: {
               viewId: newViewId,
@@ -135,20 +138,20 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               state: {},
             },
           });
-          dispatch({
+          shellDispatch({
             type: 'launchView',
             viewId: newViewId,
           });
         }}
       >
         launch key=7 bottom
-      </button>
+      </button>&nbsp;
       <br />
       <p>second component</p>
       <button
         onClick={() => {
           const newViewId = uuidv4();
-          dispatch({
+          shellDispatch({
             type: 'registerView',
             view: {
               viewId: newViewId,
@@ -161,18 +164,18 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               state: {},
             },
           });
-          dispatch({
+          shellDispatch({
             type: 'launchView',
             viewId: newViewId,
           });
         }}
       >
         launch second key=7 right
-      </button>
+      </button>&nbsp;
       <button
         onClick={() => {
           const newViewId = uuidv4();
-          dispatch({
+          shellDispatch({
             type: 'registerView',
             view: {
               viewId: newViewId,
@@ -185,30 +188,100 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               state: {},
             },
           });
-          dispatch({
+          shellDispatch({
             type: 'launchView',
             viewId: newViewId,
           });
         }}
       >
         launch second key=7 bottom
-      </button>
+      </button>&nbsp;
       <hr />
       <div>search text: {searchText}</div>
       <div>state: {JSON.stringify(props.viewState?.state)}</div>
+      <div>
+        logger:&nbsp;
+        <button
+          onClick={() => {
+            const newViewId = uuidv4();
+            loggerDispatch({
+              type: 'postEntry',
+              entry: {
+                system: 'porrtal-app',
+                subsystem: 'test',
+                component: 'test',
+                severity: 'info',
+                consumer: 'developer',
+                message: 'log 1 message',
+                messageDetail:
+                  'this is a longer message to show how a long message looks when displayed in the logger messages component...',
+                isRead: false,
+                user: 'datumgeek',
+              },
+            });
+            shellDispatch({
+              type: 'launchView',
+              viewId: newViewId,
+            });
+          }}
+        >
+          log1
+        </button>&nbsp;
+        <button
+          onClick={() => {
+            const newViewId = uuidv4();
+            loggerDispatch({
+              type: 'postEntry',
+              entry: {
+                system: 'porrtal-app',
+                subsystem: 'test',
+                component: 'test',
+                severity: 'info',
+                consumer: 'developer',
+                message: 'log 2 message',
+                messageDetail:
+                  'this is a longer message to show how a long message looks when displayed in the logger messages component...',
+                isRead: false,
+                user: 'datumgeek',
+              },
+            });
+            shellDispatch({
+              type: 'launchView',
+              viewId: newViewId,
+            });
+          }}
+        >
+          log2
+        </button>&nbsp;
+        <button
+          onClick={() => {
+            const newViewId = uuidv4();
+            loggerDispatch({
+              type: 'postEntry',
+              entry: {
+                system: 'porrtal-app',
+                subsystem: 'test',
+                component: 'test',
+                severity: 'info',
+                consumer: 'developer',
+                message: 'log 3 message',
+                messageDetail:
+                  'this is a longer message to show how a long message looks when displayed in the logger messages component...',
+                isRead: false,
+                user: 'datumgeek',
+              },
+            });
+            shellDispatch({
+              type: 'launchView',
+              viewId: newViewId,
+            });
+          }}
+        >
+          log3
+        </button>&nbsp;
+      </div>
 
-      {[
-        'one',
-        'two',
-        'three',
-        'four',
-        'five',
-        'six',
-        'seven',
-        'eight',
-        'nine',
-        'ten',
-      ].map((item) => (
+      {['one', 'two', 'three', 'four', 'five', 'six', 'seven'].map((item) => (
         <p key={item}>{item}</p>
       ))}
     </div>
