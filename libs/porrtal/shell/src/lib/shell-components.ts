@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext, Dispatch, useContext } from 'react';
 import { EntityMenuComponent } from './entity-menu/entity-menu';
 import { LoggerBannerComponent } from './logger-banner-props';
 import { SearchComponent } from './search-props';

@@ -1,7 +1,8 @@
+import { ReactNode } from 'react';
 import ShellComponentsBlueprint from '../shell-components-blueprint/shell-components-blueprint';
 
 export interface ShellBlueprintProps {
-  children?: React.ReactChild | React.ReactChild[];
+  children: ReactNode | undefined;
 }
 
 export function ShellBlueprint(props: ShellBlueprintProps) {
