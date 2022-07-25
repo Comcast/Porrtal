@@ -37,7 +37,7 @@ export function ShellComponentsMaterial(props: ShellComponentsMaterialProps) {
     type: 'registerView',
     view:   {
       viewId: 'logger-messages',
-      paneType: 'main',
+      paneType: 'bottom',
       launchAtStartup: false,
       componentName: 'logger-messages',
       keyTemplate: 'logger-messages',

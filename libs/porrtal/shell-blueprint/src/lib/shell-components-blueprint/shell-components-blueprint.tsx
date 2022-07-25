@@ -37,7 +37,7 @@ export function ShellComponentsBlueprint(props: ShellComponentsBlueprintProps) {
     type: 'registerView',
     view:   {
       viewId: 'logger-messages',
-      paneType: 'main',
+      paneType: 'bottom',
       launchAtStartup: false,
       componentName: 'logger-messages',
       keyTemplate: 'logger-messages',
