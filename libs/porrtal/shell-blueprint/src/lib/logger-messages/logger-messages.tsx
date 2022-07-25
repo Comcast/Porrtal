@@ -21,14 +21,19 @@ export function LoggerMessages(props: ViewComponentProps) {
     { field: 'isRead',  },
     { field: 'user',  },
   ]);
-  console.log('logger messages', loggerState);
+  const [defaultColumnDef, setDefaultColumnDef] = useState<ColDef<LoggerEntry>>({
+    sortable: true,
+    filter: true,
+    resizable: true
+  });
   return (
     <div className={styles['container']}>
       <span>Logger Entries:</span>
-      <div className={`${styles['grid-container']} ag-theme-material`}>
+      <div className={`${styles['grid-container']} ag-theme-balham`}>
         <AgGridReact<LoggerEntry>
           rowData={loggerState.entries}
           columnDefs={columnDefs}
+          defaultColDef={defaultColumnDef}
         ></AgGridReact>
       </div>
     </div>
