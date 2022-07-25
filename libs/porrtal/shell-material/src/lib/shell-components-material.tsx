@@ -4,19 +4,21 @@ import {
   ShellLayoutSplitter,
 } from '@porrtal/shell';
 import ViewStack from './view-stack/view-stack';
-import { ReactChild } from 'react';
+import { ReactNode } from 'react';
 import Search from './search/search';
 import EntityMenu from './entity-menu/entity-menu';
+import LoggerBanner from './logger-banner/logger-banner';
 
 export interface ShellComponentsMaterialProps {
-  children?: ReactChild | ReactChild[];
+  children: ReactNode | undefined;
 }
 
 export function ShellComponentsMaterial(props: ShellComponentsMaterialProps) {
   const shellComponents: ShellComponents = {
     ViewStack,
     Search,
-    EntityMenu
+    EntityMenu,
+    LoggerBanner,
   };
   return (
     <ShellComponentsContext.Provider value={shellComponents}>

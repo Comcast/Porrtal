@@ -1,14 +1,66 @@
-import styles from './logger-state.module.scss';
+import { LoggerEntry } from '@porrtal/api';
+import {
+  createContext,
+  Dispatch,
+  PropsWithChildren,
+  Reducer,
+  useContext,
+  useReducer,
+} from 'react';
+
+export interface UseLoggerState {
+  entries: LoggerEntry[];
+}
+
+export type LoggerAction = { type: 'postEntry'; entry: LoggerEntry };
+
+const reducer: Reducer<UseLoggerState, LoggerAction> = (state, action) => {
+  switch (action.type) {
+    case 'postEntry':
+      return {
+        entries: [...state.entries, action.entry],
+      };
+
+    default:
+      break;
+  }
+
+  return state;
+};
+
+const emptyUseLoggerState: UseLoggerState = {
+  entries: [],
+};
+
+const LoggerStateContext = createContext<UseLoggerState>(emptyUseLoggerState);
+
+const LoggerDispatchContext = createContext<Dispatch<LoggerAction>>(
+  (value: LoggerAction) => {
+    return;
+  }
+);
 
 /* eslint-disable-next-line */
 export interface LoggerStateProps {}
 
-export function LoggerState(props: LoggerStateProps) {
+export function LoggerState(props: PropsWithChildren<LoggerStateProps>) {
+  const initialState: UseLoggerState = emptyUseLoggerState;
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to LoggerState!</h1>
-    </div>
+    <LoggerStateContext.Provider value={state}>
+      <LoggerDispatchContext.Provider value={dispatch}>
+        {props.children}
+      </LoggerDispatchContext.Provider>
+    </LoggerStateContext.Provider>
   );
 }
 
-export default LoggerState;
+export function useLoggerState(): UseLoggerState {
+  const state = useContext(LoggerStateContext);
+  return state;
+}
+
+export function useLoggerDispatch(): Dispatch<LoggerAction> {
+  const dispatch = useContext(LoggerDispatchContext);
+  return dispatch;
+}

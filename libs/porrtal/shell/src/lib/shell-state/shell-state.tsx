@@ -51,7 +51,6 @@ export type ShellAction =
     };
 
 const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
-  console.log('reducer', state, action);
   switch (action.type) {
     case 'launchView': {
       const view = state.views.find((view) => view.viewId === action.viewId);
@@ -417,8 +416,6 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
 
     return memoState;
   }, [props.views, props.components]);
-
-  console.log('initialState', initialState);
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
