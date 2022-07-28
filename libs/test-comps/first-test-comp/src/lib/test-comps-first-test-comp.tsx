@@ -42,6 +42,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
           shellDispatch({
             type: 'launchView',
             viewId: newViewId,
+            state: { myProp: 'State to be passed to view instance.'}
           });
         }}
       >
@@ -214,7 +215,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
                 consumer: 'developer',
                 message: 'log 1 message',
                 messageDetail:
-                  'this is a longer message to show how a long message looks when displayed in the logger messages component...',
+                  'this is a longer message to show how a long message looks when displayed in the logger messages component.  Here we need to make it REALLY long to see what happens if there is overflow.  Does it wrap the line?  Or do something else?  \r\n\r\n and what about new lines?',
                 isRead: false,
                 user: 'datumgeek',
               },

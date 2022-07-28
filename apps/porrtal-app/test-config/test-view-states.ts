@@ -2,13 +2,16 @@ import { View } from '@porrtal/api';
 import { ComponentFactoryDictionary } from '@porrtal/shell';
 
 export const testComponents: ComponentFactoryDictionary = {
+  // example where component is named export
   '@test-comps/first-test-comp': () => {
-    const ret = import('@test-comps/first-test-comp').then((module) => ({
-      default: module.TestCompsFirstTestComp,
-    }));
+    const ret = import('@test-comps/first-test-comp')
+      .then((module) => ({
+        default: module.TestCompsFirstTestComp,
+      }));
     return ret;
   },
 
+  // example where component is default export
   '@test-comps/second-test-comp': () => import('@test-comps/second-test-comp'),
 };
 
