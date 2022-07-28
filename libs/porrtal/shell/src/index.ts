@@ -1,3 +1,4 @@
+export * from './lib/logger-state/logger-state';
 export * from './lib/entity-menu/entity-menu';
 export * from './lib/search-state/search-state';
 export * from './lib/shell-layout-splitter/shell-layout-splitter';
