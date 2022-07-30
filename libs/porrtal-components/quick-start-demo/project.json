@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/porrtal-components/quick-start-demo/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/porrtal-components/quick-start-demo",
+        "tsConfig": "libs/porrtal-components/quick-start-demo/tsconfig.lib.json",
+        "project": "libs/porrtal-components/quick-start-demo/package.json",
+        "entryFile": "libs/porrtal-components/quick-start-demo/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/porrtal-components/quick-start-demo/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/porrtal-components/quick-start-demo/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/porrtal-components/quick-start-demo"],
+      "options": {
+        "jestConfig": "libs/porrtal-components/quick-start-demo/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
