@@ -1,3 +1,3 @@
 export interface ViewComponentModules {
-  [moduleName: string]: Promise<Record<string, unknown>>
+  [moduleName: string]: () => Promise<Record<string, unknown>>
 }

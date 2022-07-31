@@ -4,7 +4,7 @@ import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 
 import { ShellState } from '@porrtal/shell';
 import { KeycloakAuthentication } from '@porrtal/user';
-import { testComponents, testViews } from '../../test-config/test-view-states';
+import { testModules, testViews } from '../../test-config/test-view-states';
 import { ShellBlueprint } from '@porrtal/shell-blueprint';
 import { useEffect, useState } from 'react';
 
@@ -27,7 +27,7 @@ export function ThirdPage(props: ThirdPageProps) {
         clientId="porrtal-app"
         redirectUri="http://localhost:4200/second-page"
       >
-        <ShellState components={testComponents} views={testViews}>
+        <ShellState modules={testModules} views={testViews}>
           <ShellBlueprint />
         </ShellState>
       </KeycloakAuthentication>

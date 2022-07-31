@@ -7,7 +7,7 @@ export interface View {
   paneType?: PaneType;
   entityType?: string;
   componentName: string;
-  moduleName: string;
+  componentModule: string | (() => Promise<Record<string, unknown>>);
   state?: StateObject;
 
   key?: string;
