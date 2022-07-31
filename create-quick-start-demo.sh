@@ -23,12 +23,15 @@ nx generate @nrwl/react:component appointment-detail --project=porrtal-component
 nx generate @nrwl/react:component appointment-location-map --project=porrtal-components-quick-start-demo --style=scss --directory=appointment --export
 nx generate @nrwl/react:component appointment-create --project=porrtal-components-quick-start-demo --style=scss --directory=appointment --export
 
+nx generate @nrwl/react:component viz-nav --project=porrtal-components-quick-start-demo --style=scss --export
+
 nx generate @nrwl/react:component hurricane-map --project=porrtal-components-quick-start-demo --style=scss --directory=esri/hurricane --export
 nx generate @nrwl/react:component earthquake-map --project=porrtal-components-quick-start-demo --style=scss --directory=esri/earthquake --export
 nx generate @nrwl/react:component digital-elevation-map --project=porrtal-components-quick-start-demo --style=scss --directory=esri/digital-elevation --export
 # https://developers.arcgis.com/javascript/latest/sample-code/layers-scenelayerview-query-stats/
 nx generate @nrwl/react:component building-scene-with-query --project=porrtal-components-quick-start-demo --style=scss --directory=esri/building-scene --export
 
+nx generate @nrwl/react:component zoomable-circle-pack --project=porrtal-components-quick-start-demo --style=scss --directory=hierarchy --export
 nx generate @nrwl/react:component zoomable-sunburst --project=porrtal-components-quick-start-demo --style=scss --directory=hierarchy --export
 nx generate @nrwl/react:component zoomable-treemap --project=porrtal-components-quick-start-demo --style=scss --directory=hierarchy --export
 nx generate @nrwl/react:component zoomable-sunburst --project=porrtal-components-quick-start-demo --style=scss --directory=hierarchy --export
