@@ -1,12 +1,15 @@
 import styles from './appointment-search.module.scss';
+import { useDebouncedSearchText } from '@porrtal/shell';
+import { ViewComponentProps } from '@porrtal/api';
 
-/* eslint-disable-next-line */
-export interface AppointmentSearchProps {}
-
-export function AppointmentSearch(props: AppointmentSearchProps) {
+export function AppointmentSearch(props: ViewComponentProps) {
+  const searchText = useDebouncedSearchText();
   return (
     <div className={styles['container']}>
-      <h1>Welcome to AppointmentSearch!</h1>
+      <h3 className={styles['title']}>Appointment Search: {searchText}</h3>
+      <div className={styles['data-container']}>
+        Matching Appointments go Here...
+      </div>
     </div>
   );
 }

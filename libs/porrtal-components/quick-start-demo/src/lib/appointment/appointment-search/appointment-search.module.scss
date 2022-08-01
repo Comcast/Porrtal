@@ -1,7 +1,29 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.title {
+  background-color: rgb(185,199,218);
+  margin: 0;
+  padding-top: 5px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  grid-column: 1 / -1;
+}
+
+.data-container {
+  display: grid;
+  justify-self: start;
+  gap: 10px;
+  grid-template-columns: auto auto auto;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 30px;
+}
+
+.link-button {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
