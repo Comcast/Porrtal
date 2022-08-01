@@ -7,6 +7,7 @@ export const fetchAppointmentData = (delay: number) => {
 };
 
 export type AppointmentData = typeof appointmentData | undefined;
+export type Appointment = typeof appointmentData[0];
 
 export const appointmentData = [
   {
