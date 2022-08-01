@@ -48,12 +48,12 @@ export function EntityMenu(props: EntityMenuProps) {
           .map((view) => (
             <IconMenuItem
               key={view.viewId}
-              leftIcon={<Icon>{view.displayIconTemplate}</Icon>}
-              label={view.displayTextTemplate}
+              leftIcon={<Icon>{view.displayIcon}</Icon>}
+              label={view.displayText}
               onClick={() => {
                 dispatch({
                   type: 'launchView',
-                  viewId: view.viewId,
+                  viewId: view.viewId ?? view.componentName,
                   state: props.state,
                 });
                 setAnchorEl(null);

@@ -30,6 +30,7 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
       displayText: 'Account {accountId}',
       displayIcon: 'mugshot',
       componentName: 'AccountDetail',
+      entityType: 'account',
       componentModule: () => import('@porrtal-components/quick-start-demo'),
     },
     {
@@ -37,6 +38,7 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
       displayText: 'Billing {accountId}',
       displayIcon: 'mugshot',
       componentName: 'AccountBillingHistory',
+      entityType: 'account',
       componentModule: () => import('@porrtal-components/quick-start-demo'),
     },
     {

@@ -19,12 +19,12 @@ export function EntityMenu(props: EntityMenuProps) {
             .map((view) => (
               <MenuItem
                 key={view.viewId}
-                icon={view.displayIconTemplate as IconName}
-                text={view.displayTextTemplate}
+                icon={view.displayIcon as IconName}
+                text={view.displayText}
                 onClick={(evt) => {
                   dispatch({
                     type: 'launchView',
-                    viewId: view.viewId,
+                    viewId: view.viewId ?? view.componentName,
                     state: props.state,
                   });
                 }}
