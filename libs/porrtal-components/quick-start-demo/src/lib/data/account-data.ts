@@ -1,10 +1,12 @@
 export const fetchAccountData = (delay: number) => {
-  return new Promise((resolve) => {
+  return new Promise<AccountData>((resolve) => {
     setTimeout(() => {
       resolve(accountData);
     }, delay);
   });
 };
+
+export type AccountData = typeof accountData | undefined;
 
 export const accountData = [
   {

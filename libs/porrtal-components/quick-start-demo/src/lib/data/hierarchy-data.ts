@@ -6,7 +6,18 @@ export const fetchHierarchyData = (delay: number) => {
   });
 };
 
-export const hierarchyData = {
+export type HierarchyDataItem = HierarchyItemWithChildren | HierarchyLeaf
+export interface HierarchyItemWithChildren {
+  name: string;
+  children: HierarchyDataItem[];
+}
+export interface HierarchyLeaf {
+  name: string;
+  value: number;
+}
+export type HierarchyData = HierarchyDataItem | undefined;
+
+export const hierarchyData: HierarchyData = {
   name: 'flare',
   children: [
     {
