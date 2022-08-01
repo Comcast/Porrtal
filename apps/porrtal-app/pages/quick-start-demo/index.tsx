@@ -132,7 +132,7 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
     },
     {
       displayText: 'Hurricane',
-      displayIcon: 'hurricane',
+      displayIcon: 'git-commit',
       componentName: 'HurricaneMap',
       componentModule: () => import('@porrtal-components/quick-start-demo'),
     },
