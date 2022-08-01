@@ -23,30 +23,21 @@ export function ShellComponentsMaterial(props: ShellComponentsMaterialProps) {
   };
   const shellDispatch = useShellDispatch();
 
-  // register the blueprint logger-messages component
-  shellDispatch({
-    type: 'registerComponent',
-    componentRegistration: {
-      componentName: 'logger-messages',
-      viewComponentFunction: () => import('./logger-messages/logger-messages')
-    }
-  });
-
-  // register the blueprint logger-messages view
+  // register the material logger-messages view
   shellDispatch({
     type: 'registerView',
     view:   {
       viewId: 'logger-messages',
       paneType: 'bottom',
       launchAtStartup: false,
-      componentName: 'logger-messages',
-      keyTemplate: 'logger-messages',
-      displayTextTemplate: 'log',
-      displayIconTemplate: 'notifications',
+      componentName: 'LoggerMessages',
+      componentModule: () => import('./logger-messages/logger-messages'),
+      key: 'logger-messages',
+      displayText: 'log',
+      displayIcon: 'notifications',
     },
 
   })
-
 
   return (
     <ShellComponentsContext.Provider value={shellComponents}>

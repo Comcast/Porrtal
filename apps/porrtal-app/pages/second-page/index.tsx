@@ -2,7 +2,7 @@ import { ShellState } from '@porrtal/shell';
 import { ShellMaterial } from '@porrtal/shell-material';
 import { KeycloakAuthentication } from '@porrtal/user';
 import { useEffect, useState } from 'react';
-import { testComponents, testViews } from '../../test-config/test-view-states';
+import { testModules, testViews } from '../../test-config/test-view-states';
 
 export function Index() {
   const [isSSR, setIsSSR] = useState(true);
@@ -19,7 +19,7 @@ export function Index() {
         clientId="porrtal-app"
         redirectUri="http://localhost:4200/second-page"
       >
-        <ShellState components={testComponents} views={testViews}>
+        <ShellState modules={testModules} views={testViews}>
           <ShellMaterial />
         </ShellState>
       </KeycloakAuthentication>

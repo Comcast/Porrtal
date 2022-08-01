@@ -5,11 +5,13 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
+    "copyEsriAssets": "ncp ./node_modules/@arcgis/core/assets apps/porrtal-app/public",
     "test": "nx test",
     "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
+    "@arcgis/core": "^4.24.7",
     "@auth0/auth0-react": "^1.10.1",
     "@blueprintjs/core": "^4.5.1",
     "@blueprintjs/popover2": "^1.4.1",
@@ -22,9 +24,12 @@
     "ag-grid-community": "^28.0.2",
     "ag-grid-react": "^28.0.0",
     "core-js": "^3.6.5",
+    "d3": "^7.6.1",
     "keycloak-js": "^18.0.0",
     "lodash.debounce": "^4.0.8",
+    "moment": "^2.29.4",
     "mui-nested-menu": "^2.1.0",
+    "ncp": "2.0.0",
     "next": "12.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -48,6 +53,7 @@
     "@nrwl/web": "14.4.1",
     "@nrwl/workspace": "14.4.1",
     "@testing-library/react": "13.3.0",
+    "@types/d3": "^7.4.0",
     "@types/jest": "27.4.1",
     "@types/node": "18.0.0",
     "@types/react": "18.0.14",
@@ -72,6 +78,7 @@
     "react-test-renderer": "18.2.0",
     "sass": "1.52.3",
     "ts-jest": "27.1.4",
+    "ts-node": "~10.8.0",
     "typescript": "4.7.4"
   }
 }

@@ -7,6 +7,8 @@ import {
   paneTypes,
   PaneArrangement,
   View,
+  ViewComponentModules,
+  ViewComponentProps,
 } from '@porrtal/api';
 import {
   useReducer,
@@ -16,19 +18,17 @@ import {
   useContext,
   useMemo,
   PropsWithChildren,
+  ComponentType,
 } from 'react';
 import { StateObject } from '@porrtal/api';
 import { replaceParameters } from '../shell-utilities/shell-utilities';
 import SearchState from '../search-state/search-state';
 import { LoggerState } from '../logger-state/logger-state';
-
-export type ComponentFactoryDictionary = {
-  [componentName: string]: ViewComponentFunction;
-};
+import { v4 as uuidv4 } from 'uuid';
 
 export interface UseShellState {
   panes: Panes;
-  components: ComponentFactoryDictionary;
+  viewComponentModules: ViewComponentModules;
   views: View[];
 }
 
@@ -40,11 +40,8 @@ export type ShellAction =
   | { type: 'setCurrentViewStateByKey'; key: string; pane: Pane }
   | { type: 'arrangePane'; pane: Pane; paneArrangement: PaneArrangement }
   | {
-      type: 'registerComponent';
-      componentRegistration: {
-        componentName: string;
-        viewComponentFunction: ViewComponentFunction;
-      };
+      type: 'registerModules';
+      modules: ViewComponentModules;
     }
   | {
       type: 'registerView';
@@ -64,23 +61,34 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
         view.state,
         action.state
       );
-      const newKey = replaceParameters(view.keyTemplate, newState ?? {});
+      const newKey = replaceParameters(view.key ?? uuidv4(), newState ?? {});
       const newDisplayText = replaceParameters(
-        view.displayTextTemplate,
+        view.displayText,
         newState ?? {}
       );
       const newDisplayIcon = replaceParameters(
-        view.displayIconTemplate,
+        view.displayIcon ?? '',
         newState ?? {}
       );
+      const viewComponentFunction: ViewComponentFunction | undefined =
+        retrieveViewComponentFunction(
+          view.componentName,
+          view.componentModule,
+          state.viewComponentModules
+        );
+      if (!viewComponentFunction) {
+        throw new Error(
+          `ViewComponentFunction is undefined.  module ('${view.componentModule}') not found for component name('${view.componentName}').)`
+        );
+      }
       const newViewState: ViewState = {
         key: newKey.replaced,
         displayText: newDisplayText.replaced,
         displayIcon: newDisplayIcon.replaced,
         state: newState,
 
-        paneType: view.paneType,
-        componentImport: state.components[view.componentName],
+        paneType: view.paneType ?? 'main',
+        componentImport: viewComponentFunction,
         view,
       };
 
@@ -255,35 +263,70 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
       return retState;
     }
 
-    case 'registerComponent':
+    case 'registerModules':
       return {
         ...state,
-        components: {
-          ...state.components,
-          [action.componentRegistration.componentName]:
-            action.componentRegistration.viewComponentFunction,
+        viewComponentModules: {
+          ...state.viewComponentModules,
+          ...action.modules,
         },
       };
 
-    case 'registerView':
+    case 'registerView': {
+      const newView = {
+        ...action.view,
+      };
+      if (!newView.viewId) {
+        newView.viewId = newView.componentName;
+      }
+      if (!newView.key) {
+        newView.key = uuidv4();
+      }
       return {
         ...state,
-        views: [...state.views, action.view],
+        views: [...state.views, newView],
       };
+    }
 
     case 'launchStartupViews': {
       state.views
         .filter((view) => view.launchAtStartup)
         .forEach((view) => {
+          console.log('launch startup view', view);
           state = reducer(state, {
             type: 'launchView',
-            viewId: view.viewId,
+            viewId: view.viewId ?? view.componentName,
           });
         });
     }
   }
   return state;
 };
+
+function retrieveViewComponentFunction(
+  componentName: string,
+  componentModule: string | (() => Promise<Record<string, unknown>>),
+  viewComponentModules: ViewComponentModules
+): ViewComponentFunction | undefined {
+  if (typeof componentModule === 'string') {
+    const moduleFunction = viewComponentModules[componentModule];
+    if (!moduleFunction) {
+      return undefined;
+    }
+    return () =>
+      moduleFunction().then((module: Record<string, unknown>) => ({
+        default: module[componentName] as ComponentType<ViewComponentProps>,
+      }));
+  }
+
+  return () =>
+    componentModule().then((module: Record<string, unknown>) => {
+      console.log('Retrieve View Component Function', componentName, module);
+      return {
+        default: module[componentName] as ComponentType<ViewComponentProps>,
+      };
+    });
+}
 
 function computeCurrentKey(
   state: UseShellState,
@@ -359,7 +402,7 @@ const emptyUseShellState: UseShellState = {
       paneType: 'search',
     },
   },
-  components: {},
+  viewComponentModules: {},
   views: [],
 };
 
@@ -375,15 +418,21 @@ const ShellDispatchContext = createContext<Dispatch<ShellAction>>(
 
 export interface ShellStateProps {
   views?: View[];
-  components: ComponentFactoryDictionary;
+  modules?: ViewComponentModules;
 }
 
 export function ShellState(props: PropsWithChildren<ShellStateProps>) {
   const initialState: UseShellState = useMemo(() => {
-    let memoState = {
+    let memoState: UseShellState = {
       ...emptyUseShellState,
-      components: props.components,
     };
+
+    if (props.modules) {
+      memoState = reducer(memoState, {
+        type: 'registerModules',
+        modules: props.modules,
+      });
+    }
 
     props.views?.forEach(
       (view) =>
@@ -392,6 +441,8 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
           view: view,
         }))
     );
+
+    console.log('shell state: about to launch views', memoState);
 
     memoState = reducer(memoState, {
       type: 'launchStartupViews',
@@ -409,7 +460,7 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
     });
 
     return memoState;
-  }, [props.views, props.components]);
+  }, [props.views, props.modules]);
 
   const [state, dispatch] = useReducer(reducer, initialState);
 

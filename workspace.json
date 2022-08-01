@@ -4,6 +4,7 @@
     "porrtal-api": "libs/porrtal/api",
     "porrtal-app": "apps/porrtal-app",
     "porrtal-app-e2e": "apps/porrtal-app-e2e",
+    "porrtal-components-quick-start-demo": "libs/porrtal-components/quick-start-demo",
     "porrtal-react-app": "apps/porrtal-react-app",
     "porrtal-react-app-e2e": "apps/porrtal-react-app-e2e",
     "porrtal-shell": "libs/porrtal/shell",

@@ -1,6 +1,6 @@
 import { Auth0Authentication } from '@porrtal/user';
 import { ShellState } from '@porrtal/shell';
-import { testComponents, testViews } from '../test-config/test-view-states';
+import { testModules, testViews } from '../test-config/test-view-states';
 import { ShellMaterial } from '@porrtal/shell-material';
 import { useEffect, useState } from 'react';
 
@@ -18,7 +18,7 @@ export function Index() {
         clientId="uP4eHSspiDjg6E7GKU5LjdFPn0WwEKTq"
         redirectUri="http://localhost:4200"
       >
-        <ShellState components={testComponents} views={testViews}>
+        <ShellState modules={testModules} views={testViews}>
           <ShellMaterial />
         </ShellState>
       </Auth0Authentication>
