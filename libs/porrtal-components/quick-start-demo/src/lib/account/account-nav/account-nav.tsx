@@ -39,7 +39,7 @@ export function AccountNav(props: AccountNavProps) {
                       <span style={{ marginLeft: '5px' }}>{acct.name}</span>
                     </p>
                   </EntityMenu>
-                  <p key={`total-${acct.accountId}`}>{acct.total}</p>
+                  <p key={`total-${acct.accountId}`}>{'$' + acct.total.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</p>
                 </>
               );
             })}

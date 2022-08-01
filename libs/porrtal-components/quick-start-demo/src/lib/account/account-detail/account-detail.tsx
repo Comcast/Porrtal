@@ -44,7 +44,7 @@ export function AccountDetail(props: ViewComponentProps) {
         {account?.orders.map(order => (
           <>
             <span>{order.item}</span>
-            <span>{'$' + order.amount.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span>
+            <span>{'$' + order.amount.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</span>
             <span>{Moment(order.date).format('YYYY-DD-MM')}</span>
           </>
         ))}
