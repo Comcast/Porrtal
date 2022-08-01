@@ -6,7 +6,19 @@ export const fetchAccountData = (delay: number) => {
   });
 };
 
-export type AccountData = typeof accountData | undefined;
+export interface AccountOrder {
+  date: number;
+  item: string;
+  amount: number;
+}
+
+export interface Account {
+  accountId: number;
+  name: string;
+  orders: AccountOrder[];
+}
+
+export type AccountData = Account[] | undefined;
 
 export const accountData = [
   {
