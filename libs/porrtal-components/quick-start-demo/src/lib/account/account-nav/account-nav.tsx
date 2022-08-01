@@ -33,13 +33,22 @@ export function AccountNav(props: AccountNavProps) {
             .map((acct) => {
               return (
                 <>
-                  <EntityMenu key={`menu-${acct.accountId}`} entityType="account" state={{accountId: acct.accountId}}>
+                  <EntityMenu
+                    key={`menu-${acct.accountId}`}
+                    entityType="account"
+                    state={{ accountId: acct.accountId }}
+                  >
                     <p className={styles['link-button']}>
                       <Icon icon="mugshot" />
                       <span style={{ marginLeft: '5px' }}>{acct.name}</span>
                     </p>
                   </EntityMenu>
-                  <p key={`total-${acct.accountId}`}>{'$' + acct.total.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</p>
+                  <p key={`total-${acct.accountId}`}>
+                    {'$' +
+                      acct.total
+                        .toFixed(0)
+                        .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+                  </p>
                 </>
               );
             })}

@@ -1,5 +1,5 @@
 export const fetchAppointmentData = (delay: number) => {
-  return new Promise((resolve) => {
+  return new Promise<AppointmentData>((resolve) => {
     setTimeout(() => {
       resolve(appointmentData);
     }, delay);
