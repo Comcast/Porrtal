@@ -14,3 +14,5 @@ nx generate @nrwl/workspace:move porrtal/r/user --projectName=porrtal-user --imp
 
 #porrtal-components
 nx generate @nrwl/workspace:move porrtal-components/r/quick-start-demo --projectName=porrtal-components-quick-start-demo --importPath=@porrtal-components/r-quick-start-demo
+nx generate @nrwl/workspace:move porrtal-components/r/first-test-comp-lib --projectName=test-comps-first-test-comp --importPath=@porrtal-components/r-first-test-comp-lib
+nx generate @nrwl/workspace:move porrtal-components/r/second-test-comp-lib --projectName=test-comps-second-test-comp --importPath=@porrtal-components/r-second-test-comp-lib

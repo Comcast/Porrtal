@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
-  displayName: 'test-comps-first-test-comp',
-  preset: '../../../jest.preset.js',
+  displayName: 'porrtal-components-r-first-test-comp-lib',
+  preset: '../../../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -11,5 +11,6 @@ export default {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../coverage/libs/test-comps/first-test-comp',
+  coverageDirectory:
+    '../../../../coverage/libs/porrtal-components/r/first-test-comp-lib',
 };

@@ -3,7 +3,9 @@
   "projects": {
     "n-porrtal-app": "apps/n/porrtal-app",
     "n-porrtal-app-e2e": "apps/n/porrtal-app-e2e",
+    "porrtal-components-r-first-test-comp-lib": "libs/porrtal-components/r/first-test-comp-lib",
     "porrtal-components-r-quick-start-demo": "libs/porrtal-components/r/quick-start-demo",
+    "porrtal-components-r-second-test-comp-lib": "libs/porrtal-components/r/second-test-comp-lib",
     "porrtal-r-api": "libs/porrtal/r/api",
     "porrtal-r-shell": "libs/porrtal/r/shell",
     "porrtal-r-shell-blueprint": "libs/porrtal/r/shell-blueprint",
@@ -11,9 +13,7 @@
     "porrtal-r-split": "libs/porrtal/r/split",
     "porrtal-r-user": "libs/porrtal/r/user",
     "r-porrtal-app": "apps/r/porrtal-app",
-    "r-porrtal-app-e2e": "apps/r/porrtal-app-e2e",
-    "test-comps-first-test-comp": "libs/test-comps/first-test-comp",
-    "test-comps-second-test-comp": "libs/test-comps/second-test-comp"
+    "r-porrtal-app-e2e": "apps/r/porrtal-app-e2e"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

@@ -15,8 +15,14 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@porrtal-components/r-first-test-comp-lib": [
+        "libs/porrtal-components/r/first-test-comp-lib/src/index.ts"
+      ],
       "@porrtal-components/r-quick-start-demo": [
         "libs/porrtal-components/r/quick-start-demo/src/index.ts"
+      ],
+      "@porrtal-components/r-second-test-comp-lib": [
+        "libs/porrtal-components/r/second-test-comp-lib/src/index.ts"
       ],
       "@porrtal/r-api": ["libs/porrtal/r/api/src/index.ts"],
       "@porrtal/r-shell": ["libs/porrtal/r/shell/src/index.ts"],
@@ -27,13 +33,7 @@
         "libs/porrtal/r/shell-material/src/index.ts"
       ],
       "@porrtal/r-split": ["libs/porrtal/r/split/src/index.ts"],
-      "@porrtal/r-user": ["libs/porrtal/r/user/src/index.ts"],
-      "@test-comps/first-test-comp": [
-        "libs/test-comps/first-test-comp/src/index.ts"
-      ],
-      "@test-comps/second-test-comp": [
-        "libs/test-comps/second-test-comp/src/index.ts"
-      ]
+      "@porrtal/r-user": ["libs/porrtal/r/user/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

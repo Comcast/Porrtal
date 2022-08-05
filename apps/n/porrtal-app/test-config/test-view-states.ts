@@ -1,8 +1,10 @@
 import { View, ViewComponentModules } from '@porrtal/r-api';
 
 export const testModules: ViewComponentModules = {
-  '@test-comps/first-test-comp': () => import('@test-comps/first-test-comp'),
-  '@test-comps/second-test-comp': () => import('@test-comps/second-test-comp'),
+  '@porrtal-components/r-first-test-comp-lib': () =>
+    import('@porrtal-components/r-first-test-comp-lib'),
+  '@porrtal-components/r-second-test-comp-lib': () =>
+    import('@porrtal-components/r-second-test-comp-lib'),
 };
 
 export const testViews: View[] = [
@@ -11,7 +13,7 @@ export const testViews: View[] = [
     paneType: 'nav',
     launchAtStartup: true,
     componentName: 'TestCompsFirstTestComp',
-    componentModule: '@test-comps/first-test-comp',
+    componentModule: '@porrtal-components/r-first-test-comp-lib',
     key: 'one-nav',
     displayText: 'one',
     displayIcon: 'home',
@@ -21,7 +23,7 @@ export const testViews: View[] = [
     paneType: 'nav',
     launchAtStartup: true,
     componentName: 'TestCompsFirstTestComp',
-    componentModule: '@test-comps/first-test-comp',
+    componentModule: '@porrtal-components/r-first-test-comp-lib',
     key: 'two-nav',
     displayText: 'two',
     displayIcon: 'settings',
@@ -31,7 +33,7 @@ export const testViews: View[] = [
     paneType: 'main',
     launchAtStartup: true,
     componentName: 'TestCompsFirstTestComp',
-    componentModule: '@test-comps/first-test-comp',
+    componentModule: '@porrtal-components/r-first-test-comp-lib',
     key: 'one-main',
     displayText: 'one',
     displayIcon: 'home',
@@ -41,7 +43,7 @@ export const testViews: View[] = [
     paneType: 'main',
     launchAtStartup: false,
     componentName: 'TestCompsFirstTestComp',
-    componentModule: '@test-comps/first-test-comp',
+    componentModule: '@porrtal-components/r-first-test-comp-lib',
     entityType: 'account',
     key: 'account-one',
     displayText: 'account-one',
@@ -52,7 +54,7 @@ export const testViews: View[] = [
     paneType: 'main',
     launchAtStartup: false,
     componentName: 'TestCompsFirstTestComp',
-    componentModule: '@test-comps/first-test-comp',
+    componentModule: '@porrtal-components/r-first-test-comp-lib',
     entityType: 'account',
     key: 'account-two',
     displayText: 'account-two',
@@ -63,7 +65,7 @@ export const testViews: View[] = [
     paneType: 'main',
     launchAtStartup: false,
     componentName: 'TestCompsFirstTestComp',
-    componentModule: '@test-comps/first-test-comp',
+    componentModule: '@porrtal-components/r-first-test-comp-lib',
     entityType: 'appointment',
     key: 'appointment-one',
     displayText: 'appointment-one',
@@ -74,7 +76,7 @@ export const testViews: View[] = [
     paneType: 'main',
     launchAtStartup: true,
     componentName: 'TestCompsFirstTestComp',
-    componentModule: '@test-comps/first-test-comp',
+    componentModule: '@porrtal-components/r-first-test-comp-lib',
     key: 'three-main',
     displayText: 'three',
     displayIcon: 'account_circle',
@@ -84,9 +86,9 @@ export const testViews: View[] = [
     paneType: 'main',
     launchAtStartup: true,
     componentName: 'TestCompsFirstTestComp',
-    componentModule: '@test-comps/first-test-comp',
+    componentModule: '@porrtal-components/r-first-test-comp-lib',
     key: 'first-test-comp',
-    displayText: '@test-comps/first-test-comp',
+    displayText: '@porrtal-components/r-first-test-comp-lib',
     displayIcon: 'power',
   },
   {
@@ -94,7 +96,7 @@ export const testViews: View[] = [
     paneType: 'search',
     launchAtStartup: true,
     componentName: 'TestCompsFirstTestComp',
-    componentModule: '@test-comps/first-test-comp',
+    componentModule: '@porrtal-components/r-first-test-comp-lib',
     key: 'first-search-comp',
     displayText: 'find stuff',
     displayIcon: 'power',
