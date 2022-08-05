@@ -1,8 +1,17 @@
 {
   "version": 2,
   "projects": {
+    "a-porrtal-app": "apps/a/porrtal-app",
+    "a-porrtal-app-e2e": "apps/a/porrtal-app-e2e",
     "n-porrtal-app": "apps/n/porrtal-app",
     "n-porrtal-app-e2e": "apps/n/porrtal-app-e2e",
+    "porrtal-a-api": "libs/porrtal/a/api",
+    "porrtal-a-shell": "libs/porrtal/a/shell",
+    "porrtal-a-shell-bootstrap": "libs/porrtal/a/shell-bootstrap",
+    "porrtal-a-shell-material": "libs/porrtal/a/shell-material",
+    "porrtal-a-user": "libs/porrtal/a/user",
+    "porrtal-components-a-first-test-comp-lib": "libs/porrtal-components/a/first-test-comp-lib",
+    "porrtal-components-a-second-test-comp-lib": "libs/porrtal-components/a/second-test-comp-lib",
     "porrtal-components-r-first-test-comp-lib": "libs/porrtal-components/r/first-test-comp-lib",
     "porrtal-components-r-quick-start-demo": "libs/porrtal-components/r/quick-start-demo",
     "porrtal-components-r-second-test-comp-lib": "libs/porrtal-components/r/second-test-comp-lib",

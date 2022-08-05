@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/porrtal-components/a/second-test-comp-lib/src",
+  "prefix": "porrtal-workspace",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/porrtal-components/a/second-test-comp-lib"],
+      "options": {
+        "project": "libs/porrtal-components/a/second-test-comp-lib/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/porrtal-components/a/second-test-comp-lib/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/porrtal-components/a/second-test-comp-lib/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/porrtal-components/a/second-test-comp-lib"],
+      "options": {
+        "jestConfig": "libs/porrtal-components/a/second-test-comp-lib/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/porrtal-components/a/second-test-comp-lib/**/*.ts",
+          "libs/porrtal-components/a/second-test-comp-lib/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

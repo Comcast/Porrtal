@@ -15,6 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@porrtal-components/a-first-test-comp-lib": [
+        "libs/porrtal-components/a/first-test-comp-lib/src/index.ts"
+      ],
+      "@porrtal-components/a-second-test-comp-lib": [
+        "libs/porrtal-components/a/second-test-comp-lib/src/index.ts"
+      ],
       "@porrtal-components/r-first-test-comp-lib": [
         "libs/porrtal-components/r/first-test-comp-lib/src/index.ts"
       ],
@@ -24,6 +30,15 @@
       "@porrtal-components/r-second-test-comp-lib": [
         "libs/porrtal-components/r/second-test-comp-lib/src/index.ts"
       ],
+      "@porrtal/a-api": ["libs/porrtal/a/api/src/index.ts"],
+      "@porrtal/a-shell": ["libs/porrtal/a/shell/src/index.ts"],
+      "@porrtal/a-shell-bootstrap": [
+        "libs/porrtal/a/shell-bootstrap/src/index.ts"
+      ],
+      "@porrtal/a-shell-material": [
+        "libs/porrtal/a/shell-material/src/index.ts"
+      ],
+      "@porrtal/a-user": ["libs/porrtal/a/user/src/index.ts"],
       "@porrtal/r-api": ["libs/porrtal/r/api/src/index.ts"],
       "@porrtal/r-shell": ["libs/porrtal/r/shell/src/index.ts"],
       "@porrtal/r-shell-blueprint": [
