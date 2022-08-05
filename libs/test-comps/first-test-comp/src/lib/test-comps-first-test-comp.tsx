@@ -1,10 +1,10 @@
-import { ViewState } from '@porrtal/api';
+import { ViewState } from '@porrtal/r-api';
 import {
   useDebouncedSearchText,
   useSearchAction,
   useShellDispatch,
   useLoggerDispatch,
-} from '@porrtal/shell';
+} from '@porrtal/r-shell';
 import styles from './test-comps-first-test-comp.module.scss';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -43,12 +43,13 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
           shellDispatch({
             type: 'launchView',
             viewId: newViewId,
-            state: { myProp: 'State to be passed to view instance.'}
+            state: { myProp: 'State to be passed to view instance.' },
           });
         }}
       >
         launch right
-      </button>&nbsp;
+      </button>
+      &nbsp;
       <button
         onClick={() => {
           const newViewId = uuidv4();
@@ -74,8 +75,8 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
         }}
       >
         launch right and close search
-      </button>&nbsp;
-
+      </button>
+      &nbsp;
       <button
         onClick={() => {
           const newViewId = uuidv4();
@@ -100,7 +101,8 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
         }}
       >
         launch bottom
-      </button>&nbsp;
+      </button>
+      &nbsp;
       <br />
       <button
         onClick={() => {
@@ -126,7 +128,8 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
         }}
       >
         launch key=7 right
-      </button>&nbsp;
+      </button>
+      &nbsp;
       <button
         onClick={() => {
           const newViewId = uuidv4();
@@ -151,7 +154,8 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
         }}
       >
         launch key=7 bottom
-      </button>&nbsp;
+      </button>
+      &nbsp;
       <br />
       <p>second component</p>
       <button
@@ -178,7 +182,8 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
         }}
       >
         launch second key=7 right
-      </button>&nbsp;
+      </button>
+      &nbsp;
       <button
         onClick={() => {
           const newViewId = uuidv4();
@@ -203,7 +208,8 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
         }}
       >
         launch second key=7 bottom
-      </button>&nbsp;
+      </button>
+      &nbsp;
       <hr />
       <div>search text: {searchText}</div>
       <div>state: {JSON.stringify(props.viewState?.state)}</div>
@@ -234,7 +240,8 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
           }}
         >
           log1
-        </button>&nbsp;
+        </button>
+        &nbsp;
         <button
           onClick={() => {
             const newViewId = uuidv4();
@@ -260,7 +267,8 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
           }}
         >
           log2
-        </button>&nbsp;
+        </button>
+        &nbsp;
         <button
           onClick={() => {
             const newViewId = uuidv4();
@@ -286,9 +294,9 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
           }}
         >
           log3
-        </button>&nbsp;
+        </button>
+        &nbsp;
       </div>
-
       {['one', 'two', 'three', 'four', 'five', 'six', 'seven'].map((item) => (
         <p key={item}>{item}</p>
       ))}
