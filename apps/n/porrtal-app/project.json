@@ -13,7 +13,9 @@
       },
       "configurations": {
         "production": {},
-        "development": {}
+        "development": {
+          "outputPath": "apps/n/porrtal-app"
+        }
       }
     },
     "serve": {
