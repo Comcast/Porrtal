@@ -11,10 +11,36 @@ import { RouterModule } from '@angular/router';
     RouterModule.forRoot(
       [
         {
+          path: '',
+          redirectTo: '/first-page',
+          pathMatch: 'full',
+        },
+        {
           path: 'first-page',
           loadComponent: () =>
             import('./first-page/first-page.component').then(
               (mod) => mod.FirstPageComponent
+            ),
+        },
+        {
+          path: 'second-page',
+          loadComponent: () =>
+            import('./second-page/second-page.component').then(
+              (mod) => mod.SecondPageComponent
+            ),
+        },
+        {
+          path: 'third-page',
+          loadComponent: () =>
+            import('./third-page/third-page.component').then(
+              (mod) => mod.ThirdPageComponent
+            ),
+        },
+        {
+          path: 'quick-start-demo',
+          loadComponent: () =>
+            import('./quick-start-demo/quick-start-demo.component').then(
+              (mod) => mod.QuickStartDemoComponent
             ),
         },
       ],
