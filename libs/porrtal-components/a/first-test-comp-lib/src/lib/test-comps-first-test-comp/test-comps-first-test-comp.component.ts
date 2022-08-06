@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ViewState } from '@porrtal/a-api';
 
 @Component({
   selector: 'porrtal-workspace-test-comps-first-test-comp',
@@ -10,7 +11,12 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TestCompsFirstTestCompComponent implements OnInit {
+  @Input() viewState?: ViewState;
   constructor() {}
 
   ngOnInit(): void {}
 }
+function Import() {
+  throw new Error('Function not implemented.');
+}
+
