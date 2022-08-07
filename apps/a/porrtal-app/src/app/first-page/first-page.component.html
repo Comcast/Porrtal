@@ -1,16 +1,27 @@
 <p>first-page works!</p>
-<porrtal-workspace-view-host [viewState]="({
-  key: 'test',
-  displayText: 'test',
-  displayIcon: 'test',
-  paneType: 'main',
-  componentImport: componentImport,
-  view: {
-    componentName: 'test',
-    componentModule: 'test',
-    displayText: 'test'
-
-
-  }
-
-})"></porrtal-workspace-view-host>
+<div>
+  modules ({{ moduleCount }}), views ({{ viewCount }}), nav view states: ({{
+    navViewStatesCount
+  }})
+</div>
+<div *ngIf="shellStateService.state$ | async as shellState">
+  <hr />
+  <div>shell state:</div>
+  <div *ngFor="let pane of shellState.panes | keyvalue">
+    {{ pane.key }} ({{ pane.value.viewStates.length }})
+  </div>
+</div>
+<porrtal-workspace-view-host
+  [viewState]="{
+    key: 'test',
+    displayText: 'test',
+    displayIcon: 'test',
+    paneType: 'main',
+    componentImport: componentImport,
+    view: {
+      componentName: 'test',
+      componentModule: 'test',
+      displayText: 'test'
+    }
+  }"
+></porrtal-workspace-view-host>

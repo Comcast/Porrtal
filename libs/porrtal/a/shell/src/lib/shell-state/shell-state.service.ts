@@ -42,7 +42,13 @@ export type ShellAction =
   providedIn: 'root',
 })
 export class ShellStateService extends RxState<ShellState> {
-  constructor() { super(); }
+
+  readonly state$ = this.select();
+
+  constructor() {
+    super();
+    this.set(emptyUseShellState);
+  }
 
   public dispatch = (action: ShellAction) => {
     switch (action.type) {
@@ -295,8 +301,8 @@ export class ShellStateService extends RxState<ShellState> {
       }
 
       case 'launchStartupViews': {
-        this.get().views
-          .filter((view) => view.launchAtStartup)
+        this.get()
+          .views.filter((view) => view.launchAtStartup)
           .forEach((view) => {
             console.log('launch startup view', view);
             this.dispatch({
