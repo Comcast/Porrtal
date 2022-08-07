@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/porrtal/a/shell-bootstrap"],
+      "outputs": [
+        "dist/libs/porrtal/a/shell-bootstrap"
+      ],
       "options": {
         "project": "libs/porrtal/a/shell-bootstrap/ng-package.json"
       },
@@ -21,7 +23,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/porrtal/a/shell-bootstrap"],
+      "outputs": [
+        "coverage/libs/porrtal/a/shell-bootstrap"
+      ],
       "options": {
         "jestConfig": "libs/porrtal/a/shell-bootstrap/jest.config.ts",
         "passWithNoTests": true
