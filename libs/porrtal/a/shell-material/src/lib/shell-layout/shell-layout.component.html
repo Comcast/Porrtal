@@ -1,1 +1,57 @@
-<p>shell-layout works!</p>
+<div *ngIf="state$ | async as shellState" class="container">
+  <div class="banner">
+    <div>image</div>
+    <div>search</div>
+    <div>logger</div>
+    <div>user</div>
+  </div>
+  <div class="content">
+    <as-split [direction]="'horizontal'" [unit]="'pixel'">
+      <as-split-area
+        [order]="0"
+        [size]="250"
+        *ngIf="shellState.panes.nav.viewStates.length > 0"
+        class="nav"
+      >
+        <div>
+          <porrtal-workspace-view-stack
+            [pane]="shellState.panes.nav"
+          ></porrtal-workspace-view-stack>
+        </div>
+      </as-split-area>
+      <as-split-area [order]="1">
+        <as-split [direction]="'vertical'" [unit]="'percent'">
+          <as-split-area [size]="70" [order]="0">
+            <as-split [direction]="'horizontal'" [unit]="'percent'">
+              <as-split-area [size]="70" [order]="0">
+                <div class="main">
+                  <porrtal-workspace-view-stack
+                    [pane]="shellState.panes.main"
+                  ></porrtal-workspace-view-stack>
+                </div>
+              </as-split-area>
+              <as-split-area
+                [order]="1"
+                *ngIf="shellState.panes.right.viewStates.length > 0"
+              >
+                <div class="right">
+                  <porrtal-workspace-view-stack
+                    [pane]="shellState.panes.right"
+                  ></porrtal-workspace-view-stack>
+                </div>
+              </as-split-area>
+            </as-split>
+          </as-split-area>
+          <as-split-area *ngIf="shellState.panes.bottom.viewStates.length" [order]="1">
+            <div class="bottom">
+              <porrtal-workspace-view-stack
+                [pane]="shellState.panes.bottom"
+              ></porrtal-workspace-view-stack>
+            </div>
+          </as-split-area>
+        </as-split>
+      </as-split-area>
+    </as-split>
+  </div>
+  <div class="footer">footer</div>
+</div>
