@@ -4,16 +4,92 @@
     [label]="viewState.displayText"
   >
     <ng-template mat-tab-label>
-      <mat-icon (contextmenu)="doContextMenu($event, viewState)" class="tab-icon">{{
-        viewState.displayIcon
-      }}</mat-icon>
+      <mat-icon
+        (contextmenu)="doContextMenu($event, viewState)"
+        class="tab-icon"
+        >{{ viewState.displayIcon }}</mat-icon
+      >
       <span (contextmenu)="doContextMenu($event, viewState)">{{
         viewState.displayText
       }}</span>
-      <mat-icon (click)="doCloseTab($event, viewState)" inline="true" class="close-icon">close</mat-icon>
+      <mat-icon
+        (click)="doCloseTab($event, viewState)"
+        inline="true"
+        class="close-icon"
+        >close</mat-icon
+      >
     </ng-template>
     <porrtal-workspace-view-host
       [viewState]="viewState"
     ></porrtal-workspace-view-host>
   </mat-tab>
 </mat-tab-group>
+
+<!-- an hidden div is created to set the position of appearance of the menu-->
+<div
+  style="visibility: hidden; position: fixed"
+  [style.left]="menuTopLeftPosition.x"
+  [style.top]="menuTopLeftPosition.y"
+  [matMenuTriggerFor]="rightMenu"
+></div>
+
+<!-- standard material menu -->
+<mat-menu #rightMenu="matMenu">
+  <ng-template matMenuContent let-viewState="viewState">
+    <button mat-menu-item (click)="doCloseTab($event, viewState)">
+      <span>
+        <mat-icon inline="true" class="menu-close-icon">close</mat-icon>
+        <span>Close Tab</span>
+      </span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item [matMenuTriggerFor]="arrangeOptions">
+      <span>
+        <mat-icon inline="true" class="menu-close-icon"
+          >pivot_table_chart</mat-icon
+        >
+        <span>Arrange...</span>
+      </span>
+    </button>
+    <button
+      mat-menu-item
+      [matMenuTriggerFor]="moveOptions"
+      [matMenuTriggerData]="{viewState}"
+    >
+      <span>
+        <mat-icon inline="true" class="menu-close-icon">open_with</mat-icon>
+        <span>Move To...</span>
+      </span>
+    </button>
+  </ng-template>
+</mat-menu>
+
+<mat-menu #arrangeOptions="matMenu">
+  <button mat-menu-item *ngFor="let paneArrangement of paneArrangements">
+    <span>
+      <mat-icon inline="true" class="menu-close-icon"
+        >pivot_table_chart</mat-icon
+      >
+      <span>{{ paneArrangement }}</span>
+    </span>
+  </button>
+</mat-menu>
+
+<mat-menu #moveOptions="matMenu">
+  <ng-template matMenuContent let-viewState="viewState">
+    <button
+      (click)="doMoveTab($event, viewState, paneType)"
+      mat-menu-item
+      *ngFor="let paneType of paneTypes"
+    >
+      <span>
+        <mat-icon
+          inline="true"
+          class="menu-move-to-icon material-icons-outlined"
+          >{{ moveIcons[paneType] }}</mat-icon
+        >
+        <span>{{ paneType }}</span>
+      </span>
+    </button>
+  </ng-template>
+</mat-menu>
