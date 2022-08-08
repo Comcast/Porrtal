@@ -1,2 +1,9 @@
-<p>view-stack works!</p>
-<p>{{pane?.paneType}}</p>
+<mat-tab-group preserveContent>
+  <mat-tab *ngFor="let viewState of pane?.viewStates" [label]="viewState.displayText">
+    <ng-template mat-tab-label>
+      <mat-icon class="tab-icon">{{viewState.displayIcon}}</mat-icon>
+      {{viewState.displayText}}
+    </ng-template>
+    <porrtal-workspace-view-host [viewState]="viewState"></porrtal-workspace-view-host>
+  </mat-tab>
+</mat-tab-group>
