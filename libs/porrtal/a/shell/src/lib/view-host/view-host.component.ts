@@ -10,17 +10,25 @@ import { ViewComponentProps, ViewState } from '@porrtal/a-api';
   styleUrls: ['./view-host.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ViewHostComponent implements OnInit {
-
-  @Input() public viewState!: ViewState;
+export class ViewHostComponent {
+  private _viewState!: ViewState;
+  @Input() public set viewState(value: ViewState) {
+    this._viewState = value;
+    this.loadViewStateComponent();
+  };
+  public get viewState() {
+    return this._viewState;
+  }
 
   constructor(private viewContainerRef: ViewContainerRef) {}
 
-  async ngOnInit() {
+  async loadViewStateComponent() {
+    console.log('load view state component.');
     this.viewContainerRef.clear();
     const component = await this.viewState.componentImport()
     if (component) {
-      this.viewContainerRef.createComponent<ViewComponentProps>(component)
+      const comp = this.viewContainerRef.createComponent<ViewComponentProps>(component);
+      comp.instance.viewState = this._viewState;
     }
   }
 }
