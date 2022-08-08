@@ -43,7 +43,11 @@
       </span>
     </button>
     <mat-divider></mat-divider>
-    <button mat-menu-item [matMenuTriggerFor]="arrangeOptions">
+    <button
+      mat-menu-item
+      [matMenuTriggerFor]="arrangeOptions"
+      [matMenuTriggerData]="{viewState}"
+    >
       <span>
         <mat-icon inline="true" class="menu-close-icon"
           >pivot_table_chart</mat-icon
@@ -65,14 +69,20 @@
 </mat-menu>
 
 <mat-menu #arrangeOptions="matMenu">
-  <button mat-menu-item *ngFor="let paneArrangement of paneArrangements">
-    <span>
-      <mat-icon inline="true" class="menu-close-icon"
-        >pivot_table_chart</mat-icon
-      >
-      <span>{{ paneArrangement }}</span>
-    </span>
-  </button>
+  <ng-template matMenuContent let-viewState="viewState">
+    <button
+      mat-menu-item
+      (click)="doSetArrangementType($event, viewState, paneArrangement)"
+      *ngFor="let paneArrangement of paneArrangements"
+    >
+      <span>
+        <mat-icon inline="true" class="menu-close-icon">{{
+          pane?.arrange === paneArrangement ? 'done' : ''
+        }}</mat-icon>
+        <span>{{ paneArrangement }}</span>
+      </span>
+    </button>
+  </ng-template>
 </mat-menu>
 
 <mat-menu #moveOptions="matMenu">

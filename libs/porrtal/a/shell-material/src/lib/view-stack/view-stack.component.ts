@@ -5,7 +5,14 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Pane, paneTypes, paneArrangements, ViewState, PaneType } from '@porrtal/a-api';
+import {
+  Pane,
+  paneTypes,
+  paneArrangements,
+  ViewState,
+  PaneType,
+  PaneArrangement,
+} from '@porrtal/a-api';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
@@ -74,11 +81,24 @@ export class ViewStackComponent {
   }
 
   doMoveTab(evt: MouseEvent, viewState: ViewState, toPaneType: string): void {
-    console.log('do move tab', viewState, toPaneType);
     this.shellStateService.dispatch({
       type: 'moveView',
       key: viewState.key,
       toPane: toPaneType as PaneType,
     });
+  }
+
+  doSetArrangementType(
+    evt: MouseEvent,
+    viewState: ViewState,
+    paneArrangement: PaneArrangement
+  ): void {
+    if (this.pane) {
+      this.shellStateService.dispatch({
+        type: 'arrangePane',
+        pane: this.pane,
+        paneArrangement,
+      });
+    }
   }
 }
