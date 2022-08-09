@@ -43,3 +43,40 @@ mat-tab-group {
   margin: 3px !important;
   height: 24px !important;
 }
+
+.selected {
+  background-color: lightgrey;
+}
+.vertical-tabs-anchor {
+  width: 100%;
+}
+.vertical-tabs-anchor:focus {
+  outline: 1px solid lightgrey;
+}
+.vertical-tabs-item-text {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden
+}
+.vertical-tabs-nav-list {
+  overflow-y: auto;
+}
+
+.vertical-tabs-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.vertical-tabs-tabs-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  max-height: 100%;
+}
+
+.vertical-tabs-content {
+  flex: 1 1 auto;
+  height: 100%;
+}

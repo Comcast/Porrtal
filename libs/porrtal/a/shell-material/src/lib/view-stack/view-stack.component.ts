@@ -17,6 +17,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 import { ShellStateService, ViewHostComponent } from '@porrtal/a-shell';
 
 @Component({
@@ -28,6 +29,7 @@ import { ShellStateService, ViewHostComponent } from '@porrtal/a-shell';
     MatIconModule,
     MatMenuModule,
     MatDividerModule,
+    MatListModule,
     ViewHostComponent,
   ],
   templateUrl: './view-stack.component.html',
@@ -58,6 +60,16 @@ export class ViewStackComponent {
   };
 
   constructor(private shellStateService: ShellStateService) {}
+
+  doChangeTabIndex(ii: number) {
+    if (this.pane) {
+      this.shellStateService.dispatch({
+        type: 'setCurrentViewStateByKey',
+        key: this.pane.viewStates[ii].key,
+        pane: this.pane,
+      });
+    }
+  }
 
   doContextMenu(evt: MouseEvent, viewState: ViewState): void {
     evt.preventDefault();
