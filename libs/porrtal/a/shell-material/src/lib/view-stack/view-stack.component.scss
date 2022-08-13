@@ -32,6 +32,17 @@ mat-tab-group {
   height: 100%;
 }
 
+mat-nav-list {
+  padding-top: 0;
+}
+
+mat-list-item {
+  height: 32px !important;
+  ::ng-deep span.mat-list-item-content {
+    padding: 6px 6px 0 6px !important;
+  }
+}
+
 ::ng-deep .mat-tab-body-wrapper {
   flex: 1 1 auto;
 }
@@ -79,4 +90,22 @@ mat-tab-group {
 .vertical-tabs-content {
   flex: 1 1 auto;
   height: 100%;
+}
+
+.vertical-tabs-view-host-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.vertical-tabs-content-background-div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: gainsboro;
+  z-index: 5;
 }

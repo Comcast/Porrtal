@@ -42,7 +42,6 @@ export type ShellAction =
   providedIn: 'root',
 })
 export class ShellStateService extends RxState<ShellState> {
-
   readonly state$ = this.select();
 
   constructor() {
@@ -310,6 +309,17 @@ export class ShellStateService extends RxState<ShellState> {
               viewId: view.viewId ?? view.componentName,
             });
           });
+
+        paneTypes.forEach((paneType) => {
+          const pane = this.get().panes[paneType];
+          if (pane.viewStates.length > 0) {
+            this.dispatch({
+              type: 'setCurrentViewStateByKey',
+              key: pane.viewStates[0].key,
+              pane,
+            });
+          }
+        });
       }
     }
   };

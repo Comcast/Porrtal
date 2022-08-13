@@ -4,6 +4,7 @@
     preserveContent
     *ngSwitchCase="'tabs-top'"
     (selectedIndexChange)="doChangeTabIndex($event)"
+    [selectedIndex]="selectedTabIndex"
   >
     <mat-tab *ngFor="let viewState of pane?.viewStates">
       <ng-template mat-tab-label>
@@ -29,33 +30,19 @@
   </mat-tab-group>
 
   <!-- tabs-left -->
-  <div
-    class="vertical-tabs-container"
-    fxFlex
-    fxLayout="row"
-    fxLayoutAlign="start stretch"
-  >
-    <div
-      class="vertical-tabs-tabs-container"
-      fxLayout="row"
-      fxLayoutAlign="start stretch"
-      fxLayoutGap="1em"
-      *ngSwitchCase="'tabs-left'"
-    >
-      <div fxFlex class="vertical-tabs-nav-list">
+  <div class="vertical-tabs-container" *ngSwitchCase="'tabs-left'">
+    <div class="vertical-tabs-tabs-container">
+      <div class="vertical-tabs-nav-list">
         <mat-nav-list>
           <mat-list-item
             *ngFor="let viewState of pane?.viewStates; let ii = index"
             [ngClass]="{ selected: viewState.key === pane?.currentKey }"
             (click)="doChangeTabIndex(ii)"
+            (contextmenu)="doContextMenu($event, viewState)"
           >
             <a tabindex="0" class="vertical-tabs-anchor">
-              <div
-                fxLayout="row"
-                fxLayoutAlign="start center"
-                fxLayoutGap="0.5em"
-              >
-                <mat-icon fxFlex="none">{{ viewState.displayIcon }}</mat-icon>
+              <div>
+                <mat-icon>{{ viewState.displayIcon }}</mat-icon>
               </div>
             </a>
           </mat-list-item>
@@ -63,8 +50,17 @@
       </div>
     </div>
     <div class="vertical-tabs-content">
-      <div fxFlex style="background-color: yellow; width: 100%; height: 100%">
-        {{ pane?.currentKey }}
+      <div style="position: relative; height: 100%">
+        <div
+          class="vertical-tabs-view-host-container"
+          *ngFor="let viewState of pane?.viewStates; let ii = index"
+          [style.zIndex]="viewState.key === pane?.currentKey ? 10 : 0"
+          >
+          <porrtal-workspace-view-host
+            [viewState]="viewState"
+          ></porrtal-workspace-view-host>
+        </div>
+        <div class="vertical-tabs-content-background-div"></div>
       </div>
     </div>
   </div>

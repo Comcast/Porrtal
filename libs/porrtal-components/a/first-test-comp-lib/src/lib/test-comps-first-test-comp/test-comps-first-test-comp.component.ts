@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewState } from '@porrtal/a-api';
 
@@ -10,13 +10,15 @@ import { ViewState } from '@porrtal/a-api';
   styleUrls: ['./test-comps-first-test-comp.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TestCompsFirstTestCompComponent implements OnInit {
-  @Input() viewState?: ViewState;
+export class TestCompsFirstTestCompComponent {
+  private _viewState?: ViewState;
+  @Input() set viewState(value: ViewState | undefined) {
+    this._viewState = value;
+  };
+  get viewState() {
+    return this._viewState;
+  }
+
   constructor() {}
 
-  ngOnInit(): void {}
 }
-function Import() {
-  throw new Error('Function not implemented.');
-}
-

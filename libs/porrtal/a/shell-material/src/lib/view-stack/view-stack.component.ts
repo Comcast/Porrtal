@@ -43,12 +43,17 @@ export class ViewStackComponent {
     this.paneTypes = paneTypes.filter(
       (pt) => pt !== 'search' && pt !== (this._pane?.paneType ?? '')
     );
+    const ii = this.pane?.viewStates.findIndex(vs => vs.key === this.pane?.currentKey);
+    if (ii !== undefined) {
+      this.selectedTabIndex = ii;
+    }
   }
   get pane() {
     return this._pane;
   }
   @ViewChild(MatMenuTrigger, { static: true }) matMenuTrigger?: MatMenuTrigger;
   public paneTypes?: string[];
+  public selectedTabIndex?: number;
   public paneArrangements = paneArrangements;
   menuTopLeftPosition = { x: '0', y: '0' };
   public moveIcons: { [key: string]: string } = {
@@ -59,7 +64,9 @@ export class ViewStackComponent {
     search: 'clear',
   };
 
-  constructor(private shellStateService: ShellStateService) {}
+  constructor(private shellStateService: ShellStateService) {
+    const ii = this.pane?.viewStates.findIndex(vs => vs.key === this.pane?.currentKey)
+  }
 
   doChangeTabIndex(ii: number) {
     if (this.pane) {

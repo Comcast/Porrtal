@@ -28,7 +28,10 @@ export class ViewHostComponent {
     const component = await this.viewState.componentImport()
     if (component) {
       const comp = this.viewContainerRef.createComponent<ViewComponentProps>(component);
-      comp.instance.viewState = this._viewState;
+      // comp.instance.viewState = this._viewState;
+      comp.setInput('viewState', this._viewState);
+      comp.changeDetectorRef.markForCheck();
+      comp.changeDetectorRef.detectChanges();
     }
   }
 }
