@@ -55,7 +55,7 @@
           class="vertical-tabs-view-host-container"
           *ngFor="let viewState of pane?.viewStates; let ii = index"
           [style.zIndex]="viewState.key === pane?.currentKey ? 10 : 0"
-          >
+        >
           <porrtal-workspace-view-host
             [viewState]="viewState"
           ></porrtal-workspace-view-host>
@@ -66,7 +66,41 @@
   </div>
 
   <!-- cards -->
-  <div *ngSwitchCase="'cards'">cards</div>
+  <div *ngSwitchCase="'cards'" class="card-container">
+    <div class="cards">
+      <mat-card
+        *ngFor="let viewState of pane?.viewStates; let ii = index"
+        class="card"
+      >
+        <mat-card-title style="margin: 0;">
+          <div
+            class="card-title"
+            [ngClass]="{
+              'selected-card-title': viewState.key === pane?.currentKey
+            }"
+            (click)="doChangeTabIndex(ii)"
+            (contextmenu)="doContextMenu($event, viewState)"
+          >
+            <mat-icon class="tab-icon">{{ viewState.displayIcon }}</mat-icon>
+            <span>{{ viewState.displayText }}</span>
+            <mat-icon
+              (click)="doCloseTab($event, viewState)"
+              inline="true"
+              class="close-icon"
+              >close</mat-icon
+            >
+          </div>
+        </mat-card-title>
+        <mat-card-content>
+          <div class="view-host-container">
+            <porrtal-workspace-view-host
+              [viewState]="viewState"
+            ></porrtal-workspace-view-host>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
 </ng-container>
 
 <!-- an hidden div is created to set the position of appearance of the menu-->

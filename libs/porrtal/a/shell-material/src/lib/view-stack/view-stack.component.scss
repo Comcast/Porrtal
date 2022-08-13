@@ -109,3 +109,49 @@ mat-list-item {
   background-color: gainsboro;
   z-index: 5;
 }
+
+.card-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  background-color: silver;
+}
+
+.view-host-container {
+  position: relative;
+  height: 100%;
+  margin-top: 0;
+}
+
+.cards {
+  width: 100%;
+  min-height: 100%;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  align-items: stretch;
+  // justify-items: stretch;
+  gap: 10px;
+}
+
+.card {
+  display: grid;
+  min-height: 250px;
+  grid-template-rows: auto 1fr;
+  margin: 0;
+  padding: 0;
+}
+
+.card-title {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  justify-items: start;
+}
+
+.selected-card-title {
+  background-color: gainsboro;
+}

@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card'
 import { ShellStateService, ViewHostComponent } from '@porrtal/a-shell';
 
 @Component({
@@ -30,6 +31,7 @@ import { ShellStateService, ViewHostComponent } from '@porrtal/a-shell';
     MatMenuModule,
     MatDividerModule,
     MatListModule,
+    MatCardModule,
     ViewHostComponent,
   ],
   templateUrl: './view-stack.component.html',
