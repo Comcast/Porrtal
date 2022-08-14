@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ViewState } from '@porrtal/a-api';
 
 @Component({
   selector: 'porrtal-workspace-test-comps-second-test-comp',
@@ -9,8 +10,10 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./test-comps-second-test-comp.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TestCompsSecondTestCompComponent implements OnInit {
+export class TestCompsSecondTestCompComponent {
+
+  @Input() viewState?: ViewState;
+
   constructor() {}
 
-  ngOnInit(): void {}
 }

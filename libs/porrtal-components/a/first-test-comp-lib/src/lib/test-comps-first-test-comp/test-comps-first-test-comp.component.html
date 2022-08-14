@@ -1,4 +1,135 @@
 <div class="container">
-  <p>test-comps-first-test-comp works!</p>
-  <p>{{viewState?.displayText}}</p>
+  <h1>Welcome to TestCompsFirstTestCompComponent!</h1>
+  <button
+    (click)="
+      createAndLaunchView({
+        paneType: 'right',
+        componentName: 'TestCompsFirstTestCompComponent',
+        componentModule: '@porrtal-components/a-first-test-comp-lib',
+        displayText: 'one{a}{b.c}',
+        displayIcon: 'home',
+        stateV: { a: ' bam!', b: { c: ' bambam!!' } },
+        stateVS: { myProp: 'State to be passed to view instance.' }
+      })
+    "
+  >
+    launch right
+  </button>
+  &nbsp;
+  <button
+    (click)="
+      createAndLaunchView({
+        paneType: 'right',
+        componentName: 'TestCompsFirstTestCompComponent',
+        componentModule: '@porrtal-components/a-first-test-comp-lib',
+        displayText: 'one{a}{b.c}',
+        displayIcon: 'home',
+        stateV: { a: ' bam!', b: { c: ' bambam!!' } }
+      })
+    "
+  >
+    launch right and close search
+  </button>
+  &nbsp;
+  <button
+    (click)="
+      createAndLaunchView({
+        paneType: 'bottom',
+        componentName: 'TestCompsFirstTestCompComponent',
+        componentModule: '@porrtal-components/a-first-test-comp-lib',
+        displayText: 'one',
+        displayIcon: 'home',
+        stateV: {}
+      })
+    "
+  >
+    launch bottom
+  </button>
+  &nbsp;
+  <br />
+  <button
+    (click)="
+      createAndLaunchView({
+        key: '7',
+        paneType: 'right',
+        componentName: 'TestCompsFirstTestCompComponent',
+        componentModule: '@porrtal-components/a-first-test-comp-lib',
+        displayText: 'Seven-First',
+        displayIcon: 'home',
+        stateV: {}
+      })
+    "
+  >
+    launch key=7 right
+  </button>
+  &nbsp;
+  <button
+    (click)="
+      createAndLaunchView({
+        key: '7',
+        paneType: 'bottom',
+        componentName: 'TestCompsFirstTestCompComponent',
+        componentModule: '@porrtal-components/a-first-test-comp-lib',
+        displayText: 'Seven-Bottom',
+        displayIcon: 'home',
+        stateV: {}
+      })
+    "
+  >
+    launch key=7 bottom
+  </button>
+  &nbsp;
+  <br />
+  <p>second component</p>
+  <button
+    (click)="
+      createAndLaunchView({
+        key: '7',
+        paneType: 'right',
+        componentName: 'TestCompsSecondTestCompComponent',
+        componentModule: '@porrtal-components/a-second-test-comp-lib',
+        displayText: 'Seven-Second',
+        displayIcon: 'home',
+        stateV: {}
+      })
+    "
+  >
+    launch second key=7 right
+  </button>
+  &nbsp;
+  <button
+    (click)="
+      createAndLaunchView({
+        key: '7',
+        paneType: 'bottom',
+        componentName: 'TestCompsSecondTestCompComponent',
+        componentModule: '@porrtal-components/a-second-test-comp-lib',
+        displayText: 'Seven-Second',
+        displayIcon: 'home',
+        stateV: {}
+      })
+    "
+  >
+    launch second key=7 bottom
+  </button>
+  &nbsp;
+  <hr />
+
+  <!-- <div>search text: {{searchText}}</div> -->
+
+  <h4>state:</h4>
+  <pre [innerHtml]="viewState?.state ?? '(no state)' | json"></pre>
+
+  <div>
+    logger:&nbsp;
+    <button>log1</button>
+    &nbsp;
+    <button>log2</button>
+    &nbsp;
+    <button>log3</button>
+    &nbsp;
+  </div>
+  <p *ngFor="let item of numberStrings">
+    {{ item }}
+  </p>
 </div>
