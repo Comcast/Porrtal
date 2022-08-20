@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-zoomable-treemap',
+  selector: 'porrtal-zoomable-treemap',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './zoomable-treemap.component.html',

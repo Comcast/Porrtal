@@ -26,7 +26,7 @@ import { MatCard, MatCardModule } from '@angular/material/card'
 import { ShellStateService, ViewHostComponent } from '@porrtal/a-shell';
 
 @Component({
-  selector: 'porrtal-workspace-view-stack',
+  selector: 'porrtal-view-stack',
   standalone: true,
   imports: [
     CommonModule,

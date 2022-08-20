@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-second-page',
+  selector: 'porrtal-second-page',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './second-page.component.html',

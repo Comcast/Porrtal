@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-zoomable-sunburst',
+  selector: 'porrtal-zoomable-sunburst',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './zoomable-sunburst.component.html',

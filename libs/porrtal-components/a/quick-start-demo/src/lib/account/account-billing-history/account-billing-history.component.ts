@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-account-billing-history',
+  selector: 'porrtal-account-billing-history',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './account-billing-history.component.html',

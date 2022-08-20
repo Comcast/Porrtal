@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-zoomable-icicle',
+  selector: 'porrtal-zoomable-icicle',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './zoomable-icicle.component.html',

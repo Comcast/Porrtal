@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-zoomable-circle-pack',
+  selector: 'porrtal-zoomable-circle-pack',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './zoomable-circle-pack.component.html',

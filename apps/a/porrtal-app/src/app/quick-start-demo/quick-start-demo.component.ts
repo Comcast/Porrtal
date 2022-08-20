@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-quick-start-demo',
+  selector: 'porrtal-quick-start-demo',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './quick-start-demo.component.html',

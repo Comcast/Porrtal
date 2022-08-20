@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-viz-nav',
+  selector: 'porrtal-viz-nav',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './viz-nav.component.html',

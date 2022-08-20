@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ViewComponentProps, ViewState } from '@porrtal/a-api';
 
 @Component({
-  selector: 'porrtal-workspace-view-host',
+  selector: 'porrtal-view-host',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './view-host.component.html',

@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { ShellStateService } from '@porrtal/a-shell';
 
 @Component({
-  selector: 'porrtal-workspace-test-comps-first-test-comp',
+  selector: 'porrtal-test-comps-first-test-comp',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './test-comps-first-test-comp.component.html',

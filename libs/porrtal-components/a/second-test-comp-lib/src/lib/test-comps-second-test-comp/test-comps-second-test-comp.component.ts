@@ -4,7 +4,7 @@ import { ViewState } from '@porrtal/a-api';
 import { EntityMenuComponent } from '@porrtal/a-shell-material';
 
 @Component({
-  selector: 'porrtal-workspace-test-comps-second-test-comp',
+  selector: 'porrtal-test-comps-second-test-comp',
   standalone: true,
   imports: [CommonModule, EntityMenuComponent],
   templateUrl: './test-comps-second-test-comp.component.html',

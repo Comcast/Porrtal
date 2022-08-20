@@ -23,9 +23,9 @@
           >close</mat-icon
         >
       </ng-template>
-      <porrtal-workspace-view-host
+      <porrtal-view-host
         [viewState]="viewState"
-      ></porrtal-workspace-view-host>
+      ></porrtal-view-host>
     </mat-tab>
   </mat-tab-group>
 
@@ -56,9 +56,9 @@
           *ngFor="let viewState of pane?.viewStates; let ii = index"
           [style.zIndex]="viewState.key === pane?.currentKey ? 10 : 0"
         >
-          <porrtal-workspace-view-host
+          <porrtal-view-host
             [viewState]="viewState"
-          ></porrtal-workspace-view-host>
+          ></porrtal-view-host>
         </div>
         <div class="vertical-tabs-content-background-div"></div>
       </div>
@@ -94,9 +94,9 @@
         </mat-card-title>
         <mat-card-content>
           <div class="view-host-container">
-            <porrtal-workspace-view-host
+            <porrtal-view-host
               [viewState]="viewState"
-            ></porrtal-workspace-view-host>
+            ></porrtal-view-host>
           </div>
         </mat-card-content>
       </mat-card>

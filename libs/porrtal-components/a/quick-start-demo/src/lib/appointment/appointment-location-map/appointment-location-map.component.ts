@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-appointment-location-map',
+  selector: 'porrtal-appointment-location-map',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './appointment-location-map.component.html',

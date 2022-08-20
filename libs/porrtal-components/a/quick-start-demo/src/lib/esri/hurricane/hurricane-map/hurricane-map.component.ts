@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-hurricane-map',
+  selector: 'porrtal-hurricane-map',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './hurricane-map.component.html',

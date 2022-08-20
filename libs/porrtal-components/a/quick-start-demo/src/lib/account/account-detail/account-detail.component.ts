@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-account-detail',
+  selector: 'porrtal-account-detail',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './account-detail.component.html',

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-appointment-create',
+  selector: 'porrtal-appointment-create',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './appointment-create.component.html',

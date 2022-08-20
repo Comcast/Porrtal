@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-third-page',
+  selector: 'porrtal-third-page',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './third-page.component.html',

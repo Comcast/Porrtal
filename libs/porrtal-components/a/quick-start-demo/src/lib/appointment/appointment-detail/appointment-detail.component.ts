@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-appointment-detail',
+  selector: 'porrtal-appointment-detail',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './appointment-detail.component.html',

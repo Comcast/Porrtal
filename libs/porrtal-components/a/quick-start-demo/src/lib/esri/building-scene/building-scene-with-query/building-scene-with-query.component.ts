@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-building-scene-with-query',
+  selector: 'porrtal-building-scene-with-query',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './building-scene-with-query.component.html',

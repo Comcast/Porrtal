@@ -10,7 +10,7 @@ import { testModules, testViews } from '../test-config/test-view-states';
 import { ShellLayoutComponent } from '@porrtal/a-shell-material';
 
 @Component({
-  selector: 'porrtal-workspace-first-page',
+  selector: 'porrtal-first-page',
   standalone: true,
   imports: [CommonModule, ShellLayoutComponent],
   templateUrl: './first-page.component.html',
