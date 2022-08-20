@@ -69,6 +69,7 @@
   <div *ngSwitchCase="'cards'" class="card-container">
     <div class="cards">
       <mat-card
+        #card
         *ngFor="let viewState of pane?.viewStates; let ii = index"
         class="card"
       >

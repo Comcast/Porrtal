@@ -1,8 +1,12 @@
 import {
+  AfterContentChecked,
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   Input,
+  QueryList,
   ViewChild,
+  ViewChildren,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -18,7 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { MatCardModule } from '@angular/material/card'
+import { MatCard, MatCardModule } from '@angular/material/card'
 import { ShellStateService, ViewHostComponent } from '@porrtal/a-shell';
 
 @Component({
@@ -38,7 +42,7 @@ import { ShellStateService, ViewHostComponent } from '@porrtal/a-shell';
   styleUrls: ['./view-stack.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ViewStackComponent {
+export class ViewStackComponent implements AfterContentChecked {
   _pane?: Pane;
   @Input() set pane(value: Pane | undefined) {
     this._pane = value;
@@ -53,7 +57,10 @@ export class ViewStackComponent {
   get pane() {
     return this._pane;
   }
+
   @ViewChild(MatMenuTrigger, { static: true }) matMenuTrigger?: MatMenuTrigger;
+  @ViewChildren('card', { read: ElementRef<HTMLElement>}) cards?: QueryList<ElementRef<HTMLElement>>;
+
   public paneTypes?: string[];
   public selectedTabIndex?: number;
   public paneArrangements = paneArrangements;
@@ -68,6 +75,18 @@ export class ViewStackComponent {
 
   constructor(private shellStateService: ShellStateService) {
     const ii = this.pane?.viewStates.findIndex(vs => vs.key === this.pane?.currentKey)
+  }
+
+  ngAfterContentChecked(): void {
+    if (this.cards && this.pane) {
+      this.cards.some((card, ii) => {
+        const isSelected = this.pane?.currentKey === this.pane?.viewStates[ii].key
+        if (isSelected) {
+          card.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start'});
+        }
+        return isSelected;
+      })
+    }
   }
 
   doChangeTabIndex(ii: number) {
