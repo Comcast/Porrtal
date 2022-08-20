@@ -34,7 +34,9 @@ export class TestCompsFirstTestCompComponent {
     stateV?: StateObject,
     stateVS?: StateObject,
     key?: string,
+    lookupModuleFunction?: boolean
 }) {
+  const viewComponentModules = this.shellStateService.get('viewComponentModules')
   const newViewId = uuidv4();
   this.shellStateService.dispatch({
     type: 'registerView',
@@ -44,7 +46,7 @@ export class TestCompsFirstTestCompComponent {
       launchAtStartup: false,
       paneType: info.paneType,
       componentName: info.componentName,
-      componentModule: info.componentModule,
+      componentModule: info?.lookupModuleFunction ? viewComponentModules[info.componentModule] : info.componentModule,
       displayText: info.displayText,
       displayIcon: info.displayIcon,
       state: info.stateV,
