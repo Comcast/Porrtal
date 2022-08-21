@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { SearchStateService } from '@porrtal/a-shell';
 
 @Component({
   selector: 'porrtal-search',
@@ -20,9 +21,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchComponent {
-  constructor() {}
+  constructor(public searchStateService: SearchStateService) {}
 
   doSearch() {
     alert('search...');
+  }
+
+  doSearchTextChanged(evt: Event) {
+    this.searchStateService.dispatch({
+      type: 'setSearchText',
+      searchText: (evt.target as HTMLInputElement).value
+    })
   }
 }

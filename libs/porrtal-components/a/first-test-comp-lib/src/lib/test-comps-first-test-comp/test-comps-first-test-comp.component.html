@@ -117,7 +117,7 @@
   &nbsp;
   <hr />
 
-  <!-- <div>search text: {{searchText}}</div> -->
+  <div>search text: {{searchText$ | async}}</div>
 
   <h4>state:</h4>
   <pre [innerHtml]="viewState?.state ?? '(no state)' | json"></pre>

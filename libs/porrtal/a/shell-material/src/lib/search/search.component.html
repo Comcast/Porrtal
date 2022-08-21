@@ -2,6 +2,6 @@
 
   <mat-form-field class="search-form-field" appearance="fill">
     <mat-icon matPrefix (click)="doSearch()">search</mat-icon>
-    <input type="text" matInput />
+    <input type="text" matInput (keyup)="doSearchTextChanged($event)" />
   </mat-form-field>
 </div>
