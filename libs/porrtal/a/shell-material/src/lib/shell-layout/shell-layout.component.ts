@@ -4,11 +4,17 @@ import { AngularSplitModule } from 'angular-split';
 import { ViewStackComponent } from '../view-stack/view-stack.component';
 import { ShellState, ShellStateService } from '@porrtal/a-shell';
 import { Observable } from 'rxjs';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'porrtal-shell-layout',
   standalone: true,
-  imports: [CommonModule, AngularSplitModule, ViewStackComponent],
+  imports: [
+    CommonModule,
+    AngularSplitModule,
+    ViewStackComponent,
+    SearchComponent,
+  ],
   templateUrl: './shell-layout.component.html',
   styleUrls: ['./shell-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
