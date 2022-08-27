@@ -41,6 +41,23 @@ export class TestCompsFirstTestCompComponent {
     this.searchText$ = searchStateService.select('debouncedSearchText');
   }
 
+  launchAndCloseSearch(info: {
+    paneType: PaneType;
+    componentName: string;
+    componentModule: string;
+    displayText: string;
+    displayIcon?: string;
+    stateV?: StateObject;
+    stateVS?: StateObject;
+    key?: string;
+    lookupModuleFunction?: boolean;
+  }) {
+    this.createAndLaunchView(info);
+    this.searchStateService.dispatch({
+      type: 'closeSearchDialog'
+    });
+  }
+
   createAndLaunchView(info: {
     paneType: PaneType;
     componentName: string;

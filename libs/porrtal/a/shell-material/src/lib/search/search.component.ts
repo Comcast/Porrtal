@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   Inject,
+  OnDestroy,
   ViewChild,
 } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
@@ -20,6 +21,7 @@ import { SearchDialogComponent } from '../search-dialog/search-dialog.component'
 import { MatTabBody } from '@angular/material/tabs';
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
 import { NgxPopperjsModule, NgxPopperjsContentComponent, NgxPopperjsPlacements } from 'ngx-popperjs';
+import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'porrtal-search',
@@ -38,13 +40,14 @@ import { NgxPopperjsModule, NgxPopperjsContentComponent, NgxPopperjsPlacements }
   styleUrls: ['./search.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchComponent {
+export class SearchComponent implements OnDestroy {
   @ViewChild('searchInput', { read: ElementRef<HTMLElement>}) searchInput?: HTMLElement;
-  @ViewChild('searchDialog', { read: ElementRef<HTMLElement>}) searchDialog?: HTMLElement;
+  @ViewChild('searchDialog', { read: NgxPopperjsContentComponent}) searchDialog?: NgxPopperjsContentComponent;
 
   public popperPlacement = NgxPopperjsPlacements.LEFTEND;
   public width = '500px';
   public height = '300px';
+  private destroySubject = new Subject<boolean>();
 
   constructor(
     public searchStateService: SearchStateService,
@@ -52,32 +55,30 @@ export class SearchComponent {
     @Inject(DOCUMENT) public document: Document,
     private el: ElementRef<HTMLElement>
   ) {
-    // this.document.documentElement.style.overflow = 'hidden';
+    this.searchStateService.select('isSearchDialogOpen')
+      .pipe(takeUntil(this.destroySubject))
+      .subscribe((isSearchDialogOpen: boolean) => {
+        if (isSearchDialogOpen) {
+          this.showSearch();
+        } else {
+          this.hideSearch();
+        }
+      })
   }
 
-  doSearch() {
+  hideSearch() {
+    if (this.searchDialog) {
+      this.searchDialog.hide();
+    }
+  }
+
+  showSearch() {
     this.width = `${this.el.nativeElement.offsetLeft - 50}px`;
     this.height = `${this.document.body.offsetHeight - 50}px`;
 
     if (this.searchDialog) {
-      (this.searchDialog as any).show();
+      this.searchDialog.show();
     }
-    // const dialogConfig = new MatDialogConfig();
-    // dialogConfig.scrollStrategy = new NoopScrollStrategy();
-    // dialogConfig.hasBackdrop = false;
-    // dialogConfig.position = {
-    //   top: '10px',
-    //   left: '25px',
-    // };
-    // dialogConfig.autoFocus = false;
-    // dialogConfig.restoreFocus = true;
-
-    // this.dialog.open(SearchDialogComponent, dialogConfig);
-    // setTimeout(() => {
-    //   if (this.searchInput) {
-    //     this.searchInput.focus()
-    //   }
-    // }, 1300);
   }
 
   doSearchTextChanged(evt: Event) {
@@ -85,5 +86,25 @@ export class SearchComponent {
       type: 'setSearchText',
       searchText: (evt.target as HTMLInputElement).value,
     });
+    this.searchStateService.dispatch({
+      type: 'openSearchDialog'
+    });
+  }
+
+  doHidePopper() {
+    this.searchStateService.dispatch({
+      type: 'closeSearchDialog'
+    });
+  }
+
+  doShowPopper() {
+    this.searchStateService.dispatch({
+      type: 'openSearchDialog'
+    });
+  }
+
+  ngOnDestroy(): void {
+      this.destroySubject.next(true);
+      this.destroySubject.complete();
   }
 }

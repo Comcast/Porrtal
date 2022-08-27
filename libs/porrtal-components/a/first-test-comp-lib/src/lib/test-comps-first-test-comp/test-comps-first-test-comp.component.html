@@ -18,14 +18,14 @@
   &nbsp;
   <button
     (click)="
-      createAndLaunchView({
+      launchAndCloseSearch({
         paneType: 'right',
         componentName: 'TestCompsFirstTestCompComponent',
         componentModule: '@porrtal-components/a-first-test-comp-lib',
         displayText: 'one{a}{b.c}',
         displayIcon: 'home',
         stateV: { a: ' bam!', b: { c: ' bambam!!' } }
-      })
+      });
     "
   >
     launch right and close search

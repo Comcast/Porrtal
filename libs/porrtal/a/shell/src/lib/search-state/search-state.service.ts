@@ -49,7 +49,7 @@ export class SearchStateService extends RxState<SearchState> {
       }
 
       case 'openSearchDialog': {
-        this.set({ isSearchDialogOpen: false });
+        this.set({ isSearchDialogOpen: true });
         break;
       }
 
