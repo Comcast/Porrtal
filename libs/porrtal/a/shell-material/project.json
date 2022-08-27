@@ -1,0 +1,45 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/porrtal/a/shell-material/src",
+  "prefix": "porrtal-workspace",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": [
+        "dist/libs/porrtal/a/shell-material"
+      ],
+      "options": {
+        "project": "libs/porrtal/a/shell-material/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/porrtal/a/shell-material/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/porrtal/a/shell-material/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/porrtal/a/shell-material"
+      ],
+      "options": {
+        "jestConfig": "libs/porrtal/a/shell-material/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/porrtal/a/shell-material/**/*.ts",
+          "libs/porrtal/a/shell-material/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
