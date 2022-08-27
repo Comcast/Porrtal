@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'porrtal-workspace-search-dialog',
+  selector: 'porrtal-search-dialog',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './search-dialog.component.html',

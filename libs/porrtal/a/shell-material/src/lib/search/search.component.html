@@ -1,7 +1,25 @@
 <div class="search-container">
-
   <mat-form-field class="search-form-field" appearance="fill">
-    <mat-icon matPrefix (click)="doSearch()">search</mat-icon>
-    <input #searchInput type="text" matInput (keyup)="doSearchTextChanged($event)" />
+    <mat-icon
+      matPrefix
+      (click)="doSearch()"
+      [popper]="searchDialog"
+      [popperApplyClass]="'search-popper'"
+      [popperPlacement]="popperPlacement"
+      [popperPositionFixed]="true"
+      >search</mat-icon
+    >
+    <input
+      #searchInput
+      type="text"
+      matInput
+      (keyup)="doSearchTextChanged($event)"
+    />
   </mat-form-field>
 </div>
+<popper-content #searchDialog>
+  <div [style.width]="width" [style.height]="height">
+    "hello: " {{ width }} / {{ height }}
+    <porrtal-search-dialog></porrtal-search-dialog>
+  </div>
+</popper-content>

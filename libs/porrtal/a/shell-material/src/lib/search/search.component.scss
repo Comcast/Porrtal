@@ -1,5 +1,6 @@
-mat-form-field {
-  padding: 3px 0;
+::ng-deep .search-popper {
+  z-index: 20;
+  background-color: white;
 }
 
 ::ng-deep {
