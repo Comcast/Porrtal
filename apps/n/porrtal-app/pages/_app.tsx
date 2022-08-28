@@ -1,26 +1,21 @@
-import { AppProps } from 'next/app';
-import Head from 'next/head';
 import './styles.css';
 
-function CustomApp({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <Head>
-        <title>Welcome to porrtal-app!</title>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined"
-        />
-        {/* <link
-          rel="stylesheet"
-          href="https://js.arcgis.com/4.24/esri/themes/light/main.css"
-        /> */}
-      </Head>
-      <main className="app">
-        <Component {...pageProps} />
-      </main>
-    </>
-  );
+// import App from 'next/app'
+
+function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />
 }
 
-export default CustomApp;
+// Only uncomment this method if you have blocking data requirements for
+// every single page in your application. This disables the ability to
+// perform automatic static optimization, causing every page in your app to
+// be server-side rendered.
+//
+// MyApp.getInitialProps = async (appContext) => {
+//   // calls page's `getInitialProps` and fills `appProps.pageProps`
+//   const appProps = await App.getInitialProps(appContext);
+//
+//   return { ...appProps }
+// }
+
+export default MyApp

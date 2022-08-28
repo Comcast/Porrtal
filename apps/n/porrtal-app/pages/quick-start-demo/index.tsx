@@ -7,6 +7,7 @@ import { Auth0Authentication } from '@porrtal/r-user';
 import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
 import { useEffect, useState } from 'react';
 import { View } from '@porrtal/r-api';
+import Head from 'next/head';
 
 /* eslint-disable-next-line */
 export interface QuickStartDemoProps {}
@@ -182,15 +183,21 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
 
   if (!isSSR) {
     return (
-      <Auth0Authentication
-        domain="dev-b6h3bfnp.us.auth0.com"
-        clientId="uP4eHSspiDjg6E7GKU5LjdFPn0WwEKTq"
-        redirectUri="http://localhost:4200"
-      >
-        <ShellState views={views}>
-          <ShellBlueprint />
-        </ShellState>
-      </Auth0Authentication>
+      <>
+        <Head>
+          <title>@porrtal - quick start</title>
+        </Head>
+
+        <Auth0Authentication
+          domain="dev-b6h3bfnp.us.auth0.com"
+          clientId="uP4eHSspiDjg6E7GKU5LjdFPn0WwEKTq"
+          redirectUri="http://localhost:4200"
+        >
+          <ShellState views={views}>
+            <ShellBlueprint />
+          </ShellState>
+        </Auth0Authentication>
+      </>
     );
   }
 
