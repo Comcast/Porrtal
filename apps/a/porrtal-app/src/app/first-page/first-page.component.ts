@@ -17,7 +17,7 @@ import { ShellLayoutComponent } from '@porrtal/a-shell-material';
   styleUrls: ['./first-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FirstPageComponent implements OnInit {
+export class FirstPageComponent {
 
   constructor(public shellStateService: ShellStateService) {
     shellStateService.dispatch({
@@ -36,6 +36,4 @@ export class FirstPageComponent implements OnInit {
       type: 'launchStartupViews',
     });
   }
-
-  ngOnInit(): void {}
 }
