@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ViewState } from '@porrtal/a-api';
 
 @Component({
   selector: 'porrtal-appointment-search',
@@ -10,6 +11,8 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppointmentSearchComponent implements OnInit {
+  @Input() viewState?: ViewState;
+
   constructor() {}
 
   ngOnInit(): void {}
