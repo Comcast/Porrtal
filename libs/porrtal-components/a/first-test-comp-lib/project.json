@@ -1,7 +1,7 @@
 {
   "projectType": "library",
   "sourceRoot": "libs/porrtal-components/a/first-test-comp-lib/src",
-  "prefix": "porrtal-workspace",
+  "prefix": "porrtal",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
