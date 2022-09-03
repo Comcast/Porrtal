@@ -4,17 +4,13 @@ import {
   Component,
   ElementRef,
   Input,
-  OnDestroy,
   ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewState } from '@porrtal/a-api';
 import {
   appointmentData,
-  AppointmentData,
-  fetchAppointmentData,
 } from '../../data/appointment-data';
-import { BehaviorSubject, Observable, takeUntil } from 'rxjs';
 import * as d3 from 'd3';
 import { ShellStateService } from '@porrtal/a-shell';
 
