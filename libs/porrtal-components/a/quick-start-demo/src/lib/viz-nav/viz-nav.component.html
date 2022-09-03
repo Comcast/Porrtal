@@ -1,1 +1,118 @@
-<p>viz-nav works!</p>
+<div class="container">
+  <h3 class="title">ESRI Mapping Demos</h3>
+  <div class="data-container">
+    <h4
+      class="link-button"
+      (click)="
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: 'HurricaneMapComponent'
+        })
+      "
+    >
+      Hurricanes on the Globe
+    </h4>
+    <h4
+      class="link-button"
+      (click)="
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: 'EarthquakeMapComponent'
+        })
+      "
+    >
+      Earthquake Map
+    </h4>
+    <h4
+      class="link-button"
+      (click)="
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: 'DigitalElevationMapComponent'
+        })
+      "
+    >
+      Globe with Digital Elevation
+    </h4>
+    <h4
+      class="link-button"
+      (click)="
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: 'BuildingSceneWithQueryComponent'
+        })
+      "
+    >
+      Building Scene
+    </h4>
+  </div>
+  <h3 class="title">D3JS Charting Demos</h3>
+  <div class="data-container">
+    <h4
+      class="link-button"
+      (click)="
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: 'ZoomableSunburstComponent'
+        })
+      "
+    >
+      Zoomable Sunburst Chart
+    </h4>
+    <h4
+      class="link-button"
+      (click)="
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: 'ZoomableCirclePackComponent'
+        })
+      "
+    >
+      Zoomable Circle Pack Chart
+    </h4>
+    <h4
+      class="link-button"
+      (click)="
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: 'ZoomableIcicleComponent'
+        })
+      "
+    >
+      Zoomable Icicle Chart
+    </h4>
+    <h4
+      class="link-button"
+      (click)="
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: 'ZoomableTreemapComponent'
+        })
+      "
+    >
+      Zoomable Treemap Chart
+    </h4>
+    <h4
+      class="link-button"
+      (click)="
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: 'CollapsibleTreeComponent'
+        })
+      "
+    >
+      Collapsable Tree Chart
+    </h4>
+    <h4
+      class="link-button"
+      (click)="
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: 'HierarchicalBarChartComponent'
+        })
+      "
+    >
+      Hierarchical Bar Chart
+    </h4>
+  </div>
+</div>

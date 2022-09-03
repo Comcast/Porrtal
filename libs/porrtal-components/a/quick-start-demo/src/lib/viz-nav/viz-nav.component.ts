@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewState } from '@porrtal/a-api';
+import { ShellStateService } from '@porrtal/a-shell';
 
 @Component({
   selector: 'porrtal-viz-nav',
@@ -13,7 +14,7 @@ import { ViewState } from '@porrtal/a-api';
 export class VizNavComponent implements OnInit {
   @Input() viewState?: ViewState;
 
-  constructor() {}
+  constructor(public shellStateService: ShellStateService) {}
 
   ngOnInit(): void {}
 }
