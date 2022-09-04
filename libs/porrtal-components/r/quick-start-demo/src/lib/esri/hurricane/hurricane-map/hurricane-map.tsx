@@ -116,6 +116,10 @@ export function HurricaneMap(props: ViewComponentProps) {
         view && view.destroy();
       };
     }
+
+    return () => {
+      // nothing to destroy
+    };
   }, [mapRef]);
 
   return <div ref={mapRef} className={styles['container']}></div>;
