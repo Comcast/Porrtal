@@ -1,7 +1,7 @@
 {
   "projectType": "library",
   "sourceRoot": "libs/porrtal/a/shell/src",
-  "prefix": "porrtal-workspace",
+  "prefix": "porrtal",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",

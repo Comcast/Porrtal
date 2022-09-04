@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "porrtal-workspace",
+            "prefix": "porrtal",
             "style": "kebab-case"
           }
         ]

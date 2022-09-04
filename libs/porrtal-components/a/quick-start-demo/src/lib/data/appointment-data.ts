@@ -1,9 +1,12 @@
+import { BehaviorSubject } from 'rxjs';
+
+const appointmentDataSubject = new BehaviorSubject<AppointmentData>(undefined);
 export const fetchAppointmentData = (delay: number) => {
-  return new Promise<AppointmentData>((resolve) => {
-    setTimeout(() => {
-      resolve(appointmentData);
-    }, delay);
-  });
+  setTimeout(() => {
+    appointmentDataSubject.next(appointmentData);
+  }, delay);
+
+  return appointmentDataSubject.asObservable();
 };
 
 export type AppointmentData = typeof appointmentData | undefined;

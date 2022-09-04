@@ -1,0 +1,17 @@
+.container {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+}
+
+.container-content {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  display: grid;
+  align-items: stretch;
+  justify-items: stretch;
+}
