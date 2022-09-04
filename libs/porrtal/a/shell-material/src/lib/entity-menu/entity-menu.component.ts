@@ -8,7 +8,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { StateObject, View } from '@porrtal/a-api';
-import { ShellStateService } from '@porrtal/a-shell';
+import { SearchStateService, ShellStateService } from '@porrtal/a-shell';
 import { map, Observable } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -49,7 +49,10 @@ export class EntityMenuComponent {
   @ViewChild(MatMenuTrigger, { static: true })
   menuTrigger!: MatMenuTrigger;
 
-  constructor(private shellStateService: ShellStateService) {
+  constructor(
+    private shellStateService: ShellStateService,
+    private searchStateService: SearchStateService
+  ) {
     this.createEntityViewObs();
   }
 
@@ -86,13 +89,19 @@ export class EntityMenuComponent {
     );
   }
 
-  launchView(view: View) {
+  launchView(view: View, shiftKey: boolean) {
     if (view && view.viewId) {
       this.shellStateService.dispatch({
         type: 'launchView',
         viewId: view.viewId,
-        state: this.state
+        state: this.state,
       });
+
+      if (!shiftKey) {
+        this.searchStateService.dispatch({
+          type: 'closeSearchDialog'
+        });
+      }
     }
   }
 }
