@@ -5,9 +5,7 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": [
-        "dist/libs/porrtal/a/shell"
-      ],
+      "outputs": ["dist/libs/porrtal/a/shell"],
       "options": {
         "project": "libs/porrtal/a/shell/ng-package.json"
       },
@@ -23,9 +21,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/porrtal/a/shell"
-      ],
+      "outputs": ["coverage/libs/porrtal/a/shell"],
       "options": {
         "jestConfig": "libs/porrtal/a/shell/jest.config.ts",
         "passWithNoTests": true

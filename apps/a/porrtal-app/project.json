@@ -5,9 +5,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/a/porrtal-app",
         "index": "apps/a/porrtal-app/src/index.html",
@@ -87,9 +85,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/a/porrtal-app"
-      ],
+      "outputs": ["coverage/apps/a/porrtal-app"],
       "options": {
         "jestConfig": "apps/a/porrtal-app/jest.config.ts",
         "passWithNoTests": true
