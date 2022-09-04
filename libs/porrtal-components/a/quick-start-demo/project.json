@@ -5,9 +5,7 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": [
-        "dist/libs/porrtal-components/a/quick-start-demo"
-      ],
+      "outputs": ["dist/libs/porrtal-components/a/quick-start-demo"],
       "options": {
         "project": "libs/porrtal-components/a/quick-start-demo/ng-package.json"
       },
@@ -23,9 +21,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/porrtal-components/a/quick-start-demo"
-      ],
+      "outputs": ["coverage/libs/porrtal-components/a/quick-start-demo"],
       "options": {
         "jestConfig": "libs/porrtal-components/a/quick-start-demo/jest.config.ts",
         "passWithNoTests": true
