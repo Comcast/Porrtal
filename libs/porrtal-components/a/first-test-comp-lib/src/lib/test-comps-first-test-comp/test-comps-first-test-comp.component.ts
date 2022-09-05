@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PaneType, StateObject, ViewState } from '@porrtal/a-api';
+import { LoggerEntry, PaneType, StateObject, ViewState } from '@porrtal/a-api';
 import { v4 as uuidv4 } from 'uuid';
-import { SearchStateService, ShellStateService } from '@porrtal/a-shell';
+import { LoggerStateService, SearchStateService, ShellStateService } from '@porrtal/a-shell';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -36,7 +36,8 @@ export class TestCompsFirstTestCompComponent {
 
   constructor(
     private shellStateService: ShellStateService,
-    private searchStateService: SearchStateService
+    private searchStateService: SearchStateService,
+    private loggerStateService: LoggerStateService,
   ) {
     this.searchText$ = searchStateService.select('debouncedSearchText');
   }
@@ -93,6 +94,13 @@ export class TestCompsFirstTestCompComponent {
       type: 'launchView',
       viewId: newViewId,
       state: info.stateVS,
+    });
+  }
+
+  createLogEntry(entry: LoggerEntry) {
+    this.loggerStateService.dispatch({
+      type: 'postEntry',
+      entry
     });
   }
 }

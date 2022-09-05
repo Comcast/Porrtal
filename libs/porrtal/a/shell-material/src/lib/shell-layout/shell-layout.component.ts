@@ -5,6 +5,7 @@ import { ViewStackComponent } from '../view-stack/view-stack.component';
 import { ShellState, ShellStateService } from '@porrtal/a-shell';
 import { Observable } from 'rxjs';
 import { SearchComponent } from '../search/search.component';
+import { LoggerBannerComponent } from '../logger-banner/logger-banner.component';
 
 @Component({
   selector: 'porrtal-shell-layout',
@@ -14,6 +15,7 @@ import { SearchComponent } from '../search/search.component';
     AngularSplitModule,
     ViewStackComponent,
     SearchComponent,
+    LoggerBannerComponent,
   ],
   templateUrl: './shell-layout.component.html',
   styleUrls: ['./shell-layout.component.scss'],

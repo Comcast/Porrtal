@@ -1,10 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ShellLayout } from '@porrtal/r-shell';
+import { ShellLayoutSplitter } from '@porrtal/r-shell';
 
 export function App() {
   return (
     <div>
-      <ShellLayout />
+      <ShellLayoutSplitter />
     </div>
   );
 }
