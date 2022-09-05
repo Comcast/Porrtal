@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { ViewComponentProps, LoggerEntry } from '@porrtal/r-api';
 
 import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-material.css';
+import 'ag-grid-community/styles/ag-theme-balham.css';
 
 export function LoggerMessages(props: ViewComponentProps) {
   const loggerState = useLoggerState();
@@ -31,7 +31,7 @@ export function LoggerMessages(props: ViewComponentProps) {
   return (
     <div className={styles['container']}>
       <span>Logger Entries:</span>
-      <div className={`${styles['grid-container']} ag-theme-material`}>
+      <div className={`${styles['grid-container']} ag-theme-balham`}>
         <AgGridReact<LoggerEntry>
           rowData={loggerState.entries}
           columnDefs={columnDefs}

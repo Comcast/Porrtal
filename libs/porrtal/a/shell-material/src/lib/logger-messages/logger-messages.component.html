@@ -1,1 +1,12 @@
-<pre>{{ entries$ | async | json }}</pre>
+<!-- <pre>{{ entries$ | async | json }}</pre> -->
+<div class="container">
+  <span>Logger Entries:</span>
+  <div class="grid-container">
+    <ag-grid-angular
+      class="ag-theme-balham"
+      [rowData]="entries$ | async"
+      [columnDefs]="columnDefs"
+    >
+    </ag-grid-angular>
+  </div>
+</div>
