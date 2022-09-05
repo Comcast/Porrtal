@@ -3,8 +3,6 @@ import { View, ViewComponentModules } from '@porrtal/r-api';
 export const testModules: ViewComponentModules = {
   '@porrtal-components/r-first-test-comp-lib': () =>
     import('@porrtal-components/r-first-test-comp-lib'),
-  '@porrtal-components/r-second-test-comp-lib': () =>
-    import('@porrtal-components/r-second-test-comp-lib'),
 };
 
 export const testViews: View[] = [

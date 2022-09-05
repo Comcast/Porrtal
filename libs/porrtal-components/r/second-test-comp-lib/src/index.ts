@@ -1,1 +1,1 @@
-export { TestCompsSecondTestComp as default } from './lib/test-comps-second-test-comp';
+export * from './lib/test-comps-second-test-comp';
