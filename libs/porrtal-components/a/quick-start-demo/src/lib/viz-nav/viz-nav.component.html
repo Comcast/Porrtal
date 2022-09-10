@@ -115,4 +115,21 @@
       Hierarchical Bar Chart
     </h4>
   </div>
+  <h3 class="title">Learning</h3>
+  <div class="data-container">
+    <h4
+      class="link-button"
+      (click)="
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: 'YoutubePlayerComponent',
+          state: {
+            videoId: 'Z76QlSpYcck'
+          }
+        })
+      "
+    >
+      YouTube Player
+    </h4>
+  </div>
 </div>
