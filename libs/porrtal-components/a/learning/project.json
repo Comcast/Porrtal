@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/porrtal-components/a/learning/src",
+  "prefix": "porrtal-workspace",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/porrtal-components/a/learning"],
+      "options": {
+        "project": "libs/porrtal-components/a/learning/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/porrtal-components/a/learning/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/porrtal-components/a/learning/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/porrtal-components/a/learning"],
+      "options": {
+        "jestConfig": "libs/porrtal-components/a/learning/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/porrtal-components/a/learning/**/*.ts",
+          "libs/porrtal-components/a/learning/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
