@@ -30,6 +30,9 @@
       "@porrtal-components/r-first-test-comp-lib": [
         "libs/porrtal-components/r/first-test-comp-lib/src/index.ts"
       ],
+      "@porrtal-components/r-learning": [
+        "libs/porrtal-components/r/learning/src/index.ts"
+      ],
       "@porrtal-components/r-quick-start-demo": [
         "libs/porrtal-components/r/quick-start-demo/src/index.ts"
       ],
