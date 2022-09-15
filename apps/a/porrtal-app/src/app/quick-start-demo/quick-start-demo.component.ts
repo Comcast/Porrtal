@@ -164,6 +164,12 @@ const views: View[] = [
     componentName: 'ZoomableCirclePackComponent',
     componentModule: () => import('@porrtal-components/a-quick-start-demo'),
   },
+  {
+    displayText: 'YouTube Video',
+    displayIcon: 'videocam',
+    componentName: 'YoutubePlayerComponent',
+    componentModule: () => import('@porrtal-components/a-learning'),
+  },
 ];
 
 @Component({

@@ -11,6 +11,8 @@
     "porrtal-a-shell-material": "libs/porrtal/a/shell-material",
     "porrtal-a-user": "libs/porrtal/a/user",
     "porrtal-components-a-first-test-comp-lib": "libs/porrtal-components/a/first-test-comp-lib",
+    "porrtal-components-a-learning": "libs/porrtal-components/a/learning",
+    "porrtal-components-a-learning-e2e": "apps/porrtal-components-a-learning-e2e",
     "porrtal-components-a-quick-start-demo": "libs/porrtal-components/a/quick-start-demo",
     "porrtal-components-a-second-test-comp-lib": "libs/porrtal-components/a/second-test-comp-lib",
     "porrtal-components-r-first-test-comp-lib": "libs/porrtal-components/r/first-test-comp-lib",
