@@ -1,13 +1,10 @@
+import { ViewComponentProps } from '@porrtal/r-api';
+import YouTube from 'react-youtube';
 import styles from './youtube-player.module.scss';
 
-/* eslint-disable-next-line */
-export interface YoutubePlayerProps {}
-
-export function YoutubePlayer(props: YoutubePlayerProps) {
+export function YoutubePlayer(props: ViewComponentProps) {
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to YoutubePlayer!</h1>
-    </div>
+    <YouTube videoId={(props.viewState?.state?.['videoId'] as string)}></YouTube>
   );
 }
 

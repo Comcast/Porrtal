@@ -122,6 +122,21 @@ export function VizNav(props: ViewComponentProps) {
           Hierarchical Bar Chart
         </h4>
       </div>
+      <h3 className={styles['title']}>Learning</h3>
+      <div className={styles['data-container']}>
+        <h4
+          className={styles['link-button']}
+          onClick={() =>
+            shellDispatch({
+              type: 'launchView',
+              viewId: 'YoutubePlayer',
+              state: { videoId: 'Z76QlSpYcck' },
+            })
+          }
+        >
+          YouTube Player
+        </h4>
+      </div>
     </div>
   );
 }
