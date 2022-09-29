@@ -1,3 +1,5 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
 import { MarkdownModule } from 'ngx-markdown';
 import { MarkdownViewerComponent } from './markdown-viewer.component';
@@ -7,7 +9,10 @@ export default {
   component: MarkdownViewerComponent,
   decorators: [
     moduleMetadata({
-      imports: [MarkdownModule.forRoot()],
+      imports: [
+        BrowserModule,
+        HttpClientModule,
+        MarkdownModule.forRoot({ loader: HttpClient })],
     })
   ],
 } as Meta<MarkdownViewerComponent>;
@@ -36,6 +41,25 @@ this is super cool
 * one
 * two
 * three`,
+    },
+  },
+}
+
+export const ContentUrl2 = Template.bind({});
+ContentUrl2.args = {
+  viewState: {
+    key: '',
+    displayText: '',
+    displayIcon: '',
+    paneType: 'main',
+    componentImport: () => undefined,
+    view: {
+      componentName: 'MarkdownViewerComponent',
+      componentModule: '',
+      displayText: '',
+    },
+    state: {
+      contentUrl: `https://raw.githubusercontent.com/angular/angular/main/README.md`,
     },
   },
 }
