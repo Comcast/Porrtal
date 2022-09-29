@@ -179,6 +179,12 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
       componentName: 'ZoomableCirclePack',
       componentModule: () => import('@porrtal-components/r-quick-start-demo'),
     },
+    {
+      displayText: 'YouTube Player',
+      displayIcon: 'mobile-video',
+      componentName: 'YoutubePlayer',
+      componentModule: () => import('@porrtal-components/r-learning'),
+    },
   ];
 
   if (!isSSR) {
