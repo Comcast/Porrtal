@@ -1,7 +1,17 @@
-import { ChangeDetectionStrategy, Component, Input, SecurityContext } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  SecurityContext,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewState } from '@porrtal/a-api';
-import { MarkdownModule, MarkdownService, MarkedOptions, SECURITY_CONTEXT } from 'ngx-markdown';
+import {
+  MarkdownModule,
+  MarkdownService,
+  MarkedOptions,
+  SECURITY_CONTEXT,
+} from 'ngx-markdown';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
@@ -10,8 +20,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   imports: [CommonModule, MarkdownModule, HttpClientModule],
   providers: [
     MarkdownService,
-    HttpClient,
     { provide: SECURITY_CONTEXT, useValue: SecurityContext.HTML },
+
+    HttpClient,
     {
       provide: MarkedOptions,
       useValue: {
@@ -19,7 +30,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
       },
     },
   ],
-templateUrl: './markdown-viewer.component.html',
+
+  templateUrl: './markdown-viewer.component.html',
   styleUrls: ['./markdown-viewer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -35,13 +47,16 @@ export class MarkdownViewerComponent {
       this.contentUrl = undefined;
       this.contentIcon = undefined;
     }
-  };
+  }
 
   public content?: string;
   public contentUrl?: string;
   public contentIcon?: string;
 
-  constructor(private markdownService: MarkdownService, private markedOptions: MarkedOptions) {
+  constructor(
+    private markdownService: MarkdownService,
+    private markedOptions: MarkedOptions
+  ) {
     console.log('markedOptions', markedOptions);
     markdownService.options = markedOptions;
   }

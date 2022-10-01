@@ -170,6 +170,12 @@ const views: View[] = [
     componentName: 'YoutubePlayerComponent',
     componentModule: () => import('@porrtal-components/a-learning'),
   },
+  {
+    displayText: 'Markdown Viewer',
+    displayIcon: 'book',
+    componentName: 'MarkdownViewerComponent',
+    componentModule: () => import('@porrtal-components/a-learning'),
+  }
 ];
 
 @Component({

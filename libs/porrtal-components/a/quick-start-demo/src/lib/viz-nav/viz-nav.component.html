@@ -131,5 +131,20 @@
     >
       YouTube Player
     </h4>
+    <h4
+      class="link-button"
+      (click)="
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: 'MarkdownViewerComponent',
+          state: {
+            contentUrl:
+              'https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md'
+          }
+        })
+      "
+    >
+      Markdown Viewer
+    </h4>
   </div>
 </div>

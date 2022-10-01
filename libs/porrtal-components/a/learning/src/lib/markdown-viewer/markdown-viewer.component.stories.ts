@@ -63,7 +63,7 @@ ContentUrl.args = {
       displayText: '',
     },
     state: {
-      contentUrl: `https://raw.githubusercontent.com/angular/angular/main/README.md`,
+      contentUrl: `https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md`,
     },
   },
 };

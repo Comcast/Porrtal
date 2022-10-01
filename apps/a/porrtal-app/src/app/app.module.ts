@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MarkdownModule, MarkdownService } from 'ngx-markdown';
-import { HttpClient } from '@angular/common/http';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -49,9 +47,7 @@ import { HttpClient } from '@angular/common/http';
       { initialNavigation: 'enabledBlocking' }
     ),
     BrowserAnimationsModule,
-    MarkdownModule.forRoot({ loader: HttpClient }),
   ],
-  providers: [MarkdownService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
