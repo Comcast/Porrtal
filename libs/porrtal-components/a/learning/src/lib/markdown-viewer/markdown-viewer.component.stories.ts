@@ -67,3 +67,60 @@ ContentUrl.args = {
     },
   },
 };
+
+export const ContentHtml = Template.bind({});
+ContentHtml.args = {
+  viewState: {
+    key: '',
+    displayText: '',
+    displayIcon: '',
+    paneType: 'main',
+    componentImport: () => undefined,
+    view: {
+      componentName: 'MarkdownViewerComponent',
+      componentModule: '',
+      displayText: '',
+    },
+    state: {
+      contentUrl: `https://raw.githubusercontent.com/datumgeek/ngx-popperjs/master/projects/ngx-popperjs/src/lib/ngx-popperjs-content/ngx-popperjs-content.component.html`,
+    },
+  },
+};
+
+export const ContentScss = Template.bind({});
+ContentScss.args = {
+  viewState: {
+    key: '',
+    displayText: '',
+    displayIcon: '',
+    paneType: 'main',
+    componentImport: () => undefined,
+    view: {
+      componentName: 'MarkdownViewerComponent',
+      componentModule: '',
+      displayText: '',
+    },
+    state: {
+      contentUrl: `https://raw.githubusercontent.com/datumgeek/ngx-popperjs/master/projects/ngx-popperjs/src/lib/ngx-popperjs-content/ngx-popperjs-content.component.scss`,
+    },
+  },
+};
+
+export const ContentTs = Template.bind({});
+ContentTs.args = {
+  viewState: {
+    key: '',
+    displayText: '',
+    displayIcon: '',
+    paneType: 'main',
+    componentImport: () => undefined,
+    view: {
+      componentName: 'MarkdownViewerComponent',
+      componentModule: '',
+      displayText: '',
+    },
+    state: {
+      contentUrl: `https://raw.githubusercontent.com/datumgeek/ngx-popperjs/master/projects/ngx-popperjs/src/lib/ngx-popperjs-content/ngx-popper-content.component.ts`,
+    },
+  },
+};

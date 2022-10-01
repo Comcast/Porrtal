@@ -171,6 +171,7 @@ const views: View[] = [
     componentModule: () => import('@porrtal-components/a-learning'),
   },
   {
+    key: 'md{id}',
     displayText: 'Markdown Viewer',
     displayIcon: 'book',
     componentName: 'MarkdownViewerComponent',
