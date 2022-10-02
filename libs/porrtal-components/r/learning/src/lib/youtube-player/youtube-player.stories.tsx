@@ -21,7 +21,7 @@ Primary.args = {
       // do nothing
     }),
     view: {
-      componentName: 'YoutubePlayerComponent',
+      componentName: 'YoutubePlayer',
       componentModule: '',
       displayText: '',
     },
