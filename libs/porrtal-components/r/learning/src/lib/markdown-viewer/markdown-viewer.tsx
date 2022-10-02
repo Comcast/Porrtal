@@ -1,6 +1,10 @@
 import { ViewComponentProps } from '@porrtal/r-api';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+// import SyntaxHighlighter from 'react-syntax-highlighter';
+import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import styles from './markdown-viewer.module.scss';
 
 export function MarkdownViewer(props: ViewComponentProps) {
@@ -19,7 +23,42 @@ export function MarkdownViewer(props: ViewComponentProps) {
         <ReactMarkdown
           children={props.viewState.state['content'] as string}
         ></ReactMarkdown>
-        <ReactMarkdown children={contentFromUrl}></ReactMarkdown>
+        {props.viewState?.state['contentUrl'] &&
+          (props.viewState?.state['contentUrl'] as string)
+            .toLowerCase()
+            .endsWith('.md') && (
+            <ReactMarkdown children={contentFromUrl}></ReactMarkdown>
+          )}
+        {props.viewState?.state['contentUrl'] &&
+          (props.viewState?.state['contentUrl'] as string)
+            .toLowerCase()
+            .endsWith('.ts') && (
+            <SyntaxHighlighter
+              language="javascript"
+              style={dark}
+              children={contentFromUrl}
+            ></SyntaxHighlighter>
+          )}
+        {props.viewState?.state['contentUrl'] &&
+          (props.viewState?.state['contentUrl'] as string)
+            .toLowerCase()
+            .endsWith('.html') && (
+            <SyntaxHighlighter
+              language="html"
+              style={dark}
+              children={contentFromUrl}
+            ></SyntaxHighlighter>
+          )}
+        {props.viewState?.state['contentUrl'] &&
+          (props.viewState?.state['contentUrl'] as string)
+            .toLowerCase()
+            .endsWith('.scss') && (
+            <SyntaxHighlighter
+              language="css"
+              style={dark}
+              children={contentFromUrl}
+            ></SyntaxHighlighter>
+          )}
       </>
     )
   );
