@@ -1,22 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { moduleMetadata, Story, Meta } from '@storybook/angular';
-import { MarkdownViewerComponent } from './markdown-viewer.component';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { MarkdownViewer } from './markdown-viewer';
 
 export default {
-  title: 'MarkdownViewerComponent',
-  component: MarkdownViewerComponent,
-  decorators: [
-    moduleMetadata({
-      imports: [BrowserModule],
-    }),
-  ],
-} as Meta<MarkdownViewerComponent>;
+  component: MarkdownViewer,
+  title: 'MarkdownViewer',
+} as ComponentMeta<typeof MarkdownViewer>;
 
-const Template: Story<MarkdownViewerComponent> = (
-  args: MarkdownViewerComponent
-) => ({
-  props: args,
-});
+const Template: ComponentStory<typeof MarkdownViewer> = (args) => (
+  <MarkdownViewer {...args} />
+);
 
 export const Content = Template.bind({});
 Content.args = {
@@ -27,7 +19,7 @@ Content.args = {
     paneType: 'main',
     componentImport: () => undefined,
     view: {
-      componentName: 'MarkdownViewerComponent',
+      componentName: 'MarkdownViewer',
       componentModule: '',
       displayText: '',
     },
@@ -50,7 +42,7 @@ ContentUrl.args = {
     paneType: 'main',
     componentImport: () => undefined,
     view: {
-      componentName: 'MarkdownViewerComponent',
+      componentName: 'MarkdownViewer',
       componentModule: '',
       displayText: '',
     },
@@ -69,7 +61,7 @@ ContentHtml.args = {
     paneType: 'main',
     componentImport: () => undefined,
     view: {
-      componentName: 'MarkdownViewerComponent',
+      componentName: 'MarkdownViewer',
       componentModule: '',
       displayText: '',
     },
@@ -88,7 +80,7 @@ ContentScss.args = {
     paneType: 'main',
     componentImport: () => undefined,
     view: {
-      componentName: 'MarkdownViewerComponent',
+      componentName: 'MarkdownViewer',
       componentModule: '',
       displayText: '',
     },
@@ -107,7 +99,7 @@ ContentTs.args = {
     paneType: 'main',
     componentImport: () => undefined,
     view: {
-      componentName: 'MarkdownViewerComponent',
+      componentName: 'MarkdownViewer',
       componentModule: '',
       displayText: '',
     },
