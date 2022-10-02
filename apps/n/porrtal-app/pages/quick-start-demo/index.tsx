@@ -185,6 +185,13 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
       componentName: 'YoutubePlayer',
       componentModule: () => import('@porrtal-components/r-learning'),
     },
+    {
+      key: 'md{id}',
+      displayText: 'Markdown Viewer',
+      displayIcon: 'book',
+      componentName: 'MarkdownViewer',
+      componentModule: () => import('@porrtal-components/r-learning'),
+    },
   ];
 
   if (!isSSR) {

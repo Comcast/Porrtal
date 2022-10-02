@@ -136,6 +136,69 @@ export function VizNav(props: ViewComponentProps) {
         >
           YouTube Player
         </h4>
+        <h4
+          className={styles['link-button']}
+          onClick={() =>
+            shellDispatch({
+              type: 'launchView',
+              viewId: 'MarkdownViewer',
+              state: {
+                contentUrl:
+                  'https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md',
+              },
+            })
+          }
+        >
+          Markdown Viewer
+        </h4>
+        <h4
+          className={styles['link-button']}
+          onClick={() =>
+            shellDispatch({
+              type: 'launchView',
+              viewId: 'MarkdownViewer',
+              state: {
+                id: 'html',
+                contentUrl:
+                  'https://raw.githubusercontent.com/datumgeek/ngx-popperjs/master/projects/ngx-popperjs/src/lib/ngx-popperjs-content/ngx-popperjs-content.component.html',
+              },
+            })
+          }
+        >
+          Markdown HTML
+        </h4>
+        <h4
+          className={styles['link-button']}
+          onClick={() =>
+            shellDispatch({
+              type: 'launchView',
+              viewId: 'MarkdownViewer',
+              state: {
+                id: 'scss',
+                contentUrl:
+                  'https://raw.githubusercontent.com/datumgeek/ngx-popperjs/master/projects/ngx-popperjs/src/lib/ngx-popperjs-content/ngx-popperjs-content.component.scss',
+              },
+            })
+          }
+        >
+          Markdown SCSS
+        </h4>
+        <h4
+          className={styles['link-button']}
+          onClick={() =>
+            shellDispatch({
+              type: 'launchView',
+              viewId: 'MarkdownViewer',
+              state: {
+                id: 'ts',
+                contentUrl:
+                  'https://raw.githubusercontent.com/datumgeek/ngx-popperjs/master/projects/ngx-popperjs/src/lib/ngx-popperjs-content/ngx-popper-content.component.ts',
+              },
+            })
+          }
+        >
+          Markdown TypeScript
+        </h4>
       </div>
     </div>
   );

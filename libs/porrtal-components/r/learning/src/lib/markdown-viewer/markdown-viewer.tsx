@@ -34,7 +34,7 @@ export function MarkdownViewer(props: ViewComponentProps) {
             .toLowerCase()
             .endsWith('.ts') && (
             <SyntaxHighlighter
-              language="javascript"
+              language="typescript"
               style={dark}
               children={contentFromUrl}
             ></SyntaxHighlighter>
@@ -44,7 +44,7 @@ export function MarkdownViewer(props: ViewComponentProps) {
             .toLowerCase()
             .endsWith('.html') && (
             <SyntaxHighlighter
-              language="html"
+              language="cshtml"
               style={dark}
               children={contentFromUrl}
             ></SyntaxHighlighter>
@@ -54,7 +54,7 @@ export function MarkdownViewer(props: ViewComponentProps) {
             .toLowerCase()
             .endsWith('.scss') && (
             <SyntaxHighlighter
-              language="css"
+              language="scss"
               style={dark}
               children={contentFromUrl}
             ></SyntaxHighlighter>
