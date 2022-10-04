@@ -33,6 +33,44 @@ const views: View[] = [
     displayText: 'Account Navigation',
     paneType: 'nav',
     displayIcon: 'account_box',
+    userInfo: [
+      {
+        viewId: 'info-markdown',
+        state: {
+          displayText: 'User Docs',
+          displayIcon: 'menu_book',
+          contentUrl:
+            'https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md',
+        },
+      },
+      {
+        viewId: 'info-youtube',
+        state: {
+          displayText: 'User Video',
+          displayIcon: 'videocam',
+          videoId: 'Z76QlSpYcck'
+        }
+      }
+    ],
+    devInfo: [
+      {
+        viewId: 'info-markdown',
+        state: {
+          displayText: 'Dev Docs',
+          displayIcon: 'menu_book',
+          contentUrl:
+            'https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md',
+        },
+      },
+      {
+        viewId: 'info-youtube',
+        state: {
+          displayText: 'Dev Video',
+          displayIcon: 'videocam',
+          videoId: 'Z76QlSpYcck'
+        }
+      }
+    ],
     componentName: 'AccountNavComponent',
     componentModule: () => import('@porrtal-components/a-quick-start-demo'),
   },
@@ -176,7 +214,23 @@ const views: View[] = [
     displayIcon: 'book',
     componentName: 'MarkdownViewerComponent',
     componentModule: () => import('@porrtal-components/a-learning'),
-  }
+  },
+  {
+    viewId: 'info-markdown',
+    displayText: '{displayText}',
+    displayIcon: '{displayIcon}',
+    paneType: 'right',
+    componentName: 'MarkdownViewerComponent',
+    componentModule: () => import('@porrtal-components/a-learning'),
+  },
+  {
+    viewId: 'info-youtube',
+    displayText: '{displayText}',
+    displayIcon: '{displayIcon}',
+    paneType: 'right',
+    componentName: 'YoutubePlayerComponent',
+    componentModule: () => import('@porrtal-components/a-learning'),
+  },
 ];
 
 @Component({

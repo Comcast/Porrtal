@@ -57,6 +57,7 @@ export class ShellStateService extends RxState<ShellState> {
         );
         if (!view) {
           // todo: log error: view for viewId not found
+          console.log('launchView not found.', action);
           return;
         }
         let retState: ShellState = this.get();
@@ -89,6 +90,9 @@ export class ShellStateService extends RxState<ShellState> {
           displayText: newDisplayText.replaced,
           displayIcon: newDisplayIcon.replaced,
           state: newState,
+
+          userInfo: view.userInfo,
+          devInfo: view.devInfo,
 
           paneType: view.paneType ?? 'main',
           componentImport: viewComponentFunction,

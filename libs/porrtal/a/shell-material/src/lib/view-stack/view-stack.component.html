@@ -23,9 +23,7 @@
           >close</mat-icon
         >
       </ng-template>
-      <porrtal-view-host
-        [viewState]="viewState"
-      ></porrtal-view-host>
+      <porrtal-view-host [viewState]="viewState"></porrtal-view-host>
     </mat-tab>
   </mat-tab-group>
 
@@ -56,9 +54,7 @@
           *ngFor="let viewState of pane?.viewStates; let ii = index"
           [style.zIndex]="viewState.key === pane?.currentKey ? 10 : 0"
         >
-          <porrtal-view-host
-            [viewState]="viewState"
-          ></porrtal-view-host>
+          <porrtal-view-host [viewState]="viewState"></porrtal-view-host>
         </div>
         <div class="vertical-tabs-content-background-div"></div>
       </div>
@@ -73,7 +69,7 @@
         *ngFor="let viewState of pane?.viewStates; let ii = index"
         class="card"
       >
-        <mat-card-title style="margin: 0;">
+        <mat-card-title style="margin: 0">
           <div
             class="card-title"
             [ngClass]="{
@@ -94,9 +90,7 @@
         </mat-card-title>
         <mat-card-content>
           <div class="view-host-container">
-            <porrtal-view-host
-              [viewState]="viewState"
-            ></porrtal-view-host>
+            <porrtal-view-host [viewState]="viewState"></porrtal-view-host>
           </div>
         </mat-card-content>
       </mat-card>
@@ -123,6 +117,32 @@
     </button>
     <mat-divider></mat-divider>
     <button
+      *ngIf="viewState?.userInfo && viewState?.userInfo.length > 0"
+      mat-menu-item
+      [matMenuTriggerFor]="info"
+      [matMenuTriggerData]="{viewState}"
+    >
+      <span>
+        <mat-icon inline="true" class="menu-close-icon material-icons-outlined"
+          >info</mat-icon
+        >
+        <span>Info...</span>
+      </span>
+    </button>
+    <button
+      *ngIf="viewState?.devInfo && viewState?.devInfo.length > 0"
+      mat-menu-item
+      [matMenuTriggerFor]="devInfo"
+      [matMenuTriggerData]="{viewState}"
+    >
+      <span>
+        <mat-icon inline="true" class="menu-close-icon material-icons-outlined"
+          >build</mat-icon
+        >
+        <span>Dev Info...</span>
+      </span>
+    </button>
+    <button
       mat-menu-item
       [matMenuTriggerFor]="arrangeOptions"
       [matMenuTriggerData]="{viewState}"
@@ -142,6 +162,44 @@
       <span>
         <mat-icon inline="true" class="menu-close-icon">open_with</mat-icon>
         <span>Move To...</span>
+      </span>
+    </button>
+  </ng-template>
+</mat-menu>
+
+<mat-menu #info="matMenu">
+  <ng-template matMenuContent let-viewState="viewState">
+    <button
+      (click)="doLaunch(viewLaunch)"
+      mat-menu-item
+      *ngFor="let viewLaunch of viewState.userInfo"
+    >
+      <span>
+        <mat-icon
+          inline="true"
+          class="menu-close-icon material-icons-outlined"
+          >{{ viewLaunch.state['displayIcon'] }}</mat-icon
+        >
+        <span>{{ viewLaunch.state['displayText'] }}</span>
+      </span>
+    </button>
+  </ng-template>
+</mat-menu>
+
+<mat-menu #devInfo="matMenu">
+  <ng-template matMenuContent let-viewState="viewState">
+    <button
+      (click)="doLaunch(viewLaunch)"
+      mat-menu-item
+      *ngFor="let viewLaunch of viewState.devInfo"
+    >
+      <span>
+        <mat-icon
+          inline="true"
+          class="menu-close-icon material-icons-outlined"
+          >{{ viewLaunch.state['displayIcon'] }}</mat-icon
+        >
+        <span>{{ viewLaunch.state['displayText'] }}</span>
       </span>
     </button>
   </ng-template>
