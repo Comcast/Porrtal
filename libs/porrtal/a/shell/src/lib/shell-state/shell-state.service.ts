@@ -440,7 +440,7 @@ const emptyUseShellState: ShellState = {
   },
   viewComponentModules: {},
   views: [],
-  showUserInfo: false,
+  showUserInfo: true,
   showDevInfo: true,
 };
 
