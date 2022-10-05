@@ -20,6 +20,8 @@ export interface ShellState {
   panes: Panes;
   viewComponentModules: ViewComponentModules;
   views: View[];
+  showUserInfo: boolean;
+  showDevInfo: boolean;
 }
 
 export type ShellAction =
@@ -29,14 +31,10 @@ export type ShellAction =
   | { type: 'deleteViewState'; key: string }
   | { type: 'setCurrentViewStateByKey'; key: string; pane: Pane }
   | { type: 'arrangePane'; pane: Pane; paneArrangement: PaneArrangement }
-  | {
-      type: 'registerModules';
-      modules: ViewComponentModules;
-    }
-  | {
-      type: 'registerView';
-      view: View;
-    };
+  | { type: 'registerModules'; modules: ViewComponentModules }
+  | { type: 'registerView'; view: View }
+  | { type: 'setShowUserInfo'; show: boolean }
+  | { type: 'setShowDevInfo'; show: boolean };
 
 @Injectable({
   providedIn: 'root',
@@ -57,6 +55,7 @@ export class ShellStateService extends RxState<ShellState> {
         );
         if (!view) {
           // todo: log error: view for viewId not found
+          console.log('launchView not found.', action);
           return;
         }
         let retState: ShellState = this.get();
@@ -89,6 +88,9 @@ export class ShellStateService extends RxState<ShellState> {
           displayText: newDisplayText.replaced,
           displayIcon: newDisplayIcon.replaced,
           state: newState,
+
+          userInfo: view.userInfo,
+          devInfo: view.devInfo,
 
           paneType: view.paneType ?? 'main',
           componentImport: viewComponentFunction,
@@ -320,7 +322,20 @@ export class ShellStateService extends RxState<ShellState> {
             });
           }
         });
+        return;
       }
+
+      case 'setShowUserInfo':
+        this.set({
+          showUserInfo: action.show
+        });
+      return;
+
+      case 'setShowDevInfo':
+        this.set({
+          showDevInfo: action.show
+        });
+      return;
     }
   };
 }
@@ -425,6 +440,8 @@ const emptyUseShellState: ShellState = {
   },
   viewComponentModules: {},
   views: [],
+  showUserInfo: true,
+  showDevInfo: true,
 };
 
 export function combineViewStateStateAndActionState(

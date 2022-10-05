@@ -24,6 +24,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatCard, MatCardModule } from '@angular/material/card'
 import { ShellStateService, ViewHostComponent } from '@porrtal/a-shell';
+import { ViewLaunch } from 'libs/porrtal/a/api/src/lib/view-launch';
 
 @Component({
   selector: 'porrtal-view-stack',
@@ -73,7 +74,7 @@ export class ViewStackComponent implements AfterContentChecked {
     search: 'clear',
   };
 
-  constructor(private shellStateService: ShellStateService) {
+  constructor(public shellStateService: ShellStateService) {
     const ii = this.pane?.viewStates.findIndex(vs => vs.key === this.pane?.currentKey)
   }
 
@@ -140,5 +141,14 @@ export class ViewStackComponent implements AfterContentChecked {
         paneArrangement,
       });
     }
+  }
+
+  doLaunch(viewLaunch: ViewLaunch) {
+    console.log('launch info', viewLaunch);
+    this.shellStateService.dispatch({
+      type: 'launchView',
+      viewId: viewLaunch.viewId,
+      state: viewLaunch.state
+    })
   }
 }
