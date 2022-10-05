@@ -74,7 +74,7 @@ export class ViewStackComponent implements AfterContentChecked {
     search: 'clear',
   };
 
-  constructor(private shellStateService: ShellStateService) {
+  constructor(public shellStateService: ShellStateService) {
     const ii = this.pane?.viewStates.findIndex(vs => vs.key === this.pane?.currentKey)
   }
 
