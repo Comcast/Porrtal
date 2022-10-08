@@ -63,9 +63,9 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
           state: {
             displayText: 'User Video',
             displayIcon: 'mobile-video',
-            videoId: 'Z76QlSpYcck'
-          }
-        }
+            videoId: 'Z76QlSpYcck',
+          },
+        },
       ],
       devInfo: [
         {
@@ -82,11 +82,11 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
           state: {
             displayText: 'Dev Video',
             displayIcon: 'mobile-video',
-            videoId: 'Z76QlSpYcck'
-          }
-        }
+            videoId: 'Z76QlSpYcck',
+          },
+        },
       ],
-        componentName: 'AccountNav',
+      componentName: 'AccountNav',
       componentModule: () => import('@porrtal-components/r-quick-start-demo'),
     },
     {

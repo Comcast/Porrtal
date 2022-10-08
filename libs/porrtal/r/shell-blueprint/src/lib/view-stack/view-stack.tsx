@@ -246,6 +246,21 @@ function ViewStackContextMenu(
     <ContextMenu2
       content={
         <Menu>
+          {props.pane.paneType !== 'search' && (
+            <MenuItem
+              key={`close`}
+              icon={'cross'}
+              text={`close tab`}
+              onClick={(evt) => {
+                props.dispatch({
+                  type: 'deleteViewState',
+                  key: props.item.key,
+                });
+                evt.stopPropagation();
+              }}
+            />
+          )}
+          {props.pane.paneType !== 'search' && <MenuDivider />}
           {props.showUserInfo &&
             props.item?.userInfo &&
             props.item?.userInfo.length > 0 && (
@@ -308,21 +323,12 @@ function ViewStackContextMenu(
                 ))}
               </MenuItem>
             )}
-          {props.pane.paneType !== 'search' && (
-            <MenuItem
-              key={`close`}
-              icon={'cross'}
-              text={`close tab`}
-              onClick={(evt) => {
-                props.dispatch({
-                  type: 'deleteViewState',
-                  key: props.item.key,
-                });
-                evt.stopPropagation();
-              }}
-            />
-          )}
-          {props.pane.paneType !== 'search' && <MenuDivider />}
+          {((props.showUserInfo &&
+            props.item?.userInfo &&
+            props.item?.userInfo.length > 0) ||
+            (props.showUserInfo &&
+              props.item?.userInfo &&
+              props.item?.userInfo.length > 0)) && <MenuDivider />}
           <MenuItem
             key={'arrange'}
             text="Arrange tabs..."
