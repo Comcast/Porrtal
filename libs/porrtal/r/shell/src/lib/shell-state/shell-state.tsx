@@ -30,6 +30,8 @@ export interface UseShellState {
   panes: Panes;
   viewComponentModules: ViewComponentModules;
   views: View[];
+  showUserInfo: boolean;
+  showDevInfo: boolean;
 }
 
 export type ShellAction =
@@ -39,14 +41,10 @@ export type ShellAction =
   | { type: 'deleteViewState'; key: string }
   | { type: 'setCurrentViewStateByKey'; key: string; pane: Pane }
   | { type: 'arrangePane'; pane: Pane; paneArrangement: PaneArrangement }
-  | {
-      type: 'registerModules';
-      modules: ViewComponentModules;
-    }
-  | {
-      type: 'registerView';
-      view: View;
-    };
+  | { type: 'registerModules'; modules: ViewComponentModules }
+  | { type: 'registerView'; view: View }
+  | { type: 'setShowUserInfo'; show: boolean }
+  | { type: 'setShowDevInfo'; show: boolean };
 
 const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
   switch (action.type) {
@@ -86,6 +84,9 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
         displayText: newDisplayText.replaced,
         displayIcon: newDisplayIcon.replaced,
         state: newState,
+
+        userInfo: view.userInfo,
+        devInfo: view.devInfo,
 
         paneType: view.paneType ?? 'main',
         componentImport: viewComponentFunction,
@@ -298,6 +299,21 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
             viewId: view.viewId ?? view.componentName,
           });
         });
+      return state;
+    }
+
+    case 'setShowUserInfo': {
+      return {
+        ...state,
+        showUserInfo: action.show,
+      };
+    }
+
+    case 'setShowDevInfo': {
+      return {
+        ...state,
+        showUserInfo: action.show,
+      };
     }
   }
   return state;
@@ -404,6 +420,8 @@ const emptyUseShellState: UseShellState = {
   },
   viewComponentModules: {},
   views: [],
+  showUserInfo: true,
+  showDevInfo: true,
 };
 
 // arg to createContext is used if no provider is defined https://stackoverflow.com/q/49949099/7085047

@@ -3,6 +3,8 @@ import { ReactEventHandler } from 'react';
 
 export interface ViewStackProps {
   pane: Pane;
+  showUserInfo: boolean;
+  showDevInfo: boolean;
   onClose?: ReactEventHandler;
 }
 

@@ -29,6 +29,8 @@ export function SearchViewStack(props: SearchViewStackProps) {
       >
         <shellComponents.ViewStack
           pane={shellState.panes.search}
+          showUserInfo={shellState.showUserInfo}
+          showDevInfo={shellState.showDevInfo}
           onClose={(evt) => searchAction.closeSearchDialog()}
         ></shellComponents.ViewStack>
       </div>

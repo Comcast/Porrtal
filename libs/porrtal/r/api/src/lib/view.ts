@@ -1,4 +1,5 @@
 import { PaneType } from './pane';
+import { ViewLaunch } from './view-launch';
 import { StateObject } from './view-state';
 
 export interface View {
@@ -13,4 +14,7 @@ export interface View {
   key?: string;
   displayText: string;
   displayIcon?: string;
+
+  userInfo?: ViewLaunch[];
+  devInfo?: ViewLaunch[];
 }

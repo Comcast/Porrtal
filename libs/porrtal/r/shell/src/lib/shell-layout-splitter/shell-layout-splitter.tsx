@@ -23,23 +23,39 @@ export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
           <Split initialPrimarySize="250px" resetOnDoubleClick>
             {shellState.panes.nav.viewStates.length > 0 && (
               <div className={styles['nav']}>
-                <shellComponents.ViewStack pane={shellState.panes.nav} />
+                <shellComponents.ViewStack
+                  pane={shellState.panes.nav}
+                  showUserInfo={shellState.showUserInfo}
+                  showDevInfo={shellState.showDevInfo}
+                />
               </div>
             )}
             <Split horizontal initialPrimarySize="70%" resetOnDoubleClick>
               <Split initialPrimarySize="70%" resetOnDoubleClick>
                 <div className={styles['main']}>
-                  <shellComponents.ViewStack pane={shellState.panes.main} />
+                  <shellComponents.ViewStack
+                    pane={shellState.panes.main}
+                    showUserInfo={shellState.showUserInfo}
+                    showDevInfo={shellState.showDevInfo}
+                  />
                 </div>
                 {shellState.panes.right.viewStates.length > 0 && (
                   <div className={styles['right']}>
-                    <shellComponents.ViewStack pane={shellState.panes.right} />
+                    <shellComponents.ViewStack
+                      pane={shellState.panes.right}
+                      showUserInfo={shellState.showUserInfo}
+                      showDevInfo={shellState.showDevInfo}
+                    />
                   </div>
                 )}
               </Split>
               {shellState.panes.bottom.viewStates.length > 0 && (
                 <div className={styles['bottom']}>
-                  <shellComponents.ViewStack pane={shellState.panes.bottom} />
+                  <shellComponents.ViewStack
+                    pane={shellState.panes.bottom}
+                    showUserInfo={shellState.showUserInfo}
+                    showDevInfo={shellState.showDevInfo}
+                  />
                 </div>
               )}
             </Split>
