@@ -35,6 +35,44 @@ export const testViews: View[] = [
     key: 'one-main',
     displayText: 'one',
     displayIcon: 'home',
+    userInfo: [
+      {
+        viewId: 'info-markdown',
+        state: {
+          displayText: 'User Docs',
+          displayIcon: 'menu_book',
+          contentUrl:
+            'https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md',
+        },
+      },
+      {
+        viewId: 'info-youtube',
+        state: {
+          displayText: 'User Video',
+          displayIcon: 'videocam',
+          videoId: 'Z76QlSpYcck',
+        },
+      },
+    ],
+    devInfo: [
+      {
+        viewId: 'info-markdown',
+        state: {
+          displayText: 'Dev Docs',
+          displayIcon: 'menu_book',
+          contentUrl:
+            'https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md',
+        },
+      },
+      {
+        viewId: 'info-youtube',
+        state: {
+          displayText: 'Dev Video',
+          displayIcon: 'videocam',
+          videoId: 'Z76QlSpYcck',
+        },
+      },
+    ],
   },
   {
     viewId: 'account-one',
@@ -98,5 +136,40 @@ export const testViews: View[] = [
     key: 'first-search-comp',
     displayText: 'find stuff',
     displayIcon: 'power',
+    userInfo: [
+      {
+        viewId: 'info-markdown',
+        state: {
+          displayText: 'User Docs',
+          displayIcon: 'menu_book',
+          contentUrl:
+            'https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md',
+        },
+      },
+      {
+        viewId: 'info-youtube',
+        state: {
+          displayText: 'User Video',
+          displayIcon: 'videocam',
+          videoId: 'Z76QlSpYcck',
+        },
+      },
+    ],
+  },
+  {
+    viewId: 'info-markdown',
+    displayText: '{displayText}',
+    displayIcon: '{displayIcon}',
+    paneType: 'right',
+    componentName: 'MarkdownViewer',
+    componentModule: () => import('@porrtal-components/r-learning'),
+  },
+  {
+    viewId: 'info-youtube',
+    displayText: '{displayText}',
+    displayIcon: '{displayIcon}',
+    paneType: 'right',
+    componentName: 'YoutubePlayer',
+    componentModule: () => import('@porrtal-components/r-learning'),
   },
 ];

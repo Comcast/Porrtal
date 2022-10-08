@@ -42,6 +42,8 @@ export function ViewStack(props: ViewStackProps) {
       return (
         <ViewStackTabsTop
           pane={props.pane}
+          showUserInfo={props.showUserInfo}
+          showDevInfo={props.showDevInfo}
           dispatch={dispatch}
           onClose={props.onClose}
         />
@@ -51,13 +53,22 @@ export function ViewStack(props: ViewStackProps) {
       return (
         <ViewStackTabsLeft
           pane={props.pane}
+          showUserInfo={props.showUserInfo}
+          showDevInfo={props.showDevInfo}
           dispatch={dispatch}
           onClose={props.onClose}
         />
       );
 
     case 'cards':
-      return <ViewStackCards pane={props.pane} dispatch={dispatch} />;
+      return (
+        <ViewStackCards
+          pane={props.pane}
+          showUserInfo={props.showUserInfo}
+          showDevInfo={props.showDevInfo}
+          dispatch={dispatch}
+        />
+      );
   }
 
   return (
@@ -92,6 +103,8 @@ function ViewStackTabsTop(
           title={
             <ViewStackContextMenu
               pane={props.pane}
+              showUserInfo={props.showUserInfo}
+              showDevInfo={props.showDevInfo}
               dispatch={props.dispatch}
               item={item}
             ></ViewStackContextMenu>
@@ -146,6 +159,8 @@ function ViewStackTabsLeft(
           title={
             <ViewStackContextMenu
               pane={props.pane}
+              showUserInfo={props.showUserInfo}
+              showDevInfo={props.showDevInfo}
               dispatch={props.dispatch}
               item={item}
             ></ViewStackContextMenu>
@@ -196,6 +211,8 @@ function ViewStackCards(
             >
               <ViewStackContextMenu
                 pane={props.pane}
+                showUserInfo={props.showUserInfo}
+                showDevInfo={props.showDevInfo}
                 dispatch={props.dispatch}
                 item={item}
               ></ViewStackContextMenu>
@@ -244,6 +261,74 @@ function ViewStackContextMenu(
             />
           )}
           {props.pane.paneType !== 'search' && <MenuDivider />}
+          {props.showUserInfo &&
+            props.item?.userInfo &&
+            props.item?.userInfo.length > 0 && (
+              <MenuItem key={'userInfo'} text="Info..." icon="info-sign">
+                {props.item.userInfo.map((info) => (
+                  <MenuItem
+                    key={
+                      props.item.key +
+                      (info?.state ? info?.state['displayText'] : '')
+                    }
+                    icon={
+                      info?.state
+                        ? (info.state['displayIcon'] as IconName)
+                        : 'help'
+                    }
+                    text={
+                      info?.state
+                        ? (info.state['displayText'] as string)
+                        : 'help'
+                    }
+                    onClick={(evt) => {
+                      props.dispatch({
+                        type: 'launchView',
+                        viewId: info.viewId,
+                        state: info.state,
+                      });
+                    }}
+                  ></MenuItem>
+                ))}
+              </MenuItem>
+            )}
+          {props.showDevInfo &&
+            props.item?.devInfo &&
+            props.item?.devInfo.length > 0 && (
+              <MenuItem key={'devInfo'} text="dev Info..." icon="wrench">
+                {props.item.devInfo.map((info) => (
+                  <MenuItem
+                    key={
+                      props.item.key +
+                      (info?.state ? info?.state['displayText'] : '')
+                    }
+                    icon={
+                      info?.state
+                        ? (info.state['displayIcon'] as IconName)
+                        : 'help'
+                    }
+                    text={
+                      info?.state
+                        ? (info.state['displayText'] as string)
+                        : 'help'
+                    }
+                    onClick={(evt) => {
+                      props.dispatch({
+                        type: 'launchView',
+                        viewId: info.viewId,
+                        state: info.state,
+                      });
+                    }}
+                  ></MenuItem>
+                ))}
+              </MenuItem>
+            )}
+          {((props.showUserInfo &&
+            props.item?.userInfo &&
+            props.item?.userInfo.length > 0) ||
+            (props.showUserInfo &&
+              props.item?.userInfo &&
+              props.item?.userInfo.length > 0)) && <MenuDivider />}
           <MenuItem
             key={'arrange'}
             text="Arrange tabs..."

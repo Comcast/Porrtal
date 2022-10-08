@@ -26,6 +26,8 @@ import {
   paneTypes,
   ViewState,
 } from '@porrtal/r-api';
+import { isTemplateExpression } from 'typescript';
+import { info } from 'console';
 
 export function ViewStack(props: ViewStackProps) {
   const dispatch = useShellDispatch();
@@ -51,6 +53,8 @@ export function ViewStack(props: ViewStackProps) {
       return (
         <ViewStackTabsTop
           pane={props.pane}
+          showUserInfo={props.showUserInfo}
+          showDevInfo={props.showDevInfo}
           currentIndex={currentIndex}
           dispatch={dispatch}
           handleChange={handleChange}
@@ -62,6 +66,8 @@ export function ViewStack(props: ViewStackProps) {
       return (
         <ViewStackTabsLeft
           pane={props.pane}
+          showUserInfo={props.showUserInfo}
+          showDevInfo={props.showDevInfo}
           currentIndex={currentIndex}
           dispatch={dispatch}
           handleChange={handleChange}
@@ -72,6 +78,8 @@ export function ViewStack(props: ViewStackProps) {
       return (
         <ViewStackCards
           pane={props.pane}
+          showUserInfo={props.showUserInfo}
+          showDevInfo={props.showDevInfo}
           currentIndex={currentIndex}
           dispatch={dispatch}
           handleChange={handleChange}
@@ -113,6 +121,8 @@ function ViewStackTabsTop(
               label={
                 <ViewStackContextMenu
                   pane={props.pane}
+                  showUserInfo={props.showUserInfo}
+                  showDevInfo={props.showDevInfo}
                   dispatch={props.dispatch}
                   item={item}
                 ></ViewStackContextMenu>
@@ -185,6 +195,8 @@ function ViewStackTabsLeft(
               label={
                 <ViewStackContextMenu
                   pane={props.pane}
+                  showUserInfo={props.showUserInfo}
+                  showDevInfo={props.showDevInfo}
                   dispatch={props.dispatch}
                   item={item}
                 ></ViewStackContextMenu>
@@ -243,6 +255,8 @@ function ViewStackCards(
                 >
                   <ViewStackContextMenu
                     pane={props.pane}
+                    showUserInfo={props.showUserInfo}
+                    showDevInfo={props.showDevInfo}
                     dispatch={props.dispatch}
                     item={item}
                   ></ViewStackContextMenu>
@@ -275,21 +289,105 @@ function ViewStackContextMenu(
     search: 'clear',
   };
 
+  const optionalMenus = [];
+  if (props.pane.paneType !== 'search') {
+    optionalMenus.push(
+      <IconMenuItem
+        key="close-tab"
+        leftIcon={<Icon>clear</Icon>}
+        label="close tab"
+        onClick={
+          ((evt: React.MouseEvent<HTMLElement>) => {
+            props.dispatch({ type: 'deleteViewState', key: props.item.key });
+            evt.stopPropagation();
+          }) as () => void
+        }
+      ></IconMenuItem>,
+      <Divider key="divider-1" />
+    );
+  }
+
+  if (
+    props.showUserInfo &&
+    props.item.userInfo &&
+    props.item.userInfo.length > 0
+  ) {
+    optionalMenus.push(
+      <NestedMenuItem
+        key={'userInfo'}
+        leftIcon={<Icon>info</Icon>}
+        parentMenuOpen={true}
+        label={'Info...'}
+      >
+        {props.item.userInfo.map((info) => (
+          <IconMenuItem
+            key={`userInfo-${info.state ? info.state['displayText'] : 'help'}`}
+            leftIcon={
+              <Icon className="material-icons-outlined">
+                {info.state ? info.state['displayIcon'] as string : 'help'}
+              </Icon>
+            }
+            label={info.state ? info.state['displayText'] as string : 'help'}
+            onClick={() =>
+              props.dispatch({
+                type: 'launchView',
+                viewId: info.viewId,
+                state: info.state
+              })
+            }
+          ></IconMenuItem>
+        ))}
+      </NestedMenuItem>
+    );
+  }
+
+  if (
+    props.showDevInfo &&
+    props.item.devInfo &&
+    props.item.devInfo.length > 0
+  ) {
+    optionalMenus.push(
+      <NestedMenuItem
+        key={'userInfo'}
+        leftIcon={<Icon>build</Icon>}
+        parentMenuOpen={true}
+        label={'Dev Info...'}
+      >
+        {props.item.devInfo.map((info) => (
+          <IconMenuItem
+            key={`devInfo-${info.state ? info.state['displayText'] : 'dev help'}`}
+            leftIcon={
+              <Icon className="material-icons-outlined">
+                {info.state ? info.state['displayIcon'] as string : 'build'}
+              </Icon>
+            }
+            label={info.state ? info.state['displayText'] as string : 'dev help'}
+            onClick={() =>
+              props.dispatch({
+                type: 'launchView',
+                viewId: info.viewId,
+                state: info.state
+              })
+            }
+          ></IconMenuItem>
+        ))}
+      </NestedMenuItem>
+    );
+  }
+
+  if (
+    (props.showUserInfo &&
+      props.item.userInfo &&
+      props.item.userInfo.length > 0) ||
+    (props.showDevInfo && props.item.devInfo && props.item.devInfo.length > 0)
+  ) {
+    optionalMenus.push(<Divider key="divider-1" />);
+  }
+
   return (
     <ContextMenu
       menuItems={[
-        <IconMenuItem
-          key="close-tab"
-          leftIcon={<Icon>clear</Icon>}
-          label="close tab"
-          onClick={
-            ((evt: React.MouseEvent<HTMLElement>) => {
-              props.dispatch({ type: 'deleteViewState', key: props.item.key });
-              evt.stopPropagation();
-            }) as () => void
-          }
-        ></IconMenuItem>,
-        <Divider key="divider-1" />,
+        ...optionalMenus,
         <NestedMenuItem
           key={'arrange'}
           leftIcon={<Icon>pivot_table_chart</Icon>}

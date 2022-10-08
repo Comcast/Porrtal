@@ -48,6 +48,44 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
       displayText: 'Account Navigation',
       paneType: 'nav',
       displayIcon: 'mugshot',
+      userInfo: [
+        {
+          viewId: 'info-markdown',
+          state: {
+            displayText: 'User Docs',
+            displayIcon: 'manual',
+            contentUrl:
+              'https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md',
+          },
+        },
+        {
+          viewId: 'info-youtube',
+          state: {
+            displayText: 'User Video',
+            displayIcon: 'mobile-video',
+            videoId: 'Z76QlSpYcck',
+          },
+        },
+      ],
+      devInfo: [
+        {
+          viewId: 'info-markdown',
+          state: {
+            displayText: 'Dev Docs',
+            displayIcon: 'manual',
+            contentUrl:
+              'https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md',
+          },
+        },
+        {
+          viewId: 'info-youtube',
+          state: {
+            displayText: 'Dev Video',
+            displayIcon: 'mobile-video',
+            videoId: 'Z76QlSpYcck',
+          },
+        },
+      ],
       componentName: 'AccountNav',
       componentModule: () => import('@porrtal-components/r-quick-start-demo'),
     },
@@ -190,6 +228,22 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
       displayText: 'Markdown Viewer',
       displayIcon: 'book',
       componentName: 'MarkdownViewer',
+      componentModule: () => import('@porrtal-components/r-learning'),
+    },
+    {
+      viewId: 'info-markdown',
+      displayText: '{displayText}',
+      displayIcon: '{displayIcon}',
+      paneType: 'right',
+      componentName: 'MarkdownViewer',
+      componentModule: () => import('@porrtal-components/r-learning'),
+    },
+    {
+      viewId: 'info-youtube',
+      displayText: '{displayText}',
+      displayIcon: '{displayIcon}',
+      paneType: 'right',
+      componentName: 'YoutubePlayer',
       componentModule: () => import('@porrtal-components/r-learning'),
     },
   ];
