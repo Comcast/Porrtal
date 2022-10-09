@@ -1,0 +1,14 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# 0.1.0 (2022-10-09)
+
+### Features
+
+- **@porrtal/a-_, @porrtal-components/a-_:** rough in libraries and test components ([eaa7c24](https://github.com/datumgeek/porrtal/commit/eaa7c246134ad587812933c87bb46f7072e22ca3))
+- **@porrtal/a-shell-material:** user and dev info tab menus working ([a07c640](https://github.com/datumgeek/porrtal/commit/a07c64018a5c1d54adad62b2aaac28f37add2cb5))
+- **@porrtal/a-shell:** view host component working ([839dc2a](https://github.com/datumgeek/porrtal/commit/839dc2afa10a8b12de40fc1d3e3ae2bf34ff8143))
+- change prefix from porrtal-workspace to porrtal ([f0620ea](https://github.com/datumgeek/porrtal/commit/f0620ea3496545bcbb1b596b5900a3381ebea41d))
+- **porrtal-workspace:** format project.json files ([46fef12](https://github.com/datumgeek/porrtal/commit/46fef12bba99d07cc883cb08ab46e38ad232aae9))
