@@ -1,7 +1,7 @@
 {
   "packages": [
-    "apps/**",
-    "libs/**"
+    "apps/*/**",
+    "libs/*/*/**"
   ],
   "command": {
     "publish": { "conventionalCommits": true},
