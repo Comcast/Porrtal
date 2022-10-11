@@ -15,7 +15,7 @@ const nextConfig = {
   rewrites: () =>
     Promise.resolve([
         {
-          source: '/angular/quick-start',
+          source: '/angular/:path*',
           destination: '/angular/index.html',
         },
       ]),
