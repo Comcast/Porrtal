@@ -1,4 +1,5 @@
 {
+  "name": "porrtal-components-a-second-test-comp-lib",
   "projectType": "library",
   "sourceRoot": "libs/porrtal-components/a/second-test-comp-lib/src",
   "prefix": "porrtal",

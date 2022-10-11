@@ -1,4 +1,5 @@
 {
+  "name": "porrtal-components-a-quick-start-demo",
   "projectType": "library",
   "sourceRoot": "libs/porrtal-components/a/quick-start-demo/src",
   "prefix": "porrtal",

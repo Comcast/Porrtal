@@ -1,4 +1,5 @@
 {
+  "name": "porrtal-components-a-learning",
   "projectType": "library",
   "sourceRoot": "libs/porrtal-components/a/learning/src",
   "prefix": "porrtal-workspace",

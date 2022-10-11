@@ -1,4 +1,5 @@
 {
+  "name": "porrtal-r-shell-material",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/porrtal/r/shell-material/src",
   "projectType": "library",

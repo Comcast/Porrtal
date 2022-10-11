@@ -1,4 +1,5 @@
 {
+  "name": "porrtal-r-split",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/porrtal/r/split/src",
   "projectType": "library",

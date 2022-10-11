@@ -1,4 +1,5 @@
 {
+  "name": "porrtal-a-user",
   "projectType": "library",
   "sourceRoot": "libs/porrtal/a/user/src",
   "prefix": "porrtal",

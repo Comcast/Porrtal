@@ -1,4 +1,5 @@
 {
+  "name": "r-porrtal-app",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/r/porrtal-app/src",
   "projectType": "application",

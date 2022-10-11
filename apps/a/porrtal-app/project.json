@@ -1,4 +1,5 @@
 {
+  "name": "a-porrtal-app",
   "projectType": "application",
   "sourceRoot": "apps/a/porrtal-app/src",
   "prefix": "porrtal",

@@ -1,4 +1,5 @@
 {
+  "name": "porrtal-components-r-second-test-comp-lib",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/porrtal-components/r/second-test-comp-lib/src",
   "projectType": "library",
