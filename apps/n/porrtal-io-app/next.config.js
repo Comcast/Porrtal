@@ -12,6 +12,13 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  rewrites: () =>
+    Promise.resolve([
+        {
+          source: '/angular/quick-start',
+          destination: '/angular/index.html',
+        },
+      ]),
 };
 
 module.exports = withNx(nextConfig);
