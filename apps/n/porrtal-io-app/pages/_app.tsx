@@ -6,7 +6,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Welcome to porrtal-io-app!</title>
+        <title>Welcome to porrtal.io</title>
       </Head>
       <main className="app">
         <Component {...pageProps} />
