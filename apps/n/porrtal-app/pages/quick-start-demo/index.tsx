@@ -261,7 +261,10 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
           redirectUri="http://localhost:4200"
         >
           <ShellState views={views}>
-            <ShellBlueprint />
+            <ShellBlueprint bannerData={{
+              displayText: 'quick-start-demo',
+              displayIcon: 'selection'
+            }} />
           </ShellState>
         </Auth0Authentication>
       </>

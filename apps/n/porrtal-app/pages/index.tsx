@@ -25,7 +25,10 @@ export function Index() {
           redirectUri="http://localhost:4200"
         >
           <ShellState modules={testModules} views={testViews}>
-            <ShellMaterial />
+            <ShellMaterial bannerData={{
+              displayText: 'material tests',
+              displayIcon: 'cyclone'
+            }} />
           </ShellState>
         </Auth0Authentication>
       </>
