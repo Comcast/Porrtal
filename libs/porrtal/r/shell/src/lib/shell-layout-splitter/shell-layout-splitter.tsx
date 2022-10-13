@@ -14,10 +14,10 @@ export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
     return (
       <div className={styles['container']}>
         <div className={styles['banner']}>
-          <div>image</div>
-          <shellComponents.Search />
+          <shellComponents.Banner bannerData={shellComponents.bannerData}></shellComponents.Banner>
           <shellComponents.LoggerBanner />
           <UserBanner />
+          <shellComponents.Search />
         </div>
         <div className={styles['content']}>
           <Split initialPrimarySize="250px" resetOnDoubleClick>
