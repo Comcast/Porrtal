@@ -32,18 +32,18 @@ export function Index() {
                 childData: [
                   {
                     displayText: 'First Page',
-                    displayImage: '/react.svg',
+                    displayImage: '/assets/react.svg',
                     targetUrl: '/',
                   },
                   {
                     displayText: 'Second Page',
-                    displayImage: '/angular.svg',
+                    displayImage: '/assets/angular.svg',
                     displayIcon: 'cyclone',
                     targetUrl: '/second-page',
                   },
                   {
                     displayText: 'Quick Start Demo',
-                    displayImage: '/react.svg',
+                    displayImage: '/assets/react.svg',
                     displayIcon: 'cyclone',
                     targetUrl: '/quick-start-demo',
                   },
