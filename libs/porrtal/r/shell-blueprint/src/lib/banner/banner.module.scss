@@ -1,5 +1,16 @@
 .container {
-  margin-left: 15px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 15px auto 15px auto 1fr;
+}
+
+.banner-title {
+  margin: 0 !important;
+  cursor: pointer;
+}
+
+.popout-icon {
+  margin-left: 8px;
 }
 
 .icon {
