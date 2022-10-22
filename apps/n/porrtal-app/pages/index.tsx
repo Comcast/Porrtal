@@ -26,9 +26,26 @@ export function Index() {
         >
           <ShellState modules={testModules} views={testViews}>
             <ShellMaterial bannerData={{
-              displayText: 'material tests',
-              displayIcon: 'cyclone'
-            }} />
+              displayText: 'Material Tests',
+              displayIcon: 'cyclone',
+              childData: [
+                {
+                  displayText: 'First Page',
+                  displayIcon: 'cyclone',
+                  targetUrl: '/'
+                },
+                {
+                  displayText: 'Second Page',
+                  displayIcon: 'cyclone',
+                  targetUrl: '/second-page'
+                },
+                {
+                  displayText: 'Quick Start Demo',
+                  displayIcon: 'cyclone',
+                  targetUrl: '/quick-start-demo'
+                },
+              ],
+          }} />
           </ShellState>
         </Auth0Authentication>
       </>

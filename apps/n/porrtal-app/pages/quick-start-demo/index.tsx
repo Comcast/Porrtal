@@ -261,10 +261,29 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
           redirectUri="http://localhost:4200"
         >
           <ShellState views={views}>
-            <ShellBlueprint bannerData={{
-              displayText: 'quick-start-demo',
-              displayIcon: 'selection'
-            }} />
+            <ShellBlueprint
+              bannerData={{
+                displayText: 'Quick Start Demo',
+                displayIcon: 'ninja',
+                childData: [
+                  {
+                    displayText: 'First Page',
+                    displayIcon: 'ninja',
+                    targetUrl: '/'
+                  },
+                  {
+                    displayText: 'Second Page',
+                    displayIcon: 'ninja',
+                    targetUrl: '/second-page'
+                  },
+                  {
+                    displayText: 'Quick Start Demo',
+                    displayIcon: 'ninja',
+                    targetUrl: '/quick-start-demo'
+                  },
+                ],
+              }}
+            />
           </ShellState>
         </Auth0Authentication>
       </>
