@@ -43,6 +43,11 @@ function BannerMenu(props: BannerProps & { children: ReactNode | undefined }) {
               icon={menuItem.displayIcon as IconName}
               text={
                 <>
+                  <img
+                    className={styles['image-icon']}
+                    src="/angular.svg"
+                    alt="angular icon"
+                  ></img>
                   <span>{menuItem.displayText}</span>
                   <Icon
                     className={styles['popout-icon']}

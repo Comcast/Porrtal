@@ -268,7 +268,7 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
                 childData: [
                   {
                     displayText: 'First Page',
-                    displayIcon: 'ninja',
+                    // displayIcon: 'ninja',
                     targetUrl: '/'
                   },
                   {
