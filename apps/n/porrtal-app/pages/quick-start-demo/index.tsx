@@ -269,19 +269,19 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
                   {
                     displayText: 'First Page',
                     displayImage: '/react.svg',
-                    targetUrl: '/'
+                    targetUrl: '/',
                   },
                   {
                     displayText: 'Second Page',
                     displayImage: '/angular.svg',
                     displayIcon: 'ninja',
-                    targetUrl: '/second-page'
+                    targetUrl: '/second-page',
                   },
                   {
                     displayText: 'Quick Start Demo',
                     displayImage: '/react.svg',
                     displayIcon: 'ninja',
-                    targetUrl: '/quick-start-demo'
+                    targetUrl: '/quick-start-demo',
                   },
                 ],
               }}

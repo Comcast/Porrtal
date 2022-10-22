@@ -70,7 +70,16 @@ function BannerMenu(props: BannerProps & { children: ReactNode | undefined }) {
         {props.bannerData.childData.map((menuItem) => (
           <IconMenuItem
             key={menuItem.displayText}
-            leftIcon={<Icon>{menuItem.displayIcon}</Icon>}
+            leftIcon={
+              <>
+                <Icon>{menuItem.displayIcon}</Icon>{' '}
+                <img
+                  className={styles['image-icon']}
+                  src={menuItem.displayImage}
+                  alt="angular icon"
+                ></img>
+              </>
+            }
             label={menuItem.displayText}
             rightIcon={
               <Icon

@@ -25,27 +25,31 @@ export function Index() {
           redirectUri="http://localhost:4200"
         >
           <ShellState modules={testModules} views={testViews}>
-            <ShellMaterial bannerData={{
-              displayText: 'Material Tests',
-              displayIcon: 'cyclone',
-              childData: [
-                {
-                  displayText: 'First Page',
-                  displayIcon: 'cyclone',
-                  targetUrl: '/'
-                },
-                {
-                  displayText: 'Second Page',
-                  displayIcon: 'cyclone',
-                  targetUrl: '/second-page'
-                },
-                {
-                  displayText: 'Quick Start Demo',
-                  displayIcon: 'cyclone',
-                  targetUrl: '/quick-start-demo'
-                },
-              ],
-          }} />
+            <ShellMaterial
+              bannerData={{
+                displayText: 'Quick Start Demo',
+                displayIcon: 'cyclone',
+                childData: [
+                  {
+                    displayText: 'First Page',
+                    displayImage: '/react.svg',
+                    targetUrl: '/',
+                  },
+                  {
+                    displayText: 'Second Page',
+                    displayImage: '/angular.svg',
+                    displayIcon: 'cyclone',
+                    targetUrl: '/second-page',
+                  },
+                  {
+                    displayText: 'Quick Start Demo',
+                    displayImage: '/react.svg',
+                    displayIcon: 'cyclone',
+                    targetUrl: '/quick-start-demo',
+                  },
+                ],
+              }}
+            />
           </ShellState>
         </Auth0Authentication>
       </>
