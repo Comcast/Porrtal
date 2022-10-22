@@ -268,16 +268,18 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
                 childData: [
                   {
                     displayText: 'First Page',
-                    // displayIcon: 'ninja',
+                    displayImage: '/react.svg',
                     targetUrl: '/'
                   },
                   {
                     displayText: 'Second Page',
+                    displayImage: '/angular.svg',
                     displayIcon: 'ninja',
                     targetUrl: '/second-page'
                   },
                   {
                     displayText: 'Quick Start Demo',
+                    displayImage: '/react.svg',
                     displayIcon: 'ninja',
                     targetUrl: '/quick-start-demo'
                   },

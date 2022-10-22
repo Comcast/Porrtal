@@ -45,7 +45,7 @@ function BannerMenu(props: BannerProps & { children: ReactNode | undefined }) {
                 <>
                   <img
                     className={styles['image-icon']}
-                    src="/angular.svg"
+                    src={menuItem.displayImage}
                     alt="angular icon"
                   ></img>
                   <span>{menuItem.displayText}</span>
