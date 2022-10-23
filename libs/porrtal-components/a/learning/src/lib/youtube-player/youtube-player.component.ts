@@ -6,7 +6,7 @@ import { ViewState } from '@porrtal/a-api';
 let apiLoaded = false;
 
 @Component({
-  selector: 'porrtal-workspace-youtube-player',
+  selector: 'porrtal-youtube-player',
   standalone: true,
   imports: [CommonModule, YouTubePlayerModule],
   templateUrl: './youtube-player.component.html',

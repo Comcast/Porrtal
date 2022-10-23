@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "porrtalWorkspace",
+            "prefix": "porrtal",
             "style": "camelCase"
           }
         ],
@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "porrtal-workspace",
+            "prefix": "porrtal",
             "style": "kebab-case"
           }
         ]

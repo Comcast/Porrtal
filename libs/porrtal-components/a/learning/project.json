@@ -2,7 +2,7 @@
   "name": "porrtal-components-a-learning",
   "projectType": "library",
   "sourceRoot": "libs/porrtal-components/a/learning/src",
-  "prefix": "porrtal-workspace",
+  "prefix": "porrtal",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",

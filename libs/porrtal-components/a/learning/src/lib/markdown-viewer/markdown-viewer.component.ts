@@ -15,7 +15,7 @@ import {
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
-  selector: 'porrtal-workspace-markdown-viewer',
+  selector: 'porrtal-markdown-viewer',
   standalone: true,
   imports: [CommonModule, MarkdownModule, HttpClientModule],
   providers: [

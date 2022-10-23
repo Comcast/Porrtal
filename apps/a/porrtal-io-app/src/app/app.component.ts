@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'porrtal-workspace-root',
+  selector: 'porrtal-io-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
