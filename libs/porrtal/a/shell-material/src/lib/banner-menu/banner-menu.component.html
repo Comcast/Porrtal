@@ -1,0 +1,37 @@
+<ng-container (click)="containerClick()">
+  <ng-content></ng-content>
+</ng-container>
+<div
+  [ngStyle]="{ position: 'fixed', top: menuPosition.y, left: menuPosition.x }"
+  [matMenuTriggerFor]="menu"
+></div>
+<mat-menu #menu="matMenu">
+  <ng-template matMenuContent>
+    <button
+      mat-menu-item
+      (click)="launchItem(menuItem, $event.shiftKey, $event)"
+      *ngFor="let menuItem of bannerData?.childData"
+    >
+      <div class="menu-item">
+        <mat-icon class="material-icon" *ngIf="menuItem.displayIcon">{{
+          menuItem.displayIcon
+        }}</mat-icon>
+        <span *ngIf="!menuItem.displayIcon"></span>
+        <img
+          class="image-icon"
+          *ngIf="menuItem.displayImage"
+          [src]="menuItem.displayImage"
+          alt="angular icon"
+        />
+        <span *ngIf="!menuItem.displayImage"></span>
+        <span class="menu-text">{{ menuItem.displayText }}</span>
+        <mat-icon
+          class="popout-icon"
+          (click)="launchItem(menuItem, true, $event)"
+        >
+          open_in_new
+        </mat-icon>
+      </div>
+    </button>
+  </ng-template>
+</mat-menu>

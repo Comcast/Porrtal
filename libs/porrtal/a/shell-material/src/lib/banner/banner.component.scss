@@ -1,0 +1,30 @@
+.container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 15px auto 15px auto 1fr;
+}
+
+.banner-with-children {
+  cursor: pointer;
+}
+
+.down-icon {
+  position: relative;
+  top: 4px;
+}
+
+.popout-icon {
+  margin-left: 7px;
+}
+
+.image-icon {
+  display: inline-block;
+  vertical-align: text-bottom;
+  width: 26px;
+  height: 26px;
+  margin-left: 3px;
+}
+
+.banner-text {
+  margin-bottom: 0;
+}

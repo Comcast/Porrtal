@@ -5,9 +5,10 @@ import {
   Type,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShellStateService } from '@porrtal/a-shell';
+import { BannerData, ShellStateService } from '@porrtal/a-shell';
 import { testModules, testViews } from '../test-config/test-view-states';
 import { ShellLayoutComponent } from '@porrtal/a-shell-material';
+import { bannerData } from '../data';
 
 @Component({
   selector: 'porrtal-first-page',
@@ -18,6 +19,10 @@ import { ShellLayoutComponent } from '@porrtal/a-shell-material';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FirstPageComponent {
+  public bannerData: BannerData = {
+    ...bannerData,
+    displayText: 'First Page',
+  };
 
   constructor(public shellStateService: ShellStateService) {
     shellStateService.dispatch({
