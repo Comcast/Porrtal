@@ -7,11 +7,18 @@ import styles from './banner.module.scss';
 export function Banner(props: BannerProps) {
   return (
     <div className={styles['container']}>
-      &nbsp;
       {props.bannerData?.displayIcon && (
-        <Icon icon={props.bannerData.displayIcon as IconName} />
+        <Icon className={styles['banner-icon-icon']} icon={props.bannerData.displayIcon as IconName} />
       )}
-      &nbsp;
+      {!props.bannerData?.displayIcon && <span></span>}
+      {props.bannerData?.displayImage && (
+        <img
+          className={styles['banner-image-icon']}
+          src={props.bannerData.displayImage}
+          alt="angular icon"
+        ></img>
+      )}
+      {!props.bannerData?.displayImage && <span></span>}
       <BannerMenu {...props}>
         <h3 className={styles['banner-title']}>
           {props.bannerData?.displayText}
@@ -43,11 +50,11 @@ function BannerMenu(props: BannerProps & { children: ReactNode | undefined }) {
               icon={menuItem.displayIcon as IconName}
               text={
                 <>
-                  <img
+                  {menuItem.displayImage && <img
                     className={styles['image-icon']}
                     src={menuItem.displayImage}
                     alt="angular icon"
-                  ></img>
+                  ></img>}
                   <span>{menuItem.displayText}</span>
                   <Icon
                     className={styles['popout-icon']}

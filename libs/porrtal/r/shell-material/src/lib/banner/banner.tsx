@@ -9,8 +9,19 @@ export function Banner(props: BannerProps) {
     <div className={styles['container']}>
       &nbsp;
       {props.bannerData?.displayIcon && (
-        <Icon>{props.bannerData.displayIcon}</Icon>
+        <Icon className={styles['banner-icon']}>
+          {props.bannerData.displayIcon}
+        </Icon>
       )}
+      {!props.bannerData?.displayIcon && <span></span>}
+      {props.bannerData?.displayImage && (
+        <img
+          className={styles['banner-image-icon']}
+          src={props.bannerData.displayImage}
+          alt="angular icon"
+        ></img>
+      )}
+      {!props.bannerData?.displayImage && <span></span>}
       &nbsp;
       <BannerMenu {...props}>
         <Typography variant="h5" gutterBottom={false}>
@@ -72,12 +83,14 @@ function BannerMenu(props: BannerProps & { children: ReactNode | undefined }) {
             key={menuItem.displayText}
             leftIcon={
               <>
-                <Icon>{menuItem.displayIcon}</Icon>{' '}
-                <img
-                  className={styles['image-icon']}
-                  src={menuItem.displayImage}
-                  alt="angular icon"
-                ></img>
+                {menuItem.displayIcon && <Icon>{menuItem.displayIcon}</Icon>}
+                {menuItem.displayImage && (
+                  <img
+                    className={styles['image-icon']}
+                    src={menuItem.displayImage}
+                    alt="angular icon"
+                  ></img>
+                )}
               </>
             }
             label={menuItem.displayText}
