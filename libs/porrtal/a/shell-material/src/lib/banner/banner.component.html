@@ -1,9 +1,17 @@
 <div class="container">
-  &nbsp;
-  <mat-icon *ngIf="bannerData?.displayIcon">{{
+  <mat-icon class="banner-icon-icon" *ngIf="bannerData?.displayIcon">{{
     bannerData?.displayIcon
   }}</mat-icon>
-  &nbsp;
+  <span *ngIf="!bannerData?.displayIcon"></span>
+
+  <img
+    *ngIf="bannerData?.displayImage"
+    class="banner-image-icon"
+    [src]="bannerData?.displayImage"
+    alt="angular icon"
+  />
+  <span *ngIf="!bannerData?.displayImage"></span>
+
   <porrtal-banner-menu
     [bannerData]="bannerData"
     [class]="

@@ -1,4 +1,44 @@
+import { View } from '@porrtal/a-api';
 import { BannerData } from "@porrtal/a-shell";
+
+export const getReactUiLibrary = (): string => {
+  const queryString = location.search;
+  const reactUiLibs = new Set(['blueprint', 'mui']);
+  const searchParams = new URLSearchParams(queryString);
+  let reactUiLibrary = searchParams.get('reactUiLibrary') ?? '';
+  if (reactUiLibs.has(reactUiLibrary)) {
+    localStorage.setItem('reactUiLibrary', reactUiLibrary);
+    return reactUiLibrary;
+  }
+
+  reactUiLibrary = localStorage.getItem('reactUiLibrary') ?? '';
+  if (reactUiLibs.has(reactUiLibrary)) {
+    return reactUiLibrary;
+  }
+
+  localStorage.setItem('reactUiLibrary', 'blueprint');
+  return 'blueprint';
+};
+
+export const getAngularUiLibrary = (): string => {
+  const queryString = location.search;
+  const angularUiLibs = new Set(['material']);
+  const searchParams = new URLSearchParams(queryString);
+  let angularUiLibrary = searchParams.get('angularUiLibrary') ?? '';
+  if (angularUiLibs.has(angularUiLibrary)) {
+    localStorage.setItem('angularUiLibrary', angularUiLibrary);
+    return angularUiLibrary;
+  }
+
+  angularUiLibrary = localStorage.getItem('angularUiLibrary') ?? '';
+  if (angularUiLibs.has(angularUiLibrary)) {
+    return angularUiLibrary;
+  }
+
+  localStorage.setItem('angularUiLibrary', 'material');
+  return 'material';
+}
+
 
 export const bannerData: BannerData = {
   displayText: '@porrtal',

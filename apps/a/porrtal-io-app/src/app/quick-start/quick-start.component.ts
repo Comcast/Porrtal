@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BannerData, ShellStateService } from '@porrtal/a-shell';
 import { View } from '@porrtal/a-api';
 import { ShellLayoutComponent } from '@porrtal/a-shell-material';
-import { bannerData } from '../data';
+import { bannerData, getAngularUiLibrary, getReactUiLibrary } from '../data';
 
 const views: View[] = [
   {
@@ -49,9 +49,9 @@ const views: View[] = [
         state: {
           displayText: 'User Video',
           displayIcon: 'videocam',
-          videoId: 'Z76QlSpYcck'
-        }
-      }
+          videoId: 'Z76QlSpYcck',
+        },
+      },
     ],
     devInfo: [
       {
@@ -68,9 +68,9 @@ const views: View[] = [
         state: {
           displayText: 'Dev Video',
           displayIcon: 'videocam',
-          videoId: 'Z76QlSpYcck'
-        }
-      }
+          videoId: 'Z76QlSpYcck',
+        },
+      },
     ],
     componentName: 'AccountNavComponent',
     componentModule: () => import('@porrtal-components/a-quick-start-demo'),
@@ -243,12 +243,21 @@ const views: View[] = [
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuickStartComponent {
-  public bannerData: BannerData = {
-    ...bannerData,
-    displayText: 'quick-start',
-  };
+  public bannerData: BannerData;
+  public reactUiLibrary: string;
+  public angularUiLibrary: string;
 
   constructor(public shellStateService: ShellStateService) {
+    this.reactUiLibrary = getReactUiLibrary();
+    this.angularUiLibrary = getAngularUiLibrary();
+
+    this.bannerData = {
+      ...bannerData,
+      displayText: `quick-start ${this.angularUiLibrary ? '(' : ''}${
+        this.angularUiLibrary
+      }${this.angularUiLibrary ? ')' : ''}`,
+    };
+
     views.forEach((view) =>
       shellStateService.dispatch({
         type: 'registerView',
