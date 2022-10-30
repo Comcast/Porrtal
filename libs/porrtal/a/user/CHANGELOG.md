@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/datumgeek/porrtal/compare/v0.1.0...v0.2.0) (2022-10-30)
+
+### Features
+
+- **a-porrtal-io-app:** rough in angular app ([e7381a8](https://github.com/datumgeek/porrtal/commit/e7381a8d324f18413b909e8800874d235e1f8567))
+
 # 0.1.0 (2022-10-09)
 
 ### Features

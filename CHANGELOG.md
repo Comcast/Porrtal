@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/datumgeek/porrtal/compare/v0.1.0...v0.2.0) (2022-10-30)
+
+### Features
+
+- **@porrtal/a-shell-material:** add banner with menu ([ad5d011](https://github.com/datumgeek/porrtal/commit/ad5d01100e0caf0834f335452e64dee812f58d01))
+- **@porrtal/r-shell-blueprint:** add menu to banner component ([a57b436](https://github.com/datumgeek/porrtal/commit/a57b43606278038ad2f4075ae7b56412ce0d3a43))
+- **@porrtal/r-shell-blueprint:** display optional image (including SVGs) in banner menu items ([d4de51e](https://github.com/datumgeek/porrtal/commit/d4de51e0ccf60c3cccb5f7a7f7c09b33850a1388))
+- **@porrtal/r-shell-blueprint:** display optional image (including SVGs) in banner menu items ([0e16211](https://github.com/datumgeek/porrtal/commit/0e16211fa003e421c66ff2cc99b834676cdc47ec))
+- **@porrtal/r-shell-material, @porrtal/r-shell-blueprint:** banner text and icon working ([547644d](https://github.com/datumgeek/porrtal/commit/547644d13f16344a04ee8c96e6267443eea6742a))
+- **@porrtal/r-shell-material, @porrtal/r-shell-blueprint:** rough in banner component ([029aa6b](https://github.com/datumgeek/porrtal/commit/029aa6b3cba40a688918d88003b552687292312f))
+- **@porrtal/r-shell-material:** add menu to banner component ([142a603](https://github.com/datumgeek/porrtal/commit/142a60327a589b5e6fa43a57ba6a40d10ddd409c))
+- **@porrtal/r-shell-material:** display optional image (including SVGs) in banner menu items ([2aee1f1](https://github.com/datumgeek/porrtal/commit/2aee1f1c51f03420385906d167a0f0f745f041de))
+- **@porrtal/shell-blueprint:** add support for banner image and cleanup layout ([18c44f0](https://github.com/datumgeek/porrtal/commit/18c44f01d12de93b27c827cd9263cd8c8d5b039e))
+- **a-porrtal-io-app, @porrtal/a-shell-material:** add image to banner and remember angularUiLibrary ([e7510e3](https://github.com/datumgeek/porrtal/commit/e7510e3c1145bc3295dc43dfd2237e893f5f9fe5))
+- **a-porrtal-io-app:** add nx command: nx build-and-copy a-porrtal-io-app ([c163041](https://github.com/datumgeek/porrtal/commit/c1630416015fa315063d899ac2717a024a771186))
+- **a-porrtal-io-app:** add package json so this app is included in versioning ([9c796ff](https://github.com/datumgeek/porrtal/commit/9c796fff9e01c98033bd415352cba6b4a0e746c6))
+- **a-porrtal-io-app:** build app, copy to n-porrtal-io-app public website ([9d291b4](https://github.com/datumgeek/porrtal/commit/9d291b4974799f871101497053235ee6441a1424))
+- **a-porrtal-io-app:** publish angular changes to porrtal.io website ([0629521](https://github.com/datumgeek/porrtal/commit/06295219252eb6da7d20f7b26865f2d301e20e53))
+- **a-porrtal-io-app:** quick-start route working ([eac83fa](https://github.com/datumgeek/porrtal/commit/eac83fa0402159d7e9a4923d531516b5c0aa6789))
+- **a-porrtal-io-app:** rough in angular app ([e7381a8](https://github.com/datumgeek/porrtal/commit/e7381a8d324f18413b909e8800874d235e1f8567))
+- **n-porrtal-app-e2e, a-porrtal-app-e2e:** add package json to include e2e apps in versioning ([4187fad](https://github.com/datumgeek/porrtal/commit/4187fadf40febe4d8ee092260d10d99f94cb3a24))
+- **n-porrtal-app:** add banner menu data to /quick-start-demo and / pages ([a9f0adc](https://github.com/datumgeek/porrtal/commit/a9f0adc7a8510c66fc4b875b791af0b4f74ebbea))
+- **n-porrtal-app:** move images in nextjs app into assets folder for consistency with angular app ([cef5287](https://github.com/datumgeek/porrtal/commit/cef528719d8451ebe169bed7a64d36709a8ebcf0))
+- **n-porrtal-io-app, a-porrtal-io-app:** rough in angular/samples and react/samples routes ([4ff7352](https://github.com/datumgeek/porrtal/commit/4ff7352477ba896d79e6241e04aa13fe4e401aa8))
+- **n-porrtal-io-app, a-porrtal-io-app:** rough in inside-porrtal ([e40badb](https://github.com/datumgeek/porrtal/commit/e40badb12169135b0eaa9c8e81d322869fdbae5f))
+- **n-porrtal-io-app:** cleanup text and styles, add package.json for versioning and release notes ([be9abdd](https://github.com/datumgeek/porrtal/commit/be9abddd2cdc038585b14b40dd663c5a03a0edfc))
+- **n-porrtal-io-app:** create react/quick-start page ([5166159](https://github.com/datumgeek/porrtal/commit/51661592a8548b7e8204291b9b4441cf4eebaa57))
+- **n-porrtal-io-app:** quick-start route working ([5d91778](https://github.com/datumgeek/porrtal/commit/5d917781387de9c2ab6c8738b57ae8162678a3a0))
+- **n-porrtal-io-app:** rough in app ([cb4392a](https://github.com/datumgeek/porrtal/commit/cb4392a29aab103718eb4ebc636f207e8eae5b6b))
+- **n-porrtal-io-app:** url rewrite working to launch /anuglar/quick-start ([086c0da](https://github.com/datumgeek/porrtal/commit/086c0da317950fc64b9ef543db0ae5b73016b3c6))
+- **n-porrtal-io-app:** use wildcard in url rewrite to support additional future angular routes ([a1856c9](https://github.com/datumgeek/porrtal/commit/a1856c9ed2a1ac4d8fe98e7958e75c10890ffd51))
+
 # 0.1.0 (2022-10-09)
 
 ### Bug Fixes

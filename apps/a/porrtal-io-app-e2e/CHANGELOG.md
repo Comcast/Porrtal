@@ -8,13 +8,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 - **a-porrtal-io-app:** rough in angular app ([e7381a8](https://github.com/datumgeek/porrtal/commit/e7381a8d324f18413b909e8800874d235e1f8567))
-
-# 0.1.0 (2022-10-09)
-
-### Bug Fixes
-
-- **workspace:** simplify lerna projects and add package.json to apps ([4aac50f](https://github.com/datumgeek/porrtal/commit/4aac50f046cb0de1b131ce22f130197fd7b0a43f))
-
-### Features
-
-- **@porrtal-componnets/r-learning:** storybook working ([4ce6ac4](https://github.com/datumgeek/porrtal/commit/4ce6ac498cda7d05d887f9c6e51b637cb6f29f31))
+- **n-porrtal-app-e2e, a-porrtal-app-e2e:** add package json to include e2e apps in versioning ([4187fad](https://github.com/datumgeek/porrtal/commit/4187fadf40febe4d8ee092260d10d99f94cb3a24))
