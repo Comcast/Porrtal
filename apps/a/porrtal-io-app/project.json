@@ -99,6 +99,16 @@
         "jestConfig": "apps/a/porrtal-io-app/jest.config.ts",
         "passWithNoTests": true
       }
+    },
+    "build-and-copy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx build a-porrtal-io-app",
+          "ncp dist/apps/a/porrtal-io-app apps/n/porrtal-io-app/public/angular"
+        ],
+        "parallel": false
+      }
     }
   },
   "tags": []
