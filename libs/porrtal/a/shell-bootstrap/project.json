@@ -1,4 +1,5 @@
 {
+  "name": "porrtal-a-shell-bootstrap",
   "projectType": "library",
   "sourceRoot": "libs/porrtal/a/shell-bootstrap/src",
   "prefix": "porrtal",

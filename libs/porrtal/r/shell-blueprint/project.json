@@ -1,4 +1,5 @@
 {
+  "name": "porrtal-r-shell-blueprint",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/porrtal/r/shell-blueprint/src",
   "projectType": "library",

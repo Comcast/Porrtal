@@ -1,4 +1,5 @@
 import {
+  BannerData,
   ShellComponents,
   ShellComponentsContext,
   ShellLayoutSplitter,
@@ -9,9 +10,11 @@ import { ReactNode } from 'react';
 import Search from './search/search';
 import EntityMenu from './entity-menu/entity-menu';
 import LoggerBanner from './logger-banner/logger-banner';
+import Banner from './banner/banner';
 
 export interface ShellComponentsMaterialProps {
   children: ReactNode | undefined;
+  bannerData?: BannerData;
 }
 
 export function ShellComponentsMaterial(props: ShellComponentsMaterialProps) {
@@ -19,6 +22,8 @@ export function ShellComponentsMaterial(props: ShellComponentsMaterialProps) {
     ViewStack,
     Search,
     EntityMenu,
+    Banner,
+    bannerData: props.bannerData,
     LoggerBanner,
   };
   const shellDispatch = useShellDispatch();

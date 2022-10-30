@@ -26,7 +26,31 @@ export function Index() {
           redirectUri="http://localhost:4200/second-page"
         >
           <ShellState modules={testModules} views={testViews}>
-            <ShellMaterial />
+            <ShellMaterial
+              bannerData={{
+                displayText: 'Quick Start Demo',
+                displayIcon: 'cyclone',
+                childData: [
+                  {
+                    displayText: 'First Page',
+                    displayImage: '/assets/react.svg',
+                    targetUrl: '/',
+                  },
+                  {
+                    displayText: 'Second Page',
+                    displayImage: '/assets/angular.svg',
+                    displayIcon: 'cyclone',
+                    targetUrl: '/second-page',
+                  },
+                  {
+                    displayText: 'Quick Start Demo',
+                    displayImage: '/assets/react.svg',
+                    displayIcon: 'cyclone',
+                    targetUrl: '/quick-start-demo',
+                  },
+                ],
+              }}
+            />
           </ShellState>
         </KeycloakAuthentication>
       </>

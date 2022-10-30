@@ -1,9 +1,12 @@
+import { BannerData } from '@porrtal/r-shell';
+import { ReactNode } from 'react';
 import { ShellComponentsMaterial } from './shell-components-material';
 
 export interface ShellMaterialProps {
-  children?: React.ReactChild | React.ReactChild[];
+  children?: ReactNode;
+  bannerData?: BannerData;
 }
 
 export function ShellMaterial(props: ShellMaterialProps) {
-  return <ShellComponentsMaterial>{props.children}</ShellComponentsMaterial>;
+  return <ShellComponentsMaterial bannerData={props.bannerData}>{props.children}</ShellComponentsMaterial>;
 }

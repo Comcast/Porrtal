@@ -1,4 +1,5 @@
-import { createContext, Dispatch, useContext } from 'react';
+import { createContext, useContext } from 'react';
+import { BannerComponent, BannerData } from './banner-props';
 import { EntityMenuComponent } from './entity-menu/entity-menu';
 import { LoggerBannerComponent } from './logger-banner-props';
 import { SearchComponent } from './search-props';
@@ -8,6 +9,8 @@ export interface ShellComponents {
   ViewStack: ViewStackComponent;
   Search: SearchComponent;
   EntityMenu: EntityMenuComponent;
+  Banner: BannerComponent;
+  bannerData?: BannerData;
   LoggerBanner: LoggerBannerComponent;
 }
 

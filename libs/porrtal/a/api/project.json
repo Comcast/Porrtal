@@ -1,4 +1,5 @@
 {
+  "name": "porrtal-a-api",
   "projectType": "library",
   "sourceRoot": "libs/porrtal/a/api/src",
   "prefix": "porrtal",

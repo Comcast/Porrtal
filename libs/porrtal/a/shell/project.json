@@ -1,4 +1,5 @@
 {
+  "name": "porrtal-a-shell",
   "projectType": "library",
   "sourceRoot": "libs/porrtal/a/shell/src",
   "prefix": "porrtal",

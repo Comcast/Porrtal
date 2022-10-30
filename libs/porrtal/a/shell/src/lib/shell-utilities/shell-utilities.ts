@@ -1,4 +1,4 @@
-import { StateObject } from '@porrtal/r-api';
+import { StateObject } from '@porrtal/a-api';
 
 export function replaceParameters(
   source: string,

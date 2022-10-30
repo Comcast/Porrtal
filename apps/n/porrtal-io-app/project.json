@@ -1,0 +1,63 @@
+{
+  "name": "n-porrtal-io-app",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/n/porrtal-io-app",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/n/porrtal-io-app",
+        "outputPath": "dist/apps/n/porrtal-io-app"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/n/porrtal-io-app"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "n-porrtal-io-app:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "n-porrtal-io-app:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "n-porrtal-io-app:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nrwl/next:export",
+      "options": {
+        "buildTarget": "n-porrtal-io-app:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/n/porrtal-io-app"],
+      "options": {
+        "jestConfig": "apps/n/porrtal-io-app/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/n/porrtal-io-app/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}

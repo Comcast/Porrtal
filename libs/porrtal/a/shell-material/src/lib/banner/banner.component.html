@@ -1,0 +1,41 @@
+<div class="container">
+  <mat-icon class="banner-icon-icon" *ngIf="bannerData?.displayIcon">{{
+    bannerData?.displayIcon
+  }}</mat-icon>
+  <span *ngIf="!bannerData?.displayIcon"></span>
+
+  <img
+    *ngIf="bannerData?.displayImage"
+    class="banner-image-icon"
+    [src]="bannerData?.displayImage"
+    alt="angular icon"
+  />
+  <span *ngIf="!bannerData?.displayImage"></span>
+
+  <porrtal-banner-menu
+    [bannerData]="bannerData"
+    [class]="
+      bannerData &&
+      bannerData.childData &&
+      bannerData.childData.length &&
+      bannerData.childData.length > 0
+        ? 'banner-with-children'
+        : ''
+    "
+  >
+    <h2 class="banner-text">
+      {{ bannerData?.displayText }}
+      <mat-icon
+        class="down-icon"
+        *ngIf="
+          bannerData &&
+          bannerData.childData &&
+          bannerData.childData.length &&
+          bannerData.childData.length > 0
+        "
+        >arrow_drop_down</mat-icon
+      >
+    </h2>
+  </porrtal-banner-menu>
+  <span></span>
+</div>

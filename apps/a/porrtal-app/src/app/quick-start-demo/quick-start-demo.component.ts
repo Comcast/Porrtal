@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShellStateService } from '@porrtal/a-shell';
+import { BannerData, ShellStateService } from '@porrtal/a-shell';
 import { View } from '@porrtal/a-api';
 import { ShellLayoutComponent } from '@porrtal/a-shell-material';
+import { bannerData } from '../data';
 
 const views: View[] = [
   {
@@ -242,6 +243,11 @@ const views: View[] = [
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuickStartDemoComponent {
+  public bannerData: BannerData = {
+    ...bannerData,
+    displayText: 'Quick Start Demo',
+  };
+
   constructor(public shellStateService: ShellStateService) {
     views.forEach((view) =>
       shellStateService.dispatch({

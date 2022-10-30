@@ -1,0 +1,25 @@
+.menu-item {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu-text {
+  cursor: pointer;
+}
+
+.material-icon {
+  margin-right: 3px !important;
+}
+
+.image-icon {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  margin-right: 3px;
+}
+
+.popout-icon {
+  margin-left: 3px;
+}
