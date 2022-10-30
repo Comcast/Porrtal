@@ -403,6 +403,8 @@ MIT
 
 @stencil/core/internal/client
 
+a-porrtal-io-app
+
 ag-grid-angular
 MIT
 

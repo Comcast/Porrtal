@@ -11,6 +11,7 @@ import { StateObject, View } from '@porrtal/a-api';
 import { SearchStateService, ShellStateService } from '@porrtal/a-shell';
 import { map, Observable } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
+import { replaceParameters } from '@porrtal/a-shell';
 
 @Component({
   selector: 'porrtal-entity-menu',
@@ -81,9 +82,16 @@ export class EntityMenuComponent {
           return [] as View[];
         }
         return [
-          ...vArr.filter(
-            (v) => v.entityType && entityType && v.entityType === entityType
-          ),
+          ...vArr
+            .filter(
+              (v) => v.entityType && entityType && v.entityType === entityType
+            )
+            .map((v) => ({
+              ...v,
+              displayText: this.state
+                ? replaceParameters(v.displayText, this.state).replaced
+                : v.displayText,
+            })),
         ] as View[];
       })
     );
@@ -99,7 +107,7 @@ export class EntityMenuComponent {
 
       if (!shiftKey) {
         this.searchStateService.dispatch({
-          type: 'closeSearchDialog'
+          type: 'closeSearchDialog',
         });
       }
     }
