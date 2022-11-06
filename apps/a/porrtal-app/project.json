@@ -16,7 +16,8 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/a/porrtal-app/src/favicon.ico",
-          "apps/a/porrtal-app/src/assets"
+          "apps/a/porrtal-app/src/assets",
+          "apps/a/porrtal-app/src/docs"
         ],
         "styles": [
           "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",

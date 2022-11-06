@@ -160,6 +160,22 @@ export function VizNav(props: ViewComponentProps) {
               state: {
                 id: 'html',
                 contentUrl:
+                  'docs/relative-image-test.md',
+              },
+            })
+          }
+        >
+          Markdown with Relative Images
+        </h4>
+        <h4
+          className={styles['link-button']}
+          onClick={() =>
+            shellDispatch({
+              type: 'launchView',
+              viewId: 'MarkdownViewer',
+              state: {
+                id: 'html',
+                contentUrl:
                   'https://raw.githubusercontent.com/datumgeek/ngx-popperjs/master/projects/ngx-popperjs/src/lib/ngx-popperjs-content/ngx-popperjs-content.component.html',
               },
             })
