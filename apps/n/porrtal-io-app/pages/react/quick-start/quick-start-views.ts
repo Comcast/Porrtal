@@ -30,6 +30,15 @@ export const getQuickStartViews = (uiLib: string): View[] => {
       componentModule: libImport,
     },
     {
+      key: 'DocsNav',
+      launchAtStartup: true,
+      displayText: 'Quick Start',
+      paneType: 'nav',
+      displayIcon: 'path-search',
+      componentName: 'DocsNav',
+      componentModule: libImport,
+    },
+    {
       key: 'AccountNav',
       launchAtStartup: true,
       displayText: 'Account Navigation',

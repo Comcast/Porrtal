@@ -16,6 +16,11 @@
             "glob": "**/*",
             "input": "libs/porrtal-components/r/porrtal-io/porrtal-components-r-porrtal-io",
             "output": "docs/porrtal-components-r-porrtal-io"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/porrtal-components/r/quick-start-blueprint/porrtal-components-r-quick-start-blueprint",
+            "output": "docs/porrtal-components-r-quick-start-blueprint"
           }
         ]
       },
