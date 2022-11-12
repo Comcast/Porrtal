@@ -10,7 +10,14 @@
       "defaultConfiguration": "production",
       "options": {
         "root": "apps/n/porrtal-io-app",
-        "outputPath": "dist/apps/n/porrtal-io-app"
+        "outputPath": "dist/apps/n/porrtal-io-app",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "libs/porrtal-components/r/porrtal-io/porrtal-components-r-porrtal-io",
+            "output": "docs/porrtal-components-r-porrtal-io"
+          }
+        ]
       },
       "configurations": {
         "development": {

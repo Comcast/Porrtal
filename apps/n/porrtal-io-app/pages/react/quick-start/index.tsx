@@ -6,10 +6,10 @@ import { ShellState } from '@porrtal/r-shell';
 
 import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
 import { useEffect, useState } from 'react';
-import { View } from '@porrtal/r-api';
 import Head from 'next/head';
 
-import { getAngularUiLibrary, getBannerData, getReactUiLibrary, getViews } from '../../data';
+import { getBannerData, getReactUiLibrary } from '../../data';
+import { quickStartViews } from './quick-start-views';
 
 /* eslint-disable-next-line */
 export interface QuickStartProps {}
@@ -28,6 +28,7 @@ export function QuickStart(props: QuickStartProps) {
     displayText: `quick-start ${reactUiLibrary ? '(' : ''}${reactUiLibrary}${
       reactUiLibrary ? ')' : ''
     }`,
+    displayImage: '/assets/react.svg',
   };
 
   if (!isSSR) {
@@ -37,7 +38,7 @@ export function QuickStart(props: QuickStartProps) {
           <title>@porrtal - first page</title>
         </Head>
 
-        <ShellState views={getViews()}>
+        <ShellState views={quickStartViews}>
           <ShellBlueprint bannerData={quickStartBannerData} />
         </ShellState>
       </>
