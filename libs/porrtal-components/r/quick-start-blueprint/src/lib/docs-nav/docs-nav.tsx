@@ -17,6 +17,11 @@ export function DocsNav(props: DocsNavProps) {
           view: v,
         });
       });
+
+      shellDispatch({
+        type: 'launchView',
+        viewId: 'Welcome'
+      })
     }
   }, [shellDispatch]);
 
@@ -120,6 +125,20 @@ export function DocsNav(props: DocsNavProps) {
         >
           <Icon icon="clean" />
           <span style={{ marginLeft: '5px' }}>Create a Search Component</span>
+        </h4>
+
+        {/* Next Steps */}
+        <h4
+          className={styles['link-button']}
+          onClick={() =>
+            shellDispatch({
+              type: 'launchView',
+              viewId: 'Next Steps',
+            })
+          }
+        >
+          <Icon icon="clean" />
+          <span style={{ marginLeft: '5px' }}>Next Steps</span>
         </h4>
       </div>
     </div>

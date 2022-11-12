@@ -79,4 +79,15 @@ export const docsNavViews: View[] = [
       contentUrl: '/docs/porrtal-components-r-quick-start-blueprint/create-a-search-component/create-a-search-component.md'
     },
   },
+  {
+    viewId: 'Next Steps',
+    displayText: 'Next Steps',
+    displayIcon: 'clean',
+    componentName: 'MarkdownViewer',
+    paneType: 'main',
+    componentModule: () => import('@porrtal-components/r-learning'),
+    state: {
+      contentUrl: '/docs/porrtal-components-r-quick-start-blueprint/next-steps/next-steps.md'
+    },
+  },
 ];
