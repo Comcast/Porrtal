@@ -1,0 +1,46 @@
+{
+  "name": "porrtal-components-r-quick-start-blueprint",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/porrtal-components/r/quick-start-blueprint/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/porrtal-components/r/quick-start-blueprint",
+        "tsConfig": "libs/porrtal-components/r/quick-start-blueprint/tsconfig.lib.json",
+        "project": "libs/porrtal-components/r/quick-start-blueprint/package.json",
+        "entryFile": "libs/porrtal-components/r/quick-start-blueprint/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/porrtal-components/r/quick-start-blueprint/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/porrtal-components/r/quick-start-blueprint/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/porrtal-components/r/quick-start-blueprint"],
+      "options": {
+        "jestConfig": "libs/porrtal-components/r/quick-start-blueprint/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

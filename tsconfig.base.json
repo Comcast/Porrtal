@@ -36,6 +36,9 @@
       "@porrtal-components/r-porrtal-io": [
         "libs/porrtal-components/r/porrtal-io/src/index.ts"
       ],
+      "@porrtal-components/r-quick-start-blueprint": [
+        "libs/porrtal-components/r/quick-start-blueprint/src/index.ts"
+      ],
       "@porrtal-components/r-quick-start-demo": [
         "libs/porrtal-components/r/quick-start-demo/src/index.ts"
       ],
