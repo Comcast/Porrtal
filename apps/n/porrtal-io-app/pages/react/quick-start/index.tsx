@@ -28,6 +28,7 @@ export function QuickStart(props: QuickStartProps) {
     displayText: `quick-start ${reactUiLibrary ? '(' : ''}${reactUiLibrary}${
       reactUiLibrary ? ')' : ''
     }`,
+    displayImage: '/assets/react.svg',
   };
 
   if (!isSSR) {

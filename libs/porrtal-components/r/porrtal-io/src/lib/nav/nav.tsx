@@ -41,7 +41,7 @@ export function Nav(props: NavProps) {
         </h4>
 
         {/* Docs */}
-        <h4
+        {/* <h4
           className={styles['link-button']}
           onClick={() =>
             shellDispatch({
@@ -52,10 +52,24 @@ export function Nav(props: NavProps) {
         >
           <Icon icon="clean" />
           <span style={{ marginLeft: '5px' }}>Docs</span>
+        </h4> */}
+
+        {/* Getting Started */}
+        <h4
+          className={styles['link-button']}
+          onClick={() =>
+            shellDispatch({
+              type: 'launchView',
+              viewId: 'GettingStarted',
+            })
+          }
+        >
+          <Icon icon="clean" />
+          <span style={{ marginLeft: '5px' }}>Getting Started</span>
         </h4>
 
-        {/* Welcome */}
-        <h4
+        {/* Events */}
+        {/* <h4
           className={styles['link-button']}
           onClick={() =>
             shellDispatch({
@@ -66,10 +80,10 @@ export function Nav(props: NavProps) {
         >
           <Icon icon="clean" />
           <span style={{ marginLeft: '5px' }}>Events</span>
-        </h4>
+        </h4> */}
 
-        {/* Welcome */}
-        <h4
+        {/* Resources */}
+        {/* <h4
           className={styles['link-button']}
           onClick={() =>
             shellDispatch({
@@ -80,10 +94,10 @@ export function Nav(props: NavProps) {
         >
           <Icon icon="clean" />
           <span style={{ marginLeft: '5px' }}>Resources</span>
-        </h4>
+        </h4> */}
 
-        {/* Welcome */}
-        <h4
+        {/* BLOG */}
+        {/* <h4
           className={styles['link-button']}
           onClick={() =>
             shellDispatch({
@@ -94,7 +108,7 @@ export function Nav(props: NavProps) {
         >
           <Icon icon="clean" />
           <span style={{ marginLeft: '5px' }}>BLOG</span>
-        </h4>
+        </h4> */}
       </div>
     </div>
   );

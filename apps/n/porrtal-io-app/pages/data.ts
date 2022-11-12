@@ -42,11 +42,10 @@ export const getAngularUiLibrary = (): string => {
 export const getBannerData = (): BannerData => {
   return {
     displayText: 'porrtal.io',
-    displayIcon: 'ninja',
-    displayImage: '/assets/react.svg',
+    displayImage: '/assets/porrtal.jpg',
     childData: [
       {
-        displayIcon: 'ninja',
+        displayImage: '/assets/porrtal.jpg',
         displayText: 'porrtal.io',
         targetUrl: '/',
       },

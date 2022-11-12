@@ -13,18 +13,35 @@ export const porrtalIoViews: View[] = [
     viewId: 'Welcome',
     displayText: 'Welcome !!',
     displayIcon: 'clean',
-    componentName: 'Welcome',
+    componentName: 'MarkdownViewer',
     paneType: 'main',
     launchAtStartup: true,
-    componentModule: () => import('@porrtal-components/r-porrtal-io'),
+    componentModule: () => import('@porrtal-components/r-learning'),
+    state: {
+      contentUrl: '/docs/porrtal-components-r-porrtal-io/welcome/welcome.md'
+    }
   },
   {
     viewId: 'Features',
     displayText: 'Features',
     displayIcon: 'clean',
-    componentName: 'Features',
+    componentName: 'MarkdownViewer',
     paneType: 'main',
-    componentModule: () => import('@porrtal-components/r-porrtal-io'),
+    componentModule: () => import('@porrtal-components/r-learning'),
+    state: {
+      contentUrl: '/docs/porrtal-components-r-porrtal-io/features/features.md'
+    },
+  },
+  {
+    viewId: 'GettingStarted',
+    displayText: 'Getting Started',
+    displayIcon: 'clean',
+    componentName: 'MarkdownViewer',
+    paneType: 'main',
+    componentModule: () => import('@porrtal-components/r-learning'),
+    state: {
+      contentUrl: '/docs/porrtal-components-r-porrtal-io/getting-started/getting-started.md'
+    },
   },
   {
     viewId: 'Docs',

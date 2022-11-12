@@ -21,7 +21,6 @@ export function Index() {
   const quickStartBannerData = {
     ...getBannerData(),
     displayText: `porrtal.io`,
-    displayImage: null,
   };
 
   if (!isSSR) {
