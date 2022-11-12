@@ -30,7 +30,7 @@ export function MarkdownViewer(props: ViewComponentProps) {
       props.viewState.state['contentUrl'] &&
       typeof props.viewState.state['contentUrl'] === 'string'
     ) {
-      if (!isAbsolutePath(props.viewState.state['contentUrl'])) {
+      if (!isAbsolutePath(uri)) {
         const basePath = getPathDirname(props.viewState.state['contentUrl']);
         return uriTransformer(`${basePath}/${uri}`);
       }
@@ -53,55 +53,57 @@ export function MarkdownViewer(props: ViewComponentProps) {
   }, [props.viewState]);
 
   return (
-    props.viewState?.state && (
-      <>
-        <ReactMarkdown
-          children={props.viewState.state['content'] as string}
-          remarkPlugins={[remarkGfm]}
-        ></ReactMarkdown>
-        {props.viewState?.state['contentUrl'] &&
-          (props.viewState?.state['contentUrl'] as string)
-            .toLowerCase()
-            .endsWith('.md') && (
-            <ReactMarkdown
-              children={contentFromUrl}
-              remarkPlugins={[remarkGfm]}
-              transformLinkUri={transformLinkUri}
-              transformImageUri={transformLinkUri}
-            ></ReactMarkdown>
-          )}
-        {props.viewState?.state['contentUrl'] &&
-          (props.viewState?.state['contentUrl'] as string)
-            .toLowerCase()
-            .endsWith('.ts') && (
-            <SyntaxHighlighter
-              language="typescript"
-              style={dark}
-              children={contentFromUrl}
-            ></SyntaxHighlighter>
-          )}
-        {props.viewState?.state['contentUrl'] &&
-          (props.viewState?.state['contentUrl'] as string)
-            .toLowerCase()
-            .endsWith('.html') && (
-            <SyntaxHighlighter
-              language="cshtml"
-              style={dark}
-              children={contentFromUrl}
-            ></SyntaxHighlighter>
-          )}
-        {props.viewState?.state['contentUrl'] &&
-          (props.viewState?.state['contentUrl'] as string)
-            .toLowerCase()
-            .endsWith('.scss') && (
-            <SyntaxHighlighter
-              language="scss"
-              style={dark}
-              children={contentFromUrl}
-            ></SyntaxHighlighter>
-          )}
-      </>
-    )
+    <div className={styles['markdown-document']}>
+      {props.viewState?.state && (
+        <>
+          <ReactMarkdown
+            children={props.viewState.state['content'] as string}
+            remarkPlugins={[remarkGfm]}
+          ></ReactMarkdown>
+          {props.viewState?.state['contentUrl'] &&
+            (props.viewState?.state['contentUrl'] as string)
+              .toLowerCase()
+              .endsWith('.md') && (
+              <ReactMarkdown
+                children={contentFromUrl}
+                remarkPlugins={[remarkGfm]}
+                transformLinkUri={transformLinkUri}
+                transformImageUri={transformLinkUri}
+              ></ReactMarkdown>
+            )}
+          {props.viewState?.state['contentUrl'] &&
+            (props.viewState?.state['contentUrl'] as string)
+              .toLowerCase()
+              .endsWith('.ts') && (
+              <SyntaxHighlighter
+                language="typescript"
+                style={dark}
+                children={contentFromUrl}
+              ></SyntaxHighlighter>
+            )}
+          {props.viewState?.state['contentUrl'] &&
+            (props.viewState?.state['contentUrl'] as string)
+              .toLowerCase()
+              .endsWith('.html') && (
+              <SyntaxHighlighter
+                language="cshtml"
+                style={dark}
+                children={contentFromUrl}
+              ></SyntaxHighlighter>
+            )}
+          {props.viewState?.state['contentUrl'] &&
+            (props.viewState?.state['contentUrl'] as string)
+              .toLowerCase()
+              .endsWith('.scss') && (
+              <SyntaxHighlighter
+                language="scss"
+                style={dark}
+                children={contentFromUrl}
+              ></SyntaxHighlighter>
+            )}
+        </>
+      )}
+    </div>
   );
 }
 
