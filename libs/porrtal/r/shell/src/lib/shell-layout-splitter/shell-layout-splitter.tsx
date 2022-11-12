@@ -20,7 +20,7 @@ export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
           <shellComponents.Search />
         </div>
         <div className={styles['content']}>
-          <Split initialPrimarySize="250px" resetOnDoubleClick>
+          <Split initialPrimarySize="280px" resetOnDoubleClick>
             {shellState.panes.nav.viewStates.length > 0 && (
               <div className={styles['nav']}>
                 <shellComponents.ViewStack
