@@ -42,6 +42,9 @@
       "@porrtal-components/r-second-test-comp-lib": [
         "libs/porrtal-components/r/second-test-comp-lib/src/index.ts"
       ],
+      "@porrtal-components/r-test": [
+        "libs/porrtal-components/r/test/src/index.ts"
+      ],
       "@porrtal/a-api": ["libs/porrtal/a/api/src/index.ts"],
       "@porrtal/a-shell": ["libs/porrtal/a/shell/src/index.ts"],
       "@porrtal/a-shell-bootstrap": [
