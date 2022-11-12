@@ -38,6 +38,20 @@ export function DocsNav(props: DocsNavProps) {
           <span style={{ marginLeft: '5px' }}>Welcome !!</span>
         </h4>
 
+        {/* Setup Your Workstation */}
+        <h4
+          className={styles['link-button']}
+          onClick={() =>
+            shellDispatch({
+              type: 'launchView',
+              viewId: 'Setup Your Workstation',
+            })
+          }
+        >
+          <Icon icon="clean" />
+          <span style={{ marginLeft: '5px' }}>Setup Your Workstation</span>
+        </h4>
+
         {/* Create the App */}
         <h4
           className={styles['link-button']}
@@ -66,47 +80,47 @@ export function DocsNav(props: DocsNavProps) {
           <span style={{ marginLeft: '5px' }}>Create the Nav Component</span>
         </h4>
 
-        {/* Events */}
-        {/* <h4
+        {/* Launch a Component */}
+        <h4
           className={styles['link-button']}
           onClick={() =>
             shellDispatch({
               type: 'launchView',
-              viewId: 'Events',
+              viewId: 'Launch a Component',
             })
           }
         >
           <Icon icon="clean" />
-          <span style={{ marginLeft: '5px' }}>Events</span>
-        </h4> */}
+          <span style={{ marginLeft: '5px' }}>Launch a Component</span>
+        </h4>
 
-        {/* Resources */}
-        {/* <h4
+        {/* Create an Entity Menu */}
+        <h4
           className={styles['link-button']}
           onClick={() =>
             shellDispatch({
               type: 'launchView',
-              viewId: 'Resources',
+              viewId: 'Create an Entity Menu',
             })
           }
         >
           <Icon icon="clean" />
-          <span style={{ marginLeft: '5px' }}>Resources</span>
-        </h4> */}
+          <span style={{ marginLeft: '5px' }}>Create an Entity Menu</span>
+        </h4>
 
-        {/* BLOG */}
-        {/* <h4
+        {/* Create a Search Component */}
+        <h4
           className={styles['link-button']}
           onClick={() =>
             shellDispatch({
               type: 'launchView',
-              viewId: 'BLOG',
+              viewId: 'Create a Search Component',
             })
           }
         >
           <Icon icon="clean" />
-          <span style={{ marginLeft: '5px' }}>BLOG</span>
-        </h4> */}
+          <span style={{ marginLeft: '5px' }}>Create a Search Component</span>
+        </h4>
       </div>
     </div>
   );
