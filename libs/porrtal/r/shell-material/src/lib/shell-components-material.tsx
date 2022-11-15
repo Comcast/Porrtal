@@ -3,7 +3,8 @@ import {
   ShellComponents,
   ShellComponentsContext,
   ShellLayoutSplitter,
-  useShellDispatch,
+  UserBannerComponent,
+  useShellDispatch
 } from '@porrtal/r-shell';
 import ViewStack from './view-stack/view-stack';
 import { ReactNode } from 'react';
@@ -15,6 +16,7 @@ import Banner from './banner/banner';
 export interface ShellComponentsMaterialProps {
   children: ReactNode | undefined;
   bannerData?: BannerData;
+  userBanner?: UserBannerComponent;
 }
 
 export function ShellComponentsMaterial(props: ShellComponentsMaterialProps) {
@@ -24,6 +26,7 @@ export function ShellComponentsMaterial(props: ShellComponentsMaterialProps) {
     EntityMenu,
     Banner,
     bannerData: props.bannerData,
+    UserBanner: props?.userBanner,
     LoggerBanner,
   };
   const shellDispatch = useShellDispatch();

@@ -1,4 +1,9 @@
 {
   "name": "@porrtal/r-shell-blueprint",
-  "version": "0.2.0"
+  "version": "0.2.0",
+  "peerDependencies": {
+    "@porrtal/r-shell": "0.2.0",
+    "@porrtal/r-api": "0.2.0",
+    "@porrtal/r-split": "0.2.0"
+  }
 }

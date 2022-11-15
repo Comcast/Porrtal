@@ -1,5 +1,4 @@
 import { Split } from '@porrtal/r-split';
-import { UserBanner } from '@porrtal/r-user';
 import { useShellComponents } from '../shell-components';
 import { useShellState } from '../shell-state/shell-state';
 import styles from './shell-layout-splitter.module.scss';
@@ -16,7 +15,7 @@ export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
         <div className={styles['banner']}>
           <shellComponents.Banner bannerData={shellComponents.bannerData}></shellComponents.Banner>
           <shellComponents.LoggerBanner />
-          <UserBanner />
+          {shellComponents.UserBanner && <shellComponents.UserBanner />}
           <shellComponents.Search />
         </div>
         <div className={styles['content']}>
