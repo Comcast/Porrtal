@@ -73,7 +73,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/r/porrtal-app"],
+      "outputs": ["{workspaceRoot}/coverage/apps/r/porrtal-app"],
       "options": {
         "jestConfig": "apps/r/porrtal-app/jest.config.ts",
         "passWithNoTests": true

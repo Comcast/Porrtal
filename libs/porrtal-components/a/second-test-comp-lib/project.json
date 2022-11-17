@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/porrtal-components/a/second-test-comp-lib"],
+      "outputs": [
+        "{workspaceRoot}/dist/libs/porrtal-components/a/second-test-comp-lib"
+      ],
       "options": {
         "project": "libs/porrtal-components/a/second-test-comp-lib/ng-package.json"
       },
@@ -22,7 +24,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/porrtal-components/a/second-test-comp-lib"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/porrtal-components/a/second-test-comp-lib"
+      ],
       "options": {
         "jestConfig": "libs/porrtal-components/a/second-test-comp-lib/jest.config.ts",
         "passWithNoTests": true

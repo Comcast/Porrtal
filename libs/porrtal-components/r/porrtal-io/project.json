@@ -6,7 +6,7 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/web:rollup",
+      "executor": "@nrwl/rollup:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/porrtal-components/r/porrtal-io",
@@ -36,7 +36,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/porrtal-components/r/porrtal-io"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/porrtal-components/r/porrtal-io"
+      ],
       "options": {
         "jestConfig": "libs/porrtal-components/r/porrtal-io/jest.config.ts",
         "passWithNoTests": true

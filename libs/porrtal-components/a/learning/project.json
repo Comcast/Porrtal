@@ -6,7 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/porrtal-components/a/learning"],
+      "outputs": ["{workspaceRoot}/dist/libs/porrtal-components/a/learning"],
       "options": {
         "project": "libs/porrtal-components/a/learning/ng-package.json"
       },
@@ -22,7 +22,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/porrtal-components/a/learning"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/porrtal-components/a/learning"
+      ],
       "options": {
         "jestConfig": "libs/porrtal-components/a/learning/jest.config.ts",
         "passWithNoTests": true

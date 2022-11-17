@@ -6,7 +6,7 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/web:rollup",
+      "executor": "@nrwl/rollup:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/porrtal-components/r/quick-start-blueprint",
@@ -36,7 +36,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/porrtal-components/r/quick-start-blueprint"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/porrtal-components/r/quick-start-blueprint"
+      ],
       "options": {
         "jestConfig": "libs/porrtal-components/r/quick-start-blueprint/jest.config.ts",
         "passWithNoTests": true
