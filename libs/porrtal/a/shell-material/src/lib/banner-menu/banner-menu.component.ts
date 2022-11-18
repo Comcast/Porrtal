@@ -7,7 +7,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
+import { MatLegacyMenuModule as MatMenuModule, MatLegacyMenuTrigger as MatMenuTrigger } from '@angular/material/legacy-menu';
 import { BannerData } from '@porrtal/a-shell';
 import { MatIconModule } from '@angular/material/icon';
 

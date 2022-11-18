@@ -17,12 +17,12 @@ import {
   PaneType,
   PaneArrangement,
 } from '@porrtal/a-api';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs';
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
+import { MatLegacyMenuModule as MatMenuModule, MatLegacyMenuTrigger as MatMenuTrigger } from '@angular/material/legacy-menu';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule } from '@angular/material/list';
-import { MatCard, MatCardModule } from '@angular/material/card'
+import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
+import { MatLegacyCard as MatCard, MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card'
 import { ShellStateService, ViewHostComponent } from '@porrtal/a-shell';
 import { ViewLaunch } from 'libs/porrtal/a/api/src/lib/view-launch';
 

@@ -9,16 +9,16 @@ import {
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
 import { SearchStateService } from '@porrtal/a-shell';
 import {
-  MatDialog,
-  MatDialogConfig,
-  MatDialogModule,
-} from '@angular/material/dialog';
+  MatLegacyDialog as MatDialog,
+  MatLegacyDialogConfig as MatDialogConfig,
+  MatLegacyDialogModule as MatDialogModule,
+} from '@angular/material/legacy-dialog';
 import { SearchDialogComponent } from '../search-dialog/search-dialog.component';
-import { MatTabBody } from '@angular/material/tabs';
+import { MatLegacyTabBody as MatTabBody } from '@angular/material/legacy-tabs';
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
 import { NgxPopperjsModule, NgxPopperjsContentComponent, NgxPopperjsPlacements } from 'ngx-popperjs';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
