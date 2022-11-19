@@ -20,18 +20,19 @@ export class LoggerBannerComponent {
         paneType: 'bottom',
         launchAtStartup: false,
         componentName: 'LoggerMessagesComponent',
-        componentModule: () => import('../logger-messages/logger-messages.component'),
+        componentModule: () =>
+          import('../logger-messages/logger-messages.component'),
         key: 'logger-messages',
         displayText: 'log',
         displayIcon: 'notifications',
-      }
-    })
+      },
+    });
   }
 
   doLaunchBannerMessages() {
     this.shellStateService.dispatch({
       type: 'launchView',
       viewId: 'logger-messages',
-    })
+    });
   }
 }

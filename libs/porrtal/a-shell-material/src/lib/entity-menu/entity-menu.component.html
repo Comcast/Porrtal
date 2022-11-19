@@ -7,7 +7,11 @@
 ></div>
 <mat-menu #menu="matMenu">
   <ng-template matMenuContent>
-    <button mat-menu-item (click)="launchView(view, $event.shiftKey)" *ngFor="let view of entityViews$ | async">
+    <button
+      mat-menu-item
+      (click)="launchView(view, $event.shiftKey)"
+      *ngFor="let view of entityViews$ | async"
+    >
       <span
         ><mat-icon class="menu-item-icon">{{ view.displayIcon }}</mat-icon
         >{{ view.displayText }}</span

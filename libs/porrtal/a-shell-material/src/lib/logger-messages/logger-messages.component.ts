@@ -15,8 +15,7 @@ import { ColDef } from 'ag-grid-community';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoggerMessagesComponent {
-
-  public entries$: Observable<LoggerEntry[]>
+  public entries$: Observable<LoggerEntry[]>;
 
   public columnDefs: ColDef<LoggerEntry>[] = [
     { field: 'message' },
@@ -34,7 +33,7 @@ export class LoggerMessagesComponent {
     sortable: true,
     filter: true,
     resizable: true,
-}
+  };
 
   constructor(private loggerStateService: LoggerStateService) {
     this.entries$ = this.loggerStateService.select('entries');

@@ -12,7 +12,7 @@
     "porrtal-a-api": "libs/porrtal/a-api",
     "porrtal-a-shell": "libs/porrtal/a-shell",
     "porrtal-a-shell-bootstrap": "libs/porrtal/a/shell-bootstrap",
-    "porrtal-a-shell-material": "libs/porrtal/a/shell-material",
+    "porrtal-a-shell-material": "libs/porrtal/a-shell-material",
     "porrtal-a-user": "libs/porrtal/a/user",
     "porrtal-components-a-first-test-comp-lib": "libs/porrtal-components/a/first-test-comp-lib",
     "porrtal-components-a-learning": "libs/porrtal-components/a/learning",

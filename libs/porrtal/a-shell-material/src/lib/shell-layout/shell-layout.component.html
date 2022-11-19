@@ -42,7 +42,10 @@
               </as-split-area>
             </as-split>
           </as-split-area>
-          <as-split-area *ngIf="shellState.panes.bottom.viewStates.length" [order]="1">
+          <as-split-area
+            *ngIf="shellState.panes.bottom.viewStates.length"
+            [order]="1"
+          >
             <div class="bottom">
               <porrtal-view-stack
                 [pane]="shellState.panes.bottom"

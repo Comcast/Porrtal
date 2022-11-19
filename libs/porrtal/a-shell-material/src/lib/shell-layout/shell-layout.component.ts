@@ -26,7 +26,7 @@ import { BannerComponent } from '../banner/banner.component';
 })
 export class ShellLayoutComponent {
   @Input()
-  public bannerData?: BannerData
+  public bannerData?: BannerData;
 
   public state$: Observable<ShellState>;
 
