@@ -16,6 +16,7 @@ import {
   ViewState,
   PaneType,
   PaneArrangement,
+  ViewLaunch,
 } from '@porrtal/a-api';
 import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,7 +25,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
 import { MatLegacyCard as MatCard, MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card'
 import { ShellStateService, ViewHostComponent } from '@porrtal/a-shell';
-import { ViewLaunch } from 'libs/porrtal/a/api/src/lib/view-launch';
 
 @Component({
   selector: 'porrtal-view-stack',

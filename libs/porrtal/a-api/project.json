@@ -1,30 +1,30 @@
 {
   "name": "porrtal-a-api",
   "projectType": "library",
-  "sourceRoot": "libs/porrtal/a/api/src",
+  "sourceRoot": "libs/porrtal/a-api/src",
   "prefix": "porrtal",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["{workspaceRoot}/dist/libs/porrtal/a/api"],
+      "outputs": ["{workspaceRoot}/dist/libs/porrtal/a-api"],
       "options": {
-        "project": "libs/porrtal/a/api/ng-package.json"
+        "project": "libs/porrtal/a-api/ng-package.json"
       },
       "configurations": {
         "production": {
-          "tsConfig": "libs/porrtal/a/api/tsconfig.lib.prod.json"
+          "tsConfig": "libs/porrtal/a-api/tsconfig.lib.prod.json"
         },
         "development": {
-          "tsConfig": "libs/porrtal/a/api/tsconfig.lib.json"
+          "tsConfig": "libs/porrtal/a-api/tsconfig.lib.json"
         }
       },
       "defaultConfiguration": "production"
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/porrtal/a/api"],
+      "outputs": ["{workspaceRoot}/coverage/libs/porrtal/a-api"],
       "options": {
-        "jestConfig": "libs/porrtal/a/api/jest.config.ts",
+        "jestConfig": "libs/porrtal/a-api/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -32,8 +32,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "libs/porrtal/a/api/**/*.ts",
-          "libs/porrtal/a/api/**/*.html"
+          "libs/porrtal/a-api/**/*.ts",
+          "libs/porrtal/a-api/**/*.html"
         ]
       }
     }

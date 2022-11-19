@@ -327,15 +327,15 @@ export class ShellStateService extends RxState<ShellState> {
 
       case 'setShowUserInfo':
         this.set({
-          showUserInfo: action.show
+          showUserInfo: action.show,
         });
-      return;
+        return;
 
       case 'setShowDevInfo':
         this.set({
-          showDevInfo: action.show
+          showDevInfo: action.show,
         });
-      return;
+        return;
     }
   };
 }
