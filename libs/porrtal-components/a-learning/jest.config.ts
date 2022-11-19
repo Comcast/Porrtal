@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName: 'porrtal-components-a-learning',
-  preset: '../../../../jest.preset.js',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../../coverage/libs/porrtal-components/a/learning',
+  coverageDirectory: '../../../coverage/libs/porrtal-components/a-learning',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

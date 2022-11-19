@@ -11,7 +11,7 @@ import {
   MarkdownService,
   MarkedOptions,
   SECURITY_CONTEXT,
-} from 'ngx-markdown';
+} from '../ngx-markdown/lib/public_api';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({

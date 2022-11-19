@@ -1,21 +1,22 @@
 {
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "name": "porrtal-components-a-learning",
   "projectType": "library",
-  "sourceRoot": "libs/porrtal-components/a/learning/src",
+  "sourceRoot": "libs/porrtal-components/a-learning/src",
   "prefix": "porrtal",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["{workspaceRoot}/dist/libs/porrtal-components/a/learning"],
+      "outputs": ["{workspaceRoot}/dist/libs/porrtal-components/a-learning"],
       "options": {
-        "project": "libs/porrtal-components/a/learning/ng-package.json"
+        "project": "libs/porrtal-components/a-learning/ng-package.json"
       },
       "configurations": {
         "production": {
-          "tsConfig": "libs/porrtal-components/a/learning/tsconfig.lib.prod.json"
+          "tsConfig": "libs/porrtal-components/a-learning/tsconfig.lib.prod.json"
         },
         "development": {
-          "tsConfig": "libs/porrtal-components/a/learning/tsconfig.lib.json"
+          "tsConfig": "libs/porrtal-components/a-learning/tsconfig.lib.json"
         }
       },
       "defaultConfiguration": "production"
@@ -23,10 +24,10 @@
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": [
-        "{workspaceRoot}/coverage/libs/porrtal-components/a/learning"
+        "{workspaceRoot}/coverage/libs/porrtal-components/a-learning"
       ],
       "options": {
-        "jestConfig": "libs/porrtal-components/a/learning/jest.config.ts",
+        "jestConfig": "libs/porrtal-components/a-learning/jest.config.ts",
         "passWithNoTests": true
       }
     },
@@ -34,8 +35,8 @@
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "libs/porrtal-components/a/learning/**/*.ts",
-          "libs/porrtal-components/a/learning/**/*.html"
+          "libs/porrtal-components/a-learning/**/*.ts",
+          "libs/porrtal-components/a-learning/**/*.html"
         ]
       }
     },
@@ -43,7 +44,7 @@
       "executor": "@storybook/angular:start-storybook",
       "options": {
         "port": 4400,
-        "configDir": "libs/porrtal-components/a/learning/.storybook",
+        "configDir": "libs/porrtal-components/a-learning/.storybook",
         "browserTarget": "porrtal-components-a-learning:build-storybook",
         "compodoc": false
       },
@@ -58,7 +59,7 @@
       "outputs": ["{options.outputDir}"],
       "options": {
         "outputDir": "dist/storybook/porrtal-components-a-learning",
-        "configDir": "libs/porrtal-components/a/learning/.storybook",
+        "configDir": "libs/porrtal-components/a-learning/.storybook",
         "browserTarget": "porrtal-components-a-learning:build-storybook",
         "compodoc": false
       },

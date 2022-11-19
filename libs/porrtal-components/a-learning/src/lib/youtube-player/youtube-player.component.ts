@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 import { ViewState } from '@porrtal/a-api';
@@ -21,7 +26,7 @@ export class YoutubePlayerComponent implements OnInit {
     } else {
       this.videoId = undefined;
     }
-  };
+  }
 
   public videoId?: string;
   public width = '100%';
@@ -36,7 +41,5 @@ export class YoutubePlayerComponent implements OnInit {
       document.body.appendChild(tag);
       apiLoaded = true;
     }
-
-
   }
 }
