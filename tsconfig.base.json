@@ -51,12 +51,12 @@
       "@porrtal/a-api": ["libs/porrtal/a-api/src/index.ts"],
       "@porrtal/a-shell": ["libs/porrtal/a-shell/src/index.ts"],
       "@porrtal/a-shell-bootstrap": [
-        "libs/porrtal/a/shell-bootstrap/src/index.ts"
+        "libs/porrtal/a-shell-bootstrap/src/index.ts"
       ],
       "@porrtal/a-shell-material": [
         "libs/porrtal/a-shell-material/src/index.ts"
       ],
-      "@porrtal/a-user": ["libs/porrtal/a/user/src/index.ts"],
+      "@porrtal/a-user": ["libs/porrtal/a-user/src/index.ts"],
       "@porrtal/r-api": ["libs/porrtal/r/api/src/index.ts"],
       "@porrtal/r-shell": ["libs/porrtal/r/shell/src/index.ts"],
       "@porrtal/r-shell-blueprint": [
