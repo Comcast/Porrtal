@@ -1,7 +1,7 @@
 {
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "name": "porrtal-r-user",
-  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/porrtal/r/user/src",
+  "sourceRoot": "libs/porrtal/r-user/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -9,16 +9,16 @@
       "executor": "@nrwl/rollup:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/porrtal/r/user",
-        "tsConfig": "libs/porrtal/r/user/tsconfig.lib.json",
-        "project": "libs/porrtal/r/user/package.json",
-        "entryFile": "libs/porrtal/r/user/src/index.ts",
+        "outputPath": "dist/libs/porrtal/r-user",
+        "tsConfig": "libs/porrtal/r-user/tsconfig.lib.json",
+        "project": "libs/porrtal/r-user/package.json",
+        "entryFile": "libs/porrtal/r-user/src/index.ts",
         "external": ["react/jsx-runtime"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [
           {
-            "glob": "libs/porrtal/r/user/README.md",
+            "glob": "libs/porrtal/r-user/README.md",
             "input": ".",
             "output": "."
           }
@@ -29,14 +29,14 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/porrtal/r/user/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/porrtal/r-user/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/porrtal/r/user"],
+      "outputs": ["{workspaceRoot}/coverage/libs/porrtal/r-user"],
       "options": {
-        "jestConfig": "libs/porrtal/r/user/jest.config.ts",
+        "jestConfig": "libs/porrtal/r-user/jest.config.ts",
         "passWithNoTests": true
       }
     }
