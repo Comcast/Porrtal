@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName: 'porrtal-components-a-first-test-comp-lib',
-  preset: '../../../../jest.preset.js',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -10,7 +10,7 @@ export default {
     },
   },
   coverageDirectory:
-    '../../../../coverage/libs/porrtal-components/a/first-test-comp-lib',
+    '../../../coverage/libs/porrtal-components/a-first-test-comp-lib',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

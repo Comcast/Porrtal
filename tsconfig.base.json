@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@porrtal-components/a-first-test-comp-lib": [
-        "libs/porrtal-components/a/first-test-comp-lib/src/index.ts"
+        "libs/porrtal-components/a-first-test-comp-lib/src/index.ts"
       ],
       "@porrtal-components/a-learning": [
         "libs/porrtal-components/a-learning/src/index.ts"
