@@ -4,7 +4,7 @@ import {
   ShellComponentsContext,
   ShellLayoutSplitter,
   UserBannerComponent,
-  useShellDispatch
+  useShellDispatch,
 } from '@porrtal/r-shell';
 import ViewStack from './view-stack/view-stack';
 import { ReactNode } from 'react';

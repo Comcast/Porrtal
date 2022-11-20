@@ -63,7 +63,7 @@
         "libs/porrtal/r-shell-blueprint/src/index.ts"
       ],
       "@porrtal/r-shell-material": [
-        "libs/porrtal/r/shell-material/src/index.ts"
+        "libs/porrtal/r-shell-material/src/index.ts"
       ],
       "@porrtal/r-split": ["libs/porrtal/r-split/src/index.ts"],
       "@porrtal/r-user": ["libs/porrtal/r/user/src/index.ts"],

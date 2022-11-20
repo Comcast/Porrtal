@@ -324,15 +324,15 @@ function ViewStackContextMenu(
             key={`userInfo-${info.state ? info.state['displayText'] : 'help'}`}
             leftIcon={
               <Icon className="material-icons-outlined">
-                {info.state ? info.state['displayIcon'] as string : 'help'}
+                {info.state ? (info.state['displayIcon'] as string) : 'help'}
               </Icon>
             }
-            label={info.state ? info.state['displayText'] as string : 'help'}
+            label={info.state ? (info.state['displayText'] as string) : 'help'}
             onClick={() =>
               props.dispatch({
                 type: 'launchView',
                 viewId: info.viewId,
-                state: info.state
+                state: info.state,
               })
             }
           ></IconMenuItem>
@@ -355,18 +355,22 @@ function ViewStackContextMenu(
       >
         {props.item.devInfo.map((info) => (
           <IconMenuItem
-            key={`devInfo-${info.state ? info.state['displayText'] : 'dev help'}`}
+            key={`devInfo-${
+              info.state ? info.state['displayText'] : 'dev help'
+            }`}
             leftIcon={
               <Icon className="material-icons-outlined">
-                {info.state ? info.state['displayIcon'] as string : 'build'}
+                {info.state ? (info.state['displayIcon'] as string) : 'build'}
               </Icon>
             }
-            label={info.state ? info.state['displayText'] as string : 'dev help'}
+            label={
+              info.state ? (info.state['displayText'] as string) : 'dev help'
+            }
             onClick={() =>
               props.dispatch({
                 type: 'launchView',
                 viewId: info.viewId,
-                state: info.state
+                state: info.state,
               })
             }
           ></IconMenuItem>
