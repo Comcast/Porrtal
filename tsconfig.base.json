@@ -25,7 +25,7 @@
         "libs/porrtal-components/a-quick-start-demo/src/index.ts"
       ],
       "@porrtal-components/a-second-test-comp-lib": [
-        "libs/porrtal-components/a/second-test-comp-lib/src/index.ts"
+        "libs/porrtal-components/a-second-test-comp-lib/src/index.ts"
       ],
       "@porrtal-components/r-first-test-comp-lib": [
         "libs/porrtal-components/r/first-test-comp-lib/src/index.ts"

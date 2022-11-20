@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewState } from '@porrtal/a-api';
 import { EntityMenuComponent } from '@porrtal/a-shell-material';
@@ -12,9 +17,7 @@ import { EntityMenuComponent } from '@porrtal/a-shell-material';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TestCompsSecondTestCompComponent {
-
   @Input() viewState?: ViewState;
 
   constructor() {}
-
 }
