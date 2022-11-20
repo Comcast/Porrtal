@@ -60,7 +60,7 @@
       "@porrtal/r-api": ["libs/porrtal/r-api/src/index.ts"],
       "@porrtal/r-shell": ["libs/porrtal/r-shell/src/index.ts"],
       "@porrtal/r-shell-blueprint": [
-        "libs/porrtal/r/shell-blueprint/src/index.ts"
+        "libs/porrtal/r-shell-blueprint/src/index.ts"
       ],
       "@porrtal/r-shell-material": [
         "libs/porrtal/r/shell-material/src/index.ts"

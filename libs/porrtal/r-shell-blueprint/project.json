@@ -1,7 +1,7 @@
 {
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "name": "porrtal-r-shell-blueprint",
-  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/porrtal/r/shell-blueprint/src",
+  "sourceRoot": "libs/porrtal/r-shell-blueprint/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -9,17 +9,17 @@
       "executor": "@nrwl/rollup:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/porrtal/r/shell-blueprint",
-        "tsConfig": "libs/porrtal/r/shell-blueprint/tsconfig.lib.json",
-        "project": "libs/porrtal/r/shell-blueprint/package.json",
-        "entryFile": "libs/porrtal/r/shell-blueprint/src/index.ts",
+        "outputPath": "dist/libs/porrtal/r-shell-blueprint",
+        "tsConfig": "libs/porrtal/r-shell-blueprint/tsconfig.lib.json",
+        "project": "libs/porrtal/r-shell-blueprint/package.json",
+        "entryFile": "libs/porrtal/r-shell-blueprint/src/index.ts",
         "external": ["react/jsx-runtime"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "compiler": "babel",
         "format": ["esm", "cjs"],
         "assets": [
           {
-            "glob": "libs/porrtal/r/shell-blueprint/README.md",
+            "glob": "libs/porrtal/r-shell-blueprint/README.md",
             "input": ".",
             "output": "."
           }
@@ -31,15 +31,15 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/porrtal/r/shell-blueprint/**/*.{ts,tsx,js,jsx}"
+          "libs/porrtal/r-shell-blueprint/**/*.{ts,tsx,js,jsx}"
         ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/porrtal/r/shell-blueprint"],
+      "outputs": ["{workspaceRoot}/coverage/libs/porrtal/r-shell-blueprint"],
       "options": {
-        "jestConfig": "libs/porrtal/r/shell-blueprint/jest.config.ts",
+        "jestConfig": "libs/porrtal/r-shell-blueprint/jest.config.ts",
         "passWithNoTests": true
       }
     }
