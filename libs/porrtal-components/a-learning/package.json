@@ -1,5 +1,5 @@
 {
-  "name": "@porrtal/a-learning",
+  "name": "@porrtal-components/a-learning",
   "version": "0.2.0",
   "peerDependencies": {
     "@angular/common": "^14.0.0",
