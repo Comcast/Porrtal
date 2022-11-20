@@ -27,7 +27,7 @@
     "porrtal-components-r-quick-start-demo": "libs/porrtal-components/r/quick-start-demo",
     "porrtal-components-r-second-test-comp-lib": "libs/porrtal-components/r/second-test-comp-lib",
     "porrtal-components-r-test": "libs/porrtal-components/r/test",
-    "porrtal-r-api": "libs/porrtal/r/api",
+    "porrtal-r-api": "libs/porrtal/r-api",
     "porrtal-r-shell": "libs/porrtal/r/shell",
     "porrtal-r-shell-blueprint": "libs/porrtal/r/shell-blueprint",
     "porrtal-r-shell-material": "libs/porrtal/r/shell-material",

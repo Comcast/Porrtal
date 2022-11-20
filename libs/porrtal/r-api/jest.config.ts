@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default {
   displayName: 'porrtal-r-api',
-  preset: '../../../../jest.preset.js',
+  preset: '../../../jest.preset.js',
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -11,5 +11,5 @@ export default {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../../coverage/libs/porrtal/r/api',
+  coverageDirectory: '../../../coverage/libs/porrtal/r-api',
 };

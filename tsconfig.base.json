@@ -57,7 +57,7 @@
         "libs/porrtal/a-shell-material/src/index.ts"
       ],
       "@porrtal/a-user": ["libs/porrtal/a-user/src/index.ts"],
-      "@porrtal/r-api": ["libs/porrtal/r/api/src/index.ts"],
+      "@porrtal/r-api": ["libs/porrtal/r-api/src/index.ts"],
       "@porrtal/r-shell": ["libs/porrtal/r/shell/src/index.ts"],
       "@porrtal/r-shell-blueprint": [
         "libs/porrtal/r/shell-blueprint/src/index.ts"
