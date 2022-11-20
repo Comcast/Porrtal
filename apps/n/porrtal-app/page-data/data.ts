@@ -1,4 +1,4 @@
-import { BannerData } from "@porrtal/a-shell";
+import { BannerData } from "@porrtal/r-shell";
 
 export const bannerData: BannerData = {
   displayText: '@porrtal',
