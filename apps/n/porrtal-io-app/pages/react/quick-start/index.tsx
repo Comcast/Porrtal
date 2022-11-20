@@ -8,8 +8,8 @@ import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 
-import { getBannerData, getReactUiLibrary } from '../../data';
-import { getQuickStartViews } from './quick-start-views';
+import { getBannerData, getReactUiLibrary } from '../../../page-data/data';
+import { getQuickStartViews } from '../../../page-data/quick-start-views';
 
 /* eslint-disable-next-line */
 export interface QuickStartProps {}

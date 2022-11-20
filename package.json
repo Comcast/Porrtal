@@ -101,6 +101,7 @@
     "@types/react": "18.0.20",
     "@types/react-dom": "18.0.6",
     "@types/react-measure": "^2.0.8",
+    "@types/react-syntax-highlighter": "^15.5.5",
     "@typescript-eslint/eslint-plugin": "5.36.1",
     "@typescript-eslint/parser": "5.36.1",
     "babel-jest": "28.1.3",
