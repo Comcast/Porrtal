@@ -1,12 +1,12 @@
 # Create the AccountNav Component
 
-Next, we will turn our generic React app into a Porrtal app with a simple Nav view that displays (mock) account data.  We will also set the stage for developing with the [blueprint](https://blueprintjs.com/docs/) UI library.
+Next, we will turn our generic React app into a Porrtal app with a simple Nav view that displays (mock) account data. We will also set the stage for developing with the [blueprint](https://blueprintjs.com/docs/) UI library.
 
 ## Install npm packages
 
 ### Install blueprint npm packages
 
-From the terminal (in the porrtal-react-blueprint-quick-start directory): 
+From the terminal (in the porrtal-react-blueprint-quick-start directory):
 
 ```bash
 npm install @blueprintjs/core @blueprintjs/popover2 --save

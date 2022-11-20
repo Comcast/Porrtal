@@ -10,8 +10,9 @@ export const docsNavViews: View[] = [
     launchAtStartup: true,
     componentModule: () => import('@porrtal-components/r-learning'),
     state: {
-      contentUrl: '/docs/porrtal-components-r-quick-start-blueprint/welcome/welcome.md'
-    }
+      contentUrl:
+        '/docs/porrtal-components-r-quick-start-blueprint/welcome/welcome.md',
+    },
   },
   {
     viewId: 'Setup Your Workstation',
@@ -21,7 +22,8 @@ export const docsNavViews: View[] = [
     paneType: 'main',
     componentModule: () => import('@porrtal-components/r-learning'),
     state: {
-      contentUrl: '/docs/porrtal-components-r-quick-start-blueprint/setup-your-workstation/setup-your-workstation.md'
+      contentUrl:
+        '/docs/porrtal-components-r-quick-start-blueprint/setup-your-workstation/setup-your-workstation.md',
     },
   },
   {
@@ -32,7 +34,8 @@ export const docsNavViews: View[] = [
     paneType: 'main',
     componentModule: () => import('@porrtal-components/r-learning'),
     state: {
-      contentUrl: '/docs/porrtal-components-r-quick-start-blueprint/create-the-app/create-the-app.md'
+      contentUrl:
+        '/docs/porrtal-components-r-quick-start-blueprint/create-the-app/create-the-app.md',
     },
   },
   {
@@ -43,7 +46,8 @@ export const docsNavViews: View[] = [
     paneType: 'main',
     componentModule: () => import('@porrtal-components/r-learning'),
     state: {
-      contentUrl: '/docs/porrtal-components-r-quick-start-blueprint/create-the-nav-component/create-the-nav-component.md'
+      contentUrl:
+        '/docs/porrtal-components-r-quick-start-blueprint/create-the-nav-component/create-the-nav-component.md',
     },
   },
   {
@@ -54,7 +58,8 @@ export const docsNavViews: View[] = [
     paneType: 'main',
     componentModule: () => import('@porrtal-components/r-learning'),
     state: {
-      contentUrl: '/docs/porrtal-components-r-quick-start-blueprint/launch-a-component/launch-a-component.md'
+      contentUrl:
+        '/docs/porrtal-components-r-quick-start-blueprint/launch-a-component/launch-a-component.md',
     },
   },
   {
@@ -65,7 +70,8 @@ export const docsNavViews: View[] = [
     paneType: 'main',
     componentModule: () => import('@porrtal-components/r-learning'),
     state: {
-      contentUrl: '/docs/porrtal-components-r-quick-start-blueprint/create-an-entity-menu/create-an-entity-menu.md'
+      contentUrl:
+        '/docs/porrtal-components-r-quick-start-blueprint/create-an-entity-menu/create-an-entity-menu.md',
     },
   },
   {
@@ -76,7 +82,8 @@ export const docsNavViews: View[] = [
     paneType: 'main',
     componentModule: () => import('@porrtal-components/r-learning'),
     state: {
-      contentUrl: '/docs/porrtal-components-r-quick-start-blueprint/create-a-search-component/create-a-search-component.md'
+      contentUrl:
+        '/docs/porrtal-components-r-quick-start-blueprint/create-a-search-component/create-a-search-component.md',
     },
   },
   {
@@ -87,7 +94,8 @@ export const docsNavViews: View[] = [
     paneType: 'main',
     componentModule: () => import('@porrtal-components/r-learning'),
     state: {
-      contentUrl: '/docs/porrtal-components-r-quick-start-blueprint/next-steps/next-steps.md'
+      contentUrl:
+        '/docs/porrtal-components-r-quick-start-blueprint/next-steps/next-steps.md',
     },
   },
 ];

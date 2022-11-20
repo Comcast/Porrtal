@@ -20,8 +20,8 @@ export function DocsNav(props: DocsNavProps) {
 
       shellDispatch({
         type: 'launchView',
-        viewId: 'Welcome'
-      })
+        viewId: 'Welcome',
+      });
     }
   }, [shellDispatch]);
 
