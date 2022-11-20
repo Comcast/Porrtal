@@ -15,7 +15,7 @@ npm install @blueprintjs/core @blueprintjs/popover2 --save
 ### Install porrtal npm packages
 
 ```bash
-npm install @porrtal/r-api @porrtal/r-shell @porrtal/r-shell-blueprint @porrtal-r-split @porrtal/r-user --save
+npm install @porrtal/r-api @porrtal/r-shell @porrtal/r-shell-blueprint @porrtal/r-split @porrtal/r-user --save
 ```
 
 ```bash
