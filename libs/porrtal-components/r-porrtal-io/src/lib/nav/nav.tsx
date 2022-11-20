@@ -11,7 +11,6 @@ export function Nav(props: NavProps) {
     <div className={styles['container']}>
       <h3 className={styles['title']}>About @porrtal</h3>
       <div className={styles['data-container']}>
-
         {/* Welcome */}
         <h4
           className={styles['link-button']}

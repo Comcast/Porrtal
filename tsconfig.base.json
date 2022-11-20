@@ -34,7 +34,7 @@
         "libs/porrtal-components/r-learning/src/index.ts"
       ],
       "@porrtal-components/r-porrtal-io": [
-        "libs/porrtal-components/r/porrtal-io/src/index.ts"
+        "libs/porrtal-components/r-porrtal-io/src/index.ts"
       ],
       "@porrtal-components/r-quick-start-blueprint": [
         "libs/porrtal-components/r-quick-start-blueprint/src/index.ts"

@@ -1,7 +1,7 @@
 {
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "name": "porrtal-components-r-porrtal-io",
-  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/porrtal-components/r/porrtal-io/src",
+  "sourceRoot": "libs/porrtal-components/r-porrtal-io/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -9,16 +9,16 @@
       "executor": "@nrwl/rollup:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/porrtal-components/r/porrtal-io",
-        "tsConfig": "libs/porrtal-components/r/porrtal-io/tsconfig.lib.json",
-        "project": "libs/porrtal-components/r/porrtal-io/package.json",
-        "entryFile": "libs/porrtal-components/r/porrtal-io/src/index.ts",
+        "outputPath": "dist/libs/porrtal-components/r-porrtal-io",
+        "tsConfig": "libs/porrtal-components/r-porrtal-io/tsconfig.lib.json",
+        "project": "libs/porrtal-components/r-porrtal-io/package.json",
+        "entryFile": "libs/porrtal-components/r-porrtal-io/src/index.ts",
         "external": ["react/jsx-runtime"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [
           {
-            "glob": "libs/porrtal-components/r/porrtal-io/README.md",
+            "glob": "libs/porrtal-components/r-porrtal-io/README.md",
             "input": ".",
             "output": "."
           }
@@ -30,17 +30,17 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/porrtal-components/r/porrtal-io/**/*.{ts,tsx,js,jsx}"
+          "libs/porrtal-components/r-porrtal-io/**/*.{ts,tsx,js,jsx}"
         ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": [
-        "{workspaceRoot}/coverage/libs/porrtal-components/r/porrtal-io"
+        "{workspaceRoot}/coverage/libs/porrtal-components/r-porrtal-io"
       ],
       "options": {
-        "jestConfig": "libs/porrtal-components/r/porrtal-io/jest.config.ts",
+        "jestConfig": "libs/porrtal-components/r-porrtal-io/jest.config.ts",
         "passWithNoTests": true
       }
     }
