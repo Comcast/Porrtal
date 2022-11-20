@@ -24,19 +24,17 @@
 /* When the container is splitting horizontally */
 .react-split > .split-container.horizontal {
   grid-template-columns: 1fr;
-  grid-template-rows: minmax(
-      var(--react-split-min-primary),
-      var(--react-split-primary)
-    ) var(--react-split-splitter) minmax(var(--react-split-min-secondary), 1fr);
+  grid-template-rows:
+    minmax(var(--react-split-min-primary), var(--react-split-primary))
+    var(--react-split-splitter) minmax(var(--react-split-min-secondary), 1fr);
   grid-template-areas: 'primary' 'split' 'secondary';
 }
 
 /* When the container is splitting vertical */
 .react-split > .split-container.vertical {
-  grid-template-columns: minmax(
-      var(--react-split-min-primary),
-      var(--react-split-primary)
-    ) var(--react-split-splitter) minmax(var(--react-split-min-secondary), 1fr);
+  grid-template-columns:
+    minmax(var(--react-split-min-primary), var(--react-split-primary))
+    var(--react-split-splitter) minmax(var(--react-split-min-secondary), 1fr);
   grid-template-rows: 1fr;
   grid-template-areas: 'primary split secondary';
 }
