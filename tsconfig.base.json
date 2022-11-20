@@ -28,7 +28,7 @@
         "libs/porrtal-components/a-second-test-comp-lib/src/index.ts"
       ],
       "@porrtal-components/r-first-test-comp-lib": [
-        "libs/porrtal-components/r/first-test-comp-lib/src/index.ts"
+        "libs/porrtal-components/r-first-test-comp-lib/src/index.ts"
       ],
       "@porrtal-components/r-learning": [
         "libs/porrtal-components/r-learning/src/index.ts"
@@ -40,7 +40,7 @@
         "libs/porrtal-components/r-quick-start-blueprint/src/index.ts"
       ],
       "@porrtal-components/r-quick-start-demo": [
-        "libs/porrtal-components/r/quick-start-demo/src/index.ts"
+        "libs/porrtal-components/r-quick-start-demo/src/index.ts"
       ],
       "@porrtal-components/r-second-test-comp-lib": [
         "libs/porrtal-components/r/second-test-comp-lib/src/index.ts"

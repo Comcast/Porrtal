@@ -158,8 +158,7 @@ export function VizNav(props: ViewComponentProps) {
               type: 'launchView',
               viewId: 'MarkdownViewer',
               state: {
-                contentUrl:
-                  'docs/relative-image-test.md',
+                contentUrl: 'docs/relative-image-test.md',
               },
             })
           }

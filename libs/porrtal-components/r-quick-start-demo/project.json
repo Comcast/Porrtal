@@ -1,7 +1,7 @@
 {
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "name": "porrtal-components-r-quick-start-demo",
-  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/porrtal-components/r/quick-start-demo/src",
+  "sourceRoot": "libs/porrtal-components/r-quick-start-demo/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -9,16 +9,16 @@
       "executor": "@nrwl/rollup:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/porrtal-components/r/quick-start-demo",
-        "tsConfig": "libs/porrtal-components/r/quick-start-demo/tsconfig.lib.json",
-        "project": "libs/porrtal-components/r/quick-start-demo/package.json",
-        "entryFile": "libs/porrtal-components/r/quick-start-demo/src/index.ts",
+        "outputPath": "dist/libs/porrtal-components/r-quick-start-demo",
+        "tsConfig": "libs/porrtal-components/r-quick-start-demo/tsconfig.lib.json",
+        "project": "libs/porrtal-components/r-quick-start-demo/package.json",
+        "entryFile": "libs/porrtal-components/r-quick-start-demo/src/index.ts",
         "external": ["react/jsx-runtime"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [
           {
-            "glob": "libs/porrtal-components/r/quick-start-demo/README.md",
+            "glob": "libs/porrtal-components/r-quick-start-demo/README.md",
             "input": ".",
             "output": "."
           }
@@ -30,17 +30,17 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/porrtal-components/r/quick-start-demo/**/*.{ts,tsx,js,jsx}"
+          "libs/porrtal-components/r-quick-start-demo/**/*.{ts,tsx,js,jsx}"
         ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": [
-        "{workspaceRoot}/coverage/libs/porrtal-components/r/quick-start-demo"
+        "{workspaceRoot}/coverage/libs/porrtal-components/r-quick-start-demo"
       ],
       "options": {
-        "jestConfig": "libs/porrtal-components/r/quick-start-demo/jest.config.ts",
+        "jestConfig": "libs/porrtal-components/r-quick-start-demo/jest.config.ts",
         "passWithNoTests": true
       }
     }

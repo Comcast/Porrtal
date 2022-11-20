@@ -169,7 +169,8 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               launchAtStartup: false,
               paneType: 'right',
               componentName: 'TestCompsSecondTestComp',
-              componentModule: () => import('@porrtal-components/r-second-test-comp-lib'),
+              componentModule: () =>
+                import('@porrtal-components/r-second-test-comp-lib'),
               displayText: 'Seven-Second',
               displayIcon: 'home',
               state: {},
@@ -195,7 +196,8 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               launchAtStartup: false,
               paneType: 'bottom',
               componentName: 'TestCompsSecondTestComp',
-              componentModule: () => import('@porrtal-components/r-second-test-comp-lib'),
+              componentModule: () =>
+                import('@porrtal-components/r-second-test-comp-lib'),
               displayText: 'Seven-Second',
               displayIcon: 'home',
               state: {},
