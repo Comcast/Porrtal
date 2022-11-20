@@ -17,9 +17,10 @@ Primary.args = {
     displayText: '',
     displayIcon: '',
     paneType: 'main',
-    componentImport: () => new Promise(() => {
-      // do nothing
-    }),
+    componentImport: () =>
+      new Promise(() => {
+        // do nothing
+      }),
     view: {
       componentName: 'YoutubePlayer',
       componentModule: '',

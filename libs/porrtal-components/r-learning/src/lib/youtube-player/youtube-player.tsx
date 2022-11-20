@@ -8,7 +8,7 @@ export function YoutubePlayer(props: ViewComponentProps) {
   return (
     <div className={styles['container']} ref={observe}>
       <YouTube
-        opts={{width: width - 10, height: height - 10}}
+        opts={{ width: width - 10, height: height - 10 }}
         videoId={props.viewState?.state?.['videoId'] as string}
       ></YouTube>
     </div>

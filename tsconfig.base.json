@@ -31,7 +31,7 @@
         "libs/porrtal-components/r/first-test-comp-lib/src/index.ts"
       ],
       "@porrtal-components/r-learning": [
-        "libs/porrtal-components/r/learning/src/index.ts"
+        "libs/porrtal-components/r-learning/src/index.ts"
       ],
       "@porrtal-components/r-porrtal-io": [
         "libs/porrtal-components/r/porrtal-io/src/index.ts"
