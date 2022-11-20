@@ -6,7 +6,7 @@
     <ng-container *ngFor="let order of orders">
       <span>{{ order.item }}</span>
       <span>
-        {{order.amountText }}
+        {{ order.amountText }}
       </span>
       <span>{{ Moment(order.date).format('YYYY-DD-MM') }}</span>
     </ng-container>

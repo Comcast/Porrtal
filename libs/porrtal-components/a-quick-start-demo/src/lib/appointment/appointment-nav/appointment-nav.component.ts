@@ -8,9 +8,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewState } from '@porrtal/a-api';
-import {
-  appointmentData,
-} from '../../data/appointment-data';
+import { appointmentData } from '../../data/appointment-data';
 import * as d3 from 'd3';
 import { ShellStateService } from '@porrtal/a-shell';
 

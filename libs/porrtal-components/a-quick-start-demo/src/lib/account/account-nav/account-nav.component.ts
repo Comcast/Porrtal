@@ -1,10 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EntityMenuComponent } from '@porrtal/a-shell-material';
-import {
-  Account,
-  accountData,
-} from '../../data/account-data';
+import { Account, accountData } from '../../data/account-data';
 import { MatIconModule } from '@angular/material/icon';
 import { ViewState } from '@porrtal/a-api';
 

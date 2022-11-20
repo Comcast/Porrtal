@@ -27,7 +27,7 @@ export class AppointmentDetailComponent {
         this.notFound = true;
       }
     }
-    console.log(`loading: ${this.loading}, notFound: ${this.notFound}`)
+    console.log(`loading: ${this.loading}, notFound: ${this.notFound}`);
   }
   get viewState() {
     return this._viewState;

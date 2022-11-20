@@ -24,8 +24,7 @@ export class AccountSearchComponent {
   public Moment = Moment;
 
   constructor(private searchStateService: SearchStateService) {
-    this.searchText$ = searchStateService
-      .select('debouncedSearchText');
+    this.searchText$ = searchStateService.select('debouncedSearchText');
 
     this.filteredAccounts$ = searchStateService
       .select('debouncedSearchText')
@@ -43,7 +42,6 @@ export class AccountSearchComponent {
   }
 
   public formatAmount(amount: number) {
-    return '$' +
-    amount.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    return '$' + amount.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
   }
 }

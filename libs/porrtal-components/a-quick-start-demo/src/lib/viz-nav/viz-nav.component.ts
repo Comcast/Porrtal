@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewState } from '@porrtal/a-api';
 import { ShellStateService } from '@porrtal/a-shell';
