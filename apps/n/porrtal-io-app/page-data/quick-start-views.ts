@@ -8,8 +8,9 @@ export const getQuickStartViews = (uiLib: string): View[] => {
 
   return [
     {
+      viewId: 'NewAccount',
       displayText: 'Create Account',
-      displayIcon: 'mugshot',
+      displayIcon: 'add',
       componentName: 'AccountCreate',
       componentModule: libImport,
     },
