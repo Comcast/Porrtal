@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/datumgeek/porrtal/compare/v0.2.0...v0.3.0) (2022-11-23)
+
+### Bug Fixes
+
+- **@porrtal/a-api, @porrtal/a-shell:** move projects to fix build issues ([4887065](https://github.com/datumgeek/porrtal/commit/488706573ca6979f8a81e43c2dcee0401e425a88))
+
 # [0.2.0](https://github.com/datumgeek/porrtal/compare/v0.1.0...v0.2.0) (2022-10-30)
 
 ### Features

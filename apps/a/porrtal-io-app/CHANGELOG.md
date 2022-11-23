@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/datumgeek/porrtal/compare/v0.2.0...v0.3.0) (2022-11-23)
+
+### Features
+
+- **workspace:** run migrations from nx v15.1.1 --> nx v15.2.0 ([adacf1b](https://github.com/datumgeek/porrtal/commit/adacf1b591fd0ddb3a1bf8b44c304a20b6963ec2))
+- **workspace:** run migrations nx v14.8.2 --> nx v15.1.1 ([ac776b1](https://github.com/datumgeek/porrtal/commit/ac776b12c33bedb260e5fda2214a19bed5adc67c))
+
 # [0.2.0](https://github.com/datumgeek/porrtal/compare/v0.1.0...v0.2.0) (2022-10-30)
 
 ### Features

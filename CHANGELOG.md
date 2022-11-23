@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/datumgeek/porrtal/compare/v0.2.0...v0.3.0) (2022-11-23)
+
+### Bug Fixes
+
+- **@porrtal-components/a-\*:** fix scope in package.json ([deb0d22](https://github.com/datumgeek/porrtal/commit/deb0d22575fa28f1c16dce928de021d659affe11))
+- **@porrtal-components/r-learning:** fix scope in package.json ([30d9843](https://github.com/datumgeek/porrtal/commit/30d9843f41416f68ab493921d039e6b731439fcf))
+- **@porrtal-components/r-quick-start-blueprint:** fix typo in docs for @porrtal/\* install command ([aea02e0](https://github.com/datumgeek/porrtal/commit/aea02e0b834c5c073ded50a62fa1e2d99676b207))
+- **@porrtal-components/r-quick-start-demo:** small fix for nav launching markdown viewer ([fcd6e3f](https://github.com/datumgeek/porrtal/commit/fcd6e3f978f5c64738fbdcc02506c44c61510070))
+- **@porrtal/a-api, @porrtal/a-shell:** move projects to fix build issues ([4887065](https://github.com/datumgeek/porrtal/commit/488706573ca6979f8a81e43c2dcee0401e425a88))
+- **@porrtal/a-shell-material:** fix entity menu icon size and replace display text parameters ([24555bc](https://github.com/datumgeek/porrtal/commit/24555bc163bec62d0ee6286fdcc974fb73f637db))
+- **@porrtal/r-shell-blueprint:** remove explicit peer dependencies ([23db222](https://github.com/datumgeek/porrtal/commit/23db222f8322b5668ac054473b02286536c2c488))
+- **n-porrtal-app:** fix build errors ([a131c1a](https://github.com/datumgeek/porrtal/commit/a131c1aac8482d64f9547752e548db0fe60e0af4))
+- **n-porrtal-io-app:** fix build errors. move non page items, add react-syntax-highlighter types ([2333f8d](https://github.com/datumgeek/porrtal/commit/2333f8d3ec10fdea724d85d0b1526b7d442f113c))
+- **n-porrtal-io-app:** fix entity menu icon size and replace display text parameters for angular ([8cabaa6](https://github.com/datumgeek/porrtal/commit/8cabaa66c55ccc6d7a20709ed5aa67a7bf8eb821))
+- **n-porrtal-io-app:** fix glob asset import paths ([875b475](https://github.com/datumgeek/porrtal/commit/875b475772b9b69735344f727238cfa024126909))
+
+### Features
+
+- **@porrtal-components/a-learning:** add dependent npm package ngx-markdown until PR is merged ([341a9d4](https://github.com/datumgeek/porrtal/commit/341a9d4a0fdcb466d95e042513f358a4afe0677e))
+- **@porrtal-components/a-learning:** add relative path support to markdown viewer ([1ae5b22](https://github.com/datumgeek/porrtal/commit/1ae5b226dfe863a20cc9735891b6574a0240c03b))
+- **@porrtal-components/r-learning:** add relative path and gfm support to markdown viewer ([1c70035](https://github.com/datumgeek/porrtal/commit/1c70035383c9c1f5af9de486d35f49e4dda6c89f))
+- **@porrtal-components/r-learning:** provide margin around content and support relative paths ([d29af92](https://github.com/datumgeek/porrtal/commit/d29af9219f72a7f55cb791989643879e80c6a72c))
+- **@porrtal-components/r-porrtal-io:** add docs and nav to porrtal.io ([9517eb9](https://github.com/datumgeek/porrtal/commit/9517eb95b24f6c5bc4abf0de3d762c107cada937))
+- **@porrtal-components/r-porrtal-io:** implement navigation ([e09695b](https://github.com/datumgeek/porrtal/commit/e09695b8bb1375444855dc90185953908f238217))
+- **@porrtal-components/r-porrtal-io:** register nav and welcome components for startup ([dfa5c0e](https://github.com/datumgeek/porrtal/commit/dfa5c0e32623b7c9283829807b714a8e4176bb98))
+- **@porrtal-components/r-porrtal-io:** rough in porrtal.io components ([2e478ce](https://github.com/datumgeek/porrtal/commit/2e478ce65f32ad03e12b57e8ace58e3a75d72935))
+- **@porrtal-components/r-quick-start-blueprint:** add docs ([c959f4a](https://github.com/datumgeek/porrtal/commit/c959f4a5b41c0c959d5737fab57713f54636bcce))
+- **@porrtal-components/r-quick-start-blueprint:** copy account components and register in app ([ae98470](https://github.com/datumgeek/porrtal/commit/ae9847078824d83ad3ad6df0fc6a1c8a12fde101))
+- **@porrtal-components/r-quick-start-blueprint:** rough in additional topics ([30d81c0](https://github.com/datumgeek/porrtal/commit/30d81c02302f5c4a4624d8163384c5079da3cf42))
+- **@porrtal-components/r-quick-start-blueprint:** rough in library for quick start using blueprint ([8d11d93](https://github.com/datumgeek/porrtal/commit/8d11d93bc8ac596d9d2c339d8e6e912cc9e518f9))
+- **@porrtal-components/r-quick-start-blueprint:** rough in welcome, app and nav doc topics ([71500c1](https://github.com/datumgeek/porrtal/commit/71500c108f7c9a71d6a05f0ff30758627c9e5a69))
+- **@porrtal-components/r-quick-start-blueprint:** setup your workstation ([d8d6fd2](https://github.com/datumgeek/porrtal/commit/d8d6fd2b078bb363c7f08cadddd1f4de4dba6dbc))
+- **@porrtal-components/r-quick-start-blueprint:** welcome details, rough in next steps ([7d0ced4](https://github.com/datumgeek/porrtal/commit/7d0ced478169e45c9b62012177c027bb9f957688))
+- **@porrtal-components/test:** library to publish to npm under [@porrtal-components](https://github.com/porrtal-components) to reserve name ([ef0abf9](https://github.com/datumgeek/porrtal/commit/ef0abf9719d154276c86fc52383ac1ac5a1d2787))
+- **@porrtal/r-\*:** bundle css inside index.js for published npm packages ([d433b9f](https://github.com/datumgeek/porrtal/commit/d433b9f6a5a36317263bfe63204b071e566fcee1))
+- **@porrtal/r-shell:** make the nav pane 280px by default ([1f250e1](https://github.com/datumgeek/porrtal/commit/1f250e16e8354ba61e628e613715857dc7ce18cb))
+- **@porrtal/r-shell:** remove r-user depenedencies ([a0cb7cf](https://github.com/datumgeek/porrtal/commit/a0cb7cf6a4e4bfdf82549134b16f0db2ba9c69ac))
+- **r-porrtal-app:** update app and rough in account-nav ([56953f6](https://github.com/datumgeek/porrtal/commit/56953f60b75a1ef3b210031e7d932ea2fbfc3221))
+- **r-porrtal-io-app:** copy build results from a-porrtal-io-app into public/angular ([38ec884](https://github.com/datumgeek/porrtal/commit/38ec8847d817bfd0f2fb76004496f6700e521ccd))
+- **r-porrtal-io-app:** copy build results from a-porrtal-io-app into public/angular ([a40cb5e](https://github.com/datumgeek/porrtal/commit/a40cb5e0fb908f781274d1971ea37966045ad33c))
+- **workspace:** add workspace support to lerna for versioning ([4e0277f](https://github.com/datumgeek/porrtal/commit/4e0277f69a35a445d59b6d8737be9434c1b887c7))
+- **workspace:** migrate from nx v14.8.2 to nx v15.1.1 ([120340b](https://github.com/datumgeek/porrtal/commit/120340b436d0796d95319691d2d549d3ffb778f0))
+- **workspace:** migrate from nx v15.1.1 to nx v15.2.0 ([9e30d68](https://github.com/datumgeek/porrtal/commit/9e30d680fb8147df89196cfcd620b295f22e770c))
+- **workspace:** run migrations from nx v15.1.1 --> nx v15.2.0 ([adacf1b](https://github.com/datumgeek/porrtal/commit/adacf1b591fd0ddb3a1bf8b44c304a20b6963ec2))
+- **workspace:** run migrations nx v14.8.2 --> nx v15.1.1 ([ac776b1](https://github.com/datumgeek/porrtal/commit/ac776b12c33bedb260e5fda2214a19bed5adc67c))
+
 # [0.2.0](https://github.com/datumgeek/porrtal/compare/v0.1.0...v0.2.0) (2022-10-30)
 
 ### Features

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/datumgeek/porrtal/compare/v0.2.0...v0.3.0) (2022-11-23)
+
+### Bug Fixes
+
+- **n-porrtal-app:** fix build errors ([a131c1a](https://github.com/datumgeek/porrtal/commit/a131c1aac8482d64f9547752e548db0fe60e0af4))
+
+### Features
+
+- **@porrtal-components/r-learning:** add relative path and gfm support to markdown viewer ([1c70035](https://github.com/datumgeek/porrtal/commit/1c70035383c9c1f5af9de486d35f49e4dda6c89f))
+- **@porrtal/r-shell:** remove r-user depenedencies ([a0cb7cf](https://github.com/datumgeek/porrtal/commit/a0cb7cf6a4e4bfdf82549134b16f0db2ba9c69ac))
+- **workspace:** run migrations nx v14.8.2 --> nx v15.1.1 ([ac776b1](https://github.com/datumgeek/porrtal/commit/ac776b12c33bedb260e5fda2214a19bed5adc67c))
+
 # [0.2.0](https://github.com/datumgeek/porrtal/compare/v0.1.0...v0.2.0) (2022-10-30)
 
 ### Features
