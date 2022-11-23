@@ -1,0 +1,48 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "name": "porrtal-components-r-second-test-comp-lib",
+  "sourceRoot": "libs/porrtal-components/r-second-test-comp-lib/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/porrtal-components/r-second-test-comp-lib",
+        "tsConfig": "libs/porrtal-components/r-second-test-comp-lib/tsconfig.lib.json",
+        "project": "libs/porrtal-components/r-second-test-comp-lib/package.json",
+        "entryFile": "libs/porrtal-components/r-second-test-comp-lib/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/porrtal-components/r-second-test-comp-lib/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/porrtal-components/r-second-test-comp-lib/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/porrtal-components/r-second-test-comp-lib"
+      ],
+      "options": {
+        "jestConfig": "libs/porrtal-components/r-second-test-comp-lib/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

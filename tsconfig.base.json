@@ -16,54 +16,57 @@
     "baseUrl": ".",
     "paths": {
       "@porrtal-components/a-first-test-comp-lib": [
-        "libs/porrtal-components/a/first-test-comp-lib/src/index.ts"
+        "libs/porrtal-components/a-first-test-comp-lib/src/index.ts"
       ],
       "@porrtal-components/a-learning": [
-        "libs/porrtal-components/a/learning/src/index.ts"
+        "libs/porrtal-components/a-learning/src/index.ts"
       ],
       "@porrtal-components/a-quick-start-demo": [
-        "libs/porrtal-components/a/quick-start-demo/src/index.ts"
+        "libs/porrtal-components/a-quick-start-demo/src/index.ts"
       ],
       "@porrtal-components/a-second-test-comp-lib": [
-        "libs/porrtal-components/a/second-test-comp-lib/src/index.ts"
+        "libs/porrtal-components/a-second-test-comp-lib/src/index.ts"
       ],
       "@porrtal-components/r-first-test-comp-lib": [
-        "libs/porrtal-components/r/first-test-comp-lib/src/index.ts"
+        "libs/porrtal-components/r-first-test-comp-lib/src/index.ts"
       ],
       "@porrtal-components/r-learning": [
-        "libs/porrtal-components/r/learning/src/index.ts"
+        "libs/porrtal-components/r-learning/src/index.ts"
       ],
       "@porrtal-components/r-porrtal-io": [
-        "libs/porrtal-components/r/porrtal-io/src/index.ts"
+        "libs/porrtal-components/r-porrtal-io/src/index.ts"
+      ],
+      "@porrtal-components/r-quick-start-blueprint": [
+        "libs/porrtal-components/r-quick-start-blueprint/src/index.ts"
       ],
       "@porrtal-components/r-quick-start-demo": [
-        "libs/porrtal-components/r/quick-start-demo/src/index.ts"
+        "libs/porrtal-components/r-quick-start-demo/src/index.ts"
       ],
       "@porrtal-components/r-second-test-comp-lib": [
-        "libs/porrtal-components/r/second-test-comp-lib/src/index.ts"
+        "libs/porrtal-components/r-second-test-comp-lib/src/index.ts"
       ],
       "@porrtal-components/r-test": [
-        "libs/porrtal-components/r/test/src/index.ts"
+        "libs/porrtal-components/r-test/src/index.ts"
       ],
-      "@porrtal/a-api": ["libs/porrtal/a/api/src/index.ts"],
-      "@porrtal/a-shell": ["libs/porrtal/a/shell/src/index.ts"],
+      "@porrtal/a-api": ["libs/porrtal/a-api/src/index.ts"],
+      "@porrtal/a-shell": ["libs/porrtal/a-shell/src/index.ts"],
       "@porrtal/a-shell-bootstrap": [
-        "libs/porrtal/a/shell-bootstrap/src/index.ts"
+        "libs/porrtal/a-shell-bootstrap/src/index.ts"
       ],
       "@porrtal/a-shell-material": [
-        "libs/porrtal/a/shell-material/src/index.ts"
+        "libs/porrtal/a-shell-material/src/index.ts"
       ],
-      "@porrtal/a-user": ["libs/porrtal/a/user/src/index.ts"],
-      "@porrtal/r-api": ["libs/porrtal/r/api/src/index.ts"],
-      "@porrtal/r-shell": ["libs/porrtal/r/shell/src/index.ts"],
+      "@porrtal/a-user": ["libs/porrtal/a-user/src/index.ts"],
+      "@porrtal/r-api": ["libs/porrtal/r-api/src/index.ts"],
+      "@porrtal/r-shell": ["libs/porrtal/r-shell/src/index.ts"],
       "@porrtal/r-shell-blueprint": [
-        "libs/porrtal/r/shell-blueprint/src/index.ts"
+        "libs/porrtal/r-shell-blueprint/src/index.ts"
       ],
       "@porrtal/r-shell-material": [
-        "libs/porrtal/r/shell-material/src/index.ts"
+        "libs/porrtal/r-shell-material/src/index.ts"
       ],
-      "@porrtal/r-split": ["libs/porrtal/r/split/src/index.ts"],
-      "@porrtal/r-user": ["libs/porrtal/r/user/src/index.ts"],
+      "@porrtal/r-split": ["libs/porrtal/r-split/src/index.ts"],
+      "@porrtal/r-user": ["libs/porrtal/r-user/src/index.ts"],
       "ngx-markdown": ["libs/ngx-markdown/lib/src/index.ts"]
     }
   },

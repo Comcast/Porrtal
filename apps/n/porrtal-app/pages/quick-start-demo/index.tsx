@@ -3,7 +3,7 @@ import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 
 import { ShellState } from '@porrtal/r-shell';
-import { Auth0Authentication } from '@porrtal/r-user';
+import { Auth0Authentication, UserBanner } from '@porrtal/r-user';
 import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
 import { useEffect, useState } from 'react';
 import { View } from '@porrtal/r-api';
@@ -262,6 +262,7 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
         >
           <ShellState views={views}>
             <ShellBlueprint
+              userBanner={UserBanner}
               bannerData={{
                 displayText: 'Quick Start Demo',
                 displayIcon: 'ninja',

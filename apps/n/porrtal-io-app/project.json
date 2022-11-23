@@ -14,8 +14,13 @@
         "assets": [
           {
             "glob": "**/*",
-            "input": "libs/porrtal-components/r/porrtal-io/porrtal-components-r-porrtal-io",
+            "input": "libs/porrtal-components/r-porrtal-io/porrtal-components-r-porrtal-io",
             "output": "docs/porrtal-components-r-porrtal-io"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/porrtal-components/r-quick-start-blueprint/porrtal-components-r-quick-start-blueprint",
+            "output": "docs/porrtal-components-r-quick-start-blueprint"
           }
         ]
       },
@@ -52,7 +57,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/n/porrtal-io-app"],
+      "outputs": ["{workspaceRoot}/coverage/apps/n/porrtal-io-app"],
       "options": {
         "jestConfig": "apps/n/porrtal-io-app/jest.config.ts",
         "passWithNoTests": true

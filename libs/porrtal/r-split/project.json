@@ -1,0 +1,46 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "name": "porrtal-r-split",
+  "sourceRoot": "libs/porrtal/r-split/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/porrtal/r-split",
+        "tsConfig": "libs/porrtal/r-split/tsconfig.lib.json",
+        "project": "libs/porrtal/r-split/package.json",
+        "entryFile": "libs/porrtal/r-split/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "extractCss": false,
+        "format": ["cjs", "esm"],
+        "assets": [
+          {
+            "glob": "libs/porrtal/r-split/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/porrtal/r-split/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/porrtal/r-split"],
+      "options": {
+        "jestConfig": "libs/porrtal/r-split/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

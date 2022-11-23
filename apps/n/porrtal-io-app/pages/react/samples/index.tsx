@@ -8,8 +8,8 @@ import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 
-import { getBannerData, getReactUiLibrary } from '../../data';
-import { samplesViews } from './samples-views';
+import { getBannerData, getReactUiLibrary } from '../../../page-data/data';
+import { samplesViews } from '../../../page-data/samples-views';
 
 /* eslint-disable-next-line */
 export interface SamplesProps {}

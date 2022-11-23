@@ -8,8 +8,8 @@ import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import styles from './index.module.scss';
-import { getBannerData } from './data';
-import { porrtalIoViews } from './porrtal-io-views';
+import { getBannerData } from '../page-data/data';
+import { porrtalIoViews } from '../page-data/porrtal-io-views';
 
 export function Index() {
   const [isSSR, setIsSSR] = useState(true);

@@ -1,0 +1,28 @@
+<!-- found and loaded appointment -->
+<div *ngIf="!loading && !notFound" class="container">
+  <h3 class="title">
+    {{ appointment?.item }} ({{ appointment?.appointmentId }}) - Appointment
+    Detail
+  </h3>
+  <div class="data-container">
+    <h4>
+      {{ Moment(appointment?.date).format('YYYY-MM-DD, h:mm a') }} -{{ ' ' }}
+      {{ (appointment?.duration ?? 0) / (1000 * 60) }} minutes.
+    </h4>
+    <p>{{ appointment?.description }}</p>
+  </div>
+</div>
+
+<!-- loading appointment -->
+<ng-container *ngIf="loading">
+  <div>loading appointment data...</div>
+</ng-container>
+
+<!-- didn't find appointment -->
+<ng-container *ngIf="notFound">
+  <div>
+    <span>appointmentId:&nbsp;</span>
+    <span>{{ appointmentId }}</span>
+    <span>&nbsp;not found.</span>
+  </div>
+</ng-container>
