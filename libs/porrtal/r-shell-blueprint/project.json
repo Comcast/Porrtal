@@ -16,7 +16,8 @@
         "external": ["react/jsx-runtime"],
         "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
         "compiler": "babel",
-        "format": ["esm", "cjs"],
+        "extractCss": false,
+        "format": ["cjs", "esm"],
         "assets": [
           {
             "glob": "libs/porrtal/r-shell-blueprint/README.md",
