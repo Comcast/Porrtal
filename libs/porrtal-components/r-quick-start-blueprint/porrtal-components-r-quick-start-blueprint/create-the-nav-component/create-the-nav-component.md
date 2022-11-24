@@ -19,7 +19,7 @@ npm install @porrtal/r-api @porrtal/r-shell @porrtal/r-shell-blueprint @porrtal/
 ```
 
 ```bash
-npm install ag-grid-community ag-grid-react uuid react-measure --save
+npm install ag-grid-community ag-grid-react uuid react-measure --save --legacy-peer-deps
 ```
 
 ```bash
