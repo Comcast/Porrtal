@@ -18,7 +18,7 @@ export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
           ></shellComponents.Banner>
           <shellComponents.LoggerBanner />
           {shellComponents.UserBanner && <shellComponents.UserBanner />}
-          <shellComponents.Search />
+          {shellState.panes.search.viewStates.length > 0 ? <shellComponents.Search /> : null}
         </div>
         <div className={styles['content']}>
           <Split initialPrimarySize="280px" resetOnDoubleClick>
