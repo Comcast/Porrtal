@@ -133,24 +133,23 @@ export function AccountNav(props: AccountNavProps) {
             .filter((acct, ii) => ii < 3)
             .map((acct) => {
               return (
-                <>
+                <div key={`menu-${acct.accountId}`}>
                   <EntityMenu
-                    key={`menu-${acct.accountId}`}
                     entityType="account"
                     state={{ accountId: acct.accountId }}
                   >
-                    <p className="AccountNav_link-button">
+                    <span className="AccountNav_link-button">
                       <Icon icon="mugshot" />
                       <span style={{ marginLeft: '5px' }}>{acct.name}</span>
-                    </p>
+                    </span>
                   </EntityMenu>
-                  <p key={`total-${acct.accountId}`}>
+                  <span className="AccountNav_cash-span">
                     {'$' +
                       acct.total
                         .toFixed(0)
                         .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
-                  </p>
-                </>
+                  </span>
+                </div>
               );
             })}
       </div>
@@ -158,7 +157,46 @@ export function AccountNav(props: AccountNavProps) {
   );
 }
 
-export default AccountNav;
+export default AccountNav;```
+
+### Update `AccountNav.css`
+
+```css
+.AccountNav_container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.AccountNav_title {
+  background-color: rgb(185, 199, 218);
+  margin: 0;
+  padding-top: 5px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  grid-column: 1 / -1;
+}
+
+.AccountNav_new-account-container {
+  margin-top: 30px;
+}
+
+.AccountNav_data-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+.AccountNav_link-button {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.AccountNav_cash-span {
+  float: right;
+}
 ```
 
 ### At this point, we can test the entity menu by clicking on the account in the Account Nav.

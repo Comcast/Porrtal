@@ -43,24 +43,24 @@ export function AccountNav(props: AccountNavProps) {
             .filter((acct, ii) => ii < 3)
             .map((acct) => {
               return (
-                <>
+                <div key={`menu-${acct.accountId}`}>
                   <EntityMenu
                     key={`menu-${acct.accountId}`}
                     entityType="account"
                     state={{ accountId: acct.accountId }}
                   >
-                    <p className={styles['link-button']}>
+                    <span className={styles['link-button']}>
                       <Icon icon="mugshot" />
                       <span style={{ marginLeft: '5px' }}>{acct.name}</span>
-                    </p>
+                    </span>
                   </EntityMenu>
-                  <p key={`total-${acct.accountId}`}>
+                  <span key={`total-${acct.accountId}`} className={styles['cash-span']}>
                     {'$' +
                       acct.total
                         .toFixed(0)
                         .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
-                  </p>
-                </>
+                  </span>
+                </div>
               );
             })}
         {!accountData && <div>loading data...</div>}
