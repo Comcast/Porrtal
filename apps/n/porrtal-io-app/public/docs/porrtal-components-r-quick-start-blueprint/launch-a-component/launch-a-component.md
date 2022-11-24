@@ -2,7 +2,7 @@
 
 The next step in the quick start is to show how easy it is to register a view (New Account in our case) and to launch that view from a component (AccountNav in our case).
 
-First, create the `NewAccount.tsx` in the Accounts folder.
+### First, create the `NewAccount.tsx` in the Accounts folder.
 
 ```tsx
 export function NewAccount() {
@@ -12,7 +12,7 @@ export function NewAccount() {
 export default NewAccount;
 ```
 
-Next, register the view in the `App.tsx` file.
+### Next, register the view in the `App.tsx` file.
 
 ```tsx
 import '@blueprintjs/core/lib/css/blueprint.css';
@@ -62,7 +62,7 @@ export function Index() {
 export default Index;
 ```
 
-Add the code to launch the new account view in the `AccountNav.tsx` file.
+### Add the code to launch the new account view in the `AccountNav.tsx` file.
 
 ```tsx
 import { Icon } from "@blueprintjs/core";
@@ -92,7 +92,7 @@ export function AccountNav(props: AccountNavProps) {
 // ...
 ```
 
-And finally, add the styles for the New Account link to the `AccountNav.css` file.
+### And finally, add the styles for the New Account link to the `AccountNav.css` file.
 
 ```css
 .AccountNav_container {

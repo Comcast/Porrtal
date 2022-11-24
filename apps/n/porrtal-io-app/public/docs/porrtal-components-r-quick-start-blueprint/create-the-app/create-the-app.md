@@ -33,6 +33,8 @@ cd porrtal-react-blueprint-quick-start
 npm run start
 ```
 
+### View in the browser
+
 A browser should appear with the new react app. You can also click the link to view the new react app in your browser:
 [https://localhost:3000](https://localhost:3000)
 
