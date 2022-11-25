@@ -57,7 +57,7 @@ export function Index() {
       key: 'Account Detail {accountId}',
       displayText: 'Account Detail {accountId}',
       paneType: "main",
-      displayIcon: "add",
+      displayIcon: "mugshot",
       componentName: "AccountDetail",
       entityType: "account",
       componentModule: () => import("./Account/AccountDetail"),
@@ -67,7 +67,7 @@ export function Index() {
       key: 'Account Billing {accountId}',
       displayText: 'Account Billing {accountId}',
       paneType: "main",
-      displayIcon: "add",
+      displayIcon: "mugshot",
       componentName: "AccountBilling",
       entityType: "account",
       componentModule: () => import("./Account/AccountBilling"),
@@ -93,6 +93,7 @@ export default Index;
 ### Update `AccountNav.tsx` with the EntityMenu
 
 ```tsx
+import { Fragment } from "react";
 import { Icon } from "@blueprintjs/core";
 import { accountData } from "../Data/AccountData";
 import "./AccountNav.css";
@@ -133,24 +134,23 @@ export function AccountNav(props: AccountNavProps) {
             .filter((acct, ii) => ii < 3)
             .map((acct) => {
               return (
-                <>
+                <Fragment key={`menu-${acct.accountId}`}>
                   <EntityMenu
-                    key={`menu-${acct.accountId}`}
                     entityType="account"
                     state={{ accountId: acct.accountId }}
                   >
-                    <p className="AccountNav_link-button">
+                    <span className="AccountNav_link-button">
                       <Icon icon="mugshot" />
-                      <span style={{ marginLeft: '5px' }}>{acct.name}</span>
-                    </p>
+                      <span style={{ marginLeft: "5px" }}>{acct.name}</span>
+                    </span>
                   </EntityMenu>
-                  <p key={`total-${acct.accountId}`}>
-                    {'$' +
+                  <span>
+                    {"$" +
                       acct.total
                         .toFixed(0)
-                        .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
-                  </p>
-                </>
+                        .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
+                  </span>
+                </Fragment>
               );
             })}
       </div>
@@ -159,6 +159,42 @@ export function AccountNav(props: AccountNavProps) {
 }
 
 export default AccountNav;
+```
+
+### Update `AccountNav.css`
+
+```css
+.AccountNav_container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.AccountNav_title {
+  background-color: rgb(185, 199, 218);
+  margin: 0;
+  padding-top: 5px;
+  padding-bottom: 4px;
+  padding-left: 8px;
+  grid-column: 1 / -1;
+}
+
+.AccountNav_new-account-container {
+  margin-top: 30px;
+}
+
+.AccountNav_data-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+.AccountNav_link-button {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
 ```
 
 ### At this point, we can test the entity menu by clicking on the account in the Account Nav.
@@ -210,6 +246,7 @@ npm install moment --save
 ### Update `AccountDetail.tsx` to show data for the Account
 
 ```tsx
+import { Fragment } from "react";
 import { ViewComponentProps } from "@porrtal/r-api";
 import { accountData } from "../Data/AccountData";
 import Moment from "moment";
@@ -236,8 +273,8 @@ export function AccountDetail(props: ViewComponentProps) {
         {currentAccount?.name} ({currentAccount?.accountId}) - Account Detail
       </h3>
       <div className="AccountDetail_data-container">
-        {currentAccount?.orders.map((order) => (
-          <>
+        {currentAccount?.orders.map((order, index) => (
+          <Fragment key={index}>
             <span>{order.item}</span>
             <span>
               {"$" +
@@ -246,7 +283,7 @@ export function AccountDetail(props: ViewComponentProps) {
                   .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
             </span>
             <span>{Moment(order.date).format("YYYY-DD-MM")}</span>
-          </>
+          </Fragment>
         ))}
       </div>
     </div>

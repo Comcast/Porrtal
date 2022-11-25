@@ -57,7 +57,7 @@ export function Index() {
       key: 'Account Detail {accountId}',
       displayText: 'Account Detail {accountId}',
       paneType: "main",
-      displayIcon: "add",
+      displayIcon: "mugshot",
       componentName: "AccountDetail",
       entityType: "account",
       componentModule: () => import("./Account/AccountDetail"),
@@ -67,7 +67,7 @@ export function Index() {
       key: 'Account Billing {accountId}',
       displayText: 'Account Billing {accountId}',
       paneType: "main",
-      displayIcon: "add",
+      displayIcon: "mugshot",
       componentName: "AccountBilling",
       entityType: "account",
       componentModule: () => import("./Account/AccountBilling"),
@@ -93,6 +93,7 @@ export default Index;
 ### Update `AccountNav.tsx` with the EntityMenu
 
 ```tsx
+import { Fragment } from "react";
 import { Icon } from "@blueprintjs/core";
 import { accountData } from "../Data/AccountData";
 import "./AccountNav.css";
@@ -133,23 +134,23 @@ export function AccountNav(props: AccountNavProps) {
             .filter((acct, ii) => ii < 3)
             .map((acct) => {
               return (
-                <div key={`menu-${acct.accountId}`}>
+                <Fragment key={`menu-${acct.accountId}`}>
                   <EntityMenu
                     entityType="account"
                     state={{ accountId: acct.accountId }}
                   >
                     <span className="AccountNav_link-button">
                       <Icon icon="mugshot" />
-                      <span style={{ marginLeft: '5px' }}>{acct.name}</span>
+                      <span style={{ marginLeft: "5px" }}>{acct.name}</span>
                     </span>
                   </EntityMenu>
-                  <span className="AccountNav_cash-span">
-                    {'$' +
+                  <span>
+                    {"$" +
                       acct.total
                         .toFixed(0)
-                        .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
+                        .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
                   </span>
-                </div>
+                </Fragment>
               );
             })}
       </div>
@@ -157,7 +158,8 @@ export function AccountNav(props: AccountNavProps) {
   );
 }
 
-export default AccountNav;```
+export default AccountNav;
+```
 
 ### Update `AccountNav.css`
 
@@ -182,7 +184,7 @@ export default AccountNav;```
 
 .AccountNav_data-container {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr auto;
   margin-left: 15px;
   margin-right: 15px;
   margin-top: 15px;
@@ -192,10 +194,6 @@ export default AccountNav;```
   color: blue;
   text-decoration: underline;
   cursor: pointer;
-}
-
-.AccountNav_cash-span {
-  float: right;
 }
 ```
 
@@ -248,6 +246,7 @@ npm install moment --save
 ### Update `AccountDetail.tsx` to show data for the Account
 
 ```tsx
+import { Fragment } from "react";
 import { ViewComponentProps } from "@porrtal/r-api";
 import { accountData } from "../Data/AccountData";
 import Moment from "moment";
@@ -274,8 +273,8 @@ export function AccountDetail(props: ViewComponentProps) {
         {currentAccount?.name} ({currentAccount?.accountId}) - Account Detail
       </h3>
       <div className="AccountDetail_data-container">
-        {currentAccount?.orders.map((order) => (
-          <>
+        {currentAccount?.orders.map((order, index) => (
+          <Fragment key={index}>
             <span>{order.item}</span>
             <span>
               {"$" +
@@ -284,7 +283,7 @@ export function AccountDetail(props: ViewComponentProps) {
                   .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
             </span>
             <span>{Moment(order.date).format("YYYY-DD-MM")}</span>
-          </>
+          </Fragment>
         ))}
       </div>
     </div>
