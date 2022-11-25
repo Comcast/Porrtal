@@ -3,6 +3,7 @@ import { ViewComponentProps } from '@porrtal/r-api';
 import { accountData } from '../../data/account-data';
 import styles from './account-search.module.scss';
 import Moment from 'moment';
+import { Fragment } from 'react';
 
 export function AccountSearch(props: ViewComponentProps) {
   const searchText = useDebouncedSearchText();
@@ -19,7 +20,7 @@ export function AccountSearch(props: ViewComponentProps) {
             );
           })
           .map((account) => (
-            <>
+            <Fragment key={account.accountId}>
               <div>{account.name}</div>
               <div className={styles['orders-data-container']}>
                 {account?.orders.map((order) => (
@@ -35,7 +36,7 @@ export function AccountSearch(props: ViewComponentProps) {
                   </>
                 ))}
               </div>
-            </>
+            </Fragment>
           ))}
       </div>
     </div>
