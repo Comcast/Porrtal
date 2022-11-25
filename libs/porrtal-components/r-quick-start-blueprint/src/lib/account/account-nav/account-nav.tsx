@@ -1,6 +1,6 @@
 import { Icon } from '@blueprintjs/core';
 import { EntityMenu, useShellDispatch } from '@porrtal/r-shell';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { AccountData, fetchAccountData } from '../../data/account-data';
 import styles from './account-nav.module.scss';
 
@@ -43,9 +43,8 @@ export function AccountNav(props: AccountNavProps) {
             .filter((acct, ii) => ii < 3)
             .map((acct) => {
               return (
-                <div key={`menu-${acct.accountId}`}>
+                <Fragment key={acct.accountId}>
                   <EntityMenu
-                    key={`menu-${acct.accountId}`}
                     entityType="account"
                     state={{ accountId: acct.accountId }}
                   >
@@ -54,13 +53,13 @@ export function AccountNav(props: AccountNavProps) {
                       <span style={{ marginLeft: '5px' }}>{acct.name}</span>
                     </span>
                   </EntityMenu>
-                  <span key={`total-${acct.accountId}`} className={styles['cash-span']}>
+                  <span>
                     {'$' +
                       acct.total
                         .toFixed(0)
                         .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
                   </span>
-                </div>
+                </Fragment>
               );
             })}
         {!accountData && <div>loading data...</div>}

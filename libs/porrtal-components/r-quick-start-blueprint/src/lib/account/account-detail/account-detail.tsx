@@ -1,5 +1,5 @@
 import { ViewComponentProps } from '@porrtal/r-api';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import {
   Account,
   AccountData,
@@ -41,8 +41,8 @@ export function AccountDetail(props: ViewComponentProps) {
         {account?.name} ({account?.accountId}) - Account Detail
       </h3>
       <div className={styles['data-container']}>
-        {account?.orders.map((order) => (
-          <>
+        {account?.orders.map((order, index) => (
+          <Fragment key={index}>
             <span>{order.item}</span>
             <span>
               {'$' +
@@ -51,7 +51,7 @@ export function AccountDetail(props: ViewComponentProps) {
                   .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
             </span>
             <span>{Moment(order.date).format('YYYY-DD-MM')}</span>
-          </>
+          </Fragment>
         ))}
       </div>
     </div>

@@ -18,7 +18,7 @@
 
 .data-container {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr auto;
   margin-left: 15px;
   margin-right: 15px;
   margin-top: 15px;
@@ -28,8 +28,4 @@
   color: blue;
   text-decoration: underline;
   cursor: pointer;
-}
-
-.cash-span {
-  float: right;
 }
