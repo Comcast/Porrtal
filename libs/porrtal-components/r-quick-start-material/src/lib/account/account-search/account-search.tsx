@@ -23,8 +23,8 @@ export function AccountSearch(props: ViewComponentProps) {
             <Fragment key={account.accountId}>
               <div>{account.name}</div>
               <div className={styles['orders-data-container']}>
-                {account?.orders.map((order) => (
-                  <>
+                {account?.orders.map((order, index) => (
+                  <Fragment key={index}>
                     <span>{order.item}</span>
                     <span>
                       {'$' +
@@ -33,7 +33,7 @@ export function AccountSearch(props: ViewComponentProps) {
                           .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
                     </span>
                     <span>{Moment(order.date).format('YYYY-DD-MM')}</span>
-                  </>
+                  </Fragment>
                 ))}
               </div>
             </Fragment>
