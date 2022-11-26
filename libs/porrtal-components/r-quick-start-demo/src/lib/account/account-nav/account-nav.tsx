@@ -16,6 +16,17 @@ export function AccountNav(props: AccountNavProps) {
   return (
     <div className={styles['container']}>
       <h3 className={styles['title']}>Top Three Accounts</h3>
+      <div className={styles['new-account-container']}>
+        <p
+          className={styles['link-button']}
+          onClick={() =>
+            shellDispatch({ type: "launchView", viewId: "NewAccount" })
+          }
+        >
+          <Icon icon="add" />
+          <span style={{ marginLeft: "5px" }}>New Account</span>
+        </p>
+      </div>
       <div className={styles['data-container']}>
         {accountData &&
           accountData

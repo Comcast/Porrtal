@@ -11,7 +11,7 @@ In the command below, a long project name was chosen to differentiate this app f
 
 ### Open a terminal window
 
-[PowerShell](https://learn.microsoft.com/en-us/powershell/) on Windows, 
+[PowerShell](https://learn.microsoft.com/en-us/powershell/) on Windows,
 
 [Terminal](https://support.apple.com/guide/terminal/welcome/mac) on Mac
 
@@ -33,16 +33,18 @@ cd porrtal-react-blueprint-quick-start
 npm run start
 ```
 
-A browser should appear with the new react app.  You can also click the link to view the new react app in your browser: 
+### View in the browser
+
+A browser should appear with the new react app. You can also click the link to view the new react app in your browser:
 [https://localhost:3000](https://localhost:3000)
 
 ![React App](react-app.jpg)
 
-Note: We are using the [TypeScript](https://www.typescriptlang.org/) template.  TypeScript is an excellent language choice for large scale development.
+Note: We are using the [TypeScript](https://www.typescriptlang.org/) template. TypeScript is an excellent language choice for large scale development.
 
 ### Run the VS Code app
 
-From VS Code, open the folder `porrtal-react-blueprint-quick-start` (or whatever app name you chose above).  
+From VS Code, open the folder `porrtal-react-blueprint-quick-start` (or whatever app name you chose above).
 
 You should see something like this:
 

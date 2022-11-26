@@ -10,7 +10,7 @@ import ViewStack from '../view-stack/view-stack';
 import Search from '../search/search';
 import EntityMenu from '../entity-menu/entity-menu';
 import LoggerBanner from '../logger-banner/logger-banner';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import Banner from '../banner/banner';
 
 export interface ShellComponentsBlueprintProps {
@@ -32,19 +32,23 @@ export function ShellComponentsBlueprint(props: ShellComponentsBlueprintProps) {
   const shellDispatch = useShellDispatch();
 
   // register the blueprint logger-messages view
-  shellDispatch({
-    type: 'registerView',
-    view: {
-      viewId: 'logger-messages',
-      paneType: 'bottom',
-      launchAtStartup: false,
-      componentName: 'LoggerMessages',
-      componentModule: () => import('../logger-messages/logger-messages'),
-      key: 'logger-messages',
-      displayText: 'log',
-      displayIcon: 'notifications',
-    },
-  });
+  useEffect(
+    () =>
+      shellDispatch({
+        type: 'registerView',
+        view: {
+          viewId: 'logger-messages',
+          paneType: 'bottom',
+          launchAtStartup: false,
+          componentName: 'LoggerMessages',
+          componentModule: () => import('../logger-messages/logger-messages'),
+          key: 'logger-messages',
+          displayText: 'log',
+          displayIcon: 'notifications',
+        },
+      }),
+    [shellDispatch]
+  );
 
   return (
     <ShellComponentsContext.Provider value={shellComponents}>

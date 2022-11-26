@@ -469,7 +469,7 @@ function ViewStackContextMenu(
       )}
       {props.pane.arrange === 'tabs-left' && (
         <Tooltip title={props.item.displayText} placement="right">
-          <Icon style={{ position: 'relative', top: '3px' }}>
+          <Icon style={{ position: 'relative', top: '3px', fontSize: '2rem' }}>
             {props.item.displayIcon}
           </Icon>
         </Tooltip>

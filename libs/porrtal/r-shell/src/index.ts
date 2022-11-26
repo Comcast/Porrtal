@@ -10,3 +10,4 @@ export * from './lib/shell-components';
 export * from './lib/search-view-stack/search-view-stack';
 export * from './lib/banner-props';
 export * from './lib/user-banner-props';
+export * from './lib/shell-utilities/shell-utilities';

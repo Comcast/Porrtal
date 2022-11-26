@@ -12,9 +12,13 @@
   grid-column: 1 / -1;
 }
 
+.new-account-container {
+  margin-top: 30px;
+}
+
 .data-container {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
   margin-left: 15px;
   margin-right: 15px;
   margin-top: 15px;
@@ -24,4 +28,5 @@
   color: blue;
   text-decoration: underline;
   cursor: pointer;
+  width: 200px;
 }

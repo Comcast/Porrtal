@@ -40,7 +40,7 @@ function BannerMenu(props: BannerProps & { children: ReactNode | undefined }) {
   }
 
   if (!props.bannerData.childData || props.bannerData.childData.length < 1) {
-    return <>props.children</>;
+    return <div>{props.children}</div>;
   }
 
   return (

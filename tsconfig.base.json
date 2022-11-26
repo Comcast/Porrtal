@@ -42,6 +42,9 @@
       "@porrtal-components/r-quick-start-demo": [
         "libs/porrtal-components/r-quick-start-demo/src/index.ts"
       ],
+      "@porrtal-components/r-quick-start-material": [
+        "libs/porrtal-components/r-quick-start-material/src/index.ts"
+      ],
       "@porrtal-components/r-second-test-comp-lib": [
         "libs/porrtal-components/r-second-test-comp-lib/src/index.ts"
       ],

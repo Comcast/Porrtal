@@ -1,13 +1,13 @@
 # Getting Started
 
-*You can use the porrtal "quick links" to access the content of interest*
+_You can use the porrtal "quick links" to access the content of interest_
 
 ![Next Steps](next-steps.jpg)
 
 &nbsp;
 &nbsp;
 
-When you click on the upper left of the application, you will see a list of choices for next steps.  You are currently looking at the "porrtal.io" choice.
+When you click on the upper left of the application, you will see a list of choices for next steps. You are currently looking at the "porrtal.io" choice.
 
 Notice that each of the next three choices are available for both Angular and React.
 
