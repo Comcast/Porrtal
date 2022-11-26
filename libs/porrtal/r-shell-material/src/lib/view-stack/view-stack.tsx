@@ -26,8 +26,6 @@ import {
   paneTypes,
   ViewState,
 } from '@porrtal/r-api';
-import { isTemplateExpression } from 'typescript';
-import { info } from 'console';
 
 export function ViewStack(props: ViewStackProps) {
   const dispatch = useShellDispatch();
@@ -318,7 +316,8 @@ function ViewStackContextMenu(
         leftIcon={<Icon>info</Icon>}
         parentMenuOpen={true}
         label={'Info...'}
-      >
+        nonce={1}
+        >
         {props.item.userInfo.map((info) => (
           <IconMenuItem
             key={`userInfo-${info.state ? info.state['displayText'] : 'help'}`}
@@ -352,7 +351,8 @@ function ViewStackContextMenu(
         leftIcon={<Icon>build</Icon>}
         parentMenuOpen={true}
         label={'Dev Info...'}
-      >
+        nonce={1}
+        >
         {props.item.devInfo.map((info) => (
           <IconMenuItem
             key={`devInfo-${
@@ -397,6 +397,7 @@ function ViewStackContextMenu(
           leftIcon={<Icon>pivot_table_chart</Icon>}
           parentMenuOpen={true}
           label={'Arrange...'}
+          nonce={1}
         >
           {paneArrangements.map((paneArrangement) => (
             <IconMenuItem
@@ -422,6 +423,7 @@ function ViewStackContextMenu(
           leftIcon={<Icon>open_with</Icon>}
           parentMenuOpen={true}
           label={'Move to...'}
+          nonce={1}
         >
           {paneTypes
             .filter(
