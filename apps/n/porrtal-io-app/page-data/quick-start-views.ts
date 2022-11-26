@@ -13,7 +13,7 @@ export const getQuickStartViews = (uiLib: string): View[] => {
 
   const personIconName =
     uiLib === 'blueprint'
-      ? 'add' 
+      ? 'mugshot' 
       : 'account_box';
 
   const pathSearchIconName = 
