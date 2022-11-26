@@ -4,20 +4,35 @@ export const getQuickStartViews = (uiLib: string): View[] => {
   const libImport =
     uiLib === 'blueprint'
       ? () => import('@porrtal-components/r-quick-start-blueprint')
-      : () => import('@porrtal-components/r-quick-start-demo');
+      : () => import('@porrtal-components/r-quick-start-material');
 
-  return [
+  const addIconName =
+    uiLib === 'blueprint'
+      ? 'add' 
+      : 'add_circle_icon';
+
+  const personIconName =
+    uiLib === 'blueprint'
+      ? 'add' 
+      : 'account_box';
+
+  const pathSearchIconName = 
+    uiLib === 'blueprint'
+      ? 'path-search'
+      : 'travel_explore'
+  
+    return [
     {
       viewId: 'NewAccount',
       displayText: 'Create Account',
-      displayIcon: 'add',
+      displayIcon: addIconName,
       componentName: 'AccountCreate',
       componentModule: libImport,
     },
     {
       key: 'Account {accountId}',
       displayText: 'Account {accountId}',
-      displayIcon: 'mugshot',
+      displayIcon: personIconName,
       componentName: 'AccountDetail',
       entityType: 'account',
       componentModule: libImport,
@@ -25,7 +40,7 @@ export const getQuickStartViews = (uiLib: string): View[] => {
     {
       key: 'Billing {accountId}',
       displayText: 'Billing {accountId}',
-      displayIcon: 'mugshot',
+      displayIcon: personIconName,
       componentName: 'AccountBillingHistory',
       entityType: 'account',
       componentModule: libImport,
@@ -35,7 +50,7 @@ export const getQuickStartViews = (uiLib: string): View[] => {
       launchAtStartup: true,
       displayText: 'Quick Start',
       paneType: 'nav',
-      displayIcon: 'path-search',
+      displayIcon: pathSearchIconName,
       componentName: 'DocsNav',
       componentModule: libImport,
     },
@@ -44,54 +59,16 @@ export const getQuickStartViews = (uiLib: string): View[] => {
       launchAtStartup: true,
       displayText: 'Account Navigation',
       paneType: 'nav',
-      displayIcon: 'mugshot',
-      userInfo: [
-        {
-          viewId: 'info-markdown',
-          state: {
-            displayText: 'User Docs',
-            displayIcon: 'manual',
-            contentUrl:
-              'https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md',
-          },
-        },
-        {
-          viewId: 'info-youtube',
-          state: {
-            displayText: 'User Video',
-            displayIcon: 'mobile-video',
-            videoId: 'Z76QlSpYcck',
-          },
-        },
-      ],
-      devInfo: [
-        {
-          viewId: 'info-markdown',
-          state: {
-            displayText: 'Dev Docs',
-            displayIcon: 'manual',
-            contentUrl:
-              'https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md',
-          },
-        },
-        {
-          viewId: 'info-youtube',
-          state: {
-            displayText: 'Dev Video',
-            displayIcon: 'mobile-video',
-            videoId: 'Z76QlSpYcck',
-          },
-        },
-      ],
+      displayIcon: personIconName,
       componentName: 'AccountNav',
       componentModule: libImport,
     },
     {
       key: 'AccountSearch',
       launchAtStartup: true,
-      displayText: 'Account',
+      displayText: 'Account Search',
       paneType: 'search',
-      displayIcon: 'mugshot',
+      displayIcon: personIconName,
       componentName: 'AccountSearch',
       componentModule: libImport,
     },

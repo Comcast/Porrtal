@@ -21,6 +21,11 @@
             "glob": "**/*",
             "input": "libs/porrtal-components/r-quick-start-blueprint/porrtal-components-r-quick-start-blueprint",
             "output": "docs/porrtal-components-r-quick-start-blueprint"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/porrtal-components/r-quick-start-material/porrtal-components-r-quick-start-material",
+            "output": "docs/porrtal-components-r-quick-start-material"
           }
         ]
       },
