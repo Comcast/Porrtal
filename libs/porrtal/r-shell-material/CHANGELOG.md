@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/datumgeek/porrtal/compare/v0.3.0...v0.4.0) (2022-11-26)
+
+### Bug Fixes
+
+- **@porrtal/r-shell-material:** fix replaceable parameters in entity menu ([18d67f1](https://github.com/datumgeek/porrtal/commit/18d67f11a68fbbb0f88a82185d3f617a5a618a43))
+- **@porrtal/r-shell-material:** increase size of nav view stack icons ([00b7f0d](https://github.com/datumgeek/porrtal/commit/00b7f0d34a4c85c05b5661d69edc89e52e7321c6))
+- **@porrtal/r-shell-material:** use useEffect to register components to fix rendering error ([00f6e4f](https://github.com/datumgeek/porrtal/commit/00f6e4ff86857a31a7ac469703b24249df8bb82a))
+
 # [0.3.0](https://github.com/datumgeek/porrtal/compare/v0.2.0...v0.3.0) (2022-11-23)
 
 ### Features

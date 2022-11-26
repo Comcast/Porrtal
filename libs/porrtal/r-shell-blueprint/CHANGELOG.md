@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/datumgeek/porrtal/compare/v0.3.0...v0.4.0) (2022-11-26)
+
+### Bug Fixes
+
+- **@porrtal/r-shell-blueprint:** fix banner label when there is no banner child data ([ba30a1d](https://github.com/datumgeek/porrtal/commit/ba30a1d9fddc76b033ebd7efacd1b993ddd620a5))
+- **@porrtal/r-shell-blueprint:** fix formatting and remove unused import ([d12905b](https://github.com/datumgeek/porrtal/commit/d12905b7b5e632de188349f053704a8814d927bd))
+- **@porrtal/r-shell-blueprint:** fix rendering error with useEffect for shellDispatch registerView ([74cada8](https://github.com/datumgeek/porrtal/commit/74cada886d76d5bcd86cafbf66f7d721da16cbf5))
+- **@porrtal/r-shell-blueprint:** fix replaceable parameters in entity menu ([455cb9b](https://github.com/datumgeek/porrtal/commit/455cb9bc99e75aa79ec2238f1a6a4705f328f126))
+
 # [0.3.0](https://github.com/datumgeek/porrtal/compare/v0.2.0...v0.3.0) (2022-11-23)
 
 ### Features
