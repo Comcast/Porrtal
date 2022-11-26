@@ -3,7 +3,6 @@ import {
   useShellDispatch,
   useShellState,
   replaceParameters,
-  UseShellState,
   combineViewStateStateAndActionState,
 } from '@porrtal/r-shell';
 import { IconName, Menu, MenuItem } from '@blueprintjs/core';
@@ -21,13 +20,15 @@ export function EntityMenu(props: EntityMenuProps) {
           {shellState.views
             .filter((view) => view.entityType === props.entityType)
             .map((view) => {
-
               const newState = combineViewStateStateAndActionState(
                 view.state,
                 props.state
               );
-        
-              const newKey = replaceParameters(view.key ?? uuidv4(), newState ?? {}).replaced;
+
+              const newKey = replaceParameters(
+                view.key ?? uuidv4(),
+                newState ?? {}
+              ).replaced;
               const newDisplayText = replaceParameters(
                 view.displayText,
                 newState ?? {}
@@ -36,7 +37,7 @@ export function EntityMenu(props: EntityMenuProps) {
                 view.displayIcon ?? '',
                 newState ?? {}
               ).replaced;
-        
+
               return (
                 <MenuItem
                   key={newKey}
