@@ -23,7 +23,7 @@ export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
           ) : null}
         </div>
         <div className={styles['content']}>
-          <Split initialPrimarySize="300px" resetOnDoubleClick>
+          <Split initialPrimarySize="320px" resetOnDoubleClick>
             {shellState.panes.nav.viewStates.length > 0 && (
               <div className={styles['nav']}>
                 <shellComponents.ViewStack
