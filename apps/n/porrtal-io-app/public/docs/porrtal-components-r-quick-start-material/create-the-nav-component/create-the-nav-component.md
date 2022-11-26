@@ -9,7 +9,7 @@ Next, we will turn our generic React app into a Porrtal app with a simple Nav vi
 From the terminal (in the porrtal-react-material-quick-start directory):
 
 ```bash
-npm install @mui/material @emotion/react @emotion/styled --save
+npm install @mui/material @emotion/react @emotion/styled mui-nested-menu --save
 ```
 
 ### Install porrtal npm packages
