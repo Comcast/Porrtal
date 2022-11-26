@@ -1,11 +1,14 @@
 import { Icon, Menu } from '@mui/material';
 import {
+  combineViewStateStateAndActionState,
   EntityMenuProps,
+  replaceParameters,
   useShellDispatch,
   useShellState,
 } from '@porrtal/r-shell';
 import { IconMenuItem } from 'mui-nested-menu';
 import { useState, MouseEvent } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export function EntityMenu(props: EntityMenuProps) {
   const shellState = useShellState();
@@ -45,21 +48,41 @@ export function EntityMenu(props: EntityMenuProps) {
       >
         {shellState.views
           .filter((view) => view.entityType === props.entityType)
-          .map((view) => (
-            <IconMenuItem
-              key={view.viewId}
-              leftIcon={<Icon>{view.displayIcon}</Icon>}
-              label={view.displayText}
-              onClick={() => {
-                dispatch({
-                  type: 'launchView',
-                  viewId: view.viewId ?? view.componentName,
-                  state: props.state,
-                });
-                setAnchorEl(null);
-              }}
-            />
-          ))}
+          .map((view) => {
+            const newState = combineViewStateStateAndActionState(
+              view.state,
+              props.state
+            );
+
+            const newKey = replaceParameters(
+              view.key ?? uuidv4(),
+              newState ?? {}
+            ).replaced;
+            const newDisplayText = replaceParameters(
+              view.displayText,
+              newState ?? {}
+            ).replaced;
+            const newDisplayIcon = replaceParameters(
+              view.displayIcon ?? '',
+              newState ?? {}
+            ).replaced;
+
+          return (
+              <IconMenuItem
+                key={newKey}
+                leftIcon={<Icon>{newDisplayIcon}</Icon>}
+                label={newDisplayText}
+                onClick={() => {
+                  dispatch({
+                    type: 'launchView',
+                    viewId: view.viewId ?? view.componentName,
+                    state: newState,
+                  });
+                  setAnchorEl(null);
+                }}
+              />
+            );
+          })}
       </Menu>
     </>
   );
