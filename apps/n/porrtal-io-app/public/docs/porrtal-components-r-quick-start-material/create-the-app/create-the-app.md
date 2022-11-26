@@ -18,13 +18,13 @@ In the command below, a long project name was chosen to differentiate this app f
 ### Create the app
 
 ```bash
-npx create-react-app porrtal-react-material-quick-start --template typescript
+npx create-react-app@latest porrtal-react-material-quick-start --template typescript
 ```
 
 ### Change into the newly created directory
 
 ```bash
-cd porrtal-react-blueprint-quick-start
+cd porrtal-react-material-quick-start
 ```
 
 ### Now run the app.
@@ -44,7 +44,7 @@ Note: We are using the [TypeScript](https://www.typescriptlang.org/) template. T
 
 ### Run the VS Code app
 
-From VS Code, open the folder `porrtal-react-blueprint-quick-start` (or whatever app name you chose above).
+From VS Code, open the folder `porrtal-react-material-quick-start` (or whatever app name you chose above).
 
 You should see something like this:
 

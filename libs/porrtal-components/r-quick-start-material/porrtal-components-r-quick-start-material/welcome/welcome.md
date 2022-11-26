@@ -2,7 +2,7 @@
 
 ## Other quick-start Options
 
-[Porrtal quick-start for React using the Blueprint UI (MUI) Library](/react/quick-start?reactUiLibrary=blueprint)
+[Porrtal quick-start for React using the Blueprint UI Library](/react/quick-start?reactUiLibrary=blueprint)
 
 [Porrtal quick-start for Angular using the Material UI Library](/angular/quick-start)
 
