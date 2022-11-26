@@ -4,18 +4,18 @@ Next, we will turn our generic React app into a Porrtal app with a simple Nav vi
 
 ## Install npm packages
 
-### Install blueprint npm packages
+### Install material npm packages
 
-From the terminal (in the porrtal-react-blueprint-quick-start directory):
+From the terminal (in the porrtal-react-material-quick-start directory):
 
 ```bash
-npm install @blueprintjs/core @blueprintjs/icons @blueprintjs/popover2 --save
+npm install @mui/material @emotion/react @emotion/styled --save
 ```
 
 ### Install porrtal npm packages
 
 ```bash
-npm install @porrtal/r-api @porrtal/r-shell @porrtal/r-shell-blueprint @porrtal/r-split --save --legacy-peer-deps
+npm install @porrtal/r-api @porrtal/r-shell @porrtal/r-shell-material @porrtal/r-split --save --legacy-peer-deps
 ```
 
 ```bash
