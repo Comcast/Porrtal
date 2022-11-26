@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/datumgeek/porrtal/compare/v0.4.0...v0.4.1) (2022-11-26)
+
+### Bug Fixes
+
+- **@porrtal-components/r-quick-start-material:** update nav docs ([e0a782b](https://github.com/datumgeek/porrtal/commit/e0a782b273ac52eda7e9c8ce3756dd559fc3a9d3))
+
 # [0.4.0](https://github.com/datumgeek/porrtal/compare/v0.3.0...v0.4.0) (2022-11-26)
 
 ### Bug Fixes

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/datumgeek/porrtal/compare/v0.4.0...v0.4.1) (2022-11-26)
+
+### Bug Fixes
+
+- **@porrtal-components/r-quick-start-material:** update nav docs ([e0a782b](https://github.com/datumgeek/porrtal/commit/e0a782b273ac52eda7e9c8ce3756dd559fc3a9d3))
+- **@porrtal/r-shell-material:** fix banner label when there is no banner child data ([289e11c](https://github.com/datumgeek/porrtal/commit/289e11c06f74cfdda5bf47ad31228fbdfb2323c4))
+- **@porrtal/r-shell-material:** fix weird nonce error... update to newer version of mui-nested-menu ([1bfd0c5](https://github.com/datumgeek/porrtal/commit/1bfd0c50da11294aef918758dda0b57aa0e7bd0b))
+
 # [0.4.0](https://github.com/datumgeek/porrtal/compare/v0.3.0...v0.4.0) (2022-11-26)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
   "name": "@porrtal/a-shell-bootstrap",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "peerDependencies": {
     "@angular/common": "^14.1.0",
     "@angular/core": "^14.1.0"
