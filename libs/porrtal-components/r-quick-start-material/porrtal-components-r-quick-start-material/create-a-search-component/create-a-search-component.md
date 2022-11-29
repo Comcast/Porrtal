@@ -10,9 +10,9 @@ NOTE: If there are no registered search views, the search textbox will be hidden
 import { useDebouncedSearchText } from '@porrtal/r-shell';
 import { ViewComponentProps } from '@porrtal/r-api';
 import { accountData } from '../Data/AccountData';
-import './AccountSearch.css';
 import Moment from 'moment';
 import { Fragment } from 'react';
+import "./AccountSearch.css";
 
 export function AccountSearch(props: ViewComponentProps) {
   const searchText = useDebouncedSearchText();
@@ -29,7 +29,7 @@ export function AccountSearch(props: ViewComponentProps) {
             );
           })
           .map((account) => (
-            <div key={account.accountId}>
+            <Fragment key={account.accountId}>
               <div>{account.name}</div>
               <div className="AccountSearch_orders-data-container">
                 {account?.orders.map((order, index) => (
@@ -45,7 +45,7 @@ export function AccountSearch(props: ViewComponentProps) {
                   </Fragment>
                 ))}
               </div>
-            </div>
+            </Fragment>
           ))}
       </div>
     </div>
@@ -99,31 +99,20 @@ export default AccountSearch;
 ### Update `App.tsx`
 
 ```tsx
-import "@blueprintjs/core/lib/css/blueprint.css";
-import "@blueprintjs/icons/lib/css/blueprint-icons.css";
-import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
-
 import { View } from "@porrtal/r-api";
 import { BannerData, ShellState } from "@porrtal/r-shell";
-import { ShellBlueprint } from "@porrtal/r-shell-blueprint";
+import { ShellMaterial } from "@porrtal/r-shell-material";
 
-export function Index() {
+import "./App.css";
+
+function App() {
   const porrtalViews: View[] = [
-    {
-      key: "AccountSearch",
-      launchAtStartup: true,
-      displayText: "Account",
-      paneType: "search",
-      displayIcon: "mugshot",
-      componentName: "AccountSearch",
-      componentModule: () => import("./Account/AccountSearch"),
-    },
     {
       key: "AccountNav",
       launchAtStartup: true,
       displayText: "Account Navigation",
       paneType: "nav",
-      displayIcon: "mugshot",
+      displayIcon: "account_box",
       componentName: "AccountNav",
       componentModule: () => import("./Account/AccountNav"),
     },
@@ -138,8 +127,8 @@ export function Index() {
     },
     {
       viewId: "AccountDetail",
-      key: "Account Detail {accountId}",
-      displayText: "Account Detail {accountId}",
+      key: 'Account Detail {accountId}',
+      displayText: 'Account Detail {accountId}',
       paneType: "main",
       displayIcon: "mugshot",
       componentName: "AccountDetail",
@@ -148,30 +137,37 @@ export function Index() {
     },
     {
       viewId: "AccountBilling",
-      key: "Account Billing {accountId}",
-      displayText: "Account Billing {accountId}",
+      key: 'Account Billing {accountId}',
+      displayText: 'Account Billing {accountId}',
       paneType: "main",
       displayIcon: "mugshot",
       componentName: "AccountBilling",
       entityType: "account",
       componentModule: () => import("./Account/AccountBilling"),
     },
+    {
+      key: 'AccountSearch',
+      launchAtStartup: true,
+      displayText: 'Account Search',
+      paneType: 'search',
+      displayIcon: "mugshot",
+      componentName: 'AccountSearch',
+      componentModule: () => import("./Account/AccountSearch"),
+    },
   ];
-
   const porrtalBanner: BannerData = {
     displayText: "My Quick Start App",
-    displayIcon: "build",
-    childData: [],
+    displayIcon: "construction",
+    childData: []
   };
-
   return (
     <ShellState views={porrtalViews}>
-      <ShellBlueprint bannerData={porrtalBanner} />
+      <ShellMaterial bannerData={porrtalBanner} />
     </ShellState>
   );
 }
 
-export default Index;
+export default App;
 ```
 
 ### Update `index.css`
@@ -195,3 +191,7 @@ html {
   line-height: 1.5;
 }
 ```
+
+### Success !!
+
+![account search](./account-search.png)

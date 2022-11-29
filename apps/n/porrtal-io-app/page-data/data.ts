@@ -11,7 +11,7 @@ export const getReactUiLibrary = (): string => {
     return reactUiLibrary;
   }
 
-  reactUiLibrary = localStorage.getItem('reactUiLibrary');
+  reactUiLibrary = localStorage.getItem('reactUiLibrary') ?? '';
   if (reactUiLibs.has(reactUiLibrary)) {
     return reactUiLibrary;
   }
@@ -30,7 +30,7 @@ export const getAngularUiLibrary = (): string => {
     return angularUiLibrary;
   }
 
-  angularUiLibrary = localStorage.getItem('angularUiLibrary');
+  angularUiLibrary = localStorage.getItem('angularUiLibrary') ?? '';
   if (angularUiLibs.has(angularUiLibrary)) {
     return angularUiLibrary;
   }
