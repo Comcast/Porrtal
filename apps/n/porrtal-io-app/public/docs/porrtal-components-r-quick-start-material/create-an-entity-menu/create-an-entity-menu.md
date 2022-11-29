@@ -23,23 +23,20 @@ export default AccountDetail;
 ### Register AccountBilling and AccountDetail views in `App.tsx`
 
 ```tsx
-import '@blueprintjs/core/lib/css/blueprint.css';
-import '@blueprintjs/icons/lib/css/blueprint-icons.css';
-import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
+import { View } from "@porrtal/r-api";
+import { BannerData, ShellState } from "@porrtal/r-shell";
+import { ShellMaterial } from "@porrtal/r-shell-material";
 
-import { View } from '@porrtal/r-api';
-import { BannerData, ShellState } from '@porrtal/r-shell';
-import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
+import "./App.css";
 
-export function Index() {
-
+function App() {
   const porrtalViews: View[] = [
     {
       key: "AccountNav",
       launchAtStartup: true,
       displayText: "Account Navigation",
       paneType: "nav",
-      displayIcon: "mugshot",
+      displayIcon: "account_box",
       componentName: "AccountNav",
       componentModule: () => import("./Account/AccountNav"),
     },
@@ -73,31 +70,29 @@ export function Index() {
       componentModule: () => import("./Account/AccountBilling"),
     },
   ];
-
   const porrtalBanner: BannerData = {
     displayText: "My Quick Start App",
-    displayIcon: "build",
+    displayIcon: "construction",
     childData: []
   };
-
   return (
     <ShellState views={porrtalViews}>
-      <ShellBlueprint bannerData={porrtalBanner} />
+      <ShellMaterial bannerData={porrtalBanner} />
     </ShellState>
   );
-  }
+}
 
-export default Index;
+export default App;
 ```
 
 ### Update `AccountNav.tsx` with the EntityMenu
 
 ```tsx
+import { Icon } from "@mui/material";
+import { EntityMenu, useShellDispatch } from "@porrtal/r-shell";
 import { Fragment } from "react";
-import { Icon } from "@blueprintjs/core";
 import { accountData } from "../Data/AccountData";
 import "./AccountNav.css";
-import { EntityMenu, useShellDispatch } from "@porrtal/r-shell";
 
 /* eslint-disable-next-line */
 export interface AccountNavProps {}
@@ -114,45 +109,44 @@ export function AccountNav(props: AccountNavProps) {
             shellDispatch({ type: "launchView", viewId: "NewAccount" })
           }
         >
-          <Icon icon="add" />
+          <Icon>add_circle</Icon>
           <span style={{ marginLeft: "5px" }}>New Account</span>
         </p>
       </div>
       <div className="AccountNav_data-container">
-        {accountData &&
-          accountData
-            .map((account) => {
-              const total = account?.orders.reduce((accumulator, order) => {
-                return accumulator + order.amount;
-              }, 0);
-              return {
-                ...account,
-                total,
-              };
-            })
-            .sort((a, b) => b.total - a.total)
-            .filter((acct, ii) => ii < 3)
-            .map((acct) => {
-              return (
-                <Fragment key={`menu-${acct.accountId}`}>
-                  <EntityMenu
-                    entityType="account"
-                    state={{ accountId: acct.accountId }}
-                  >
-                    <span className="AccountNav_link-button">
-                      <Icon icon="mugshot" />
-                      <span style={{ marginLeft: "5px" }}>{acct.name}</span>
-                    </span>
-                  </EntityMenu>
-                  <span>
-                    {"$" +
-                      acct.total
-                        .toFixed(0)
-                        .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
+        {accountData
+          .map((account) => {
+            const total = account?.orders.reduce((accumulator, order) => {
+              return accumulator + order.amount;
+            }, 0);
+            return {
+              ...account,
+              total,
+            };
+          })
+          .sort((a, b) => b.total - a.total)
+          .filter((acct, ii) => ii < 3)
+          .map((acct) => {
+            return (
+              <Fragment key={acct.accountId}>
+                <EntityMenu
+                  entityType="account"
+                  state={{ accountId: acct.accountId }}
+                >
+                  <span className="AccountNav_link-button">
+                    <Icon>account_box</Icon>
+                    <span style={{ marginLeft: "5px" }}>{acct.name}</span>
                   </span>
-                </Fragment>
-              );
-            })}
+                </EntityMenu>
+                <span>
+                  {"$" +
+                    acct.total
+                      .toFixed(0)
+                      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
+                </span>
+              </Fragment>
+            );
+          })}
       </div>
     </div>
   );
@@ -185,6 +179,7 @@ export default AccountNav;
 .AccountNav_data-container {
   display: grid;
   grid-template-columns: 1fr auto;
+  align-items: center;
   margin-left: 15px;
   margin-right: 15px;
   margin-top: 15px;
@@ -194,6 +189,10 @@ export default AccountNav;
   color: blue;
   text-decoration: underline;
   cursor: pointer;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  justify-items: flex-end;
+  align-items: center;
 }
 ```
 
@@ -246,18 +245,18 @@ npm install moment --save
 ### Update `AccountDetail.tsx` to show data for the Account
 
 ```tsx
-import { Fragment } from "react";
 import { ViewComponentProps } from "@porrtal/r-api";
+import { Fragment } from "react";
 import { accountData } from "../Data/AccountData";
-import Moment from "moment";
 import "./AccountDetail.css";
+import Moment from "moment";
 
 export function AccountDetail(props: ViewComponentProps) {
-  const currentAccount = accountData.find(
+  const account = accountData.find(
     (acct) => acct.accountId === props.viewState?.state?.["accountId"]
   );
 
-  if (currentAccount === null) {
+  if (account === null) {
     return (
       <div>
         <span>accountId:&nbsp;</span>
@@ -270,10 +269,10 @@ export function AccountDetail(props: ViewComponentProps) {
   return (
     <div className="AccountDetail_container">
       <h3 className="AccountDetail_title">
-        {currentAccount?.name} ({currentAccount?.accountId}) - Account Detail
+        {account?.name} ({account?.accountId}) - Account Detail
       </h3>
       <div className="AccountDetail_data-container">
-        {currentAccount?.orders.map((order, index) => (
+        {account?.orders.map((order, index) => (
           <Fragment key={index}>
             <span>{order.item}</span>
             <span>
@@ -292,3 +291,7 @@ export function AccountDetail(props: ViewComponentProps) {
 
 export default AccountDetail;
 ```
+
+### Success !! 
+
+![account detail](./account-detail.png)

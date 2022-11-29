@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/datumgeek/porrtal/compare/v0.4.0...v0.4.1) (2022-11-26)
+
+**Note:** Version bump only for package @porrtal-components/r-quick-start-demo
+
+# [0.4.0](https://github.com/datumgeek/porrtal/compare/v0.3.0...v0.4.0) (2022-11-26)
+
+### Bug Fixes
+
+- **@porrtal-components/r-quick-start-blueprint:** add key at correct level for react rendering ([e58ce4b](https://github.com/datumgeek/porrtal/commit/e58ce4b691eff6c803164e8d9ba5c6eb4e6cd248))
+
+### Features
+
+- **@porrtal-components/r-quick-start-blueprint:** add docs and code to show how to launch a view ([9676478](https://github.com/datumgeek/porrtal/commit/96764783c0094eb4f069bfe45298c3a83bab4f77))
+
 # [0.3.0](https://github.com/datumgeek/porrtal/compare/v0.2.0...v0.3.0) (2022-11-23)
 
 **Note:** Version bump only for package @porrtal-components/r-quick-start-demo

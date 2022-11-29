@@ -11,7 +11,7 @@ import {
   Tabs,
   Tooltip,
 } from '@mui/material';
-import React, { Dispatch, useMemo } from 'react';
+import React, { Dispatch, useMemo, MouseEvent } from 'react';
 import {
   ShellAction,
   useShellDispatch,
@@ -26,8 +26,8 @@ import {
   paneTypes,
   ViewState,
 } from '@porrtal/r-api';
-import { isTemplateExpression } from 'typescript';
-import { info } from 'console';
+import { v4 as uuidv4 } from 'uuid';
+import { MenuItemData } from 'mui-nested-menu';
 
 export function ViewStack(props: ViewStackProps) {
   const dispatch = useShellDispatch();
@@ -289,168 +289,119 @@ function ViewStackContextMenu(
     search: 'clear',
   };
 
-  const optionalMenus = [];
-  if (props.pane.paneType !== 'search') {
-    optionalMenus.push(
-      <IconMenuItem
-        key="close-tab"
-        leftIcon={<Icon>clear</Icon>}
-        label="close tab"
-        onClick={
-          ((evt: React.MouseEvent<HTMLElement>) => {
-            props.dispatch({ type: 'deleteViewState', key: props.item.key });
-            evt.stopPropagation();
-          }) as () => void
-        }
-      ></IconMenuItem>,
-      <Divider key="divider-1" />
-    );
-  }
-
-  if (
-    props.showUserInfo &&
+  const menuItemsData: MenuItemData[] = [
+    {
+      uid: 'close-tab',
+      label: 'close tab',
+      leftIcon: <Icon onClick={() => alert('close me...')}>clear</Icon>,
+      callback: () =>
+        ((evt: React.MouseEvent<HTMLElement>) => {
+          props.dispatch({ type: 'deleteViewState', key: props.item.key });
+          evt.stopPropagation();
+        }) as () => void,
+    },
+    {
+      Divider: <Divider key="divider-1" />,
+    },
+    ...(props.showUserInfo &&
     props.item.userInfo &&
     props.item.userInfo.length > 0
-  ) {
-    optionalMenus.push(
-      <NestedMenuItem
-        key={'userInfo'}
-        leftIcon={<Icon>info</Icon>}
-        parentMenuOpen={true}
-        label={'Info...'}
-      >
-        {props.item.userInfo.map((info) => (
-          <IconMenuItem
-            key={`userInfo-${info.state ? info.state['displayText'] : 'help'}`}
-            leftIcon={
+      ? [
+          ...props.item.userInfo.map((info) => ({
+            uid: `info ${info.viewId}`,
+            label: info.state
+              ? (info.state['displayText'] as string)
+              : 'user help',
+            leftIcon: (
               <Icon className="material-icons-outlined">
-                {info.state ? (info.state['displayIcon'] as string) : 'help'}
+                ,{info.state ? (info.state['displayIcon'] as string) : 'help'}
               </Icon>
-            }
-            label={info.state ? (info.state['displayText'] as string) : 'help'}
-            onClick={() =>
+            ),
+            callback: () =>
               props.dispatch({
                 type: 'launchView',
                 viewId: info.viewId,
                 state: info.state,
-              })
-            }
-          ></IconMenuItem>
-        ))}
-      </NestedMenuItem>
-    );
-  }
-
-  if (
-    props.showDevInfo &&
-    props.item.devInfo &&
-    props.item.devInfo.length > 0
-  ) {
-    optionalMenus.push(
-      <NestedMenuItem
-        key={'userInfo'}
-        leftIcon={<Icon>build</Icon>}
-        parentMenuOpen={true}
-        label={'Dev Info...'}
-      >
-        {props.item.devInfo.map((info) => (
-          <IconMenuItem
-            key={`devInfo-${
-              info.state ? info.state['displayText'] : 'dev help'
-            }`}
-            leftIcon={
+              }),
+          })),
+        ]
+      : []),
+    ...(props.showDevInfo && props.item.devInfo && props.item.devInfo.length > 0
+      ? [
+          ...props.item.devInfo.map((info) => ({
+            uid: `info ${info.viewId}`,
+            label: info.state
+              ? (info.state['displayText'] as string)
+              : 'dev help',
+            leftIcon: (
               <Icon className="material-icons-outlined">
-                {info.state ? (info.state['displayIcon'] as string) : 'build'}
+                ,{info.state ? (info.state['displayIcon'] as string) : 'build'}
               </Icon>
-            }
-            label={
-              info.state ? (info.state['displayText'] as string) : 'dev help'
-            }
-            onClick={() =>
+            ),
+            callback: () =>
               props.dispatch({
                 type: 'launchView',
                 viewId: info.viewId,
                 state: info.state,
-              })
-            }
-          ></IconMenuItem>
-        ))}
-      </NestedMenuItem>
-    );
-  }
-
-  if (
-    (props.showUserInfo &&
-      props.item.userInfo &&
-      props.item.userInfo.length > 0) ||
-    (props.showDevInfo && props.item.devInfo && props.item.devInfo.length > 0)
-  ) {
-    optionalMenus.push(<Divider key="divider-1" />);
-  }
+              }),
+          })),
+        ]
+      : []),
+    {
+      uid: 'Arrange...',
+      label: 'Arrange...',
+      leftIcon: <Icon>pivot_table_chart</Icon>,
+      items: [
+        ...paneArrangements.map((paneArrangement) => ({
+          uid: paneArrangement,
+          label: paneArrangement,
+          leftIcon: (
+            <Icon className="material-icons-outlined">
+              {props.pane.arrange === paneArrangement ? 'done' : ''}
+            </Icon>
+          ),
+          callback: () =>
+            props.dispatch({
+              type: 'arrangePane',
+              pane: props.pane,
+              paneArrangement,
+            }),
+        })),
+      ],
+    },
+    {
+      uid: 'Move to...',
+      label: 'Move to...',
+      leftIcon: <Icon>open_with</Icon>,
+      items: [
+        ...paneTypes
+          .filter(
+            (paneType) =>
+              paneType !== 'search' && paneType !== props.pane.paneType
+          )
+          .map((paneType) => ({
+            uid: `${paneType} pane`,
+            label: `${paneType} pane`,
+            leftIcon: (
+              <Icon className="material-icons-outlined">
+                {moveIcons[paneType]}
+              </Icon>
+            ),
+            callback: () =>
+              props.dispatch({
+                type: 'moveView',
+                key: props.item.key,
+                toPane: paneType,
+              }),
+          })),
+      ],
+    },
+  ];
 
   return (
-    <ContextMenu
-      menuItems={[
-        ...optionalMenus,
-        <NestedMenuItem
-          key={'arrange'}
-          leftIcon={<Icon>pivot_table_chart</Icon>}
-          parentMenuOpen={true}
-          label={'Arrange...'}
-        >
-          {paneArrangements.map((paneArrangement) => (
-            <IconMenuItem
-              key={`arrange-${paneArrangement}`}
-              leftIcon={
-                <Icon className="material-icons-outlined">
-                  {props.pane.arrange === paneArrangement ? 'done' : ''}
-                </Icon>
-              }
-              label={`${paneArrangement}`}
-              onClick={() =>
-                props.dispatch({
-                  type: 'arrangePane',
-                  pane: props.pane,
-                  paneArrangement,
-                })
-              }
-            ></IconMenuItem>
-          ))}
-        </NestedMenuItem>,
-        <NestedMenuItem
-          key={'move'}
-          leftIcon={<Icon>open_with</Icon>}
-          parentMenuOpen={true}
-          label={'Move to...'}
-        >
-          {paneTypes
-            .filter(
-              (paneType) =>
-                paneType !== 'search' && paneType !== props.pane.paneType
-            )
-            .map((paneType) => (
-              <IconMenuItem
-                key={`move-to-${paneType}`}
-                leftIcon={
-                  <Icon className="material-icons-outlined">
-                    {moveIcons[paneType]}
-                  </Icon>
-                }
-                label={`${paneType} pane`}
-                onClick={() =>
-                  props.dispatch({
-                    type: 'moveView',
-                    key: props.item.key,
-                    toPane: paneType,
-                  })
-                }
-              ></IconMenuItem>
-            ))}
-        </NestedMenuItem>,
-      ]}
-    >
+    <ContextMenu menuItemsData={menuItemsData}>
       {props.pane.arrange !== 'tabs-left' && (
-        <span>
+        <div>
           <Icon style={{ position: 'relative', top: '5px' }}>
             {props.item.displayIcon}
           </Icon>
@@ -458,21 +409,24 @@ function ViewStackContextMenu(
           {props.item.displayText}&nbsp;
           <Icon
             style={{ position: 'relative', top: '5px' }}
-            onClick={(evt) => {
-              props.dispatch({ type: 'deleteViewState', key: props.item.key });
-              evt.stopPropagation();
-            }}
+            onClick={(evt) =>
+              props.dispatch({ type: 'deleteViewState', key: props.item.key })
+            }
           >
             clear
           </Icon>
-        </span>
+        </div>
       )}
       {props.pane.arrange === 'tabs-left' && (
-        <Tooltip title={props.item.displayText} placement="right">
-          <Icon style={{ position: 'relative', top: '3px', fontSize: '2rem' }}>
-            {props.item.displayIcon}
-          </Icon>
-        </Tooltip>
+        <div>
+          <Tooltip title={props.item.displayText} placement="right">
+            <Icon
+              style={{ position: 'relative', top: '3px', fontSize: '2rem' }}
+            >
+              {props.item.displayIcon}
+            </Icon>
+          </Tooltip>
+        </div>
       )}
     </ContextMenu>
   );

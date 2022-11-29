@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/datumgeek/porrtal/compare/v0.4.0...v0.4.1) (2022-11-26)
+
+### Bug Fixes
+
+- **@porrtal-components/r-quick-start-material:** update nav docs ([e0a782b](https://github.com/datumgeek/porrtal/commit/e0a782b273ac52eda7e9c8ce3756dd559fc3a9d3))
+- **@porrtal/r-shell-material:** fix banner label when there is no banner child data ([289e11c](https://github.com/datumgeek/porrtal/commit/289e11c06f74cfdda5bf47ad31228fbdfb2323c4))
+- **@porrtal/r-shell-material:** fix weird nonce error... update to newer version of mui-nested-menu ([1bfd0c5](https://github.com/datumgeek/porrtal/commit/1bfd0c50da11294aef918758dda0b57aa0e7bd0b))
+
+# [0.4.0](https://github.com/datumgeek/porrtal/compare/v0.3.0...v0.4.0) (2022-11-26)
+
+### Bug Fixes
+
+- **@porrtal-components/r-quick-start-blueprint:** add key at correct level for react rendering ([e58ce4b](https://github.com/datumgeek/porrtal/commit/e58ce4b691eff6c803164e8d9ba5c6eb4e6cd248))
+- **@porrtal-components/r-quick-start-blueprint:** fix key error and nav icon ([29974bb](https://github.com/datumgeek/porrtal/commit/29974bbf6b60e764f05a572010e68296d6d0919a))
+- **@porrtal-components/r-quick-start-blueprint:** fix key issue in entity menu docs ([3a53deb](https://github.com/datumgeek/porrtal/commit/3a53debd53291b113c1297aff13a4cbdc5b3f4c5))
+- **@porrtal-components/r-quick-start-blueprint:** fix missing key in rendering for account search ([2deff05](https://github.com/datumgeek/porrtal/commit/2deff053081904d3ea323d4d4ede639852efcc7f))
+- **@porrtal-components/r-quick-start-blueprint:** fix missing key rendering errors ([51eb3cc](https://github.com/datumgeek/porrtal/commit/51eb3ccc2a4079a9eee8e8964c6a4274a6f2bda7))
+- **@porrtal-components/r-quick-start-demo:** fix npm install problem ([0f843e5](https://github.com/datumgeek/porrtal/commit/0f843e542133a636884a8e175156e0dac2506bdd))
+- **@porrtal-components/r-quick-start-material:** fix alignment of docs nav items ([385eda1](https://github.com/datumgeek/porrtal/commit/385eda1fc72931299e59302f9ff5b66592f3a368))
+- **@porrtal-components/r-quick-start-material:** fix key error in account search ([32823d6](https://github.com/datumgeek/porrtal/commit/32823d63420d15a19bfb8f9068d0e32fe4bf0516))
+- **@porrtal/r-shell-blueprint:** fix banner label when there is no banner child data ([ba30a1d](https://github.com/datumgeek/porrtal/commit/ba30a1d9fddc76b033ebd7efacd1b993ddd620a5))
+- **@porrtal/r-shell-blueprint:** fix formatting and remove unused import ([d12905b](https://github.com/datumgeek/porrtal/commit/d12905b7b5e632de188349f053704a8814d927bd))
+- **@porrtal/r-shell-blueprint:** fix rendering error with useEffect for shellDispatch registerView ([74cada8](https://github.com/datumgeek/porrtal/commit/74cada886d76d5bcd86cafbf66f7d721da16cbf5))
+- **@porrtal/r-shell-blueprint:** fix replaceable parameters in entity menu ([455cb9b](https://github.com/datumgeek/porrtal/commit/455cb9bc99e75aa79ec2238f1a6a4705f328f126))
+- **@porrtal/r-shell-material:** fix replaceable parameters in entity menu ([18d67f1](https://github.com/datumgeek/porrtal/commit/18d67f11a68fbbb0f88a82185d3f617a5a618a43))
+- **@porrtal/r-shell-material:** increase size of nav view stack icons ([00b7f0d](https://github.com/datumgeek/porrtal/commit/00b7f0d34a4c85c05b5661d69edc89e52e7321c6))
+- **@porrtal/r-shell-material:** use useEffect to register components to fix rendering error ([00f6e4f](https://github.com/datumgeek/porrtal/commit/00f6e4ff86857a31a7ac469703b24249df8bb82a))
+- **@porrtal/r-shell:** format document shell-layout-splitter ([5ba2e53](https://github.com/datumgeek/porrtal/commit/5ba2e536c4f95f8c48545b660e007273ba10d587))
+- **@porrtal/r-shell:** make nav area initial width 300px ([fc519e3](https://github.com/datumgeek/porrtal/commit/fc519e32c5878a7f7cc3a4740a6814e20f1b5f94))
+- **@porrtal/r-shell:** set nav width to 320px ([1c2a71d](https://github.com/datumgeek/porrtal/commit/1c2a71dd72699586a1a5c27149659a7c01db9cc0))
+- **@porrtal/r-shell:** update background for components to very light gray F3F3F3 ([d816be1](https://github.com/datumgeek/porrtal/commit/d816be1d844a859c240498926a79d1d5d0dc0d6b))
+
+### Features
+
+- **@porrtal-components/r-quick-start-blueprint:** add docs and code to show how to launch a view ([9676478](https://github.com/datumgeek/porrtal/commit/96764783c0094eb4f069bfe45298c3a83bab4f77))
+- **@porrtal-components/r-quick-start-blueprint:** add docs for account search view ([52e20f9](https://github.com/datumgeek/porrtal/commit/52e20f9028292afd43ea6e1de8b43820ce1ff835))
+- **@porrtal-components/r-quick-start-blueprint:** add next steps docs ([4f6787d](https://github.com/datumgeek/porrtal/commit/4f6787de774a764762b12e299b3e80fc5269acf0))
+- **@porrtal-components/r-quick-start-blueprint:** document entity menu feature ([864e2e0](https://github.com/datumgeek/porrtal/commit/864e2e091482e374497d9e992881938a8c0d39e9))
+- **@porrtal-components/r-quick-start-blueprint:** update docs for creating a nav component ([e7b4a53](https://github.com/datumgeek/porrtal/commit/e7b4a534de41f4971d1e54712c34f2e28da9cdc8))
+- **@porrtal-components/r-quick-start-material:** rough in docs and demo for material quick start ([3090edd](https://github.com/datumgeek/porrtal/commit/3090edd1c46d7f00b29933a64f9e026ddd96df95))
+- **@porrtal-components/r-quick-start-material:** rough in library ([a94a72f](https://github.com/datumgeek/porrtal/commit/a94a72fa562681e8553acb36de61935b359c1efa))
+- **@porrtal-components/r-quick-start-material:** update nav docs ([e54aa49](https://github.com/datumgeek/porrtal/commit/e54aa49d81fb60b197266e1269c5bb5d074b0d19))
+- **@porrtal-components/r-quick-start-material:** welcome, setup workstation, and create the app doc ([68b4352](https://github.com/datumgeek/porrtal/commit/68b4352fe973843237516b3df72e00335e5a5e59))
+- **@porrtal/r-shell:** hide search in banner if no search views ([2663aa3](https://github.com/datumgeek/porrtal/commit/2663aa3e0fbd84e4eab247a55692b8741221d12d))
+
 # [0.3.0](https://github.com/datumgeek/porrtal/compare/v0.2.0...v0.3.0) (2022-11-23)
 
 ### Bug Fixes
