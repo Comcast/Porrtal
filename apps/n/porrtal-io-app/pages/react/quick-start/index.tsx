@@ -38,7 +38,7 @@ export function QuickStart(props: QuickStartProps) {
       return (
         <>
           <Head>
-            <title>@porrtal quick start</title>
+            <title>@porrtal quick start (blueprint)</title>
           </Head>
 
           <ShellState views={getQuickStartViews(reactUiLibrary)}>
@@ -50,7 +50,7 @@ export function QuickStart(props: QuickStartProps) {
       return (
         <>
           <Head>
-            <title>@porrtal quick start</title>
+            <title>@porrtal quick start (material)</title>
           </Head>
 
           <ShellState views={getQuickStartViews(reactUiLibrary)}>
