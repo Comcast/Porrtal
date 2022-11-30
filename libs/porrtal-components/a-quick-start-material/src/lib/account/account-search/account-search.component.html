@@ -1,0 +1,28 @@
+<div class="container">
+  <h3 class="title">Account Search: {{ searchText$ | async }}</h3>
+  <div class="data-container">
+    <ng-container *ngIf="filteredAccounts$ | async as accounts">
+      <ng-container *ngFor="let account of accounts">
+        <porrtal-entity-menu
+          entityType="account"
+          [state]="{ accountId: account.accountId }"
+        >
+          <span
+            class="link-button"
+            style="display: grid; grid-template-columns: 24px auto"
+          >
+            <mat-icon>account_box</mat-icon>
+            <span style="margin-left: 5px">{{ account.name }}</span>
+          </span>
+        </porrtal-entity-menu>
+        <div class="orders-data-container">
+          <ng-container *ngFor="let order of account.orders">
+            <span>{{ order.item }}</span>
+            <span>{{ formatAmount(order.amount) }}</span>
+            <span>{{ Moment(order.date).format('YYYY-DD-MM') }}</span>
+          </ng-container>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

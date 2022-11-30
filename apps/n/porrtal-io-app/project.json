@@ -26,6 +26,11 @@
             "glob": "**/*",
             "input": "libs/porrtal-components/r-quick-start-material/porrtal-components-r-quick-start-material",
             "output": "docs/porrtal-components-r-quick-start-material"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/porrtal-components/a-quick-start-material/porrtal-components-a-quick-start-material",
+            "output": "docs/porrtal-components-a-quick-start-material"
           }
         ]
       },

@@ -1,0 +1,14 @@
+<div class="container">
+  <h3 class="title">
+    {{ account?.name }} ({{ account?.accountId }}) - Account Detail
+  </h3>
+  <div class="data-container">
+    <ng-container *ngFor="let order of orders">
+      <span>{{ order.item }}</span>
+      <span>
+        {{ order.amountText }}
+      </span>
+      <span>{{ Moment(order.date).format('YYYY-DD-MM') }}</span>
+    </ng-container>
+  </div>
+</div>
