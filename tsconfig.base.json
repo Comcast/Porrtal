@@ -24,6 +24,9 @@
       "@porrtal-components/a-quick-start-demo": [
         "libs/porrtal-components/a-quick-start-demo/src/index.ts"
       ],
+      "@porrtal-components/a-quick-start-material": [
+        "libs/porrtal-components/a-quick-start-material/src/index.ts"
+      ],
       "@porrtal-components/a-second-test-comp-lib": [
         "libs/porrtal-components/a-second-test-comp-lib/src/index.ts"
       ],

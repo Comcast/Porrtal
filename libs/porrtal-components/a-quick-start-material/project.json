@@ -1,0 +1,43 @@
+{
+  "name": "porrtal-components-a-quick-start-material",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/porrtal-components/a-quick-start-material/src",
+  "prefix": "porrtal-workspace",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/porrtal-components/a-quick-start-material/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/porrtal-components/a-quick-start-material/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/porrtal-components/a-quick-start-material/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/porrtal-components/a-quick-start-material/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/porrtal-components/a-quick-start-material/**/*.ts",
+          "libs/porrtal-components/a-quick-start-material/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

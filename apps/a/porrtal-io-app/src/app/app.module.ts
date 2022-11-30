@@ -4,14 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { InsidePorrtalComponent } from './inside-porrtal/inside-porrtal.component';
-import { SamplesComponent } from './samples/samples.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     InsidePorrtalComponent,
-    SamplesComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +24,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         },
         {
           path: 'samples',
-          component: SamplesComponent,
+          loadComponent: () =>
+            import('./samples/samples.component').then(
+              (mod) => mod.SamplesComponent
+            ),
         },
         {
           path: 'inside-porrtal',

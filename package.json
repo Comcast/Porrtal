@@ -122,7 +122,7 @@
     "jest-environment-jsdom": "28.1.1",
     "jest-preset-angular": "12.2.2",
     "lerna": "^5.6.1",
-    "ng-packagr": "15.0.0",
+    "ng-packagr": "~15.0.0",
     "nx": "15.2.0",
     "postcss": "8.4.16",
     "postcss-import": "~14.1.0",

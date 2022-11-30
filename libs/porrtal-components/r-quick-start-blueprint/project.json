@@ -1,6 +1,6 @@
 {
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "name": "porrtal-components-r-quick-start-blueprint",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/porrtal-components/r-quick-start-blueprint/src",
   "projectType": "library",
   "tags": [],

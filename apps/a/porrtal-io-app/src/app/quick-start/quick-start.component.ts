@@ -7,10 +7,19 @@ import { bannerData, getAngularUiLibrary, getReactUiLibrary } from '../data';
 
 const views: View[] = [
   {
+    key: 'DocsNav',
+    launchAtStartup: true,
+    displayText: 'Docs Nav',
+    paneType: 'nav',
+    displayIcon: 'map',
+    componentName: 'DocsNavComponent',
+    componentModule: () => import('@porrtal-components/a-quick-start-material'),
+  },
+  {
     displayText: 'Create Account',
     displayIcon: 'account_box',
     componentName: 'AccountCreateComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
+    componentModule: () => import('@porrtal-components/a-quick-start-material'),
   },
   {
     key: 'Account {accountId}',
@@ -18,7 +27,7 @@ const views: View[] = [
     displayIcon: 'account_box',
     componentName: 'AccountDetailComponent',
     entityType: 'account',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
+    componentModule: () => import('@porrtal-components/a-quick-start-material'),
   },
   {
     key: 'Billing {accountId}',
@@ -26,7 +35,7 @@ const views: View[] = [
     displayIcon: 'account_box',
     componentName: 'AccountBillingHistoryComponent',
     entityType: 'account',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
+    componentModule: () => import('@porrtal-components/a-quick-start-material'),
   },
   {
     key: 'AccountNav',
@@ -34,46 +43,8 @@ const views: View[] = [
     displayText: 'Account Navigation',
     paneType: 'nav',
     displayIcon: 'account_box',
-    userInfo: [
-      {
-        viewId: 'info-markdown',
-        state: {
-          displayText: 'User Docs',
-          displayIcon: 'menu_book',
-          contentUrl:
-            'https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md',
-        },
-      },
-      {
-        viewId: 'info-youtube',
-        state: {
-          displayText: 'User Video',
-          displayIcon: 'videocam',
-          videoId: 'Z76QlSpYcck',
-        },
-      },
-    ],
-    devInfo: [
-      {
-        viewId: 'info-markdown',
-        state: {
-          displayText: 'Dev Docs',
-          displayIcon: 'menu_book',
-          contentUrl:
-            'https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md',
-        },
-      },
-      {
-        viewId: 'info-youtube',
-        state: {
-          displayText: 'Dev Video',
-          displayIcon: 'videocam',
-          videoId: 'Z76QlSpYcck',
-        },
-      },
-    ],
     componentName: 'AccountNavComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
+    componentModule: () => import('@porrtal-components/a-quick-start-material'),
   },
   {
     key: 'AccountSearch',
@@ -82,155 +53,7 @@ const views: View[] = [
     paneType: 'search',
     displayIcon: 'account_box',
     componentName: 'AccountSearchComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    displayText: 'Create Appointment',
-    displayIcon: 'calendar_month',
-    componentName: 'AppointmentCreateComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    key: 'Appointment {appointmentId}',
-    displayText: 'Appointment {appointmentId}',
-    displayIcon: 'calendar_month',
-    componentName: 'AppointmentDetailComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    key: 'AppointmentLocationMap {appointmentId}',
-    displayText: 'Map {appointmentId}',
-    displayIcon: 'calendar_month',
-    componentName: 'AppointmentLocationMapComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    key: 'AppointmentNav',
-    launchAtStartup: true,
-    displayText: 'Appointment Navigation',
-    paneType: 'nav',
-    displayIcon: 'calendar_month',
-    componentName: 'AppointmentNavComponent',
-    componentModule: () => {
-      console.log('appointment nav component module function called...');
-      return import('@porrtal-components/a-quick-start-demo');
-    },
-  },
-  {
-    key: 'AppointmentSearch',
-    launchAtStartup: true,
-    displayText: 'Appointment',
-    paneType: 'search',
-    displayIcon: 'calendar_month',
-    componentName: 'AppointmentSearchComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    key: 'AppointmentNav',
-    launchAtStartup: true,
-    displayText: 'Appointment Navigation',
-    paneType: 'nav',
-    displayIcon: 'calendar_month',
-    componentName: 'AppointmentNavComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    key: 'VizNav',
-    launchAtStartup: true,
-    displayText: 'Viz Demos',
-    paneType: 'nav',
-    displayIcon: 'map',
-    componentName: 'VizNavComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    displayText: 'Buildings',
-    displayIcon: 'office',
-    componentName: 'BuildingSceneWithQueryComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    displayText: 'Earth',
-    displayIcon: 'globe',
-    componentName: 'DigitalElevationMapComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    displayText: 'Hurricane',
-    displayIcon: 'git-commit',
-    componentName: 'HurricaneMapComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    displayText: 'Earthquake',
-    displayIcon: 'inner-join',
-    componentName: 'EarthquakeMapComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    displayText: 'Collapse Tree Chart',
-    displayIcon: 'diagram-tree',
-    componentName: 'CollapsibleTreeComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    displayText: 'Bar Chart',
-    displayIcon: 'diagram-tree',
-    componentName: 'HierarchicalBarChartComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    displayText: 'Icicle Chart',
-    displayIcon: 'diagram-tree',
-    componentName: 'ZoomableIcicleComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    displayText: 'Sunburst Chart',
-    displayIcon: 'diagram-tree',
-    componentName: 'ZoomableSunburstComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    displayText: 'Treemap Chart',
-    displayIcon: 'diagram-tree',
-    componentName: 'ZoomableTreemapComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    displayText: 'Circle Pack Chart',
-    displayIcon: 'diagram-tree',
-    componentName: 'ZoomableCirclePackComponent',
-    componentModule: () => import('@porrtal-components/a-quick-start-demo'),
-  },
-  {
-    displayText: 'YouTube Video',
-    displayIcon: 'videocam',
-    componentName: 'YoutubePlayerComponent',
-    componentModule: () => import('@porrtal-components/a-learning'),
-  },
-  {
-    key: 'md{id}',
-    displayText: 'Markdown Viewer',
-    displayIcon: 'book',
-    componentName: 'MarkdownViewerComponent',
-    componentModule: () => import('@porrtal-components/a-learning'),
-  },
-  {
-    viewId: 'info-markdown',
-    displayText: '{displayText}',
-    displayIcon: '{displayIcon}',
-    paneType: 'right',
-    componentName: 'MarkdownViewerComponent',
-    componentModule: () => import('@porrtal-components/a-learning'),
-  },
-  {
-    viewId: 'info-youtube',
-    displayText: '{displayText}',
-    displayIcon: '{displayIcon}',
-    paneType: 'right',
-    componentName: 'YoutubePlayerComponent',
-    componentModule: () => import('@porrtal-components/a-learning'),
+    componentModule: () => import('@porrtal-components/a-quick-start-material'),
   },
 ];
 
