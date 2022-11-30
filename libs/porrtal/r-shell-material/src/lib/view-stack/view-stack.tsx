@@ -300,9 +300,6 @@ function ViewStackContextMenu(
           evt.stopPropagation();
         }) as () => void,
     },
-    {
-      Divider: <Divider key="divider-1" />,
-    },
     ...(props.showUserInfo &&
     props.item.userInfo &&
     props.item.userInfo.length > 0
