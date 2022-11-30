@@ -1,6 +1,6 @@
 {
   "name": "@porrtal/r-shell-material",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "peerDependencies": {
     "@porrtal/r-api": "0.2.0",
     "@porrtal/r-shell": "0.2.0",

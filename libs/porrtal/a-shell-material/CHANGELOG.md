@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/datumgeek/porrtal/compare/v0.4.1...v0.5.0) (2022-11-30)
+
+### Features
+
+- **@porrtal/_, @porrtal-components/_:** add new angular library formats project.json ([7e0dd44](https://github.com/datumgeek/porrtal/commit/7e0dd44eb41e158a960a60bae2b219f5c0e9c166))
+- **@porrtal/a-shell-material:** make nav pane wider ([f4a0c1f](https://github.com/datumgeek/porrtal/commit/f4a0c1fbff1081e84ec2d2f65e9b18017ee51b6d))
+
 ## [0.4.1](https://github.com/datumgeek/porrtal/compare/v0.4.0...v0.4.1) (2022-11-26)
 
 **Note:** Version bump only for package @porrtal/a-shell-material

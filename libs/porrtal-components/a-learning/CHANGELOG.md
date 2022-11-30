@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/datumgeek/porrtal/compare/v0.4.1...v0.5.0) (2022-11-30)
+
+### Features
+
+- **@porrtal-components/r-learning:** fix build issues with ngx-markdown (embedded until PR merged) ([f074fe5](https://github.com/datumgeek/porrtal/commit/f074fe56bed70f9e0c6a278fb8243f0bf6eed1f3))
+- **@porrtal/_, @porrtal-components/_:** add new angular library formats project.json ([7e0dd44](https://github.com/datumgeek/porrtal/commit/7e0dd44eb41e158a960a60bae2b219f5c0e9c166))
+
 ## [0.4.1](https://github.com/datumgeek/porrtal/compare/v0.4.0...v0.4.1) (2022-11-26)
 
 **Note:** Version bump only for package @porrtal-components/a-learning

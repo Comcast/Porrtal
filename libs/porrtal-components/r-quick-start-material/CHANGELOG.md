@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/datumgeek/porrtal/compare/v0.4.1...v0.5.0) (2022-11-30)
+
+### Features
+
+- **@porrtal-components/r-learning:** fix build issues with ngx-markdown (embedded until PR merged) ([f074fe5](https://github.com/datumgeek/porrtal/commit/f074fe56bed70f9e0c6a278fb8243f0bf6eed1f3))
+- **@porrtal-components/r-quick-start-material:** create nav component and launch a component docs ([54b5a47](https://github.com/datumgeek/porrtal/commit/54b5a47fe62be4445249da19b87918ec7dd5466a))
+- **@porrtal-components/r-quick-start-material:** entity menu docs ([297bef3](https://github.com/datumgeek/porrtal/commit/297bef32b71f42f015cdd38b1436708972d7a4bc))
+
 ## [0.4.1](https://github.com/datumgeek/porrtal/compare/v0.4.0...v0.4.1) (2022-11-26)
 
 ### Bug Fixes

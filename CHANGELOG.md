@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/datumgeek/porrtal/compare/v0.4.1...v0.5.0) (2022-11-30)
+
+### Features
+
+- **@porrtal-components/a-quick-start-material:** rough in docs and components ([a94ce59](https://github.com/datumgeek/porrtal/commit/a94ce594385602bdeb5c5f3739cff61656b97006))
+- **@porrtal-components/a-quick-start-material:** rough in library for angular quick start ([b58c1fd](https://github.com/datumgeek/porrtal/commit/b58c1fd3ff9192f332d8f9ea70174ec235a66f33))
+- **@porrtal-components/r-learning:** fix build issues with ngx-markdown (embedded until PR merged) ([f074fe5](https://github.com/datumgeek/porrtal/commit/f074fe56bed70f9e0c6a278fb8243f0bf6eed1f3))
+- **@porrtal-components/r-quick-start-material:** create nav component and launch a component docs ([54b5a47](https://github.com/datumgeek/porrtal/commit/54b5a47fe62be4445249da19b87918ec7dd5466a))
+- **@porrtal-components/r-quick-start-material:** entity menu docs ([297bef3](https://github.com/datumgeek/porrtal/commit/297bef32b71f42f015cdd38b1436708972d7a4bc))
+- **@porrtal/_, @porrtal-components/_:** add new angular library formats project.json ([7e0dd44](https://github.com/datumgeek/porrtal/commit/7e0dd44eb41e158a960a60bae2b219f5c0e9c166))
+- **@porrtal/a-shell-material:** make nav pane wider ([f4a0c1f](https://github.com/datumgeek/porrtal/commit/f4a0c1fbff1081e84ec2d2f65e9b18017ee51b6d))
+- **@porrtal/r-shell-material:** switch context menu to menuItemsData view-stack tabs (not working) ([a5c2eea](https://github.com/datumgeek/porrtal/commit/a5c2eea9d260611ddd6cba0cf865fc15369c802a))
+
 ## [0.4.1](https://github.com/datumgeek/porrtal/compare/v0.4.0...v0.4.1) (2022-11-26)
 
 ### Bug Fixes

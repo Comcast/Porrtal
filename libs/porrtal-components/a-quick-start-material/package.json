@@ -1,6 +1,6 @@
 {
   "name": "@porrtal-components/a-quick-start-material",
-  "version": "0.0.1",
+  "version": "0.5.0",
   "peerDependencies": {
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0"
