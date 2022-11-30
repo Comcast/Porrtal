@@ -1,6 +1,6 @@
 {
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "name": "porrtal-components-a-second-test-comp-lib",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/porrtal-components/a-second-test-comp-lib/src",
   "prefix": "porrtal",
