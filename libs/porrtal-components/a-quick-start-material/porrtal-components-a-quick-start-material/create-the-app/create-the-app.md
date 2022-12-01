@@ -1,11 +1,11 @@
 # Create the App
 
-## create-react-app
+## ng new
 
-In this tutorial, we will jump start our development using create-react-app.
+In this tutorial, we will jump start our development using the @angular/cli `ng`.
 
 You can find excellent documentation here
-[create-react-app.dev](https://create-react-app.dev)
+[angular.io/cli](https://angular.io/cli)
 
 In the command below, a long project name was chosen to differentiate this app from other versions of the quick start - feel free to choose a project name you like.
 
@@ -15,37 +15,43 @@ In the command below, a long project name was chosen to differentiate this app f
 
 [Terminal](https://support.apple.com/guide/terminal/welcome/mac) on Mac
 
+### Install the Angular CLI
+
+```bash
+npm install -g @angular/cli
+```
+
 ### Create the app
 
 ```bash
-npx create-react-app@latest porrtal-react-material-quick-start --template typescript
+ng new porrtal-angular-material-quick-start --routing false --style css
 ```
 
 ### Change into the newly created directory
 
 ```bash
-cd porrtal-react-material-quick-start
+cd porrtal-angular-material-quick-start
 ```
 
 ### Now run the app.
 
 ```bash
-npm run start
+ng serve
 ```
 
 ### View in the browser
 
-A browser should appear with the new react app. You can also click the link to view the new react app in your browser:
-[https://localhost:3000](https://localhost:3000)
+You can click the link to view the new Angular app in your browser:
+[https://localhost:4200](https://localhost:4200)
 
-![React App](react-app.jpg)
+![Angular App](angular-boilerplate-app.png)
 
-Note: We are using the [TypeScript](https://www.typescriptlang.org/) template. TypeScript is an excellent language choice for large scale development.
+Note: Angular uses the [TypeScript](https://www.typescriptlang.org/) language. TypeScript is an excellent language choice for large scale development.
 
 ### Run the VS Code app
 
-From VS Code, open the folder `porrtal-react-material-quick-start` (or whatever app name you chose above).
+From VS Code, open the folder `porrtal-angular-material-quick-start` (or whatever app name you chose above).
 
 You should see something like this:
 
-![Create React App Files](create-react-app-files-in-vs-code.jpg)
+![Create Angular App Files](create-angular-app-files-in-vs-code.png)
