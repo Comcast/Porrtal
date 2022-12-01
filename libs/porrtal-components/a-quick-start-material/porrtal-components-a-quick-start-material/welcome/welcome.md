@@ -1,26 +1,20 @@
-# Welcome to the Porrtal quick-start for React using the Material UI (MUI) Library
-
-## Other quick-start Options
-
-[Porrtal quick-start for React using the Blueprint UI Library](/react/quick-start?reactUiLibrary=blueprint)
-
-[Porrtal quick-start for Angular using the Material UI Library](/angular/quick-start)
+# Welcome to the Porrtal quick-start for Angular using the Angular Material UI Library
 
 ## What are We Building
 
-Lets start with an overview of what we will build in the quick-start. The goal is to quickly get a React app up and running using the Porrtal libraries.
+Lets start with an overview of what we will build in the quick-start. The goal is to quickly get an Angular app up and running using the Porrtal libraries.
 
 Here is an overview of a Porrtal app and how you plug in your components:
 
 ![Porrtal Features](porrtal-features-diagram.jpg)
 
-Several Porrtal "Panes" ("nav" pane, "main" pane, and "search" pane) are shown in the above diagram. These are the regions where your React components can be placed.
+Several Porrtal "Panes" ("nav" pane, "main" pane, and "search" pane) are shown in the above diagram. These are the regions where your Angular components can be placed.
 
-React components are independent and reusable bits of code that typically occupy a rectangular area of the UI.
+Angular components are independent and reusable bits of code that typically occupy a rectangular area of the UI.
 
-When building a Porrtal app, you will define an array of Porrtal "Views". Each Porrtal View object in the array references one of your React components. The View object also includes properties like icon, display text, pane, and more. The View object helps Porrtal load your components into the Porrtal app.
+When building a Porrtal app, you will define an array of Porrtal "Views". Each Porrtal View object in the array references one of your Angular components. The View object also includes properties like icon, display text, pane, and more. The View object helps Porrtal load your components into the Porrtal app.
 
-The text you are reading now is located in the main pane. There is a React component displaying this markdown file.
+The text you are reading now is located in the main pane. There is a Angular component displaying this markdown file.
 
 On the left, you can see the nav pane. The first nav view is the quick start outline. The second is the Account Nav component we will be building. You can switch between these components by clicking on the icons on the far left.
 
