@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/datumgeek/porrtal/compare/v0.5.1...v0.6.0) (2022-12-01)
+
+### Features
+
+- **@porrtal/a-shell-material:** search only if search views registered, align logger message bell ([3f2ff41](https://github.com/datumgeek/porrtal/commit/3f2ff410cdd5658b00022a4557d3c5c1f411e334))
+
 ## [0.5.1](https://github.com/datumgeek/porrtal/compare/v0.5.0...v0.5.1) (2022-11-30)
 
 **Note:** Version bump only for package @porrtal/a-shell-material
