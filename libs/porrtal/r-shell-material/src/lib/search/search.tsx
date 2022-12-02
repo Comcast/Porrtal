@@ -28,6 +28,13 @@ export function Search(props: SearchProps) {
           onClickAway={(evt) => searchAction.closeSearchDialog()}
         >
           <Popper
+            nonce={1}
+            onResize={() => {
+              // do nothing
+            }}
+            onResizeCapture={() => {
+              // do nothing
+            }}
             className={styles['search-popper']}
             open={isSearchDialogOpen}
             onLoad={(evt) =>
