@@ -4,66 +4,104 @@ To help your users find what they seek, you can register your components as "Sea
 
 NOTE: If there are no registered search views, the search textbox will be hidden.
 
-### Create `AccountSearch.tsx` file in the `Account` folder.
+### Create `AccountSearch` Component in the `account` folder.
 
-```tsx
-import { useDebouncedSearchText } from '@porrtal/r-shell';
-import { ViewComponentProps } from '@porrtal/r-api';
-import { accountData } from '../Data/AccountData';
-import Moment from 'moment';
-import { Fragment } from 'react';
-import "./AccountSearch.css";
-
-export function AccountSearch(props: ViewComponentProps) {
-  const searchText = useDebouncedSearchText();
-  return (
-    <div className="AccountSearch_container">
-      <h3 className="AccountSearch_title">Account Search: {searchText}</h3>
-      <div className="AccountSearch_data-container">
-        {accountData
-          .filter((account) => {
-            return (
-              JSON.stringify(account)
-                .toLowerCase()
-                .indexOf(searchText.toLowerCase()) >= 0
-            );
-          })
-          .map((account) => (
-            <Fragment key={account.accountId}>
-              <div>{account.name}</div>
-              <div className="AccountSearch_orders-data-container">
-                {account?.orders.map((order, index) => (
-                  <Fragment key={index}>
-                    <span>{order.item}</span>
-                    <span>
-                      {'$' +
-                        order.amount
-                          .toFixed(0)
-                          .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
-                    </span>
-                    <span>{Moment(order.date).format('YYYY-DD-MM')}</span>
-                  </Fragment>
-                ))}
-              </div>
-            </Fragment>
-          ))}
-      </div>
-    </div>
-  );
-}
-
-export default AccountSearch;
+```bash
+ng generate component account/account-search --standalone
 ```
 
-### Create `AccountSearch.css` file in the `Account` folder
+### Register `AccountSearch` "Search View" in `app.component.ts`
+
+```ts
+import { Component } from '@angular/core';
+import { BannerData, ShellStateService } from '@porrtal/a-shell';
+import { View } from '@porrtal/a-api';
+
+const views: View[] = [
+  {
+    key: 'AccountNav',
+    launchAtStartup: true,
+    displayText: 'Account Navigation',
+    paneType: 'nav',
+    displayIcon: 'account_box',
+    componentName: 'AccountNavComponent',
+    componentModule: () =>
+      import('./account/account-nav/account-nav.component'),
+  },
+  {
+    displayText: 'Create Account',
+    displayIcon: 'account_box',
+    componentName: 'NewAccountComponent',
+    componentModule: () =>
+      import('./account/new-account/new-account.component'),
+  },
+  {
+    key: 'Account {accountId}',
+    displayText: 'Account {accountId}',
+    displayIcon: 'account_box',
+    componentName: 'AccountDetailComponent',
+    entityType: 'account',
+    componentModule: () =>
+      import('./account/account-detail/account-detail.component'),
+  },
+  {
+    key: 'Billing {accountId}',
+    displayText: 'Billing {accountId}',
+    displayIcon: 'account_box',
+    componentName: 'AccountBillingHistoryComponent',
+    entityType: 'account',
+    componentModule: () =>
+      import(
+        './account/account-billing-history/account-billing-history.component'
+      ),
+  },
+  {
+    key: 'AccountSearch',
+    launchAtStartup: true,
+    displayText: 'Account',
+    paneType: 'search',
+    displayIcon: 'account_box',
+    componentName: 'AccountSearchComponent',
+    componentModule: () =>
+      import('./account/account-search/account-search.component'),
+  },
+];
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  public bannerData: BannerData = {
+    displayText: '@porrtal angular material quick start',
+    displayIcon: 'cyclone',
+  };
+
+  constructor(public shellStateService: ShellStateService) {
+    views.forEach((view) =>
+      shellStateService.dispatch({
+        type: 'registerView',
+        view,
+      })
+    );
+
+    shellStateService.dispatch({
+      type: 'launchStartupViews',
+    });
+  }
+}
+```
+
+### Update `account-search.component.css` file
 
 ```css
-.AccountSearch_container {
+.container {
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.AccountSearch_title {
+.title {
   background-color: rgb(185, 199, 218);
   margin: 0;
   padding-top: 5px;
@@ -72,13 +110,13 @@ export default AccountSearch;
   grid-column: 1 / -1;
 }
 
-.AccountSearch_data-container {
+.data-container {
   margin-left: 15px;
   margin-right: 15px;
   margin-top: 30px;
 }
 
-.AccountSearch_orders-data-container {
+.orders-data-container {
   display: grid;
   justify-self: start;
   gap: 10px;
@@ -89,106 +127,95 @@ export default AccountSearch;
   margin-bottom: 15px;
 }
 
-.AccountSearch_link-button {
+.link-button {
   color: blue;
   text-decoration: underline;
   cursor: pointer;
 }
 ```
 
-### Update `App.tsx`
+### Update `account-search.component.html`
 
-```tsx
-import { View } from "@porrtal/r-api";
-import { BannerData, ShellState } from "@porrtal/r-shell";
-import { ShellMaterial } from "@porrtal/r-shell-material";
-
-import "./App.css";
-
-function App() {
-  const porrtalViews: View[] = [
-    {
-      key: "AccountNav",
-      launchAtStartup: true,
-      displayText: "Account Navigation",
-      paneType: "nav",
-      displayIcon: "account_box",
-      componentName: "AccountNav",
-      componentModule: () => import("./Account/AccountNav"),
-    },
-    {
-      viewId: "NewAccount",
-      key: "NewAccount",
-      displayText: "New Account",
-      paneType: "main",
-      displayIcon: "add",
-      componentName: "NewAccount",
-      componentModule: () => import("./Account/NewAccount"),
-    },
-    {
-      viewId: "AccountDetail",
-      key: 'Account Detail {accountId}',
-      displayText: 'Account Detail {accountId}',
-      paneType: "main",
-      displayIcon: "mugshot",
-      componentName: "AccountDetail",
-      entityType: "account",
-      componentModule: () => import("./Account/AccountDetail"),
-    },
-    {
-      viewId: "AccountBilling",
-      key: 'Account Billing {accountId}',
-      displayText: 'Account Billing {accountId}',
-      paneType: "main",
-      displayIcon: "mugshot",
-      componentName: "AccountBilling",
-      entityType: "account",
-      componentModule: () => import("./Account/AccountBilling"),
-    },
-    {
-      key: 'AccountSearch',
-      launchAtStartup: true,
-      displayText: 'Account Search',
-      paneType: 'search',
-      displayIcon: "mugshot",
-      componentName: 'AccountSearch',
-      componentModule: () => import("./Account/AccountSearch"),
-    },
-  ];
-  const porrtalBanner: BannerData = {
-    displayText: "My Quick Start App",
-    displayIcon: "construction",
-    childData: []
-  };
-  return (
-    <ShellState views={porrtalViews}>
-      <ShellMaterial bannerData={porrtalBanner} />
-    </ShellState>
-  );
-}
-
-export default App;
+```html
+<div class="container">
+  <h3 class="title">Account Search: {{ searchText$ | async }}</h3>
+  <div class="data-container">
+    <ng-container *ngIf="filteredAccounts$ | async as accounts">
+      <ng-container *ngFor="let account of accounts">
+        <porrtal-entity-menu
+          entityType="account"
+          [state]="{ accountId: account.accountId }"
+        >
+          <span
+            class="link-button"
+            style="display: grid; grid-template-columns: 24px auto"
+          >
+            <mat-icon>account_box</mat-icon>
+            <span style="margin-left: 5px">{{ account.name }}</span>
+          </span>
+        </porrtal-entity-menu>
+        <div class="orders-data-container">
+          <ng-container *ngFor="let order of account.orders">
+            <span>{{ order.item }}</span>
+            <span>{{ formatAmount(order.amount) }}</span>
+            <span>{{ Moment(order.date).format("YYYY-DD-MM") }}</span>
+          </ng-container>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
 ```
 
-### Update `index.css`
+### Update `account-search.component.ts`
 
-```css
-html,
-body {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  margin: 0;
-  padding: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
-    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-}
+```ts
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ViewState } from '@porrtal/a-api';
+import { map, Observable } from 'rxjs';
+import { Account, accountData } from '../../data/account-data';
+import { SearchStateService } from '@porrtal/a-shell';
+import * as Moment from 'moment';
+import { EntityMenuComponent } from '@porrtal/a-shell-material';
+import { MatIconModule } from '@angular/material/icon';
 
-html {
-  line-height: 1.5;
+@Component({
+  selector: 'app-account-search',
+  standalone: true,
+  imports: [CommonModule, MatIconModule, EntityMenuComponent],
+  templateUrl: './account-search.component.html',
+  styleUrls: ['./account-search.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AccountSearchComponent {
+  @Input() viewState?: ViewState;
+
+  public filteredAccounts$?: Observable<Account[]>;
+  public searchText$?: Observable<string>;
+  public Moment = Moment;
+
+  constructor(private searchStateService: SearchStateService) {
+    this.searchText$ = searchStateService.select('debouncedSearchText');
+
+    this.filteredAccounts$ = searchStateService
+      .select('debouncedSearchText')
+      .pipe(
+        map((searchText) =>
+          accountData.filter((account) => {
+            return (
+              JSON.stringify(account)
+                .toLowerCase()
+                .indexOf(searchText.toLowerCase()) >= 0
+            );
+          })
+        )
+      );
+  }
+
+  public formatAmount(amount: number) {
+    return '$' + amount.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  }
 }
 ```
 
