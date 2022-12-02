@@ -45,36 +45,43 @@ export const getBannerData = (): BannerData => {
     displayIcon: 'hurricane',
     childData: [
       {
+        key: 'porrtal.io',
         displayIcon: 'hurricane',
         displayText: 'porrtal.io',
         targetUrl: '/',
       },
       {
+        key: 'react-quick-start',
         displayImage: '/assets/react.svg',
         displayText: 'quick-start',
         targetUrl: `/react/quick-start`,
       },
       {
+        key: 'react-samples',
         displayImage: '/assets/react.svg',
         displayText: 'samples',
         targetUrl: `/react/samples`,
       },
       {
+        key: 'react-inside-porrtal',
         displayImage: '/assets/react.svg',
         displayText: 'inside-porrtal',
         targetUrl: `/react/inside-porrtal`,
       },
       {
+        key: 'angular-quick-start',
         displayImage: '/assets/angular.svg',
         displayText: 'quick-start',
         targetUrl: '/angular/quick-start',
       },
       {
+        key: 'angular-samples',
         displayImage: '/assets/angular.svg',
         displayText: 'samples',
         targetUrl: '/angular/samples',
       },
       {
+        key: 'angular-inside-porrtal',
         displayImage: '/assets/angular.svg',
         displayText: 'inside-porrtal',
         targetUrl: '/angular/inside-porrtal',

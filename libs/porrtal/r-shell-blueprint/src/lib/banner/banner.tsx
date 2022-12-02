@@ -50,7 +50,7 @@ function BannerMenu(props: BannerProps & { children: ReactNode | undefined }) {
         <Menu className={Classes.POPOVER2_DISMISS}>
           {props.bannerData.childData.map((menuItem) => (
             <MenuItem
-              key={menuItem.displayText}
+              key={menuItem.key}
               text={
                 <>
                   {props.bannerData?.displayIcon && (
