@@ -12,7 +12,7 @@
       (click)="launchView(view, $event.shiftKey)"
       *ngFor="let view of entityViews$ | async"
     >
-      <span
+      <span class="menu-item-arrangement"
         ><mat-icon class="menu-item-icon">{{ view.displayIcon }}</mat-icon
         >{{ view.displayText }}</span
       >

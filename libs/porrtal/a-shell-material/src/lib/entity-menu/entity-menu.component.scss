@@ -2,3 +2,9 @@
   transform: scale(1.2);
   vertical-align: text-bottom;
 }
+
+.menu-item-arrangement {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
