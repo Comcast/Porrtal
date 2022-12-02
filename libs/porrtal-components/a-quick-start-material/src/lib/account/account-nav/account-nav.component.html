@@ -1,5 +1,20 @@
 <div class="container">
   <h3 class="title">Top Three Accounts</h3>
+  <div class="new-account-container">
+    <span
+      class="link-button"
+      style="display: grid; grid-template-columns: 24px auto"
+      (click)="
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: 'AccountCreateComponent'
+        })
+      "
+    >
+      <mat-icon>add_circle</mat-icon>
+      <span style="margin-left: '5px'">New Account</span>
+    </span>
+  </div>
   <div class="data-container">
     <ng-container *ngFor="let account of topThreeAccounts">
       <porrtal-entity-menu

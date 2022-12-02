@@ -4,6 +4,7 @@ import { EntityMenuComponent } from '@porrtal/a-shell-material';
 import { Account, accountData } from '../../data/account-data';
 import { MatIconModule } from '@angular/material/icon';
 import { ViewState } from '@porrtal/a-api';
+import { ShellStateService } from '@porrtal/a-shell';
 
 @Component({
   selector: 'porrtal-account-nav',
@@ -16,7 +17,7 @@ export class AccountNavComponent {
   @Input() viewState?: ViewState;
 
   public topThreeAccounts: (Account & { total: number })[] = [];
-  constructor() {
+  constructor(public shellStateService: ShellStateService) {
     this.topThreeAccounts = [
       ...accountData
         .map((account) => {

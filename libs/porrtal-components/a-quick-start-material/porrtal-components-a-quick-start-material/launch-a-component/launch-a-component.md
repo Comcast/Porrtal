@@ -2,148 +2,225 @@
 
 The next step in the quick start is to show how easy it is to register a view (New Account in our case) and to launch that view from a component (AccountNav in our case).
 
-### First, create the `NewAccount.tsx` in the Accounts folder.
+### First, create the `new-account` Component in the `account` folder.
 
-```tsx
-export function NewAccount() {
-    return (<div>New Account</div>);
-}
-
-export default NewAccount;
+```bash
+ng generate component account/new-account
 ```
 
-### Next, register the view in the `App.tsx` file.
+### Next, register the view in the `app.component.ts` file.
 
-```tsx
-import { View } from "@porrtal/r-api";
-import { BannerData, ShellState } from "@porrtal/r-shell";
-import { ShellMaterial } from "@porrtal/r-shell-material";
+```ts
+import { Component } from '@angular/core';
+import { BannerData, ShellStateService } from '@porrtal/a-shell';
+import { View } from '@porrtal/a-api';
 
-import "./App.css";
+const views: View[] = [
+  {
+    key: 'AccountNav',
+    launchAtStartup: true,
+    displayText: 'Account Navigation',
+    paneType: 'nav',
+    displayIcon: 'account_box',
+    componentName: 'AccountNavComponent',
+    componentModule: () =>
+      import('./account/account-nav/account-nav.component'),
+  },
+  {
+    displayText: 'Create Account',
+    displayIcon: 'account_box',
+    componentName: 'NewAccountComponent',
+    componentModule: () =>
+      import('./account/new-account/new-account.component'),
+  },
+];
 
-function App() {
-  const porrtalViews: View[] = [
-    {
-      key: "AccountNav",
-      launchAtStartup: true,
-      displayText: "Account Navigation",
-      paneType: "nav",
-      displayIcon: "account_box",
-      componentName: "AccountNav",
-      componentModule: () => import("./Account/AccountNav"),
-    },
-    {
-      viewId: "NewAccount",
-      key: "NewAccount",
-      displayText: "New Account",
-      paneType: "main",
-      displayIcon: "add",
-      componentName: "NewAccount",
-      componentModule: () => import("./Account/NewAccount"),
-    },
-  ];
-  const porrtalBanner: BannerData = {
-    displayText: "My Quick Start App",
-    displayIcon: "construction",
-    childData: []
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  public bannerData: BannerData = {
+    displayText: '@porrtal angular material quick start',
+    displayIcon: 'cyclone',
   };
-  return (
-    <ShellState views={porrtalViews}>
-      <ShellMaterial bannerData={porrtalBanner} />
-    </ShellState>
-  );
-}
 
-export default App;
+  constructor(public shellStateService: ShellStateService) {
+    views.forEach((view) =>
+      shellStateService.dispatch({
+        type: 'registerView',
+        view,
+      })
+    );
+
+    shellStateService.dispatch({
+      type: 'launchStartupViews',
+    });
+  }
+}
 ```
 
-### Add the code to launch the new account view in the `AccountNav.tsx` file.
+### Add the code to register the new view in `app.component.ts` file.
 
-```tsx
-import { Icon } from "@mui/material";
-import { useShellDispatch } from "@porrtal/r-shell";
-import { Fragment } from "react";
-import { accountData } from "../Data/AccountData";
-import "./AccountNav.css";
+```ts
+import { Component } from '@angular/core';
+import { BannerData, ShellStateService } from '@porrtal/a-shell';
+import { View } from '@porrtal/a-api';
 
-/* eslint-disable-next-line */
-export interface AccountNavProps {}
+const views: View[] = [
+  {
+    key: 'AccountNav',
+    launchAtStartup: true,
+    displayText: 'Account Navigation',
+    paneType: 'nav',
+    displayIcon: 'account_box',
+    componentName: 'AccountNavComponent',
+    componentModule: () =>
+      import('./account/account-nav/account-nav.component'),
+  },
+  {
+    displayText: 'Create Account',
+    displayIcon: 'account_box',
+    componentName: 'NewAccountComponent',
+    componentModule: () =>
+      import('./account/new-account/new-account.component'),
+  },
+];
 
-export function AccountNav(props: AccountNavProps) {
-  const shellDispatch = useShellDispatch();
-  return (
-    <div className="AccountNav_container">
-      <h3 className="AccountNav_title">Top Three Accounts</h3>
-      <div className="AccountNav_new-account-container">
-        <p
-          className="AccountNav_link-button"
-          onClick={() =>
-            shellDispatch({ type: "launchView", viewId: "NewAccount" })
-          }
-        >
-          <Icon>add_circle</Icon>
-          <span style={{ marginLeft: "5px" }}>New Account</span>
-        </p>
-      </div>
-      <div className="AccountNav_data-container">
-        {accountData
-          .map((account) => {
-            const total = account?.orders.reduce((accumulator, order) => {
-              return accumulator + order.amount;
-            }, 0);
-            return {
-              ...account,
-              total,
-            };
-          })
-          .sort((a, b) => b.total - a.total)
-          .filter((acct, ii) => ii < 3)
-          .map((acct) => {
-            return (
-              <Fragment key={acct.accountId}>
-                <span className="AccountNav_link-button">
-                  <Icon>account_box</Icon>
-                  <span style={{ marginLeft: "5px" }}>{acct.name}</span>
-                </span>
-                <span>
-                  {"$" +
-                    acct.total
-                      .toFixed(0)
-                      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
-                </span>
-              </Fragment>
-            );
-          })}
-      </div>
-    </div>
-  );
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  public bannerData: BannerData = {
+    displayText: '@porrtal angular material quick start',
+    displayIcon: 'cyclone',
+  };
+
+  constructor(public shellStateService: ShellStateService) {
+    views.forEach((view) =>
+      shellStateService.dispatch({
+        type: 'registerView',
+        view,
+      })
+    );
+
+    shellStateService.dispatch({
+      type: 'launchStartupViews',
+    });
+  }
 }
-
-export default AccountNav;
 ```
 
-### And finally, add the styles for the New Account link to the `AccountNav.css` file.
+### Add code to support launching views in `account-nav.component.ts`
+
+```ts
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { EntityMenuComponent } from '@porrtal/a-shell-material';
+import { MatIconModule } from '@angular/material/icon';
+import { ViewState } from '@porrtal/a-api';
+import { Account, accountData } from '../../data/account-data';
+import { ShellStateService } from '@porrtal/a-shell';
+
+@Component({
+  selector: 'app-account-nav',
+  standalone: true,
+  imports: [CommonModule, MatIconModule, EntityMenuComponent],
+  templateUrl: './account-nav.component.html',
+  styleUrls: ['./account-nav.component.css'],
+})
+export class AccountNavComponent {
+  @Input() viewState?: ViewState;
+
+  public topThreeAccounts: (Account & { total: number })[] = [];
+  constructor(public shellStateService: ShellStateService) {
+    this.topThreeAccounts = [
+      ...accountData
+        .map((account) => {
+          const total = account.orders.reduce((accumulator, order) => {
+            return accumulator + order.amount;
+          }, 0);
+          return {
+            ...account,
+            total,
+          };
+        })
+        .sort((a, b) => b.total - a.total)
+        .filter((acct, ii) => ii < 3),
+    ];
+
+    console.log('top three accounts', this.topThreeAccounts);
+  }
+}
+```
+
+### Update the HTML in the `account-nav.component.html` file
+
+```html
+<div class="container">
+  <h3 class="title">Top Three Accounts</h3>
+  <div class="new-account-container">
+    <span
+      class="link-button"
+      style="display: grid; grid-template-columns: 24px auto"
+      (click)="
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: 'NewAccountComponent'
+        })
+      "
+    >
+      <mat-icon>add_circle</mat-icon>
+      <span style="margin-left: '5px'">New Account</span>
+    </span>
+  </div>
+  <div class="data-container">
+    <ng-container *ngFor="let account of topThreeAccounts">
+      <span
+        class="link-button"
+        style="display: grid; grid-template-columns: 24px auto"
+      >
+        <mat-icon>account_box</mat-icon>
+        <span style="margin-left: 5px">{{ account.name }}</span>
+      </span>
+      <span>
+        $
+        {{
+          account.total
+            | number
+              : "1.0-0" //.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+        }}
+      </span>
+    </ng-container>
+  </div>
+</div>
+```
+
+### And finally, add the styles for the New Account link to the `account-nav.component.css` file.
 
 ```css
-.AccountNav_container {
+.container {
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.AccountNav_title {
+.title {
   background-color: rgb(185, 199, 218);
   margin: 0;
-  padding-top: 5px;
-  padding-bottom: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   padding-left: 8px;
   grid-column: 1 / -1;
 }
 
-.AccountNav_new-account-container {
+.new-account-container {
   margin-top: 30px;
 }
 
-.AccountNav_data-container {
+.data-container {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -152,14 +229,10 @@ export default AccountNav;
   margin-top: 15px;
 }
 
-.AccountNav_link-button {
+.link-button {
   color: blue;
   text-decoration: underline;
   cursor: pointer;
-  display: grid;
-  grid-template-columns: auto auto 1fr;
-  justify-items: flex-end;
-  align-items: center;
 }
 ```
 
