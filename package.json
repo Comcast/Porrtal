@@ -1,7 +1,12 @@
 {
   "name": "porrtal-workspace",
   "version": "0.0.0",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Comcast/Porrtal.git"
+  },
+  "author": "Comcast_Open_Source_Services@comcast.com",
+  "license": "Apache-2.0",
   "scripts": {
     "start": "nx serve",
     "build": "nx build",

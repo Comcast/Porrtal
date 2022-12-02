@@ -1,4 +1,10 @@
 {
   "name": "@porrtal/r-user",
-  "version": "0.6.0"
+  "version": "0.6.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Comcast/Porrtal.git"
+  },
+  "author": "Comcast_Open_Source_Services@comcast.com",
+  "license": "Apache-2.0"
 }
