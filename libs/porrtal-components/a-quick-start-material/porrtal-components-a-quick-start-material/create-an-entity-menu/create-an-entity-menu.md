@@ -1,182 +1,202 @@
 # Create an Entity Menu
 
-### Create `AccountBilling.tsx` file in `Account` folder
+### Create `AccountBillingHistory` component in the `account` folder
 
-```tsx
-export function AccountBilling() {
-    return (<div>Account Billing</div>);
-}
-
-export default AccountBilling;
+```bash
+ng generate component account/account-billing-history
 ```
 
-### Create `AccountDetail.tsx` file in `Account` folder
+### Create `AccountDetail` component in the `account` folder
 
-```tsx
-export function AccountDetail() {
-    return (<div>Account Detail</div>);
-}
-
-export default AccountDetail;
+```bash
+ng generate component account/account-detail
 ```
 
-### Register AccountBilling and AccountDetail views in `App.tsx`
+### Register `account` "entityType views" in `app.component.ts`
 
-```tsx
-import { View } from "@porrtal/r-api";
-import { BannerData, ShellState } from "@porrtal/r-shell";
-import { ShellMaterial } from "@porrtal/r-shell-material";
+```ts
+import { Component } from '@angular/core';
+import { BannerData, ShellStateService } from '@porrtal/a-shell';
+import { View } from '@porrtal/a-api';
 
-import "./App.css";
+const views: View[] = [
+  {
+    key: 'AccountNav',
+    launchAtStartup: true,
+    displayText: 'Account Navigation',
+    paneType: 'nav',
+    displayIcon: 'account_box',
+    componentName: 'AccountNavComponent',
+    componentModule: () =>
+      import('./account/account-nav/account-nav.component'),
+  },
+  {
+    displayText: 'Create Account',
+    displayIcon: 'account_box',
+    componentName: 'NewAccountComponent',
+    componentModule: () =>
+      import('./account/new-account/new-account.component'),
+  },
+  {
+    key: 'Account {accountId}',
+    displayText: 'Account {accountId}',
+    displayIcon: 'account_box',
+    componentName: 'AccountDetailComponent',
+    entityType: 'account',
+    componentModule: () =>
+      import('./account/account-detail/account-detail.component'),
+  },
+  {
+    key: 'Billing {accountId}',
+    displayText: 'Billing {accountId}',
+    displayIcon: 'account_box',
+    componentName: 'AccountBillingHistoryComponent',
+    entityType: 'account',
+    componentModule: () =>
+      import(
+        './account/account-billing-history/account-billing-history.component'
+      ),
+  },
+];
 
-function App() {
-  const porrtalViews: View[] = [
-    {
-      key: "AccountNav",
-      launchAtStartup: true,
-      displayText: "Account Navigation",
-      paneType: "nav",
-      displayIcon: "account_box",
-      componentName: "AccountNav",
-      componentModule: () => import("./Account/AccountNav"),
-    },
-    {
-      viewId: "NewAccount",
-      key: "NewAccount",
-      displayText: "New Account",
-      paneType: "main",
-      displayIcon: "add",
-      componentName: "NewAccount",
-      componentModule: () => import("./Account/NewAccount"),
-    },
-    {
-      viewId: "AccountDetail",
-      key: 'Account Detail {accountId}',
-      displayText: 'Account Detail {accountId}',
-      paneType: "main",
-      displayIcon: "mugshot",
-      componentName: "AccountDetail",
-      entityType: "account",
-      componentModule: () => import("./Account/AccountDetail"),
-    },
-    {
-      viewId: "AccountBilling",
-      key: 'Account Billing {accountId}',
-      displayText: 'Account Billing {accountId}',
-      paneType: "main",
-      displayIcon: "mugshot",
-      componentName: "AccountBilling",
-      entityType: "account",
-      componentModule: () => import("./Account/AccountBilling"),
-    },
-  ];
-  const porrtalBanner: BannerData = {
-    displayText: "My Quick Start App",
-    displayIcon: "construction",
-    childData: []
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent {
+  public bannerData: BannerData = {
+    displayText: '@porrtal angular material quick start',
+    displayIcon: 'cyclone',
   };
-  return (
-    <ShellState views={porrtalViews}>
-      <ShellMaterial bannerData={porrtalBanner} />
-    </ShellState>
-  );
-}
 
-export default App;
+  constructor(public shellStateService: ShellStateService) {
+    views.forEach((view) =>
+      shellStateService.dispatch({
+        type: 'registerView',
+        view,
+      })
+    );
+
+    shellStateService.dispatch({
+      type: 'launchStartupViews',
+    });
+  }
+}
 ```
 
-### Update `AccountNav.tsx` with the EntityMenu
+### Update `account-nav.component.html` with the EntityMenu
 
-```tsx
-import { Icon } from "@mui/material";
-import { EntityMenu, useShellDispatch } from "@porrtal/r-shell";
-import { Fragment } from "react";
-import { accountData } from "../Data/AccountData";
-import "./AccountNav.css";
-
-/* eslint-disable-next-line */
-export interface AccountNavProps {}
-
-export function AccountNav(props: AccountNavProps) {
-  const shellDispatch = useShellDispatch();
-  return (
-    <div className="AccountNav_container">
-      <h3 className="AccountNav_title">Top Three Accounts</h3>
-      <div className="AccountNav_new-account-container">
-        <p
-          className="AccountNav_link-button"
-          onClick={() =>
-            shellDispatch({ type: "launchView", viewId: "NewAccount" })
-          }
+```html
+<div class="container">
+  <h3 class="title">Top Three Accounts</h3>
+  <div class="new-account-container">
+    <span
+      class="link-button"
+      style="display: grid; grid-template-columns: 24px auto"
+      (click)="
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: 'NewAccountComponent'
+        })
+      "
+    >
+      <mat-icon>add_circle</mat-icon>
+      <span style="margin-left: '5px'">New Account</span>
+    </span>
+  </div>
+  <div class="data-container">
+    <ng-container *ngFor="let account of topThreeAccounts">
+      <porrtal-entity-menu
+        entityType="account"
+        [state]="{ accountId: account.accountId }"
+      >
+        <span
+          class="link-button"
+          style="display: grid; grid-template-columns: 24px auto"
         >
-          <Icon>add_circle</Icon>
-          <span style={{ marginLeft: "5px" }}>New Account</span>
-        </p>
-      </div>
-      <div className="AccountNav_data-container">
-        {accountData
-          .map((account) => {
-            const total = account?.orders.reduce((accumulator, order) => {
-              return accumulator + order.amount;
-            }, 0);
-            return {
-              ...account,
-              total,
-            };
-          })
-          .sort((a, b) => b.total - a.total)
-          .filter((acct, ii) => ii < 3)
-          .map((acct) => {
-            return (
-              <Fragment key={acct.accountId}>
-                <EntityMenu
-                  entityType="account"
-                  state={{ accountId: acct.accountId }}
-                >
-                  <span className="AccountNav_link-button">
-                    <Icon>account_box</Icon>
-                    <span style={{ marginLeft: "5px" }}>{acct.name}</span>
-                  </span>
-                </EntityMenu>
-                <span>
-                  {"$" +
-                    acct.total
-                      .toFixed(0)
-                      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
-                </span>
-              </Fragment>
-            );
-          })}
-      </div>
-    </div>
-  );
-}
-
-export default AccountNav;
+          <mat-icon>account_box</mat-icon>
+          <span style="margin-left: 5px">{{ account.name }}</span>
+        </span>
+      </porrtal-entity-menu>
+      <span>
+        $
+        {{
+          account.total
+            | number
+              : "1.0-0" //.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+        }}
+      </span>
+    </ng-container>
+  </div>
+</div>
 ```
 
-### Update `AccountNav.css`
+### Update `account-nav.component.ts` with EntityMenuComponent import
+
+```ts
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { EntityMenuComponent } from '@porrtal/a-shell-material';
+import { MatIconModule } from '@angular/material/icon';
+import { ViewState } from '@porrtal/a-api';
+import { Account, accountData } from '../../data/account-data';
+import { ShellStateService } from '@porrtal/a-shell';
+
+@Component({
+  selector: 'app-account-nav',
+  standalone: true,
+  imports: [CommonModule, MatIconModule, EntityMenuComponent],
+  templateUrl: './account-nav.component.html',
+  styleUrls: ['./account-nav.component.css'],
+})
+export class AccountNavComponent {
+  @Input() viewState?: ViewState;
+
+  public topThreeAccounts: (Account & { total: number })[] = [];
+  constructor(public shellStateService: ShellStateService) {
+    this.topThreeAccounts = [
+      ...accountData
+        .map((account) => {
+          const total = account.orders.reduce((accumulator, order) => {
+            return accumulator + order.amount;
+          }, 0);
+          return {
+            ...account,
+            total,
+          };
+        })
+        .sort((a, b) => b.total - a.total)
+        .filter((acct, ii) => ii < 3),
+    ];
+
+    console.log('top three accounts', this.topThreeAccounts);
+  }
+}
+```
+
+### No changes to `AccountNav.css`
 
 ```css
-.AccountNav_container {
+.container {
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.AccountNav_title {
+.title {
   background-color: rgb(185, 199, 218);
   margin: 0;
-  padding-top: 5px;
-  padding-bottom: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   padding-left: 8px;
   grid-column: 1 / -1;
 }
 
-.AccountNav_new-account-container {
+.new-account-container {
   margin-top: 30px;
 }
 
-.AccountNav_data-container {
+.data-container {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: center;
@@ -185,41 +205,37 @@ export default AccountNav;
   margin-top: 15px;
 }
 
-.AccountNav_link-button {
+.link-button {
   color: blue;
   text-decoration: underline;
   cursor: pointer;
-  display: grid;
-  grid-template-columns: auto auto 1fr;
-  justify-items: flex-end;
-  align-items: center;
 }
 ```
 
 ### At this point, we can test the entity menu by clicking on the account in the Account Nav.
 
+![account nav entity type menu](account-nav-entity-type-menu.png)
+
 ## Now we fill in Account Detail implementation
 
-Next we will add detail to the Account Details page, picking up the accountId from the `state` property in the `viewState` property.
-
-### Add `AccountDetail.css` file in `Account` folder
+### Update `account-detail.component.css` file in `account` folder
 
 ```css
-.AccountDetail_container {
+.container {
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.AccountDetail_title {
+.title {
   background-color: rgb(185, 199, 218);
   margin: 0;
-  padding-top: 5px;
-  padding-bottom: 4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   padding-left: 8px;
   grid-column: 1 / -1;
 }
 
-.AccountDetail_data-container {
+.data-container {
   display: grid;
   justify-self: start;
   gap: 10px;
@@ -229,7 +245,7 @@ Next we will add detail to the Account Details page, picking up the accountId fr
   margin-top: 15px;
 }
 
-.AccountDetail_link-button {
+.link-button {
   color: blue;
   text-decoration: underline;
   cursor: pointer;
@@ -239,57 +255,73 @@ Next we will add detail to the Account Details page, picking up the accountId fr
 ### Install `moment` npm package (for date / time functions)
 
 ```bash
-npm install moment --save 
+npm install moment --save --legacy-peer-deps
 ```
 
-### Update `AccountDetail.tsx` to show data for the Account
+### Update `account-detail.component.html` to show data for the Account
 
-```tsx
-import { ViewComponentProps } from "@porrtal/r-api";
-import { Fragment } from "react";
-import { accountData } from "../Data/AccountData";
-import "./AccountDetail.css";
-import Moment from "moment";
+```html
+<div class="container">
+  <h3 class="title">
+    {{ account?.name }} ({{ account?.accountId }}) - Account Detail
+  </h3>
+  <div class="data-container">
+    <ng-container *ngFor="let order of orders">
+      <span>{{ order.item }}</span>
+      <span>
+        {{ order.amountText }}
+      </span>
+      <span>{{ Moment(order.date).format("YYYY-DD-MM") }}</span>
+    </ng-container>
+  </div>
+</div>
+```
 
-export function AccountDetail(props: ViewComponentProps) {
-  const account = accountData.find(
-    (acct) => acct.accountId === props.viewState?.state?.["accountId"]
-  );
+### Update `account-detail.component.ts`
 
-  if (account === null) {
-    return (
-      <div>
-        <span>accountId:&nbsp;</span>
-        <span>{`${props.viewState?.state?.["accountId"]}`}</span>
-        <span>&nbsp;not found.</span>
-      </div>
-    );
+```ts
+import { Component, Input } from '@angular/core';
+import { ViewState } from '@porrtal/a-api';
+import { Account, accountData, AccountOrder } from '../../data/account-data';
+import * as Moment from 'moment';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+
+@Component({
+  selector: 'app-account-detail',
+  standalone: true,
+  imports: [CommonModule, MatIconModule],
+  templateUrl: './account-detail.component.html',
+  styleUrls: ['./account-detail.component.css'],
+})
+export class AccountDetailComponent {
+  private _viewState?: ViewState;
+  @Input() set viewState(value: ViewState | undefined) {
+    this._viewState = value;
+    if (this._viewState?.state && this._viewState?.state['accountId']) {
+      const accountId = this._viewState?.state['accountId'];
+      this.account = accountData.find(
+        (account) => account.accountId === accountId
+      );
+      this.orders = [];
+      if (this.account) {
+        this.orders = this.account.orders.map((order) => ({
+          ...order,
+          amountText:
+            '$' +
+            order.amount.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'),
+        }));
+      }
+    }
+  }
+  get viewState() {
+    return this._viewState;
   }
 
-  return (
-    <div className="AccountDetail_container">
-      <h3 className="AccountDetail_title">
-        {account?.name} ({account?.accountId}) - Account Detail
-      </h3>
-      <div className="AccountDetail_data-container">
-        {account?.orders.map((order, index) => (
-          <Fragment key={index}>
-            <span>{order.item}</span>
-            <span>
-              {"$" +
-                order.amount
-                  .toFixed(0)
-                  .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}
-            </span>
-            <span>{Moment(order.date).format("YYYY-DD-MM")}</span>
-          </Fragment>
-        ))}
-      </div>
-    </div>
-  );
+  public Moment = Moment;
+  public account?: Account;
+  public orders?: (AccountOrder & { amountText: string })[];
 }
-
-export default AccountDetail;
 ```
 
 ### Success !! 
