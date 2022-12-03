@@ -70,7 +70,13 @@
       "options": {
         "commands": [
           "nx export n-porrtal-io-app",
-          "ncp dist/apps/n/porrtal-io-app/export apps/n/porrtal-io-app/cf/public"
+          "rm -rf dist/apps/n/porrtal-io-app/cf",
+          "mkdir dist/apps/n/porrtal-io-app/cf",
+          "ncp dist/apps/n/porrtal-io-app/exported dist/apps/n/porrtal-io-app/cf/public",
+          "cp dist/apps/n/porrtal-io-app/exported/Staticfile dist/apps/n/porrtal-io-app/cf",
+          "mkdir dist/apps/n/porrtal-io-app/cf/nginx",
+          "mkdir dist/apps/n/porrtal-io-app/cf/nginx/conf",
+          "ncp dist/apps/n/porrtal-io-app/exported/nginx/conf/includes dist/apps/n/porrtal-io-app/cf/nginx/conf/includes"
         ],
         "parallel": false
       }
