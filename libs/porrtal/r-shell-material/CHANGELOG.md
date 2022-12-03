@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Comcast/Porrtal/compare/v0.6.0...v0.7.0) (2022-12-03)
+
+### Bug Fixes
+
+- **@porrtal/r-shell-material:** fix build error ([85ed5d7](https://github.com/Comcast/Porrtal/commit/85ed5d79e855cda5662ac0138439ef88674a112d))
+
+### Features
+
+- **workspace:** update package.json files and docs ([3d47347](https://github.com/Comcast/Porrtal/commit/3d47347412aaee8d8fc5043163625cc3fddb0188))
+
 # [0.6.0](https://github.com/datumgeek/porrtal/compare/v0.5.1...v0.6.0) (2022-12-01)
 
 **Note:** Version bump only for package @porrtal/r-shell-material

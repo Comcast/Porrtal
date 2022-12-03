@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Comcast/Porrtal/compare/v0.6.0...v0.7.0) (2022-12-03)
+
+### Bug Fixes
+
+- **@porrtal-components/r-porrtal-io:** replace images ([0f41d5c](https://github.com/Comcast/Porrtal/commit/0f41d5c54fb19c7a6ab69565ec9e7932b5463bb5))
+- **@porrtal/a-shell-material:** fix alignment in entity menu ([4965f0c](https://github.com/Comcast/Porrtal/commit/4965f0ca039391a20d36f3ee6a0889b048264dd1))
+- **@porrtal/r-shell-blueprint:** fix banner keys ([03ac0a3](https://github.com/Comcast/Porrtal/commit/03ac0a3648b703cf99876ff6138ae2b3a131d731))
+- **@porrtal/r-shell-material:** fix build error ([85ed5d7](https://github.com/Comcast/Porrtal/commit/85ed5d79e855cda5662ac0138439ef88674a112d))
+
+### Features
+
+- **@porrtal-components/a-quick-start-material:** add images to nav docs ([0592f7f](https://github.com/Comcast/Porrtal/commit/0592f7f5b2976e245ec9f8b9f23891fe72430e7b))
+- **@porrtal-components/a-quick-start-material:** docs for entity menu ([24b4fb6](https://github.com/Comcast/Porrtal/commit/24b4fb6186debcce13624bc5fa100eb87d715c5a))
+- **@porrtal-components/a-quick-start-material:** docs for launch a component ([b9600b6](https://github.com/Comcast/Porrtal/commit/b9600b6de8ff12286e5408bcc98e9ccaf469c7a6))
+- **@porrtal-components/a-quick-start-material:** docs for search view ([f5a001e](https://github.com/Comcast/Porrtal/commit/f5a001ee8843e437a8191121424bb56d028ece86))
+- **@porrtal/r-shell-blueprint:** enhance display of icons in banner ([6b6c119](https://github.com/Comcast/Porrtal/commit/6b6c11925bb0342d45b4706d0c997f31cb677d39))
+- **n-porrtal-io-app:** create nx command: export-to-cf ([52e1672](https://github.com/Comcast/Porrtal/commit/52e16724a0775c9cadb132f03f1c1dea7bd7228a))
+- **n-porrtal-io-app:** publish latest angular porrtal io app ([12e1d2b](https://github.com/Comcast/Porrtal/commit/12e1d2bcde1ea05bd2aae34a82f44d0436c0a025))
+- **n-porrtal-io-app:** update nx command: export-to-cf ([1140048](https://github.com/Comcast/Porrtal/commit/1140048ce7c50d90950a2f5eea33af26c4af66c7))
+- **workspace:** add Staticfile and license info ([4f0c395](https://github.com/Comcast/Porrtal/commit/4f0c3958e9de6fc34a20c2a30b2a744d9680a97c))
+- **workspace:** cf deployment working: cf export-to-cf n-porrtal-io-app ([ad5d235](https://github.com/Comcast/Porrtal/commit/ad5d235240c305b7674aceda6f3d0f84f274b5e1))
+- **workspace:** docs via readme ([056a31f](https://github.com/Comcast/Porrtal/commit/056a31f33f245a69b693869490079b6807271262))
+- **workspace:** rough in license agreement, code of conduct, contributing, etc ([12e3571](https://github.com/Comcast/Porrtal/commit/12e3571601edef2616e4ca5d2faa5e4b1a32c1cb))
+- **workspace:** update docs ([9eb745b](https://github.com/Comcast/Porrtal/commit/9eb745bcfd5d8e7756355360cfe73f0ee9ec81af))
+- **workspace:** update docs ([3022311](https://github.com/Comcast/Porrtal/commit/3022311020d9d5aa0cf415167473bd8d455db27f))
+- **workspace:** update docs ([91b39f1](https://github.com/Comcast/Porrtal/commit/91b39f1ad2049bba5f126c38365bd05f1e6cfec9))
+- **workspace:** update getting started docs for porrtal.io ([c9e47f9](https://github.com/Comcast/Porrtal/commit/c9e47f9dc9388837d5443cca6aa63badb3a5e674))
+- **workspace:** update getting started image size ([ef915dc](https://github.com/Comcast/Porrtal/commit/ef915dc58be691ff7a4d46e5a89fd863b48bfe97))
+- **workspace:** update package.json files and docs ([3d47347](https://github.com/Comcast/Porrtal/commit/3d47347412aaee8d8fc5043163625cc3fddb0188))
+
 # [0.6.0](https://github.com/datumgeek/porrtal/compare/v0.5.1...v0.6.0) (2022-12-01)
 
 ### Bug Fixes

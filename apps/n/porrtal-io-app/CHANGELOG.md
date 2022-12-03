@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/datumgeek/porrtal/compare/v0.6.0...v0.7.0) (2022-12-03)
+
+### Bug Fixes
+
+- **@porrtal/r-shell-blueprint:** fix banner keys ([03ac0a3](https://github.com/datumgeek/porrtal/commit/03ac0a3648b703cf99876ff6138ae2b3a131d731))
+
+### Features
+
+- **n-porrtal-io-app:** create nx command: export-to-cf ([52e1672](https://github.com/datumgeek/porrtal/commit/52e16724a0775c9cadb132f03f1c1dea7bd7228a))
+- **n-porrtal-io-app:** publish latest angular porrtal io app ([12e1d2b](https://github.com/datumgeek/porrtal/commit/12e1d2bcde1ea05bd2aae34a82f44d0436c0a025))
+- **n-porrtal-io-app:** update nx command: export-to-cf ([1140048](https://github.com/datumgeek/porrtal/commit/1140048ce7c50d90950a2f5eea33af26c4af66c7))
+- **workspace:** add Staticfile and license info ([4f0c395](https://github.com/datumgeek/porrtal/commit/4f0c3958e9de6fc34a20c2a30b2a744d9680a97c))
+- **workspace:** cf deployment working: cf export-to-cf n-porrtal-io-app ([ad5d235](https://github.com/datumgeek/porrtal/commit/ad5d235240c305b7674aceda6f3d0f84f274b5e1))
+- **workspace:** docs via readme ([056a31f](https://github.com/datumgeek/porrtal/commit/056a31f33f245a69b693869490079b6807271262))
+- **workspace:** update docs ([3022311](https://github.com/datumgeek/porrtal/commit/3022311020d9d5aa0cf415167473bd8d455db27f))
+- **workspace:** update docs ([91b39f1](https://github.com/datumgeek/porrtal/commit/91b39f1ad2049bba5f126c38365bd05f1e6cfec9))
+- **workspace:** update getting started docs for porrtal.io ([c9e47f9](https://github.com/datumgeek/porrtal/commit/c9e47f9dc9388837d5443cca6aa63badb3a5e674))
+- **workspace:** update getting started image size ([ef915dc](https://github.com/datumgeek/porrtal/commit/ef915dc58be691ff7a4d46e5a89fd863b48bfe97))
+
 # [0.6.0](https://github.com/datumgeek/porrtal/compare/v0.5.1...v0.6.0) (2022-12-01)
 
 **Note:** Version bump only for package n-porrtal-io-app

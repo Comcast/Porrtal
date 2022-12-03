@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Comcast/Porrtal/compare/v0.6.0...v0.7.0) (2022-12-03)
+
+### Features
+
+- **workspace:** cf deployment working: cf export-to-cf n-porrtal-io-app ([ad5d235](https://github.com/Comcast/Porrtal/commit/ad5d235240c305b7674aceda6f3d0f84f274b5e1))
+- **workspace:** docs via readme ([056a31f](https://github.com/Comcast/Porrtal/commit/056a31f33f245a69b693869490079b6807271262))
+- **workspace:** update docs ([91b39f1](https://github.com/Comcast/Porrtal/commit/91b39f1ad2049bba5f126c38365bd05f1e6cfec9))
+- **workspace:** update package.json files and docs ([3d47347](https://github.com/Comcast/Porrtal/commit/3d47347412aaee8d8fc5043163625cc3fddb0188))
+
 # [0.6.0](https://github.com/datumgeek/porrtal/compare/v0.5.1...v0.6.0) (2022-12-01)
 
 **Note:** Version bump only for package @porrtal-components/r-quick-start-blueprint

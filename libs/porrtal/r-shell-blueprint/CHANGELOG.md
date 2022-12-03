@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Comcast/Porrtal/compare/v0.6.0...v0.7.0) (2022-12-03)
+
+### Bug Fixes
+
+- **@porrtal/r-shell-blueprint:** fix banner keys ([03ac0a3](https://github.com/Comcast/Porrtal/commit/03ac0a3648b703cf99876ff6138ae2b3a131d731))
+
+### Features
+
+- **@porrtal/r-shell-blueprint:** enhance display of icons in banner ([6b6c119](https://github.com/Comcast/Porrtal/commit/6b6c11925bb0342d45b4706d0c997f31cb677d39))
+- **workspace:** update package.json files and docs ([3d47347](https://github.com/Comcast/Porrtal/commit/3d47347412aaee8d8fc5043163625cc3fddb0188))
+
 # [0.6.0](https://github.com/datumgeek/porrtal/compare/v0.5.1...v0.6.0) (2022-12-01)
 
 **Note:** Version bump only for package @porrtal/r-shell-blueprint
