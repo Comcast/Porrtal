@@ -4,7 +4,7 @@
 
 Welcome to the Porrtal project !!
 
-| <img src="apps/n/porrtal-io-app/public/assets/react.png" width="28"  /> | [React Quick Start - BlueprintJS](libs/porrtal-components/r-quick-start-blueprint/porrtal-components-r-quick-start-blueprint/quick-start.md) |
+| <img src="apps/n/porrtal-io-app/public/assets/react.svg" width="28"  /> | [React Quick Start - BlueprintJS](libs/porrtal-components/r-quick-start-blueprint/porrtal-components-r-quick-start-blueprint/quick-start.md) |
 | --- | ---- |
 | ![react](apps/n/porrtal-io-app/public/assets/react.svg) | [React Quick Start - Material (MUI)](libs/porrtal-components/r-quick-start-material/porrtal-components-r-quick-start-material/quick-start.md) |
 | ![angular](apps/n/porrtal-io-app/public/assets/angular.svg) | [Angular Quick Start - Material](libs/porrtal-components/a-quick-start-material/porrtal-components-a-quick-start-material/quick-start.md) |
