@@ -65,6 +65,17 @@
         "buildTarget": "n-porrtal-io-app:build:production"
       }
     },
+    "export-to-cf": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx export n-porrtal-io-app",
+          "ncp dist/apps/n/porrtal-io-app/export apps/n/porrtal-io-app/cf/public"
+        ],
+        "parallel": false
+      }
+    }
+,
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/n/porrtal-io-app"],
