@@ -65,6 +65,22 @@
         "buildTarget": "n-porrtal-io-app:build:production"
       }
     },
+    "export-to-cf": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx export n-porrtal-io-app",
+          "rm -rf dist/apps/n/porrtal-io-app/cf",
+          "mkdir dist/apps/n/porrtal-io-app/cf",
+          "ncp dist/apps/n/porrtal-io-app/exported dist/apps/n/porrtal-io-app/cf/public",
+          "cp dist/apps/n/porrtal-io-app/exported/nginx.conf dist/apps/n/porrtal-io-app/cf",
+          "cp dist/apps/n/porrtal-io-app/exported/mime.types dist/apps/n/porrtal-io-app/cf",
+          "cf push porrtal-io -p dist/apps/n/porrtal-io-app/cf -b https://github.com/cloudfoundry/nginx-buildpack.git"
+        ],
+        "parallel": false
+      }
+    }
+,
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/n/porrtal-io-app"],

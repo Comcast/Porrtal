@@ -2,7 +2,7 @@
 
 _You can use the porrtal "quick links" to access the content of interest_
 
-![Next Steps](next-steps.jpg)
+![Next Steps](next-steps.png)
 
 &nbsp;
 &nbsp;

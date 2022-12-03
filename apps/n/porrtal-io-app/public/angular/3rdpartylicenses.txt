@@ -384,15 +384,23 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
+@porrtal-components/a-learning
+Apache-2.0
+
+@porrtal-components/a-quick-start-demo
+Apache-2.0
+
+@porrtal-components/a-quick-start-material
+Apache-2.0
+
 @porrtal/a-api
-
-@porrtal/a-learning
-
-@porrtal/a-quick-start-demo
+Apache-2.0
 
 @porrtal/a-shell
+Apache-2.0
 
 @porrtal/a-shell-material
+Apache-2.0
 
 @rx-angular/state
 MIT
@@ -1016,9 +1024,6 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-
-ngx-markdown
-MIT
 
 ngx-popperjs
 MIT

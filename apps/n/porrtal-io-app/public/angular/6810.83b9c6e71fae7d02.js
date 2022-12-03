@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunka_porrtal_io_app=self.webpackChunka_porrtal_io_app||[]).push([[6810],{26810:(p,o,t)=>{t.r(o),t.d(o,{CalciteTooltip:()=>e,defineCustomElement:()=>a});var l=t(98792);const e=l.T,a=l.d}}]);

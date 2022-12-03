@@ -1,6 +1,42 @@
 
 
-# PorrtalWorkspace
+# Porrtal
+
+Welcome to the Porrtal project !!
+
+| <img src="apps/n/porrtal-io-app/public/assets/react.svg" width="28"  /> | [React Quick Start - BlueprintJS](libs/porrtal-components/r-quick-start-blueprint/porrtal-components-r-quick-start-blueprint/quick-start.md) |
+| --- | ---- |
+| ![react](apps/n/porrtal-io-app/public/assets/react.svg) | [React Quick Start - Material (MUI)](libs/porrtal-components/r-quick-start-material/porrtal-components-r-quick-start-material/quick-start.md) |
+| ![angular](apps/n/porrtal-io-app/public/assets/angular.svg) | [Angular Quick Start - Material](libs/porrtal-components/a-quick-start-material/porrtal-components-a-quick-start-material/quick-start.md) |
+
+
+The Porrtal project website can be found here: [porrtal.io](https://porrtal.io) (coming soon...)
+
+Porrtal NPM Packages can be found here: [www.npmjs.com/search?q=@porrtal](https://www.npmjs.com/search?q=%40porrtal)
+
+_@porrtal is a set of npm packages that can be used to rapidly construct spatial / analytics systems for power users._
+
+(@porrtal provides npm packages for both Angular and React development)
+
+![Build Better Outcomes](./libs/porrtal-components/r-porrtal-io/porrtal-components-r-porrtal-io/welcome/build-better-outcomes.png)
+
+The goal of the Porrtal project is to assist developers in building better outcomes by
+
+1. Increasing developer velocity;
+2. Enabling delivery of more powerful web applications;
+3. Providing a more powerful navigation model; and
+4. Facilitating an integrated application experience through modular component composition.
+
+&nbsp;
+
+![Focus on Components Leave the Plumbing to Porrtal](./libs/porrtal-components/r-porrtal-io/porrtal-components-r-porrtal-io/welcome/leave-the-plumbing-to-porrtal.jpg)
+
+&nbsp;
+&nbsp;
+
+![Grow your Development up to Planetary Scale](./libs/porrtal-components/r-porrtal-io/porrtal-components-r-porrtal-io/welcome/porrtal-is-modular.jpg)
+
+# Porrtal Development
 
 This project was generated using [Nx](https://nx.dev).
 

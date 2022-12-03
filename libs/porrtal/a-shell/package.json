@@ -1,10 +1,12 @@
 {
   "name": "@porrtal/a-shell",
   "version": "0.6.0",
-  "peerDependencies": {
-    "@angular/common": "^14.1.0",
-    "@angular/core": "^14.1.0"
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Comcast/Porrtal.git"
   },
+  "author": "Comcast_Open_Source_Services@comcast.com",
+  "license": "Apache-2.0",
   "dependencies": {
     "tslib": "^2.3.0"
   }

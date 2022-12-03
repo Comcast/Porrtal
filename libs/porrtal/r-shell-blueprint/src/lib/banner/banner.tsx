@@ -11,6 +11,7 @@ export function Banner(props: BannerProps) {
         <Icon
           className={styles['banner-icon-icon']}
           icon={props.bannerData.displayIcon as IconName}
+          size={20}
         />
       )}
       {!props.bannerData?.displayIcon && <span></span>}
@@ -49,10 +50,16 @@ function BannerMenu(props: BannerProps & { children: ReactNode | undefined }) {
         <Menu className={Classes.POPOVER2_DISMISS}>
           {props.bannerData.childData.map((menuItem) => (
             <MenuItem
-              key={menuItem.displayText}
-              icon={menuItem.displayIcon as IconName}
+              key={menuItem.key}
               text={
                 <>
+                  {props.bannerData?.displayIcon && (
+                    <Icon
+                      className={styles['banner-icon']}
+                      icon={menuItem.displayIcon as IconName}
+                      size={20}
+                    />
+                  )}
                   {menuItem.displayImage && (
                     <img
                       className={styles['image-icon']}

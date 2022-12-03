@@ -1,4 +1,5 @@
 export interface BannerData {
+  key?: string;
   displayText?: string;
   displayIcon?: string;
   displayImage?: string;

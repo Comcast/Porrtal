@@ -1,8 +1,10 @@
 {
   "name": "@porrtal/r-shell",
   "version": "0.6.0",
-  "peerDependencies": {
-    "@porrtal/r-api": "0.2.0",
-    "@porrtal/r-split": "0.2.0"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Comcast/Porrtal.git"
+  },
+  "author": "Comcast_Open_Source_Services@comcast.com",
+  "license": "Apache-2.0"
 }
