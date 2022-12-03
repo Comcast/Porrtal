@@ -1,4 +1,3 @@
-pushstate: enabled
 force_https: true
 http_strict_transport_security: true
 http_strict_transport_security_include_subdomains: true
