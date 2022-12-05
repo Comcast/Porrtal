@@ -1,3 +1,17 @@
+﻿/*
+Copyright 2022 Comcast Cable Communications Management, LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 "use strict";(self.webpackChunka_porrtal_io_app=self.webpackChunka_porrtal_io_app||[]).push([[4828],{9088:(ee,z,t)=>{t.d(z,{L:()=>U,b:()=>y});var s=t(28347),_=t(43703),P=t(67831),h=t(99770),L=t(47634),M=t(95285),x=t(65787),W=t(17625),A=t(63123),T=t(22355),w=t(16396);function y(I){const f=new T.kG;f.include(L.j,I);const{vertex:S,fragment:V}=f;return S.uniforms.add([new A.g("modelView",(C,m)=>(0,s.v)(v,m.camera.viewMatrix,C.origin)),new A.g("proj",(C,m)=>m.camera.projectionMatrix),new x.p("glowWidth",(C,m)=>C.glowWidth*m.camera.pixelRatio),new M.A("pixelToNDC",(C,m)=>(0,P.s)(d,2/m.camera.fullViewport[2],2/m.camera.fullViewport[3]))]),f.attributes.add(w.T.START,"vec3"),f.attributes.add(w.T.END,"vec3"),f.attributes.add(w.T.UP,"vec3"),f.attributes.add(w.T.EXTRUDE,"vec2"),f.varyings.add("uv","vec2"),f.varyings.add("vViewStart","vec3"),f.varyings.add("vViewEnd","vec3"),f.varyings.add("vViewPlane","vec4"),S.code.add(W.H`void main() {
 vec3 pos = mix(start, end, extrude.x);
 vec4 viewPos = modelView * vec4(pos, 1);

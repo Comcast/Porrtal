@@ -1,3 +1,17 @@
+﻿/*
+Copyright 2022 Comcast Cable Communications Management, LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 "use strict";(self.webpackChunka_porrtal_io_app=self.webpackChunka_porrtal_io_app||[]).push([[8203],{46668:(me,se,r)=>{r.d(se,{a:()=>C});const T=2654435761,a=2246822519,w=3266489917,O=668265263,A=374761393;function l(K){const m=[];for(let h=0,_=K.length;h<_;h++){let u=K.charCodeAt(h);u<128?m.push(u):u<2048?m.push(192|u>>6,128|63&u):u<55296||u>=57344?m.push(224|u>>12,128|u>>6&63,128|63&u):(h++,u=65536+((1023&u)<<10|1023&K.charCodeAt(h)),m.push(240|u>>18,128|u>>12&63,128|u>>6&63,128|63&u))}return new Uint8Array(m)}class C{constructor(m){this._seed=m,this._totallen=0,this._bufs=[],this.init()}init(){return this._bufs=[],this._totallen=0,this}updateFloatArray(m){const h=[];for(const _ of m)isNaN(_)?h.push("NaN"):h.push(_===1/0?"Infinity":_===-1/0?"-Infinity":0===_?"0":_.toString(16));this.update(l(h.join("")))}updateIntArray(m){const h=Int32Array.from(m);this.update(new Uint8Array(h.buffer))}updateUint8Array(m){this.update(Uint8Array.from(m))}updateWithString(m){return this.update(l(m))}update(m){return this._bufs.push(m),this._totallen+=m.length,this}digest(){const m=new Uint8Array(this._totallen);let h=0;for(const _ of this._bufs)m.set(_,h),h+=_.length;return this.init(),this._xxHash32(m,this._seed)}_xxHash32(m,h=0){const _=m;let u=h+A&4294967295,b=0;if(_.length>=16){const y=[h+T+a&4294967295,h+a&4294967295,h+0&4294967295,h-T&4294967295],L=m,S=L.length-16;let G=0;for(b=0;(4294967280&b)<=S;b+=4){let E=y[G]+((L[b+0]+(L[b+1]<<8))*a+((L[b+2]+(L[b+3]<<8))*a<<16))&4294967295;E=E<<13|E>>>19,y[G]=(65535&E)*T+((E>>>16)*T<<16)&4294967295,G=G+1&3}u=(y[0]<<1|y[0]>>>31)+(y[1]<<7|y[1]>>>25)+(y[2]<<12|y[2]>>>20)+(y[3]<<18|y[3]>>>14)&4294967295}u=u+m.length&4294967295;const P=m.length-4;for(;b<=P;b+=4)u=u+((_[b+0]+(_[b+1]<<8))*w+((_[b+2]+(_[b+3]<<8))*w<<16))&4294967295,u=u<<17|u>>>15,u=(65535&u)*O+((u>>>16)*O<<16)&4294967295;for(;b<_.length;++b)u+=_[b]*A,u=u<<11|u>>>21,u=(65535&u)*T+((u>>>16)*T<<16)&4294967295;return u^=u>>>15,u=((65535&u)*a&4294967295)+((u>>>16)*a<<16),u^=u>>>13,u=((65535&u)*w&4294967295)+((u>>>16)*w<<16),u^=u>>>16,u<0?u+4294967296:u}}},88034:(me,se,r)=>{r.d(se,{H:()=>K,b:()=>C});var T=r(98071),a=r(49480),w=r(65787),O=r(17625),A=r(22355),l=r(35387);function C(m){const h=new A.kG;h.include(T.k),h.include(a.f);const{usesHalfFloat:_}=m;return h.fragment.uniforms.add([new l.A("densityMap",u=>u.densityMap),new l.A("tex",u=>u.colorRamp),new w.p("densityNormalizer",u=>1/(u.maxDensity-u.minDensity)),new w.p("minDensity",u=>u.minDensity)]),h.fragment.uniforms.add(new w.p("densityMultiplier",u=>3/(u.searchRadius*u.searchRadius*Math.PI))),_&&h.constants.add("compressionFactor","float",4),h.fragment.code.add(O.H`
     void main() {
       float density = texture2D(densityMap, uv).r * densityMultiplier${_?O.H` * compressionFactor`:""};

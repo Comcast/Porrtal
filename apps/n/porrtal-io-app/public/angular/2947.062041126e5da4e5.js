@@ -1,3 +1,17 @@
+﻿/*
+Copyright 2022 Comcast Cable Communications Management, LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 "use strict";(self.webpackChunka_porrtal_io_app=self.webpackChunka_porrtal_io_app||[]).push([[2947],{88034:(ie,K,s)=>{s.d(K,{H:()=>B,b:()=>y});var A=s(98071),a=s(49480),V=s(65787),C=s(17625),S=s(22355),h=s(35387);function y(){const M=new S.kG;return M.include(A.k),M.include(a.f),M.fragment.uniforms.add([new h.A("densityMap",g=>g.densityMap),new h.A("tex",g=>g.colorRamp),new V.p("densityNormalizer",g=>1/(g.maxDensity-g.minDensity)),new V.p("minDensity",g=>g.minDensity)]),M.fragment.uniforms.add(new V.p("densityMultiplier",g=>3/(g.searchRadius*g.searchRadius*Math.PI))),M.fragment.code.add(C.H`void main() {
 float density = texture2D(densityMap, uv).r * densityMultiplier;
 float densityRatio = (density - minDensity) * densityNormalizer;

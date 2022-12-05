@@ -1,1 +1,15 @@
+﻿/*
+Copyright 2022 Comcast Cable Communications Management, LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 "use strict";(self.webpackChunka_porrtal_io_app=self.webpackChunka_porrtal_io_app||[]).push([[8765],{48765:(S,y,e)=>{e.r(y),e.d(y,{default:()=>I});var a=e(17626),l=e(26584),c=(e(63290),e(90912),e(85931),e(8314),e(82255),e(76898)),x=e(2004),f=e(69759),m=e(77712),g=e(13812),P=e(51920);const w=o=>{let t=class extends o{initialize(){this.exportImageParameters=new P.j({layer:this.layer})}destroy(){this.exportImageParameters.destroy(),this.exportImageParameters=null}get exportImageVersion(){return this.exportImageParameters?.commitProperty("version"),this.commitProperty("timeExtent"),(this._get("exportImageVersion")||0)+1}fetchPopupFeatures(s){const{layer:r}=this;if(!s)return Promise.reject(new l.Z("wmslayerview:fetchPopupFeatures","Nothing to fetch without area",{layer:r}));const{popupEnabled:n}=r;if(!n)return Promise.reject(new l.Z("wmslayerview:fetchPopupFeatures","popupEnabled should be true",{popupEnabled:n}));const p=this.createFetchPopupFeaturesQuery(s);if(!p)return Promise.resolve([]);const{extent:h,width:i,height:u,x:E,y:F}=p;if(!(h&&i&&u))throw new l.Z("wmslayerview:fetchPopupFeatures","WMSLayer does not support fetching features.",{extent:h,width:i,height:u});const v=r.fetchFeatureInfo(h,i,u,E,F);return Promise.resolve(v?[v]:[])}};return(0,a._)([(0,m.Cb)()],t.prototype,"exportImageParameters",void 0),(0,a._)([(0,m.Cb)({readOnly:!0})],t.prototype,"exportImageVersion",null),(0,a._)([(0,m.Cb)()],t.prototype,"layer",void 0),(0,a._)([(0,m.Cb)(g.qG)],t.prototype,"timeExtent",void 0),t=(0,a._)([(0,c.j)("esri.layers.mixins.WMSLayerView")],t),t};let d=class extends(w(f.Z)){constructor(){super(...arguments),this.type="wms-3d"}initialize(){this.layer.serviceSupportsSpatialReference(this.view.spatialReference)||this.addResolvingPromise(Promise.reject(new l.Z("layerview:spatial-reference-incompatible","The spatial references supported by this WMS layer are incompatible with the spatial reference of the view"))),this.updatingHandles.add(()=>this.exportImageParameters?.version,()=>{this.updatingHandles.addPromise(this.refreshDebounced())})}createFetchPopupFeaturesQuery(o){const t=this.findExtentInfoAt(o),s=t.extent,r=new x.Z(s[0],s[1],s[2],s[3],this._spatialReference),n=t.imageSize,p=n.width,i=r.width/p;return{extent:r,width:p,height:n.height,x:Math.round((o.x-r.xmin)/i),y:Math.round((r.ymax-o.y)/i)}}getFetchOptions(){return{timeExtent:this.timeExtent}}};d=(0,a._)([(0,c.j)("esri.views.3d.layers.WMSLayerView3D")],d);const I=d}}]);

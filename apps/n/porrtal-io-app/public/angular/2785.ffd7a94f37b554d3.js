@@ -1,3 +1,17 @@
+﻿/*
+Copyright 2022 Comcast Cable Communications Management, LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 "use strict";(self.webpackChunka_porrtal_io_app=self.webpackChunka_porrtal_io_app||[]).push([[2785],{93310:(Et,at,_)=>{_.d(at,{S:()=>R,b:()=>P});var I=_(4794),tt=_(81801),q=_(6945),z=_(78925),K=_(24255),et=_(10109),rt=_(67022),st=_(33726),ct=_(2166),U=_(97139),$=_(69960),N=_(17625),Y=_(63123),ot=_(22355),O=_(42743),M=_(16396);function P(E){const W=new ot.kG,Z=E.hasMultipassTerrain&&(E.output===q.H.Color||E.output===q.H.Alpha);W.include(K.w),W.include(tt.A,E),W.include(z.f5,E);const{vertex:V,fragment:lt}=W;return lt.include(st.Y),(0,ct.S)(W,E),lt.uniforms.add(new $.N("uColor",ut=>ut.color)),W.attributes.add(M.T.POSITION,"vec3"),W.varyings.add("vWorldPosition","vec3"),Z&&W.varyings.add("depth","float"),E.screenSizeEnabled&&W.attributes.add(M.T.OFFSET,"vec3"),E.shadingEnabled&&(V.uniforms.add(new Y.g("viewNormal",(ut,dt)=>dt.camera.viewInverseTransposeMatrix)),W.attributes.add(M.T.NORMAL,"vec3"),W.varyings.add("vViewNormal","vec3")),V.code.add(N.H`
     void main(void) {
       vWorldPosition = ${E.screenSizeEnabled?"screenSizeScaling(offset, position)":"position"};

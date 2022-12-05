@@ -1,3 +1,17 @@
+﻿/*
+Copyright 2022 Comcast Cable Communications Management, LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 "use strict";(self.webpackChunka_porrtal_io_app=self.webpackChunka_porrtal_io_app||[]).push([[154],{1956:(pe,F,r)=>{r.d(F,{P:()=>C,b:()=>L});var m=r(6945),v=r(78925),T=r(62952),j=r(19278),w=r(95285),g=r(65364),b=r(39704),_=r(17625),R=r(63123),V=r(46524),U=r(22355),E=r(16396);function L(P){const d=new U.kG,y=P.output===m.H.Color,O=P.output===m.H.Depth,ge=P.output===m.H.Highlight,{vertex:x,fragment:te}=d;return d.extensions.add("GL_OES_standard_derivatives"),d.include(v.f5,P),d.attributes.add(E.T.POSITION,"vec3"),d.attributes.add(E.T.COLOR,"vec3"),x.uniforms.add(new V.B("modelView")),x.uniforms.add(new R.g("proj",(ie,se)=>se.camera.projectionMatrix)),x.uniforms.add(new g.e("screenMinMaxSize")),x.uniforms.add(new g.e("pointScale")),x.uniforms.add(new b.K("clipMin")),x.uniforms.add(new b.K("clipMax")),O?(x.uniforms.add(new w.A("nearFar",(ie,se)=>se.camera.nearFar)),d.varyings.add("depth","float")):P.output!==m.H.Highlight&&d.varyings.add("vColor","vec3"),x.code.add(_.H`
     void main(void) {
       // Move clipped points outside of clipspace

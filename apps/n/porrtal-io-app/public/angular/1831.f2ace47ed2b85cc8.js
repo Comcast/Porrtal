@@ -1,1 +1,15 @@
+﻿/*
+Copyright 2022 Comcast Cable Communications Management, LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 "use strict";(self.webpackChunka_porrtal_io_app=self.webpackChunka_porrtal_io_app||[]).push([[1831],{91831:(z,m,n)=>{n.r(m),n.d(m,{clearBoundingBoxCache:()=>b,computeIconLayerResourceSize:()=>l,computeLayerResourceSize:()=>B,computeLayerSize:()=>D,computeObjectLayerResourceSize:()=>y});var s=n(15861),P=n(84792),i=n(26584),O=n(78498),f=n(62208),h=n(5548),d=n(43652);let u=E();function E(){return new O.Z(50)}function b(){u=E()}function B(e,r){if("icon"===e.type)return l(e,r);if("object"===e.type)return y(e,r);throw new i.Z("symbol3d:unsupported-symbol-layer","computeLayerSize only works with symbol layers of type Icon and Object")}function D(e,r){return a.apply(this,arguments)}function a(){return(a=(0,s.Z)(function*(e,r){if("icon"===e.type)return C(e,r);if("object"===e.type)return M(e,r);throw new i.Z("symbol3d:unsupported-symbol-layer","computeLayerSize only works with symbol layers of type Icon and Object")})).apply(this,arguments)}function l(e,r){return c.apply(this,arguments)}function c(){return(c=(0,s.Z)(function*(e,r){if(e.resource.href)return L(e.resource.href).then(t=>[t.width,t.height]);if(e.resource.primitive)return(0,f.pC)(r)?[r,r]:[256,256];throw new i.Z("symbol3d:invalid-symbol-layer","symbol layers of type Icon must have either an href or a primitive resource")})).apply(this,arguments)}function C(e,r){return l(e,r).then(t=>{if(null==e.size)return t;const o=t[0]/t[1];return o>1?[e.size,e.size/o]:[e.size*o,e.size]})}function L(e){return(0,P.default)(e,{responseType:"image"}).then(r=>r.data)}function y(e,r){return function j(e,r){return p.apply(this,arguments)}(e,r).then(t=>(0,h.dp)(t))}function M(e,r){return _.apply(this,arguments)}function _(){return(_=(0,s.Z)(function*(e,r){const t=yield y(e,r);return(0,d.$K)(t,e)})).apply(this,arguments)}function p(){return(p=(0,s.Z)(function*(e,r){if(!e.isPrimitive){const o=e.resource.href,v=u.get(o);if(void 0!==v)return v;const x=yield Promise.resolve().then(n.bind(n,6176)),g=yield x.fetch(o,{disableTextures:!0});return u.put(o,g.referenceBoundingBox),g.referenceBoundingBox}let t=null;if(e.resource&&e.resource.primitive&&(t=(0,h.Ue)((0,d.Uz)(e.resource.primitive)),(0,f.pC)(r)))for(let o=0;o<t.length;o++)t[o]*=r;return t?Promise.resolve(t):Promise.reject(new i.Z("symbol:invalid-resource","The symbol does not have a valid resource"))})).apply(this,arguments)}}}]);

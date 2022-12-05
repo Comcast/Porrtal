@@ -1,3 +1,17 @@
+﻿/*
+Copyright 2022 Comcast Cable Communications Management, LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 "use strict";(self.webpackChunka_porrtal_io_app=self.webpackChunka_porrtal_io_app||[]).push([[9094],{34013:(K,A,e)=>{e.d(A,{I:()=>I,b:()=>c});var i=e(62208),h=e(99770),T=e(6945),v=e(78925),f=e(24255),O=e(10109),_=e(67022),U=e(33726),m=e(2166),D=e(95285),S=e(65787),P=e(17625),L=e(22355),n=e(35387),u=e(42743),d=e(16396);function c(M){const g=new L.kG;(0,m.S)(g,M),g.include(f.w),g.attributes.add(d.T.POSITION,"vec3"),g.attributes.add(d.T.UV0,"vec2"),g.varyings.add("vpos","vec3"),M.hasMultipassTerrain&&g.varyings.add("depth","float");const{vertex:R,fragment:x}=g;return R.uniforms.add(new D.A("textureCoordinateScaleFactor",E=>(0,i.pC)(E.texture)&&(0,i.pC)(E.texture.descriptor.textureCoordinateScaleFactor)?E.texture.descriptor.textureCoordinateScaleFactor:h.O)),R.code.add(P.H`
     void main(void) {
       vpos = position;

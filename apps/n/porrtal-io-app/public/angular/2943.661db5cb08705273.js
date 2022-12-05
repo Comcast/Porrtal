@@ -1,3 +1,17 @@
+﻿/*
+Copyright 2022 Comcast Cable Communications Management, LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 "use strict";(self.webpackChunka_porrtal_io_app=self.webpackChunka_porrtal_io_app||[]).push([[2943],{8549:($e,he,L)=>{L.d(he,{C:()=>se,b:()=>de});var A=L(10109),ie=L(33726),M=L(2166),V=L(95285),_e=L(69960),Me=L(17625),Ge=L(22355),J=L(42743),le=L(16396);function de(U){const w=new Ge.kG;return w.extensions.add("GL_OES_standard_derivatives"),(0,M.S)(w,U),w.attributes.add(le.T.POSITION,"vec3"),w.attributes.add(le.T.UV0,"vec2"),w.varyings.add("vUV","vec2"),U.hasMultipassTerrain&&w.varyings.add("depth","float"),w.vertex.code.add(Me.H`
     void main(void) {
       vUV = uv0;
