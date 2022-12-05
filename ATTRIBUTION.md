@@ -6,7 +6,7 @@
 
 (copied here, published as @porrtal/r-split)
 
-## [jfcere/ngx-markdown]() --> [@porrtal/a-learning](./libs/porrtal-components/a-learning/src/lib/ngx-markdown/)
+## [jfcere/ngx-markdown](https://github.com/jfcere/ngx-markdown) --> [@porrtal/a-learning](./libs/porrtal-components/a-learning/src/lib/ngx-markdown/)
 
 [See jrcere/ngx-markdown LICENSE](./libs/porrtal-components/a-learning/src/lib/ngx-markdown/LICENSE)
 
