@@ -7,6 +7,10 @@
   },
   "author": "Comcast_Open_Source_Services@comcast.com",
   "license": "Apache-2.0",
+  "homepage": "https://github.com/Comcast/Porrtal",
+  "bugs": {
+    "url": "https://github.com/Comcast/Porrtal/issues"
+  },
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
