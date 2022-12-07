@@ -6,7 +6,7 @@
     "url": "git@github.com:Comcast/Porrtal.git"
   },
   "author": "Comcast_Open_Source_Services@comcast.com",
-  "license": "Apache-2.0",
+  "license": "SEE LICENSE IN LICENSE-Apache-2.0",
   "homepage": "https://github.com/Comcast/Porrtal",
   "bugs": {
     "url": "https://github.com/Comcast/Porrtal/issues"
@@ -16,18 +16,10 @@
     "build": "nx build",
     "copyEsriAssets": "ncp ./node_modules/@arcgis/core/assets apps/porrtal-app/public",
     "test": "nx test",
-    "prepare": "husky install && npm audit",
-    "preinstall": "npx npm-force-resolutions",
-    "postinstall": "ngcc --properties es2020 browser module main && npm audit"
+    "prepare": "husky install",
+    "postinstall": "ngcc --properties es2020 browser module main"
   },
   "private": true,
-  "resolutions": {
-    "minimatch": "3.1.2",
-    "d3-color": "3.1.0",
-    "trim": "0.0.3",
-    "trim-newlines": "3.0.1",
-    "nth-check": "2.1.1"
-  },
   "dependencies": {
     "@angular/animations": "15.0.0",
     "@angular/cdk": "15.0.0",
@@ -141,7 +133,6 @@
     "lerna": "^6.1.0",
     "minimatch": "^3.1.2",
     "ng-packagr": "~15.0.0",
-    "nth-check": "^2.1.1",
     "nx": "15.2.4",
     "postcss": "8.4.16",
     "postcss-import": "~14.1.0",
@@ -150,8 +141,6 @@
     "prettier": "2.6.2",
     "react-test-renderer": "18.2.0",
     "sass": "1.55.0",
-    "trim": "^0.0.3",
-    "trim-newlines": "^3.0.1",
     "ts-jest": "28.0.5",
     "ts-node": "10.9.1",
     "typescript": "4.8.4",
