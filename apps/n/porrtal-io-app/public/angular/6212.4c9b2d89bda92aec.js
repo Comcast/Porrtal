@@ -1,17 +1,3 @@
-﻿/*
-Copyright 2022 Comcast Cable Communications Management, LLC
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
 "use strict";(self.webpackChunka_porrtal_io_app=self.webpackChunka_porrtal_io_app||[]).push([[6212],{50978:(Ae,K,n)=>{n.d(K,{M:()=>ae,b:()=>U});var o=n(2166),_=n(69960),l=n(65787),d=n(17625),ve=n(22355),I=n(16396);function U(re){const L=new ve.kG,{vertex:D,fragment:Y}=L;(0,o.Sv)(D,re),D.uniforms.add(new l.p("width",g=>g.width)),L.attributes.add(I.T.POSITION,"vec3"),L.attributes.add(I.T.NORMAL,"vec3"),L.attributes.add(I.T.UV0,"vec2"),L.attributes.add(I.T.AUXPOS1,"float"),L.varyings.add("vtc","vec2"),L.varyings.add("vlength","float"),L.varyings.add("vradius","float"),D.code.add(d.H`void main(void) {
 vec3 bitangent = normal;
 vtc = uv0;

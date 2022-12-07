@@ -1,15 +1,1 @@
-﻿/*
-Copyright 2022 Comcast Cable Communications Management, LLC
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
 "use strict";(self.webpackChunka_porrtal_io_app=self.webpackChunka_porrtal_io_app||[]).push([[2543],{2543:(E,m,i)=>{i.r(m),i.d(m,{registerFunctions:()=>x});var g=i(15861),h=i(25919),u=i(47562),l=i(50818),y=i(10410);function _(t,e,a,n,s,r){return c.apply(this,arguments)}function c(){return(c=(0,g.Z)(function*(t,e,a,n,s,r){if(1===n.length){if((0,u.m)(n[0]))return(0,l.t)(t,n[0],(0,u.A)(n[1],-1));if((0,u.x)(n[0]))return(0,l.t)(t,n[0].toArray(),(0,u.A)(n[1],-1))}else if(2===n.length){if((0,u.m)(n[0]))return(0,l.t)(t,n[0],(0,u.A)(n[1],-1));if((0,u.x)(n[0]))return(0,l.t)(t,n[0].toArray(),(0,u.A)(n[1],-1));if((0,u.T)(n[0])){const o=yield n[0].load(),f=yield A(y.WhereClause.create(n[1],o.getFieldsIndex()),r,s);return n[0].calculateStatistic(t,f,(0,u.A)(n[2],1e3),e.abortSignal)}}else if(3===n.length&&(0,u.T)(n[0])){const o=yield n[0].load(),f=yield A(y.WhereClause.create(n[1],o.getFieldsIndex()),r,s);return n[0].calculateStatistic(t,f,(0,u.A)(n[2],1e3),e.abortSignal)}return(0,l.t)(t,n,-1)})).apply(this,arguments)}function A(t,e,a){return d.apply(this,arguments)}function d(){return(d=(0,g.Z)(function*(t,e,a){const n=t.getVariables();if(n.length>0){const s=[];for(let o=0;o<n.length;o++){const f={name:n[o]};s.push(yield e.evaluateIdentifier(a,f))}const r={};for(let o=0;o<n.length;o++)r[n[o]]=s[o];return t.parameters=r,t}return t})).apply(this,arguments)}function x(t){"async"===t.mode&&(t.functions.stdev=function(e,a){return t.standardFunctionAsync(e,a,(n,s,r)=>_("stdev",n,s,r,e,t))},t.functions.variance=function(e,a){return t.standardFunctionAsync(e,a,(n,s,r)=>_("variance",n,s,r,e,t))},t.functions.average=function(e,a){return t.standardFunctionAsync(e,a,(n,s,r)=>_("mean",n,s,r,e,t))},t.functions.mean=function(e,a){return t.standardFunctionAsync(e,a,(n,s,r)=>_("mean",n,s,r,e,t))},t.functions.sum=function(e,a){return t.standardFunctionAsync(e,a,(n,s,r)=>_("sum",n,s,r,e,t))},t.functions.min=function(e,a){return t.standardFunctionAsync(e,a,(n,s,r)=>_("min",n,s,r,e,t))},t.functions.max=function(e,a){return t.standardFunctionAsync(e,a,(n,s,r)=>_("max",n,s,r,e,t))},t.functions.count=function(e,a){return t.standardFunctionAsync(e,a,(n,s,r)=>{if((0,u.y)(r,1,1,e,a),(0,u.T)(r[0]))return r[0].count(n.abortSignal);if((0,u.m)(r[0])||(0,u.c)(r[0]))return r[0].length;if((0,u.x)(r[0]))return r[0].length();throw new h.aV(e,h.rH.InvalidParameter,a)})})}}}]);

@@ -1,17 +1,3 @@
-﻿/*
-Copyright 2022 Comcast Cable Communications Management, LLC
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
 "use strict";(self.webpackChunka_porrtal_io_app=self.webpackChunka_porrtal_io_app||[]).push([[9303],{30750:(Te,ie,l)=>{l.d(ie,{S:()=>U,b:()=>D});var g=l(2166),A=l(69960),d=l(65787),v=l(17625),le=l(22355),ee=l(16396);function D(F){const te=new le.kG;te.extensions.add("GL_OES_standard_derivatives");const{vertex:j,fragment:J,attributes:Z,varyings:z}=te;return(0,g.Sv)(j,F),Z.add(ee.T.POSITION,"vec3"),Z.add(ee.T.UV0,"vec2"),z.add("vUV","vec2"),j.code.add(v.H`void main(void) {
 vUV = uv0;
 gl_Position = proj * view * vec4(position, 1.0);

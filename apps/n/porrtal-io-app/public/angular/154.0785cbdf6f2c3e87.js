@@ -1,17 +1,3 @@
-﻿/*
-Copyright 2022 Comcast Cable Communications Management, LLC
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
 "use strict";(self.webpackChunka_porrtal_io_app=self.webpackChunka_porrtal_io_app||[]).push([[154],{1956:(me,Z,r)=>{r.d(Z,{P:()=>ye,a:()=>Pe,b:()=>be,c:()=>Ie,g:()=>he});var g=r(21286),c=r(28347),j=r(43703),K=r(67831),F=r(99770),u=r(84161),b=r(28093),v=r(5548),M=r(52382),w=r(13934),H=r(78925),E=r(62952),P=r(19278),C=r(32181),S=r(95285),h=r(77739),A=r(17625),k=r(47205),z=r(63123),ve=r(22355),re=r(16396);class ye extends A.K{constructor(){super(...arguments),this.clipBox=(0,v.Ue)(v.bd),this.useFixedSizes=!1,this.useRealWorldSymbolSizes=!1,this.scaleFactor=1,this.minSizePx=0,this.size=0,this.sizePx=0}get fixedSize(){return this.drawScreenSpace?this.sizePx:this.size}get screenMinSize(){return this.useFixedSizes?0:this.minSizePx}get drawScreenSpace(){return this.useFixedSizes&&!this.useRealWorldSymbolSizes}}class Pe extends H.UT{constructor(L,oe,ie){super(L),this.origin=L,this.isLeaf=oe,this.splatSize=ie}}function Ie(U){const L=new ve.kG,oe=U.output===w.H.Color,ie=U.output===w.H.Depth,Ce=U.output===w.H.Highlight,{vertex:$,fragment:xe}=L;return L.extensions.add("GL_OES_standard_derivatives"),L.include(H.f5,U),L.attributes.add(re.T.POSITION,"vec3"),L.attributes.add(re.T.COLOR,"vec3"),$.uniforms.add([new k.K("modelView",(O,x)=>(0,c.m)(Me,x.camera.viewMatrix,(0,c.f)(Me,O.origin))),new z.g("proj",(O,x)=>x.camera.projectionMatrix),new C.q("screenMinMaxSize",(O,x,W)=>(0,K.s)(Se,W.useFixedSizes?0:W.minSizePx*x.camera.pixelRatio,he(O.isLeaf)*x.camera.pixelRatio))]),$.uniforms.add(U.useFixedSizes?new S.A("pointScale",(O,x)=>(0,K.s)(Se,O.fixedSize*x.camera.pixelRatio,x.camera.fullHeight)):new C.q("pointScale",(O,x,W)=>(0,K.s)(Se,O.splatSize*W.scaleFactor*x.camera.pixelRatio,x.camera.fullHeight/x.camera.pixelRatio))),U.clippingEnabled?$.uniforms.add([new h.B("clipMin",(O,x,W)=>(0,u.s)(Oe,W.clipBox[0]-O.origin[0],W.clipBox[1]-O.origin[1],W.clipBox[2]-O.origin[2])),new h.B("clipMax",(O,x,W)=>(0,u.s)(Oe,W.clipBox[3]-O.origin[0],W.clipBox[4]-O.origin[1],W.clipBox[5]-O.origin[2]))]):($.constants.add("clipMin","vec3",[-g._3,-g._3,-g._3]),$.constants.add("clipMax","vec3",[g._3,g._3,g._3])),ie?((0,M.Zu)(L),(0,M.bA)(L),L.varyings.add("depth","float")):U.output!==w.H.Highlight&&L.varyings.add("vColor","vec3"),$.code.add(A.H`
     void main(void) {
       // Move clipped points outside of clipspace
