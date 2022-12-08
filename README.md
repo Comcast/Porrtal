@@ -4,19 +4,48 @@
 
 Welcome to the Porrtal project !!
 
+This project was created to help developers.  You can use the platform to build web applications.    The project supports both React and Angular development.  You can also use the Porrtal code as a reference showing how to use React, BlueprintJS, Material (MUI), Angular, and Angular Material.
+
+## Porrtal Quick Starts
+
+The quick starts listed here are designed to get you up and running quickly.
+
 | <img src="apps/n/porrtal-io-app/public/assets/react.svg" width="28"  /> | [React Quick Start - BlueprintJS](libs/porrtal-components/r-quick-start-blueprint/porrtal-components-r-quick-start-blueprint/quick-start.md) |
 | --- | ---- |
 | ![react](apps/n/porrtal-io-app/public/assets/react.svg) | [React Quick Start - Material (MUI)](libs/porrtal-components/r-quick-start-material/porrtal-components-r-quick-start-material/quick-start.md) |
 | ![angular](apps/n/porrtal-io-app/public/assets/angular.svg) | [Angular Quick Start - Material](libs/porrtal-components/a-quick-start-material/porrtal-components-a-quick-start-material/quick-start.md) |
 
+## Porrtal Website
 
 The Porrtal project website can be found here: [porrtal.io](https://porrtal.io) (coming soon...)
+
+You can follow these steps to run the Porrtal website locally:
+
+```bash
+# clone the repo
+git clone https://github.com/Comcast/Porrtal/porrtal.git
+
+# switch to the folder
+cd Porrtal
+
+# install npm packages
+npm install
+
+# serve the app
+nx serve n-porrtal-io-app
+```
+
+Once the above command completes, you can run the website locally in your browser [http://localhost:4200](http://localhost:4200)
+
+## Porrtal NPM Packages
 
 Porrtal NPM Packages can be found here: [www.npmjs.com/search?q=@porrtal](https://www.npmjs.com/search?q=%40porrtal)
 
 _@porrtal is a set of npm packages that can be used to rapidly construct spatial / analytics systems for power users._
 
 (@porrtal provides npm packages for both Angular and React development)
+
+## The Porrtal Mission
 
 ![Build Better Outcomes](./libs/porrtal-components/r-porrtal-io/porrtal-components-r-porrtal-io/welcome/build-better-outcomes.png)
 
@@ -36,11 +65,31 @@ The goal of the Porrtal project is to assist developers in building better outco
 
 ![Grow your Development up to Planetary Scale](./libs/porrtal-components/r-porrtal-io/porrtal-components-r-porrtal-io/welcome/porrtal-is-modular.jpg)
 
+## Porrtal Platform Overview
+
+Lets start with an overview of a typical Porrtal web application. You build your components and plug them in to the Porrtal platform.
+
+Here's a sketch of a Porrtal web application.
+
+![Porrtal Features](libs/porrtal-components/r-quick-start-blueprint/porrtal-components-r-quick-start-blueprint/welcome/porrtal-features-diagram.jpg)
+
+Several Porrtal "Panes" ("nav" pane, "main" pane, and "search" pane) are shown in the above diagram. These are the regions where your components can be placed.
+
+Youre components are independent and reusable bits of code that typically occupy a rectangular area of the UI.
+
+When building a Porrtal app, you will define an array of Porrtal "Views". Each Porrtal View object in the array references one of your components. The View object also includes properties like icon, display text, pane, and more. The View object helps Porrtal load your components into the Porrtal app.
+
+On the left, you can see the nav pane. The first nav view is the quick start outline. The second is the Account Nav component we will be building. You can switch between these components by clicking on the icons on the far left.
+
+To see the search pane, start typing some text in top right text box. The search pane will popup and show the results of the search based on the text you type. As you change the text, the search component will change the displayed results.
+
+A Porrtal view can be dynamically launched by the code in a component. Porrtal also provides a more advanced launch feature where an (entity) menu of launch options is displayed.  You can see more about the Entity Menu in the Quick Starts above.
+
 # Porrtal Development
 
 This project was generated using [Nx](https://nx.dev).
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+<p style="text-align: left;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="75"></p>
 
 🔎 **Smart, Fast and Extensible Build System**
 
@@ -121,10 +170,14 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
 
 ### Distributed Computation Caching & Distributed Task Execution
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
+<p style="text-align: left;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png" width="150"></p>
 
 Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
 
 Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
 
 Visit [Nx Cloud](https://nx.app/) to learn more.
+
+## License
+
+This project is licensed under the [Apache 2.0](LICENSE-Apache-2.0) license.
