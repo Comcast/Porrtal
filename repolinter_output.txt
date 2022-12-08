@@ -13,172 +13,123 @@ Lint:
 ✔ test-directory-exists: Found file (node_modules/test-exclude)
 ✖ integrates-with-ci failed to run: undefined
 ✔ code-of-conduct-file-contains-email: Contains email address (CODE_OF_CONDUCT.md)
-✖ source-license-headers-exist:
+✔ source-license-headers-exist:
 	✔ jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-app/index.d.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-app/next-env.d.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-io-app/index.d.ts: The first 5 lines contain all of the requested patterns.
-	✖ apps/n/porrtal-io-app/next-env.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
 	✔ apps/n/porrtal-io-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/index.d.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/next-env.d.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/r/porrtal-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-api/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-bootstrap/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-material/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-user/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-bootstrap/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-api/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-user/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-shell/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-shell-blueprint/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-shell-material/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-split/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-user/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-learning/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-first-test-comp-lib/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-material/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-second-test-comp-lib/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-first-test-comp-lib/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-learning/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-quick-start-blueprint/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-quick-start-demo/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-porrtal-io/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-second-test-comp-lib/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-quick-start-material/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-second-test-comp-lib/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-test/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/main.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/polyfills.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-io-app/src/main.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-io-app/src/polyfills.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-io-app/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-app/src/polyfills.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-app/src/main.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-app/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/page-data/data.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/page-data/samples-views.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/page-data/quick-start-views.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/page-data/porrtal-io-views.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/page-data/data.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-app/test-config/test-view-states.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/porrtal-components-r-learning-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/porrtal-components-r-learning-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/porrtal-components-a-learning-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/porrtal-components-a-learning-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-app/page-data/data.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-io-app/page-data/data.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-io-app/page-data/porrtal-io-views.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-io-app/page-data/quick-start-views.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-io-app/page-data/samples-views.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/r/porrtal-app/src/polyfills.ts: The first 5 lines contain all of the requested patterns.
-	✖ dist/libs/porrtal/a-shell-material/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-api/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-shell/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-api/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-split/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
 	✔ libs/porrtal/a-api/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-api/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✖ dist/libs/porrtal-components/a-learning/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-blueprint/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-material/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-blueprint/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-material/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-learning/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-porrtal-io/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✔ libs/porrtal/a-shell/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-bootstrap/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-bootstrap/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-user/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-user/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-api/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-material/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-material/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-api/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✖ dist/libs/porrtal-components/r-quick-start-material/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✔ libs/porrtal/a-user/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-user/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-shell-blueprint/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-shell-material/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-shell/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-split/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-first-test-comp-lib/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-first-test-comp-lib/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-user/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-first-test-comp-lib/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-second-test-comp-lib/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-second-test-comp-lib/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-learning/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-material/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-material/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-quick-start-blueprint/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-quick-start-demo/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-second-test-comp-lib/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-first-test-comp-lib/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-learning/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-porrtal-io/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-quick-start-material/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-second-test-comp-lib/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-test/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/src/app/app.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/src/app/app.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/src/app/app.module.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/src/app/data.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/src/environments/environment.prod.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/src/environments/environment.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-app/src/environments/environment.prod.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-app/src/environments/environment.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/app.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/app.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/app.module.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/data.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/environments/environment.prod.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/environments/environment.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/environments/environment.prod.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/environments/environment.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/app.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/app.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/app.module.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/data.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/porrtal-components-r-learning-e2e/src/integration/youtube-player/youtube-player.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/porrtal-components-a-learning-e2e/src/integration/youtube-player/youtube-player.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/r/porrtal-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/r/porrtal-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/r/porrtal-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/r/porrtal-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/r/porrtal-app/src/environments/environment.prod.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/r/porrtal-app/src/environments/environment.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-io-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-io-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-io-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-io-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
-	✖ dist/libs/porrtal/r-api/lib/logger-entry.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-api/lib/pane.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-api/lib/view-component-function.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-api/lib/view-component-modules.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-api/lib/view-component-props.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-api/lib/view-launch.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-api/lib/view-state.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-api/lib/view.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-shell/lib/banner-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-split/lib/RenderSplitterProps.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-split/lib/DefaultSplitter.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-split/lib/Split.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-api/lib/logger-entry.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-api/lib/pane.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-api/lib/view-component-function.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-api/lib/view-component-modules.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-api/lib/view-component-props.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-api/lib/view-launch.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-api/lib/view-state.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-api/lib/view.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell/lib/banner-props.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell/lib/logger-banner-props.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell/lib/search-props.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell/lib/shell-components.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell/lib/user-banner-props.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell/lib/view-stack-props.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-material/lib/shell-components-material.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-material/lib/shell-material.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✔ apps/a/porrtal-io-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/porrtal-components-r-learning-e2e/src/integration/youtube-player/youtube-player.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/porrtal-components-a-learning-e2e/src/integration/youtube-player/youtube-player.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app/src/environments/environment.prod.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app/src/environments/environment.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-api/src/lib/logger-entry.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-api/src/lib/pane.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-api/src/lib/view-component-function.ts: The first 5 lines contain all of the requested patterns.
@@ -187,6 +138,10 @@ Lint:
 	✔ libs/porrtal/a-api/src/lib/view-launch.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-api/src/lib/view-state.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-api/src/lib/view.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell/src/lib/banner-data.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-api/src/lib/logger-entry.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-api/src/lib/pane.ts: The first 5 lines contain all of the requested patterns.
@@ -202,102 +157,33 @@ Lint:
 	✔ libs/porrtal/r-shell/src/lib/shell-components.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-shell/src/lib/user-banner-props.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-shell/src/lib/view-stack-props.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-split/src/lib/RenderSplitterProps.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-user/src/lib/auth-interface.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/src/app/quick-start/quick-start.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/src/app/quick-start/quick-start.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/src/app/inside-porrtal/inside-porrtal.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/src/app/inside-porrtal/inside-porrtal.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/src/app/samples/samples.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/src/app/samples/samples.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-app/src/app/quick-start-demo/quick-start-demo.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-app/src/app/quick-start-demo/quick-start-demo.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-split/src/lib/RenderSplitterProps.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/first-page/first-page.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/first-page/first-page.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/test-config/test-view-states.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/quick-start-demo/quick-start-demo.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/quick-start-demo/quick-start-demo.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/second-page/second-page.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/second-page/second-page.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-app/src/app/test-config/test-view-states.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/third-page/third-page.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/third-page/third-page.component.ts: The first 5 lines contain all of the requested patterns.
-	✖ dist/libs/porrtal/a-shell/lib/logger-state/logger-state.service.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-shell/lib/search-state/search-state.service.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-shell/lib/shell-state/shell-state.service.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-shell/lib/shell-utilities/shell-utilities.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-shell/lib/view-host/view-host.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-shell-material/lib/banner-menu/banner-menu.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-shell-material/lib/banner/banner.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-shell-material/lib/logger-banner/logger-banner.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-shell-material/lib/entity-menu/entity-menu.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-shell-material/lib/logger-messages/logger-messages.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-shell-material/lib/search/search.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-shell-material/lib/shell-layout/shell-layout.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-shell-material/lib/search-dialog/search-dialog.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/a-shell-material/lib/view-stack/view-stack.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell/lib/entity-menu/entity-menu.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell/lib/logger-state/logger-state.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell/lib/search-state/search-state.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell/lib/search-view-stack/search-view-stack.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell/lib/shell-layout-splitter/shell-layout-splitter.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell/lib/shell-state/shell-state.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell/lib/view-host/view-host.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell/lib/shell-utilities/shell-utilities.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-learning/lib/markdown-viewer/markdown-viewer.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-learning/lib/youtube-player/youtube-player.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/clipboard-button.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/clipboard-options.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/katex-options.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/language.pipe.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/markdown.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/markdown.module.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/markdown.pipe.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/markdown.service.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/marked-options.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/marked-renderer.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/mermaid-options.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/prism-plugin.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/data/account-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/data/appointment-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/viz-nav/viz-nav.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-blueprint/lib/banner/banner.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-blueprint/lib/entity-menu/entity-menu.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-blueprint/lib/logger-messages/logger-messages.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-blueprint/lib/search/search.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-blueprint/lib/search-input/search-input.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-blueprint/lib/logger-banner/logger-banner.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-blueprint/lib/shell-components-blueprint/shell-components-blueprint.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-blueprint/lib/shell-blueprint/shell-blueprint.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-blueprint/lib/view-stack/view-stack.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-material/lib/banner/banner.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-material/lib/entity-menu/entity-menu.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-material/lib/logger-banner/logger-banner.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-material/lib/logger-messages/logger-messages.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-material/lib/search/search.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-material/lib/search-input/search-input.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal/r-shell-material/lib/view-stack/view-stack.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-material/lib/docs-nav/docs-nav-views.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-material/lib/docs-nav/docs-nav.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/data/account-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/docs-nav/docs-nav-views.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/docs-nav/docs-nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-material/lib/data/account-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-learning/lib/youtube-player/youtube-player.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-porrtal-io/lib/blog/blog.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-learning/lib/markdown-viewer/markdown-viewer.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-porrtal-io/lib/docs/docs.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-porrtal-io/lib/nav/nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-porrtal-io/lib/events/events.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-porrtal-io/lib/resources/resources.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✔ apps/a/porrtal-io-app/src/app/inside-porrtal/inside-porrtal.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/inside-porrtal/inside-porrtal.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/quick-start/quick-start.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/quick-start/quick-start.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/samples/samples.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/samples/samples.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/search-state/search-state.service.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/search-state/search-state.service.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell/src/lib/logger-state/logger-state.service.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell/src/lib/logger-state/logger-state.service.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell/src/lib/shell-state/shell-state.service.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell/src/lib/shell-state/shell-state.service.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/src/lib/search-state/search-state.service.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/src/lib/search-state/search-state.service.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell/src/lib/shell-utilities/shell-utilities.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell/src/lib/shell-utilities/shell-utilities.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/src/lib/view-host/view-host.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell/src/lib/view-host/view-host.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/view-host/view-host.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-material/src/lib/banner-menu/banner-menu.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-material/src/lib/banner-menu/banner-menu.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-material/src/lib/banner/banner.component.spec.ts: The first 5 lines contain all of the requested patterns.
@@ -306,41 +192,29 @@ Lint:
 	✔ libs/porrtal/a-shell-material/src/lib/entity-menu/entity-menu.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-material/src/lib/logger-banner/logger-banner.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-material/src/lib/logger-banner/logger-banner.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/logger-messages/logger-messages.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-material/src/lib/logger-messages/logger-messages.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/logger-messages/logger-messages.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/search-dialog/search-dialog.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/search-dialog/search-dialog.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-material/src/lib/search/search.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-material/src/lib/search/search.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/search-dialog/search-dialog.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/search-dialog/search-dialog.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-material/src/lib/shell-layout/shell-layout.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-material/src/lib/shell-layout/shell-layout.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-material/src/lib/view-stack/view-stack.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell-material/src/lib/view-stack/view-stack.component.ts: The first 5 lines contain all of the requested patterns.
-	✖ dist/libs/porrtal-components/r-quick-start-material/lib/data/account-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-material/lib/docs-nav/docs-nav-views.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-material/lib/docs-nav/docs-nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/data/account-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/data/appointment-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/data/hierarchy-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/viz-nav/viz-nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
 	✔ libs/porrtal/r-shell/src/lib/shell-state/shell-state.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-shell/src/lib/shell-utilities/shell-utilities.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-shell/src/lib/shell-utilities/shell-utilities.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-first-test-comp-lib/src/lib/test-comps-first-test-comp/test-comps-first-test-comp.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-first-test-comp-lib/src/lib/test-comps-first-test-comp/test-comps-first-test-comp.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-user/src/lib/use-auth/auth-context.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-user/src/lib/use-auth/use-auth.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/data/appointment-data.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/data/hierarchy-data.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/viz-nav/viz-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/viz-nav/viz-nav.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-first-test-comp-lib/src/lib/test-comps-first-test-comp/test-comps-first-test-comp.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-first-test-comp-lib/src/lib/test-comps-first-test-comp/test-comps-first-test-comp.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/markdown-viewer/markdown-viewer.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/markdown-viewer/markdown-viewer.component.stories.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/markdown-viewer/markdown-viewer.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/clipboard-button.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/clipboard-options.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/clipboard-button.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/clipboard-options.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/katex-options.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/language.pipe.spec.ts: The first 5 lines contain all of the requested patterns.
@@ -357,125 +231,75 @@ Lint:
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/marked-renderer.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/mermaid-options.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/prism-plugin.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/youtube-player/youtube-player.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/youtube-player/youtube-player.component.stories.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/youtube-player/youtube-player.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/data/appointment-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/data/hierarchy-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/viz-nav/viz-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/viz-nav/viz-nav.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-second-test-comp-lib/src/lib/test-comps-second-test-comp/test-comps-second-test-comp.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-second-test-comp-lib/src/lib/test-comps-second-test-comp/test-comps-second-test-comp.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-learning/src/lib/youtube-player/youtube-player.component.stories.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-learning/src/lib/youtube-player/youtube-player.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-learning/src/lib/youtube-player/youtube-player.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-material/src/lib/data/appointment-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-material/src/lib/data/hierarchy-data.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-material/src/lib/docs-nav/docs-nav-views.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/docs-nav/docs-nav.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-material/src/lib/docs-nav/docs-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/docs-nav/docs-nav.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/docs-nav/docs-nav-views.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-quick-start-demo/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-quick-start-demo/src/lib/data/appointment-data.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-quick-start-demo/src/lib/data/hierarchy-data.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-quick-start-material/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-quick-start-material/src/lib/docs-nav/docs-nav-views.ts: The first 5 lines contain all of the requested patterns.
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/account/account-billing-history/account-billing-history.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/account/account-detail/account-detail.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/account/account-create/account-create.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/account/account-nav/account-nav.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/appointment/appointment-create/appointment-create.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/account/account-search/account-search.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/appointment/appointment-detail/appointment-detail.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/appointment/appointment-search/appointment-search.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/appointment/appointment-location-map/appointment-location-map.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/appointment/appointment-nav/appointment-nav.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/hierarchy/collapsible-tree/collapsible-tree.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/hierarchy/hierarchical-bar-chart/hierarchical-bar-chart.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/hierarchy/zoomable-circle-pack/zoomable-circle-pack.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/hierarchy/zoomable-icicle/zoomable-icicle.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/hierarchy/zoomable-sunburst/zoomable-sunburst.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/hierarchy/zoomable-treemap/zoomable-treemap.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/account/account-billing-history/account-billing-history.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/account/account-detail/account-detail.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/account/account-create/account-create.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/account/account-nav/account-nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-material/lib/account/account-billing-history/account-billing-history.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/account/account-search/account-search.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-material/lib/account/account-create/account-create.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-material/lib/account/account-detail/account-detail.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-material/lib/account/account-nav/account-nav.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-material/lib/account/account-search/account-search.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-material/lib/account/account-create/account-create.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-material/lib/account/account-billing-history/account-billing-history.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-material/lib/account/account-detail/account-detail.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-material/lib/account/account-search/account-search.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-material/lib/account/account-nav/account-nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/account/account-billing-history/account-billing-history.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/account/account-create/account-create.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/account/account-nav/account-nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/appointment/appointment-create/appointment-create.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/appointment/appointment-location-map/appointment-location-map.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/appointment/appointment-detail/appointment-detail.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/appointment/appointment-nav/appointment-nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/appointment/appointment-search/appointment-search.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/account/account-detail/account-detail.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/account/account-search/account-search.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/hierarchy/collapsible-tree/collapsible-tree.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/hierarchy/hierarchical-bar-chart/hierarchical-bar-chart.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/hierarchy/zoomable-circle-pack/zoomable-circle-pack.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/hierarchy/zoomable-icicle/zoomable-icicle.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/hierarchy/zoomable-sunburst/zoomable-sunburst.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/hierarchy/zoomable-treemap/zoomable-treemap.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/data/hierarchy-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/data/appointment-data.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-billing-history/account-billing-history.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-billing-history/account-billing-history.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-detail/account-detail.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-detail/account-detail.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-create/account-create.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-create/account-create.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-nav/account-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-nav/account-nav.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-detail/account-detail.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-detail/account-detail.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-search/account-search.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-search/account-search.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-detail/appointment-detail.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-detail/appointment-detail.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-create/appointment-create.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-create/appointment-create.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-search/account-search.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-search/account-search.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-location-map/appointment-location-map.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-location-map/appointment-location-map.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-detail/appointment-detail.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-detail/appointment-detail.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-nav/appointment-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-nav/appointment-nav.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-search/appointment-search.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-search/appointment-search.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/collapsible-tree/collapsible-tree.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/collapsible-tree/collapsible-tree.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/hierarchical-bar-chart/hierarchical-bar-chart.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/hierarchical-bar-chart/hierarchical-bar-chart.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/hierarchical-bar-chart/hierarchical-bar-chart.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-circle-pack/zoomable-circle-pack.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-circle-pack/zoomable-circle-pack.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-icicle/zoomable-icicle.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-icicle/zoomable-icicle.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-sunburst/zoomable-sunburst.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-sunburst/zoomable-sunburst.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-icicle/zoomable-icicle.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-icicle/zoomable-icicle.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-treemap/zoomable-treemap.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-treemap/zoomable-treemap.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-billing-history/account-billing-history.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-billing-history/account-billing-history.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-create/account-create.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-create/account-create.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-nav/account-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-nav/account-nav.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-billing-history/account-billing-history.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-detail/account-detail.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-detail/account-detail.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-create/account-create.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-create/account-create.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-nav/account-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-nav/account-nav.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-search/account-search.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-search/account-search.component.ts: The first 5 lines contain all of the requested patterns.
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/esri/building-scene/building-scene-with-query/building-scene-with-query.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/esri/digital-elevation/digital-elevation-map/digital-elevation-map.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/esri/hurricane/hurricane-map/hurricane-map.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/esri/earthquake/earthquake-map/earthquake-map.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/esri/digital-elevation/digital-elevation-map/digital-elevation-map.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/esri/building-scene/building-scene-with-query/building-scene-with-query.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/esri/earthquake/earthquake-map/earthquake-map.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/building-scene/building-scene-with-query/building-scene-with-query.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/building-scene/building-scene-with-query/building-scene-with-query.component.ts: The first 5 lines contain all of the requested patterns.
-	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/esri/hurricane/hurricane-map/hurricane-map.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/digital-elevation/digital-elevation-map/digital-elevation-map.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/digital-elevation/digital-elevation-map/digital-elevation-map.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/building-scene/building-scene-with-query/building-scene-with-query.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/building-scene/building-scene-with-query/building-scene-with-query.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/earthquake/earthquake-map/earthquake-map.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/earthquake/earthquake-map/earthquake-map.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/hurricane/hurricane-map/hurricane-map.component.spec.ts: The first 5 lines contain all of the requested patterns.
