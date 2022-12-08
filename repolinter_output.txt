@@ -1,600 +1,496 @@
-[33mYour RubyGems version (2.7.6.2) has a bug that prevents `required_ruby_version` from working for Bundler. Any scripts that use `gem install bundler` will break as soon as Bundler drops support for your Ruby version. Please upgrade RubyGems to avoid future breakage and silence this warning by running `gem update --system 3.2.3`[0m
-=============================================
-simple-git has supported promises / async await since version 2.6.0.
- Importing from 'simple-git/promise' has been deprecated and will
- report this error until the next major release of version 4.
-
-To upgrade, change all 'simple-git/promise' imports to just 'simple-git'
-=============================================
-Target directory: /src[33m[39m
-[33mAxiom language failed to run with error: Unexpected end of JSON input[39m[33m[39m
-[33mAxiom license failed to run with error: Unexpected end of JSON input[39m[7m[27m
-[7mLint:[27m
-[32m✔[39m  license-file-exists: Found file (LICENSE-Apache-2.0)
-[32m✔[39m  notice-file-exists: Found file (NOTICE)
-[32m✔[39m  readme-file-exists: Found file (README.md)
-[32m✔[39m  contributing-file-exists: Found file (CONTRIBUTING.md)
-[32m✔[39m  code-of-conduct-file-exists: Found file (CODE_OF_CONDUCT.md)
-[32m✔[39m  support-file-exists: Found file (SUPPORT.md)
-[32m✔[39m  readme-references-license: Contains license (README.md)
-[32m✔[39m  binaries-not-present: Excluded file type doesn't exist (**/*.exe,**/*.dll,!node_modules/**)
-[32m✔[39m  test-directory-exists: Found file (apps/n/porrtal-app/test-config)
-[31m✖[39m [41mintegrates-with-ci failed to run:[49m undefined
-[32m✔[39m  code-of-conduct-file-contains-email: Contains email address (CODE_OF_CONDUCT.md)
-[32m✔[39m  source-license-headers-exist:
-	[32m✔[39m jest.preset.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/next.config.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-app/next.config.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1074.4f29026c1e7821a7.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1074.70048d5258ead875.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/114.927a6f742c8fc26a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1218.5cf5f1393e23fddd.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1218.9d147f9d0d220c9e.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/125.72695be1e25c54a5.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/126.1a496f66391c2c65.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1269.0a1b5e41aab2dcff.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/126.d7b38c44282037a4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1288.acef9941cf09f3d8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1299.6f750fd684a9ca65.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1299.ad5e8ff1797660c0.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1317.572d2160f81ce163.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1318.342a95d6c9ef6ff6.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1329.c2e1ccdd4331160d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1318.81b1f6f153298ee7.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1329.d40b29062c6604c5.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/135.ab8aab8b77c13b04.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1360.f39fd2c5cf82efc8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1362.053d4ee22c653b5d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1362.5eda1cea579f39d8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/15.26785073b1414895.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/15.a3f59a3cf5405cfd.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1533.fe7a6163f7edb103.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/154.0785cbdf6f2c3e87.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/154.83db40537fb3da89.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1561.eeba4508f794699b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1563.05f0bd0eb172cafd.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/157.88b7fd3a7d3af51a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/157.a66c0b09b371ae64.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1591.2f4857e04a9f5691.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1591.56fb0a1f761e41ad.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/164.80315fc02d69e811.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1770.15ffdb0c7aef1693.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1799.1e83fbfc51178eb9.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1799.69e2c3bf8b672727.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1799.a599e6d56031c6e6.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/181.fc9b235e63383b82.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1831.30fef6ee2c126946.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1831.f2ace47ed2b85cc8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1832.b9b5ffbcba52cd5d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1843.a6a0f65e246c7844.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1913.b01b3eab3c0cccf3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1913.f72a3333a5aa5a9c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/195.94898d8ab5d4c40c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/195.9c9a87b138337815.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1955.22eb4fa4c11ff1fc.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/1955.4a8c33fc1033586d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2020.0ec377e2864be1dd.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2020.3240ed7a8cc72667.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2045.ba597ff6ca7ddfbf.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2045.ce6cddf1da72510c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2117.c9c6fda28219a056.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2124.98e86e4d77f5842a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2125.7b2dd66bad836c2b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2125.97620128b906e010.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2144.4f19d420a964c7f9.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2226.a41f6e6f3208c778.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2248.055adc6b66a488de.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2248.5c8631b468381672.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2305.274c8428c73b70ab.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2305.4084057d3903bca3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2305.d71943c08a023562.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2337.ee17ec24ac521a16.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2359.00bd31841747f88e.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/237.8937e84b9192b700.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2371.216f001056465ec8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2371.66e751671287c863.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2405.72b14d50ecf83fc4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2435.238d9e3d21011a9b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2436.a3ad6fd916e2f99d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2436.d537ae023a643b82.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2479.0eaa40621a7078e8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2479.765680f3b83845c0.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2480.04d44c33a0038565.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2480.80f5a409f9e825e4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2493.0aa0db1a7d9b7935.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2493.6a6a1a171b1585e5.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2504.1b8ebd1f203c9fdd.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2504.3209ebd64049059b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2543.a69476d01e3c65af.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2543.eed26d786a5f9ed7.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2558.449d8b51a8193592.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2558.d3d2f28286c4fba9.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2579.8a36f25d229cdd10.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2620.002a80aef6d16df4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2620.41d5a7dc7c8eea0f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2694.61df90b49859bb91.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2701.a8bf0307f881f4ad.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2701.c2079041210f1c6f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/280.4186e031cc144ced.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2785.ffd7a94f37b554d3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/289.185dcef833da0076.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/289.bec87213fc635213.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2903.a832184f5cc40b0b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2903.a83265c984848630.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2943.661db5cb08705273.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2943.f163cbeb2388c572.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2947.062041126e5da4e5.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2955.80bdc904bbe7bad5.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2955.9c1a0738cdb069bd.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2958.b44037ab7b3ac47c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/2958.e9207205a84f16c2.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3016.f7d04b46e10a88ac.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/310.a07342ac1a10367c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/310.e9dcb9922c3944ee.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3109.2c0d2cc085ad23ec.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3109.d97a09e7e35c7c62.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3129.7af7338821a0a261.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3130.8d43261a4800e4c1.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3130.bd1986296dc1dcc4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3141.7fefbf3f3f47202e.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3207.217b04e2ed9ad96b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3207.b41fe2bb093dc349.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3208.092ff5fb721fc0fa.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3208.653c6fd2b1ef24b0.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3250.019d5e770472a16a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3250.0729abec3366f925.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3251.36e518826d6214dc.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3277.cedc3a72c5f29007.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3277.d070c09c2bce7e7b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3279.fcc40df64682935f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3308.4c6398c97aad946a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3308.90d5be3ceb0826b8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3309.793c01f8fadd7a32.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3309.d4a613bcc4da8bdc.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3354.dd63181c53978f95.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3358.378be12f4c5c5fbb.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3368.dde3c648e976b312.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/342.48e1cde1dad1d9f9.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/342.4bb1e703ad3f858f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3464.04c5090d1fbf08eb.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3464.7ae99357ec9d1b55.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3478.1db524284c2d52bd.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3478.7391a288ec571482.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3482.34e81e4215e6c0c1.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3482.ea810a1d571cdbe3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3487.74d485b161684721.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3542.c1df8945f76acab3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/367.9af437e396b5e763.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3678.9ce459b07150af40.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3690.139ef41b3c5ddbc0.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3690.e7c96ee511fe9fe2.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3705.4ea2dfbff2258a14.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3705.5216a88ad83612f0.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/375.53ec6e2d18f3745a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3751.68e418cb4640c96b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3751.fe0dd4ed481353b3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3774.1ef5bcc2dc84e3c4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3774.b9f4e09d55e16c42.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3807.6d43b36edb1a648b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3835.3a52e0a3bbc5bb21.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3835.742dfefe79340656.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3907.c049cd607ae41791.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3714.74ec01ee64c0edbc.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3907.d9cf7053e9d871a9.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3914.c66d7b48539ccba4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3914.41ea51294c64ddc5.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3926.3e54d211d9044305.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3930.9d6d2d5193523889.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3959.0aaba8716289e88e.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3959.7403c7f767b7bcad.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3999.dc80481ef26151dc.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/3999.eb34a7d4efacec53.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4010.c2bacb07b7ac5a90.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/403.0991b9c5981e3c52.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/403.af6f7402bb9644e0.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4048.0b72540684e926d3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4048.c556ec6abdb2d0e3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4056.2195ebc9752a6bce.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4056.94aafe6bcf5d5df1.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4079.23334fb6b7d0bd8b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4079.56fbcddcadacfa93.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4079.cbe88c8caf13065d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4095.25825e6869d4c6de.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4095.7ced763a9c2c1145.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/410.62073d314ddf37db.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/410.ad6ef0e42eca319f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/410.caf67e01eb1738ef.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4109.3f1baecc3c54d905.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4122.3667f4b845c5fd16.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4135.18df44c756cba000.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4135.5aa09c0ece5cdae8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4165.249828e657f470a9.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4186.2b1d746e766811ee.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4194.d5cf5fcee0013ada.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4198.80da27c8dc569279.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4198.9de44bbfe8ed2fe6.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4207.c625ec28e09eb7a6.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4223.4046e218ef3fc449.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4223.89516dc7bcfe5e27.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4281.425121bf2b5ea796.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4287.4e811b115c4c94ad.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4287.4ede0c3a31f5731c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4307.2a222ed5e7f8d4bb.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4307.9fdacc21f9090bf5.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4341.f4af80ccc50f46d8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4346.ca9f3e64fa832f13.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4346.d537db3c049e20fc.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4366.45b3c1eb9124736d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4366.b24b9bd57c57391f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4367.55b09704ee9a990d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4430.27747cbc44b1b9c0.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4430.95cf08d430dfe62a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4471.3c5e94f7fa4e165d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4471.94258369ae32ad3b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4496.f49b27972eaaa7a6.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4516.18c1d8f576a9b700.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4522.399750530df4617f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4522.9631ce9fd6cbf499.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4578.f8ed66feee398009.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4609.4b54bc6852b34de6.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4609.dadc7e4dfbfa026a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4626.8be846317c814205.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/465.81d4b3863c09eeab.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4654.dc2853acac881cf8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4766.2772c877c91b79a4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4766.d3ac3369e334d1a6.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4786.83d8cc556eafc008.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4824.bba49a30f419099c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4824.df716fbd3fc1aa78.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4828.42e4fd77774f10f0.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4828.4c91c66282848712.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4896.abe09f0cc7584a83.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4896.bebe5f562d2a03a8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4918.bbda3f4d4567ebbe.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4918.de9136e7e94caac6.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4937.ad06320ba1e873ee.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4937.d7da790d12c9ac4c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4940.5b69fac9ee916717.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4976.4b4df804a082795d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4976.64de92743325e09f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4978.8bd06481ab1556ca.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4978.e231ce8108fd716e.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/4988.b8590445cf609226.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5010.34c3e034d5969e4e.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5010.7148301adff11a11.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5039.f0bc6dd33471bbbe.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5039.f37eac073462444f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5043.4c651922e1136da6.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/505.1104291355551810.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/505.e56015ddc334c723.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5068.47df5673ccd7ca74.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5068.89fa6c1eb4e12520.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5147.8e3ae6656b700300.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5147.dc55da2b96ad2b20.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5171.b27d86c28a2c371f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5175.bf1f6dab9e0274fe.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5237.3534f29b97eae04b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5237.c2a317d19ffbd0bd.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5265.8ea66d02a3484fc1.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5302.958853560d870e24.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5302.ff3b116d752fadc2.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5337.8e0825042d44c9cb.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5337.d2537bf32f83222b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5359.1d95467ae4d18333.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5359.4da92fa3d04e70d3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5362.aa90b34709712395.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5425.4c3f98ac4d397c3b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5439.b0ed19c673a218c2.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5496.51d4ea243dad3285.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5496.db6bcc08e38c6d12.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5508.bff4656504bccb5b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5508.ecfaf2863831b9d1.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5542.5b3f40712cd32272.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5566.0471a60f0b5cdb93.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5566.352483ad5bf1bae8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5566.e859ffc0a6916a73.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5625.4ca0272d63a5b0b7.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5625.dbbc8fcef8d041ec.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5627.68a9c8612280b8ec.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5627.896d0474a7309b2b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5645.850723eb8d4df31f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5655.00cd85e6fd0ad5d2.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5655.8cf7e755779b4fbe.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5690.f5ccd8cec2c8d924.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5795.2241bfa7626df436.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5810.0f6802d70f46c7b4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5810.303d234dd4aa26bf.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5849.ebeace5503ab888a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/587.6e5788ce83441015.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/587.f295a801c83f9030.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5895.188f3cf26a930217.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5915.f7350332ed57ddd1.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5964.1531a9a491ae8a30.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5964.942b54dbef1b73c7.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5976.d57e38683a813c1e.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5976.f7ba0b56adf1b232.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5978.234cb4c9865fe637.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5978.5d4f595ae16122f8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5979.99fc2e2f860f0c02.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/5994.f824200003ba112d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6003.0a93910b116fc5ad.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6003.d5d63162815dc502.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6072.89fba89aca1f9f5f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6007.777ecafc323ef0cd.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6079.2303ba66ba9a3edc.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6079.3c8222cecfc08f30.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6189.9dbe55b6b2f50802.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6212.4c9b2d89bda92aec.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6212.0fb0e5ef53c0e1d8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6240.27fd51956a0d92fe.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6240.b1699fe815307c53.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6259.005f40a32342e36b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6269.0289357d835558d5.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6259.0fe0d33db1d4f3c4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6269.4a1da5abf4727100.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6269.a08001ccca6cf08a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6306.1f8bea0c77af1d9e.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6306.93695636af2f4890.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6329.ed08436c8f9c994f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6339.23ca905a694c92b3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6339.dd9b6e030d349160.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6354.05301c3582896b03.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6354.0a778c87eb69bea7.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6354.91b6ddd5db78288b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6373.89b5f86611308341.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6373.eae9286cd4b665bf.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6402.385dd8f8ca73ce49.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6445.97968aaf26403cfb.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6446.bbe39002ed361b0f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6446.c6f2dfcdd9c34db0.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6455.fc5cbd489ff59276.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6533.13e03d91bdfb2537.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6560.aaa6aa3e13f0c6ca.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6560.d9391fb563b087e9.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6625.134e651f39c74515.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6625.77b5a5b0a7611429.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6651.572aa065f5dc88db.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6651.d2fba557dde82df7.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6681.6fbd3c9bcd4b69f8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6681.d031e0aff49f3125.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6713.c5ab42d864864cd3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6713.ca34466a3c05d53b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/676.34eef6437be03b0c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6771.0b93bb257a48c583.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6771.391feb41d3fb2f17.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6777.1a662933057da451.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6777.bd0fbbde90b8817f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6810.83b9c6e71fae7d02.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6844.7ba4d8de16ce1472.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6844.da2aef18a274b49c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6859.df780ee1ea1800ab.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6859.e1a93077459d438a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6886.09a495eeadba01c5.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6894.665b9d461a205bf5.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6894.a634ed2cd9e634e7.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/6912.0d951f29576ad58f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/700.543c1aa7f67dd6d6.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/700.d5a892d1e7ec188b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7001.7d027ec6a46cbb62.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7016.ab23c90ac351dac0.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7016.c2abaa9dbd6c52e6.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7028.d9d13641d931a3a1.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7028.dff8c477f7a54f93.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/71.44c8609a643511aa.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7112.4ae9fce1f60d02e3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7127.98c86e5803b93d07.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7127.b42420f1cd8e789c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7155.1a02021ace58c972.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7155.c2a0a95f23bb5583.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/725.d0ae6acaea8cff30.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7281.230ad54bb0b2a681.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7298.b76eac35619c5c9a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7298.dcb22dfb9a1fde15.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/73.95b1041108544c56.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7300.34f7cefd70a0dc49.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7308.8093682a311270fe.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7312.cfccf2cd8c72819a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7313.c1cd6de7adc910d0.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7313.f7e441b00d5253ef.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7385.f78ed6b7ea24df81.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7396.0cbd8753fc2d0680.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7396.9dd559694a603d67.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7419.7cbee73d579ff087.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7419.888039f21b40da4c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7434.9142df4fd31838b9.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7434.a25d3d2784bd4723.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7511.2c397948696f7730.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7534.343e185b9f08dc97.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7534.4ca8be8a62048c45.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7559.71069c20c70edda4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7559.c0768dd53d265ddd.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7566.e76b8e604b285679.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7614.5790d0f2f16ee887.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7627.1e4050a24baab337.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7692.cdad6d5c70beecf3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7708.8d970b8d61187725.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7708.e62569a04e3c4ba1.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7712.a022900157840b4b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7728.933444f60d6d1c1c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7728.e87516bc5f5415e4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7728.eb69fe885b2ebfb8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7731.61d085b05a90b64b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7731.d723b1dd95db0df5.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7755.7cd7b47f0a407461.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7765.63f9361d0c659948.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7777.dbc5fcd10880b595.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7777.eeaf9b219964b43f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7794.8468bd18cf146f7a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7794.995b6a318270a1a2.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7867.14743f94703e08dd.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7867.2e57d05d7773339a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7898.420803f84ef451e4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7915.461b4c06c1142963.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/7915.ccaf74c77f72ca01.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8068.2cddd2b2926ac8ff.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8068.4cdd3e0351b21d0f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8073.1a876075b01a413b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8073.31bc4229d0a1c672.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8110.958310f26ffee749.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8110.e3fe73588b50dd01.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8115.02d3849610658467.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8149.467595d2394f95cb.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8149.5487effecbca0b84.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8149.d9a8f6e0dae018d1.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8164.0f4b806b28022244.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8164.3760b26a6eafd3a7.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8176.351545b89ad12cbf.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8176.5a06a95c121dbd6e.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8178.04fadb05000e0015.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8203.f3d8d13fc9dd04c6.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8271.ba00942e76307f3b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8271.c2db69db3401239a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8287.1315a0b55f9ee378.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8302.1ff22d35a7fdb889.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8302.b7cca2d7366ca579.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8325.757d1e29b2ea9961.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8325.a51485a3d41a2a79.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8346.19dc97a10e48b3ea.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8351.1d07b1e09fe8bee3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8351.99e25a25af31bdb7.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8364.0dd29268713e4f9b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8364.b078fb68cc2d9da2.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8372.b7278a21a2ac10d1.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8372.e22ba8fd997b16f9.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8433.f6f28331908178c5.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8454.2af5b3ae20f6c11c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8460.69714ddbfab600c4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8460.aa0e68d3732243f9.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8472.df0c054c8539906c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8562.06bbacbc925aaa93.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8562.de53e094f8bdbb47.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/857.520f0098bac34ce2.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8572.11cfb1ef1819db4c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8586.2307e6c75e919bf4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8586.73ac044c3968ad44.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8594.b710fd84701e7dd2.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8594.f1134cd8c68fe4c1.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/865.651a9bf2047db45a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8664.ba22937835c1ff6c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/865.6937c6e649e958b4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8698.2d939164a5d9302d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8698.f6b72c4f5263b8b6.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8704.0daf7b1a7d15500a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8704.47225fce036ec1d8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8726.2d2a06cc533749aa.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8740.5607bd1b72182491.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8726.ab8ed3e3015f96e1.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8740.5d9d7bf242d6c5ea.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8750.c3fa574c1dbcf1bf.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8762.5a6a8032f8329f48.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8762.8fdd6fa7f6877c8a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8765.84dbeb5be712c013.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8765.d6fd3c34acbe0b90.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8792.8d631cdfffa79c81.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/88.24d7857fefc0851d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/88.62477a3a44b3ef26.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8819.0737dba0f6f76d1e.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8819.093edd3c7365e5c6.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8819.0ec8cbbe69dc799d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8819.31ef1af6881ffb92.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8819.893831b31f3c5983.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8819.bf1a503fb9a51120.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8819.d8831437e1962117.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8887.90c0614815279982.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8887.d51da8fd0a393ea3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8897.9a4831f70bfd0dff.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8897.a9f14d60e8faf355.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8899.9ba42385af5b92cf.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8954.2b9a1997214e3e59.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8954.b94cd18cb9cbc90b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8967.293d477d4cebcdbb.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/8967.d68cabaab0a6d5ff.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9058.0a54f45ca9a1b20f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9058.e0173c132f703d55.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9080.cd04e6890e6f4009.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9094.0fb9856e503d28a7.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9094.7c6592c2c06b2cfb.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9114.25f9376936337091.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9114.d3eaf4aaa4f9e6f0.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9155.116620c42b94e556.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9185.407e5cfaabc9d5d9.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9185.cecf45bccaebeab5.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9202.b510927c4c776c8b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9202.dc52f7981fc3dbad.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/921.17614f2ccc337a73.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9217.791c18c7214b8f96.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9235.5ea5cad22b52378f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9298.25d92e4eea79975a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9298.5327074c7454d23f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9303.87970b5d1247c31f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9325.e3ba317ca6c21c43.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/937.28b94d8e6ce5ee61.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/937.856df32b850407fd.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9372.e0ef28d07ab46b99.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9410.9528ffa36c664f51.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9410.d24652d4b7b192b4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/945.1007f9e17ae9ad05.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/948.1aa493efcc8769fd.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/948.6696046ddfc9f045.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9487.69ac03b59340f20e.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9503.1cee96d72ef77efd.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9503.f0843577a6173581.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9507.69bc61dbccdbf347.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9548.573bc7526cfc9fff.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9548.88f7d6fa06e3668f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9602.b61b16ea254bd041.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/961.16b15155d487cb0e.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/961.4edbc795d81929be.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9628.01d7d70166be8e76.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9628.fad330880682ca9a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9689.0415d46252d8b23a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9735.87650b5dea4c3f00.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9735.d8aea3263307db31.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9759.1108c6a971763b36.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9759.ddd3546ca1c6bf06.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9856.85a670bfe05e395b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9856.fba4027f5de4a161.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9862.dad924ef878f1d94.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9862.eddf7bd79e0a1724.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9903.c05eb6c2f17af8c7.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9903.f94b8626a0e7c261.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9973.42766192c3f6cde9.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9986.c6cbdfd0ce2d33b4.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9991.7e81675a3f59b370.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/9991.e629f72aabe38a64.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/common.676d91cd4f235d6f.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/common.8acc7b3ad7addfc9.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/main.1d45084e19b77c9d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/main.66a73e12f6b6a4bb.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/main.7d877796db05e0e5.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/main.817523457f36f694.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/main.8c50b23fed89cfbe.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/main.b6460e9daa70a31c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/main.d5aca661681f4ef3.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/polyfills.4d73bf839e137ed8.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/polyfills.5411f381e8254a9c.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/runtime.1e1ba283691f083a.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/runtime.0c9a6c55437410eb.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/runtime.1ef778a0f696c25b.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/runtime.4d293a4d655a97db.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/runtime.4d553eefe4189bfe.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/runtime.5ecbf844d05c1df2.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/runtime.892ad4d1cd206e6e.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/runtime.edc85be5024a3bf6.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/runtime.ef4ec416b60c3e5d.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/scripts.14163a64b07b11bf.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m apps/n/porrtal-io-app/public/angular/scripts.45b580f0307f73d7.js: The first 5 lines contain all of the requested patterns.
-	[32m✔[39m libs/porrtal/r-user/src/lib/keycloak-authentication/keycloak.js: The first 5 lines contain all of the requested patterns.
-[32m✔[39m  github-issue-template-exists: Found file (.github/ISSUE_TEMPLATE)
-[32m✔[39m  github-pull-request-template-exists: Found file (.github/PULL_REQUEST_TEMPLATE)
-[34mℹ[39m package-metadata-exists: ignored due to unsatisfied condition(s): "language=javascript"
-[34mℹ[39m package-metadata-exists: ignored due to unsatisfied condition(s): "language=ruby"
-[34mℹ[39m package-metadata-exists: ignored due to unsatisfied condition(s): "language=java"
-[34mℹ[39m package-metadata-exists: ignored due to unsatisfied condition(s): "language=kotlin"
-[34mℹ[39m license-detectable-by-licensee: ignored due to unsatisfied condition(s): "license=*"
-[34mℹ[39m notice-file-exists: ignored due to unsatisfied condition(s): "license=Apache-2.0"
-[34mℹ[39m package-metadata-exists: ignored due to unsatisfied condition(s): "language=python"
-[34mℹ[39m package-metadata-exists: ignored due to unsatisfied condition(s): "language=objective-c"
-[34mℹ[39m package-metadata-exists: ignored due to unsatisfied condition(s): "language=swift"
-[34mℹ[39m package-metadata-exists: ignored due to unsatisfied condition(s): "language=erlang"
-[34mℹ[39m package-metadata-exists: ignored due to unsatisfied condition(s): "language=elixir"
+Target directory: /Users/cgraha217/porrtal
+Axiom language failed to run with error: Linguist not installed
+Axiom license failed to run with error: Licensee not installed
+Lint:
+✔ license-file-exists: Found file (LICENSE-Apache-2.0)
+✔ notice-file-exists: Found file (NOTICE)
+✔ readme-file-exists: Found file (README.md)
+✔ contributing-file-exists: Found file (CONTRIBUTING.md)
+✔ code-of-conduct-file-exists: Found file (CODE_OF_CONDUCT.md)
+✔ support-file-exists: Found file (SUPPORT.md)
+✔ readme-references-license: Contains license (README.md)
+✔ binaries-not-present: Excluded file type doesn't exist (**/*.exe,**/*.dll,!node_modules/**)
+✔ test-directory-exists: Found file (node_modules/test-exclude)
+✖ integrates-with-ci failed to run: undefined
+✔ code-of-conduct-file-contains-email: Contains email address (CODE_OF_CONDUCT.md)
+✖ source-license-headers-exist:
+	✔ jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/index.d.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/next-env.d.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/index.d.ts: The first 5 lines contain all of the requested patterns.
+	✖ apps/n/porrtal-io-app/next-env.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✔ apps/n/porrtal-io-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-api/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-bootstrap/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-user/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-api/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-split/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-first-test-comp-lib/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-second-test-comp-lib/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-first-test-comp-lib/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-learning/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-porrtal-io/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-second-test-comp-lib/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-test/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/main.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/polyfills.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/polyfills.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/main.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/test-config/test-view-states.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/porrtal-components-r-learning-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/porrtal-components-r-learning-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/porrtal-components-a-learning-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/porrtal-components-a-learning-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/page-data/data.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/page-data/data.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/page-data/porrtal-io-views.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/page-data/quick-start-views.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/page-data/samples-views.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app/src/polyfills.ts: The first 5 lines contain all of the requested patterns.
+	✖ dist/libs/porrtal/a-shell-material/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-api/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-shell/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-api/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-split/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✔ libs/porrtal/a-api/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-api/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✖ dist/libs/porrtal-components/a-learning/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-blueprint/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-material/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-blueprint/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-material/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-learning/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-porrtal-io/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✔ libs/porrtal/a-shell/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-bootstrap/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-bootstrap/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-user/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-user/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-api/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✖ dist/libs/porrtal-components/r-quick-start-material/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✔ libs/porrtal/r-shell-blueprint/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-split/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-first-test-comp-lib/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-first-test-comp-lib/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-first-test-comp-lib/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-second-test-comp-lib/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-second-test-comp-lib/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-learning/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-second-test-comp-lib/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-porrtal-io/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-test/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/app.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/app.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/app.module.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/data.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/environments/environment.prod.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/environments/environment.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/environments/environment.prod.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/environments/environment.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/app.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/app.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/app.module.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/data.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/porrtal-components-r-learning-e2e/src/integration/youtube-player/youtube-player.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/porrtal-components-a-learning-e2e/src/integration/youtube-player/youtube-player.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app/src/environments/environment.prod.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app/src/environments/environment.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
+	✖ dist/libs/porrtal/r-api/lib/logger-entry.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-api/lib/pane.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-api/lib/view-component-function.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-api/lib/view-component-modules.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-api/lib/view-component-props.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-api/lib/view-launch.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-api/lib/view-state.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-api/lib/view.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-shell/lib/banner-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-split/lib/RenderSplitterProps.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-split/lib/DefaultSplitter.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-split/lib/Split.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-api/lib/logger-entry.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-api/lib/pane.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-api/lib/view-component-function.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-api/lib/view-component-modules.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-api/lib/view-component-props.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-api/lib/view-launch.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-api/lib/view-state.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-api/lib/view.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell/lib/banner-props.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell/lib/logger-banner-props.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell/lib/search-props.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell/lib/shell-components.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell/lib/user-banner-props.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell/lib/view-stack-props.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-material/lib/shell-components-material.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-material/lib/shell-material.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✔ libs/porrtal/a-api/src/lib/logger-entry.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-api/src/lib/pane.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-api/src/lib/view-component-function.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-api/src/lib/view-component-modules.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-api/src/lib/view-component-props.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-api/src/lib/view-launch.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-api/src/lib/view-state.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-api/src/lib/view.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/banner-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-api/src/lib/logger-entry.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-api/src/lib/pane.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-api/src/lib/view-component-function.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-api/src/lib/view-component-modules.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-api/src/lib/view-component-props.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-api/src/lib/view-launch.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-api/src/lib/view-state.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-api/src/lib/view.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/banner-props.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/logger-banner-props.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/search-props.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/shell-components.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/user-banner-props.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/view-stack-props.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-split/src/lib/RenderSplitterProps.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/lib/auth-interface.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/quick-start/quick-start.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/quick-start/quick-start.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/inside-porrtal/inside-porrtal.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/inside-porrtal/inside-porrtal.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/samples/samples.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/samples/samples.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/quick-start-demo/quick-start-demo.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/quick-start-demo/quick-start-demo.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/first-page/first-page.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/first-page/first-page.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/second-page/second-page.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/second-page/second-page.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/test-config/test-view-states.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/third-page/third-page.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/third-page/third-page.component.ts: The first 5 lines contain all of the requested patterns.
+	✖ dist/libs/porrtal/a-shell/lib/logger-state/logger-state.service.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-shell/lib/search-state/search-state.service.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-shell/lib/shell-state/shell-state.service.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-shell/lib/shell-utilities/shell-utilities.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-shell/lib/view-host/view-host.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-shell-material/lib/banner-menu/banner-menu.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-shell-material/lib/banner/banner.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-shell-material/lib/logger-banner/logger-banner.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-shell-material/lib/entity-menu/entity-menu.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-shell-material/lib/logger-messages/logger-messages.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-shell-material/lib/search/search.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-shell-material/lib/shell-layout/shell-layout.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-shell-material/lib/search-dialog/search-dialog.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/a-shell-material/lib/view-stack/view-stack.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell/lib/entity-menu/entity-menu.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell/lib/logger-state/logger-state.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell/lib/search-state/search-state.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell/lib/search-view-stack/search-view-stack.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell/lib/shell-layout-splitter/shell-layout-splitter.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell/lib/shell-state/shell-state.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell/lib/view-host/view-host.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell/lib/shell-utilities/shell-utilities.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-learning/lib/markdown-viewer/markdown-viewer.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-learning/lib/youtube-player/youtube-player.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/clipboard-button.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/clipboard-options.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/index.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/katex-options.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/language.pipe.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/markdown.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/markdown.module.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/markdown.pipe.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/markdown.service.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/marked-options.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/marked-renderer.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/mermaid-options.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-learning/lib/ngx-markdown/prism-plugin.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/data/account-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/data/appointment-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/viz-nav/viz-nav.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-blueprint/lib/banner/banner.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-blueprint/lib/entity-menu/entity-menu.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-blueprint/lib/logger-messages/logger-messages.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-blueprint/lib/search/search.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-blueprint/lib/search-input/search-input.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-blueprint/lib/logger-banner/logger-banner.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-blueprint/lib/shell-components-blueprint/shell-components-blueprint.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-blueprint/lib/shell-blueprint/shell-blueprint.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-blueprint/lib/view-stack/view-stack.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-material/lib/banner/banner.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-material/lib/entity-menu/entity-menu.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-material/lib/logger-banner/logger-banner.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-material/lib/logger-messages/logger-messages.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-material/lib/search/search.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-material/lib/search-input/search-input.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal/r-shell-material/lib/view-stack/view-stack.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-material/lib/docs-nav/docs-nav-views.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-material/lib/docs-nav/docs-nav.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/data/account-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/docs-nav/docs-nav-views.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/docs-nav/docs-nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-material/lib/data/account-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-learning/lib/youtube-player/youtube-player.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-porrtal-io/lib/blog/blog.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-learning/lib/markdown-viewer/markdown-viewer.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-porrtal-io/lib/docs/docs.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-porrtal-io/lib/nav/nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-porrtal-io/lib/events/events.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-porrtal-io/lib/resources/resources.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✔ libs/porrtal/a-shell/src/lib/logger-state/logger-state.service.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/logger-state/logger-state.service.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/shell-state/shell-state.service.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/shell-state/shell-state.service.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/search-state/search-state.service.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/search-state/search-state.service.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/shell-utilities/shell-utilities.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/shell-utilities/shell-utilities.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/view-host/view-host.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/view-host/view-host.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/banner-menu/banner-menu.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/banner-menu/banner-menu.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/banner/banner.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/banner/banner.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/entity-menu/entity-menu.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/entity-menu/entity-menu.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/logger-banner/logger-banner.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/logger-banner/logger-banner.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/logger-messages/logger-messages.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/logger-messages/logger-messages.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/search/search.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/search/search.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/search-dialog/search-dialog.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/search-dialog/search-dialog.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/shell-layout/shell-layout.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/shell-layout/shell-layout.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/view-stack/view-stack.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/view-stack/view-stack.component.ts: The first 5 lines contain all of the requested patterns.
+	✖ dist/libs/porrtal-components/r-quick-start-material/lib/data/account-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-material/lib/docs-nav/docs-nav-views.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-material/lib/docs-nav/docs-nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/data/account-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/data/appointment-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/data/hierarchy-data.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/viz-nav/viz-nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✔ libs/porrtal/r-shell/src/lib/shell-state/shell-state.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/shell-utilities/shell-utilities.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/shell-utilities/shell-utilities.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-first-test-comp-lib/src/lib/test-comps-first-test-comp/test-comps-first-test-comp.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-first-test-comp-lib/src/lib/test-comps-first-test-comp/test-comps-first-test-comp.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/lib/use-auth/auth-context.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/lib/use-auth/use-auth.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/data/appointment-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/data/hierarchy-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/viz-nav/viz-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/viz-nav/viz-nav.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/markdown-viewer/markdown-viewer.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/markdown-viewer/markdown-viewer.component.stories.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/markdown-viewer/markdown-viewer.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/clipboard-button.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/clipboard-options.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/clipboard-button.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/katex-options.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/language.pipe.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/language.pipe.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.module.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.module.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.pipe.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.pipe.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.service.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.service.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/marked-options.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/marked-renderer.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/mermaid-options.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/prism-plugin.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-second-test-comp-lib/src/lib/test-comps-second-test-comp/test-comps-second-test-comp.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-second-test-comp-lib/src/lib/test-comps-second-test-comp/test-comps-second-test-comp.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/youtube-player/youtube-player.component.stories.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/youtube-player/youtube-player.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/youtube-player/youtube-player.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/data/appointment-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/data/hierarchy-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/docs-nav/docs-nav-views.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/docs-nav/docs-nav.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/docs-nav/docs-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/docs-nav/docs-nav-views.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/data/appointment-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/data/hierarchy-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/src/lib/docs-nav/docs-nav-views.ts: The first 5 lines contain all of the requested patterns.
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/account/account-billing-history/account-billing-history.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/account/account-detail/account-detail.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/account/account-create/account-create.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/account/account-nav/account-nav.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/appointment/appointment-create/appointment-create.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/account/account-search/account-search.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/appointment/appointment-detail/appointment-detail.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/appointment/appointment-search/appointment-search.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/appointment/appointment-location-map/appointment-location-map.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/appointment/appointment-nav/appointment-nav.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/hierarchy/collapsible-tree/collapsible-tree.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/hierarchy/hierarchical-bar-chart/hierarchical-bar-chart.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/hierarchy/zoomable-circle-pack/zoomable-circle-pack.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/hierarchy/zoomable-icicle/zoomable-icicle.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/hierarchy/zoomable-sunburst/zoomable-sunburst.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/hierarchy/zoomable-treemap/zoomable-treemap.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/account/account-billing-history/account-billing-history.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/account/account-detail/account-detail.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/account/account-create/account-create.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/account/account-nav/account-nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-material/lib/account/account-billing-history/account-billing-history.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-blueprint/lib/account/account-search/account-search.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-material/lib/account/account-create/account-create.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-material/lib/account/account-detail/account-detail.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-material/lib/account/account-nav/account-nav.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-material/lib/account/account-search/account-search.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-material/lib/account/account-create/account-create.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-material/lib/account/account-billing-history/account-billing-history.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-material/lib/account/account-detail/account-detail.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-material/lib/account/account-search/account-search.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-material/lib/account/account-nav/account-nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/account/account-billing-history/account-billing-history.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/account/account-create/account-create.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/account/account-nav/account-nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/appointment/appointment-create/appointment-create.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/appointment/appointment-location-map/appointment-location-map.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/appointment/appointment-detail/appointment-detail.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/appointment/appointment-nav/appointment-nav.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/appointment/appointment-search/appointment-search.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/account/account-detail/account-detail.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/account/account-search/account-search.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/hierarchy/collapsible-tree/collapsible-tree.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/hierarchy/hierarchical-bar-chart/hierarchical-bar-chart.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/hierarchy/zoomable-circle-pack/zoomable-circle-pack.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/hierarchy/zoomable-icicle/zoomable-icicle.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/hierarchy/zoomable-sunburst/zoomable-sunburst.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/hierarchy/zoomable-treemap/zoomable-treemap.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-billing-history/account-billing-history.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-billing-history/account-billing-history.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-create/account-create.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-create/account-create.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-nav/account-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-nav/account-nav.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-detail/account-detail.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-detail/account-detail.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-search/account-search.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-search/account-search.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-detail/appointment-detail.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-detail/appointment-detail.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-create/appointment-create.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-create/appointment-create.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-location-map/appointment-location-map.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-location-map/appointment-location-map.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-nav/appointment-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-nav/appointment-nav.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-search/appointment-search.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-search/appointment-search.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/collapsible-tree/collapsible-tree.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/collapsible-tree/collapsible-tree.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/hierarchical-bar-chart/hierarchical-bar-chart.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/hierarchical-bar-chart/hierarchical-bar-chart.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-circle-pack/zoomable-circle-pack.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-circle-pack/zoomable-circle-pack.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-icicle/zoomable-icicle.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-icicle/zoomable-icicle.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-sunburst/zoomable-sunburst.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-sunburst/zoomable-sunburst.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-treemap/zoomable-treemap.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-treemap/zoomable-treemap.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-billing-history/account-billing-history.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-billing-history/account-billing-history.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-create/account-create.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-create/account-create.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-nav/account-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-nav/account-nav.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-detail/account-detail.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-detail/account-detail.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-search/account-search.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-search/account-search.component.ts: The first 5 lines contain all of the requested patterns.
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/esri/building-scene/building-scene-with-query/building-scene-with-query.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/esri/digital-elevation/digital-elevation-map/digital-elevation-map.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/esri/hurricane/hurricane-map/hurricane-map.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/a-quick-start-demo/lib/esri/earthquake/earthquake-map/earthquake-map.component.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/esri/digital-elevation/digital-elevation-map/digital-elevation-map.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/esri/building-scene/building-scene-with-query/building-scene-with-query.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/esri/earthquake/earthquake-map/earthquake-map.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/building-scene/building-scene-with-query/building-scene-with-query.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/building-scene/building-scene-with-query/building-scene-with-query.component.ts: The first 5 lines contain all of the requested patterns.
+	✖ dist/libs/porrtal-components/r-quick-start-demo/lib/esri/hurricane/hurricane-map/hurricane-map.d.ts: The first 5 lines do not contain the pattern(s): Copyright, License
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/digital-elevation/digital-elevation-map/digital-elevation-map.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/digital-elevation/digital-elevation-map/digital-elevation-map.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/earthquake/earthquake-map/earthquake-map.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/earthquake/earthquake-map/earthquake-map.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/hurricane/hurricane-map/hurricane-map.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/hurricane/hurricane-map/hurricane-map.component.ts: The first 5 lines contain all of the requested patterns.
+✔ github-issue-template-exists: Found file (.github/ISSUE_TEMPLATE)
+✔ github-pull-request-template-exists: Found file (.github/PULL_REQUEST_TEMPLATE)
+ℹ package-metadata-exists: ignored due to unsatisfied condition(s): "language=javascript"
+ℹ package-metadata-exists: ignored due to unsatisfied condition(s): "language=typescript"
+ℹ package-metadata-exists: ignored due to unsatisfied condition(s): "language=ruby"
+ℹ package-metadata-exists: ignored due to unsatisfied condition(s): "language=java"
+ℹ package-metadata-exists: ignored due to unsatisfied condition(s): "language=kotlin"
+ℹ license-detectable-by-licensee: ignored due to unsatisfied condition(s): "license=*"
+ℹ notice-file-exists: ignored due to unsatisfied condition(s): "license=Apache-2.0"
+ℹ package-metadata-exists: ignored due to unsatisfied condition(s): "language=python"
+ℹ package-metadata-exists: ignored due to unsatisfied condition(s): "language=objective-c"
+ℹ package-metadata-exists: ignored due to unsatisfied condition(s): "language=swift"
+ℹ package-metadata-exists: ignored due to unsatisfied condition(s): "language=erlang"
+ℹ package-metadata-exists: ignored due to unsatisfied condition(s): "language=elixir"
