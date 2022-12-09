@@ -240,7 +240,7 @@ Next we will add detail to the Account Details page, picking up the accountId fr
 ### Install `moment` npm package (for date / time functions)
 
 ```bash
-npm install moment --save 
+npm install moment --save --legacy-peer-deps
 ```
 
 ### Update `AccountDetail.tsx` to show data for the Account
