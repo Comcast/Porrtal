@@ -38,7 +38,7 @@ export function Samples(props: SamplesProps) {
   }, []);
 
   const quickStartBannerData = {
-    ...getBannerData(),
+    ...getBannerData(reactUiLibrary),
     displayText: `samples ${reactUiLibrary ? '(' : ''}${reactUiLibrary}${
       reactUiLibrary ? ')' : ''
     }`,

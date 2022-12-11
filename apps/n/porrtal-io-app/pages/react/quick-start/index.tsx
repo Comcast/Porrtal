@@ -40,7 +40,7 @@ export function QuickStart(props: QuickStartProps) {
   }, []);
 
   const quickStartBannerData = {
-    ...getBannerData(),
+    ...getBannerData(reactUiLibrary),
     displayText: `quick-start ${reactUiLibrary ? '(' : ''}${reactUiLibrary}${
       reactUiLibrary ? ')' : ''
     }`,

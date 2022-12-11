@@ -27,6 +27,10 @@
   max-width: 20px;
 }
 
+::ng-deep.mat-menu-panel {
+  background-color: #eee
+}
+
 mat-tab-group {
   width: 100%;
   height: 100%;

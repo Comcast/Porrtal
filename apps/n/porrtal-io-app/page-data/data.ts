@@ -53,14 +53,15 @@ export const getAngularUiLibrary = (): string => {
   return 'material';
 }
 
-export const getBannerData = (): BannerData => {
+export const getBannerData = (reactUiLibrary: string): BannerData => {
+  const displayIcon = reactUiLibrary === 'blueprint' ? 'hurricane' : 'cyclone';
   return {
     displayText: 'porrtal.io',
-    displayIcon: 'hurricane',
+    displayIcon: displayIcon,
     childData: [
       {
         key: 'porrtal.io',
-        displayIcon: 'hurricane',
+        displayIcon: displayIcon,
         displayText: 'porrtal.io',
         targetUrl: '/',
       },
