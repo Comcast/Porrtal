@@ -291,13 +291,17 @@ function ViewStackContextMenu(
   };
 
   const menuItemsData: MenuItemData[] = [
-    {
-      uid: 'close-tab',
-      label: 'close tab',
-      leftIcon: <Icon>clear</Icon>,
-      callback: () =>
-        props.dispatch({ type: 'deleteViewState', key: props.item.key }),
-    },
+    ...(props.pane.paneType !== 'search'
+      ? [
+          {
+            uid: 'close-tab',
+            label: 'close tab',
+            leftIcon: <Icon>clear</Icon>,
+            callback: () =>
+              props.dispatch({ type: 'deleteViewState', key: props.item.key }),
+          },
+        ]
+      : []),
     ...(props.showUserInfo &&
     props.item.userInfo &&
     props.item.userInfo.length > 0
@@ -364,33 +368,37 @@ function ViewStackContextMenu(
         })),
       ],
     },
-    {
-      uid: 'Move to...',
-      label: 'Move to...',
-      leftIcon: <Icon>open_with</Icon>,
-      items: [
-        ...paneTypes
-          .filter(
-            (paneType) =>
-              paneType !== 'search' && paneType !== props.pane.paneType
-          )
-          .map((paneType) => ({
-            uid: `${paneType} pane`,
-            label: `${paneType} pane`,
-            leftIcon: (
-              <Icon className="material-icons-outlined">
-                {moveIcons[paneType]}
-              </Icon>
-            ),
-            callback: () =>
-              props.dispatch({
-                type: 'moveView',
-                key: props.item.key,
-                toPane: paneType,
-              }),
-          })),
-      ],
-    },
+    ...(props.pane.paneType !== 'search'
+      ? [
+          {
+            uid: 'Move to...',
+            label: 'Move to...',
+            leftIcon: <Icon>open_with</Icon>,
+            items: [
+              ...paneTypes
+                .filter(
+                  (paneType) =>
+                    paneType !== 'search' && paneType !== props.pane.paneType
+                )
+                .map((paneType) => ({
+                  uid: `${paneType} pane`,
+                  label: `${paneType} pane`,
+                  leftIcon: (
+                    <Icon className="material-icons-outlined">
+                      {moveIcons[paneType]}
+                    </Icon>
+                  ),
+                  callback: () =>
+                    props.dispatch({
+                      type: 'moveView',
+                      key: props.item.key,
+                      toPane: paneType,
+                    }),
+                })),
+            ],
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -402,14 +410,16 @@ function ViewStackContextMenu(
           </Icon>
           &nbsp;
           {props.item.displayText}&nbsp;
-          <Icon
-            style={{ position: 'relative', top: '5px' }}
-            onClick={(evt) =>
-              props.dispatch({ type: 'deleteViewState', key: props.item.key })
-            }
-          >
-            clear
-          </Icon>
+          {props.pane.paneType !== 'search' && (
+            <Icon
+              style={{ position: 'relative', top: '5px' }}
+              onClick={(evt) =>
+                props.dispatch({ type: 'deleteViewState', key: props.item.key })
+              }
+            >
+              clear
+            </Icon>
+          )}
         </div>
       )}
       {props.pane.arrange === 'tabs-left' && (
