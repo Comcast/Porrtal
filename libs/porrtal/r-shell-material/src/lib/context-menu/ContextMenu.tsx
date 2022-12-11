@@ -29,9 +29,9 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-import React, {useState, forwardRef} from 'react';
+import React, { useState, forwardRef } from 'react';
 import Menu from '@mui/material/Menu';
-import {MenuItemData, nestedMenuItemsFromObject} from 'mui-nested-menu';
+import { MenuItemData, nestedMenuItemsFromObject } from 'mui-nested-menu';
 
 export interface ContextMenuProps {
   children?: React.ReactNode;
@@ -44,32 +44,28 @@ interface Position {
 }
 
 export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
-  ({children, menuItems, menuItemsData}, ref) => {
+  ({ children, menuItemsData }, ref) => {
     const [menuPosition, setMenuPosition] = useState<Position | null>(null);
 
     const handleItemClick = () => setMenuPosition(null);
 
     const handleContextMenu = (e: React.MouseEvent) => {
       e.preventDefault();
-      setMenuPosition({top: e.clientY, left: e.clientX});
-    }
+      setMenuPosition({ top: e.clientY, left: e.clientX });
+    };
 
     const menuContents =
-      menuItems ??
-      (menuItemsData &&
-        nestedMenuItemsFromObject({
-          menuItemsData: menuItemsData,
-          isOpen: !!menuPosition,
-          handleClose: handleItemClick,
-        }));
+      menuItemsData &&
+      nestedMenuItemsFromObject({
+        menuItemsData: menuItemsData,
+        isOpen: !!menuPosition,
+        handleClose: handleItemClick,
+      });
 
     return (
-      <div
-        ref={ref}
-        onContextMenu={handleContextMenu}
-      >
+      <div ref={ref} onContextMenu={handleContextMenu}>
         <Menu
-          onContextMenu={e => e.preventDefault()}
+          onContextMenu={(e) => e.preventDefault()}
           open={!!menuPosition}
           onClose={() => setMenuPosition(null)}
           anchorReference="anchorPosition"
@@ -80,7 +76,7 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
         {children}
       </div>
     );
-  },
+  }
 );
 
 ContextMenu.displayName = 'ContextMenu';

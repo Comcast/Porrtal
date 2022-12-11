@@ -22,18 +22,20 @@ import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import styles from './index.module.scss';
-import { getBannerData } from '../page-data/data';
+import { getBannerData, getReactUiLibrary } from '../page-data/data';
 import { porrtalIoViews } from '../page-data/porrtal-io-views';
 
 export function Index() {
   const [isSSR, setIsSSR] = useState(true);
+
+  const reactUiLibrary = isSSR ? '' : getReactUiLibrary();
 
   useEffect(() => {
     setIsSSR(false);
   }, []);
 
   const quickStartBannerData = {
-    ...getBannerData(),
+    ...getBannerData('blueprint'),
     displayText: `porrtal.io`,
   };
 
