@@ -19,7 +19,8 @@ import {
   ViewStackProps,
 } from '@porrtal/r-shell';
 import styles from './view-stack.module.scss';
-import { ContextMenu, NestedMenuItem, IconMenuItem } from 'mui-nested-menu';
+import { NestedMenuItem, IconMenuItem } from 'mui-nested-menu';
+import { ContextMenu } from '../context-menu/ContextMenu';
 import {
   paneArrangements,
   PaneType,
@@ -293,12 +294,9 @@ function ViewStackContextMenu(
     {
       uid: 'close-tab',
       label: 'close tab',
-      leftIcon: <Icon onClick={() => alert('close me...')}>clear</Icon>,
+      leftIcon: <Icon>clear</Icon>,
       callback: () =>
-        ((evt: React.MouseEvent<HTMLElement>) => {
-          props.dispatch({ type: 'deleteViewState', key: props.item.key });
-          evt.stopPropagation();
-        }) as () => void,
+        props.dispatch({ type: 'deleteViewState', key: props.item.key }),
     },
     ...(props.showUserInfo &&
     props.item.userInfo &&
