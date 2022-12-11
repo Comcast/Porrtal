@@ -94,7 +94,7 @@ function BannerMenu(props: BannerProps & { children: ReactNode | undefined }) {
       >
         {props.bannerData.childData.map((menuItem) => (
           <IconMenuItem
-            key={menuItem.displayText}
+            key={menuItem.key ?? menuItem.displayText}
             leftIcon={
               <>
                 {menuItem.displayIcon && <Icon>{menuItem.displayIcon}</Icon>}
