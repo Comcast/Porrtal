@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/Comcast/Porrtal/compare/v0.7.0...v0.8.0) (2022-12-15)
+
+### Bug Fixes
+
+- **@porrtal-components/r-quick-start-blueprint:** update install with legacy peer deps ([608e004](https://github.com/Comcast/Porrtal/commit/608e004bd14fd4fe8401756fba8957b7af6e24d5))
+
 # [0.7.0](https://github.com/Comcast/Porrtal/compare/v0.6.0...v0.7.0) (2022-12-03)
 
 ### Features

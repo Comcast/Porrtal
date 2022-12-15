@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/Comcast/Porrtal/compare/v0.7.0...v0.8.0) (2022-12-15)
+
+### Features
+
+- remove esri samples due to license agreement restrictions ([6842fd7](https://github.com/Comcast/Porrtal/commit/6842fd799db2ad2f9615c874bdeb6a4a238d6b58))
+
 # [0.7.0](https://github.com/Comcast/Porrtal/compare/v0.6.0...v0.7.0) (2022-12-03)
 
 ### Features

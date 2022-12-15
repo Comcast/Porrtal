@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/Comcast/Porrtal/compare/v0.7.0...v0.8.0) (2022-12-15)
+
+### Bug Fixes
+
+- **@porrtal-components/r-quick-start-blueprint:** publish fix for npm install in quick start ([d662606](https://github.com/Comcast/Porrtal/commit/d6626061b5521a0ee622a70887d7cae2794608a5))
+- **@porrtal-components/r-quick-start-blueprint:** update install with legacy peer deps ([608e004](https://github.com/Comcast/Porrtal/commit/608e004bd14fd4fe8401756fba8957b7af6e24d5))
+- **@porrtal/a-shell-material:** fix transparent background for cascading menu ([754c9a0](https://github.com/Comcast/Porrtal/commit/754c9a0b496b3f146212b9e5f93e295555b0c7e8))
+- **@porrtal/r-shell-material:** don't allow close tab or move tab for search views ([17f39f9](https://github.com/Comcast/Porrtal/commit/17f39f90435a64f924a23ba2fd362392d31bad38))
+- **@porrtal/r-shell-material:** fix banner key and banner menu icons ([b40746f](https://github.com/Comcast/Porrtal/commit/b40746f5427dba9b31eb0b79864bd8c64bd1e5c9))
+- **@porrtal/r-shell-material:** fix context menu item callback not called ([b792d11](https://github.com/Comcast/Porrtal/commit/b792d1137e1900886c5d6ab67da6f844c9059e81))
+- **a-porrtal-io-app:** publish new angular porrtal-io app ([1bff29b](https://github.com/Comcast/Porrtal/commit/1bff29b165243158ebe17b7e0d3db56e2a07fe82))
+- **workspace:** define COPYRIGHTLEN for copyright script ([bed2aa8](https://github.com/Comcast/Porrtal/commit/bed2aa88e5af85926742d686561da8be22f663b8))
+- **workspace:** display npm audit results as part of npm install ([878a75f](https://github.com/Comcast/Porrtal/commit/878a75fdf0cc74feec983044e9e7c7e0dc43ceab))
+- **workspace:** remove unused prune option from copyright script ([72ee9cc](https://github.com/Comcast/Porrtal/commit/72ee9cc958d261dcf9e5b33aecf168cd937ed89f))
+- **workspace:** resolve dev npm vulnerabilties ([1fe601d](https://github.com/Comcast/Porrtal/commit/1fe601d08c663dd428b2648440379fa3a881b85e))
+- **workspace:** resolve npm vulnerabilities - part 1 ([f42e6ab](https://github.com/Comcast/Porrtal/commit/f42e6abbb6b3de8e15a68e3a27967c94883ee3fd))
+- **workspace:** undo audit fixes to repair angular build ([0407fd2](https://github.com/Comcast/Porrtal/commit/0407fd218df3c2e828953f9540a7d2d110cb1a06))
+- **workspace:** update storybook to remove npm vulnerabilities ([74e7f55](https://github.com/Comcast/Porrtal/commit/74e7f5548edbf1a8ac0bb550c2aee8835f9c6bc2))
+
+### Features
+
+- **n-porrtal-io-app:** fix build errors and publish new version ([e4975ad](https://github.com/Comcast/Porrtal/commit/e4975ade4883cacd63b25291571e3bf3c399ebe8))
+- remove esri samples due to license agreement restrictions ([6842fd7](https://github.com/Comcast/Porrtal/commit/6842fd799db2ad2f9615c874bdeb6a4a238d6b58))
+- **workspace:** add copyright scripts ([156f4d5](https://github.com/Comcast/Porrtal/commit/156f4d5f58f447ad7391543d588d107330906bf6))
+- **workspace:** add repolinter config and output ([55e4e2f](https://github.com/Comcast/Porrtal/commit/55e4e2f789df97c4c5065f137929f67dba7dcb2b))
+- **workspace:** enhance Porrtal readme ([be308c2](https://github.com/Comcast/Porrtal/commit/be308c2d3a10c4b051e50c95322883cf095f54ce))
+- **workspace:** enhance Porrtal readme ([c66376e](https://github.com/Comcast/Porrtal/commit/c66376e5fb5eeee05b5377d41dd49e10a2049b32))
+- **workspace:** remove @nrwl/nx-cloud dependency (licensing issue) and lock down mui-nested-menu ([586880e](https://github.com/Comcast/Porrtal/commit/586880e500c76374ebfea160afaa18e6d8deaca6))
+- **workspace:** rerun license report ([d481746](https://github.com/Comcast/Porrtal/commit/d481746608ecef3e373c773bab1ce56acadacfcc))
+- **workspace:** update repolinter.json to include .ts and .tsx files and rerun ([d8ef011](https://github.com/Comcast/Porrtal/commit/d8ef0115e9b869ef098b0d9a81352c5225a7097a))
+
 # [0.7.0](https://github.com/Comcast/Porrtal/compare/v0.6.0...v0.7.0) (2022-12-03)
 
 ### Bug Fixes

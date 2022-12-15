@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/datumgeek/porrtal/compare/v0.7.0...v0.8.0) (2022-12-15)
+
+### Bug Fixes
+
+- **@porrtal-components/r-quick-start-blueprint:** publish fix for npm install in quick start ([d662606](https://github.com/datumgeek/porrtal/commit/d6626061b5521a0ee622a70887d7cae2794608a5))
+- **@porrtal/r-shell-material:** fix banner key and banner menu icons ([b40746f](https://github.com/datumgeek/porrtal/commit/b40746f5427dba9b31eb0b79864bd8c64bd1e5c9))
+- **a-porrtal-io-app:** publish new angular porrtal-io app ([1bff29b](https://github.com/datumgeek/porrtal/commit/1bff29b165243158ebe17b7e0d3db56e2a07fe82))
+
+### Features
+
+- **n-porrtal-io-app:** fix build errors and publish new version ([e4975ad](https://github.com/datumgeek/porrtal/commit/e4975ade4883cacd63b25291571e3bf3c399ebe8))
+- remove esri samples due to license agreement restrictions ([6842fd7](https://github.com/datumgeek/porrtal/commit/6842fd799db2ad2f9615c874bdeb6a4a238d6b58))
+
 # [0.7.0](https://github.com/datumgeek/porrtal/compare/v0.6.0...v0.7.0) (2022-12-03)
 
 ### Bug Fixes

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/Comcast/Porrtal/compare/v0.7.0...v0.8.0) (2022-12-15)
+
+### Bug Fixes
+
+- **@porrtal/r-shell-material:** don't allow close tab or move tab for search views ([17f39f9](https://github.com/Comcast/Porrtal/commit/17f39f90435a64f924a23ba2fd362392d31bad38))
+- **@porrtal/r-shell-material:** fix banner key and banner menu icons ([b40746f](https://github.com/Comcast/Porrtal/commit/b40746f5427dba9b31eb0b79864bd8c64bd1e5c9))
+- **@porrtal/r-shell-material:** fix context menu item callback not called ([b792d11](https://github.com/Comcast/Porrtal/commit/b792d1137e1900886c5d6ab67da6f844c9059e81))
+
+### Features
+
+- **n-porrtal-io-app:** fix build errors and publish new version ([e4975ad](https://github.com/Comcast/Porrtal/commit/e4975ade4883cacd63b25291571e3bf3c399ebe8))
+
 # [0.7.0](https://github.com/Comcast/Porrtal/compare/v0.6.0...v0.7.0) (2022-12-03)
 
 ### Bug Fixes
