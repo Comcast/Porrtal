@@ -29,7 +29,7 @@ git clone https://github.com/Comcast/Porrtal/porrtal.git
 cd Porrtal
 
 # install npm packages
-npm install
+npm install --legacy-peer-deps
 
 # serve the app
 nx serve n-porrtal-io-app
