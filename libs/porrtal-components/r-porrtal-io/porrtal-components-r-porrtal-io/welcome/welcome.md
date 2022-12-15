@@ -4,7 +4,7 @@ _@porrtal is a set of npm packages that can be used to rapidly construct spatial
 
 (@porrtal provides npm packages for both Angular and React development)
 
-![Build Better Outcomes](build-better-outcomes.png)
+## @porrtal project - Building Better Outcomes
 
 The goal of the Porrtal project is to assist developers in building better outcomes by
 
