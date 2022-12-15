@@ -17,91 +17,95 @@ Lint:
 	✔ jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-io-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-io-app/index.d.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-io-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-app/index.d.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-app/next-env.d.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/index.d.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/r/porrtal-app/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-api/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-bootstrap/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-api/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-user/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-shell/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-shell-blueprint/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-shell-material/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-split/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-user/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-first-test-comp-lib/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-material/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-second-test-comp-lib/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-first-test-comp-lib/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-learning/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-porrtal-io/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-quick-start-blueprint/jest.config.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-quick-start-material/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-quick-start-demo/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-second-test-comp-lib/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-test/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-api/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-bootstrap/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-api/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-user/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-split/jest.config.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/jest.config.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/main.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/polyfills.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-io-app/src/main.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-io-app/src/polyfills.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-io-app/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-io-app/page-data/data.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-io-app/page-data/samples-views.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-io-app/page-data/quick-start-views.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-io-app/page-data/porrtal-io-views.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-app/page-data/data.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-app/test-config/test-view-states.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/porrtal-components-r-learning-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/porrtal-components-r-learning-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/page-data/data.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/test-config/test-view-states.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/page-data/data.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/page-data/porrtal-io-views.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/page-data/quick-start-views.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/page-data/samples-views.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/porrtal-components-a-learning-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/porrtal-components-a-learning-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/r/porrtal-app/src/polyfills.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-api/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-api/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-bootstrap/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-bootstrap/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-api/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-user/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-user/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-shell/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-shell-blueprint/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-shell-material/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-split/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-user/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-first-test-comp-lib/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-first-test-comp-lib/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-second-test-comp-lib/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-second-test-comp-lib/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-first-test-comp-lib/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-learning/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-porrtal-io/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-quick-start-blueprint/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-quick-start-material/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-second-test-comp-lib/src/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-quick-start-demo/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-test/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-api/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-api/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-bootstrap/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-bootstrap/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-user/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-user/src/test-setup.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-api/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-split/src/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/index.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/app.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/app.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/app.module.ts: The first 5 lines contain all of the requested patterns.
@@ -114,40 +118,36 @@ Lint:
 	✔ apps/a/porrtal-io-app/src/app/app.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-io-app/src/app/app.module.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-io-app/src/app/data.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/porrtal-components-r-learning-e2e/src/integration/youtube-player/youtube-player.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/n/porrtal-io-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-io-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-io-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/n/porrtal-io-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/porrtal-components-r-learning-e2e/src/integration/youtube-player/youtube-player.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/porrtal-components-a-learning-e2e/src/integration/youtube-player/youtube-player.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/r/porrtal-app/src/environments/environment.prod.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/r/porrtal-app/src/environments/environment.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-api/src/lib/logger-entry.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-api/src/lib/pane.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-api/src/lib/view-component-function.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-api/src/lib/view-component-modules.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-api/src/lib/view-component-props.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-api/src/lib/view-launch.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-api/src/lib/view-state.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-api/src/lib/view-component-props.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-api/src/lib/view.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/r/porrtal-app-e2e/src/integration/app.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/r/porrtal-app-e2e/src/support/app.po.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/r/porrtal-app-e2e/src/support/commands.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/r/porrtal-app-e2e/src/support/index.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-api/src/lib/view-component-function.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/a-shell/src/lib/banner-data.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-api/src/lib/logger-entry.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-api/src/lib/pane.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-api/src/lib/view-component-function.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-api/src/lib/view-component-modules.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-api/src/lib/view-component-props.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-api/src/lib/view-component-modules.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-api/src/lib/view-launch.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-api/src/lib/view-state.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-api/src/lib/view.ts: The first 5 lines contain all of the requested patterns.
@@ -157,61 +157,31 @@ Lint:
 	✔ libs/porrtal/r-shell/src/lib/shell-components.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-shell/src/lib/user-banner-props.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-shell/src/lib/view-stack-props.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-user/src/lib/auth-interface.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal/r-split/src/lib/RenderSplitterProps.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/lib/auth-interface.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/first-page/first-page.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/first-page/first-page.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-app/src/app/test-config/test-view-states.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-app/src/app/quick-start-demo/quick-start-demo.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-app/src/app/quick-start-demo/quick-start-demo.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/second-page/second-page.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/second-page/second-page.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/quick-start-demo/quick-start-demo.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/quick-start-demo/quick-start-demo.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-app/src/app/test-config/test-view-states.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/quick-start/quick-start.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/quick-start/quick-start.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/third-page/third-page.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-app/src/app/third-page/third-page.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-io-app/src/app/inside-porrtal/inside-porrtal.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-io-app/src/app/inside-porrtal/inside-porrtal.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/src/app/quick-start/quick-start.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/src/app/quick-start/quick-start.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ apps/a/porrtal-io-app/src/app/samples/samples.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ apps/a/porrtal-io-app/src/app/samples/samples.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/src/lib/search-state/search-state.service.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/src/lib/search-state/search-state.service.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/src/lib/logger-state/logger-state.service.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/src/lib/logger-state/logger-state.service.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/src/lib/shell-state/shell-state.service.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/src/lib/shell-state/shell-state.service.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/src/lib/shell-utilities/shell-utilities.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/src/lib/shell-utilities/shell-utilities.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/src/lib/view-host/view-host.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell/src/lib/view-host/view-host.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/banner-menu/banner-menu.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/banner-menu/banner-menu.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/banner/banner.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/banner/banner.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/entity-menu/entity-menu.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/entity-menu/entity-menu.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/logger-banner/logger-banner.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/logger-banner/logger-banner.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/logger-messages/logger-messages.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/logger-messages/logger-messages.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/search-dialog/search-dialog.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/search-dialog/search-dialog.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/search/search.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/search/search.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/shell-layout/shell-layout.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/shell-layout/shell-layout.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/view-stack/view-stack.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/a-shell-material/src/lib/view-stack/view-stack.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-shell/src/lib/shell-state/shell-state.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-shell/src/lib/shell-utilities/shell-utilities.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-shell/src/lib/shell-utilities/shell-utilities.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-user/src/lib/use-auth/auth-context.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal/r-user/src/lib/use-auth/use-auth.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/a/porrtal-io-app/src/app/samples/samples.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/markdown-viewer/markdown-viewer.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/markdown-viewer/markdown-viewer.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/markdown-viewer/markdown-viewer.component.stories.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-first-test-comp-lib/src/lib/test-comps-first-test-comp/test-comps-first-test-comp.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-first-test-comp-lib/src/lib/test-comps-first-test-comp/test-comps-first-test-comp.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-learning/src/lib/markdown-viewer/markdown-viewer.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-learning/src/lib/markdown-viewer/markdown-viewer.component.stories.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-learning/src/lib/markdown-viewer/markdown-viewer.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/youtube-player/youtube-player.component.stories.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/youtube-player/youtube-player.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/youtube-player/youtube-player.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/clipboard-button.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/clipboard-button.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/clipboard-options.ts: The first 5 lines contain all of the requested patterns.
@@ -220,64 +190,104 @@ Lint:
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/language.pipe.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/language.pipe.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.module.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.module.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.pipe.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.pipe.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.service.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.service.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/markdown.pipe.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/marked-options.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/marked-renderer.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/mermaid-options.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-learning/src/lib/ngx-markdown/prism-plugin.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-learning/src/lib/youtube-player/youtube-player.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-learning/src/lib/youtube-player/youtube-player.component.stories.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-learning/src/lib/youtube-player/youtube-player.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/docs-nav/docs-nav-views.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/docs-nav/docs-nav.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/docs-nav/docs-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/data/appointment-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/data/hierarchy-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/data/appointment-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/data/hierarchy-data.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/viz-nav/viz-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/viz-nav/viz-nav.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/viz-nav/viz-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-second-test-comp-lib/src/lib/test-comps-second-test-comp/test-comps-second-test-comp.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-second-test-comp-lib/src/lib/test-comps-second-test-comp/test-comps-second-test-comp.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/data/appointment-data.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/data/hierarchy-data.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/docs-nav/docs-nav-views.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/docs-nav/docs-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/docs-nav/docs-nav.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/docs-nav/docs-nav-views.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/data/appointment-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/data/hierarchy-data.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-quick-start-material/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/r-quick-start-material/src/lib/docs-nav/docs-nav-views.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-quick-start-demo/src/lib/data/account-data.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-quick-start-demo/src/lib/data/hierarchy-data.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/r-quick-start-demo/src/lib/data/appointment-data.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/banner/banner.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/banner/banner.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/banner-menu/banner-menu.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/banner-menu/banner-menu.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/logger-messages/logger-messages.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/logger-messages/logger-messages.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/entity-menu/entity-menu.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/entity-menu/entity-menu.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/search/search.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/search/search.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/search-dialog/search-dialog.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/search-dialog/search-dialog.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/shell-layout/shell-layout.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/shell-layout/shell-layout.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/view-stack/view-stack.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/view-stack/view-stack.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/logger-banner/logger-banner.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell-material/src/lib/logger-banner/logger-banner.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/search-state/search-state.service.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/search-state/search-state.service.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/shell-state/shell-state.service.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/shell-state/shell-state.service.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/logger-state/logger-state.service.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/logger-state/logger-state.service.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/view-host/view-host.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/view-host/view-host.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/shell-utilities/shell-utilities.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/a-shell/src/lib/shell-utilities/shell-utilities.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/shell-state/shell-state.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/shell-utilities/shell-utilities.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/shell-utilities/shell-utilities.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/lib/use-auth/auth-context.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/lib/use-auth/use-auth.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-create/account-create.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-create/account-create.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-billing-history/account-billing-history.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-billing-history/account-billing-history.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-search/account-search.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-search/account-search.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-detail/account-detail.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-detail/account-detail.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-nav/account-nav.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-nav/account-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-create/account-create.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-create/account-create.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-billing-history/account-billing-history.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-billing-history/account-billing-history.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-detail/account-detail.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-detail/account-detail.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-create/account-create.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-create/account-create.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-nav/account-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-nav/account-nav.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-create/appointment-create.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-create/appointment-create.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-search/account-search.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-nav/account-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-search/account-search.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-location-map/appointment-location-map.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-location-map/appointment-location-map.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/account/account-search/account-search.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-detail/appointment-detail.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-detail/appointment-detail.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-create/appointment-create.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-create/appointment-create.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-location-map/appointment-location-map.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-location-map/appointment-location-map.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-nav/appointment-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-nav/appointment-nav.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-search/appointment-search.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/appointment/appointment-search/appointment-search.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/collapsible-tree/collapsible-tree.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/collapsible-tree/collapsible-tree.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/hierarchical-bar-chart/hierarchical-bar-chart.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/hierarchical-bar-chart/hierarchical-bar-chart.component.spec.ts: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/hierarchical-bar-chart/hierarchical-bar-chart.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-circle-pack/zoomable-circle-pack.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-circle-pack/zoomable-circle-pack.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-sunburst/zoomable-sunburst.component.spec.ts: The first 5 lines contain all of the requested patterns.
@@ -286,24 +296,164 @@ Lint:
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-icicle/zoomable-icicle.component.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-treemap/zoomable-treemap.component.spec.ts: The first 5 lines contain all of the requested patterns.
 	✔ libs/porrtal-components/a-quick-start-demo/src/lib/hierarchy/zoomable-treemap/zoomable-treemap.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-billing-history/account-billing-history.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-billing-history/account-billing-history.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-detail/account-detail.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-detail/account-detail.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-create/account-create.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-create/account-create.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-nav/account-nav.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-nav/account-nav.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-search/account-search.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-material/src/lib/account/account-search/account-search.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/digital-elevation/digital-elevation-map/digital-elevation-map.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/digital-elevation/digital-elevation-map/digital-elevation-map.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/building-scene/building-scene-with-query/building-scene-with-query.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/building-scene/building-scene-with-query/building-scene-with-query.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/earthquake/earthquake-map/earthquake-map.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/earthquake/earthquake-map/earthquake-map.component.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/hurricane/hurricane-map/hurricane-map.component.spec.ts: The first 5 lines contain all of the requested patterns.
-	✔ libs/porrtal-components/a-quick-start-demo/src/lib/esri/hurricane/hurricane-map/hurricane-map.component.ts: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/specs/index.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/pages/_app.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/pages/_document.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/pages/index.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/pages/_app.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/pages/index.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/pages/_document.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/specs/index.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app/src/main.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/pages/quick-start-demo/index.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/pages/second-page/index.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-app/pages/third-page/index.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app/src/app/app.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app/src/app/app.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app/src/app/nx-welcome.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-first-test-comp-lib/src/lib/test-comps-first-test-comp.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-first-test-comp-lib/src/lib/test-comps-first-test-comp.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-second-test-comp-lib/src/lib/test-comps-second-test-comp.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-second-test-comp-lib/src/lib/test-comps-second-test-comp.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-test/src/lib/porrtal-components-r-test.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-test/src/lib/porrtal-components-r-test.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/shell-components-material.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/shell-material.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-split/src/lib/DefaultSplitter.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-split/src/lib/Split.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/pages/react/inside-porrtal/index.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/pages/react/samples/index.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/n/porrtal-io-app/pages/react/quick-start/index.tsx: The first 5 lines contain all of the requested patterns.
+	✔ apps/r/porrtal-app/src/app/Account/account-nav.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-learning/src/lib/youtube-player/youtube-player.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-learning/src/lib/youtube-player/youtube-player.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-learning/src/lib/youtube-player/youtube-player.stories.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-learning/src/lib/markdown-viewer/markdown-viewer.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-learning/src/lib/markdown-viewer/markdown-viewer.stories.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-learning/src/lib/markdown-viewer/markdown-viewer.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-porrtal-io/src/lib/blog/blog.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-porrtal-io/src/lib/blog/blog.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-porrtal-io/src/lib/docs/docs.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-porrtal-io/src/lib/docs/docs.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-porrtal-io/src/lib/events/events.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-porrtal-io/src/lib/events/events.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-porrtal-io/src/lib/resources/resources.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-porrtal-io/src/lib/resources/resources.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-porrtal-io/src/lib/nav/nav.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-porrtal-io/src/lib/nav/nav.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/docs-nav/docs-nav.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/docs-nav/docs-nav.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/viz-nav/viz-nav.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/viz-nav/viz-nav.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/src/lib/docs-nav/docs-nav.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/src/lib/docs-nav/docs-nav.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/entity-menu/entity-menu.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/entity-menu/entity-menu.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/banner/banner.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/banner/banner.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/context-menu/ContextMenu.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/logger-banner/logger-banner.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/logger-banner/logger-banner.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/logger-messages/logger-messages.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/logger-messages/logger-messages.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/search/search.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/search/search.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/search-input/search-input.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/search-input/search-input.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/view-stack/view-stack.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-material/src/lib/view-stack/view-stack.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/banner/banner.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/banner/banner.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/logger-banner/logger-banner.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/entity-menu/entity-menu.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/entity-menu/entity-menu.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/logger-banner/logger-banner.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/logger-messages/logger-messages.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/search/search.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/search/search.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/search-input/search-input.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/search-input/search-input.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/logger-messages/logger-messages.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/shell-components-blueprint/shell-components-blueprint.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/shell-components-blueprint/shell-components-blueprint.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/shell-blueprint/shell-blueprint.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/shell-blueprint/shell-blueprint.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/view-stack/view-stack.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell-blueprint/src/lib/view-stack/view-stack.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/entity-menu/entity-menu.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/entity-menu/entity-menu.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/search-state/search-state.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/search-state/search-state.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/search-view-stack/search-view-stack.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/search-view-stack/search-view-stack.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/logger-state/logger-state.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/logger-state/logger-state.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/shell-layout-splitter/shell-layout-splitter.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/shell-layout-splitter/shell-layout-splitter.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/shell-state/shell-state.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/view-host/view-host.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-shell/src/lib/view-host/view-host.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/lib/auth0-authentication/auth0-authentication.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/lib/login-button/login-button.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/lib/login-button/login-button.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/lib/keycloak-authentication/keycloak-authentication.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/lib/logout-button/logout-button.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/lib/logout-button/logout-button.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/lib/use-auth/use-auth.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/lib/user-banner/user-banner.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal/r-user/src/lib/user-banner/user-banner.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/account/account-billing-history/account-billing-history.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/account/account-billing-history/account-billing-history.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/account/account-create/account-create.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/account/account-create/account-create.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/account/account-detail/account-detail.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/account/account-detail/account-detail.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/account/account-search/account-search.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/account/account-search/account-search.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/account/account-nav/account-nav.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-blueprint/src/lib/account/account-nav/account-nav.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/appointment/appointment-detail/appointment-detail.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/appointment/appointment-detail/appointment-detail.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/appointment/appointment-nav/appointment-nav.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/appointment/appointment-nav/appointment-nav.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/appointment/appointment-create/appointment-create.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/appointment/appointment-create/appointment-create.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/appointment/appointment-search/appointment-search.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/appointment/appointment-search/appointment-search.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/appointment/appointment-location-map/appointment-location-map.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/appointment/appointment-location-map/appointment-location-map.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/account/account-billing-history/account-billing-history.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/account/account-billing-history/account-billing-history.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/account/account-create/account-create.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/account/account-create/account-create.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/account/account-detail/account-detail.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/account/account-detail/account-detail.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/account/account-search/account-search.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/account/account-search/account-search.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/account/account-nav/account-nav.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/account/account-nav/account-nav.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/hierarchy/collapsible-tree/collapsible-tree.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/hierarchy/collapsible-tree/collapsible-tree.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/hierarchy/zoomable-icicle/zoomable-icicle.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/hierarchy/zoomable-icicle/zoomable-icicle.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/hierarchy/hierarchical-bar-chart/hierarchical-bar-chart.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/hierarchy/hierarchical-bar-chart/hierarchical-bar-chart.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/hierarchy/zoomable-sunburst/zoomable-sunburst.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/hierarchy/zoomable-sunburst/zoomable-sunburst.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/hierarchy/zoomable-circle-pack/zoomable-circle-pack.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/hierarchy/zoomable-circle-pack/zoomable-circle-pack.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/hierarchy/zoomable-treemap/zoomable-treemap.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-demo/src/lib/hierarchy/zoomable-treemap/zoomable-treemap.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/src/lib/account/account-create/account-create.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/src/lib/account/account-create/account-create.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/src/lib/account/account-billing-history/account-billing-history.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/src/lib/account/account-billing-history/account-billing-history.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/src/lib/account/account-detail/account-detail.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/src/lib/account/account-detail/account-detail.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/src/lib/account/account-nav/account-nav.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/src/lib/account/account-nav/account-nav.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/src/lib/account/account-search/account-search.spec.tsx: The first 5 lines contain all of the requested patterns.
+	✔ libs/porrtal-components/r-quick-start-material/src/lib/account/account-search/account-search.tsx: The first 5 lines contain all of the requested patterns.
 ✔ github-issue-template-exists: Found file (.github/ISSUE_TEMPLATE)
 ✔ github-pull-request-template-exists: Found file (.github/PULL_REQUEST_TEMPLATE)
 ℹ package-metadata-exists: ignored due to unsatisfied condition(s): "language=javascript"
