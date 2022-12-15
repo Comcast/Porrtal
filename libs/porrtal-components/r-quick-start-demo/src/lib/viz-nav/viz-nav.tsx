@@ -20,53 +20,6 @@ export function VizNav(props: ViewComponentProps) {
   const shellDispatch = useShellDispatch();
   return (
     <div className={styles['container']}>
-      <h3 className={styles['title']}>ESRI Mapping Demos</h3>
-      <div className={styles['data-container']}>
-        <h4
-          className={styles['link-button']}
-          onClick={() =>
-            shellDispatch({
-              type: 'launchView',
-              viewId: 'HurricaneMap',
-            })
-          }
-        >
-          Hurricanes on the Globe
-        </h4>
-        <h4
-          className={styles['link-button']}
-          onClick={() =>
-            shellDispatch({
-              type: 'launchView',
-              viewId: 'EarthquakeMap',
-            })
-          }
-        >
-          Earthquake Map
-        </h4>
-        <h4
-          className={styles['link-button']}
-          onClick={() =>
-            shellDispatch({
-              type: 'launchView',
-              viewId: 'DigitalElevationMap',
-            })
-          }
-        >
-          Globe with Digital Elevation
-        </h4>
-        <h4
-          className={styles['link-button']}
-          onClick={() =>
-            shellDispatch({
-              type: 'launchView',
-              viewId: 'BuildingSceneWithQuery',
-            })
-          }
-        >
-          Building Scene
-        </h4>
-      </div>
       <h3 className={styles['title']}>D3JS Charting Demos</h3>
       <div className={styles['data-container']}>
         <h4

@@ -34,14 +34,6 @@ export * from './lib/appointment/appointment-create/appointment-create.component
 
 export * from './lib/viz-nav/viz-nav.component';
 
-export * from './lib/esri/hurricane/hurricane-map/hurricane-map.component';
-
-export * from './lib/esri/earthquake/earthquake-map/earthquake-map.component';
-
-export * from './lib/esri/digital-elevation/digital-elevation-map/digital-elevation-map.component';
-
-export * from './lib/esri/building-scene/building-scene-with-query/building-scene-with-query.component';
-
 export * from './lib/hierarchy/zoomable-circle-pack/zoomable-circle-pack.component';
 
 export * from './lib/hierarchy/zoomable-sunburst/zoomable-sunburst.component';
