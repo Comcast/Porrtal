@@ -21,12 +21,6 @@ nx generate @nrwl/angular:component appointment/appointment-create --project=por
 
 nx generate @nrwl/angular:component viz-nav --project=porrtal-components-a-quick-start-demo --changeDetection=OnPush --skipImport --standalone --export
 
-nx generate @nrwl/angular:component esri/hurricane/hurricane-map --project=porrtal-components-a-quick-start-demo --changeDetection=OnPush --skipImport --standalone --export
-nx generate @nrwl/angular:component esri/earthquake/earthquake-map --project=porrtal-components-a-quick-start-demo --changeDetection=OnPush --skipImport --standalone --export
-nx generate @nrwl/angular:component esri/digital-elevation/digital-elevation-map --project=porrtal-components-a-quick-start-demo --changeDetection=OnPush --skipImport --standalone --export
-# https://developers.arcgis.com/javascript/latest/sample-code/layers-scenelayerview-query-stats/
-nx generate @nrwl/angular:component esri/building-scene/building-scene-with-query --project=porrtal-components-a-quick-start-demo --changeDetection=OnPush --skipImport --standalone --export
-
 nx generate @nrwl/angular:component hierarchy/zoomable-circle-pack --project=porrtal-components-a-quick-start-demo --changeDetection=OnPush --skipImport --standalone --export
 nx generate @nrwl/angular:component hierarchy/zoomable-sunburst --project=porrtal-components-a-quick-start-demo --changeDetection=OnPush --skipImport --standalone --export
 nx generate @nrwl/angular:component hierarchy/zoomable-treemap --project=porrtal-components-a-quick-start-demo --changeDetection=OnPush --skipImport --standalone --export
