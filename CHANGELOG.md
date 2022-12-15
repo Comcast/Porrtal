@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/Comcast/Porrtal/compare/v0.8.0...v0.8.1) (2022-12-15)
+
+### Bug Fixes
+
+- **workstation:** fix readme run instructions ([4837884](https://github.com/Comcast/Porrtal/commit/483788412b4da115982d77ef078679aa24ab60a8))
+- **workstation:** remove branding ([908e829](https://github.com/Comcast/Porrtal/commit/908e8291b469fb7e112f21a72470cf55f8769b67))
+
 # [0.8.0](https://github.com/Comcast/Porrtal/compare/v0.7.0...v0.8.0) (2022-12-15)
 
 ### Bug Fixes
