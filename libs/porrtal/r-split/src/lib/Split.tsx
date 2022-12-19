@@ -51,6 +51,10 @@ export type SplitProps = {
    */
   initialPrimarySize?: string;
   /**
+   * If defined, the primary (left/top pane) is collapsed and has the specified width/height 
+   */
+  primaryCollapsedSize?: string;
+  /**
    * The preferred minimum width/height of the left/top pane.
    * Specified as a CSS unit (e.g. %, fr, px).
    * The default is 0.
@@ -96,6 +100,7 @@ export type SplitProps = {
    * Otherwise, this will be the initialPrimarySize.
    */
   onSplitChanged?: (primarySize: string) => void;
+  onSplitDragStart?: () => void;
 
   /**
    * Raised whenever the primary, splitter, or secondary measured sizes change.
@@ -110,6 +115,7 @@ export const Split = (
   const {
     horizontal = false,
     initialPrimarySize = '50%',
+    primaryCollapsedSize,
     minPrimarySize = '0px',
     minSecondarySize = '0px',
     splitterSize = '7px',
@@ -218,6 +224,7 @@ export const Split = (
   };
 
   const onSplitPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    props.onSplitDragStart && props.onSplitDragStart();
     event.currentTarget.setPointerCapture(event.pointerId);
     setClientStart(horizontal ? event.clientY : event.clientX);
     setPrimaryStart(currentPrimarySize);
@@ -248,7 +255,7 @@ export const Split = (
   const secondaryChild = children.length > 1 ? children[1] : null;
 
   const renderSizes = {
-    primary: percent !== undefined ? `${percent}%` : initialPrimarySize,
+    primary: primaryCollapsedSize !== undefined ? primaryCollapsedSize : percent !== undefined ? `${percent}%` : initialPrimarySize,
     minPrimary: minPrimarySize ?? '0px',
     minSecondary: minSecondarySize ?? '0px',
   };
