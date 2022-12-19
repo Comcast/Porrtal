@@ -46,6 +46,8 @@ export interface UseShellState {
   views: View[];
   showUserInfo: boolean;
   showDevInfo: boolean;
+  navWidth?: string;
+  navTabWidth?: string;
 }
 
 export type ShellAction =
@@ -58,7 +60,10 @@ export type ShellAction =
   | { type: 'registerModules'; modules: ViewComponentModules }
   | { type: 'registerView'; view: View }
   | { type: 'setShowUserInfo'; show: boolean }
-  | { type: 'setShowDevInfo'; show: boolean };
+  | { type: 'setShowDevInfo'; show: boolean }
+  | { type: 'showNav' }
+  | { type: 'toggleNav'; item: ViewState }
+  | { type: 'setNavTabWidth'; width: string };
 
 const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
   switch (action.type) {
@@ -329,6 +334,33 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
         showUserInfo: action.show,
       };
     }
+
+    case 'showNav': {
+      return {
+        ...state,
+        navWidth: undefined,
+      };
+    }
+
+    case 'toggleNav': {
+      const isSelectedTab = state.panes['nav'].currentKey === action.item.key;
+      const navTabWidth = state.navTabWidth ?? '36px';
+      return {
+        ...state,
+        navWidth: isSelectedTab
+          ? state.navWidth
+            ? undefined
+            : navTabWidth
+          : undefined,
+      };
+    }
+
+    case 'setNavTabWidth': {
+      return {
+        ...state,
+        navTabWidth: action.width
+      };
+    }
   }
   return state;
 };
@@ -436,6 +468,7 @@ const emptyUseShellState: UseShellState = {
   views: [],
   showUserInfo: true,
   showDevInfo: true,
+  navWidth: '320px',
 };
 
 // arg to createContext is used if no provider is defined https://stackoverflow.com/q/49949099/7085047

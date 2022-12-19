@@ -385,13 +385,13 @@ function ViewStackContextMenu(
                     key={`move-to-${paneType}`}
                     icon={moveIcons[paneType] as IconName}
                     text={`${paneType} pane`}
-                    onClick={() =>
+                    onClick={(evt) => {
                       props.dispatch({
                         type: 'moveView',
                         key: props.item.key,
                         toPane: paneType,
-                      })
-                    }
+                      });
+                    }}
                   />
                 ))}
             </MenuItem>
@@ -423,7 +423,21 @@ function ViewStackContextMenu(
           )}
         </span>
       )}
-      {props.pane.arrange === 'tabs-left' && (
+      {props.pane.arrange === 'tabs-left' && props.pane.paneType === 'nav' && (
+        <Tooltip2 content={props.item.displayText}>
+          <span
+            onClick={(evt) => {
+              props.dispatch({
+                type: 'toggleNav',
+                item: props.item
+              });
+            }}
+          >
+            <Icon icon={props.item.displayIcon as IconName} />
+          </span>
+        </Tooltip2>
+      )}
+      {props.pane.arrange === 'tabs-left' && props.pane.paneType !== 'nav' && (
         <Tooltip2 content={props.item.displayText}>
           <span>
             <Icon icon={props.item.displayIcon as IconName} />
