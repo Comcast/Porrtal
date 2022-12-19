@@ -100,6 +100,11 @@ export type SplitProps = {
    * Otherwise, this will be the initialPrimarySize.
    */
   onSplitChanged?: (primarySize: string) => void;
+  /**
+   * Raised when user drags the splitter.  This allows the container to 
+   * reset the primaryCollapsedSize so that the drag operation can move 
+   * the splitter
+   */
   onSplitDragStart?: () => void;
 
   /**
