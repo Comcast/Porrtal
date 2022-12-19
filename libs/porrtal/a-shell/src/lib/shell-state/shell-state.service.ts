@@ -36,6 +36,8 @@ export interface ShellState {
   views: View[];
   showUserInfo: boolean;
   showDevInfo: boolean;
+  navWidth?: number;
+  navTabWidth?: number;
 }
 
 export type ShellAction =
@@ -48,7 +50,10 @@ export type ShellAction =
   | { type: 'registerModules'; modules: ViewComponentModules }
   | { type: 'registerView'; view: View }
   | { type: 'setShowUserInfo'; show: boolean }
-  | { type: 'setShowDevInfo'; show: boolean };
+  | { type: 'setShowDevInfo'; show: boolean }
+  | { type: 'showNav' }
+  | { type: 'toggleNav'; item: ViewState }
+  | { type: 'setNavTabWidth'; width: number };
 
 @Injectable({
   providedIn: 'root',
@@ -350,6 +355,39 @@ export class ShellStateService extends RxState<ShellState> {
           showDevInfo: action.show,
         });
         return;
+
+      case 'showNav': {
+        const state = this.get();
+        this.set({
+          ...state,
+          navWidth: undefined,
+        });
+        return;
+      }
+
+      case 'toggleNav': {
+        const state = this.get();
+        const isSelectedTab = state.panes['nav'].currentKey === action.item.key;
+        const navTabWidth = state.navTabWidth ?? 36;
+        this.set({
+          ...state,
+          navWidth: isSelectedTab
+            ? state.navWidth
+              ? undefined
+              : navTabWidth
+            : undefined,
+        });
+        return;
+      }
+
+      case 'setNavTabWidth': {
+        const state = this.get();
+        this.set({
+          ...state,
+          navTabWidth: action.width,
+        });
+        return;
+      }
     }
   };
 }

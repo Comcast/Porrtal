@@ -38,7 +38,26 @@
             (click)="doChangeTabIndex(ii)"
             (contextmenu)="doContextMenu($event, viewState)"
           >
-            <a tabindex="0" class="vertical-tabs-anchor">
+            <a
+              *ngIf="pane?.paneType === 'nav'"
+              tabindex="0"
+              class="vertical-tabs-anchor"
+              (click)="
+                shellStateService.dispatch({
+                  type: 'toggleNav',
+                  item: viewState
+                })
+              "
+            >
+              <div>
+                <mat-icon>{{ viewState.displayIcon }}</mat-icon>
+              </div>
+            </a>
+            <a
+              *ngIf="pane?.paneType !== 'nav'"
+              tabindex="0"
+              class="vertical-tabs-anchor"
+            >
               <div>
                 <mat-icon>{{ viewState.displayIcon }}</mat-icon>
               </div>
