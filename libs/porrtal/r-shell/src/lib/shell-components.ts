@@ -13,6 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { createContext, useContext } from 'react';
+import { BannerMenuBarComponent } from './banner-menu-bar-props';
+import { BannerMenuInlineComponent } from './banner-menu-inline-prop';
 import { BannerComponent, BannerData } from './banner-props';
 import { EntityMenuComponent } from './entity-menu/entity-menu';
 import { LoggerBannerComponent } from './logger-banner-props';
@@ -25,6 +27,8 @@ export interface ShellComponents {
   Search: SearchComponent;
   EntityMenu: EntityMenuComponent;
   Banner: BannerComponent;
+  BannerMenuInline: BannerMenuInlineComponent;
+  BannerMenuBar: BannerMenuBarComponent;
   UserBanner?: UserBannerComponent;
   bannerData?: BannerData;
   LoggerBanner: LoggerBannerComponent;

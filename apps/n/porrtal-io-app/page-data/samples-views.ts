@@ -179,18 +179,21 @@ export const samplesViews: View[] = [
   {
     displayText: 'Collapse Tree Chart',
     displayIcon: 'diagram-tree',
+    menu: 'charts.tree chart',
     componentName: 'CollapsibleTree',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
   {
     displayText: 'Bar Chart',
     displayIcon: 'diagram-tree',
+    menu: 'charts.hierarchy bar chart',
     componentName: 'HierarchicalBarChart',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
   {
     displayText: 'Icicle Chart',
     displayIcon: 'diagram-tree',
+    menu: 'charts.icicle chart',
     componentName: 'ZoomableIcicle',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
@@ -215,6 +218,7 @@ export const samplesViews: View[] = [
   {
     displayText: 'YouTube Player',
     displayIcon: 'mobile-video',
+    menu: 'inline.learning.youtube',
     componentName: 'YoutubePlayer',
     componentModule: () => import('@porrtal-components/r-learning'),
   },
@@ -222,6 +226,7 @@ export const samplesViews: View[] = [
     key: 'md{id}',
     displayText: 'Markdown Viewer',
     displayIcon: 'book',
+    menu: 'inline.learning.markdown',
     componentName: 'MarkdownViewer',
     componentModule: () => import('@porrtal-components/r-learning'),
   },

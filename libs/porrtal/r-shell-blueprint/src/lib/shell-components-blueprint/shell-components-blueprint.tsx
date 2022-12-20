@@ -26,6 +26,8 @@ import EntityMenu from '../entity-menu/entity-menu';
 import LoggerBanner from '../logger-banner/logger-banner';
 import { ReactNode, useEffect } from 'react';
 import Banner from '../banner/banner';
+import BannerMenuBar from '../banner-menu-bar/banner-menu-bar';
+import BannerMenuInline from '../banner-menu-inline/banner-menu-inline';
 
 export interface ShellComponentsBlueprintProps {
   children: ReactNode | undefined;
@@ -39,6 +41,8 @@ export function ShellComponentsBlueprint(props: ShellComponentsBlueprintProps) {
     Search,
     EntityMenu,
     Banner,
+    BannerMenuBar,
+    BannerMenuInline,
     bannerData: props.bannerData,
     UserBanner: props?.userBanner,
     LoggerBanner,
