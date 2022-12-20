@@ -45,9 +45,9 @@ export function ShellComponentsBlueprint(props: ShellComponentsBlueprintProps) {
   };
   const shellDispatch = useShellDispatch();
 
-  // register the blueprint logger-messages view
+  // register the blueprint logger-messages view and nav tab width
   useEffect(
-    () =>
+    () => {
       shellDispatch({
         type: 'registerView',
         view: {
@@ -60,7 +60,13 @@ export function ShellComponentsBlueprint(props: ShellComponentsBlueprintProps) {
           displayText: 'log',
           displayIcon: 'notifications',
         },
-      }),
+      });
+      
+      shellDispatch({
+        type: 'setNavTabWidth',
+        width: '32px',
+      });
+    },
     [shellDispatch]
   );
 

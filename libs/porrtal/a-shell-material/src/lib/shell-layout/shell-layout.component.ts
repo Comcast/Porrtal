@@ -14,7 +14,7 @@ limitations under the License.
 */
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AngularSplitModule } from 'angular-split';
+import { AngularSplitModule, IOutputData } from 'angular-split';
 import { ViewStackComponent } from '../view-stack/view-stack.component';
 import { ShellState, ShellStateService } from '@porrtal/a-shell';
 import { Observable } from 'rxjs';
@@ -44,7 +44,19 @@ export class ShellLayoutComponent {
 
   public state$: Observable<ShellState>;
 
+  public navWidthWhenExpanded: number = 320;
+
   constructor(private shellStateService: ShellStateService) {
     this.state$ = shellStateService.select();
+  }
+
+  dragStart(outputData: IOutputData) {
+    this.shellStateService.dispatch({
+      type: 'showNav',
+    });
+  }
+
+  dragEnd(outputData: IOutputData) {
+    this.navWidthWhenExpanded = outputData.sizes[0] as number;
   }
 }

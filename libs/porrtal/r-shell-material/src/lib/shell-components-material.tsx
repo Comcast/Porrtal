@@ -47,7 +47,7 @@ export function ShellComponentsMaterial(props: ShellComponentsMaterialProps) {
 
   // register the material logger-messages view
   useEffect(
-    () =>
+    () => {
       shellDispatch({
         type: 'registerView',
         view: {
@@ -60,7 +60,13 @@ export function ShellComponentsMaterial(props: ShellComponentsMaterialProps) {
           displayText: 'log',
           displayIcon: 'notifications',
         },
-      }),
+      })
+            
+      shellDispatch({
+        type: 'setNavTabWidth',
+        width: '64px',
+      });
+    },
     [shellDispatch]
   );
 

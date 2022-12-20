@@ -436,7 +436,24 @@ function ViewStackContextMenu(
           )}
         </div>
       )}
-      {props.pane.arrange === 'tabs-left' && (
+      {props.pane.arrange === 'tabs-left' && props.pane.paneType === 'nav' && (
+        <div>
+          <Tooltip title={props.item.displayText} placement="right">
+            <Icon
+              style={{ position: 'relative', top: '3px', fontSize: '2rem' }}
+              onClick={(evt) => {
+                props.dispatch({
+                  type: 'toggleNav',
+                  item: props.item
+                });
+              }}
+            >
+              {props.item.displayIcon}
+            </Icon>
+          </Tooltip>
+        </div>
+      )}
+      {props.pane.arrange === 'tabs-left' && props.pane.paneType !== 'nav' && (
         <div>
           <Tooltip title={props.item.displayText} placement="right">
             <Icon

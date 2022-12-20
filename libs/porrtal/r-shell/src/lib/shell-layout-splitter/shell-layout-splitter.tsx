@@ -14,7 +14,7 @@ limitations under the License.
 */
 import { Split } from '@porrtal/r-split';
 import { useShellComponents } from '../shell-components';
-import { useShellState } from '../shell-state/shell-state';
+import { useShellDispatch, useShellState } from '../shell-state/shell-state';
 import styles from './shell-layout-splitter.module.scss';
 
 /* eslint-disable-next-line */
@@ -22,6 +22,7 @@ export interface ShellLayoutSplitterProps {}
 
 export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
   const shellState = useShellState();
+  const dispatch = useShellDispatch();
   const shellComponents = useShellComponents();
   if (shellComponents && typeof window !== 'undefined' && window) {
     return (
@@ -37,7 +38,16 @@ export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
           ) : null}
         </div>
         <div className={styles['content']}>
-          <Split initialPrimarySize="320px" resetOnDoubleClick>
+          <Split
+            initialPrimarySize="320px"
+            primaryCollapsedSize={shellState.navWidth}
+            resetOnDoubleClick
+            onSplitDragStart={() =>
+              dispatch({
+                type: 'showNav',
+              })
+            }
+          >
             {shellState.panes.nav.viewStates.length > 0 && (
               <div className={styles['nav']}>
                 <shellComponents.ViewStack
