@@ -12,7 +12,12 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
+import { PorrtalMenuItem } from "@porrtal/r-api";
+
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface BannerMenuBarProps {}
+export interface BannerMenuBarProps {
+    menuItems: PorrtalMenuItem[];
+}
 
 export type BannerMenuBarComponent = (props: BannerMenuBarProps) => JSX.Element;

@@ -38,7 +38,7 @@ export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
               (item) =>
                 item.displayText === 'inline'
             ).length > 0 && (
-              <shellComponents.BannerMenuInline></shellComponents.BannerMenuInline>
+              <shellComponents.BannerMenuInline menuItems={shellState.menuItems}></shellComponents.BannerMenuInline>
             )}
         </div>
 
@@ -55,7 +55,7 @@ export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
               (item) =>
                 item.displayText !== 'inline' && item.displayText !== 'user'
             ).length > 0 && (
-              <shellComponents.BannerMenuBar></shellComponents.BannerMenuBar>
+              <shellComponents.BannerMenuBar menuItems={shellState.menuItems}></shellComponents.BannerMenuBar>
             )}
         </div>
         <div className={styles['content']}>

@@ -14,7 +14,7 @@ limitations under the License.
 */
 import { createContext, useContext } from 'react';
 import { BannerMenuBarComponent } from './banner-menu-bar-props';
-import { BannerMenuInlineComponent } from './banner-menu-inline-prop';
+import { BannerMenuInlineComponent } from './banner-menu-inline-props';
 import { BannerComponent, BannerData } from './banner-props';
 import { EntityMenuComponent } from './entity-menu/entity-menu';
 import { LoggerBannerComponent } from './logger-banner-props';

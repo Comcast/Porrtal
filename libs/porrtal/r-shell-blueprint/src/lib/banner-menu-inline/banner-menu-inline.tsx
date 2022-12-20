@@ -1,12 +1,11 @@
+import { BannerMenuInlineProps } from '@porrtal/r-shell';
 import styles from './banner-menu-inline.module.scss';
 
-/* eslint-disable-next-line */
-export interface BannerMenuInlineProps {}
-
 export function BannerMenuInline(props: BannerMenuInlineProps) {
+  const inlineMenu = props.menuItems.find(menuItem => menuItem.displayText === 'inline');
   return (
     <div className={styles['container']}>
-      <h1>Welcome to BannerMenuInline!</h1>
+      {inlineMenu?.childMenu?.map(menuItem => <span>{menuItem.displayText}&nbsp;</span>)}
     </div>
   );
 }
