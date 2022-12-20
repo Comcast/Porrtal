@@ -23,6 +23,7 @@ import {
   View,
   ViewComponentModules,
   ViewComponentProps,
+  PorrtalMenuItem,
 } from '@porrtal/r-api';
 import {
   useReducer,
@@ -48,6 +49,7 @@ export interface UseShellState {
   showDevInfo: boolean;
   navWidth?: string;
   navTabWidth?: string;
+  menuItems?: PorrtalMenuItem[];
 }
 
 export type ShellAction =
@@ -302,9 +304,12 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
       if (!newView.key) {
         newView.key = uuidv4();
       }
+      const menuItems = updateMenus(newView, state.menuItems);
+
       return {
         ...state,
         views: [...state.views, newView],
+        menuItems,
       };
     }
 
@@ -358,12 +363,66 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
     case 'setNavTabWidth': {
       return {
         ...state,
-        navTabWidth: action.width
+        navTabWidth: action.width,
       };
     }
   }
   return state;
 };
+
+export function updateMenus(view: View, menuItems?: PorrtalMenuItem[]) {
+  const containerMenuItem: PorrtalMenuItem = {
+    childMenu: menuItems,
+  };
+
+  if (view.menu && view.menu.trim().length > 0) {
+    let currentMenuItem = containerMenuItem;
+
+    const menuParts = view.menu
+      .trim()
+      .split('.')
+      .map((item) => {
+        const [displayText, displayIcon] = item.split(':');
+        const ret: {displayText?: string, displayIcon?: string} = {};
+        if (displayText) {
+          ret.displayText = displayText;
+        }
+        if (displayIcon) {
+          ret.displayIcon = displayIcon;
+        }
+        return ret;
+      });
+
+    menuParts.forEach((menuPart, index) => {
+      if (!currentMenuItem.childMenu) {
+        currentMenuItem.childMenu = [
+          {
+            ...menuPart,
+          },
+        ];
+        currentMenuItem = currentMenuItem.childMenu[0];
+      } else {
+        const item = currentMenuItem.childMenu.find(
+          (menuItem) => menuItem.displayText === menuPart.displayText
+        );
+        if (!item) {
+          const newItem = {
+            ...menuPart,
+          };
+          currentMenuItem.childMenu = [...currentMenuItem.childMenu, newItem];
+          currentMenuItem = newItem;
+        } else {
+          currentMenuItem.childMenu = [...currentMenuItem.childMenu];
+          currentMenuItem = item;
+        }
+      }
+      if (index === menuParts.length - 1) {
+        currentMenuItem.viewId = view.viewId;
+      }
+    });
+  }
+  return containerMenuItem.childMenu;
+}
 
 function retrieveViewComponentFunction(
   componentName: string,
