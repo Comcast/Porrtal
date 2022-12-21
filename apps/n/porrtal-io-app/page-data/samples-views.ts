@@ -179,14 +179,14 @@ export const samplesViews: View[] = [
   {
     displayText: 'Collapse Tree Chart',
     displayIcon: 'diagram-tree',
-    menu: 'charts.tree chart',
+    menu: 'charts.a.b.tree chart:diagram-tree',
     componentName: 'CollapsibleTree',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
   {
     displayText: 'Bar Chart',
     displayIcon: 'diagram-tree',
-    menu: 'charts.hierarchy bar chart',
+    menu: 'hierarchy bar chart:diagram-tree',
     componentName: 'HierarchicalBarChart',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
