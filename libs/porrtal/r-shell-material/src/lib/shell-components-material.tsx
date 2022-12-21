@@ -26,6 +26,8 @@ import Search from './search/search';
 import EntityMenu from './entity-menu/entity-menu';
 import LoggerBanner from './logger-banner/logger-banner';
 import Banner from './banner/banner';
+import BannerMenuBar from './banner-menu-bar/banner-menu-bar';
+import BannerMenuInline from './banner-menu-inline/banner-menu-inline';
 
 export interface ShellComponentsMaterialProps {
   children: ReactNode | undefined;
@@ -39,6 +41,8 @@ export function ShellComponentsMaterial(props: ShellComponentsMaterialProps) {
     Search,
     EntityMenu,
     Banner,
+    BannerMenuBar,
+    BannerMenuInline,
     bannerData: props.bannerData,
     UserBanner: props?.userBanner,
     LoggerBanner,

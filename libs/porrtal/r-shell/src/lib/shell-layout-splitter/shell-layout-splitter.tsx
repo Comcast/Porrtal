@@ -31,11 +31,32 @@ export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
           <shellComponents.Banner
             bannerData={shellComponents.bannerData}
           ></shellComponents.Banner>
+          <div className={styles['inline-banner-menu']}>
+          {shellComponents.BannerMenuInline &&
+            shellState.menuItems &&
+            shellState.menuItems?.filter(
+              (item) =>
+                item.displayText === 'inline'
+            ).length > 0 && (
+              <shellComponents.BannerMenuInline menuItems={shellState.menuItems}></shellComponents.BannerMenuInline>
+            )}
+        </div>
+
           <shellComponents.LoggerBanner />
           {shellComponents.UserBanner && <shellComponents.UserBanner />}
           {shellState.panes.search.viewStates.length > 0 ? (
             <shellComponents.Search />
           ) : null}
+        </div>
+        <div className={styles['banner-menu-bar']}>
+          {shellComponents.BannerMenuBar &&
+            shellState.menuItems &&
+            shellState.menuItems?.filter(
+              (item) =>
+                item.displayText !== 'inline' && item.displayText !== 'user'
+            ).length > 0 && (
+              <shellComponents.BannerMenuBar menuItems={shellState.menuItems}></shellComponents.BannerMenuBar>
+            )}
         </div>
         <div className={styles['content']}>
           <Split

@@ -13,15 +13,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { renderHook } from '@testing-library/react';
-import { combineViewStateStateAndActionState, ShellState } from './shell-state';
+import {
+  combineViewStateStateAndActionState,
+  ShellState,
+  updateMenus,
+} from './shell-state';
 
 describe('ShellState', () => {
   it('should render successfully', () => {
-    const { result } = renderHook(() =>
-      ShellState({
-        components: {},
-      })
-    );
+    const { result } = renderHook(() => ShellState({}));
 
     expect(result).toBeTruthy();
   });
@@ -76,5 +76,85 @@ describe('combineViewStateStateAndActionState', () => {
       actionState
     );
     expect(resultState).toEqual({ a: 'one', b: { c: 'two' } });
+  });
+
+  it('should add menu items', () => {
+    const menu = [
+      {
+        displayText: 'one',
+        childMenu: [
+          {
+            displayText: 'a',
+            viewId: '1',
+          },
+          {
+            displayText: 'b',
+            viewId: '2',
+          },
+        ],
+      },
+    ];
+    let res = updateMenus(
+      {
+        displayText: '',
+        componentName: '',
+        componentModule: '',
+        viewId: '1',
+        menu: 'one.a',
+      },
+      undefined
+    );
+    res = updateMenus(
+      {
+        displayText: '',
+        componentName: '',
+        componentModule: '',
+        viewId: '2',
+        menu: 'one.b',
+      },
+      res
+    );
+    expect(res).toEqual(menu);
+  });
+
+  it('should add menu items 2', () => {
+    const menu = [
+      {
+        displayText: 'inline',
+        childMenu: [
+          {
+            displayIcon: 'gear',
+            childMenu: [
+              { displayText: 'my-setting-1', viewId: '1' },
+              {
+                displayText: 'b',
+                viewId: '2',
+              },
+            ],
+          },
+        ],
+      },
+    ];
+    let res = updateMenus(
+      {
+        displayText: '',
+        componentName: '',
+        componentModule: '',
+        viewId: '1',
+        menu: 'inline.:gear.my-setting-1',
+      },
+      undefined
+    );
+    res = updateMenus(
+      {
+        displayText: '',
+        componentName: '',
+        componentModule: '',
+        viewId: '2',
+        menu: 'inline.:gear.b',
+      },
+      res
+    );
+    expect(res).toEqual(menu);
   });
 });

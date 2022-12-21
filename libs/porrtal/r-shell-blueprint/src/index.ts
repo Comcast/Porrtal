@@ -1,4 +1,5 @@
-﻿/*
+export * from './lib/banner-menu-inline/banner-menu-inline';
+export * from './lib/banner-menu-bar/banner-menu-bar'; /*
 Copyright 2022 Comcast Cable Communications Management, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");

@@ -29,6 +29,8 @@ export interface View {
   displayText: string;
   displayIcon?: string;
 
+  menu?: string;
+
   userInfo?: ViewLaunch[];
   devInfo?: ViewLaunch[];
 }

@@ -19,6 +19,7 @@ import {
   Panes,
   PaneType,
   paneTypes,
+  PorrtalMenuItem,
   StateObject,
   View,
   ViewComponentFunction,
@@ -38,6 +39,7 @@ export interface ShellState {
   showDevInfo: boolean;
   navWidth?: number;
   navTabWidth?: number;
+  menuItems?: PorrtalMenuItem[];
 }
 
 export type ShellAction =
@@ -313,9 +315,11 @@ export class ShellStateService extends RxState<ShellState> {
         if (!newView.key) {
           newView.key = uuidv4();
         }
+        const menuItems = updateMenus(newView, this.get().menuItems);
         this.set({
           ...this.get(),
           views: [...this.get().views, newView],
+          menuItems,
         });
         return;
       }
@@ -390,6 +394,60 @@ export class ShellStateService extends RxState<ShellState> {
       }
     }
   };
+}
+
+export function updateMenus(view: View, menuItems?: PorrtalMenuItem[]) {
+  const containerMenuItem: PorrtalMenuItem = {
+    childMenu: menuItems,
+  };
+
+  if (view.menu && view.menu.trim().length > 0) {
+    let currentMenuItem = containerMenuItem;
+
+    const menuParts = view.menu
+      .trim()
+      .split('.')
+      .map((item) => {
+        const [displayText, displayIcon] = item.split(':');
+        const ret: {displayText?: string, displayIcon?: string} = {};
+        if (displayText) {
+          ret.displayText = displayText;
+        }
+        if (displayIcon) {
+          ret.displayIcon = displayIcon;
+        }
+        return ret;
+      });
+
+    menuParts.forEach((menuPart, index) => {
+      if (!currentMenuItem.childMenu) {
+        currentMenuItem.childMenu = [
+          {
+            ...menuPart,
+          },
+        ];
+        currentMenuItem = currentMenuItem.childMenu[0];
+      } else {
+        const item = currentMenuItem.childMenu.find(
+          (menuItem) => menuItem.displayText === menuPart.displayText
+        );
+        if (!item) {
+          const newItem = {
+            ...menuPart,
+          };
+          currentMenuItem.childMenu = [...currentMenuItem.childMenu, newItem];
+          currentMenuItem = newItem;
+        } else {
+          currentMenuItem.childMenu = [...currentMenuItem.childMenu];
+          currentMenuItem = item;
+        }
+      }
+      if (index === menuParts.length - 1) {
+        currentMenuItem.viewId = view.viewId;
+      }
+    });
+  }
+  return containerMenuItem.childMenu;
 }
 
 function retrieveViewComponentFunction(

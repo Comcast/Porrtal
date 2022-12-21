@@ -22,6 +22,8 @@ import { SearchComponent } from '../search/search.component';
 import { LoggerBannerComponent } from '../logger-banner/logger-banner.component';
 import { BannerData } from '@porrtal/a-shell';
 import { BannerComponent } from '../banner/banner.component';
+import { BannerMenuBarComponent } from '../banner-menu-bar/banner-menu-bar.component';
+import { BannerMenuInlineComponent } from '../banner-menu-inline/banner-menu-inline.component';
 
 @Component({
   selector: 'porrtal-shell-layout',
@@ -31,6 +33,8 @@ import { BannerComponent } from '../banner/banner.component';
     AngularSplitModule,
     ViewStackComponent,
     BannerComponent,
+    BannerMenuBarComponent,
+    BannerMenuInlineComponent,
     SearchComponent,
     LoggerBannerComponent,
   ],

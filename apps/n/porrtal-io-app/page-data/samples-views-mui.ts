@@ -14,17 +14,17 @@ limitations under the License.
 */
 import { View } from '@porrtal/r-api';
 
-export const samplesViews: View[] = [
+export const samplesViewsMui: View[] = [
   {
     displayText: 'Create Account',
-    displayIcon: 'mugshot',
+    displayIcon: 'account_circle',
     componentName: 'AccountCreate',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
   {
     key: 'Account {accountId}',
     displayText: 'Account {accountId}',
-    displayIcon: 'mugshot',
+    displayIcon: 'account_circle',
     componentName: 'AccountDetail',
     entityType: 'account',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
@@ -32,7 +32,7 @@ export const samplesViews: View[] = [
   {
     key: 'Billing {accountId}',
     displayText: 'Billing {accountId}',
-    displayIcon: 'mugshot',
+    displayIcon: 'account_circle',
     componentName: 'AccountBillingHistory',
     entityType: 'account',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
@@ -42,7 +42,7 @@ export const samplesViews: View[] = [
     launchAtStartup: true,
     displayText: 'Account Navigation',
     paneType: 'nav',
-    displayIcon: 'mugshot',
+    displayIcon: 'account_circle',
     userInfo: [
       {
         viewId: 'info-markdown',
@@ -57,7 +57,7 @@ export const samplesViews: View[] = [
         viewId: 'info-youtube',
         state: {
           displayText: 'User Video',
-          displayIcon: 'mobile-video',
+          displayIcon: 'videocam',
           videoId: 'Z76QlSpYcck',
         },
       },
@@ -76,7 +76,7 @@ export const samplesViews: View[] = [
         viewId: 'info-youtube',
         state: {
           displayText: 'Dev Video',
-          displayIcon: 'mobile-video',
+          displayIcon: 'videocam',
           videoId: 'Z76QlSpYcck',
         },
       },
@@ -89,27 +89,27 @@ export const samplesViews: View[] = [
     launchAtStartup: true,
     displayText: 'Account',
     paneType: 'search',
-    displayIcon: 'mugshot',
+    displayIcon: 'account_circle',
     componentName: 'AccountSearch',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
   {
     displayText: 'Create Appointment',
-    displayIcon: 'calendar',
+    displayIcon: 'event',
     componentName: 'AppointmentCreate',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
   {
     key: 'Appointment {appointmentId}',
     displayText: 'Appointment {appointmentId}',
-    displayIcon: 'calendar',
+    displayIcon: 'event',
     componentName: 'AppointmentDetail',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
   {
     key: 'AppointmentLocationMap {appointmentId}',
     displayText: 'Map {appointmentId}',
-    displayIcon: 'calendar',
+    displayIcon: 'event',
     componentName: 'AppointmentLocationMap',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
@@ -118,7 +118,7 @@ export const samplesViews: View[] = [
     launchAtStartup: true,
     displayText: 'Appointment Navigation',
     paneType: 'nav',
-    displayIcon: 'calendar',
+    displayIcon: 'event',
     componentName: 'AppointmentNav',
     componentModule: () => {
       console.log('appointment nav component module function called...');
@@ -130,7 +130,7 @@ export const samplesViews: View[] = [
     launchAtStartup: true,
     displayText: 'Appointment',
     paneType: 'search',
-    displayIcon: 'calendar',
+    displayIcon: 'event',
     componentName: 'AppointmentSearch',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
@@ -139,7 +139,7 @@ export const samplesViews: View[] = [
     launchAtStartup: true,
     displayText: 'Appointment Navigation',
     paneType: 'nav',
-    displayIcon: 'calendar',
+    displayIcon: 'event',
     componentName: 'AppointmentNav',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
@@ -178,40 +178,40 @@ export const samplesViews: View[] = [
   },
   {
     displayText: 'Collapse Tree Chart',
-    displayIcon: 'diagram-tree',
-    menu: 'charts.a.b.tree chart:diagram-tree',
+    displayIcon: 'insert_chart_outlined',
+    menu: 'charts.a.b.tree chart:insert_chart_outlined',
     componentName: 'CollapsibleTree',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
   {
     displayText: 'Bar Chart',
-    displayIcon: 'diagram-tree',
-    menu: 'hierarchy bar chart:diagram-tree',
+    displayIcon: 'insert_chart_outlined',
+    menu: 'hierarchy bar chart:insert_chart_outlined',
     componentName: 'HierarchicalBarChart',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
   {
     displayText: 'Icicle Chart',
-    displayIcon: 'diagram-tree',
+    displayIcon: 'insert_chart_outlined',
     menu: 'charts.icicle chart',
     componentName: 'ZoomableIcicle',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
   {
     displayText: 'Treemap Chart',
-    displayIcon: 'diagram-tree',
+    displayIcon: 'insert_chart_outlined',
     componentName: 'ZoomableTreemap',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
   {
     displayText: 'Circle Pack Chart',
-    displayIcon: 'diagram-tree',
+    displayIcon: 'insert_chart_outlined',
     componentName: 'ZoomableCirclePack',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
   {
     displayText: 'YouTube Player',
-    displayIcon: 'mobile-video',
+    displayIcon: 'videocam',
     menu: 'inline.learning.youtube:video',
     componentName: 'YoutubePlayer',
     componentModule: () => import('@porrtal-components/r-learning'),
@@ -220,7 +220,7 @@ export const samplesViews: View[] = [
   {
     key: 'md{id}',
     displayText: 'Markdown Viewer',
-    displayIcon: 'book',
+    displayIcon: 'menu_book',
     menu: 'inline.learning.markdown:document',
     componentName: 'MarkdownViewer',
     componentModule: () => import('@porrtal-components/r-learning'),
@@ -231,8 +231,8 @@ export const samplesViews: View[] = [
   },
   {
     displayText: 'Sunburst Chart',
-    displayIcon: 'diagram-tree',
-    menu: 'inline.:cog.sumburst chart:diagram-tree',
+    displayIcon: 'insert_chart_outlined',
+    menu: 'inline.:settings.sumburst chart:insert_chart_outlined',
     componentName: 'ZoomableSunburst',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
