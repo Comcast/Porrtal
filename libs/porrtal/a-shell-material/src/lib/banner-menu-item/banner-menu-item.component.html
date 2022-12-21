@@ -1,0 +1,33 @@
+<ng-container
+  *ngIf="menuItem && menuItem.childMenu && menuItem.childMenu.length > 0"
+>
+  <button mat-menu-item [matMenuTriggerFor]="menu">
+    <mat-icon>{{ menuItem.displayIcon }}</mat-icon>
+    {{ menuItem.displayText }}
+  </button>
+  <mat-menu #menu="matMenu">
+    <ng-container *ngFor="let menuItemChild of menuItem.childMenu">
+      <porrtal-banner-menu-item
+        [menuItem]="menuItemChild"
+      ></porrtal-banner-menu-item>
+    </ng-container>
+  </mat-menu>
+</ng-container>
+
+<ng-container
+  *ngIf="menuItem && (!menuItem.childMenu || menuItem.childMenu.length < 1)"
+>
+  <button
+    mat-menu-item
+    (click)="
+      menuItem.viewId &&
+        shellStateService.dispatch({
+          type: 'launchView',
+          viewId: menuItem.viewId
+        })
+    "
+  >
+    <mat-icon>{{ menuItem.displayIcon }}</mat-icon>
+    {{ menuItem.displayText }}
+  </button>
+</ng-container>
