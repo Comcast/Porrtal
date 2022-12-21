@@ -24,6 +24,8 @@ import Head from 'next/head';
 
 import { getBannerData, getReactUiLibrary } from '../../../page-data/data';
 import { samplesViews } from '../../../page-data/samples-views';
+import { ShellMaterial } from '@porrtal/r-shell-material';
+import { samplesViewsMui } from 'apps/n/porrtal-io-app/page-data/samples-views-mui';
 
 /* eslint-disable-next-line */
 export interface SamplesProps {}
@@ -52,8 +54,9 @@ export function Samples(props: SamplesProps) {
           <title>@porrtal - first page</title>
         </Head>
 
-        <ShellState views={samplesViews}>
-          <ShellBlueprint bannerData={quickStartBannerData} />
+        <ShellState views={reactUiLibrary !== 'mui' ? samplesViews : samplesViewsMui}>
+          {reactUiLibrary !== 'mui' && <ShellBlueprint bannerData={quickStartBannerData} />}
+          {reactUiLibrary === 'mui' && <ShellMaterial bannerData={quickStartBannerData} />}
         </ShellState>
       </>
     );
