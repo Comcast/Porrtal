@@ -218,18 +218,23 @@ export const samplesViews: View[] = [
   {
     displayText: 'YouTube Player',
     displayIcon: 'mobile-video',
-    menu: 'inline.learning.youtube',
+    menu: 'inline.learning.youtube:video',
     componentName: 'YoutubePlayer',
     componentModule: () => import('@porrtal-components/r-learning'),
+    state: { videoId: 'Z76QlSpYcck' },
   },
   {
     key: 'md{id}',
     displayText: 'Markdown Viewer',
     displayIcon: 'book',
-    menu: 'inline.learning.markdown',
+    menu: 'inline.learning.markdown:document',
     componentName: 'MarkdownViewer',
     componentModule: () => import('@porrtal-components/r-learning'),
-  },
+    state: {
+      contentUrl:
+        'https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md',
+    },
+},
   {
     viewId: 'info-markdown',
     displayText: '{displayText}',

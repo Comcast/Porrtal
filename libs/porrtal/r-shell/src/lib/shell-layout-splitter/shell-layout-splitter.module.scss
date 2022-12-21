@@ -13,7 +13,7 @@
     'banner-menu-bar'
     'content'
     'footer';
-  gap: 4px;
+  gap: 0px;
 }
 
 .banner {
@@ -28,6 +28,8 @@
 
 .banner-menu-bar {
   grid-area: banner-menu-bar;
+  background-color: gainsboro;
+  border-bottom: 3px solid silver;
 }
 
 .content {
