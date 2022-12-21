@@ -1,7 +1,6 @@
 import { Button, Icon } from '@mui/material';
 import { PorrtalMenuItem } from '@porrtal/r-api';
 import { BannerMenuBarProps, ShellAction, useShellDispatch } from '@porrtal/r-shell';
-import { dispatch } from 'd3';
 import { MenuItemData, NestedDropdown } from 'mui-nested-menu';
 import styles from './banner-menu-bar.module.scss';
 

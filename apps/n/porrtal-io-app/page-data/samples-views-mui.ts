@@ -232,7 +232,7 @@ export const samplesViewsMui: View[] = [
   {
     displayText: 'Sunburst Chart',
     displayIcon: 'insert_chart_outlined',
-    menu: 'inline.:cog.sumburst chart:insert_chart_outlined',
+    menu: 'inline.:settings.sumburst chart:insert_chart_outlined',
     componentName: 'ZoomableSunburst',
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
