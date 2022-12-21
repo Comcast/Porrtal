@@ -217,7 +217,7 @@ const views: View[] = [
   {
     displayText: 'YouTube Video',
     displayIcon: 'videocam',
-    menu: 'inline.learning.youtube:video',
+    menu: 'inline.learning:lightbulb.youtube:videocam',
     componentName: 'YoutubePlayerComponent',
     componentModule: () => import('@porrtal-components/a-learning'),
     state: { videoId: 'Z76QlSpYcck' },
@@ -226,7 +226,7 @@ const views: View[] = [
     key: 'md{id}',
     displayText: 'Markdown Viewer',
     displayIcon: 'menu_book',
-    menu: 'inline.learning.markdown:document',
+    menu: 'inline.learning:lightbulb.markdown:menu_book',
     componentName: 'MarkdownViewerComponent',
     componentModule: () => import('@porrtal-components/a-learning'),
     state: {

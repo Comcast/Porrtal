@@ -1,1 +1,8 @@
-<p>banner-menu-inline works!</p>
+<div class="container" *ngIf="inlineMenuItems && inlineMenuItems.length > 0">
+    <ng-container *ngFor="let menuItem of inlineMenuItems">
+      <porrtal-banner-menu-item
+        [menuItem]="menuItem"
+      ></porrtal-banner-menu-item>
+    </ng-container>
+  </div>
+  
