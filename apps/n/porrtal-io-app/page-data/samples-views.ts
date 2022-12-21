@@ -198,12 +198,6 @@ export const samplesViews: View[] = [
     componentModule: () => import('@porrtal-components/r-quick-start-demo'),
   },
   {
-    displayText: 'Sunburst Chart',
-    displayIcon: 'diagram-tree',
-    componentName: 'ZoomableSunburst',
-    componentModule: () => import('@porrtal-components/r-quick-start-demo'),
-  },
-  {
     displayText: 'Treemap Chart',
     displayIcon: 'diagram-tree',
     componentName: 'ZoomableTreemap',
@@ -234,7 +228,15 @@ export const samplesViews: View[] = [
       contentUrl:
         'https://raw.githubusercontent.com/datumgeek/jersey-rest-test03/master/README.md',
     },
-},
+  },
+  {
+    displayText: 'Sunburst Chart',
+    displayIcon: 'diagram-tree',
+    menu: 'inline.:cog.sumburst chart:diagram-tree',
+    componentName: 'ZoomableSunburst',
+    componentModule: () => import('@porrtal-components/r-quick-start-demo'),
+  },
+
   {
     viewId: 'info-markdown',
     displayText: '{displayText}',
