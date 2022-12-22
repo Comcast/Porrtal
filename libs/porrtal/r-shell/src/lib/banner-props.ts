@@ -17,6 +17,9 @@ export interface BannerData {
   displayText?: string;
   displayIcon?: string;
   displayImage?: string;
+  bannerImageUrl?: string;
+  bannerImageWidth?: number;
+  bannerImageHeight?: number;
   targetUrl?: string;
 
   childData?: BannerData[];

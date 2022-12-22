@@ -36,7 +36,7 @@ export function Index() {
 
   const quickStartBannerData = {
     ...getBannerData('blueprint'),
-    displayText: `porrtal.io`,
+    // displayText: `porrtal.io`,
   };
 
   if (!isSSR) {

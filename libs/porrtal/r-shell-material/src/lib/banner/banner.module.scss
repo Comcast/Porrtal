@@ -28,3 +28,13 @@
   height: 26px;
   margin-left: 3px;
 }
+
+.banner-title {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0 0 0 7px !important;
+  cursor: pointer;
+}

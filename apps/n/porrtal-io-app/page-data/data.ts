@@ -56,8 +56,11 @@ export const getAngularUiLibrary = (): string => {
 export const getBannerData = (reactUiLibrary: string): BannerData => {
   const displayIcon = reactUiLibrary === 'blueprint' ? 'hurricane' : 'cyclone';
   return {
-    displayText: 'porrtal.io',
+    displayText: '',
     displayIcon: displayIcon,
+    bannerImageUrl: '/assets/banner-image-test.png',
+    bannerImageWidth: 325,
+    bannerImageHeight: 75,
     childData: [
       {
         key: 'porrtal.io',

@@ -38,7 +38,16 @@ export function Banner(props: BannerProps) {
       {!props.bannerData?.displayImage && <span></span>}
       &nbsp;
       <BannerMenu {...props}>
-        <Typography variant="h5" gutterBottom={false}>
+        <Typography variant="h5" gutterBottom={false} className={styles['banner-title']}>
+          {props.bannerData?.bannerImageUrl &&
+            props.bannerData?.bannerImageWidth &&
+            props.bannerData?.bannerImageHeight && (
+              <img
+                src={props.bannerData.bannerImageUrl}
+                width={props.bannerData.bannerImageWidth}
+                height={props.bannerData.bannerImageHeight}
+              ></img>
+            )}
           {props.bannerData?.displayText}
           {props.bannerData?.childData &&
             props.bannerData.childData.length > 0 && (

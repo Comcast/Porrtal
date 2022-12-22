@@ -4,11 +4,6 @@
   grid-template-columns: auto auto auto 1fr;
 }
 
-.banner-title {
-  margin: 0 0 0 7px !important;
-  cursor: pointer;
-}
-
 .popout-icon {
   margin-left: 8px;
 }
@@ -39,4 +34,14 @@
   width: 26px;
   height: 26px;
   margin-left: 7px;
+}
+
+.banner-title {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0 0 0 7px !important;
+  cursor: pointer;
 }

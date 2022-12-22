@@ -39,6 +39,15 @@ export function Banner(props: BannerProps) {
       {!props.bannerData?.displayImage && <span></span>}
       <BannerMenu {...props}>
         <h3 className={styles['banner-title']}>
+          {props.bannerData?.bannerImageUrl &&
+            props.bannerData?.bannerImageWidth &&
+            props.bannerData?.bannerImageHeight && (
+              <img
+                src={props.bannerData.bannerImageUrl}
+                width={props.bannerData.bannerImageWidth}
+                height={props.bannerData.bannerImageHeight}
+              ></img>
+            )}
           {props.bannerData?.displayText}
           {props.bannerData?.childData &&
             props.bannerData.childData.length > 0 && <Icon icon="caret-down" />}
