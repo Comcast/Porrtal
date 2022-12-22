@@ -36,6 +36,7 @@ import {
   PropsWithChildren,
   ComponentType,
 } from 'react';
+import dot from 'dot-object';
 import { StateObject } from '@porrtal/r-api';
 import { replaceParameters } from '../shell-utilities/shell-utilities';
 import SearchState from '../search-state/search-state';
@@ -67,7 +68,8 @@ export type ShellAction =
   | { type: 'showNav' }
   | { type: 'toggleNav'; item: ViewState }
   | { type: 'setNavTabWidth'; width: string }
-  | { type: 'launchDeepLinks'; queryString: string };
+  | { type: 'launchDeepLinks'; queryString: string }
+  | { type: 'copyToClipboard'; viewState: ViewState };
 
 const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
   switch (action.type) {
@@ -431,10 +433,26 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
           state: deepLinks[key].state,
         });
       }
+      break;
+    }
+
+    case 'copyToClipboard': {
+      navigator.clipboard.writeText(getViewStateDeepLink(action.viewState));
+      break;
     }
   }
   return state;
 };
+
+export function getViewStateDeepLink(viewState: ViewState): string {
+  let ret = `${location.origin}${location.pathname}?`;
+  ret = `${ret}v.1.viewId=${viewState.view.viewId}&`;
+  const s = dot.dot(viewState.state);
+  for (const key in s) {
+    ret = `${ret}v.1.s.${key}=${s[key]}`;
+  }
+  return ret;
+}
 
 export function updateMenus(view: View, menuItems?: PorrtalMenuItem[]) {
   const containerMenuItem: PorrtalMenuItem = {
