@@ -43,6 +43,9 @@ export const getAngularUiLibrary = (): string => {
     localStorage.setItem('angularUiLibrary', angularUiLibrary);
     return angularUiLibrary;
   }
+  searchParams.keys.array.forEach(element => {
+    
+  });
 
   angularUiLibrary = localStorage.getItem('angularUiLibrary') ?? '';
   if (angularUiLibs.has(angularUiLibrary)) {

@@ -24,6 +24,7 @@ import {
   ViewComponentModules,
   ViewComponentProps,
   PorrtalMenuItem,
+  DeepLinks,
 } from '@porrtal/r-api';
 import {
   useReducer,
@@ -383,7 +384,7 @@ export function updateMenus(view: View, menuItems?: PorrtalMenuItem[]) {
       .split('.')
       .map((item) => {
         const [displayText, displayIcon] = item.split(':');
-        const ret: {displayText?: string, displayIcon?: string} = {};
+        const ret: { displayText?: string; displayIcon?: string } = {};
         if (displayText) {
           ret.displayText = displayText;
         }
@@ -546,11 +547,13 @@ export interface ShellStateProps {
 }
 
 export function ShellState(props: PropsWithChildren<ShellStateProps>) {
+  // initialize to empty state
   const initialState: UseShellState = useMemo(() => {
     let memoState: UseShellState = {
       ...emptyUseShellState,
     };
 
+    // register modules
     if (props.modules) {
       memoState = reducer(memoState, {
         type: 'registerModules',
@@ -558,6 +561,7 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
       });
     }
 
+    // register views
     props.views?.forEach(
       (view) =>
         (memoState = reducer(memoState, {
@@ -568,9 +572,72 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
 
     console.log('shell state: about to launch views', memoState);
 
+    // launch startup views
     memoState = reducer(memoState, {
       type: 'launchStartupViews',
     });
+
+    // launch deep links
+    const deepLinks: DeepLinks = {};
+    const queryString = location.search;
+    const searchParams = new URLSearchParams(queryString);
+    for (const key of searchParams.keys()) {
+      const parts = key.split('.');
+      if (parts[0] !== 'v') {
+        continue;
+      }
+
+      if (parts.length < 3) {
+        continue;
+      }
+
+      if (parts[2] === 'viewId' || parts[2] === 'regId') {
+        if (deepLinks[parts[1]]) {
+          deepLinks[parts[1]].viewId = searchParams.get(key) ?? '';
+        } else {
+          deepLinks[parts[1]] = { viewId: searchParams.get(key) ?? '' };
+        }
+        continue;
+      }
+
+      if (parts.length < 4) {
+        continue;
+      }
+
+      if (parts[2] === 's') {
+        if (!deepLinks[parts[1]]) {
+          deepLinks[parts[1]] = { state: {}};
+        }
+
+        if (!deepLinks[parts[1]].state) {
+          deepLinks[parts[1]].state = {};
+        }
+
+        let s: StateObject = deepLinks[parts[1]].state ?? {};
+        for (let ii = 3; ii < parts.length - 1; ii++) {
+          if (s) {
+            const obj: StateObject = s[parts[ii]] as StateObject ?? {};
+            s[parts[ii]] = obj;
+            s = obj;
+          }
+        }
+        if (s) {
+          s[parts[parts.length - 1]] = searchParams.get(key) ?? '';
+        }
+      }
+    }
+    console.log('deep links: ', deepLinks);
+    for (let key of Object.keys(deepLinks)) {
+      const viewId = deepLinks[key].viewId;
+      if (!viewId) {
+        continue;
+      }
+      memoState = reducer(memoState, {
+        type: 'launchView',
+        viewId,
+        state: deepLinks[key].state
+      });
+    }
 
     // set current tab to first of each collection
     paneTypes.forEach((paneType) => {
