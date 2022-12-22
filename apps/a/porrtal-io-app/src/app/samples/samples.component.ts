@@ -293,5 +293,10 @@ export class SamplesComponent {
     shellStateService.dispatch({
       type: 'launchStartupViews',
     });
+
+    shellStateService.dispatch({
+      type: 'launchDeepLinks',
+      queryString: location.search
+    });
   }
 }
