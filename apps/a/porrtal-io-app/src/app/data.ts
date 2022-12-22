@@ -58,8 +58,8 @@ export const bannerData: BannerData = {
   displayIcon: 'cyclone',
   displayImage: '/assets/angular.svg',
   bannerImageUrl: '/assets/banner-image-test.png',
-  bannerImageWidth: 325,
-  bannerImageHeight: 75,
+  bannerImageWidth: 200,
+  bannerImageHeight: 44,
   childData: [
     {
       displayIcon: 'cyclone',
