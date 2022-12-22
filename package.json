@@ -36,7 +36,7 @@
     "@blueprintjs/popover2": "^1.4.1",
     "@emotion/react": "11.10.5",
     "@emotion/styled": "11.10.5",
-    "@mui/material": "^5.10.15",
+    "@mui/material": "^5.11.1",
     "@nrwl/next": "15.3.3",
     "@popperjs/core": "^2.11.6",
     "@react-keycloak/web": "^3.4.0",
