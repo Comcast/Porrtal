@@ -447,9 +447,11 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
 export function getViewStateDeepLink(viewState: ViewState): string {
   let ret = `${location.origin}${location.pathname}?`;
   ret = `${ret}v.1.viewId=${viewState.view.viewId}&`;
-  const s = dot.dot(viewState.state);
-  for (const key in s) {
-    ret = `${ret}v.1.s.${key}=${s[key]}`;
+  if (viewState.state) {
+    const s = dot.dot(viewState.state);
+    for (const key in s) {
+      ret = `${ret}v.1.s.${key}=${s[key]}`;
+    }
   }
   return ret;
 }
@@ -664,7 +666,7 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
     const queryString = location.search;
     memoState = reducer(memoState, {
       type: 'launchDeepLinks',
-      queryString
+      queryString,
     });
 
     // set current tab to first of each collection

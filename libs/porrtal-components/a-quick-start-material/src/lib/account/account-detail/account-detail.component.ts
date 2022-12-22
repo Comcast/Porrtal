@@ -33,7 +33,7 @@ export class AccountDetailComponent {
     if (this._viewState?.state && this._viewState?.state['accountId']) {
       const accountId = this._viewState?.state['accountId'];
       this.account = accountData.find(
-        (account) => account.accountId === accountId
+        (account) => account.accountId == accountId
       );
       this.orders = [];
       if (this.account) {

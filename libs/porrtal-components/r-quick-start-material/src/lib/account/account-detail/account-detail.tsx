@@ -29,7 +29,7 @@ export function AccountDetail(props: ViewComponentProps) {
     fetchAccountData(0).then((d) => {
       setAccountData(d);
       const currentAccount = d?.find(
-        (acct) => acct.accountId === props.viewState?.state?.['accountId']
+        (acct) => acct.accountId == props.viewState?.state?.['accountId']
       );
       setAccount(currentAccount ?? null);
     });
