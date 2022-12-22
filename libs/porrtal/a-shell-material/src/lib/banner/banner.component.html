@@ -24,7 +24,19 @@
     "
   >
     <h2 class="banner-text">
+      <img
+        *ngIf="
+          bannerData &&
+          bannerData?.bannerImageUrl &&
+          bannerData?.bannerImageWidth &&
+          bannerData?.bannerImageHeight
+        "
+        [src]="bannerData.bannerImageUrl"
+        [width]="bannerData.bannerImageWidth"
+        [height]="bannerData.bannerImageHeight"
+      />
       {{ bannerData?.displayText }}
+      
       <mat-icon
         class="down-icon"
         *ngIf="

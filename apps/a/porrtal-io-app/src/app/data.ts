@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { View } from '@porrtal/a-api';
-import { BannerData } from "@porrtal/a-shell";
+import { BannerData } from '@porrtal/a-shell';
 
 export const getReactUiLibrary = (): string => {
   const queryString = location.search;
@@ -51,13 +51,15 @@ export const getAngularUiLibrary = (): string => {
 
   localStorage.setItem('angularUiLibrary', 'material');
   return 'material';
-}
-
+};
 
 export const bannerData: BannerData = {
   displayText: '@porrtal',
   displayIcon: 'cyclone',
   displayImage: '/assets/angular.svg',
+  bannerImageUrl: '/assets/banner-image-test.png',
+  bannerImageWidth: 325,
+  bannerImageHeight: 75,
   childData: [
     {
       displayIcon: 'cyclone',
