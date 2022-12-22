@@ -105,5 +105,10 @@ export class QuickStartComponent {
     shellStateService.dispatch({
       type: 'launchStartupViews',
     });
+
+    shellStateService.dispatch({
+      type: 'launchDeepLinks',
+      queryString: location.search
+    });
   }
 }

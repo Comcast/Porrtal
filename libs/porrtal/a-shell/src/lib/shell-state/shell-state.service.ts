@@ -31,6 +31,7 @@ import {
 import { RxState } from '@rx-angular/state';
 import { v4 as uuidv4 } from 'uuid';
 import { replaceParameters } from '../shell-utilities/shell-utilities';
+import * as dot from 'dot-object';
 
 export interface ShellState {
   panes: Panes;
@@ -57,7 +58,8 @@ export type ShellAction =
   | { type: 'showNav' }
   | { type: 'toggleNav'; item: ViewState }
   | { type: 'setNavTabWidth'; width: number }
-  | { type: 'launchDeepLinks'; queryString: string };
+  | { type: 'launchDeepLinks'; queryString: string }
+  | { type: 'copyToClipboard'; viewState: ViewState };
 
 @Injectable({
   providedIn: 'root',
@@ -314,7 +316,7 @@ export class ShellStateService extends RxState<ShellState> {
         if (!newView.viewId) {
           newView.viewId = newView.componentName;
         }
-        
+
         if (!newView.key) {
           newView.key = uuidv4();
         }
@@ -458,9 +460,27 @@ export class ShellStateService extends RxState<ShellState> {
             state: deepLinks[key].state,
           });
         }
+        break;
+      }
+
+      case 'copyToClipboard': {
+        navigator.clipboard.writeText(getViewStateDeepLink(action.viewState));
+        break;
       }
     }
   };
+}
+
+export function getViewStateDeepLink(viewState: ViewState): string {
+  let ret = `${location.origin}${location.pathname}?`;
+  ret = `${ret}v.1.viewId=${viewState.view.viewId}&`;
+  if (viewState.state) {
+    const s = dot.dot(viewState.state);
+    for (const key in s) {
+      ret = `${ret}v.1.s.${key}=${s[key]}`;
+    }
+  }
+  return ret;
 }
 
 export function updateMenus(view: View, menuItems?: PorrtalMenuItem[]) {
