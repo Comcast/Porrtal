@@ -413,6 +413,16 @@ function ViewStackContextMenu(
           },
         ]
       : []),
+    {
+      uid: 'Copy link',
+      label: 'Copy link',
+      leftIcon: <Icon>content_copy</Icon>,
+      callback: () =>
+        props.dispatch({
+          type: 'copyToClipboard',
+          viewState: props.item,
+        }),
+    },
   ];
 
   return (
@@ -444,7 +454,7 @@ function ViewStackContextMenu(
               onClick={(evt) => {
                 props.dispatch({
                   type: 'toggleNav',
-                  item: props.item
+                  item: props.item,
                 });
               }}
             >

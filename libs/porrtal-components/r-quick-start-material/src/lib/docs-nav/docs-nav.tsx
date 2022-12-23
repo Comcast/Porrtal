@@ -63,7 +63,7 @@ export function DocsNav(props: DocsNavProps) {
           onClick={() =>
             shellDispatch({
               type: 'launchView',
-              viewId: 'Setup Your Workstation',
+              viewId: 'SetupYourWorkstation',
             })
           }
         >
@@ -77,7 +77,7 @@ export function DocsNav(props: DocsNavProps) {
           onClick={() =>
             shellDispatch({
               type: 'launchView',
-              viewId: 'Create the App',
+              viewId: 'CreatetheApp',
             })
           }
         >

@@ -396,6 +396,18 @@ function ViewStackContextMenu(
                 ))}
             </MenuItem>
           )}
+          {props.item?.view.viewId && (
+            <MenuItem
+              key={'copy-link'}
+              text="Copy link"
+              icon="duplicate"
+              intent="primary"
+              onClick={() => props.dispatch({
+                type: 'copyToClipboard',
+                viewState: props.item
+              })}
+            ></MenuItem>
+          )}
         </Menu>
       }
     >
@@ -429,7 +441,7 @@ function ViewStackContextMenu(
             onClick={(evt) => {
               props.dispatch({
                 type: 'toggleNav',
-                item: props.item
+                item: props.item,
               });
             }}
           >

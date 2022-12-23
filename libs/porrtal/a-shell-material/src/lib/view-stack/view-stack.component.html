@@ -192,6 +192,15 @@
         <span>Move To...</span>
       </span>
     </button>
+    <button mat-menu-item (click)="shellStateService.dispatch({
+      type: 'copyToClipboard',
+      viewState
+    })">
+      <span>
+        <mat-icon inline="true" class="menu-close-icon">content_copy</mat-icon>
+        <span>Copy link</span>
+      </span>
+    </button>
   </ng-template>
 </mat-menu>
 

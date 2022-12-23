@@ -14,6 +14,7 @@ limitations under the License.
 */
 import { Injectable, Type } from '@angular/core';
 import {
+  DeepLinks,
   Pane,
   PaneArrangement,
   Panes,
@@ -30,6 +31,7 @@ import {
 import { RxState } from '@rx-angular/state';
 import { v4 as uuidv4 } from 'uuid';
 import { replaceParameters } from '../shell-utilities/shell-utilities';
+import * as dot from 'dot-object';
 
 export interface ShellState {
   panes: Panes;
@@ -55,7 +57,9 @@ export type ShellAction =
   | { type: 'setShowDevInfo'; show: boolean }
   | { type: 'showNav' }
   | { type: 'toggleNav'; item: ViewState }
-  | { type: 'setNavTabWidth'; width: number };
+  | { type: 'setNavTabWidth'; width: number }
+  | { type: 'launchDeepLinks'; queryString: string }
+  | { type: 'copyToClipboard'; viewState: ViewState };
 
 @Injectable({
   providedIn: 'root',
@@ -312,6 +316,7 @@ export class ShellStateService extends RxState<ShellState> {
         if (!newView.viewId) {
           newView.viewId = newView.componentName;
         }
+
         if (!newView.key) {
           newView.key = uuidv4();
         }
@@ -392,8 +397,90 @@ export class ShellStateService extends RxState<ShellState> {
         });
         return;
       }
+
+      case 'launchDeepLinks': {
+        // launch deep links
+        const deepLinks: DeepLinks = {};
+        const queryString = action.queryString;
+        const searchParams = new URLSearchParams(queryString);
+        for (const key of searchParams.keys()) {
+          const parts = key.split('.');
+          if (parts[0] !== 'v') {
+            continue;
+          }
+
+          if (parts.length < 3) {
+            continue;
+          }
+
+          if (parts[2] === 'viewId' || parts[2] === 'regId') {
+            if (deepLinks[parts[1]]) {
+              deepLinks[parts[1]].viewId = searchParams.get(key) ?? '';
+            } else {
+              deepLinks[parts[1]] = { viewId: searchParams.get(key) ?? '' };
+            }
+            continue;
+          }
+
+          if (parts.length < 4) {
+            continue;
+          }
+
+          if (parts[2] === 's') {
+            if (!deepLinks[parts[1]]) {
+              deepLinks[parts[1]] = { state: {} };
+            }
+
+            if (!deepLinks[parts[1]].state) {
+              deepLinks[parts[1]].state = {};
+            }
+
+            let s: StateObject = deepLinks[parts[1]].state ?? {};
+            for (let ii = 3; ii < parts.length - 1; ii++) {
+              if (s) {
+                const obj: StateObject = (s[parts[ii]] as StateObject) ?? {};
+                s[parts[ii]] = obj;
+                s = obj;
+              }
+            }
+            if (s) {
+              s[parts[parts.length - 1]] = searchParams.get(key) ?? '';
+            }
+          }
+        }
+        console.log('deep links: ', deepLinks);
+        for (let key of Object.keys(deepLinks)) {
+          const viewId = deepLinks[key].viewId;
+          if (!viewId) {
+            continue;
+          }
+          this.dispatch({
+            type: 'launchView',
+            viewId,
+            state: deepLinks[key].state,
+          });
+        }
+        break;
+      }
+
+      case 'copyToClipboard': {
+        navigator.clipboard.writeText(getViewStateDeepLink(action.viewState));
+        break;
+      }
     }
   };
+}
+
+export function getViewStateDeepLink(viewState: ViewState): string {
+  let ret = `${location.origin}${location.pathname}?`;
+  ret = `${ret}v.1.viewId=${viewState.view.viewId?.split(' ').join('+')}&`;
+  if (viewState.state) {
+    const s = dot.dot(viewState.state);
+    for (const key in s) {
+      ret = `${ret}v.1.s.${key}=${s[key].split(' ').join('+')}`;
+    }
+  }
+  return ret;
 }
 
 export function updateMenus(view: View, menuItems?: PorrtalMenuItem[]) {
@@ -409,7 +496,7 @@ export function updateMenus(view: View, menuItems?: PorrtalMenuItem[]) {
       .split('.')
       .map((item) => {
         const [displayText, displayIcon] = item.split(':');
-        const ret: {displayText?: string, displayIcon?: string} = {};
+        const ret: { displayText?: string; displayIcon?: string } = {};
         if (displayText) {
           ret.displayText = displayText;
         }

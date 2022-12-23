@@ -24,6 +24,7 @@ import {
   ViewComponentModules,
   ViewComponentProps,
   PorrtalMenuItem,
+  DeepLinks,
 } from '@porrtal/r-api';
 import {
   useReducer,
@@ -34,7 +35,9 @@ import {
   useMemo,
   PropsWithChildren,
   ComponentType,
+  useEffect,
 } from 'react';
+import dot from 'dot-object';
 import { StateObject } from '@porrtal/r-api';
 import { replaceParameters } from '../shell-utilities/shell-utilities';
 import SearchState from '../search-state/search-state';
@@ -65,7 +68,9 @@ export type ShellAction =
   | { type: 'setShowDevInfo'; show: boolean }
   | { type: 'showNav' }
   | { type: 'toggleNav'; item: ViewState }
-  | { type: 'setNavTabWidth'; width: string };
+  | { type: 'setNavTabWidth'; width: string }
+  | { type: 'launchDeepLinks'; queryString: string }
+  | { type: 'copyToClipboard'; viewState: ViewState };
 
 const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
   switch (action.type) {
@@ -366,9 +371,91 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
         navTabWidth: action.width,
       };
     }
+
+    case 'launchDeepLinks': {
+      // launch deep links
+      const deepLinks: DeepLinks = {};
+      const queryString = action.queryString;
+      const searchParams = new URLSearchParams(queryString);
+      for (const key of searchParams.keys()) {
+        const parts = key.split('.');
+        if (parts[0] !== 'v') {
+          continue;
+        }
+
+        if (parts.length < 3) {
+          continue;
+        }
+
+        if (parts[2] === 'viewId' || parts[2] === 'regId') {
+          if (deepLinks[parts[1]]) {
+            deepLinks[parts[1]].viewId = searchParams.get(key) ?? '';
+          } else {
+            deepLinks[parts[1]] = { viewId: searchParams.get(key) ?? '' };
+          }
+          continue;
+        }
+
+        if (parts.length < 4) {
+          continue;
+        }
+
+        if (parts[2] === 's') {
+          if (!deepLinks[parts[1]]) {
+            deepLinks[parts[1]] = { state: {} };
+          }
+
+          if (!deepLinks[parts[1]].state) {
+            deepLinks[parts[1]].state = {};
+          }
+
+          let s: StateObject = deepLinks[parts[1]].state ?? {};
+          for (let ii = 3; ii < parts.length - 1; ii++) {
+            if (s) {
+              const obj: StateObject = (s[parts[ii]] as StateObject) ?? {};
+              s[parts[ii]] = obj;
+              s = obj;
+            }
+          }
+          if (s) {
+            s[parts[parts.length - 1]] = searchParams.get(key) ?? '';
+          }
+        }
+      }
+      console.log('deep links: ', deepLinks);
+      for (let key of Object.keys(deepLinks)) {
+        const viewId = deepLinks[key].viewId;
+        if (!viewId) {
+          continue;
+        }
+        state = reducer(state, {
+          type: 'launchView',
+          viewId,
+          state: deepLinks[key].state,
+        });
+      }
+      break;
+    }
+
+    case 'copyToClipboard': {
+      navigator.clipboard.writeText(getViewStateDeepLink(action.viewState));
+      break;
+    }
   }
   return state;
 };
+
+export function getViewStateDeepLink(viewState: ViewState): string {
+  let ret = `${location.origin}${location.pathname}?`;
+  ret = `${ret}v.1.viewId=${viewState.view.viewId?.split(' ').join('+')}&`;
+  if (viewState.state) {
+    const s = dot.dot(viewState.state);
+    for (const key in s) {
+      ret = `${ret}v.1.s.${key}=${s[key].split(' ').join('+')}`;
+    }
+  }
+  return ret;
+}
 
 export function updateMenus(view: View, menuItems?: PorrtalMenuItem[]) {
   const containerMenuItem: PorrtalMenuItem = {
@@ -383,7 +470,7 @@ export function updateMenus(view: View, menuItems?: PorrtalMenuItem[]) {
       .split('.')
       .map((item) => {
         const [displayText, displayIcon] = item.split(':');
-        const ret: {displayText?: string, displayIcon?: string} = {};
+        const ret: { displayText?: string; displayIcon?: string } = {};
         if (displayText) {
           ret.displayText = displayText;
         }
@@ -546,11 +633,13 @@ export interface ShellStateProps {
 }
 
 export function ShellState(props: PropsWithChildren<ShellStateProps>) {
+  // initialize to empty state
   const initialState: UseShellState = useMemo(() => {
     let memoState: UseShellState = {
       ...emptyUseShellState,
     };
 
+    // register modules
     if (props.modules) {
       memoState = reducer(memoState, {
         type: 'registerModules',
@@ -558,6 +647,7 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
       });
     }
 
+    // register views
     props.views?.forEach(
       (view) =>
         (memoState = reducer(memoState, {
@@ -568,6 +658,7 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
 
     console.log('shell state: about to launch views', memoState);
 
+    // launch startup views
     memoState = reducer(memoState, {
       type: 'launchStartupViews',
     });
@@ -587,6 +678,17 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
   }, [props.views, props.modules]);
 
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  // launch deep links
+  useEffect(() => {
+    setTimeout(() => {
+      const queryString = location.search;
+      dispatch({
+        type: 'launchDeepLinks',
+        queryString,
+      });
+      }, 200);
+  }, []);
 
   return (
     <ShellStateContext.Provider value={state}>
