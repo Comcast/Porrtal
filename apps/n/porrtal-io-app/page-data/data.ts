@@ -43,9 +43,6 @@ export const getAngularUiLibrary = (): string => {
     localStorage.setItem('angularUiLibrary', angularUiLibrary);
     return angularUiLibrary;
   }
-  searchParams.keys.array.forEach(element => {
-    
-  });
 
   angularUiLibrary = localStorage.getItem('angularUiLibrary') ?? '';
   if (angularUiLibs.has(angularUiLibrary)) {
@@ -54,7 +51,7 @@ export const getAngularUiLibrary = (): string => {
 
   localStorage.setItem('angularUiLibrary', 'material');
   return 'material';
-}
+};
 
 export const getBannerData = (reactUiLibrary: string): BannerData => {
   const displayIcon = reactUiLibrary === 'blueprint' ? 'hurricane' : 'cyclone';
@@ -110,4 +107,3 @@ export const getBannerData = (reactUiLibrary: string): BannerData => {
     ],
   };
 };
-
