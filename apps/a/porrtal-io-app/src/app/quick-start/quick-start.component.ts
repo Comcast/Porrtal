@@ -106,9 +106,11 @@ export class QuickStartComponent {
       type: 'launchStartupViews',
     });
 
-    shellStateService.dispatch({
-      type: 'launchDeepLinks',
-      queryString: location.search
-    });
+    setTimeout(() => {
+      shellStateService.dispatch({
+        type: 'launchDeepLinks',
+        queryString: location.search,
+      });
+    }, 200);
   }
 }

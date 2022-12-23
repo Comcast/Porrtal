@@ -473,11 +473,11 @@ export class ShellStateService extends RxState<ShellState> {
 
 export function getViewStateDeepLink(viewState: ViewState): string {
   let ret = `${location.origin}${location.pathname}?`;
-  ret = `${ret}v.1.viewId=${viewState.view.viewId}&`;
+  ret = `${ret}v.1.viewId=${viewState.view.viewId?.split(' ').join('+')}&`;
   if (viewState.state) {
     const s = dot.dot(viewState.state);
     for (const key in s) {
-      ret = `${ret}v.1.s.${key}=${s[key]}`;
+      ret = `${ret}v.1.s.${key}=${s[key].split(' ').join('+')}`;
     }
   }
   return ret;
