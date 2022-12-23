@@ -35,6 +35,7 @@ import {
   useMemo,
   PropsWithChildren,
   ComponentType,
+  useEffect,
 } from 'react';
 import dot from 'dot-object';
 import { StateObject } from '@porrtal/r-api';
@@ -446,11 +447,11 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
 
 export function getViewStateDeepLink(viewState: ViewState): string {
   let ret = `${location.origin}${location.pathname}?`;
-  ret = `${ret}v.1.viewId=${viewState.view.viewId}&`;
+  ret = `${ret}v.1.viewId=${viewState.view.viewId?.split(' ').join('+')}&`;
   if (viewState.state) {
     const s = dot.dot(viewState.state);
     for (const key in s) {
-      ret = `${ret}v.1.s.${key}=${s[key]}`;
+      ret = `${ret}v.1.s.${key}=${s[key].split(' ').join('+')}`;
     }
   }
   return ret;
@@ -662,13 +663,6 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
       type: 'launchStartupViews',
     });
 
-    // launch deep links
-    const queryString = location.search;
-    memoState = reducer(memoState, {
-      type: 'launchDeepLinks',
-      queryString,
-    });
-
     // set current tab to first of each collection
     paneTypes.forEach((paneType) => {
       if (memoState.panes[paneType].viewStates?.length > 0) {
@@ -684,6 +678,17 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
   }, [props.views, props.modules]);
 
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  // launch deep links
+  useEffect(() => {
+    setTimeout(() => {
+      const queryString = location.search;
+      dispatch({
+        type: 'launchDeepLinks',
+        queryString,
+      });
+      }, 200);
+  }, []);
 
   return (
     <ShellStateContext.Provider value={state}>
