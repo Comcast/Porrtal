@@ -35,6 +35,10 @@
     "porrtal-r-shell-material": "libs/porrtal/r-shell-material",
     "porrtal-r-split": "libs/porrtal/r-split",
     "porrtal-r-user": "libs/porrtal/r-user",
+    "porrtal-r-user-auth0": "libs/porrtal/r-user-auth0",
+    "porrtal-r-user-keycloak": "libs/porrtal/r-user-keycloak",
+    "porrtal-r-user-msal": "libs/porrtal/r-user-msal",
+    "porrtal-r-user-strapi": "libs/porrtal/r-user-strapi",
     "r-porrtal-app": "apps/r/porrtal-app",
     "r-porrtal-app-e2e": "apps/r/porrtal-app-e2e"
   },
