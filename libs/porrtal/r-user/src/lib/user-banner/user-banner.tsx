@@ -23,6 +23,7 @@ export interface UserBannerProps {}
 export function UserBanner(props: UserBannerProps) {
   const auth = useAuth();
 
+  console.log(`UserBanner: auth def'd(${auth ? 'true' : 'false'}), isAuthenticated('${auth?.isAuthenticated}'), isInitialized('${auth?.isInitialized}')`);
   if (auth?.isInitialized) {
     return (
       <div className={styles['container']}>

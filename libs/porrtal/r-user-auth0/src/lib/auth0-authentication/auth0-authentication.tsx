@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
-import { AuthContext } from '../use-auth/auth-context';
-import { AuthInterface } from '../auth-interface';
+import { AuthContext } from '@porrtal/r-user';
+import { AuthInterface } from '@porrtal/r-user';
 
 interface Auth0AdapterProps {
   children?: React.ReactChild | React.ReactChild[];

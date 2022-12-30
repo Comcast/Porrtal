@@ -13,14 +13,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { ReactKeycloakProvider, useKeycloak } from '@react-keycloak/web';
-import { AuthContext } from '../use-auth/auth-context';
-import { AuthInterface } from '../auth-interface';
+import { AuthContext, AuthInterface } from '@porrtal/r-user';
 import Keycloak from 'keycloak-js';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 interface KeycloakAuthAdapterProps {
   redirectUri: string;
-  children?: React.ReactChild | React.ReactChild[];
+  children?: ReactNode;
 }
 
 function KeycloakAdapter(props: KeycloakAuthAdapterProps) {
@@ -47,7 +46,7 @@ export interface KeycloakAuthenticationProps {
   realm: string;
   clientId: string;
   redirectUri: string;
-  children?: React.ReactChild | React.ReactChild[];
+  children?: ReactNode;
 }
 
 const eventLogger = (event: unknown, error: unknown) => {
@@ -78,7 +77,7 @@ export function KeycloakAuthentication(props: KeycloakAuthenticationProps) {
       authClient={keycloak}
       onEvent={eventLogger}
       onTokens={tokenLogger}
-      initOptions={{ scope: 'openid email' }}
+      initOptions={{ scope: 'profile email' }}
     >
       <KeycloakAdapter redirectUri={props.redirectUri}>
         {props.children}

@@ -17,11 +17,12 @@ import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 
 import { ShellState } from '@porrtal/r-shell';
-import { Auth0Authentication, UserBanner } from '@porrtal/r-user';
+import { UserBanner } from '@porrtal/r-user';
 import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
 import { useEffect, useState } from 'react';
 import { View } from '@porrtal/r-api';
 import Head from 'next/head';
+import { Auth0Authentication } from '@porrtal/r-user-auth0';
 
 /* eslint-disable-next-line */
 export interface QuickStartDemoProps {}
@@ -272,7 +273,7 @@ export function QuickStartDemo(props: QuickStartDemoProps) {
         <Auth0Authentication
           domain="dev-b6h3bfnp.us.auth0.com"
           clientId="uP4eHSspiDjg6E7GKU5LjdFPn0WwEKTq"
-          redirectUri="http://localhost:4200"
+          redirectUri="http://localhost:4200/quick-start-demo"
         >
           <ShellState views={views}>
             <ShellBlueprint
