@@ -42,7 +42,7 @@ export function Search(props: SearchProps) {
           onClickAway={(evt) => searchAction.closeSearchDialog()}
         >
           <Popper
-            nonce={1}
+            nonce={'1'}
             onResize={() => {
               // do nothing
             }}
