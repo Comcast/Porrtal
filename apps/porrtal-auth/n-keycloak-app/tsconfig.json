@@ -14,10 +14,10 @@
     "types": ["jest", "node"]
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.js",
-    "src/**/*.jsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
     "next-env.d.ts"
   ],
   "exclude": ["node_modules", "jest.config.ts"]
