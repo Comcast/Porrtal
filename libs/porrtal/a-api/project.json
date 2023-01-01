@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["{workspaceRoot}/dist/libs/porrtal/a-api"],
+      "outputs": [
+        "{workspaceRoot}/dist/libs/porrtal/a-api"
+      ],
       "options": {
         "project": "libs/porrtal/a-api/ng-package.json"
       },
@@ -22,7 +24,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/libs/porrtal/a-api"],
+      "outputs": [
+        "{workspaceRoot}/coverage/libs/porrtal/a-api"
+      ],
       "options": {
         "jestConfig": "libs/porrtal/a-api/jest.config.ts",
         "passWithNoTests": true

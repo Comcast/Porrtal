@@ -19,7 +19,9 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
         "lintFilePatterns": [
           "apps/porrtal-auth/n-keycloak-app-e2e/**/*.{js,ts}"
@@ -28,5 +30,7 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["porrtal-auth-n-keycloak-app"]
+  "implicitDependencies": [
+    "porrtal-auth-n-keycloak-app"
+  ]
 }

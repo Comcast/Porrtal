@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
@@ -20,7 +22,9 @@
           "apps/porrtal-auth/r-strapi-app/src/favicon.ico",
           "apps/porrtal-auth/r-strapi-app/src/assets"
         ],
-        "styles": ["apps/porrtal-auth/r-strapi-app/src/styles.scss"],
+        "styles": [
+          "apps/porrtal-auth/r-strapi-app/src/styles.scss"
+        ],
         "scripts": [],
         "webpackConfig": "@nrwl/react/plugins/webpack"
       },
@@ -66,7 +70,9 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
         "lintFilePatterns": [
           "apps/porrtal-auth/r-strapi-app/**/*.{ts,tsx,js,jsx}"
@@ -75,7 +81,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/porrtal-auth/r-strapi-app/jest.config.ts",
         "passWithNoTests": true

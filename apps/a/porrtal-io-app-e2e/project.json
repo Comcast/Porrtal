@@ -19,12 +19,18 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/a/porrtal-io-app-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "apps/a/porrtal-io-app-e2e/**/*.{js,ts}"
+        ]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["a-porrtal-io-app"]
+  "implicitDependencies": [
+    "a-porrtal-io-app"
+  ]
 }

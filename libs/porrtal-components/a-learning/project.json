@@ -7,7 +7,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["{workspaceRoot}/dist/libs/porrtal-components/a-learning"],
+      "outputs": [
+        "{workspaceRoot}/dist/libs/porrtal-components/a-learning"
+      ],
       "options": {
         "project": "libs/porrtal-components/a-learning/ng-package.json"
       },
@@ -56,7 +58,9 @@
     },
     "build-storybook": {
       "executor": "@storybook/angular:build-storybook",
-      "outputs": ["{options.outputDir}"],
+      "outputs": [
+        "{options.outputDir}"
+      ],
       "options": {
         "outputDir": "dist/storybook/porrtal-components-a-learning",
         "configDir": "libs/porrtal-components/a-learning/.storybook",

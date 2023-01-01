@@ -19,12 +19,18 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/porrtal-auth/n-msal-app-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "apps/porrtal-auth/n-msal-app-e2e/**/*.{js,ts}"
+        ]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["porrtal-auth-n-msal-app"]
+  "implicitDependencies": [
+    "porrtal-auth-n-msal-app"
+  ]
 }
