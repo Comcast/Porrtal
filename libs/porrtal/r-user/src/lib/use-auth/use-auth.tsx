@@ -13,10 +13,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { useContext } from 'react';
-import { AuthInterface } from '../auth-interface';
+import { AuthNInterface } from '../auth-interface';
 import { AuthContext } from './auth-context';
 
-export function useAuth(): AuthInterface {
+export function useAuth(): AuthNInterface {
   const auth = useContext(AuthContext);
   return auth;
 }

@@ -14,7 +14,7 @@ limitations under the License.
 */
 import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
 import { AuthContext } from '@porrtal/r-user';
-import { AuthInterface } from '@porrtal/r-user';
+import { AuthNInterface } from '@porrtal/r-user';
 
 interface Auth0AdapterProps {
   children?: React.ReactChild | React.ReactChild[];
@@ -22,7 +22,7 @@ interface Auth0AdapterProps {
 
 function Auth0Adapter(props: Auth0AdapterProps) {
   const auth0 = useAuth0();
-  const auth: AuthInterface = {
+  const auth: AuthNInterface = {
     user: auth0 ? (auth0?.user as { name: string; email: string }) : undefined,
     loginWithRedirect: auth0?.loginWithRedirect,
     logout: auth0?.logout,

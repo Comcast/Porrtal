@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { ReactKeycloakProvider, useKeycloak } from '@react-keycloak/web';
-import { AuthContext, AuthInterface } from '@porrtal/r-user';
+import { AuthContext, AuthNInterface } from '@porrtal/r-user';
 import Keycloak from 'keycloak-js';
 import { ReactNode, useEffect, useState } from 'react';
 
@@ -24,7 +24,7 @@ interface KeycloakAuthAdapterProps {
 
 function KeycloakAdapter(props: KeycloakAuthAdapterProps) {
   const { keycloak, initialized } = useKeycloak();
-  const auth: AuthInterface = {
+  const auth: AuthNInterface = {
     user: {
       name: keycloak?.tokenParsed?.['name'] ?? '',
       email: keycloak?.tokenParsed?.['email'] ?? '',
