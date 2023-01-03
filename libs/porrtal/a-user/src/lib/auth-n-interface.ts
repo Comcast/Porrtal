@@ -1,4 +1,7 @@
-﻿/*
+﻿import { InjectionToken } from "@angular/core";
+import { Observable } from "rxjs";
+
+/*
 Copyright 2022 Comcast Cable Communications Management, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +15,15 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { createContext } from 'react';
-import { AuthNInterface } from '../auth-n-interface';
+export type AuthNInterface = {
+  user?: {
+    name: string;
+    email: string;
+  };
+  loginWithRedirect?: () => void;
+  logout?: () => void;
+  isAuthenticated$: Observable<boolean>;
+  isInitialized$: Observable<boolean>;
+};
 
-export const AuthContext = createContext<AuthNInterface>(null);
+export const AUTH_N_INTERFACE = new InjectionToken<AuthNInterface>('AuthNInterface');

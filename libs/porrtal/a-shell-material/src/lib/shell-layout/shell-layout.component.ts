@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularSplitModule, IOutputData } from 'angular-split';
 import { ViewStackComponent } from '../view-stack/view-stack.component';
@@ -24,6 +24,7 @@ import { BannerData } from '@porrtal/a-shell';
 import { BannerComponent } from '../banner/banner.component';
 import { BannerMenuBarComponent } from '../banner-menu-bar/banner-menu-bar.component';
 import { BannerMenuInlineComponent } from '../banner-menu-inline/banner-menu-inline.component';
+import { AuthNInterface, AUTH_N_INTERFACE } from '@porrtal/a-user';
 
 @Component({
   selector: 'porrtal-shell-layout',
@@ -50,8 +51,10 @@ export class ShellLayoutComponent {
 
   public navWidthWhenExpanded: number = 320;
 
-  constructor(private shellStateService: ShellStateService) {
+  constructor(private shellStateService: ShellStateService,
+    @Optional() @Inject(AUTH_N_INTERFACE) authNService: AuthNInterface) {
     this.state$ = shellStateService.select();
+    console.log('AuthNInterface: ', authNService);
   }
 
   dragStart(outputData: IOutputData) {
