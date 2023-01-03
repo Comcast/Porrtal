@@ -25,6 +25,7 @@ import { BannerComponent } from '../banner/banner.component';
 import { BannerMenuBarComponent } from '../banner-menu-bar/banner-menu-bar.component';
 import { BannerMenuInlineComponent } from '../banner-menu-inline/banner-menu-inline.component';
 import { AuthNInterface, AUTH_N_INTERFACE } from '@porrtal/a-user';
+import { UserBannerComponent } from '../user-banner/user-banner.component';
 
 @Component({
   selector: 'porrtal-shell-layout',
@@ -38,6 +39,7 @@ import { AuthNInterface, AUTH_N_INTERFACE } from '@porrtal/a-user';
     BannerMenuInlineComponent,
     SearchComponent,
     LoggerBannerComponent,
+    UserBannerComponent,
   ],
   templateUrl: './shell-layout.component.html',
   styleUrls: ['./shell-layout.component.scss'],

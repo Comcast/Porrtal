@@ -25,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
         responseType: 'code',
         scope: 'openid profile email offline_access',
         logoutUrl: 'https://dev-b6h3bfnp.us.auth0.com/v2/logout',
-        requireHttps: false,
+        redirectUriAsPostLogoutRedirectUriFallback: true,
+        postLogoutRedirectUri: 'http://localhost:4200',
       },
       // {
       //   resourceServer: {

@@ -1,0 +1,3 @@
+<porrtal-user-logout-button *ngIf="authN && authN.isAuthenticated$ | async"></porrtal-user-logout-button>
+<porrtal-user-login-button *ngIf="authN && !(authN.isAuthenticated$ | async)"></porrtal-user-login-button>
+<div *ngIf="!authN"></div>

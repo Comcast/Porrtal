@@ -201,7 +201,10 @@ export class OidcAdapterService implements AuthNInterface {
     this.oAuthService.initLoginFlow();
   };
   logout?: (() => void) | undefined = () => {
-    this.oAuthService.logOut();
+    this.oAuthService.logOut({
+      client_id: this.authConfig.clientId,
+      returnTo: 'http://localhost:4200'
+    });
     this.isAuthenticatedSubj.next(false);
     console.log(`isAuthenticated = ${false}`);
   };
