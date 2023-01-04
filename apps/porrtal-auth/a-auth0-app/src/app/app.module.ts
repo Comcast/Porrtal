@@ -20,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
       {
         issuer: 'https://dev-b6h3bfnp.us.auth0.com/',
         clientId: 'uP4eHSspiDjg6E7GKU5LjdFPn0WwEKTq',
-        redirectUri: 'http://localhost:4200',
+        redirectUri: window.document.URL,
         responseType: 'code',
         scope: 'openid profile email offline_access',
         logoutUrl: 'https://dev-b6h3bfnp.us.auth0.com/v2/logout',

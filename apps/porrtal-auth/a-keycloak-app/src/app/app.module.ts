@@ -20,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       {
         issuer: 'http://localhost:8080/realms/porrtal',
         clientId: 'porrtal-app',
-        redirectUri: 'http://localhost:4200',
+        redirectUri: window.document.URL,
         responseType: 'code',
         scope: 'openid profile email offline_access',
         logoutUrl: 'http://localhost:8080/v2/logout',
