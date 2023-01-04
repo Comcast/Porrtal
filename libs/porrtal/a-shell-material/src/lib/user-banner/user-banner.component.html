@@ -1,3 +1,5 @@
-<porrtal-user-logout-button *ngIf="authN && authN.isAuthenticated$ | async"></porrtal-user-logout-button>
+<span *ngIf="authN && authN.isAuthenticated$ | async">
+    <span style="margin-right: 6px;">{{ authN.user?.name }}</span>
+    <porrtal-user-logout-button></porrtal-user-logout-button></span>
 <porrtal-user-login-button *ngIf="authN && !(authN.isAuthenticated$ | async)"></porrtal-user-login-button>
 <div *ngIf="!authN"></div>

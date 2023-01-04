@@ -18,7 +18,7 @@ export class OidcModule {
     return {
       ngModule: OidcModule,
       providers: [
-        ...provideOAuthClient(authConfig, interceptorConfig),
+        provideOAuthClient(authConfig, interceptorConfig),
     ],
     };
   }
