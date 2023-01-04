@@ -22,7 +22,7 @@ export class OidcAdapterService implements AuthNInterface {
     console.log('claims: ', claims);
 
     return {
-      name: claims['nickname'],
+      name: claims['nickname'] ?? claims['email'],
       email: claims['email']
     }
   };
