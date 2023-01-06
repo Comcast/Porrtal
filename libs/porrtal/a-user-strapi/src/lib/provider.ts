@@ -10,7 +10,7 @@ import {
   LOGIN_SERVICE_CONFIG_INJECTION_TOKEN,
   LOGIN_SERVICE_INJECTION_TOKEN,
 } from '@porrtal/a-api';
-import { StrapiAdapterService } from './strapi-adapter.service';
+import { StrapiAdapterService, STRAPI_ADAPTER_SERVICE_CONFIG_INJECTION_TOKEN } from './strapi-adapter.service';
 import { LoginService } from '@porrtal/a-shell-material';
 
 export function provideOAuthClient(
@@ -21,16 +21,28 @@ export function provideOAuthClient(
       provide: AUTH_N_INTERFACE,
       useClass: StrapiAdapterService,
     },
+    {
+      provide: STRAPI_ADAPTER_SERVICE_CONFIG_INJECTION_TOKEN,
+      useValue: {
+        strapiUri: 'http://localhost:8090'
+      }
+    }
   ];
 
   switch (authConfig.shellUiLibrary) {
     case 'material':
-      providers.push(LoginService, {
-        provide: LOGIN_SERVICE_CONFIG_INJECTION_TOKEN,
-        useValue: {
-          allowRegistration: authConfig.allowRegistration,
+      providers.push(
+        {
+          provide: LOGIN_SERVICE_INJECTION_TOKEN,
+          useClass: LoginService,
         },
-      });
+        {
+          provide: LOGIN_SERVICE_CONFIG_INJECTION_TOKEN,
+          useValue: {
+            allowRegistration: authConfig.allowRegistration,
+          },
+        }
+      );
       break;
 
     default:
