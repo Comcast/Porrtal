@@ -35,3 +35,5 @@ export * from './lib/banner-menu-bar/banner-menu-bar.component';
 export * from './lib/banner-menu-inline/banner-menu-inline.component';
 
 export * from './lib/banner-menu-item/banner-menu-item.component';
+
+export * from './lib/login-service/login.service';
