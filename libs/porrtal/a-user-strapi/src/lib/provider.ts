@@ -1,5 +1,6 @@
 import {
   EnvironmentProviders,
+  importProvidersFrom,
   makeEnvironmentProviders,
   Provider,
 } from '@angular/core';
@@ -10,8 +11,12 @@ import {
   LOGIN_SERVICE_CONFIG_INJECTION_TOKEN,
   LOGIN_SERVICE_INJECTION_TOKEN,
 } from '@porrtal/a-api';
-import { StrapiAdapterService, STRAPI_ADAPTER_SERVICE_CONFIG_INJECTION_TOKEN } from './strapi-adapter.service';
+import {
+  StrapiAdapterService,
+  STRAPI_ADAPTER_SERVICE_CONFIG_INJECTION_TOKEN,
+} from './strapi-adapter.service';
 import { LoginService } from '@porrtal/a-shell-material';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 export function provideOAuthClient(
   authConfig: StrapiAuthConfig
@@ -24,9 +29,9 @@ export function provideOAuthClient(
     {
       provide: STRAPI_ADAPTER_SERVICE_CONFIG_INJECTION_TOKEN,
       useValue: {
-        strapiUri: 'http://localhost:8090'
-      }
-    }
+        strapiUri: 'http://localhost:8090',
+      },
+    },
   ];
 
   switch (authConfig.shellUiLibrary) {
@@ -75,6 +80,9 @@ export function provideOAuthClient(
   //   );
   // }
 
-  const adapterProviders = makeEnvironmentProviders(providers);
-  return [adapterProviders];
+  const adapterProvidersArray = [makeEnvironmentProviders(providers)];
+  if (authConfig.shellUiLibrary === 'material') {
+    adapterProvidersArray.push(importProvidersFrom(MatDialogModule));
+  }
+  return adapterProvidersArray;
 }

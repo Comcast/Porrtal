@@ -64,7 +64,15 @@ export class StrapiAdapterService
           });
           break;
 
-        case 'cancel':
+          case 'register':
+            console.log(`Register: strapi uri: ${this.strapiAdapterServiceConfig.strapiUri}`);
+            this.set({
+              user: { name: result.user, email: result.email },
+              isAuthenticated: true,
+            });
+            break;
+  
+          case 'cancel':
           console.log('Login cancelled...');
           break;
 
