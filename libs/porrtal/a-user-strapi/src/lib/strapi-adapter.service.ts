@@ -6,6 +6,7 @@ import {
   LoginServiceInterface,
   LOGIN_SERVICE_INJECTION_TOKEN,
 } from '@porrtal/a-api';
+import { HttpClient } from '@angular/common/http';
 
 export interface StrapiAdapterInterface {
   isAuthenticated: boolean;
@@ -41,7 +42,8 @@ export class StrapiAdapterService
     @Inject(LOGIN_SERVICE_INJECTION_TOKEN)
     private loginService: LoginServiceInterface,
     @Inject(STRAPI_ADAPTER_SERVICE_CONFIG_INJECTION_TOKEN)
-    private strapiAdapterServiceConfig: StrapiAdapterServiceConfigInterface
+    private strapiAdapterServiceConfig: StrapiAdapterServiceConfigInterface,
+    private httpClient: HttpClient
   ) {
     console.log('creating msal-adapter.service...');
 
@@ -57,22 +59,48 @@ export class StrapiAdapterService
     this.loginService.getUserLoginData().subscribe((result) => {
       switch (result.type) {
         case 'login':
-          console.log(`Login: strapi uri: ${this.strapiAdapterServiceConfig.strapiUri}`);
+          console.log(
+            `Login: strapi uri: ${this.strapiAdapterServiceConfig.strapiUri}`
+          );
+
+          this.httpClient
+            .post<{ user: { username: string; email: string }, jwt: string }>(
+              `${this.strapiAdapterServiceConfig.strapiUri}/api/auth/local`,
+              {
+                identifier: result.identifier,
+                password: result.password,
+              }
+            )
+            .subscribe({
+              next: (response) => {
+                console.log('strapi login response: ', response);
+                this.set({
+                  user: {
+                    name: response.user.username,
+                    email: response.user.email,
+                  },
+                  isAuthenticated: true,
+                });
+              },
+              error: (err) => {
+                alert(`strapi login error: ${JSON.stringify(err)}`);
+                this.set({ isAuthenticated: false});
+              },
+              complete: () => {},
+            });
+          break;
+
+        case 'register':
+          console.log(
+            `Register: strapi uri: ${this.strapiAdapterServiceConfig.strapiUri}`
+          );
           this.set({
-            user: { name: result.identifier, email: 'undefined' },
+            user: { name: result.user, email: result.email },
             isAuthenticated: true,
           });
           break;
 
-          case 'register':
-            console.log(`Register: strapi uri: ${this.strapiAdapterServiceConfig.strapiUri}`);
-            this.set({
-              user: { name: result.user, email: result.email },
-              isAuthenticated: true,
-            });
-            break;
-  
-          case 'cancel':
+        case 'cancel':
           console.log('Login cancelled...');
           break;
 

@@ -17,7 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     PorrtalStrapiModule.forRoot({
       shellUiLibrary: 'material',
-      allowRegistration: false
+      allowRegistration: true,
+      strapiUri: 'http://localhost:1337'
     }),
     BrowserAnimationsModule
   ],

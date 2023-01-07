@@ -29,7 +29,7 @@ export function provideOAuthClient(
     {
       provide: STRAPI_ADAPTER_SERVICE_CONFIG_INJECTION_TOKEN,
       useValue: {
-        strapiUri: 'http://localhost:8090',
+        strapiUri: authConfig.strapiUri,
       },
     },
   ];

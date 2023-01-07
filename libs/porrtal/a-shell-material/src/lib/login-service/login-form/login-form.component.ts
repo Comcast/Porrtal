@@ -73,7 +73,7 @@ export class LoginFormComponent {
       this.matDialogRef.close({
         type: 'login',
         identifier: this.loginForm.controls['identifier'].value,
-        email: 'mike@porrtal.io',
+        password: this.loginForm.controls['password'].value,
       });
     } else {
       this.matDialogRef.close({

@@ -6,6 +6,7 @@ import { LoginServiceInterface } from '@porrtal/a-api';
 export interface StrapiAuthConfig {
   shellUiLibrary: 'material';
   allowRegistration: boolean;
+  strapiUri: string;
 }
 
 @NgModule({
