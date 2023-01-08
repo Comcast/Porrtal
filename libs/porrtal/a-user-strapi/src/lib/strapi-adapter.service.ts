@@ -51,6 +51,36 @@ export class StrapiAdapterService
 
     this.isAuthenticated$ = this.select('isAuthenticated');
     this.isInitialized$ = this.select('isInitialized');
+
+    const jwt = localStorage.getItem('strapiJwt');
+
+    if (jwt) {
+      this.httpClient
+        .get<{ username: string; email: string }>(
+          `${this.strapiAdapterServiceConfig.strapiUri}/api/users/me`,
+          {
+            headers: { Authorization: `Bearer ${jwt}` },
+          }
+        )
+        .subscribe({
+          next: (response) => {
+            console.log('strapi user/me response: ', response);
+
+            this.set({
+              user: {
+                name: response.username,
+                email: response.email,
+              },
+              isAuthenticated: true,
+            });
+          },
+          error: (err) => {
+            alert(`strapi login error: ${JSON.stringify(err)}`);
+            this.set({ isAuthenticated: false });
+          },
+          complete: () => {},
+        });
+    }
   }
 
   loginWithRedirect?: (() => void) | undefined = () => {
@@ -64,7 +94,7 @@ export class StrapiAdapterService
           );
 
           this.httpClient
-            .post<{ user: { username: string; email: string }, jwt: string }>(
+            .post<{ user: { username: string; email: string }; jwt: string }>(
               `${this.strapiAdapterServiceConfig.strapiUri}/api/auth/local`,
               {
                 identifier: result.identifier,
@@ -74,6 +104,9 @@ export class StrapiAdapterService
             .subscribe({
               next: (response) => {
                 console.log('strapi login response: ', response);
+
+                localStorage.setItem('strapiJwt', response.jwt);
+
                 this.set({
                   user: {
                     name: response.user.username,
@@ -84,7 +117,7 @@ export class StrapiAdapterService
               },
               error: (err) => {
                 alert(`strapi login error: ${JSON.stringify(err)}`);
-                this.set({ isAuthenticated: false});
+                this.set({ isAuthenticated: false });
               },
               complete: () => {},
             });
@@ -94,10 +127,36 @@ export class StrapiAdapterService
           console.log(
             `Register: strapi uri: ${this.strapiAdapterServiceConfig.strapiUri}`
           );
-          this.set({
-            user: { name: result.user, email: result.email },
-            isAuthenticated: true,
-          });
+
+          this.httpClient
+            .post<{ user: { username: string; email: string }; jwt: string }>(
+              `${this.strapiAdapterServiceConfig.strapiUri}/api/auth/local/register`,
+              {
+                username: result.user,
+                email: result.email,
+                password: result.password,
+              }
+            )
+            .subscribe({
+              next: (response) => {
+                console.log('strapi login response: ', response);
+
+                localStorage.setItem('strapiJwt', response.jwt);
+
+                this.set({
+                  user: {
+                    name: response.user.username,
+                    email: response.user.email,
+                  },
+                  isAuthenticated: true,
+                });
+              },
+              error: (err) => {
+                alert(`strapi registration error: ${JSON.stringify(err)}`);
+                this.set({ isAuthenticated: false });
+              },
+              complete: () => {},
+            });
           break;
 
         case 'cancel':
@@ -116,5 +175,6 @@ export class StrapiAdapterService
 
   logout?: (() => void) | undefined = () => {
     this.set({ user: undefined, isAuthenticated: false });
+    localStorage.removeItem('strapiJwt');
   };
 }
