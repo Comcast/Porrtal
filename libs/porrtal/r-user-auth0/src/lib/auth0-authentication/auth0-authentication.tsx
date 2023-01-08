@@ -17,7 +17,7 @@ import { AuthContext } from '@porrtal/r-user';
 import { AuthNInterface } from '@porrtal/r-user';
 
 interface Auth0AdapterProps {
-  children?: React.ReactChild | React.ReactChild[];
+  children?: React.ReactNode;
 }
 
 function Auth0Adapter(props: Auth0AdapterProps) {
@@ -39,7 +39,7 @@ export interface Auth0AuthenticationProps {
   domain: string;
   clientId: string;
   redirectUri: string;
-  children?: React.ReactChild | React.ReactChild[];
+  children?: React.ReactNode;
 }
 
 export function Auth0Authentication(props: Auth0AuthenticationProps) {
