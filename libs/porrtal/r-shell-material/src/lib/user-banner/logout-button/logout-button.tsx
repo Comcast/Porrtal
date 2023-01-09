@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import useAuth from '../use-auth/use-auth';
+import { useAuth } from '@porrtal/r-user';
 
 /* eslint-disable-next-line */
 export interface LogoutButtonProps {}

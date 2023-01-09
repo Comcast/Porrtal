@@ -14,7 +14,6 @@ limitations under the License.
 */
 import { ShellState } from '@porrtal/r-shell';
 import { ShellMaterial } from '@porrtal/r-shell-material';
-import { UserBanner } from '@porrtal/r-user';
 import { KeycloakAuthentication } from '@porrtal/r-user-keycloak';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
@@ -65,7 +64,6 @@ export function Index() {
                   },
                 ],
               }}
-              userBanner={UserBanner}
             />
           </ShellState>
         </KeycloakAuthentication>

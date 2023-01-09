@@ -16,7 +16,6 @@ limitations under the License.
 import { View } from '@porrtal/r-api';
 import { ShellState } from '@porrtal/r-shell';
 import { ShellMaterial } from '@porrtal/r-shell-material';
-import { UserBanner } from '@porrtal/r-user';
 import { Auth0Authentication } from '@porrtal/r-user-auth0';
 import styles from './app.module.scss';
 
@@ -106,7 +105,6 @@ export function App() {
             displayText: 'porrtal-auth - react - auth0',
             displayIcon: 'cyclone',
           }}
-          userBanner={UserBanner}
         />
       </ShellState>
     </Auth0Authentication>

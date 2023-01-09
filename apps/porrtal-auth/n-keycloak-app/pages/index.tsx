@@ -18,7 +18,6 @@ import styles from './index.module.scss';
 import { ShellState } from '@porrtal/r-shell';
 import { ShellMaterial } from '@porrtal/r-shell-material';
 import { View } from '@porrtal/r-api';
-import { UserBanner } from '@porrtal/r-user';
 import { KeycloakAuthentication } from '@porrtal/r-user-keycloak';
 
 const views: View[] = [
@@ -120,7 +119,6 @@ export function Index() {
                 displayText: 'porrtal-auth - nextjs - keycloak',
                 displayIcon: 'cyclone',
               }}
-              userBanner={UserBanner}
             />
           </ShellState>
         </KeycloakAuthentication>

@@ -12,23 +12,19 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import useAuth from '../use-auth/use-auth';
+import { useAuth } from '@porrtal/r-user';
 
 /* eslint-disable-next-line */
-export interface LoginButtonProps {}
+export interface LogoutButtonProps {}
 
-export function LoginButton(props: LoginButtonProps) {
+export function LogoutButton(props: LogoutButtonProps) {
   const auth = useAuth();
 
   return (
-    <button
-      onClick={() =>
-        auth?.loginWithRedirect ? auth?.loginWithRedirect() : null
-      }
-    >
-      Log In
+    <button onClick={() => (auth?.logout ? auth?.logout() : null)}>
+      Log Out
     </button>
   );
 }
 
-export default LoginButton;
+export default LogoutButton;

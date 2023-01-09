@@ -17,7 +17,6 @@ import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 
 import { ShellState } from '@porrtal/r-shell';
-import { UserBanner } from '@porrtal/r-user';
 import { testModules, testViews } from '../../test-config/test-view-states';
 import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
 import { useEffect, useState } from 'react';
@@ -72,7 +71,6 @@ export function ThirdPage(props: ThirdPageProps) {
                   },
                 ],
               }}
-              userBanner={UserBanner}
             />
           </ShellState>
         </KeycloakAuthentication>

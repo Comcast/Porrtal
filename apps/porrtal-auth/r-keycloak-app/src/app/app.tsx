@@ -19,7 +19,6 @@ import { View } from '@porrtal/r-api';
 import { KeycloakAuthentication } from '@porrtal/r-user-keycloak';
 import { ShellState } from '@porrtal/r-shell';
 import { ShellMaterial } from '@porrtal/r-shell-material';
-import { UserBanner } from '@porrtal/r-user';
 
 const views: View[] = [
   {
@@ -109,7 +108,6 @@ export function App() {
             displayText: 'porrtal-auth - react - keycloak',
             displayIcon: 'cyclone',
           }}
-          userBanner={UserBanner}
         />
       </ShellState>
     </KeycloakAuthentication>

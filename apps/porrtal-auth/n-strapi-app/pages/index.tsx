@@ -19,7 +19,6 @@ import { StrapiAuthentication } from '@porrtal/r-user-strapi';
 import { ShellState } from '@porrtal/r-shell';
 import { ShellMaterial } from '@porrtal/r-shell-material';
 import { View } from '@porrtal/r-api';
-import { UserBanner } from '@porrtal/r-user';
 
 const views: View[] = [
   {
@@ -105,7 +104,7 @@ export function Index() {
     return (
       <>
         <Head>
-          <title>@porrtal - porrtal-auth - n-auth0-app</title>
+          <title>@porrtal - porrtal-auth - n-strapi-app</title>
         </Head>
 
         <StrapiAuthentication
@@ -115,10 +114,9 @@ export function Index() {
           <ShellState views={views}>
             <ShellMaterial
               bannerData={{
-                displayText: 'porrtal-auth - nextjs - auth0',
+                displayText: 'porrtal-auth - nextjs - strapi',
                 displayIcon: 'cyclone',
               }}
-              userBanner={UserBanner}
             />
           </ShellState>
         </StrapiAuthentication>

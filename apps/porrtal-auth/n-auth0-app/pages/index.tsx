@@ -19,7 +19,6 @@ import { Auth0Authentication } from '@porrtal/r-user-auth0';
 import { ShellState } from '@porrtal/r-shell';
 import { ShellMaterial } from '@porrtal/r-shell-material';
 import { View } from '@porrtal/r-api';
-import { UserBanner } from '@porrtal/r-user';
 
 const views: View[] = [
   {
@@ -119,7 +118,6 @@ export function Index() {
             displayText: 'porrtal-auth - nextjs - auth0',
             displayIcon: 'cyclone',
           }}
-          userBanner={UserBanner}
         />
       </ShellState>
     </Auth0Authentication>

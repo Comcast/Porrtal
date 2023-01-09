@@ -12,6 +12,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-export * from './lib/auth-n-interface';
-export * from './lib/use-auth/use-auth';
-export * from './lib/use-auth/auth-context';
+import { render } from '@testing-library/react';
+
+import UserBanner from './user-banner';
+
+describe('UserBanner', () => {
+  it('should render successfully', () => {
+    const { baseElement } = render(<UserBanner />);
+    expect(baseElement).toBeTruthy();
+  });
+});

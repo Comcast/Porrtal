@@ -12,9 +12,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import LoginButton from '../login-button/login-button';
-import LogoutButton from '../logout-button/logout-button';
-import useAuth from '../use-auth/use-auth';
+import LoginButton from './login-button/login-button';
+import LogoutButton from './logout-button/logout-button';
+import { useAuth } from '@porrtal/r-user';
 import styles from './user-banner.module.scss';
 
 /* eslint-disable-next-line */
