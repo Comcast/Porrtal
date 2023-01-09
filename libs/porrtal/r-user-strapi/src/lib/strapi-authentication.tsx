@@ -168,7 +168,17 @@ export function StrapiAuthentication(props: StrapiAuthenticationProps) {
         });
       });
   };
-  const strapiLogout = () => {};
+  const strapiLogout = () => {
+    localStorage.removeItem('strapiJwt');
+
+    setStrapiState({
+      user: undefined,
+      jwt: undefined,
+      loginStrategy: props.allowRegistration ? 'loginAndRegister' : 'login',
+      isAuthenticated: false,
+      isInitialized: true,
+    });
+  };
 
   const auth: AuthNInterface = {
     user: strapiState.user,

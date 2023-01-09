@@ -12,4 +12,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-export * from './lib/strapi-authentication';
+import { render } from '@testing-library/react';
+
+import V4 from './v4';
+
+describe('V4', () => {
+  it('should render successfully', () => {
+    const { baseElement } = render(<V4 />);
+    expect(baseElement).toBeTruthy();
+  });
+});

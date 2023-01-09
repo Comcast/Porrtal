@@ -12,4 +12,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-export * from './lib/strapi-authentication';
+import styles from './main-view.module.scss';
+
+/* eslint-disable-next-line */
+export interface MainViewProps {}
+
+export function MainView(props: MainViewProps) {
+  return (
+    <div className={styles['container']}>
+      <h1>Welcome to MainView!</h1>
+    </div>
+  );
+}
+
+export default MainView;

@@ -27,7 +27,7 @@ export function UserBanner(props: UserBannerProps) {
   if (auth?.isInitialized) {
     return (
       <div className={styles['container']}>
-        {auth?.isAuthenticated && <span>{auth?.user?.email}</span>}
+        {auth?.isAuthenticated && <span className={styles['user-name']}>{auth?.user?.name}</span>}
         {!auth?.isAuthenticated && <LoginButton />}
         {auth?.isAuthenticated && <LogoutButton />}
       </div>
