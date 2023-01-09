@@ -12,12 +12,27 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
+export interface RegisterUserInfo {
+  user: string;
+  email: string;
+  password: string;
+}
+
+export interface LoginCreds {
+  identifier: string;
+  password: string;
+}
+
 export type AuthNInterface = {
   user?: {
     name: string;
     email: string;
   };
+  loginStrategy: 'loginWithRedirect' | 'login' | 'loginAndRegister';
   loginWithRedirect?: () => void;
+  login?: (creds: LoginCreds) => void;
+  register?: (userInfo: RegisterUserInfo) => void;
   logout?: () => void;
   isAuthenticated: boolean;
   isInitialized: boolean;
