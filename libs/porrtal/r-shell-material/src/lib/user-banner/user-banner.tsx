@@ -23,19 +23,49 @@ export interface UserBannerProps {}
 export function UserBanner(props: UserBannerProps) {
   const auth = useAuth();
 
-  console.log(`UserBanner: auth def'd(${auth ? 'true' : 'false'}), isAuthenticated('${auth?.isAuthenticated}'), isInitialized('${auth?.isInitialized}')`);
-  
+  console.log(
+    `UserBanner: auth def'd(${auth ? 'true' : 'false'}), isAuthenticated('${
+      auth?.isAuthenticated
+    }'), isInitialized('${auth?.isInitialized}')`
+  );
+
   if (!auth) {
-    console.log('No authentication defined for application.')
-    return <div></div>
+    console.log('No authentication defined for application.');
+    return <div></div>;
   }
 
   if (auth.isInitialized) {
     return (
       <div className={styles['container']}>
-        {auth?.isAuthenticated && <span className={styles['user-name']}>{auth?.user?.name}</span>}
-        {!auth?.isAuthenticated && <LoginButton />}
-        {auth?.isAuthenticated && <LogoutButton />}
+        {auth?.isAuthenticated && (
+          <span className={styles['user-name']}>{auth?.user?.name}</span>
+        )}
+        {!auth?.isAuthenticated && (
+          <button
+            onClick={() => {
+              if (!auth) {
+                return;
+              }
+              switch (auth.loginStrategy) {
+                case 'loginWithRedirect':
+                  auth?.loginWithRedirect ? auth?.loginWithRedirect() : null;
+                  break;
+
+                case 'login':
+                case 'loginAndRegister':
+                  alert('login');
+                  break;
+              }
+            }}
+          >
+            Log In ({auth?.loginStrategy})
+          </button>
+        )}
+        {auth?.isAuthenticated && (
+          <button onClick={() => (auth?.logout ? auth?.logout() : null)}>
+            Log Out
+          </button>
+        )}
       </div>
     );
   } else {
