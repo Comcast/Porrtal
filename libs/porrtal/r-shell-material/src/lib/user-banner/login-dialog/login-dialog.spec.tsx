@@ -12,28 +12,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+import { render } from '@testing-library/react';
 
-export interface RegisterUserInfo {
-  username: string;
-  email: string;
-  password: string;
-}
+import LoginDialog from './login-dialog';
 
-export interface LoginCreds {
-  identifier: string;
-  password: string;
-}
-
-export type AuthNInterface = {
-  user?: {
-    name: string;
-    email: string;
-  };
-  loginStrategy: 'loginWithRedirect' | 'login' | 'loginAndRegister';
-  loginWithRedirect?: () => void;
-  login?: (creds: LoginCreds) => void;
-  register?: (userInfo: RegisterUserInfo) => void;
-  logout?: () => void;
-  isAuthenticated: boolean;
-  isInitialized: boolean;
-} | null;
+describe('LoginDialog', () => {
+  it('should render successfully', () => {
+    const { baseElement } = render(<LoginDialog />);
+    expect(baseElement).toBeTruthy();
+  });
+});

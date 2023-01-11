@@ -1,0 +1,22 @@
+.dialog-link {
+    color: blue;
+    text-decoration: underline;
+    font-size: smaller;
+    float: right;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-bottom: 0;
+    position: relative;
+    top: 3px;
+}
+
+.dialog-buttons {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.dialog-field {
+    margin-top: 20px;
+}

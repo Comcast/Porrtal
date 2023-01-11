@@ -12,16 +12,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import LoginButton from './login-button/login-button';
-import LogoutButton from './logout-button/logout-button';
 import { useAuth } from '@porrtal/r-user';
 import styles from './user-banner.module.scss';
+import LoginDialog from './login-dialog/login-dialog';
+import { useState } from 'react';
 
 /* eslint-disable-next-line */
 export interface UserBannerProps {}
 
 export function UserBanner(props: UserBannerProps) {
   const auth = useAuth();
+  const [open, setOpen] = useState(false);
 
   console.log(
     `UserBanner: auth def'd(${auth ? 'true' : 'false'}), isAuthenticated('${
@@ -53,12 +54,12 @@ export function UserBanner(props: UserBannerProps) {
 
                 case 'login':
                 case 'loginAndRegister':
-                  alert('login');
+                  setOpen(true);
                   break;
               }
             }}
           >
-            Log In ({auth?.loginStrategy})
+            Login
           </button>
         )}
         {auth?.isAuthenticated && (
@@ -66,6 +67,32 @@ export function UserBanner(props: UserBannerProps) {
             Log Out
           </button>
         )}
+        <LoginDialog
+          open={open}
+          loginStrategy={
+            auth.loginStrategy === 'loginWithRedirect'
+              ? 'login'
+              : 'loginAndRegister'
+          }
+          onClose={(result) => {
+            if (result.type === 'login') {
+              auth.login && auth.login({
+                identifier: result.identifier,
+                password: result.password
+              });
+            }
+
+            if (result.type === 'register') {
+              auth.register && auth.register({
+                username: result.user,
+                email: result.email,
+                password: result.password
+              })
+            }
+
+            setOpen(false);
+          }}
+        ></LoginDialog>
       </div>
     );
   } else {

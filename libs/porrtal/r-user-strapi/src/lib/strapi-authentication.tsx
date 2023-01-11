@@ -106,6 +106,9 @@ export function StrapiAuthentication(props: StrapiAuthenticationProps) {
     fetch(`${props.strapiUri}/api/auth/local`, {
       method: 'POST',
       body: JSON.stringify(creds),
+      headers: {
+        "Content-Type": "application/json"
+      }
     })
       .then((response) => response.json())
       .catch((err) => {
@@ -140,6 +143,9 @@ export function StrapiAuthentication(props: StrapiAuthenticationProps) {
     fetch(`${props.strapiUri}/api/auth/local/register`, {
       method: 'POST',
       body: JSON.stringify(userInfo),
+      headers: {
+        "Content-Type": "application/json"
+      }
     })
       .then((response) => response.json())
       .catch((err) => {
