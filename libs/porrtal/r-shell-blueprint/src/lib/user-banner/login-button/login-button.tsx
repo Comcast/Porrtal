@@ -26,7 +26,7 @@ export function LoginButton(props: LoginButtonProps) {
         auth?.loginWithRedirect ? auth?.loginWithRedirect() : null
       }
     >
-      Log In
+      Login
     </button>
   );
 }

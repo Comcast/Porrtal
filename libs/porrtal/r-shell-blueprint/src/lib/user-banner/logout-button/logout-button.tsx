@@ -22,7 +22,7 @@ export function LogoutButton(props: LogoutButtonProps) {
 
   return (
     <button onClick={() => (auth?.logout ? auth?.logout() : null)}>
-      Log Out
+      Logout
     </button>
   );
 }
