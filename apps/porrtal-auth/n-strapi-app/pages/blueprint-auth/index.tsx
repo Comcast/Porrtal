@@ -1,24 +1,14 @@
-﻿/*
-Copyright 2022 Comcast Cable Communications Management, LLC
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 import { StrapiAuthentication } from '@porrtal/r-user-strapi';
 import { ShellState } from '@porrtal/r-shell';
-import { ShellMaterial } from '@porrtal/r-shell-material';
 import { View } from '@porrtal/r-api';
+import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
+
+import '@blueprintjs/core/lib/css/blueprint.css';
+import '@blueprintjs/icons/lib/css/blueprint-icons.css';
+import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 
 const views: View[] = [
   {
@@ -26,7 +16,7 @@ const views: View[] = [
     paneType: 'main',
     launchAtStartup: true,
     componentName: 'MainView',
-    componentModule: () => import('../views/main-view/main-view'),
+    componentModule: () => import('../../views/main-view/main-view'),
     key: 'main-view',
     displayText: 'main-view',
     displayIcon: 'home',
@@ -36,60 +26,60 @@ const views: View[] = [
     paneType: 'nav',
     launchAtStartup: true,
     componentName: 'NavView',
-    componentModule: () => import('../views/nav-view/nav-view'),
+    componentModule: () => import('../../views/nav-view/nav-view'),
     key: 'nav-view',
     displayText: 'nav-view',
-    displayIcon: 'campaign',
+    displayIcon: 'cell-tower',
   },
   {
     viewId: 'profile',
     paneType: 'right',
     launchAtStartup: true,
     componentName: 'Profile',
-    componentModule: () => import('../views/profile/profile'),
+    componentModule: () => import('../../views/profile/profile'),
     key: 'profile',
     displayText: 'profile',
-    displayIcon: 'account_circle',
+    displayIcon: 'user',
   },
   {
     viewId: 'v1',
     paneType: 'bottom',
     launchAtStartup: true,
     componentName: 'V1',
-    componentModule: () => import('../views/v1/v1'),
+    componentModule: () => import('../../views/v1/v1'),
     key: 'v1',
     displayText: 'v1',
-    displayIcon: 'view_in_ar',
+    displayIcon: 'cube',
   },
   {
     viewId: 'v2',
     paneType: 'bottom',
     launchAtStartup: true,
     componentName: 'V2',
-    componentModule: () => import('../views/v2/v2'),
+    componentModule: () => import('../../views/v2/v2'),
     key: 'v2',
     displayText: 'v2',
-    displayIcon: 'view_in_ar',
+    displayIcon: 'cube',
   },
   {
     viewId: 'v3',
     paneType: 'bottom',
     launchAtStartup: true,
     componentName: 'V3',
-    componentModule: () => import('../views/v3/v3'),
+    componentModule: () => import('../../views/v3/v3'),
     key: 'v3',
     displayText: 'v3',
-    displayIcon: 'view_in_ar',
+    displayIcon: 'cube',
   },
   {
     viewId: 'v4',
     paneType: 'bottom',
     launchAtStartup: true,
     componentName: 'V4',
-    componentModule: () => import('../views/v4/v4'),
+    componentModule: () => import('../../views/v4/v4'),
     key: 'v4',
     displayText: 'v4',
-    displayIcon: 'view_in_ar',
+    displayIcon: 'cube',
   },
 ];
 
@@ -112,17 +102,17 @@ export function Index() {
           allowRegistration={true}
         >
           <ShellState views={views}>
-            <ShellMaterial
+            <ShellBlueprint
               bannerData={{
-                displayText: 'porrtal-auth - nextjs - strapi - material',
-                displayIcon: 'cyclone',
+                displayText: 'porrtal-auth - nextjs - strapi - blueprint',
+                displayIcon: 'hurricane',
                 childData: [
                   {
-                    displayText: 'strapi-blueprint',
-                    displayIcon: 'cyclone',
-                    targetUrl: '/blueprint-auth',
+                    displayText: 'strapi-material',
+                    displayIcon: 'hurricane',
+                    targetUrl: '/',
                   },
-                ]
+                ],
               }}
             />
           </ShellState>
