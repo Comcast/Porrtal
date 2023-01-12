@@ -29,6 +29,7 @@ function KeycloakAdapter(props: KeycloakAuthAdapterProps) {
       name: keycloak?.tokenParsed?.['name'] ?? '',
       email: keycloak?.tokenParsed?.['email'] ?? '',
     },
+    loginStrategy: 'loginWithRedirect',
     loginWithRedirect: () =>
       keycloak?.login({ redirectUri: props.redirectUri }),
     logout: keycloak?.logout,

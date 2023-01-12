@@ -24,6 +24,7 @@ function Auth0Adapter(props: Auth0AdapterProps) {
   const auth0 = useAuth0();
   const auth: AuthNInterface = {
     user: auth0 ? (auth0?.user as { name: string; email: string }) : undefined,
+    loginStrategy: 'loginWithRedirect',
     loginWithRedirect: auth0?.loginWithRedirect,
     logout: auth0?.logout,
     isAuthenticated: auth0?.isAuthenticated,
