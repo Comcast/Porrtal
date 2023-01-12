@@ -1,26 +1,5 @@
-﻿/*
-Copyright 2022 Comcast Cable Communications Management, LLC
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-import {
-  Button,
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  TextField,
-} from '@mui/material';
+import { Button, Dialog, InputGroup } from '@blueprintjs/core';
 import { LoginDialogProps, useLoginDialogState } from '@porrtal/r-shell';
-import { useReducer } from 'react';
 import styles from './login-dialog.module.scss';
 
 export function LoginDialog(props: LoginDialogProps) {
@@ -31,55 +10,55 @@ export function LoginDialog(props: LoginDialogProps) {
   };
 
   return (
-    <Dialog onClose={handleClose} open={props.open}>
-      <DialogTitle>
-        <span>
+    <Dialog
+      onClose={handleClose}
+      isOpen={props.open}
+      title={loginDialogState.loginType === 'register' ? 'Register' : 'Login'}
+    >
+      <div className={styles['container']}>
+        <div className={styles['changer-container']}>
+          <span></span>
           {props.loginStrategy === 'loginAndRegister' &&
-          loginDialogState.loginType === 'register'
-            ? 'Register'
-            : 'Login'}
-        </span>
-        {props.loginStrategy === 'loginAndRegister' &&
-          loginDialogState.loginType === 'register' && (
-            <a
-              className={styles['dialog-link']}
-              onClick={() =>
-                loginDialogDispatch({
-                  type: 'setLoginType',
-                  loginType: 'login',
-                })
-              }
-            >
-              login
-            </a>
-          )}
-        {props.loginStrategy === 'loginAndRegister' &&
-          loginDialogState.loginType === 'login' && (
-            <a
-              className={styles['dialog-link']}
-              onClick={() =>
-                loginDialogDispatch({
-                  type: 'setLoginType',
-                  loginType: 'register',
-                })
-              }
-            >
-              register
-            </a>
-          )}
-      </DialogTitle>
-      <DialogContent>
+            loginDialogState.loginType === 'register' && (
+              <a
+                className={styles['dialog-link']}
+                onClick={() =>
+                  loginDialogDispatch({
+                    type: 'setLoginType',
+                    loginType: 'login',
+                  })
+                }
+              >
+                login
+              </a>
+            )}
+          {props.loginStrategy === 'loginAndRegister' &&
+            loginDialogState.loginType === 'login' && (
+              <a
+                className={styles['dialog-link']}
+                onClick={() => {
+                  loginDialogDispatch({
+                    type: 'setLoginType',
+                    loginType: 'register',
+                  });
+                }}
+              >
+                register
+              </a>
+            )}
+        </div>
+
         {/* ----- login ---- */}
         {loginDialogState.loginType === 'login' && (
           <>
-            <TextField
-              style={{ marginTop: 10 }}
-              error={loginDialogState.identifierHasError}
-              helperText={loginDialogState.identifierErrorMessage}
-              fullWidth
+            <div className={styles['error-text']}>
+              {loginDialogState.identifierErrorMessage}
+            </div>
+            <InputGroup
+              fill
               id="identifier"
-              label="Identifier"
-              variant="standard"
+              intent={loginDialogState.identifierHasError ? 'danger' : 'none'}
+              placeholder="Identifier"
               onChange={(evt) =>
                 loginDialogDispatch({
                   type: 'setIdentifier',
@@ -87,14 +66,14 @@ export function LoginDialog(props: LoginDialogProps) {
                 })
               }
             />
-            <TextField
-              style={{ marginTop: 10 }}
-              fullWidth
-              error={loginDialogState.passwordHasError}
-              helperText={loginDialogState.passwordErrorMessage}
-              id="password"
-              label="Password"
-              variant="standard"
+            <div className={styles['error-text']}>
+              {loginDialogState.passwordErrorMessage}
+            </div>
+            <InputGroup
+              fill
+              id="identifier"
+              intent={loginDialogState.passwordHasError ? 'danger' : 'none'}
+              placeholder="Password"
               type="password"
               onChange={(evt) =>
                 loginDialogDispatch({
@@ -106,7 +85,6 @@ export function LoginDialog(props: LoginDialogProps) {
             <span className={styles['dialog-buttons']}>
               <span></span>
               <Button
-                variant="outlined"
                 onClick={() => {
                   props.onClose({ type: 'cancel' });
                 }}
@@ -114,7 +92,7 @@ export function LoginDialog(props: LoginDialogProps) {
                 Cancel
               </Button>
               <Button
-                variant="contained"
+                intent="primary"
                 disabled={
                   loginDialogState.identifierHasError ||
                   loginDialogState.passwordHasError ||
@@ -145,14 +123,14 @@ export function LoginDialog(props: LoginDialogProps) {
         {/* ---- register ---- */}
         {loginDialogState.loginType === 'register' && (
           <>
-            <TextField
-              style={{ marginTop: 10 }}
-              error={loginDialogState.nameHasError}
-              helperText={loginDialogState.nameErrorMessage}
-              fullWidth
+            <div className={styles['error-text']}>
+              {loginDialogState.nameErrorMessage}
+            </div>
+            <InputGroup
+              fill
               id="name"
-              label="Name"
-              variant="standard"
+              intent={loginDialogState.nameHasError ? 'danger' : 'none'}
+              placeholder="Name"
               onChange={(evt) =>
                 loginDialogDispatch({
                   type: 'setName',
@@ -160,14 +138,14 @@ export function LoginDialog(props: LoginDialogProps) {
                 })
               }
             />
-            <TextField
-              style={{ marginTop: 10 }}
-              fullWidth
-              error={loginDialogState.emailHasError}
-              helperText={loginDialogState.emailErrorMessage}
+            <div className={styles['error-text']}>
+              {loginDialogState.emailErrorMessage}
+            </div>
+            <InputGroup
+              fill
               id="email"
-              label="Email"
-              variant="standard"
+              intent={loginDialogState.emailHasError ? 'danger' : 'none'}
+              placeholder="Email"
               onChange={(evt) =>
                 loginDialogDispatch({
                   type: 'setEmail',
@@ -175,14 +153,14 @@ export function LoginDialog(props: LoginDialogProps) {
                 })
               }
             />
-            <TextField
-              style={{ marginTop: 10 }}
-              fullWidth
-              error={loginDialogState.passwordHasError}
-              helperText={loginDialogState.passwordErrorMessage}
+            <div className={styles['error-text']}>
+              {loginDialogState.passwordErrorMessage}
+            </div>
+            <InputGroup
+              fill
               id="password"
-              label="Password"
-              variant="standard"
+              intent={loginDialogState.passwordHasError ? 'danger' : 'none'}
+              placeholder="Password"
               type="password"
               onChange={(evt) =>
                 loginDialogDispatch({
@@ -191,14 +169,14 @@ export function LoginDialog(props: LoginDialogProps) {
                 })
               }
             />
-            <TextField
-              style={{ marginTop: 10 }}
-              fullWidth
-              error={loginDialogState.passwordVerifyHasError}
-              helperText={loginDialogState.passwordVerifyErrorMessage}
+            <div className={styles['error-text']}>
+              {loginDialogState.passwordVerifyErrorMessage}
+            </div>
+            <InputGroup
+              fill
               id="passwordVerify"
-              label="Verify Password"
-              variant="standard"
+              intent={loginDialogState.passwordVerifyHasError ? 'danger' : 'none'}
+              placeholder="Password Verify"
               type="password"
               onChange={(evt) =>
                 loginDialogDispatch({
@@ -210,7 +188,6 @@ export function LoginDialog(props: LoginDialogProps) {
             <span className={styles['dialog-buttons']}>
               <span></span>
               <Button
-                variant="outlined"
                 onClick={() => {
                   props.onClose({ type: 'cancel' });
                 }}
@@ -230,7 +207,7 @@ export function LoginDialog(props: LoginDialogProps) {
                   !loginDialogState.password ||
                   loginDialogState.password.length < 1
                 }
-                variant="contained"
+                intent="primary"
                 onClick={() => {
                   if (
                     loginDialogState.name &&
@@ -253,7 +230,7 @@ export function LoginDialog(props: LoginDialogProps) {
         )}
 
         {props.children}
-      </DialogContent>
+      </div>
     </Dialog>
   );
 }
