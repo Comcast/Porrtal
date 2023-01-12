@@ -16,6 +16,7 @@ import { useAuth } from '@porrtal/r-user';
 import styles from './user-banner.module.scss';
 import LoginDialog from './login-dialog/login-dialog';
 import { useState } from 'react';
+import { Typography } from '@mui/material';
 
 /* eslint-disable-next-line */
 export interface UserBannerProps {}
@@ -39,7 +40,7 @@ export function UserBanner(props: UserBannerProps) {
     return (
       <div className={styles['container']}>
         {auth?.isAuthenticated && (
-          <span className={styles['user-name']}>{auth?.user?.name}</span>
+          <Typography display="inline-block" sx={{marginRight: '10px'}}>{auth?.user?.name}</Typography>
         )}
         {!auth?.isAuthenticated && (
           <button
@@ -64,7 +65,7 @@ export function UserBanner(props: UserBannerProps) {
         )}
         {auth?.isAuthenticated && (
           <button onClick={() => (auth?.logout ? auth?.logout() : null)}>
-            Log Out
+            Logout
           </button>
         )}
         <LoginDialog
