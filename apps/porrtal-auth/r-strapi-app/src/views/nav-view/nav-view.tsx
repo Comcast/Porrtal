@@ -12,13 +12,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { render } from '@testing-library/react';
+import styles from './nav-view.module.scss';
 
-import LoginDialog from './login-dialog';
+/* eslint-disable-next-line */
+export interface NavViewProps {}
 
-describe('LoginDialog', () => {
-  it('should render successfully', () => {
-    const { baseElement } = render(<LoginDialog />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+export function NavView(props: NavViewProps) {
+  return (
+    <div className={styles['container']}>
+      <h1>Welcome to NavView!</h1>
+    </div>
+  );
+}
+
+export default NavView;

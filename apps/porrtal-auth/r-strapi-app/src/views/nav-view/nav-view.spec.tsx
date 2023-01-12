@@ -14,11 +14,11 @@ limitations under the License.
 */
 import { render } from '@testing-library/react';
 
-import LoginDialog from './login-dialog';
+import NavView from './nav-view';
 
-describe('LoginDialog', () => {
+describe('NavView', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<LoginDialog />);
+    const { baseElement } = render(<NavView />);
     expect(baseElement).toBeTruthy();
   });
 });

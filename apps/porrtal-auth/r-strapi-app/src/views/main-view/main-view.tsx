@@ -12,13 +12,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { render } from '@testing-library/react';
+import styles from './main-view.module.scss';
 
-import LoginDialog from './login-dialog';
+/* eslint-disable-next-line */
+export interface MainViewProps {}
 
-describe('LoginDialog', () => {
-  it('should render successfully', () => {
-    const { baseElement } = render(<LoginDialog />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+export function MainView(props: MainViewProps) {
+  return (
+    <div className={styles['container']}>
+      <h1>Welcome to MainView!</h1>
+    </div>
+  );
+}
+
+export default MainView;

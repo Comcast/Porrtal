@@ -12,13 +12,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { render } from '@testing-library/react';
+import styles from './v3.module.scss';
 
-import LoginDialog from './login-dialog';
+/* eslint-disable-next-line */
+export interface V3Props {}
 
-describe('LoginDialog', () => {
-  it('should render successfully', () => {
-    const { baseElement } = render(<LoginDialog />);
-    expect(baseElement).toBeTruthy();
-  });
-});
+export function V3(props: V3Props) {
+  return (
+    <div className={styles['container']}>
+      <h1>Welcome to V3!</h1>
+    </div>
+  );
+}
+
+export default V3;

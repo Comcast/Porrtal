@@ -12,55 +12,100 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { View } from '@porrtal/r-api';
+import { ShellState } from '@porrtal/r-shell';
+import { ShellMaterial } from '@porrtal/r-shell-material';
+import { StrapiAuthentication } from '@porrtal/r-user-strapi';
 import styles from './app.module.scss';
-import NxWelcome from './nx-welcome';
 
-import { Route, Routes, Link } from 'react-router-dom';
+const views: View[] = [
+  {
+    viewId: 'main-view',
+    paneType: 'main',
+    launchAtStartup: true,
+    componentName: 'MainView',
+    componentModule: () => import('../views/main-view/main-view'),
+    key: 'main-view',
+    displayText: 'main-view',
+    displayIcon: 'home',
+  },
+  {
+    viewId: 'nav-view',
+    paneType: 'nav',
+    launchAtStartup: true,
+    componentName: 'NavView',
+    componentModule: () => import('../views/nav-view/nav-view'),
+    key: 'nav-view',
+    displayText: 'nav-view',
+    displayIcon: 'campaign',
+  },
+  {
+    viewId: 'profile',
+    paneType: 'right',
+    launchAtStartup: true,
+    componentName: 'Profile',
+    componentModule: () => import('../views/profile/profile'),
+    key: 'profile',
+    displayText: 'profile',
+    displayIcon: 'account_circle',
+  },
+  {
+    viewId: 'v1',
+    paneType: 'bottom',
+    launchAtStartup: true,
+    componentName: 'V1',
+    componentModule: () => import('../views/v1/v1'),
+    key: 'v1',
+    displayText: 'v1',
+    displayIcon: 'view_in_ar',
+  },
+  {
+    viewId: 'v2',
+    paneType: 'bottom',
+    launchAtStartup: true,
+    componentName: 'V2',
+    componentModule: () => import('../views/v2/v2'),
+    key: 'v2',
+    displayText: 'v2',
+    displayIcon: 'view_in_ar',
+  },
+  {
+    viewId: 'v3',
+    paneType: 'bottom',
+    launchAtStartup: true,
+    componentName: 'V3',
+    componentModule: () => import('../views/v3/v3'),
+    key: 'v3',
+    displayText: 'v3',
+    displayIcon: 'view_in_ar',
+  },
+  {
+    viewId: 'v4',
+    paneType: 'bottom',
+    launchAtStartup: true,
+    componentName: 'V4',
+    componentModule: () => import('../views/v4/v4'),
+    key: 'v4',
+    displayText: 'v4',
+    displayIcon: 'view_in_ar',
+  },
+];
 
 export function App() {
   return (
-    <>
-      <NxWelcome title="porrtal-auth-r-strapi-app" />
-      <div />
-
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
-      <br />
-      <hr />
-      <br />
-      <div role="navigation">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/page-2">Page 2</Link>
-          </li>
-        </ul>
-      </div>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              This is the generated root route.{' '}
-              <Link to="/page-2">Click here for page 2.</Link>
-            </div>
-          }
+    <StrapiAuthentication
+      strapiUri="http://localhost:1337"
+      allowRegistration={true}
+    >
+      <ShellState views={views}>
+        <ShellMaterial
+          bannerData={{
+            displayText: 'porrtal-auth - react - strapi',
+            displayIcon: 'cyclone',
+          }}
         />
-        <Route
-          path="/page-2"
-          element={
-            <div>
-              <Link to="/">Click here to go back to root page.</Link>
-            </div>
-          }
-        />
-      </Routes>
-      {/* END: routes */}
-    </>
+      </ShellState>
+    </StrapiAuthentication>
   );
 }
 
