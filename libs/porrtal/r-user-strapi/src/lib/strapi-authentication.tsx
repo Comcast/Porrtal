@@ -37,7 +37,7 @@ type StrapiUserMeResponse = {
 };
 
 type StrapiLoginAndRegisterResponse = {
-  user: {
+  user?: {
     username: string;
     email: string;
     blocked: boolean;
@@ -47,7 +47,13 @@ type StrapiLoginAndRegisterResponse = {
     provider: string;
     updatedAt: string;
   };
-  jwt: string;
+  jwt?: string;
+  error?: {
+    status: number;
+    name: string;
+    message: string;
+    details: any;
+  };
 };
 
 export interface StrapiAuthenticationProps {
@@ -107,34 +113,41 @@ export function StrapiAuthentication(props: StrapiAuthenticationProps) {
       method: 'POST',
       body: JSON.stringify(creds),
       headers: {
-        "Content-Type": "application/json"
-      }
+        'Content-Type': 'application/json',
+      },
     })
-      .then((response) => response.json())
-      .catch((err) => {
-        alert(`strapi login failed: ${JSON.stringify(err)}`);
-        setStrapiState({
-          user: undefined,
-          loginStrategy: props.allowRegistration ? 'loginAndRegister' : 'login',
-          isAuthenticated: false,
-          isInitialized: true,
-        });
+      .then((response) => {
+        return response.json();
       })
       .then((response: StrapiLoginAndRegisterResponse) => {
         console.log('strapi login response: ', response);
 
-        localStorage.setItem('strapiJwt', response.jwt);
+        if (response.error || !response.jwt || !response.user) {
+          alert(`strapi login failed: ${JSON.stringify(response.error)}`);
+          setStrapiState({
+            user: undefined,
+            loginStrategy: props.allowRegistration
+              ? 'loginAndRegister'
+              : 'login',
+            isAuthenticated: false,
+            isInitialized: true,
+          });
+        } else {
+          localStorage.setItem('strapiJwt', response.jwt);
 
-        setStrapiState({
-          user: {
-            name: response.user.username,
-            email: response.user.email,
-          },
-          jwt: response.jwt,
-          loginStrategy: props.allowRegistration ? 'loginAndRegister' : 'login',
-          isAuthenticated: true,
-          isInitialized: true,
-        });
+          setStrapiState({
+            user: {
+              name: response.user.username,
+              email: response.user.email,
+            },
+            jwt: response.jwt,
+            loginStrategy: props.allowRegistration
+              ? 'loginAndRegister'
+              : 'login',
+            isAuthenticated: true,
+            isInitialized: true,
+          });
+        }
       });
   };
   const strapiRegister = (userInfo: RegisterUserInfo) => {
@@ -144,34 +157,39 @@ export function StrapiAuthentication(props: StrapiAuthenticationProps) {
       method: 'POST',
       body: JSON.stringify(userInfo),
       headers: {
-        "Content-Type": "application/json"
-      }
+        'Content-Type': 'application/json',
+      },
     })
       .then((response) => response.json())
-      .catch((err) => {
-        alert(`strapi login failed: ${JSON.stringify(err)}`);
-        setStrapiState({
-          user: undefined,
-          loginStrategy: props.allowRegistration ? 'loginAndRegister' : 'login',
-          isAuthenticated: false,
-          isInitialized: true,
-        });
-      })
       .then((response: StrapiLoginAndRegisterResponse) => {
         console.log('strapi login response: ', response);
 
-        localStorage.setItem('strapiJwt', response.jwt);
+        if (response.error || !response.jwt || !response.user) {
+          alert(`strapi register failed: ${JSON.stringify(response.error)}`);
+          setStrapiState({
+            user: undefined,
+            loginStrategy: props.allowRegistration
+              ? 'loginAndRegister'
+              : 'login',
+            isAuthenticated: false,
+            isInitialized: true,
+          });
+        } else {
+          localStorage.setItem('strapiJwt', response.jwt);
 
-        setStrapiState({
-          user: {
-            name: response.user.username,
-            email: response.user.email,
-          },
-          jwt: response.jwt,
-          loginStrategy: props.allowRegistration ? 'loginAndRegister' : 'login',
-          isAuthenticated: true,
-          isInitialized: true,
-        });
+          setStrapiState({
+            user: {
+              name: response.user.username,
+              email: response.user.email,
+            },
+            jwt: response.jwt,
+            loginStrategy: props.allowRegistration
+              ? 'loginAndRegister'
+              : 'login',
+            isAuthenticated: true,
+            isInitialized: true,
+          });
+        }
       });
   };
   const strapiLogout = () => {
