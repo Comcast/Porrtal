@@ -102,29 +102,27 @@ export function Index() {
   }, []);
 
   if (!isSSR) {
-  return (
-    <>
-    <Head>
-      <title>@porrtal - porrtal-auth - n-auth0-app</title>
-    </Head>
+    return (
+      <>
+        <Head>
+          <title>@porrtal - porrtal-auth - n-auth0-app</title>
+        </Head>
 
-    <MsalAuthentication
-      msalConfig={msalConfig}
-    >
-      <ShellState views={views}>
-        <ShellMaterial
-          bannerData={{
-            displayText: 'porrtal-auth - nextjs - msal',
-            displayIcon: 'cyclone',
-          }}
-        />
-      </ShellState>
-    </MsalAuthentication>
-  </>
-);
+        <MsalAuthentication msalConfig={msalConfig}>
+          <ShellState views={views}>
+            <ShellMaterial
+              bannerData={{
+                displayText: 'porrtal-auth - nextjs - msal',
+                displayIcon: 'cyclone',
+              }}
+            />
+          </ShellState>
+        </MsalAuthentication>
+      </>
+    );
   }
-  
-  return(<div>loading...</div>);
+
+  return <div>loading...</div>;
 }
 
 export default Index;

@@ -44,7 +44,7 @@ function MsalAdapter(props: MsalAdapterProps) {
     // Optional - This will update account state if a user signs in from another tab or window
     msalInstance.enableAccountStorageEvents();
 
-    msalInstance.addEventCallback((event) => {
+    msalInstance.addEventCallback((event: any) => {
       if (
         event.eventType === EventType.LOGIN_SUCCESS &&
         event.payload.account
