@@ -12,19 +12,51 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { Configuration, PublicClientApplication } from '@azure/msal-browser';
+import {
+  Configuration,
+  EventType,
+  PublicClientApplication,
+} from '@azure/msal-browser';
 import { MsalProvider, useMsal } from '@azure/msal-react';
 import { AuthContext } from '@porrtal/r-user';
 import { AuthNInterface } from '@porrtal/r-user';
 import { useState } from 'react';
 
-interface Auth0AdapterProps {
+interface MsalAdapterProps {
   children?: React.ReactNode;
 }
 
-function MsalAdapter(props: Auth0AdapterProps) {
+function MsalAdapter(props: MsalAdapterProps) {
   const msalContext = useMsal();
-  const activeAccount = msalContext?.instance?.getActiveAccount();
+  const msalInstance = msalContext?.instance;
+  const [msalActiveAccount, setMsalInstance] = useState(msalInstance?.getActiveAccount());
+
+  if (msalInstance) {
+    if (
+      !msalInstance.getActiveAccount() &&
+      msalInstance.getAllAccounts().length > 0
+    ) {
+      // Account selection logic is app dependent. Adjust as needed for different use cases.
+      msalInstance.setActiveAccount(msalInstance.getAllAccounts()[0]);
+      setMsalInstance(msalInstance.getActiveAccount());
+    }
+
+    // Optional - This will update account state if a user signs in from another tab or window
+    msalInstance.enableAccountStorageEvents();
+
+    msalInstance.addEventCallback((event) => {
+      if (
+        event.eventType === EventType.LOGIN_SUCCESS &&
+        event.payload.account
+      ) {
+        const account = event.payload.account;
+        msalInstance.setActiveAccount(account);
+        setMsalInstance(msalInstance.getActiveAccount());
+      }
+    });
+  }
+
+  const activeAccount = msalInstance?.getActiveAccount();
 
   const auth: AuthNInterface = {
     user:
@@ -35,8 +67,12 @@ function MsalAdapter(props: Auth0AdapterProps) {
           })
         : undefined,
     loginStrategy: 'loginWithRedirect',
-    loginWithRedirect: msalContext?.instance?.loginRedirect,
-    logout: msalContext?.instance?.logoutRedirect,
+    loginWithRedirect: () => {
+      msalContext?.instance?.loginRedirect();
+    },
+    logout: () => {
+      msalContext?.instance?.logoutRedirect();
+    },
     isAuthenticated: !!activeAccount,
     isInitialized: true,
   };
@@ -47,13 +83,13 @@ function MsalAdapter(props: Auth0AdapterProps) {
 }
 
 export interface MsalAuthenticationProps {
-  config: Configuration;
+  msalConfig: Configuration;
   children?: React.ReactNode;
 }
 
 export function MsalAuthentication(props: MsalAuthenticationProps) {
   const [msalInstance, setMsalInstance] = useState(
-    new PublicClientApplication(props.config)
+    new PublicClientApplication(props.msalConfig)
   );
   return (
     <MsalProvider instance={msalInstance}>
