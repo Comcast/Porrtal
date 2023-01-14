@@ -30,7 +30,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     HttpClientModule,
     PorrtalStrapiModule.forRoot({
-      shellUiLibrary: 'material',
       allowRegistration: true,
       strapiUri: 'http://localhost:1337'
     }),

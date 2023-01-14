@@ -12,20 +12,61 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { ChangeDetectionStrategy, Component, Inject, Optional } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  Optional,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthNInterface, AUTH_N_INTERFACE } from '@porrtal/a-user';
-import { UserLoginButtonComponent } from '../user-login-button/user-login-button.component';
-import { UserLogoutButtonComponent } from '../user-logout-button/user-logout-button.component';
+import {
+  AuthNInterface,
+  AUTH_N_INTERFACE,
+  LoginStrategy,
+} from '@porrtal/a-user';
+import { LoginService } from './login-service/login.service';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'porrtal-user-banner',
   standalone: true,
-  imports: [CommonModule, UserLoginButtonComponent, UserLogoutButtonComponent],
+  imports: [CommonModule, MatDialogModule],
+  providers: [LoginService],
   templateUrl: './user-banner.component.html',
   styleUrls: ['./user-banner.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserBannerComponent {
-  constructor(@Optional() @Inject(AUTH_N_INTERFACE) public authN: AuthNInterface) {}
+  constructor(
+    @Optional() @Inject(AUTH_N_INTERFACE) public authN: AuthNInterface,
+    public loginService: LoginService
+  ) {}
+
+  login(loginStrategy: LoginStrategy) {
+    const x = this.loginService
+      .getUserLoginData(loginStrategy)
+      .subscribe((userLoginData) => {
+        switch (userLoginData.type) {
+          case 'login':
+            this?.authN?.login &&
+              this.authN.login({
+                identifier: userLoginData.identifier,
+                password: userLoginData.password,
+              });
+            break;
+
+          case 'register':
+            this?.authN?.register &&
+              this.authN.register({
+                username: userLoginData.user,
+                email: userLoginData.email,
+                password: userLoginData.password,
+              });
+            break;
+
+          default:
+            break;
+        }
+      });
+  }
 }

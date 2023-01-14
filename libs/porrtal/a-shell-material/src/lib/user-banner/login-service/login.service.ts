@@ -12,31 +12,25 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { Inject, Injectable } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import {
-  LoginServiceInterface,
-  LoginServiceConfigInterface,
-  LOGIN_SERVICE_CONFIG_INJECTION_TOKEN,
-  UserLoginData,
-} from '@porrtal/a-api';
-import { Observable, of } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { UserLoginData } from '@porrtal/a-api';
+import { LoginStrategy } from '@porrtal/a-user';
+import { Observable } from 'rxjs';
 import { LoginFormComponent } from './login-form/login-form.component';
 
 @Injectable()
-export class LoginService implements LoginServiceInterface {
-  constructor(
-    @Inject(LOGIN_SERVICE_CONFIG_INJECTION_TOKEN)
-    public loginServiceConfig: LoginServiceConfigInterface,
-    public matDialogService: MatDialog
-  ) {}
+export class LoginService {
+  constructor(public matDialogService: MatDialog) {}
 
-  getUserLoginData: () => Observable<UserLoginData> = () => {
+  getUserLoginData: (
+    loginStrategy: LoginStrategy
+  ) => Observable<UserLoginData> = (loginStrategy: LoginStrategy) => {
     const matDialogRef = this.matDialogService.open(LoginFormComponent, {
       // width: '640px',
       // height: '480px',
       data: {
-        allowRegistration: this.loginServiceConfig.allowRegistration,
+        allowRegistration: loginStrategy === 'loginAndRegister',
       },
     });
 

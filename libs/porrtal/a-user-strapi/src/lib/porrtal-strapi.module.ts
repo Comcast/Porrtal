@@ -15,10 +15,8 @@ limitations under the License.
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { provideOAuthClient } from './provider';
-import { LoginServiceInterface } from '@porrtal/a-api';
 
 export interface StrapiAuthConfig {
-  shellUiLibrary: 'material';
   allowRegistration: boolean;
   strapiUri: string;
 }

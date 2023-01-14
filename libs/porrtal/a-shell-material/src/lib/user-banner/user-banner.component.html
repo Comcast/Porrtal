@@ -1,5 +1,10 @@
 <span *ngIf="authN && authN.isAuthenticated$ | async">
-    <span style="margin-right: 6px;">{{ authN.user?.name }}</span>
-    <porrtal-user-logout-button></porrtal-user-logout-button></span>
-<porrtal-user-login-button *ngIf="authN && !(authN.isAuthenticated$ | async)"></porrtal-user-login-button>
-<div *ngIf="!authN"></div>
+  <span style="margin-right: 6px">{{ authN.user?.name }}</span>
+  <button (click)="authN && authN.logout && authN.logout()">logout</button>
+</span>
+<ng-container *ngIf="authN && !(authN.isAuthenticated$ | async)">
+  <ng-container *ngIf="authN.loginStrategy$ | async as loginStrategy">
+    <button (click)="login(loginStrategy)">login</button>
+  </ng-container>
+  <div *ngIf="!authN"></div>
+</ng-container>
