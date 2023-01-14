@@ -16,7 +16,7 @@ import { useAuth } from '@porrtal/r-user';
 import styles from './user-banner.module.scss';
 import LoginDialog from './login-dialog/login-dialog';
 import { useState } from 'react';
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 
 /* eslint-disable-next-line */
 export interface UserBannerProps {}
@@ -40,10 +40,13 @@ export function UserBanner(props: UserBannerProps) {
     return (
       <div className={styles['container']}>
         {auth?.isAuthenticated && (
-          <Typography display="inline-block" sx={{marginRight: '10px'}}>{auth?.user?.name}</Typography>
+          <Typography display="inline-block" sx={{ marginRight: '10px' }}>
+            {auth?.user?.name}
+          </Typography>
         )}
         {!auth?.isAuthenticated && (
-          <button
+          <Button
+            size="small"
             onClick={() => {
               if (!auth) {
                 return;
@@ -61,12 +64,15 @@ export function UserBanner(props: UserBannerProps) {
             }}
           >
             Login
-          </button>
+          </Button>
         )}
         {auth?.isAuthenticated && (
-          <button onClick={() => (auth?.logout ? auth?.logout() : null)}>
+          <Button
+            size="small"
+            onClick={() => (auth?.logout ? auth?.logout() : null)}
+          >
             Logout
-          </button>
+          </Button>
         )}
         <LoginDialog
           open={open}
@@ -77,18 +83,20 @@ export function UserBanner(props: UserBannerProps) {
           }
           onClose={(result) => {
             if (result.type === 'login') {
-              auth.login && auth.login({
-                identifier: result.identifier,
-                password: result.password
-              });
+              auth.login &&
+                auth.login({
+                  identifier: result.identifier,
+                  password: result.password,
+                });
             }
 
             if (result.type === 'register') {
-              auth.register && auth.register({
-                username: result.user,
-                email: result.email,
-                password: result.password
-              })
+              auth.register &&
+                auth.register({
+                  username: result.user,
+                  email: result.email,
+                  password: result.password,
+                });
             }
 
             setOpen(false);
