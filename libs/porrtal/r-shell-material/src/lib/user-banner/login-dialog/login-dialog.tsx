@@ -20,7 +20,7 @@ import {
   TextField,
 } from '@mui/material';
 import { LoginDialogProps, useLoginDialogState } from '@porrtal/r-shell';
-import { useReducer } from 'react';
+import { useReducer, KeyboardEvent } from 'react';
 import styles from './login-dialog.module.scss';
 
 export function LoginDialog(props: LoginDialogProps) {
@@ -31,7 +31,63 @@ export function LoginDialog(props: LoginDialogProps) {
   };
 
   return (
-    <Dialog onClose={handleClose} open={props.open}>
+    <Dialog
+      onClose={handleClose}
+      open={props.open}
+      onKeyUp={(evt: KeyboardEvent<HTMLDivElement>) => {
+        if (evt.key === 'Enter') {
+          if (loginDialogState.loginType === 'login') {
+            if (
+              !(
+                loginDialogState.identifierHasError ||
+                loginDialogState.passwordHasError ||
+                !loginDialogState.identifier ||
+                loginDialogState.identifier.length < 1 ||
+                !loginDialogState.password ||
+                loginDialogState.password.length < 1
+              ) &&
+              loginDialogState.identifier &&
+              loginDialogState.password
+            ) {
+              props.onClose({
+                type: 'login',
+                identifier: loginDialogState.identifier,
+                password: loginDialogState.password,
+              });
+            } else {
+              evt.stopPropagation();
+            }
+          } else {
+            if (
+              !(
+                loginDialogState.nameHasError ||
+                loginDialogState.emailHasError ||
+                loginDialogState.passwordHasError ||
+                loginDialogState.passwordVerifyHasError ||
+                !loginDialogState.name ||
+                loginDialogState.name.length < 1 ||
+                !loginDialogState.email ||
+                loginDialogState.email.length < 1 ||
+                !loginDialogState.password ||
+                loginDialogState.password.length < 1
+              ) &&
+              loginDialogState.name &&
+              loginDialogState.email &&
+              loginDialogState.password
+            ) {
+              props.onClose({
+                type: 'register',
+                user: loginDialogState.name,
+                email: loginDialogState.email,
+                password: loginDialogState.password,
+              });
+            } else {
+              evt.stopPropagation();
+            }
+          }
+        }
+      }}
+    >
       <DialogTitle>
         <span>
           {props.loginStrategy === 'loginAndRegister' &&
