@@ -31,6 +31,7 @@ export class OidcAdapterService implements AuthNInterface {
   get user(): { name: string; email: string } | undefined {
     const claims = this.oAuthService.getIdentityClaims();
     if (!claims) {
+      console.log('claims undefined...');
       return undefined;
     }
 
