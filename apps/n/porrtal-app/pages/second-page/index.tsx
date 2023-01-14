@@ -14,7 +14,7 @@ limitations under the License.
 */
 import { ShellState } from '@porrtal/r-shell';
 import { ShellMaterial } from '@porrtal/r-shell-material';
-import { KeycloakAuthentication } from '@porrtal/r-user';
+import { KeycloakAuthentication } from '@porrtal/r-user-keycloak';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { testModules, testViews } from '../../test-config/test-view-states';
@@ -42,7 +42,7 @@ export function Index() {
           <ShellState modules={testModules} views={testViews}>
             <ShellMaterial
               bannerData={{
-                displayText: 'Quick Start Demo',
+                displayText: 'Second Page',
                 displayIcon: 'cyclone',
                 childData: [
                   {
@@ -51,10 +51,10 @@ export function Index() {
                     targetUrl: '/',
                   },
                   {
-                    displayText: 'Second Page',
+                    displayText: 'Third Page',
                     displayImage: '/assets/angular.svg',
                     displayIcon: 'cyclone',
-                    targetUrl: '/second-page',
+                    targetUrl: '/third-page',
                   },
                   {
                     displayText: 'Quick Start Demo',

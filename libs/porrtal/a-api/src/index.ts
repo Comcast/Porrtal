@@ -22,3 +22,4 @@ export * from './lib/view-component-modules';
 export * from './lib/view-launch';
 export * from './lib/porrtal-menu-item';
 export * from './lib/deep-links';
+export * from './lib/user-login';

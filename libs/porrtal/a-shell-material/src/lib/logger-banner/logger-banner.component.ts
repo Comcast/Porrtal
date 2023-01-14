@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ShellStateService } from '@porrtal/a-shell';
 import { MatIconModule } from '@angular/material/icon';
@@ -24,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './logger-banner.component.html',
   styleUrls: ['./logger-banner.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class LoggerBannerComponent {
   constructor(private shellStateService: ShellStateService) {

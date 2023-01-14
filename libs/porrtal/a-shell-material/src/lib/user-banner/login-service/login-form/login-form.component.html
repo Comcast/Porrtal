@@ -1,0 +1,126 @@
+<!-- <div class="container"> -->
+<mat-button-toggle-group
+  [(ngModel)]="loginOrRegister"
+  aria-label="Login or Register"
+>
+  <mat-button-toggle value="Login" [ngStyle]="{ 'flex-grow': 1 }"
+    >Login</mat-button-toggle
+  >
+  <mat-button-toggle *ngIf="data.allowRegistration" value="Register" [ngStyle]="{ 'flex-grow': 1 }"
+    >Register</mat-button-toggle
+  >
+</mat-button-toggle-group>
+
+<mat-card *ngIf="loginOrRegister === 'Login'">
+  <!-- Login -->
+  <mat-card-content>
+    <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+      <p>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="Identifier"
+            formControlName="identifier"
+          />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input
+            type="password"
+            matInput
+            placeholder="Password"
+            formControlName="password"
+          />
+        </mat-form-field>
+      </p>
+
+      <!-- <p *ngIf="error" class="error">
+          {{ error }}
+        </p> -->
+
+      <div class="button">
+        <button type="submit" mat-button>Login</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="loginOrRegister === 'Register'">
+  <!-- Register -->
+  <mat-card-content>
+    <form [formGroup]="registerForm" (ngSubmit)="submitRegister()">
+      <p>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="Name"
+            formControlName="name"
+          />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="Email"
+            formControlName="email"
+          />
+        </mat-form-field>
+      </p>
+
+      <mat-error
+        *ngIf="this.registerForm.controls['password'].hasError('minlength')"
+      >
+        Password must be at least 6 characters.
+      </mat-error>
+      <mat-error
+        *ngIf="this.registerForm.controls['password'].hasError('pattern')"
+      >
+        Password must contain a letter and a number.
+      </mat-error>
+      <p>
+        <mat-form-field>
+          <input
+            type="password"
+            matInput
+            placeholder="Password"
+            formControlName="password"
+          />
+        </mat-form-field>
+      </p>
+
+      <mat-error
+        *ngIf="
+          this.registerForm.controls['confirmPassword'].hasError('matching')
+        "
+      >
+        Password must match.
+      </mat-error>
+
+      <p>
+        <mat-form-field>
+          <input
+            type="password"
+            matInput
+            placeholder="Confirm Password"
+            formControlName="confirmPassword"
+          />
+        </mat-form-field>
+      </p>
+      <!-- <p *ngIf="error" class="error">
+              {{ error }}
+            </p> -->
+
+      <div class="button">
+        <button type="submit" mat-button>Register</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+<!-- </div> -->

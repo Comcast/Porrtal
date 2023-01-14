@@ -28,6 +28,7 @@ import { ReactNode, useEffect } from 'react';
 import Banner from '../banner/banner';
 import BannerMenuBar from '../banner-menu-bar/banner-menu-bar';
 import BannerMenuInline from '../banner-menu-inline/banner-menu-inline';
+import UserBanner from '../user-banner/user-banner';
 
 export interface ShellComponentsBlueprintProps {
   children: ReactNode | undefined;
@@ -44,7 +45,7 @@ export function ShellComponentsBlueprint(props: ShellComponentsBlueprintProps) {
     BannerMenuBar,
     BannerMenuInline,
     bannerData: props.bannerData,
-    UserBanner: props?.userBanner,
+    UserBanner: props?.userBanner ?? UserBanner,
     LoggerBanner,
   };
   const shellDispatch = useShellDispatch();

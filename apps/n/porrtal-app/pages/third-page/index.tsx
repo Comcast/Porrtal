@@ -17,11 +17,11 @@ import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 
 import { ShellState } from '@porrtal/r-shell';
-import { KeycloakAuthentication, UserBanner } from '@porrtal/r-user';
 import { testModules, testViews } from '../../test-config/test-view-states';
 import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
+import { KeycloakAuthentication } from '@porrtal/r-user-keycloak';
 
 /* eslint-disable-next-line */
 export interface ThirdPageProps {}
@@ -47,7 +47,31 @@ export function ThirdPage(props: ThirdPageProps) {
           redirectUri="http://localhost:4200/second-page"
         >
           <ShellState modules={testModules} views={testViews}>
-            <ShellBlueprint userBanner={UserBanner} />
+            <ShellBlueprint
+              bannerData={{
+                displayText: 'Third Page',
+                displayIcon: 'cyclone',
+                childData: [
+                  {
+                    displayText: 'First Page',
+                    displayImage: '/assets/react.svg',
+                    targetUrl: '/',
+                  },
+                  {
+                    displayText: 'Second Page',
+                    displayImage: '/assets/angular.svg',
+                    displayIcon: 'cyclone',
+                    targetUrl: '/second-page',
+                  },
+                  {
+                    displayText: 'Quick Start Demo',
+                    displayImage: '/assets/react.svg',
+                    displayIcon: 'cyclone',
+                    targetUrl: '/quick-start-demo',
+                  },
+                ],
+              }}
+            />
           </ShellState>
         </KeycloakAuthentication>
       </>

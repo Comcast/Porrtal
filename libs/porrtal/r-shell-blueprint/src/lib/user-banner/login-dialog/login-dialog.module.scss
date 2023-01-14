@@ -1,0 +1,33 @@
+.container {
+    margin: 20px;
+}
+
+.changer-container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.dialog-link {
+    color: blue;
+    text-decoration: underline;
+    float: right;
+    position: relative;
+    top: -50px;
+    right: 24px;
+}
+
+.dialog-buttons {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.dialog-field {
+    margin-top: 20px;
+}
+
+.error-text {
+    color: red;
+    margin-top: 10px;
+}

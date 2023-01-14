@@ -1,0 +1,36 @@
+{
+  "name": "porrtal-auth-n-msal-app-e2e",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/porrtal-auth/n-msal-app-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/porrtal-auth/n-msal-app-e2e/cypress.config.ts",
+        "devServerTarget": "porrtal-auth-n-msal-app:serve:development",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "porrtal-auth-n-msal-app:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/porrtal-auth/n-msal-app-e2e/**/*.{js,ts}"
+        ]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": [
+    "porrtal-auth-n-msal-app"
+  ]
+}

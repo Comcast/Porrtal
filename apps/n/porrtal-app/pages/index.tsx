@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { Auth0Authentication } from '@porrtal/r-user';
+import { Auth0Authentication } from '@porrtal/r-user-auth0';
 import { ShellState } from '@porrtal/r-shell';
 import { testModules, testViews } from '../test-config/test-view-states';
 import { ShellMaterial } from '@porrtal/r-shell-material';

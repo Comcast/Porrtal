@@ -2,6 +2,7 @@
   <div class="banner">
     <porrtal-banner [bannerData]="bannerData"></porrtal-banner>
     <porrtal-banner-menu-inline [menuItems]="shellState.menuItems"></porrtal-banner-menu-inline>
+    <porrtal-user-banner></porrtal-user-banner>
     <porrtal-logger-banner></porrtal-logger-banner>
     <porrtal-search
       *ngIf="shellState.panes.search.viewStates.length > 0"
