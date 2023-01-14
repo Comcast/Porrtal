@@ -43,30 +43,34 @@ export class UserBannerComponent {
   ) {}
 
   login(loginStrategy: LoginStrategy) {
-    const x = this.loginService
-      .getUserLoginData(loginStrategy)
-      .subscribe((userLoginData) => {
-        switch (userLoginData.type) {
-          case 'login':
-            this?.authN?.login &&
-              this.authN.login({
-                identifier: userLoginData.identifier,
-                password: userLoginData.password,
-              });
-            break;
+    if (loginStrategy === 'loginWithRedirect') {
+      this?.authN?.loginWithRedirect && this.authN.loginWithRedirect();
+    } else {
+      const x = this.loginService
+        .getUserLoginData(loginStrategy)
+        .subscribe((userLoginData) => {
+          switch (userLoginData.type) {
+            case 'login':
+              this?.authN?.login &&
+                this.authN.login({
+                  identifier: userLoginData.identifier,
+                  password: userLoginData.password,
+                });
+              break;
 
-          case 'register':
-            this?.authN?.register &&
-              this.authN.register({
-                username: userLoginData.user,
-                email: userLoginData.email,
-                password: userLoginData.password,
-              });
-            break;
+            case 'register':
+              this?.authN?.register &&
+                this.authN.register({
+                  username: userLoginData.user,
+                  email: userLoginData.email,
+                  password: userLoginData.password,
+                });
+              break;
 
-          default:
-            break;
-        }
-      });
+            default:
+              break;
+          }
+        });
+    }
   }
 }

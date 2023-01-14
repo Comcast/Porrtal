@@ -14,8 +14,8 @@ limitations under the License.
 */
 import { Inject, Injectable } from '@angular/core';
 import { MsalBroadcastService, MsalService } from '@azure/msal-angular';
-import { AuthNInterface } from '@porrtal/a-user';
-import { BehaviorSubject, concatMap, filter, map, Observable } from 'rxjs';
+import { AuthNInterface, LoginStrategy } from '@porrtal/a-user';
+import { BehaviorSubject, concatMap, filter, map, Observable, of } from 'rxjs';
 import {
   MSAL_INSTANCE,
   MSAL_GUARD_CONFIG,
@@ -31,6 +31,7 @@ import { RxState } from '@rx-angular/state';
 export interface MsalAdapterInterface {
   isAuthenticated: boolean;
   isInitialized: boolean;
+  loginStrategy: LoginStrategy;
 }
 
 @Injectable()
@@ -71,6 +72,7 @@ export class MsalAdapterService
   }
   isAuthenticated$: Observable<boolean>;
   isInitialized$: Observable<boolean>;
+  loginStrategy$: Observable<LoginStrategy>;
 
   constructor(
     @Inject(MSAL_INSTANCE) private instance: IPublicClientApplication,
@@ -83,6 +85,8 @@ export class MsalAdapterService
 
     this.isAuthenticated$ = this.select('isAuthenticated');
     this.isInitialized$ = this.select('isInitialized');
+    this.loginStrategy$ = this.select('loginStrategy');
+    this.set({ loginStrategy: 'loginWithRedirect' });
 
     this.connect(
       'isAuthenticated',
@@ -124,6 +128,11 @@ export class MsalAdapterService
           return this.msalService.handleRedirectObservable();
         }),
         concatMap(() => {
+          const activeAccount = this.msalService.instance.getActiveAccount();
+          if (!activeAccount) {
+            return of('not logged in...');
+          }
+
           return this.msalService.acquireTokenSilent({
             scopes: ['openid', 'profile', 'email'],
           });
