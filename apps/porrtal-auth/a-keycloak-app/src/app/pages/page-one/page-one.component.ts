@@ -101,7 +101,7 @@ const views: View[] = [
 })
 export class PageOneComponent {
   public bannerData: BannerData = {
-    displayText: 'porrtal-auth - angular - auth0',
+    displayText: 'porrtal-auth - angular - keycloak',
     displayIcon: 'cyclone',
     childData: [
       {
