@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { Inject, Injectable } from '@angular/core';
-import { AuthNInterface } from '@porrtal/a-user';
+import { AuthNInterface, LoginStrategy } from '@porrtal/a-user';
 import {
   AuthConfig,
   AUTH_CONFIG,
@@ -26,6 +26,7 @@ import { BehaviorSubject, filter, Observable } from 'rxjs';
 export class OidcAdapterService implements AuthNInterface {
   private isAuthenticatedSubj = new BehaviorSubject<boolean>(false);
   private isInitializedSubj = new BehaviorSubject<boolean>(false);
+  private loginStrategySubj = new BehaviorSubject<LoginStrategy>('loginWithRedirect');
 
   get user(): { name: string; email: string } | undefined {
     const claims = this.oAuthService.getIdentityClaims();
@@ -42,6 +43,7 @@ export class OidcAdapterService implements AuthNInterface {
   };
   isAuthenticated$: Observable<boolean>;
   isInitialized$: Observable<boolean>;
+  loginStrategy$: Observable<LoginStrategy>;
 
   constructor(
     @Inject(AUTH_CONFIG) private authConfig: AuthConfig,
@@ -49,6 +51,7 @@ export class OidcAdapterService implements AuthNInterface {
   ) {
     this.isAuthenticated$ = this.isAuthenticatedSubj.asObservable();
     this.isInitialized$ = this.isInitializedSubj.asObservable();
+    this.loginStrategy$ = this.loginStrategySubj.asObservable();
 
     console.log('auth config: ', authConfig);
     this.oAuthService.configure(authConfig);
