@@ -25,9 +25,12 @@ interface KeycloakAuthAdapterProps {
 function KeycloakAdapter(props: KeycloakAuthAdapterProps) {
   const { keycloak, initialized } = useKeycloak();
   const auth: AuthNInterface = {
-    user: {
-      name: keycloak?.tokenParsed?.['name'] ?? '',
-      email: keycloak?.tokenParsed?.['email'] ?? '',
+    get user() {
+      console.log('keycloak.tokenParsed:', keycloak?.tokenParsed);
+      return {
+        name: keycloak?.tokenParsed?.['preferred_username'] ?? '',
+        email: keycloak?.tokenParsed?.['email'] ?? '',
+      };
     },
     loginStrategy: 'loginWithRedirect',
     loginWithRedirect: () =>
