@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { useAuth } from '@porrtal/r-user';
+import { useAuthN } from '@porrtal/r-user';
 import styles from './user-banner.module.scss';
 import LoginDialog from './login-dialog/login-dialog';
 import { useState } from 'react';
@@ -22,7 +22,7 @@ import { Button, Typography } from '@mui/material';
 export interface UserBannerProps {}
 
 export function UserBanner(props: UserBannerProps) {
-  const auth = useAuth();
+  const auth = useAuthN();
   const [open, setOpen] = useState(false);
 
   console.log(

@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { AuthContext, LoginCreds, RegisterUserInfo } from '@porrtal/r-user';
+import { AuthNContext, LoginCreds, RegisterUserInfo } from '@porrtal/r-user';
 import { AuthNInterface } from '@porrtal/r-user';
 import { useEffect, useState } from 'react';
 
@@ -215,6 +215,6 @@ export function StrapiAuthentication(props: StrapiAuthenticationProps) {
   };
 
   return (
-    <AuthContext.Provider value={auth}>{props.children}</AuthContext.Provider>
+    <AuthNContext.Provider value={auth}>{props.children}</AuthNContext.Provider>
   );
 }

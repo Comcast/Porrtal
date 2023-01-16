@@ -12,19 +12,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { act, renderHook } from '@testing-library/reacts';
-import useAuth from './use-auth';
+import { useContext } from 'react';
+import { AuthNInterface } from '../auth-n-interface';
+import { AuthNContext } from './auth-n-context';
 
-describe('useAuth', () => {
-  it('should render successfully', () => {
-    const { result } = renderHook(() => useAuth());
+export function useAuthN(): AuthNInterface {
+  const authN = useContext(AuthNContext);
+  return authN;
+}
 
-    expect(result.current.count).toBe(0);
-
-    act(() => {
-      result.current.increment();
-    });
-
-    expect(result.current.count).toBe(1);
-  });
-});
+export default useAuthN;

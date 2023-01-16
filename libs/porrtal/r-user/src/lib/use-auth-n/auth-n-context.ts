@@ -15,4 +15,4 @@ limitations under the License.
 import { createContext } from 'react';
 import { AuthNInterface } from '../auth-n-interface';
 
-export const AuthContext = createContext<AuthNInterface>(null);
+export const AuthNContext = createContext<AuthNInterface>(null);

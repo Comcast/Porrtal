@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
-import { AuthContext } from '@porrtal/r-user';
+import { AuthNContext } from '@porrtal/r-user';
 import { AuthNInterface } from '@porrtal/r-user';
 
 interface Auth0AdapterProps {
@@ -32,7 +32,7 @@ function Auth0Adapter(props: Auth0AdapterProps) {
   };
 
   return (
-    <AuthContext.Provider value={auth}>{props.children}</AuthContext.Provider>
+    <AuthNContext.Provider value={auth}>{props.children}</AuthNContext.Provider>
   );
 }
 

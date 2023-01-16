@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { ReactKeycloakProvider, useKeycloak } from '@react-keycloak/web';
-import { AuthContext, AuthNInterface } from '@porrtal/r-user';
+import { AuthNContext, AuthNInterface } from '@porrtal/r-user';
 import Keycloak from 'keycloak-js';
 import { ReactNode, useEffect, useState } from 'react';
 
@@ -41,7 +41,7 @@ function KeycloakAdapter(props: KeycloakAuthAdapterProps) {
   };
 
   return (
-    <AuthContext.Provider value={auth}>{props.children}</AuthContext.Provider>
+    <AuthNContext.Provider value={auth}>{props.children}</AuthNContext.Provider>
   );
 }
 

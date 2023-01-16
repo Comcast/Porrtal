@@ -13,5 +13,5 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 export * from './lib/auth-n-interface';
-export * from './lib/use-auth/use-auth';
-export * from './lib/use-auth/auth-context';
+export * from './lib/use-auth-n/use-auth-n';
+export * from './lib/use-auth-n/auth-n-context';

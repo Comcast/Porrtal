@@ -18,7 +18,7 @@ import {
   PublicClientApplication,
 } from '@azure/msal-browser';
 import { MsalProvider, useMsal } from '@azure/msal-react';
-import { AuthContext } from '@porrtal/r-user';
+import { AuthNContext } from '@porrtal/r-user';
 import { AuthNInterface } from '@porrtal/r-user';
 import { useState } from 'react';
 
@@ -78,7 +78,7 @@ function MsalAdapter(props: MsalAdapterProps) {
   };
 
   return (
-    <AuthContext.Provider value={auth}>{props.children}</AuthContext.Provider>
+    <AuthNContext.Provider value={auth}>{props.children}</AuthNContext.Provider>
   );
 }
 
