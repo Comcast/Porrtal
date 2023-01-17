@@ -14,6 +14,7 @@
     "porrtal-a-shell-bootstrap": "libs/porrtal/a-shell-bootstrap",
     "porrtal-a-shell-material": "libs/porrtal/a-shell-material",
     "porrtal-a-user": "libs/porrtal/a-user",
+    "porrtal-a-user-auth-z": "libs/porrtal/a-user-auth-z",
     "porrtal-a-user-msal": "libs/porrtal/a-user-msal",
     "porrtal-a-user-oidc": "libs/porrtal/a-user-oidc",
     "porrtal-a-user-strapi": "libs/porrtal/a-user-strapi",

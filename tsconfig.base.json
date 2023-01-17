@@ -63,6 +63,7 @@
         "libs/porrtal/a-shell-material/src/index.ts"
       ],
       "@porrtal/a-user": ["libs/porrtal/a-user/src/index.ts"],
+      "@porrtal/a-user-auth-z": ["libs/porrtal/a-user-auth-z/src/index.ts"],
       "@porrtal/a-user-msal": ["libs/porrtal/a-user-msal/src/index.ts"],
       "@porrtal/a-user-oidc": ["libs/porrtal/a-user-oidc/src/index.ts"],
       "@porrtal/a-user-strapi": ["libs/porrtal/a-user-strapi/src/index.ts"],
