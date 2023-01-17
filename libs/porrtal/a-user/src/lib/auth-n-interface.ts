@@ -12,8 +12,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { InjectionToken } from "@angular/core";
-import { Observable } from "rxjs";
+import { InjectionToken } from '@angular/core';
+import { StateObject } from '@porrtal/a-api';
+import { Observable } from 'rxjs';
 
 export interface RegisterUserInfo {
   username: string;
@@ -40,6 +41,10 @@ export type AuthNInterface = {
   logout?: () => void;
   isAuthenticated$: Observable<boolean>;
   isInitialized$: Observable<boolean>;
+  claims: StateObject;
+  claimsMap: { [fromKey: string]: string };
 };
 
-export const AUTH_N_INTERFACE = new InjectionToken<AuthNInterface>('AuthNInterface');
+export const AUTH_N_INTERFACE = new InjectionToken<AuthNInterface>(
+  'AuthNInterface'
+);
