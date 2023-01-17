@@ -12,27 +12,19 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { StateObject } from '@porrtal/a-api';
+import { TestBed } from '@angular/core/testing';
 
-export type AuthZProviderState = 'init' | 'ready' | 'error';
+import { AuthZServiceService } from './auth-z-service.service';
 
-export interface AuthZProviderPendingView {
-  viewId: string;
-  state?: StateObject;
-}
+describe('AuthZServiceService', () => {
+  let service: AuthZServiceService;
 
-export interface AuthZProviderInfo {
-  message: string;
-}
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(AuthZServiceService);
+  });
 
-export type AuthZProviderInterface = {
-  name: string;
-  scopes?: string[];
-  state: AuthZProviderState;
-  errorInfo?: AuthZProviderInfo;
-  warningInfo?: AuthZProviderInfo;
-  props?: StateObject;
-  roles?: string[];
-  pendingViews?: AuthZProviderPendingView[];
-  config?: StateObject;
-};
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});

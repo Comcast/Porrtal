@@ -12,27 +12,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { StateObject } from '@porrtal/a-api';
+import { Injectable } from '@angular/core';
 
-export type AuthZProviderState = 'init' | 'ready' | 'error';
+@Injectable()
+export class AuthZServiceService {
 
-export interface AuthZProviderPendingView {
-  viewId: string;
-  state?: StateObject;
+  constructor() { }
 }
-
-export interface AuthZProviderInfo {
-  message: string;
-}
-
-export type AuthZProviderInterface = {
-  name: string;
-  scopes?: string[];
-  state: AuthZProviderState;
-  errorInfo?: AuthZProviderInfo;
-  warningInfo?: AuthZProviderInfo;
-  props?: StateObject;
-  roles?: string[];
-  pendingViews?: AuthZProviderPendingView[];
-  config?: StateObject;
-};

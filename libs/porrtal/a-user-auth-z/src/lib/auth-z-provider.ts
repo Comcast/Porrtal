@@ -12,27 +12,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 import { StateObject } from '@porrtal/a-api';
+import {
+  AuthZProviderInterface,
+  AuthZProviderState,
+} from '@porrtal/a-user';
 
-export type AuthZProviderState = 'init' | 'ready' | 'error';
-
-export interface AuthZProviderPendingView {
-  viewId: string;
-  state?: StateObject;
+export class AuthZProvider implements AuthZProviderInterface {
+  public name = 'primary';
+  public state: AuthZProviderState = 'init';
 }
-
-export interface AuthZProviderInfo {
-  message: string;
-}
-
-export type AuthZProviderInterface = {
-  name: string;
-  scopes?: string[];
-  state: AuthZProviderState;
-  errorInfo?: AuthZProviderInfo;
-  warningInfo?: AuthZProviderInfo;
-  props?: StateObject;
-  roles?: string[];
-  pendingViews?: AuthZProviderPendingView[];
-  config?: StateObject;
-};
