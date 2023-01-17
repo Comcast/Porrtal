@@ -12,9 +12,20 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { InjectionToken } from '@angular/core';
-import { Observable } from 'rxjs';
+import {
+  AuthZProviderInfo,
+  AuthZProviderPendingView,
+  AuthZProviderState,
+} from './auth-z-provider-interface';
 
 export type AuthZTypedProviderInterface<TConfig, TProps> = {
   name: string;
+  scopes: string[];
+  state: AuthZProviderState;
+  errorInfo: AuthZProviderInfo;
+  warningInfo: AuthZProviderInfo;
+  props: TProps;
+  roles: string[];
+  pendingViews: AuthZProviderPendingView[];
+  config: TConfig;
 };

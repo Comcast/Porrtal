@@ -13,7 +13,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { InjectionToken } from '@angular/core';
-import { Observable } from 'rxjs';
 import { AuthZProviderInterface } from './auth-z-provider-interface';
 
 export type AuthZInterface = {

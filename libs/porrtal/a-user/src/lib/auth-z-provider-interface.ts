@@ -12,9 +12,27 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { InjectionToken } from '@angular/core';
-import { Observable } from 'rxjs';
+import { StateObject } from '@porrtal/a-api';
+
+export type AuthZProviderState = 'init' | 'ready' | 'error';
+
+export interface AuthZProviderPendingView {
+  viewId: string;
+  state?: StateObject;
+}
+
+export interface AuthZProviderInfo {
+  message: string;
+}
 
 export type AuthZProviderInterface = {
   name: string;
+  scopes: string[];
+  state: AuthZProviderState;
+  errorInfo: AuthZProviderInfo;
+  warningInfo: AuthZProviderInfo;
+  props: StateObject;
+  roles: string[];
+  pendingViews: AuthZProviderPendingView[];
+  config: StateObject;
 };
