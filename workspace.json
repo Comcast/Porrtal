@@ -22,6 +22,8 @@
     "porrtal-auth-a-auth0-app-e2e": "apps/porrtal-auth/a-auth0-app-e2e",
     "porrtal-auth-a-keycloak-app": "apps/porrtal-auth/a-keycloak-app",
     "porrtal-auth-a-keycloak-app-e2e": "apps/porrtal-auth/a-keycloak-app-e2e",
+    "porrtal-auth-a-mock-app": "apps/porrtal-auth/a-mock-app",
+    "porrtal-auth-a-mock-app-e2e": "apps/porrtal-auth/a-mock-app-e2e",
     "porrtal-auth-a-msal-app": "apps/porrtal-auth/a-msal-app",
     "porrtal-auth-a-msal-app-e2e": "apps/porrtal-auth/a-msal-app-e2e",
     "porrtal-auth-a-strapi-app": "apps/porrtal-auth/a-strapi-app",

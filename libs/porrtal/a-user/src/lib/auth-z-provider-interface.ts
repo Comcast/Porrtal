@@ -27,8 +27,8 @@ export interface AuthZProviderInfo {
 
 export type AuthZProviderInterface = {
   name: string;
-  scopes?: string[];
   state: AuthZProviderState;
+  scopes?: string[];
   errorInfo?: AuthZProviderInfo;
   warningInfo?: AuthZProviderInfo;
   props?: StateObject;
