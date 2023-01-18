@@ -26,9 +26,9 @@ export interface MockConfiguration {
 
 }
 
-export function provideOAuthClient(
+export function provideMockOAuthClient(
   authConfig: MockConfiguration,
-): EnvironmentProviders[] {
+): Provider[] {
   const providers: Provider[] = [
     {
       provide: AUTH_N_INTERFACE,
@@ -41,5 +41,5 @@ export function provideOAuthClient(
   ];
 
   const adapterProviders = makeEnvironmentProviders(providers);
-  return [adapterProviders];
+  return [providers];
 }

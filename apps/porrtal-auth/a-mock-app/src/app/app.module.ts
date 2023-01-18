@@ -30,7 +30,6 @@ import { MockPorrtalModule } from '@porrtal/a-user-auth-z';
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     BrowserAnimationsModule,
     HttpClientModule,
-    MockPorrtalModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent],

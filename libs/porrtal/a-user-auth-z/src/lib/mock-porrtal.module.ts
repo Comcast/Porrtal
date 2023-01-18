@@ -14,7 +14,7 @@ limitations under the License.
 */
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MockConfiguration, provideOAuthClient } from './mock-provider';
+import { MockConfiguration, provideMockOAuthClient } from './mock-provider';
 
 @NgModule({
   imports: [CommonModule],
@@ -27,7 +27,7 @@ export class MockPorrtalModule {
   ): ModuleWithProviders<MockPorrtalModule> {
     return {
       ngModule: MockPorrtalModule,
-      providers: [provideOAuthClient(authConfig)],
+      providers: [provideMockOAuthClient(authConfig)],
     };
   }
 }
