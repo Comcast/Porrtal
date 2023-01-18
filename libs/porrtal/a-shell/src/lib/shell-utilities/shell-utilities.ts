@@ -56,8 +56,13 @@ export function replaceParameters(
 
             case 'object':
               if (index + 1 !== p1Array.length) {
-                innerObject = innerValue;
-                return false;
+                if (Array.isArray(innerValue)) {
+                  retString = innerValue.join(',');
+                  return true;
+                } else {
+                  innerObject = innerValue;
+                  return false;
+                }
               }
               warningString = addWarningForFailedParameter(
                 warningString,

@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
 import { View } from '@porrtal/a-api';
 import { BannerData, ShellStateService } from '@porrtal/a-shell';
 import { ShellLayoutComponent } from '@porrtal/a-shell-material';
-import { provideMockOAuthClient } from '@porrtal/a-user-auth-z';
+import { MockAuthZProvider, provideMockOAuthClient } from '@porrtal/a-user-auth-z';
 
 const views: View[] = [
   {
@@ -97,7 +97,15 @@ const views: View[] = [
   selector: 'porrtal-workspace-page-one',
   standalone: true,
   imports: [CommonModule, ShellLayoutComponent],
-  providers: [provideMockOAuthClient({})],
+  providers: [provideMockOAuthClient({
+    authN: {
+      loginSuccess: true,
+      claims: { roles: ['admin']},
+    },
+    authZ: {
+      'primary': new MockAuthZProvider(),
+    }
+  })],
   templateUrl: './page-one.component.html',
   styleUrls: ['./page-one.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

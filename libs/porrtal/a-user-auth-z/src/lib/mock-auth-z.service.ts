@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
+import { AuthZInterface, AuthZProviderInterface } from '@porrtal/a-user';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class MockAuthZService {
-
-  constructor() { }
+export class MockAuthZService implements AuthZInterface {
+  constructor(
+    public authZProviders: { [key: string]: AuthZProviderInterface }
+  ) {}
 }

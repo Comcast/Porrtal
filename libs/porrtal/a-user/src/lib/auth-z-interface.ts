@@ -16,7 +16,9 @@ import { InjectionToken } from '@angular/core';
 import { AuthZProviderInterface } from './auth-z-provider-interface';
 
 export type AuthZInterface = {
-  [key: string]: AuthZProviderInterface;
+  authZProviders: {
+    [key: string]: AuthZProviderInterface;
+  }
 };
 
 export const AUTH_Z_INTERFACE = new InjectionToken<AuthZInterface>(

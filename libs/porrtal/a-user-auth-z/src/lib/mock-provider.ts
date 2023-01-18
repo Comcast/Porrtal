@@ -21,23 +21,32 @@ import { AUTH_N_INTERFACE, AUTH_Z_INTERFACE } from '@porrtal/a-user';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MockAuthNService } from './mock-auth-n.service';
 import { MockAuthZService } from './mock-auth-z.service';
+import { StateObject } from '@porrtal/a-api';
+import { AuthZProvider } from './auth-z-provider';
 
 export interface MockConfiguration {
-
+  authN: {
+    loginDelay?: number;
+    loginSuccess?: boolean;
+    claims?: StateObject;
+  },
+  authZ: {
+    [key: string]: AuthZProvider
+  }
 }
 
 export function provideMockOAuthClient(
-  authConfig: MockConfiguration,
+  authConfig: MockConfiguration
 ): Provider[] {
   const providers: Provider[] = [
     {
       provide: AUTH_N_INTERFACE,
-      useClass: MockAuthNService,
+      useValue: new MockAuthNService(authConfig),
     },
     {
       provide: AUTH_Z_INTERFACE,
-      useClass: MockAuthZService
-    }
+      useValue: new MockAuthZService(authConfig.authZ),
+    },
   ];
 
   const adapterProviders = makeEnvironmentProviders(providers);

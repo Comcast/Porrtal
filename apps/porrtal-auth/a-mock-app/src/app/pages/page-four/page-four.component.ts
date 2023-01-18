@@ -97,7 +97,12 @@ const views: View[] = [
   selector: 'porrtal-workspace-page-four',
   standalone: true,
   imports: [CommonModule, ShellLayoutComponent],
-  providers: [provideMockOAuthClient({})],
+  providers: [provideMockOAuthClient({
+    authN: {
+      loginSuccess: true,
+    },
+    authZ: {}
+  })],
   templateUrl: './page-four.component.html',
   styleUrls: ['./page-four.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

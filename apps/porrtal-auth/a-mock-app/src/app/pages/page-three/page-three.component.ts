@@ -97,7 +97,12 @@ const views: View[] = [
   selector: 'porrtal-workspace-page-three',
   standalone: true,
   imports: [CommonModule, ShellLayoutComponent],
-  providers: [provideMockOAuthClient({})],
+  providers: [provideMockOAuthClient({
+    authN: {
+      loginSuccess: true,
+    },
+    authZ: {}
+  })],
   templateUrl: './page-three.component.html',
   styleUrls: ['./page-three.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
