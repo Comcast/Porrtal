@@ -24,7 +24,8 @@ const views: View[] = [
     paneType: 'main',
     launchAtStartup: true,
     componentName: 'OtherMainViewComponent',
-    componentModule: () => import('../../views/other-main-view/other-main-view.component'),
+    componentModule: () =>
+      import('../../views/other-main-view/other-main-view.component'),
     key: 'main-view',
     displayText: 'main-view',
     displayIcon: 'home',
@@ -46,14 +47,41 @@ export class PageTwoComponent {
     childData: [
       {
         displayText: 'one',
-        targetUrl: '/one'
+        targetUrl: '/one',
+        displayIcon: 'cyclone',
       },
       {
         displayText: 'two',
-        targetUrl: '/two'
-      }
-    ]
-};
+        targetUrl: '/two',
+        displayIcon: 'cyclone',
+      },
+      {
+        displayText: 'three',
+        targetUrl: '/three',
+        displayIcon: 'cyclone',
+      },
+      {
+        displayText: 'four',
+        targetUrl: '/four',
+        displayIcon: 'cyclone',
+      },
+      {
+        displayText: 'five',
+        targetUrl: '/five',
+        displayIcon: 'cyclone',
+      },
+      {
+        displayText: 'six',
+        targetUrl: '/six',
+        displayIcon: 'cyclone',
+      },
+      {
+        displayText: 'seven',
+        targetUrl: '/seven',
+        displayIcon: 'cyclone',
+      },
+    ],
+  };
 
   constructor(public shellStateService: ShellStateService) {
     views.forEach((view) =>

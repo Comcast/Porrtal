@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2022 Comcast Cable Communications Management, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -94,15 +94,15 @@ const views: View[] = [
 ];
 
 @Component({
-  selector: 'porrtal-workspace-page-one',
+  selector: 'porrtal-workspace-page-three',
   standalone: true,
   imports: [CommonModule, ShellLayoutComponent],
   providers: [provideMockOAuthClient({})],
-  templateUrl: './page-one.component.html',
-  styleUrls: ['./page-one.component.scss'],
+  templateUrl: './page-three.component.html',
+  styleUrls: ['./page-three.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PageOneComponent {
+export class PageThreeComponent {
   public bannerData: BannerData = {
     displayText: 'porrtal-auth - angular - mock',
     displayIcon: 'cyclone',

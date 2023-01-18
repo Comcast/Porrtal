@@ -13,7 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { Route } from '@angular/router';
+import { PageFiveComponent } from './pages/page-five/page-five.component';
+import { PageFourComponent } from './pages/page-four/page-four.component';
 import { PageOneComponent } from './pages/page-one/page-one.component';
+import { PageSevenComponent } from './pages/page-seven/page-seven.component';
+import { PageSixComponent } from './pages/page-six/page-six.component';
+import { PageThreeComponent } from './pages/page-three/page-three.component';
 import { PageTwoComponent } from './pages/page-two/page-two.component';
 
 export const appRoutes: Route[] = [
@@ -24,6 +29,26 @@ export const appRoutes: Route[] = [
     {
         path: 'two',
         component: PageTwoComponent
+    },
+    {
+        path: 'three',
+        component: PageThreeComponent
+    },
+    {
+        path: 'four',
+        component: PageFourComponent
+    },
+    {
+        path: 'five',
+        component: PageFiveComponent
+    },
+    {
+        path: 'six',
+        component: PageSixComponent
+    },
+    {
+        path: 'seve ',
+        component: PageSevenComponent
     },
     {
         path: '**',
