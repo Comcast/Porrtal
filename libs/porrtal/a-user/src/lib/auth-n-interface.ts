@@ -41,8 +41,8 @@ export type AuthNInterface = {
   logout?: () => void;
   isAuthenticated$: Observable<boolean>;
   isInitialized$: Observable<boolean>;
-  claims: StateObject;
-  claimsMap: { [fromKey: string]: string };
+  claims?: StateObject;
+  claimsMap?: { [fromKey: string]: string };
 };
 
 export const AUTH_N_INTERFACE = new InjectionToken<AuthNInterface>(

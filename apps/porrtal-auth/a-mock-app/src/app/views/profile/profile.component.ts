@@ -12,21 +12,15 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { Route } from '@angular/router';
-import { PageOneComponent } from './pages/page-one/page-one.component';
-import { PageTwoComponent } from './pages/page-two/page-two.component';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-export const appRoutes: Route[] = [
-    {
-        path: 'one',
-        component: PageOneComponent
-    },
-    {
-        path: 'two',
-        component: PageTwoComponent
-    },
-    {
-        path: '**',
-        redirectTo: 'one'
-    }
-];
+@Component({
+  selector: 'porrtal-workspace-profile',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ProfileComponent {}

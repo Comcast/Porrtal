@@ -12,21 +12,25 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { Route } from '@angular/router';
-import { PageOneComponent } from './pages/page-one/page-one.component';
-import { PageTwoComponent } from './pages/page-two/page-two.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-export const appRoutes: Route[] = [
-    {
-        path: 'one',
-        component: PageOneComponent
-    },
-    {
-        path: 'two',
-        component: PageTwoComponent
-    },
-    {
-        path: '**',
-        redirectTo: 'one'
-    }
-];
+import { V4Component } from './v4.component';
+
+describe('V4Component', () => {
+  let component: V4Component;
+  let fixture: ComponentFixture<V4Component>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [V4Component],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(V4Component);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
