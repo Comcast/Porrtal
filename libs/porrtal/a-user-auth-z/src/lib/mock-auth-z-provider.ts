@@ -19,7 +19,9 @@ import {
   AuthZProviderState,
 } from '@porrtal/a-user';
 
-export class AuthZProvider implements AuthZProviderInterface {
+export class MockAuthZProvider implements AuthZProviderInterface {
   public name = 'primary';
   public state: AuthZProviderState = 'init';
+
+  constructor() {}
 }

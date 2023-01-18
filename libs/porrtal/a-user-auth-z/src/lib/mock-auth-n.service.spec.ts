@@ -14,14 +14,14 @@ limitations under the License.
 */
 import { TestBed } from '@angular/core/testing';
 
-import { MockAuthZServiceService } from './mock-auth-z-service.service';
+import { MockAuthNService } from './mock-auth-n.service';
 
-describe('MockAuthZServiceService', () => {
-  let service: MockAuthZServiceService;
+describe('MockAuthNService', () => {
+  let service: MockAuthNService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(MockAuthZServiceService);
+    service = TestBed.inject(MockAuthNService);
   });
 
   it('should be created', () => {

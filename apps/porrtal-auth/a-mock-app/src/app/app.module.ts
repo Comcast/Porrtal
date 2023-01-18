@@ -20,6 +20,7 @@ import { appRoutes } from './app.routes';
 import { ShellLayoutComponent } from '@porrtal/a-shell-material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { MockPorrtalModule } from '@porrtal/a-user-auth-z';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     BrowserAnimationsModule,
     HttpClientModule,
+    MockPorrtalModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent],

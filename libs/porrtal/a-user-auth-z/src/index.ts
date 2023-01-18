@@ -14,3 +14,8 @@ limitations under the License.
 */
 export * from './lib/auth-z-provider';
 export * from './lib/auth-z-service.service';
+export * from './lib/mock-auth-n.service';
+export * from './lib/mock-auth-z-provider';
+export * from './lib/mock-auth-z.service';
+export * from './lib/mock-porrtal.module';
+export * from './lib/mock-provider';
