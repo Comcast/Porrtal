@@ -12,10 +12,12 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { Injectable } from '@angular/core';
 
-import { AppModule } from './app/app.module';
+@Injectable({
+  providedIn: 'root'
+})
+export class MockAuthZServiceService {
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));
+  constructor() { }
+}

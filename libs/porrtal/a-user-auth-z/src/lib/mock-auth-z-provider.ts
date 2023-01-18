@@ -12,10 +12,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app/app.module';
+import { StateObject } from '@porrtal/a-api';
+import {
+  AuthZProviderInterface,
+  AuthZProviderState,
+} from '@porrtal/a-user';
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));
+export class AuthZProvider implements AuthZProviderInterface {
+  public name = 'primary';
+  public state: AuthZProviderState = 'init';
+}

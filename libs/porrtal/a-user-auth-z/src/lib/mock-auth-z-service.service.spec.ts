@@ -12,10 +12,19 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { TestBed } from '@angular/core/testing';
 
-import { AppModule } from './app/app.module';
+import { MockAuthZServiceService } from './mock-auth-z-service.service';
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch((err) => console.error(err));
+describe('MockAuthZServiceService', () => {
+  let service: MockAuthZServiceService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(MockAuthZServiceService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});
