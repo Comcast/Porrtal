@@ -1,0 +1,32 @@
+<div class="banner-container" (click)="showMenu($event)">
+  <mat-icon inline="true">key</mat-icon>
+</div>
+
+<div
+  style="visibility: hidden; position: fixed"
+  [style.left]="menuTopLeftPosition.x"
+  [style.top]="menuTopLeftPosition.y"
+  [matMenuTriggerFor]="shellStateMenu"
+></div>
+
+<!-- standard material menu -->
+<mat-menu #shellStateMenu="matMenu">
+  <ng-template matMenuContent>
+    <button mat-menu-item>
+      <div class="menu-item-container">
+        <mat-spinner [diameter]="20"></mat-spinner>
+        <mat-icon inline="true" class="menu-close-icon">lock_open</mat-icon>
+        <span>nwt</span>
+      </div>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="doLaunch()">
+      <div class="menu-item-container">
+        <mat-icon inline="true" class="menu-close-icon material-icons-outlined"
+          >info</mat-icon
+        >
+        <span>Dashboard</span>
+      </div>
+    </button>
+  </ng-template>
+</mat-menu>

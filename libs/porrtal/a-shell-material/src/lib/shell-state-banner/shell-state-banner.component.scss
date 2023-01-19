@@ -1,0 +1,19 @@
+@import 'ag-grid-community/dist/styles/ag-grid.css';
+@import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+
+.banner-container {
+  display: grid;
+  align-items: center;
+  font-size: 150%;
+  line-height: 1.125;
+}
+
+.menu-close-icon {
+  font-size: 20px !important;
+  font-weight: 900;
+}
+
+.menu-item-container {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+}
