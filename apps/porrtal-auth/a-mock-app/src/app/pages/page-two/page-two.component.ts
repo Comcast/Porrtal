@@ -80,6 +80,11 @@ export class PageTwoComponent {
         targetUrl: '/seven',
         displayIcon: 'cyclone',
       },
+      {
+        displayText: 'eight',
+        targetUrl: '/eight',
+        displayIcon: 'cyclone',
+      },    
     ],
   };
 

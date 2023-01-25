@@ -147,6 +147,11 @@ export class PageFiveComponent {
         targetUrl: '/seven',
         displayIcon: 'cyclone',
       },
+      {
+        displayText: 'eight',
+        targetUrl: '/eight',
+        displayIcon: 'cyclone',
+      },    
     ],
   };
 
