@@ -15,11 +15,15 @@ limitations under the License.
 
 import { StateObject } from '@porrtal/a-api';
 import {
+  AuthZProviderInfo,
   AuthZProviderInterface,
+  AuthZProviderPendingView,
   AuthZProviderState,
 } from '@porrtal/a-user';
+import { Observable, of } from 'rxjs';
 
 export class AuthZProvider implements AuthZProviderInterface {
+  public state$: Observable<AuthZProviderState> = of('init');
   public name = 'primary';
   public state: AuthZProviderState = 'init';
 }

@@ -12,13 +12,15 @@
 <!-- standard material menu -->
 <mat-menu #shellStateMenu="matMenu">
   <ng-template matMenuContent>
-    <button mat-menu-item>
-      <div class="menu-item-container">
-        <mat-spinner [diameter]="20"></mat-spinner>
-        <mat-icon inline="true" class="menu-close-icon">lock_open</mat-icon>
-        <span>nwt</span>
-      </div>
-    </button>
+    <ng-container *ngIf="authZService">
+      <button mat-menu-item>
+        <div class="menu-item-container">
+          <mat-spinner [diameter]="20"></mat-spinner>
+          <mat-icon inline="true" class="menu-close-icon">lock_open</mat-icon>
+          <span>nwt</span>
+        </div>
+      </button>
+    </ng-container>
     <mat-divider></mat-divider>
     <button mat-menu-item (click)="doLaunch()">
       <div class="menu-item-container">

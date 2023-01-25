@@ -18,8 +18,10 @@ import {
   AuthZProviderInterface,
   AuthZProviderState,
 } from '@porrtal/a-user';
+import { Observable, of } from 'rxjs';
 
 export class MockAuthZProvider implements AuthZProviderInterface {
+  public state$: Observable<AuthZProviderState> = of('init');
   public name = 'primary';
   public state: AuthZProviderState = 'init';
 

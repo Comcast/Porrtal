@@ -13,6 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { StateObject } from '@porrtal/a-api';
+import { Observable } from 'rxjs';
 
 export type AuthZProviderState = 'init' | 'ready' | 'error';
 
@@ -27,7 +28,7 @@ export interface AuthZProviderInfo {
 
 export type AuthZProviderInterface = {
   name: string;
-  state: AuthZProviderState;
+  state$: Observable<AuthZProviderState>;
   scopes?: string[];
   errorInfo?: AuthZProviderInfo;
   warningInfo?: AuthZProviderInfo;

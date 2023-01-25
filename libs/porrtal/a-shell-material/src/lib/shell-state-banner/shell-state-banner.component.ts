@@ -1,10 +1,31 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+/*
+Copyright 2022 Comcast Cable Communications Management, LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  Optional,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ShellStateService } from '@porrtal/a-shell';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AuthZInterface, AUTH_Z_INTERFACE } from '@porrtal/a-user';
 
 @Component({
   selector: 'porrtal-shell-state-banner',
@@ -21,12 +42,14 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShellStateBannerComponent {
-
   @ViewChild(MatMenuTrigger, { static: true }) matMenuTrigger?: MatMenuTrigger;
 
   public menuTopLeftPosition = { x: '0', y: '0' };
 
-  constructor(private shellStateService: ShellStateService) {
+  constructor(
+    private shellStateService: ShellStateService,
+    @Inject(AUTH_Z_INTERFACE) @Optional() public authZService: AuthZInterface
+  ) {
     this.shellStateService.dispatch({
       type: 'registerView',
       view: {
