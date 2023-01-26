@@ -26,6 +26,7 @@ import {
 } from '@porrtal/a-user';
 import { LoginService } from './login-service/login.service';
 import { MatDialogModule } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'porrtal-user-banner',
@@ -34,13 +35,20 @@ import { MatDialogModule } from '@angular/material/dialog';
   providers: [LoginService],
   templateUrl: './user-banner.component.html',
   styleUrls: ['./user-banner.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class UserBannerComponent {
+  isAuthenticated$?: Observable<boolean>;
+
   constructor(
     @Optional() @Inject(AUTH_N_INTERFACE) public authN: AuthNInterface,
     public loginService: LoginService
-  ) {}
+  ) {
+    console.log('UserBannerComponent constructor...', authN);
+    this.isAuthenticated$ = authN?.isAuthenticated$;
+
+    authN.init?.();
+  }
 
   login(loginStrategy: LoginStrategy) {
     if (loginStrategy === 'loginWithRedirect') {

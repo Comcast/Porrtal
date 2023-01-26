@@ -13,11 +13,32 @@
 <mat-menu #shellStateMenu="matMenu">
   <ng-template matMenuContent>
     <ng-container *ngIf="authZService">
-      <button mat-menu-item>
+      <button
+        mat-menu-item
+        *ngFor="let authZProvider of authZService.authZProviders | keyvalue"
+        (click)="doLaunch()"
+      >
         <div class="menu-item-container">
-          <mat-spinner [diameter]="20"></mat-spinner>
+          <mat-spinner
+            [diameter]="20"
+            *ngIf="(authZProvider.value.state$ | async) === 'init'"
+          ></mat-spinner>
+          <mat-icon
+            *ngIf="(authZProvider.value.state$ | async) === 'error'"
+            color="warn"
+            inline="true"
+            class="menu-close-icon"
+            >report</mat-icon
+          >
+          <mat-icon
+            *ngIf="(authZProvider.value.state$ | async) === 'ready'"
+            color="primary"
+            inline="true"
+            class="menu-close-icon"
+            >check_circle</mat-icon
+          >
           <mat-icon inline="true" class="menu-close-icon">lock_open</mat-icon>
-          <span>nwt</span>
+          <span>{{ authZProvider.key }}</span>
         </div>
       </button>
     </ng-container>

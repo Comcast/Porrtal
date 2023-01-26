@@ -14,28 +14,34 @@ limitations under the License.
 */
 import { Injectable } from '@angular/core';
 import { StateObject } from '@porrtal/a-api';
-import { AuthNInterface, LoginCreds, LoginStrategy, RegisterUserInfo } from '@porrtal/a-user';
+import {
+  AuthNInterface,
+  LoginCreds,
+  LoginStrategy,
+  RegisterUserInfo,
+} from '@porrtal/a-user';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { MockConfiguration } from './mock-provider';
 
 export class MockAuthNService implements AuthNInterface {
-
   private authConfig: MockConfiguration;
 
-  get user(): { name: string; email: string; } | undefined {
+  get user(): { name: string; email: string } | undefined {
     if (this.isAuthenticatedSubj.getValue() === true) {
       return {
         name: 'billy',
-        email: 'billy@porrtal.io'
-      }
+        email: 'billy@porrtal.io',
+      };
     }
     return undefined;
-  };
+  }
   loginStrategy$: Observable<LoginStrategy>;
   loginWithRedirect?: (() => void) | undefined = () => {
     if (this.authConfig && this.authConfig.authN.loginDelay) {
       setTimeout(() => {
-        this.isAuthenticatedSubj.next(this.authConfig.authN.loginSuccess ?? true);
+        this.isAuthenticatedSubj.next(
+          this.authConfig.authN.loginSuccess ?? true
+        );
       }, this.authConfig.authN.loginDelay);
     } else {
       this.isAuthenticatedSubj.next(this.authConfig.authN.loginSuccess ?? true);
@@ -44,21 +50,41 @@ export class MockAuthNService implements AuthNInterface {
   logout?: (() => void) | undefined = () => {
     this.isAuthenticatedSubj.next(false);
   };
-  isAuthenticated$: Observable<boolean>;
-  isInitialized$: Observable<boolean>;
-  claims?: StateObject | undefined;
-  claimsMap?: { [fromKey: string]: string; } | undefined;
+  init?: () => void = () => {
+    if (this.isInitializedSubj.getValue() === false) {
+      this.isInitializedSubj.next(true);
+      console.log('init mock-auth-n service', this.authConfig);
+      if (
+        this.authConfig.authN.loginDelay &&
+        this.authConfig.authN.loginDelay > 0
+      ) {
+        setTimeout(() => {
+          console.log('login', this.authConfig.authN.loginSuccess ?? true);
+          this.isAuthenticatedSubj.next(
+            this.authConfig.authN.loginSuccess ?? true
+          );
+        }, this.authConfig.authN.loginDelay);
+      } else {
+        this.isAuthenticatedSubj.next(
+          this.authConfig.authN.loginSuccess ?? true
+        );
+      }
+    }
+  };
+  public isAuthenticated$: Observable<boolean>;
+  public isInitialized$: Observable<boolean>;
+  public claims?: StateObject | undefined;
+  public claimsMap?: { [fromKey: string]: string } | undefined;
 
   isAuthenticatedSubj = new BehaviorSubject<boolean>(false);
-  isInitializedSubj = new BehaviorSubject<boolean>(true);
-  loginStrategySubj = new BehaviorSubject<LoginStrategy>('loginWithRedirect')
+  isInitializedSubj = new BehaviorSubject<boolean>(false);
+  loginStrategySubj = new BehaviorSubject<LoginStrategy>('loginWithRedirect');
 
   constructor(config: MockConfiguration) {
     this.authConfig = config;
 
-    this.loginStrategy$ = this.loginStrategySubj.asObservable();
+    this.loginStrategy$ = this.loginStrategySubj;
     this.isAuthenticated$ = this.isAuthenticatedSubj.asObservable();
     this.isInitialized$ = this.isInitializedSubj.asObservable();
   }
-
 }

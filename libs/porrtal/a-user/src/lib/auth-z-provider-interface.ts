@@ -14,8 +14,9 @@ limitations under the License.
 */
 import { StateObject } from '@porrtal/a-api';
 import { Observable } from 'rxjs';
+import { AuthNInterface } from './auth-n-interface';
 
-export type AuthZProviderState = 'init' | 'ready' | 'error';
+export type AuthZProviderState = '' | 'init' | 'ready' | 'error';
 
 export interface AuthZProviderPendingView {
   viewId: string;
@@ -35,5 +36,5 @@ export type AuthZProviderInterface = {
   props?: StateObject;
   roles?: string[];
   pendingViews?: AuthZProviderPendingView[];
-  config?: StateObject;
+  init?: (authN: AuthNInterface) => void;
 };

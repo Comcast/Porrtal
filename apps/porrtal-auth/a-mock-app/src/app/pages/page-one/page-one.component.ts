@@ -12,12 +12,21 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  Optional,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { View } from '@porrtal/a-api';
 import { BannerData, ShellStateService } from '@porrtal/a-shell';
 import { ShellLayoutComponent } from '@porrtal/a-shell-material';
-import { MockAuthZProvider, provideMockOAuthClient } from '@porrtal/a-user-auth-z';
+import {
+  MockAuthZProvider,
+  provideMockOAuthClient,
+} from '@porrtal/a-user-auth-z';
+import { AuthNInterface, AUTH_N_INTERFACE } from '@porrtal/a-user';
 
 const views: View[] = [
   {
@@ -97,15 +106,17 @@ const views: View[] = [
   selector: 'porrtal-workspace-page-one',
   standalone: true,
   imports: [CommonModule, ShellLayoutComponent],
-  providers: [provideMockOAuthClient({
-    authN: {
-      loginSuccess: true,
-      claims: { roles: ['admin']},
-    },
-    authZ: {
-      'primary': new MockAuthZProvider(),
-    }
-  })],
+  providers: [
+    provideMockOAuthClient({
+      authN: {
+        loginSuccess: true,
+        claims: { roles: ['admin'] },
+      },
+      authZ: {
+        primary: new MockAuthZProvider(),
+      },
+    }),
+  ],
   templateUrl: './page-one.component.html',
   styleUrls: ['./page-one.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -154,11 +165,16 @@ export class PageOneComponent {
         displayText: 'eight',
         targetUrl: '/eight',
         displayIcon: 'cyclone',
-      },    
+      },
     ],
   };
 
-  constructor(public shellStateService: ShellStateService) {
+  constructor(
+    public shellStateService: ShellStateService,
+    @Optional() @Inject(AUTH_N_INTERFACE) public authN: AuthNInterface
+  ) {
+    authN.loginWithRedirect && authN.loginWithRedirect();
+
     views.forEach((view) =>
       shellStateService.dispatch({
         type: 'registerView',

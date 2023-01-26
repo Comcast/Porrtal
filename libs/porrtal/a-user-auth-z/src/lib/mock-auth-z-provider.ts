@@ -15,15 +15,50 @@ limitations under the License.
 
 import { StateObject } from '@porrtal/a-api';
 import {
+  AuthNInterface,
   AuthZProviderInterface,
   AuthZProviderState,
 } from '@porrtal/a-user';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+
+export interface MockAuthZProviderConfig {
+  fetchDelay?: number;
+  shouldFail?: boolean;
+}
 
 export class MockAuthZProvider implements AuthZProviderInterface {
-  public state$: Observable<AuthZProviderState> = of('init');
+  public state$: Observable<AuthZProviderState>;
   public name = 'primary';
-  public state: AuthZProviderState = 'init';
 
-  constructor() {}
+  private stateSubj = new BehaviorSubject<AuthZProviderState>('');
+  private authN?: AuthNInterface;
+  private config?: MockAuthZProviderConfig;
+
+  public init = (authN: AuthNInterface) => {
+    if (this.stateSubj.getValue() === '') {
+      this.stateSubj.next('init');
+      this.authN = authN;
+      this.authN.isAuthenticated$.subscribe((isAuthenticated) => {
+        console.log('mock auth z provider: isAuthenticated', isAuthenticated);
+        if (isAuthenticated) {
+          if (this.config?.fetchDelay ?? 0 > 0) {
+            setTimeout(() => {
+              this.stateSubj.next(
+                this.config?.shouldFail ?? false ? 'error' : 'ready'
+              );
+            }, this.config?.fetchDelay);
+          } else {
+            this.stateSubj.next(
+              this.config?.shouldFail ?? false ? 'error' : 'ready'
+            );
+          }
+        }
+      });
+    }
+  };
+
+  constructor(config?: MockAuthZProviderConfig) {
+    this.state$ = this.stateSubj;
+    this.config = config;
+  }
 }

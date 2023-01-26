@@ -39,6 +39,7 @@ export type AuthNInterface = {
   login?: (creds: LoginCreds) => void;
   register?: (userInfo: RegisterUserInfo) => void;
   logout?: () => void;
+  init?: () => void;
   isAuthenticated$: Observable<boolean>;
   isInitialized$: Observable<boolean>;
   claims?: StateObject;

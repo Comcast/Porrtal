@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
 import { View } from '@porrtal/a-api';
 import { BannerData, ShellStateService } from '@porrtal/a-shell';
 import { ShellLayoutComponent } from '@porrtal/a-shell-material';
-import { provideMockOAuthClient } from '@porrtal/a-user-auth-z';
+import { MockAuthZProvider, provideMockOAuthClient } from '@porrtal/a-user-auth-z';
 
 const views: View[] = [
   {
@@ -100,8 +100,18 @@ const views: View[] = [
   providers: [provideMockOAuthClient({
     authN: {
       loginSuccess: true,
+      loginDelay: 4000,
     },
-    authZ: {}
+    authZ: {
+      primary: new MockAuthZProvider({
+        fetchDelay: 3000,
+        shouldFail: true
+      }),
+      second: new MockAuthZProvider({
+        fetchDelay: 5000,
+        shouldFail: false
+      })
+    }
   })],
   templateUrl: './page-three.component.html',
   styleUrls: ['./page-three.component.scss'],
