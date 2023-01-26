@@ -25,7 +25,12 @@ import { ShellStateService } from '@porrtal/a-shell';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AuthZInterface, AUTH_Z_INTERFACE } from '@porrtal/a-user';
+import {
+  AuthZInterface,
+  AuthZProviderState,
+  AUTH_Z_INTERFACE,
+} from '@porrtal/a-user';
+import { Observable, of, combineLatest, startWith, map } from 'rxjs';
 
 @Component({
   selector: 'porrtal-shell-state-banner',
@@ -46,10 +51,59 @@ export class ShellStateBannerComponent {
 
   public menuTopLeftPosition = { x: '0', y: '0' };
 
+  public hasError$: Observable<boolean>;
+  public someProcessing$: Observable<boolean>;
+  public allReady$: Observable<boolean>;
+
   constructor(
     private shellStateService: ShellStateService,
     @Inject(AUTH_Z_INTERFACE) @Optional() public authZService: AuthZInterface
   ) {
+    if (!authZService || Object.keys(authZService).length < 1) {
+      this.hasError$ = of(false);
+      this.allReady$ = of(true);
+      this.someProcessing$ = of(false);
+    } else {
+      // hasErrors$
+      this.hasError$ = combineLatest(
+        Object.keys(authZService.authZProviders).map((key) =>
+          authZService.authZProviders[key].state$.pipe(
+            startWith('' as AuthZProviderState)
+          )
+        )
+      ).pipe(
+        map((vals) => {
+          return vals.some((val) => val === 'error');
+        })
+      );
+
+      // allReady$
+      this.allReady$ = combineLatest(
+        Object.keys(authZService.authZProviders).map((key) =>
+          authZService.authZProviders[key].state$.pipe(
+            startWith('' as AuthZProviderState)
+          )
+        )
+      ).pipe(
+        map((vals) => {
+          return vals.every((val) => val === 'ready');
+        })
+      );
+
+      // someProcessing$
+      this.someProcessing$ = combineLatest(
+        Object.keys(authZService.authZProviders).map((key) =>
+          authZService.authZProviders[key].state$.pipe(
+            startWith('' as AuthZProviderState)
+          )
+        )
+      ).pipe(
+        map((vals) => {
+          return vals.some((val) => val !== 'ready' && val != 'error');
+        })
+      );
+    }
+
     this.shellStateService.dispatch({
       type: 'registerView',
       view: {

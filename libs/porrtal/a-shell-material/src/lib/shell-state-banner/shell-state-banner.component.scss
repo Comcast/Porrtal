@@ -6,6 +6,21 @@
   align-items: center;
   font-size: 150%;
   line-height: 1.125;
+  position: relative;
+}
+
+.banner-container-error {
+  border: 2px red solid;
+}
+
+.banner-container-success {
+  background-color: rgb(164, 194, 164);
+}
+
+.banner-spinner {
+  position: absolute;
+  left: -2px;
+  top: -2px;
 }
 
 .menu-close-icon {

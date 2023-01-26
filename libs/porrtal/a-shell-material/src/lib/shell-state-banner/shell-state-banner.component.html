@@ -1,5 +1,11 @@
-<div class="banner-container" (click)="showMenu($event)">
+<div
+  class="banner-container"
+  (click)="showMenu($event)"
+  [class.banner-container-error]="hasError$ | async"
+  [class.banner-container-success]="allReady$ | async"
+>
   <mat-icon inline="true">key</mat-icon>
+  <mat-spinner *ngIf="someProcessing$ | async" class="banner-spinner" [diameter]="24"></mat-spinner>
 </div>
 
 <div
