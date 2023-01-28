@@ -4,7 +4,7 @@
 </span>
 <ng-container *ngIf="authN && (authN.state$ | async) !== 'authenticated'">
   <ng-container *ngIf="authN.loginStrategy$ | async as loginStrategy">
-    <button (click)="login(loginStrategy)" class="login-button">
+    <button (click)="login(loginStrategy)" class="login-button" [disabled]="(authN.state$ | async) === 'authenticating'">
       <mat-spinner
         class="spinner"
         [diameter]="16"
@@ -15,6 +15,7 @@
         *ngIf="(authN.state$ | async) === 'error'"
         color="warn"
         inline="true"
+        [matTooltip]="authN.errorMessage ?? ''"
         >report</mat-icon
       >
       <div

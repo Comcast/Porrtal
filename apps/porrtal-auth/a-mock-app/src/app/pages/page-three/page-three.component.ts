@@ -101,7 +101,8 @@ const views: View[] = [
     authN: {
       loginSuccess: false,
       loginDelay: 4000,
-      loginSuccessCount: 2
+      loginSuccessCount: 2,
+      errorMessage: 'User not found.'
     },
     authZ: {
       primary: new MockAuthZProvider({

@@ -29,6 +29,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'porrtal-user-banner',
@@ -38,6 +39,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatDialogModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatTooltipModule,
   ],
   providers: [LoginService],
   templateUrl: './user-banner.component.html',

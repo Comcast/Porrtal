@@ -37,6 +37,9 @@ export class MockAuthNService implements AuthNInterface {
     }
     return undefined;
   }
+  get errorMessage() {
+    return this.authConfig.authN.errorMessage;
+  }
   loginStrategy$: Observable<LoginStrategy>;
   loginWithRedirect?: (() => void) | undefined = () => {
     this.loginCount++;
