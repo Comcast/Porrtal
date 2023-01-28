@@ -99,8 +99,9 @@ const views: View[] = [
   imports: [CommonModule, ShellLayoutComponent],
   providers: [provideMockOAuthClient({
     authN: {
-      loginSuccess: true,
+      loginSuccess: false,
       loginDelay: 4000,
+      loginSuccessCount: 2
     },
     authZ: {
       primary: new MockAuthZProvider({

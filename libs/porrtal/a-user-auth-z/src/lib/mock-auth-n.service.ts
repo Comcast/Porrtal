@@ -26,6 +26,7 @@ import { MockConfiguration } from './mock-provider';
 
 export class MockAuthNService implements AuthNInterface {
   private authConfig: MockConfiguration;
+  private loginCount = 0;
 
   get user(): { name: string; email: string } | undefined {
     if (this.stateSubj.getValue() === 'authenticated') {
@@ -38,16 +39,24 @@ export class MockAuthNService implements AuthNInterface {
   }
   loginStrategy$: Observable<LoginStrategy>;
   loginWithRedirect?: (() => void) | undefined = () => {
+    this.loginCount++;
+
+    let newState: AuthNState =
+      this.authConfig.authN.loginSuccess ?? true ? 'authenticated' : 'error';
+    if (
+      this.authConfig.authN.loginSuccessCount &&
+      this.authConfig.authN.loginSuccessCount <= this.loginCount
+    ) {
+      newState = 'authenticated';
+    }
+
     if (this.authConfig && this.authConfig.authN.loginDelay) {
+      this.stateSubj.next('authenticating');
       setTimeout(() => {
-        this.stateSubj.next(
-          this.authConfig.authN.loginSuccess ?? true ? 'authenticated' : 'error'
-        );
+        this.stateSubj.next(newState);
       }, this.authConfig.authN.loginDelay);
     } else {
-      this.stateSubj.next(
-        this.authConfig.authN.loginSuccess ?? true ? 'authenticated' : 'error'
-      );
+      this.stateSubj.next(newState);
     }
   };
   logout?: (() => void) | undefined = () => {
@@ -58,25 +67,28 @@ export class MockAuthNService implements AuthNInterface {
       this.stateSubj.next('initialized');
       console.log('init mock-auth-n service', this.authConfig);
 
+      let newState: AuthNState =
+        this.authConfig.authN.loginSuccess ?? true ? 'authenticated' : 'error';
+      if (
+        this.authConfig.authN.loginSuccessCount &&
+        this.authConfig.authN.loginSuccessCount <= this.loginCount
+      ) {
+        newState = 'authenticated';
+      }
+
       if (this.authConfig.authN.loginAtStartup ?? true) {
+        this.loginCount++;
         if (
           this.authConfig.authN.loginDelay &&
           this.authConfig.authN.loginDelay > 0
         ) {
+          this.stateSubj.next('authenticating');
           setTimeout(() => {
             console.log('login', this.authConfig.authN.loginSuccess ?? true);
-            this.stateSubj.next(
-              this.authConfig.authN.loginSuccess ?? true
-                ? 'authenticated'
-                : 'error'
-            );
+            this.stateSubj.next(newState);
           }, this.authConfig.authN.loginDelay);
         } else {
-          this.stateSubj.next(
-            this.authConfig.authN.loginSuccess ?? true
-              ? 'authenticated'
-              : 'error'
-          );
+          this.stateSubj.next(newState);
         }
       }
     }

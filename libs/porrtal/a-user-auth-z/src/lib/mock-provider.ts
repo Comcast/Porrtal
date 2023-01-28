@@ -37,6 +37,7 @@ export interface MockConfiguration {
     loginSuccess?: boolean;
     errorMessage?: string;
     claims?: StateObject;
+    loginSuccessCount?: number;
   };
   authZ: {
     [key: string]: AuthZProviderInterface;

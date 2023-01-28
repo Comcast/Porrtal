@@ -40,18 +40,33 @@ export class MockAuthZProvider implements AuthZProviderInterface {
       this.authN = authN;
       this.authN.state$.subscribe((state) => {
         console.log('mock auth z provider: isAuthenticated', state);
-        if (state === 'authenticated') {
-          if (this.config?.fetchDelay ?? 0 > 0) {
-            setTimeout(() => {
+        switch (state) {
+          case 'authenticated': {
+            if (this.config?.fetchDelay ?? 0 > 0) {
+              setTimeout(() => {
+                this.stateSubj.next(
+                  this.config?.shouldFail ?? false ? 'error' : 'ready'
+                );
+              }, this.config?.fetchDelay);
+            } else {
               this.stateSubj.next(
                 this.config?.shouldFail ?? false ? 'error' : 'ready'
               );
-            }, this.config?.fetchDelay);
-          } else {
-            this.stateSubj.next(
-              this.config?.shouldFail ?? false ? 'error' : 'ready'
-            );
+            }
+            break;
           }
+
+          case 'authenticating':
+            this.stateSubj.next('init');
+            break;
+
+          case 'error':
+            this.stateSubj.next('error');
+            break;
+
+          default:
+            this.stateSubj.next('');
+            break;
         }
       });
     }

@@ -99,7 +99,7 @@ export class ShellStateBannerComponent {
         )
       ).pipe(
         map((vals) => {
-          return vals.some((val) => val !== 'ready' && val != 'error');
+          return vals.some((val) => val === 'init');
         })
       );
     }
