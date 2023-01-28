@@ -10,8 +10,8 @@ export class MockAuthZService implements AuthZInterface {
     public authN: AuthNInterface,
     public authZProviders: { [key: string]: AuthZProviderInterface }
   ) {
-    authN?.isInitialized$.subscribe((isInitialized) => {
-      if (isInitialized) {
+    authN?.state$.subscribe((state) => {
+      if (state !== '') {
         Object.keys(authZProviders).forEach((key) => {
           console.log(`mock auth z service: init '${key}'`);
           authZProviders[key].init?.(this.authN);

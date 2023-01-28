@@ -18,9 +18,12 @@ import { AuthNInterface } from './auth-n-interface';
 
 export type AuthZProviderState = '' | 'init' | 'ready' | 'error';
 
+export type AuthZProviderPendingViewType = 'startup' | 'deep-link';
+
 export interface AuthZProviderPendingView {
   viewId: string;
   state?: StateObject;
+  type: AuthZProviderPendingViewType;
 }
 
 export interface AuthZProviderInfo {

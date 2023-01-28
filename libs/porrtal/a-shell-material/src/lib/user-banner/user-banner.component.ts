@@ -38,16 +38,14 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class UserBannerComponent {
-  isAuthenticated$?: Observable<boolean>;
 
   constructor(
-    @Optional() @Inject(AUTH_N_INTERFACE) public authN: AuthNInterface,
+    @Optional() @Inject(AUTH_N_INTERFACE) public authN: AuthNInterface | null,
     public loginService: LoginService
   ) {
     console.log('UserBannerComponent constructor...', authN);
-    this.isAuthenticated$ = authN?.isAuthenticated$;
 
-    authN.init?.();
+    authN?.init?.();
   }
 
   login(loginStrategy: LoginStrategy) {

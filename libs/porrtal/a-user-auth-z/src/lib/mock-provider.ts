@@ -32,8 +32,10 @@ import { MockAuthZProvider } from './mock-auth-z-provider';
 
 export interface MockConfiguration {
   authN: {
+    loginAtStartup?: boolean;
     loginDelay?: number;
     loginSuccess?: boolean;
+    errorMessage?: string;
     claims?: StateObject;
   };
   authZ: {

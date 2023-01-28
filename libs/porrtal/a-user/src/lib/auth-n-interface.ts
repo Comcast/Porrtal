@@ -29,19 +29,25 @@ export interface LoginCreds {
 
 export type LoginStrategy = 'loginWithRedirect' | 'login' | 'loginAndRegister';
 
+export type AuthNState = '' | 'initialized' | 'authenticating' | 'authenticated' | 'error';
+
 export type AuthNInterface = {
+  state$: Observable<AuthNState>;
+  errorMessage?: string;
+
+  init?: () => void;
+
   user?: {
     name: string;
     email: string;
   };
+
   loginStrategy$: Observable<LoginStrategy>;
   loginWithRedirect?: () => void;
   login?: (creds: LoginCreds) => void;
   register?: (userInfo: RegisterUserInfo) => void;
   logout?: () => void;
-  init?: () => void;
-  isAuthenticated$: Observable<boolean>;
-  isInitialized$: Observable<boolean>;
+
   claims?: StateObject;
   claimsMap?: { [fromKey: string]: string };
 };
