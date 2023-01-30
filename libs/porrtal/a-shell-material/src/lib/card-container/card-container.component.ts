@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   Type,
   ViewChild,
   ViewContainerRef,
@@ -19,7 +20,7 @@ import { ViewComponentProps } from '@porrtal/a-api';
 })
 export class CardContainerComponent {
   private _containerRef!: ViewContainerRef;
-  @ViewChild('cardContainer', { read: ViewContainerRef })
+  @ViewChild('cardPlaceholder', { read: ViewContainerRef, static: true })
   public set containerRef(value: ViewContainerRef) {
     this._containerRef = value;
   }
