@@ -32,6 +32,16 @@ import { RxState } from '@rx-angular/state';
 import { v4 as uuidv4 } from 'uuid';
 import { replaceParameters } from '../shell-utilities/shell-utilities';
 import * as dot from 'dot-object';
+import { state } from '@angular/animations';
+
+export interface MaximizeItem {
+  htmlEl: HTMLElement;
+  parentHtmlEl: HTMLElement;
+  parentHtmlElChildIndex: number;
+  maximizeText: string;
+  zIndex: number;
+  restore?: () => void;
+}
 
 export interface ShellState {
   panes: Panes;
@@ -42,6 +52,8 @@ export interface ShellState {
   navWidth?: number;
   navTabWidth?: number;
   menuItems?: PorrtalMenuItem[];
+  maximizeZIndex: number;
+  maximizeStack: MaximizeItem[];
 }
 
 export type ShellAction =
@@ -59,7 +71,9 @@ export type ShellAction =
   | { type: 'toggleNav'; item: ViewState }
   | { type: 'setNavTabWidth'; width: number }
   | { type: 'launchDeepLinks'; queryString: string }
-  | { type: 'copyToClipboard'; viewState: ViewState };
+  | { type: 'copyToClipboard'; viewState: ViewState }
+  | { type: 'maximize'; htmlEl: HTMLElement; maximizeText: string; restore?: () => void }
+  | { type: 'restoreMaximized' };
 
 @Injectable({
   providedIn: 'root',
@@ -467,6 +481,57 @@ export class ShellStateService extends RxState<ShellState> {
         navigator.clipboard.writeText(getViewStateDeepLink(action.viewState));
         break;
       }
+
+      case 'maximize': {
+        
+        const parentEl = action.htmlEl.parentElement;
+        if (!parentEl) {
+          console.log(
+            'error. called shell state service: maximize with element with no parent element'
+          );
+          return;
+        }
+
+        this.set((state) => ({
+          maximizeZIndex: state.maximizeZIndex + 10,
+          maximizeStack: [
+            ...state.maximizeStack,
+            {
+              htmlEl: action.htmlEl,
+              maximizeText: action.maximizeText,
+              parentHtmlEl: parentEl,
+              parentHtmlElChildIndex: Array.prototype.indexOf.call(
+                parentEl.children,
+                action.htmlEl
+              ),
+              zIndex: state.maximizeZIndex,
+              restore: action.restore
+            },
+          ],
+        }));
+        break;
+      }
+
+      case 'restoreMaximized': {
+        this.set((state) => {
+          const newMaximizeStack = [...state.maximizeStack];
+          const maximizeItem = newMaximizeStack.pop();
+
+          // parent back to original parent
+          maximizeItem?.parentHtmlEl.insertBefore(
+            maximizeItem.htmlEl,
+            maximizeItem.parentHtmlEl.children[
+              maximizeItem.parentHtmlElChildIndex
+            ]
+          );
+
+          return {
+            maximizeZIndex: state.maximizeZIndex - 10,
+            maximizeStack: newMaximizeStack,
+          };
+        });
+        break;
+      }
     }
   };
 }
@@ -639,6 +704,8 @@ const emptyUseShellState: ShellState = {
   views: [],
   showUserInfo: true,
   showDevInfo: true,
+  maximizeZIndex: 9900,
+  maximizeStack: [],
 };
 
 export function combineViewStateStateAndActionState(

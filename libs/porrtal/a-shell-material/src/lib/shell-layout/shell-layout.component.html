@@ -1,7 +1,9 @@
 <div *ngIf="state$ | async as shellState" class="container">
   <div class="banner">
     <porrtal-banner [bannerData]="bannerData"></porrtal-banner>
-    <porrtal-banner-menu-inline [menuItems]="shellState.menuItems"></porrtal-banner-menu-inline>
+    <porrtal-banner-menu-inline
+      [menuItems]="shellState.menuItems"
+    ></porrtal-banner-menu-inline>
     <porrtal-user-banner></porrtal-user-banner>
     <porrtal-logger-banner></porrtal-logger-banner>
     <porrtal-shell-state-banner></porrtal-shell-state-banner>
@@ -10,7 +12,9 @@
     ></porrtal-search>
   </div>
   <div class="banner-menu-bar">
-    <porrtal-banner-menu-bar [menuItems]="shellState.menuItems"></porrtal-banner-menu-bar>
+    <porrtal-banner-menu-bar
+      [menuItems]="shellState.menuItems"
+    ></porrtal-banner-menu-bar>
   </div>
   <div class="content">
     <as-split
@@ -70,3 +74,6 @@
   </div>
   <div class="footer">footer</div>
 </div>
+<ng-container *ngFor="let maximizeItem of maximizeStack$ | async">
+  <porrtal-maximize-host [maximizeItem]="maximizeItem"></porrtal-maximize-host
+></ng-container>

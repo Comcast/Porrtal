@@ -8,6 +8,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { AuthNInterface } from '@porrtal/a-user';
 import { BehaviorSubject } from 'rxjs';
+import { ShellStateService } from '@porrtal/a-shell';
 
 @Component({
   selector: 'porrtal-auth-n-card',
@@ -18,7 +19,7 @@ import { BehaviorSubject } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthNCardComponent {
-  isMaximized = false;
+  isMaximized$ = new BehaviorSubject<boolean>(false);
   childIndex = -1;
   parentNativeEl: any;
 
@@ -39,21 +40,39 @@ export class AuthNCardComponent {
   }
 
   constructor(
-    private readonly renderer: Renderer2,
-    private readonly el: ElementRef
+    private readonly el: ElementRef,
+    private shellStateService: ShellStateService
   ) {}
 
   toggleMax() {
-    if (!this.isMaximized) {
-      this.parentNativeEl = this.el.nativeElement.parentElement;
-      // this.childIndex = this.el.nativeElement.parentElement.children.indexOf(this.el.nativeElement);
-      this.childIndex = Array.prototype.indexOf.call(this.el.nativeElement.parentElement.children, this.el.nativeElement)
-      console.log('child index...', this.childIndex)
-      this.renderer.appendChild(document.body, this.el.nativeElement);
-      this.isMaximized = true;
-    } else {
-      this.renderer.insertBefore(this.parentNativeEl, this.el.nativeElement, this.parentNativeEl.children[this.childIndex]);
-      this.isMaximized = false;
-    }
+    this.shellStateService.dispatch({
+      type: 'maximize',
+      htmlEl: this.el.nativeElement,
+      maximizeText: 'auth n',
+      restore: () => { 
+        this.isMaximized$.next(false); 
+        console.log('auth-n-card restore', this);
+      }
+    });
+    // this.parentNativeEl = this.el.nativeElement.parentElement;
+
+    // this.childIndex = Array.prototype.indexOf.call(
+    //   this.el.nativeElement.parentElement.children,
+    //   this.el.nativeElement
+    // );
+    // console.log('child index...', this.childIndex);
+    // this.renderer.appendChild(document.body, this.el.nativeElement);
+    this.isMaximized$.next(true);
+    // } else {
+    //   this.shellStateService.dispatch({
+    //     type: 'restoreMaximized',
+    //   });
+    // this.renderer.insertBefore(
+    //   this.parentNativeEl,
+    //   this.el.nativeElement,
+    //   this.parentNativeEl.children[this.childIndex]
+    // );
+    //   this.isMaximized = false;
+    // }
   }
 }

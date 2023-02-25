@@ -1,4 +1,4 @@
-<div class="container-container" [class.maximize]="isMaximized">
+<div class="container-container" [class.maximize]="isMaximized$ | async">
   <div class="auth-n-container">
     <p>auth-n-card works!</p>
     <p *ngIf="authNSubj | async as auth">
@@ -7,6 +7,8 @@
         state === 'error' ? auth?.authN?.errorMessage : auth?.authN?.user?.name
       }}
     </p>
-    <button mat-button (click)="toggleMax()">toggle max</button>
+    <button *ngIf="!(isMaximized$ | async)" mat-button (click)="toggleMax()">
+      toggle max
+    </button>
   </div>
 </div>

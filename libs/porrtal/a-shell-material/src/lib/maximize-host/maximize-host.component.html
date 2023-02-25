@@ -1,0 +1,9 @@
+<div class="container" [style.z-index]="maximizeItem?.zIndex">
+  <div class="header">
+    <div>{{ maximizeItem?.maximizeText }}</div>
+    <button mat-button (click)="restoreMaximizeItem()">
+      <mat-icon>close_fullscreen</mat-icon>
+    </button>
+  </div>
+  <div #maximizeHost class="maximize-host"></div>
+</div>
