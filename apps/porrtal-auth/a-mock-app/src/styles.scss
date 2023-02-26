@@ -18,6 +18,7 @@ $angular-default-theme: mat.define-light-theme(
       accent: $angular-accent,
       warn: $angular-warn,
     ),
+    background: map_get(mat.$teal-palette, background),
   )
 );
 

@@ -86,6 +86,9 @@ export class ViewStackComponent implements AfterContentChecked {
     ElementRef<HTMLElement>
   >;
 
+  @ViewChildren(ViewHostComponent)
+  portalViewHosts?: QueryList<ViewHostComponent>;
+
   public paneTypes?: string[];
   public selectedTabIndex?: number;
   public paneArrangements = paneArrangements;
@@ -130,7 +133,7 @@ export class ViewStackComponent implements AfterContentChecked {
     }
   }
 
-  doContextMenu(evt: MouseEvent, viewState: ViewState): void {
+  doContextMenu(evt: MouseEvent, viewState: ViewState, ii: number): void {
     evt.preventDefault();
     evt.stopPropagation();
 
@@ -139,7 +142,7 @@ export class ViewStackComponent implements AfterContentChecked {
     this.menuTopLeftPosition.y = evt.clientY + 'px';
 
     if (this.matMenuTrigger) {
-      this.matMenuTrigger.menuData = { viewState };
+      this.matMenuTrigger.menuData = { viewState, ii };
       this.matMenuTrigger.openMenu();
     }
   }
@@ -180,5 +183,10 @@ export class ViewStackComponent implements AfterContentChecked {
       viewId: viewLaunch.viewId,
       state: viewLaunch.state,
     });
+  }
+
+  doMaximizeTab(evt: MouseEvent, viewState: ViewState, ii: number) {
+    console.log(`boom(${ii})...`, this.portalViewHosts);
+    this.portalViewHosts?.toArray()[ii].maximize();
   }
 }

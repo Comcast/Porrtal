@@ -49,30 +49,12 @@ export class AuthNCardComponent {
       type: 'maximize',
       htmlEl: this.el.nativeElement,
       maximizeText: 'auth n',
-      restore: () => { 
-        this.isMaximized$.next(false); 
+      restore: () => {
+        this.isMaximized$.next(false);
         console.log('auth-n-card restore', this);
-      }
+      },
     });
-    // this.parentNativeEl = this.el.nativeElement.parentElement;
 
-    // this.childIndex = Array.prototype.indexOf.call(
-    //   this.el.nativeElement.parentElement.children,
-    //   this.el.nativeElement
-    // );
-    // console.log('child index...', this.childIndex);
-    // this.renderer.appendChild(document.body, this.el.nativeElement);
     this.isMaximized$.next(true);
-    // } else {
-    //   this.shellStateService.dispatch({
-    //     type: 'restoreMaximized',
-    //   });
-    // this.renderer.insertBefore(
-    //   this.parentNativeEl,
-    //   this.el.nativeElement,
-    //   this.parentNativeEl.children[this.childIndex]
-    // );
-    //   this.isMaximized = false;
-    // }
   }
 }

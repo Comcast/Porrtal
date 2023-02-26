@@ -15,6 +15,7 @@ limitations under the License.
 import {
   ChangeDetectionStrategy,
   Component,
+  ComponentRef,
   ElementRef,
   Input,
   OnInit,
@@ -23,6 +24,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewComponentProps, ViewState } from '@porrtal/a-api';
+import { ShellStateService } from '../shell-state/shell-state.service';
 
 @Component({
   selector: 'porrtal-view-host',
@@ -35,6 +37,7 @@ import { ViewComponentProps, ViewState } from '@porrtal/a-api';
 export class ViewHostComponent {
   private _viewState!: ViewState;
   @Input() public set viewState(value: ViewState) {
+    console.log('view stack - set view state', value);
     this._viewState = value;
     this.loadViewStateComponent();
   }
@@ -52,19 +55,35 @@ export class ViewHostComponent {
     return this._containerRef;
   }
 
-  constructor(private viewContainerRef: ViewContainerRef) {}
+  public maximize() {
+    this.viewContainerRef.element.nativeElement;
+    this.comp?.location.nativeElement;
+    console.log(`boom2...`, this.viewState);
+    this.shellStateService.dispatch({
+      type: 'maximize',
+      htmlEl: this.comp?.location.nativeElement,
+      maximizeText: `${this.viewState.displayText}`
+    })
+  }
+
+  private comp?: ComponentRef<ViewComponentProps>;
+
+  constructor(
+    private viewContainerRef: ViewContainerRef,
+    private shellStateService: ShellStateService
+  ) {}
 
   async loadViewStateComponent() {
     if (this.viewState && this.containerRef) {
       this.containerRef.clear();
       const component = await this.viewState.componentImport();
       if (component) {
-        const comp =
+        this.comp =
           this.containerRef.createComponent<ViewComponentProps>(component);
 
-        comp.setInput('viewState', this._viewState);
-        comp.changeDetectorRef.markForCheck();
-        comp.changeDetectorRef.detectChanges();
+        this.comp.setInput('viewState', this._viewState);
+        this.comp.changeDetectorRef.markForCheck();
+        this.comp.changeDetectorRef.detectChanges();
       }
     }
   }
