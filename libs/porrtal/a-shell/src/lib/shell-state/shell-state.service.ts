@@ -59,10 +59,10 @@ export interface ShellState {
 export type ShellAction =
   | { type: 'launchView'; viewId: string; state?: StateObject }
   | { type: 'launchStartupViews' }
-  | { type: 'moveView'; key: string; toPane: PaneType }
-  | { type: 'deleteViewState'; key: string }
+  | { type: 'moveView'; key: string; toPane: PaneType } // prevent when maximize
+  | { type: 'deleteViewState'; key: string } // prevent when maximize
   | { type: 'setCurrentViewStateByKey'; key: string; pane: Pane }
-  | { type: 'arrangePane'; pane: Pane; paneArrangement: PaneArrangement }
+  | { type: 'arrangePane'; pane: Pane; paneArrangement: PaneArrangement } // prevent when maximize
   | { type: 'registerModules'; modules: ViewComponentModules }
   | { type: 'registerView'; view: View }
   | { type: 'setShowUserInfo'; show: boolean }
@@ -185,6 +185,12 @@ export class ShellStateService extends RxState<ShellState> {
 
       case 'moveView': {
         let retState = this.get();
+
+        // prevent move view if there are maximized elements
+        if (retState.maximizeStack.length > 0) {
+          throw new Error('Shell State Service: Cannot "moveView" when elements are maximized.');
+        }
+
         let foundViewState: ViewState | undefined;
 
         paneTypes.some((paneType) => {
@@ -262,6 +268,12 @@ export class ShellStateService extends RxState<ShellState> {
 
       case 'deleteViewState': {
         let retState = this.get();
+
+        // prevent move view if there are maximized elements
+        if (retState.maximizeStack.length > 0) {
+          throw new Error('Shell State Service: Cannot "deleteViewState" when elements are maximized.');
+        }
+        
         let foundView: ViewState | undefined;
 
         paneTypes.some((paneType) => {
@@ -298,6 +310,12 @@ export class ShellStateService extends RxState<ShellState> {
       }
 
       case 'arrangePane': {
+        // prevent move view if there are maximized elements
+        const state = this.get();
+        if (state.maximizeStack.length > 0) {
+          throw new Error('Shell State Service: Cannot "moveView" when elements are maximized.');
+        }
+        
         const retState = {
           ...this.get(),
           panes: {
