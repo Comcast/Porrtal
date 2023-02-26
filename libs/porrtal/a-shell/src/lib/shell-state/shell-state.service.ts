@@ -73,7 +73,6 @@ export type ShellAction =
   | { type: 'launchDeepLinks'; queryString: string }
   | { type: 'copyToClipboard'; viewState: ViewState }
   | { type: 'maximize'; htmlEl: HTMLElement; maximizeText: string; restore?: () => void }
-  | { type: 'maximizeViewState'; viewState: ViewState, restore?: () => void }
   | { type: 'restoreMaximized' };
 
 @Injectable({

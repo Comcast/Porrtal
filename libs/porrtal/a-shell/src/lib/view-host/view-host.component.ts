@@ -37,7 +37,6 @@ import { ShellStateService } from '../shell-state/shell-state.service';
 export class ViewHostComponent {
   private _viewState!: ViewState;
   @Input() public set viewState(value: ViewState) {
-    console.log('view stack - set view state', value);
     this._viewState = value;
     this.loadViewStateComponent();
   }
@@ -56,9 +55,6 @@ export class ViewHostComponent {
   }
 
   public maximize() {
-    this.viewContainerRef.element.nativeElement;
-    this.comp?.location.nativeElement;
-    console.log(`boom2...`, this.viewState);
     this.shellStateService.dispatch({
       type: 'maximize',
       htmlEl: this.comp?.location.nativeElement,

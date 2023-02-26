@@ -186,7 +186,6 @@ export class ViewStackComponent implements AfterContentChecked {
   }
 
   doMaximizeTab(evt: MouseEvent, viewState: ViewState, ii: number) {
-    console.log(`boom(${ii})...`, this.portalViewHosts);
     this.portalViewHosts?.toArray()[ii].maximize();
   }
 }
