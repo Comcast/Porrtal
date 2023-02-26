@@ -5,7 +5,7 @@
   [ngStyle]="{ position: 'fixed', top: menuPosition.y, left: menuPosition.x }"
   [matMenuTriggerFor]="menu"
 ></div>
-<mat-menu #menu="matMenu">
+<mat-menu #menu="matMenu" style="z-index: 99999 !important">
   <ng-template matMenuContent>
     <button
       mat-menu-item

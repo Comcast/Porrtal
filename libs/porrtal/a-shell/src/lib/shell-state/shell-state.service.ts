@@ -705,7 +705,7 @@ const emptyUseShellState: ShellState = {
   views: [],
   showUserInfo: true,
   showDevInfo: true,
-  maximizeZIndex: 9900,
+  maximizeZIndex: 90,
   maximizeStack: [],
 };
 
