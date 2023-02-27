@@ -1,10 +1,10 @@
 <div class="container mat-app-background" [style.z-index]="maximizeItem?.zIndex">
-  <div class="header">
+  <mat-toolbar color="accent" class="header">
     <div>{{ maximizeItem?.maximizeText }}</div>
     <button mat-button (click)="restoreMaximizeItem()">
       <mat-icon>close_fullscreen</mat-icon>
     </button>
-  </div>
+  </mat-toolbar>
   <div class="content">
     <div #maximizeHost class="maximize-host"></div>
   </div>

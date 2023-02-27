@@ -10,12 +10,13 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MaximizeItem, ShellStateService } from '@porrtal/a-shell';
 
 @Component({
   selector: 'porrtal-maximize-host',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatToolbarModule],
   templateUrl: './maximize-host.component.html',
   styleUrls: ['./maximize-host.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
