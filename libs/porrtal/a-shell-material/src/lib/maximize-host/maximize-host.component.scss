@@ -14,5 +14,10 @@
 
 .content {
     position: relative;
+}
+
+.maximize-host {
+    position: absolute;
+    inset: 0;
     overflow: auto;
 }
