@@ -114,7 +114,7 @@ export class ShellStateBannerComponent {
         componentModule: () =>
           import('../shell-state-dashboard/shell-state-dashboard.component'),
         key: 'shell-state-dashboard',
-        displayText: 'log',
+        displayText: 'shell dashboard',
         displayIcon: 'key',
       },
     });
