@@ -1,11 +1,18 @@
 .container {
     position: absolute;
-    inset: 0;
+    inset: 0px;
+    padding: 10px;
     display: grid;
     grid-template-rows: auto 1fr;
+    background-color: white;
 }
 
 .header {
     display: grid;
     grid-template-columns: 1fr auto;
+}
+
+.content {
+    position: relative;
+    overflow: auto;
 }
