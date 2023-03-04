@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
@@ -20,7 +22,11 @@
           "apps/r/porrtal-app/src/favicon.ico",
           "apps/r/porrtal-app/src/assets"
         ],
-        "styles": ["apps/r/porrtal-app/src/styles.scss"],
+        "styles": [
+          "apps/r/porrtal-app/src/styles.scss",
+          "node_modules/ag-grid-community/styles/ag-grid.css",
+          "node_modules/ag-grid-community/styles/ag-theme-balham.css"
+        ],
         "scripts": [],
         "webpackConfig": "apps/r/porrtal-app/webpack.config.js",
         "isolatedConfig": true
@@ -67,14 +73,20 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/r/porrtal-app/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "apps/r/porrtal-app/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/r/porrtal-app"],
+      "outputs": [
+        "{workspaceRoot}/coverage/apps/r/porrtal-app"
+      ],
       "options": {
         "jestConfig": "apps/r/porrtal-app/jest.config.ts",
         "passWithNoTests": true

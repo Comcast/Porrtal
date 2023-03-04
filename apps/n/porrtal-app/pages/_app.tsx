@@ -14,6 +14,9 @@ limitations under the License.
 */
 import './styles.css';
 
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-balham.css';
+
 // import App from 'next/app'
 
 function MyApp({ Component, pageProps }) {

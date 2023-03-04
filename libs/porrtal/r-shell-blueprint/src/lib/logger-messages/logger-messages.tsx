@@ -20,9 +20,6 @@ import { ColDef } from 'ag-grid-community';
 import { ITooltipParams } from 'ag-grid-community';
 import { useMemo, useState } from 'react';
 
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-balham.css';
-
 const MessageDetailTooltip = (props: ITooltipParams<LoggerEntry>) => {
   const data = useMemo(() => {
     if (props.rowIndex !== undefined) {
