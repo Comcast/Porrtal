@@ -5,12 +5,52 @@
 }
 
 .auth-n-container {
-  background-color: cadetblue;
   display: grid;
+  grid-template-rows: auto 1fr;
   position: absolute;
   inset: 0;
 }
 
 .maximize {
-    z-index: 999;
+  z-index: 999;
+}
+
+.maximize-button {
+  position: relative;
+  left: 15px;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: unset !important;
+}
+
+.maximize-icon {
+  margin-right: 0px !important;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  max-height: 30px;
+  min-height: 30px;
+}
+
+.spinner {
+  margin-right: 15px;
+}
+
+.status-icon {
+  margin-right: 15px;
+}
+
+.card-type {
+  margin-right: 15px;
+}
+
+:host ::ng-deep .spinner svg > circle {
+  stroke: white !important;
+}
+
+.card-content-container {
+  position: relative;
+  overflow: auto;
 }

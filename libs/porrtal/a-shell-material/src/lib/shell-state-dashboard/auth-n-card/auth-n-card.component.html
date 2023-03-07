@@ -1,14 +1,71 @@
 <div class="container-container" [class.maximize]="isMaximized$ | async">
   <div class="auth-n-container">
-    <p>auth-n-card works!</p>
-    <p *ngIf="authNSubj | async as auth">
-      {{ state }}:
-      {{
-        state === 'error' ? auth?.authN?.errorMessage : auth?.authN?.user?.name
-      }}
-    </p>
-    <button *ngIf="!(isMaximized$ | async)" mat-button (click)="toggleMax()">
-      toggle max
-    </button>
+    <mat-toolbar
+      class="toolbar"
+      [color]="state === 'error' ? 'warn' : 'accent'"
+    >
+      <!-- card status-->
+      <mat-spinner
+        class="spinner"
+        [diameter]="16"
+        *ngIf="state === 'authenticating'"
+      ></mat-spinner>
+      <span *ngIf="state === 'error'" class="status-icon">
+        <mat-icon>warning</mat-icon>
+      </span>
+      <span *ngIf="state === 'initialized'" class="status-icon">
+        <mat-icon>radio_button_unchecked</mat-icon>
+      </span>
+      <span *ngIf="state === 'authenticated'" class="status-icon">
+        <mat-icon>task_alt</mat-icon>
+      </span>
+
+      <!-- card type -->
+      <span class="card-type">auth n</span>
+
+      <!-- card message -->
+      <span *ngIf="authNSubj | async as auth">
+        {{
+          state === 'error'
+            ? auth?.authN?.errorMessage
+            : state === 'authenticated'
+            ? auth?.authN?.user?.name
+            : state
+        }}
+      </span>
+      <span *ngIf="!(authNSubj | async)"></span>
+
+      <!-- card maximize button -->
+      <button
+        *ngIf="!(isMaximized$ | async)"
+        mat-button
+        (click)="toggleMax()"
+        class="maximize-button"
+      >
+        <mat-icon class="maximize-icon">north_east</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- card content -->
+    <div class="card-content-container">
+      <div>
+        content 1 content 1 content 1 content 1 content 1 content 1 content 1
+        content 1 content 1 content 1 content 1 content 1 content 1 content 1
+      </div>
+      <p>content 2</p>
+      <p>content 1</p>
+      <p>content 1</p>
+      <p>content 1</p>
+      <p>content 1</p>
+      <p>content 1</p>
+      <p>content 1</p>
+      <p>content 1</p>
+      <p>content 1</p>
+      <p>content 1</p>
+      <p>content 1</p>
+      <p>content 1</p>
+      <p>content 1</p>
+      <p>content 1</p>
+    </div>
   </div>
 </div>

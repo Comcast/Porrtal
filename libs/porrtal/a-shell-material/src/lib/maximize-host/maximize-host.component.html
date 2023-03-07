@@ -1,8 +1,8 @@
 <div class="container mat-app-background" [style.z-index]="maximizeItem?.zIndex">
   <mat-toolbar color="accent" class="header">
     <div>{{ maximizeItem?.maximizeText }}</div>
-    <button mat-button (click)="restoreMaximizeItem()">
-      <mat-icon>close_fullscreen</mat-icon>
+    <button mat-button (click)="restoreMaximizeItem()" class="restore-button">
+      <mat-icon class="restore-icon">close_fullscreen</mat-icon>
     </button>
   </mat-toolbar>
   <div class="content">

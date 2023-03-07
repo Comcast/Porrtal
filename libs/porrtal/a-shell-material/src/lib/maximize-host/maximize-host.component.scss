@@ -1,22 +1,36 @@
 .container {
-    position: absolute;
-    inset: 0px;
-    padding: 10px;
-    display: grid;
-    grid-template-rows: auto 1fr;
+  position: absolute;
+  inset: 0px;
+  padding: 10px;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
 .header {
-    display: grid;
-    grid-template-columns: 1fr auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  max-height: 32px;
+  min-height: 32px;
 }
 
 .content {
-    position: relative;
+  position: relative;
 }
 
 .maximize-host {
-    position: absolute;
-    inset: 0;
-    overflow: auto;
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+}
+
+.restore-button {
+  position: relative;
+  left: 15px;
+  height: 32px !important;
+  width: 32px !important;
+  min-width: unset !important;
+}
+
+.restore-icon {
+  margin-right: 0px !important;
 }

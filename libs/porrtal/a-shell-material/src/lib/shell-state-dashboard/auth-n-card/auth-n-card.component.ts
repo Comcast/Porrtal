@@ -6,14 +6,18 @@ import {
   Renderer2,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthNInterface } from '@porrtal/a-user';
+import { AuthNInterface, AuthNState } from '@porrtal/a-user';
 import { BehaviorSubject } from 'rxjs';
 import { ShellStateService } from '@porrtal/a-shell';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'porrtal-auth-n-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule, MatProgressSpinnerModule],
   templateUrl: './auth-n-card.component.html',
   styleUrls: ['./auth-n-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,7 +31,7 @@ export class AuthNCardComponent {
     authN: undefined,
   });
   _authN?: AuthNInterface;
-  state = 'waiting...';
+  state: AuthNState = 'initialized';
 
   @Input() public set data(value: AuthNInterface) {
     this._authN = value;
