@@ -53,4 +53,19 @@
 .card-content-container {
   position: relative;
   overflow: auto;
+  margin-top: 5px;
+}
+
+.auth-n-properties-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.auth-n-property-title {
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.auth-n-property-value {
+
 }

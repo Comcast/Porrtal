@@ -28,6 +28,7 @@ export class MockAuthNService implements AuthNInterface {
   private authConfig: MockConfiguration;
   private loginCount = 0;
 
+  // user
   get user(): { name: string; email: string } | undefined {
     if (this.stateSubj.getValue() === 'authenticated') {
       return {
@@ -37,9 +38,15 @@ export class MockAuthNService implements AuthNInterface {
     }
     return undefined;
   }
+
+  // errorMessage
   get errorMessage() {
-    return this.authConfig.authN.errorMessage;
+    if (this.stateSubj.getValue() === 'error') {
+      return this.authConfig.authN.errorMessage;
+    }
+    return undefined;
   }
+
   loginStrategy$: Observable<LoginStrategy>;
   loginWithRedirect?: (() => void) | undefined = () => {
     this.loginCount++;
@@ -56,29 +63,12 @@ export class MockAuthNService implements AuthNInterface {
     if (this.authConfig && this.authConfig.authN.loginDelay) {
       this.stateSubj.next('authenticating');
       setTimeout(() => {
-        if (newState === 'authenticated') {
-          this.claims = {
-            one: 1,
-            two: 2,
-            message: 'hello there...',
-            nest: {
-              nested: 'im a nested message',
-            },
-          };
-          console.log('set claims...', this.claims);
-        }
+        this.setClaims(newState);
     this.stateSubj.next(newState);
       }, this.authConfig.authN.loginDelay);
     } else {
       if (newState === 'authenticated') {
-        this.claims = {
-          one: 1,
-          two: 2,
-          message: 'hello there...',
-          nest: {
-            nested: 'im a nested message',
-          },
-        };
+        this.setClaims(newState);
         console.log('set claims...', this.claims);
       }
 this.stateSubj.next(newState);
@@ -111,30 +101,11 @@ this.stateSubj.next(newState);
           this.stateSubj.next('authenticating');
           setTimeout(() => {
             console.log('login', this.authConfig.authN.loginSuccess ?? true);
-            if (newState === 'authenticated') {
-              this.claims = {
-                one: 1,
-                two: 2,
-                message: 'hello there...',
-                nest: {
-                  nested: 'im a nested message',
-                },
-              };
-              console.log('set claims...', this.claims);
-            }
+            this.setClaims(newState);
             this.stateSubj.next(newState);
           }, this.authConfig.authN.loginDelay);
         } else {
-          if (newState === 'authenticated') {
-            this.claims = {
-              one: 1,
-              two: 2,
-              message: 'hello there...',
-              nest: {
-                nested: 'im a nested message',
-              },
-            };
-          };
+          this.setClaims(newState);
           console.log('set claims...', this.claims);
           this.stateSubj.next(newState);
         }
@@ -154,5 +125,23 @@ this.stateSubj.next(newState);
     this.loginStrategy$ = this.loginStrategySubj;
     this.state$ = this.stateSubj;
     console.log('mock-auth-n service constructor...')
+  }
+
+  private setClaims(newState: string) {
+    if (newState === 'authenticated') {
+      this.claims = {
+        one: 1,
+        two: 2,
+        message: 'hello there...',
+        nest: {
+          nested: 'im a nested message',
+        },
+      };
+      this.claimsMap = {
+        one: 'hello',
+        two: 'there'
+      }
+      console.log('set claims...', this.claims);
+    }
   }
 }
