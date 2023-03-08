@@ -52,20 +52,7 @@
         content 1 content 1 content 1 content 1 content 1 content 1 content 1
         content 1 content 1 content 1 content 1 content 1 content 1 content 1
       </div>
-      <p>content 2</p>
-      <p>content 1</p>
-      <p>content 1</p>
-      <p>content 1</p>
-      <p>content 1</p>
-      <p>content 1</p>
-      <p>content 1</p>
-      <p>content 1</p>
-      <p>content 1</p>
-      <p>content 1</p>
-      <p>content 1</p>
-      <p>content 1</p>
-      <p>content 1</p>
-      <p>content 1</p>
+      <p>{{ (authNSubj | async)?.authN?.claims | json}}</p>
     </div>
   </div>
 </div>

@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { StateObject } from '@porrtal/a-api';
 
 @Component({
   selector: 'porrtal-auth-n-card',
@@ -26,6 +27,7 @@ export class AuthNCardComponent {
   isMaximized$ = new BehaviorSubject<boolean>(false);
   childIndex = -1;
   parentNativeEl: any;
+  claims?: StateObject;
 
   authNSubj = new BehaviorSubject<{ authN: AuthNInterface | undefined }>({
     authN: undefined,
@@ -38,8 +40,10 @@ export class AuthNCardComponent {
     this.authNSubj.next({ authN: value });
 
     this._authN.state$.subscribe((authNState) => {
-      this.authNSubj.next({ authN: this._authN });
       this.state = authNState;
+      this.claims = this._authN?.claims;
+      console.log('claims', this.claims);
+      this.authNSubj.next({ authN: this._authN });
     });
   }
 

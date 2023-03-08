@@ -56,10 +56,32 @@ export class MockAuthNService implements AuthNInterface {
     if (this.authConfig && this.authConfig.authN.loginDelay) {
       this.stateSubj.next('authenticating');
       setTimeout(() => {
-        this.stateSubj.next(newState);
+        if (newState === 'authenticated') {
+          this.claims = {
+            one: 1,
+            two: 2,
+            message: 'hello there...',
+            nest: {
+              nested: 'im a nested message',
+            },
+          };
+          console.log('set claims...', this.claims);
+        }
+    this.stateSubj.next(newState);
       }, this.authConfig.authN.loginDelay);
     } else {
-      this.stateSubj.next(newState);
+      if (newState === 'authenticated') {
+        this.claims = {
+          one: 1,
+          two: 2,
+          message: 'hello there...',
+          nest: {
+            nested: 'im a nested message',
+          },
+        };
+        console.log('set claims...', this.claims);
+      }
+this.stateSubj.next(newState);
     }
   };
   logout?: (() => void) | undefined = () => {
@@ -72,6 +94,7 @@ export class MockAuthNService implements AuthNInterface {
 
       let newState: AuthNState =
         this.authConfig.authN.loginSuccess ?? true ? 'authenticated' : 'error';
+
       if (
         this.authConfig.authN.loginSuccessCount &&
         this.authConfig.authN.loginSuccessCount <= this.loginCount
@@ -88,9 +111,31 @@ export class MockAuthNService implements AuthNInterface {
           this.stateSubj.next('authenticating');
           setTimeout(() => {
             console.log('login', this.authConfig.authN.loginSuccess ?? true);
+            if (newState === 'authenticated') {
+              this.claims = {
+                one: 1,
+                two: 2,
+                message: 'hello there...',
+                nest: {
+                  nested: 'im a nested message',
+                },
+              };
+              console.log('set claims...', this.claims);
+            }
             this.stateSubj.next(newState);
           }, this.authConfig.authN.loginDelay);
         } else {
+          if (newState === 'authenticated') {
+            this.claims = {
+              one: 1,
+              two: 2,
+              message: 'hello there...',
+              nest: {
+                nested: 'im a nested message',
+              },
+            };
+          };
+          console.log('set claims...', this.claims);
           this.stateSubj.next(newState);
         }
       }
@@ -108,5 +153,6 @@ export class MockAuthNService implements AuthNInterface {
     this.authConfig = config;
     this.loginStrategy$ = this.loginStrategySubj;
     this.state$ = this.stateSubj;
+    console.log('mock-auth-n service constructor...')
   }
 }
