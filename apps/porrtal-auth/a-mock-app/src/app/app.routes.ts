@@ -25,35 +25,43 @@ import { PageTwoComponent } from './pages/page-two/page-two.component';
 export const appRoutes: Route[] = [
     {
         path: 'one',
-        component: PageOneComponent
+        loadComponent: () => import('./pages/page-one/page-one.component')
+            .then(m => m.PageOneComponent)
     },
     {
         path: 'two',
-        component: PageTwoComponent
+        loadComponent: () => import('./pages/page-two/page-two.component')
+            .then(m => m.PageTwoComponent)
     },
     {
         path: 'three',
-        component: PageThreeComponent
+        loadComponent: () => import('./pages/page-three/page-three.component')
+            .then(m => m.PageThreeComponent)
     },
     {
         path: 'four',
-        component: PageFourComponent
+        loadComponent: () => import('./pages/page-four/page-four.component')
+            .then(m => m.PageFourComponent)
     },
     {
         path: 'five',
-        component: PageFiveComponent
+        loadComponent: () => import('./pages/page-five/page-five.component')
+            .then(m => m.PageFiveComponent)
     },
     {
         path: 'six',
-        component: PageSixComponent
+        loadComponent: () => import('./pages/page-six/page-six.component')
+            .then(m => m.PageSixComponent)
     },
     {
         path: 'seven',
-        component: PageSevenComponent
+        loadComponent: () => import('./pages/page-seven/page-seven.component')
+            .then(m => m.PageSevenComponent)
     },
     {
         path: 'eight',
-        component: PageEightComponent
+        loadComponent: () => import('./pages/page-eight/page-eight.component')
+            .then(m => m.PageEightComponent)
     },
     {
         path: '**',
