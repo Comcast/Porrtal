@@ -29,7 +29,7 @@
 
 .toolbar {
   display: grid;
-  grid-template-columns: auto auto 1fr auto;
+  grid-template-columns: auto auto auto 1fr auto;
   max-height: 30px;
   min-height: 30px;
 }
