@@ -16,7 +16,9 @@ limitations under the License.
 import { StateObject } from '@porrtal/a-api';
 import {
   AuthNInterface,
+  AuthZProviderInfo,
   AuthZProviderInterface,
+  AuthZProviderPendingView,
   AuthZProviderState,
 } from '@porrtal/a-user';
 import { BehaviorSubject, Observable, of } from 'rxjs';
@@ -24,11 +26,23 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 export interface MockAuthZProviderConfig {
   fetchDelay?: number;
   shouldFail?: boolean;
+  scopes?: string[];
+  errorInfo?: AuthZProviderInfo;
+  warningInfo?: AuthZProviderInfo;
+  props?: StateObject;
+  roles?: string[];
+  pendingViews?: AuthZProviderPendingView[];
 }
 
 export class MockAuthZProvider implements AuthZProviderInterface {
   public state$: Observable<AuthZProviderState>;
   public name = 'primary';
+  scopes?: string[];
+  errorInfo?: AuthZProviderInfo;
+  warningInfo?: AuthZProviderInfo;
+  props?: StateObject;
+  roles?: string[];
+  pendingViews?: AuthZProviderPendingView[];
 
   private stateSubj = new BehaviorSubject<AuthZProviderState>('');
   private authN?: AuthNInterface;
@@ -40,8 +54,12 @@ export class MockAuthZProvider implements AuthZProviderInterface {
       this.authN = authN;
       this.authN.state$.subscribe((state) => {
         console.log('mock auth z provider: isAuthenticated', state);
+        this.errorInfo = this.config?.errorInfo;
         switch (state) {
           case 'authenticated': {
+            this.roles = this.config?.roles;
+            this.scopes = this.config?.scopes;
+
             if (this.config?.fetchDelay ?? 0 > 0) {
               setTimeout(() => {
                 this.stateSubj.next(
@@ -61,6 +79,7 @@ export class MockAuthZProvider implements AuthZProviderInterface {
             break;
 
           case 'error':
+            this.errorInfo = { message: 'Auth N Failed.' };
             this.stateSubj.next('error');
             break;
 
@@ -75,5 +94,10 @@ export class MockAuthZProvider implements AuthZProviderInterface {
   constructor(config?: MockAuthZProviderConfig) {
     this.state$ = this.stateSubj;
     this.config = config;
+
+    this.errorInfo = config?.errorInfo;
+    this.warningInfo = config?.warningInfo;
+    this.props = config?.props;
+    this.pendingViews = config?.pendingViews;
   }
 }

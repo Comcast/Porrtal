@@ -38,6 +38,7 @@ export class ShellStateDashboardComponent {
     });
 
     // authZ cards
+    console.log('auth z provider keys', Object.keys(this.authZService.authZProviders));
     Object.keys(this.authZService.authZProviders).map((key) => {
       // authZ card
       this.cardContainerService.addCard({

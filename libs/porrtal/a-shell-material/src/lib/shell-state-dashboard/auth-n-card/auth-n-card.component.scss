@@ -59,6 +59,7 @@
 .auth-n-properties-container {
   display: grid;
   grid-template-columns: auto 1fr;
+  row-gap: 5px;
 }
 
 .auth-n-property-title {

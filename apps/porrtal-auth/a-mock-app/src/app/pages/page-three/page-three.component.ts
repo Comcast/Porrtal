@@ -70,6 +70,7 @@ const views: View[] = [
     key: 'v2',
     displayText: 'v2',
     displayIcon: 'view_in_ar',
+    permissions: 'second:role2'
   },
   {
     viewId: 'v3',
@@ -107,11 +108,34 @@ const views: View[] = [
     authZ: {
       primary: new MockAuthZProvider({
         fetchDelay: 3000,
-        shouldFail: true
+        shouldFail: true,
+        errorInfo: { message: 'silly configuration error...' }
       }),
       second: new MockAuthZProvider({
         fetchDelay: 5000,
-        shouldFail: false
+        shouldFail: false,
+        scopes: ['scope1', 'scope2', 'scope3'],
+        warningInfo: { message: 'it is probably ok, but you should know...' },
+        props: {
+          one: 1,
+          two: 2,
+          sub: {
+            sub_one: 1.1
+          }
+        },
+        roles: ['role1', 'role2'],
+        pendingViews: [
+          {
+            type: 'startup',
+            viewId: 'v2',
+            state: { someProperty: 'some value...' }
+          },
+          {
+            type: 'deep-link',
+            viewId: 'v3',
+            state: { anotherProperty: 'another value...' }
+          }
+        ]
       })
     }
   })],
