@@ -2,7 +2,7 @@
   <div class="auth-n-container">
     <mat-toolbar
       class="toolbar"
-      [color]="state === 'error' ? 'warn' : 'accent'"
+      [color]="state === 'error' ? 'warn' : (state === 'initialized' || state === 'authenticating') ? '' : 'accent'"
     >
       <!-- key icon -->
       <span class="status-icon">
