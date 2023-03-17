@@ -1,4 +1,4 @@
-<div class="container-container" [class.maximize]="isMaximized$ | async">
+<mat-card class="container-container" [class.maximize]="isMaximized$ | async">
   <div class="auth-n-container">
     <mat-toolbar
       class="toolbar"
@@ -100,6 +100,17 @@
             {{ scope }}
           </div>
         </div>
+
+        <!-- init function -->
+        <span
+          class="auth-n-property-title"
+          >defined functions:</span
+        >
+        <div>
+          <div *ngIf="authZ.init">
+            init()
+          </div>
+        </div>
       </div>
 
       <ng-container *ngIf="(authZSubj | async)?.authZ as authZ">
@@ -173,4 +184,4 @@
         </div> -->
     </div>
   </div>
-</div>
+</mat-card>

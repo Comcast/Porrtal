@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Input,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,11 +13,19 @@ import { BehaviorSubject } from 'rxjs';
 import { StateObject } from '@porrtal/a-api';
 import { AuthZProviderInterface, AuthZProviderState } from '@porrtal/a-user';
 import { ShellStateService } from '@porrtal/a-shell';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'porrtal-auth-z-card',
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule, MatProgressSpinnerModule],
+  imports: [
+    CommonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatCardModule,
+  ],
   templateUrl: './auth-z-card.component.html',
   styleUrls: ['./auth-z-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,7 +36,9 @@ export class AuthZCardComponent {
   // parentNativeEl: any;
   props?: StateObject;
 
-  authZSubj = new BehaviorSubject<{ authZ: AuthZProviderInterface | undefined }>({
+  authZSubj = new BehaviorSubject<{
+    authZ: AuthZProviderInterface | undefined;
+  }>({
     authZ: undefined,
   });
   _authZ?: AuthZProviderInterface;
@@ -59,5 +74,4 @@ export class AuthZCardComponent {
 
     this.isMaximized$.next(true);
   }
-
 }

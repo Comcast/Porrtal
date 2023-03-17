@@ -14,11 +14,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { StateObject } from '@porrtal/a-api';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'porrtal-auth-n-card',
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule, MatProgressSpinnerModule],
+  imports: [
+    CommonModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatCardModule,
+  ],
   templateUrl: './auth-n-card.component.html',
   styleUrls: ['./auth-n-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
