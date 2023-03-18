@@ -1,0 +1,79 @@
+.container-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    position: absolute;
+    inset: 0;
+  }
+  
+  .maximize {
+    z-index: 999;
+  }
+  
+  .maximize-button {
+    position: relative;
+    left: 15px;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: unset !important;
+  }
+  
+  .maximize-icon {
+    margin-right: 0px !important;
+  }
+  
+  .toolbar {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    max-height: 30px;
+    min-height: 30px;
+  }
+  
+  .spinner {
+    margin-right: 15px;
+  }
+  
+  .status-icon {
+    font-size: 16px;
+    height: unset;
+    width: unset;
+    margin-right: 5px;
+  }
+  
+  .card-type {
+    margin-right: 15px;
+  }
+  
+  // :host ::ng-deep .spinner svg > circle {
+  //   stroke: white !important;
+  // }
+  
+  .card-content-container {
+    position: relative;
+    overflow: auto;
+    margin: 10px;
+  }
+  
+  .properties-container {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    row-gap: 5px;
+  }
+  
+  .property-title {
+    margin-right: 15px;
+    font-weight: bold;
+  }
+  
+  .property-value {
+    margin: 0;
+    
+  }
+  

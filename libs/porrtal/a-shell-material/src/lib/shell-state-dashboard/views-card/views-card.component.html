@@ -1,0 +1,38 @@
+<mat-card class="container-container" [class.maximize]="isMaximized$ | async">
+  <div class="container">
+    <mat-toolbar class="toolbar" color="accent">
+      <!-- key icon -->
+      <span class="status-icon">
+        <mat-icon>view_list</mat-icon>
+      </span>
+
+      <!-- card type -->
+      <span class="card-type">views({{ (views$ | async)?.length }})</span>
+
+      <!-- card maximize button -->
+      <button
+        *ngIf="!(isMaximized$ | async)"
+        mat-button
+        (click)="toggleMax()"
+        class="maximize-button"
+      >
+        <mat-icon class="maximize-icon">north_east</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- card content -->
+    <div class="card-content-container">
+      <div *ngIf="views$ | async as views" class="properties-container">
+        <!-- views -->
+        <ng-container *ngFor="let view of views">
+          <span class="property-title">{{ view.viewId }}</span>
+          <mat-icon class="status-icon" *ngIf="view.launchAtStartup"
+            >rocket_launch</mat-icon
+          >
+          <span *ngIf="!view.launchAtStartup"></span>
+          <span class="property-value">{{ view.paneType }}</span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</mat-card>

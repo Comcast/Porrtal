@@ -49,6 +49,13 @@ export class ShellStateDashboardComponent {
       });
     });
 
+    this.cardContainerService.addCard({
+      type: 'views',
+      componentName: 'ViewsCardComponent',
+      componentModule: () => import('./views-card/views-card.component'),
+      data: {}
+    })
+
 
     setTimeout(() => {
       this.cardContainerService.addCard({
