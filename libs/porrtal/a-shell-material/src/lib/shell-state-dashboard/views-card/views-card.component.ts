@@ -8,6 +8,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { View } from '@porrtal/a-api';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'porrtal-views-card',
@@ -19,6 +20,7 @@ import { View } from '@porrtal/a-api';
     MatButtonModule,
     MatProgressSpinnerModule,
     MatCardModule,
+    MatTooltipModule
   ],
   templateUrl: './views-card.component.html',
   styleUrls: ['./views-card.component.scss'],

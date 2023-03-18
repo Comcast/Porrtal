@@ -25,11 +25,22 @@
       <div *ngIf="views$ | async as views" class="properties-container">
         <!-- views -->
         <ng-container *ngFor="let view of views">
-          <span class="property-title">{{ view.viewId }}</span>
+          <!-- launch at statup -->
           <mat-icon class="status-icon" *ngIf="view.launchAtStartup"
             >rocket_launch</mat-icon
           >
           <span *ngIf="!view.launchAtStartup"></span>
+
+          <!-- permissions -->
+          <mat-icon class="status-icon" *ngIf="view.permissions" [matTooltip]="view.permissions"
+            >lock</mat-icon
+          >
+          <span *ngIf="!view.permissions"></span>
+
+          <!-- view id -->
+          <span class="property-title">{{ view.viewId }}</span>
+
+          <!-- pane type -->
           <span class="property-value">{{ view.paneType }}</span>
         </ng-container>
       </div>
