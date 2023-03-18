@@ -27,6 +27,7 @@ import {
   ViewComponentModules,
   ViewComponentProps,
   ViewState,
+  AuthZ,
 } from '@porrtal/a-api';
 import { RxState } from '@rx-angular/state';
 import { v4 as uuidv4 } from 'uuid';
@@ -54,6 +55,9 @@ export interface ShellState {
   menuItems?: PorrtalMenuItem[];
   maximizeZIndex: number;
   maximizeStack: MaximizeItem[];
+  authZs: {
+    [name: string]: AuthZ;
+  };
 }
 
 export type ShellAction =
@@ -72,8 +76,19 @@ export type ShellAction =
   | { type: 'setNavTabWidth'; width: number }
   | { type: 'launchDeepLinks'; queryString: string }
   | { type: 'copyToClipboard'; viewState: ViewState }
-  | { type: 'maximize'; htmlEl: HTMLElement; maximizeText: string; restore?: () => void }
-  | { type: 'restoreMaximized' };
+  | {
+      type: 'maximize';
+      htmlEl: HTMLElement;
+      maximizeText: string;
+      restore?: () => void;
+    }
+  | { type: 'restoreMaximized' }
+  | {
+      type: 'registerAuthZPermissionCheck';
+      name: string;
+      checkPermission: (parm: string) => boolean;
+    }
+  | { type: 'setAuthZReady'; name: string };
 
 @Injectable({
   providedIn: 'root',
@@ -188,7 +203,9 @@ export class ShellStateService extends RxState<ShellState> {
 
         // prevent move view if there are maximized elements
         if (retState.maximizeStack.length > 0) {
-          throw new Error('Shell State Service: Cannot "moveView" when elements are maximized.');
+          throw new Error(
+            'Shell State Service: Cannot "moveView" when elements are maximized.'
+          );
         }
 
         let foundViewState: ViewState | undefined;
@@ -271,9 +288,11 @@ export class ShellStateService extends RxState<ShellState> {
 
         // prevent move view if there are maximized elements
         if (retState.maximizeStack.length > 0) {
-          throw new Error('Shell State Service: Cannot "deleteViewState" when elements are maximized.');
+          throw new Error(
+            'Shell State Service: Cannot "deleteViewState" when elements are maximized.'
+          );
         }
-        
+
         let foundView: ViewState | undefined;
 
         paneTypes.some((paneType) => {
@@ -313,9 +332,11 @@ export class ShellStateService extends RxState<ShellState> {
         // prevent move view if there are maximized elements
         const state = this.get();
         if (state.maximizeStack.length > 0) {
-          throw new Error('Shell State Service: Cannot "moveView" when elements are maximized.');
+          throw new Error(
+            'Shell State Service: Cannot "moveView" when elements are maximized.'
+          );
         }
-        
+
         const retState = {
           ...this.get(),
           panes: {
@@ -501,7 +522,6 @@ export class ShellStateService extends RxState<ShellState> {
       }
 
       case 'maximize': {
-        
         const parentEl = action.htmlEl.parentElement;
         if (!parentEl) {
           console.log(
@@ -523,7 +543,7 @@ export class ShellStateService extends RxState<ShellState> {
                 action.htmlEl
               ),
               zIndex: state.maximizeZIndex,
-              restore: action.restore
+              restore: action.restore,
             },
           ],
         }));
@@ -724,6 +744,7 @@ const emptyUseShellState: ShellState = {
   showDevInfo: true,
   maximizeZIndex: 90,
   maximizeStack: [],
+  authZs: {}
 };
 
 export function combineViewStateStateAndActionState(
