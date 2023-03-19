@@ -61,18 +61,18 @@
     // background-color: mat.get-color-from-palette($color-config, 500);
   }
   
-  .auth-n-properties-container {
+  .properties-container {
     display: grid;
     grid-template-columns: auto 1fr;
     row-gap: 5px;
   }
   
-  .auth-n-property-title {
+  .property-title {
     margin-right: 15px;
     font-weight: bold;
   }
   
-  .auth-n-property-value {
+  .property-value {
   
   }
   

@@ -1,8 +1,14 @@
 <mat-card class="container-container" [class.maximize]="isMaximized$ | async">
-  <div class="auth-n-container">
+  <div class="container">
     <mat-toolbar
       class="toolbar"
-      [color]="state === 'error' ? 'warn' : (state === '' || state === 'init') ? '' : 'accent'"
+      [color]="
+        state === 'error'
+          ? 'warn'
+          : state === '' || state === 'init'
+          ? ''
+          : 'accent'
+      "
     >
       <!-- key icon -->
       <span class="status-icon">
@@ -45,84 +51,118 @@
       </button>
     </mat-toolbar>
 
-    <!-- card content -->
     <div class="card-content-container">
+      <!-- authZProvider info -->
       <div
-        *ngIf="(authZSubj | async)?.authZ as authZ"
-        class="auth-n-properties-container"
+        *ngIf="(authZSubj | async)?.authZ as authZProvider"
+        class="properties-container"
       >
         <!-- state -->
-        <span class="auth-n-property-title">state:</span>
-        <span>{{ authZ.state$ | async }}</span>
+        <span class="property-title">state:</span>
+        <span>{{ authZProvider.state$ | async }}</span>
 
         <!-- error message -->
         <span
-          *ngIf="(authZ.state$ | async) === 'error' && authZ.errorInfo?.message"
-          class="auth-n-property-title"
+          *ngIf="
+            (authZProvider.state$ | async) === 'error' &&
+            authZProvider.errorInfo?.message
+          "
+          class="property-title"
           >error message:</span
         >
         <span
-          *ngIf="(authZ.state$ | async) === 'error' && authZ.errorInfo?.message"
-          >{{ authZ.errorInfo?.message }}</span
+          *ngIf="
+            (authZProvider.state$ | async) === 'error' &&
+            authZProvider.errorInfo?.message
+          "
+          >{{ authZProvider.errorInfo?.message }}</span
         >
 
         <!-- warning message -->
         <span
-          *ngIf="(authZ.state$ | async) !== '' && authZ.warningInfo?.message"
-          class="auth-n-property-title"
+          *ngIf="
+            (authZProvider.state$ | async) !== '' &&
+            authZProvider.warningInfo?.message
+          "
+          class="property-title"
           >warning message:</span
         >
         <span
-          *ngIf="(authZ.state$ | async) !== '' && authZ.warningInfo?.message"
-          >{{ authZ.warningInfo?.message }}</span
+          *ngIf="
+            (authZProvider.state$ | async) !== '' &&
+            authZProvider.warningInfo?.message
+          "
+          >{{ authZProvider.warningInfo?.message }}</span
         >
 
         <!-- roles -->
         <span
-          *ngIf="authZ.roles && authZ.roles.length > 0"
-          class="auth-n-property-title"
+          *ngIf="authZProvider.roles && authZProvider.roles.length > 0"
+          class="property-title"
           >roles:</span
         >
-        <div *ngIf="authZ.roles && authZ.roles.length > 0">
-          <div *ngFor="let role of authZ.roles">
+        <div *ngIf="authZProvider.roles && authZProvider.roles.length > 0">
+          <div *ngFor="let role of authZProvider.roles">
             {{ role }}
           </div>
         </div>
 
         <!-- scopes -->
         <span
-          *ngIf="authZ.scopes && authZ.scopes.length > 0"
-          class="auth-n-property-title"
+          *ngIf="authZProvider.scopes && authZProvider.scopes.length > 0"
+          class="property-title"
           >scopes:</span
         >
-        <div *ngIf="authZ.scopes && authZ.scopes.length > 0">
-          <div *ngFor="let scope of authZ.scopes">
+        <div *ngIf="authZProvider.scopes && authZProvider.scopes.length > 0">
+          <div *ngFor="let scope of authZProvider.scopes">
             {{ scope }}
           </div>
         </div>
 
         <!-- init function -->
-        <span
-          class="auth-n-property-title"
-          >defined functions:</span
-        >
+        <span class="property-title">defined functions:</span>
         <div>
-          <div *ngIf="authZ.init">
-            init()
-          </div>
+          <div *ngIf="authZProvider.init">init()</div>
         </div>
       </div>
 
+      <!-- shell AuthZ Info -->
+      <hr />
+      <div *ngIf="authZ$ | async as authZ" class="properties-container">
+        <!-- authZ.ready -->
+        <span class="property-title">ready:</span>
+        <span>{{ authZ.ready }}</span>
+
+        <!-- authZ.checkPermission -->
+        <span class="property-title">checkPermission():</span>
+        <span>{{ authZ.checkPermission ? 'defined' : 'not defined' }}</span>
+      </div>
+      <div *ngIf="authZ$ | async as authZ">
+        <div class="property-title">launchQ({{ authZ.launchQ.length }}):</div>
+        <div *ngFor="let launchItem of authZ.launchQ">
+          {{ launchItem.viewId }}
+        </div>
+      </div>
+      <div *ngIf="authZ$ | async as authZ">
+        <div class="property-title">noPermissionsQ({{ authZ.noPermissionsQ.length }}):</div>
+        <div *ngFor="let launchItem of authZ.noPermissionsQ">
+          {{ launchItem.viewId }}
+        </div>
+      </div>
+      <div *ngIf="!(authZ$ | async)">No AuthZ Info from Shell.</div>
+
+      <!-- authZProvider info -->
       <ng-container *ngIf="(authZSubj | async)?.authZ as authZ">
+        <hr />
         <!-- props -->
         <div *ngIf="authZ.props as props">
-          <span class="auth-n-property-title">props:</span>
+          <span class="property-title">props:</span>
           <pre><p>{{ props | json }}</p></pre>
         </div>
       </ng-container>
 
       <!-- login strategy -->
-      <!-- <span class="auth-n-property-title">login strategy:</span>
+      <!-- <span class="property-title">login strategy:</span>
           <span>{{ authN.loginStrategy$ | async }}</span>
   
           <hr />
@@ -137,7 +177,7 @@
               authN.register ||
               authN.logout
             "
-            class="auth-n-property-title"
+            class="property-title"
             >defined functions:</span
           >
           <span
@@ -172,14 +212,14 @@
       <!-- claims -->
       <!-- <div *ngIf="(authNSubj | async)?.authN?.claims as claims">
           <hr />
-          <span class="auth-n-property-title">claims:</span>
+          <span class="property-title">claims:</span>
           <pre><p>{{ claims | json }}</p></pre>
         </div> -->
 
       <!-- claimsMap -->
       <!-- <div *ngIf="(authNSubj | async)?.authN?.claimsMap as claimsMap">
           <hr />
-          <span class="auth-n-property-title">claims map:</span>
+          <span class="property-title">claims map:</span>
           <pre><p>{{ claimsMap | json}}</p></pre>
         </div> -->
     </div>

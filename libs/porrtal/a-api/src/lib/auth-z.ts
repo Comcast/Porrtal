@@ -17,7 +17,7 @@ import { LaunchItem } from "./launch-item";
 
 export interface AuthZ {
   ready: boolean;
-  checkPermission: (parm: string) => boolean;
+  checkPermission?: (parm: string) => boolean;
   launchQ: LaunchItem[];
   noPermissionsQ: LaunchItem[];
 }

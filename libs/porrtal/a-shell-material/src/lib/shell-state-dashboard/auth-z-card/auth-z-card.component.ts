@@ -9,8 +9,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { BehaviorSubject } from 'rxjs';
-import { StateObject } from '@porrtal/a-api';
+import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
+import { AuthZ, StateObject } from '@porrtal/a-api';
 import { AuthZProviderInterface, AuthZProviderState } from '@porrtal/a-user';
 import { ShellStateService } from '@porrtal/a-shell';
 import { MatCardModule } from '@angular/material/card';
@@ -31,6 +31,8 @@ import { MatCardModule } from '@angular/material/card';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthZCardComponent {
+  authZ$: Observable<AuthZ | undefined>
+  
   isMaximized$ = new BehaviorSubject<boolean>(false);
   // childIndex = -1;
   // parentNativeEl: any;
@@ -59,7 +61,15 @@ export class AuthZCardComponent {
   constructor(
     private readonly el: ElementRef,
     private shellStateService: ShellStateService
-  ) {}
+  ) {
+    this.authZ$ = combineLatest([shellStateService.select('authZs'), this.authZSubj], (authZs, authZ) => {
+      if (!authZs || !authZ || !authZ.authZ?.name) {
+        return undefined;
+      }
+
+      return authZs[authZ.authZ.name];
+    });
+  }
 
   toggleMax() {
     this.shellStateService.dispatch({

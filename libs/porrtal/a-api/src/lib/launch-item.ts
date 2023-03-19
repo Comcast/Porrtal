@@ -14,8 +14,10 @@ limitations under the License.
 */
 import { StateObject } from './view-state';
 
+export type LaunchInvoker = 'direct' | 'startup' | 'deepLink';
+
 export interface LaunchItem {
-  source: 'launchView' | 'launchStartupView' | 'launchDeepLink';
+  launchInvoker: LaunchInvoker;
   viewId: string;
   state?: StateObject;
 }
