@@ -599,8 +599,63 @@ export class ShellStateService extends RxState<ShellState> {
         });
         break;
       }
+
+      case 'setAuthZReady': {
+        this.set((state) => {
+          return {
+            authZs: {
+              ...state.authZs,
+              [action.name]: {
+                ...state.authZs[action.name],
+                ready: true,
+              },
+            },
+          };
+        });
+        break;
+      }
+
+      case 'registerAuthZPermissionCheck': {
+        const authZs = this.get('authZs');
+        this.set({
+          authZs: {
+            ...authZs,
+            [action.name]: {
+              ...authZs[action.name],
+              checkPermission: action.checkPermission,
+            },
+          },
+        });
+        this.processLaunchQ(action.name);
+        break;
+      }
     }
   };
+
+  processLaunchQ(name: string) {
+    const authZs = this.get().authZs;
+
+    authZs[name].launchQ.forEach((launchItem) => {
+      console.log('launch from launchQ', launchItem);
+      this.dispatch({
+        type: 'launchView',
+        viewId: launchItem.viewId,
+        launchInvoker: launchItem.launchInvoker,
+        state: launchItem.state,
+      });
+    });
+
+    const updatedAuthZs = this.get().authZs
+    this.set({
+      authZs: {
+        ...updatedAuthZs,
+        [name]: {
+          ...updatedAuthZs[name],
+          launchQ: [],
+        },
+      },
+    });
+  }
 
   okToLaunch(launchInfo: {
     launchInvoker: LaunchInvoker;
@@ -612,7 +667,7 @@ export class ShellStateService extends RxState<ShellState> {
     //    if <name>: not provided, use 'primary'
     // ------------------------------------------
 
-    // if view doesn't require permissions, return false
+    // if view doesn't require permissions, return true
     if (
       !launchInfo.view.permissions ||
       launchInfo.view.permissions.trim().length < 1
@@ -635,7 +690,8 @@ export class ShellStateService extends RxState<ShellState> {
     }
 
     // see if we are tracking this authZ (create if not)
-    let authZ = this.get('authZs')[name];
+    const authZs = this.get('authZs');
+    let authZ = authZs[name];
     if (!authZ) {
       authZ = {
         ready: false,
@@ -647,9 +703,9 @@ export class ShellStateService extends RxState<ShellState> {
 
     // handle malformed permissions string
     if (name.length < 1) {
-      this.set((o) => ({
+      this.set({
         authZs: {
-          ...o.authZs,
+          ...authZs,
           [name]: {
             ...authZ,
             noPermissionsQ: [
@@ -663,7 +719,7 @@ export class ShellStateService extends RxState<ShellState> {
             ],
           },
         },
-      }));
+      });
       console.log(
         `Warning: view ('${launchInfo.view.viewId}') has malformed permissions('${launchInfo.view.permissions}').`,
         { name, parm }
@@ -673,9 +729,9 @@ export class ShellStateService extends RxState<ShellState> {
 
     // handle not ready or permissions function missing
     if (!authZ.ready || !authZ.checkPermission) {
-      this.set((o) => ({
+      this.set({
         authZs: {
-          ...o.authZs,
+          ...authZs,
           [name]: {
             ...authZ,
             launchQ: [
@@ -689,7 +745,7 @@ export class ShellStateService extends RxState<ShellState> {
             ],
           },
         },
-      }));
+      });
       console.log(
         `Info: view ('${launchInfo.view.viewId}') --> launchQ ('${launchInfo.view.permissions}').`,
         { name, parm }
@@ -703,9 +759,9 @@ export class ShellStateService extends RxState<ShellState> {
     }
 
     // handle permission check not passed
-    this.set((o) => ({
+    this.set({
       authZs: {
-        ...o.authZs,
+        ...authZs,
         [name]: {
           ...authZ,
           noPermissionsQ: [
@@ -719,12 +775,12 @@ export class ShellStateService extends RxState<ShellState> {
           ],
         },
       },
-    }));
+    });
     console.log(
       `Info: view ('${launchInfo.view.viewId}') --> noPermissionsQ ('${launchInfo.view.permissions}').`,
-      { name, parm }
+      { name, parm, authZs: this.get('authZs') }
     );
-  return false;
+    return false;
   }
 }
 

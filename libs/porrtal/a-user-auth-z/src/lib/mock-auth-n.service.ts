@@ -64,14 +64,14 @@ export class MockAuthNService implements AuthNInterface {
       this.stateSubj.next('authenticating');
       setTimeout(() => {
         this.setClaims(newState);
-    this.stateSubj.next(newState);
+        this.stateSubj.next(newState);
       }, this.authConfig.authN.loginDelay);
     } else {
       if (newState === 'authenticated') {
         this.setClaims(newState);
         console.log('set claims...', this.claims);
       }
-this.stateSubj.next(newState);
+      this.stateSubj.next(newState);
     }
   };
   logout?: (() => void) | undefined = () => {
@@ -124,7 +124,7 @@ this.stateSubj.next(newState);
     this.authConfig = config;
     this.loginStrategy$ = this.loginStrategySubj;
     this.state$ = this.stateSubj;
-    console.log('mock-auth-n service constructor...')
+    console.log('mock-auth-n service constructor...');
   }
 
   private setClaims(newState: string) {
@@ -139,8 +139,8 @@ this.stateSubj.next(newState);
       };
       this.claimsMap = {
         one: 'hello',
-        two: 'there'
-      }
+        two: 'there',
+      };
       console.log('set claims...', this.claims);
     }
   }

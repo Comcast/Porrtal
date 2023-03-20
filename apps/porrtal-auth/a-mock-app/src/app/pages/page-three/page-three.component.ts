@@ -59,7 +59,7 @@ const views: View[] = [
     key: 'v1',
     displayText: 'v1',
     displayIcon: 'view_in_ar',
-    permissions: 'primary:roles:admin',
+    permissions: 'primary:admin',
   },
   {
     viewId: 'v2',
@@ -81,6 +81,7 @@ const views: View[] = [
     key: 'v3',
     displayText: 'v3',
     displayIcon: 'view_in_ar',
+    permissions: 'second:role-not-granted'
   },
   {
     viewId: 'v4',

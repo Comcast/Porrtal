@@ -13,6 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { StateObject } from '@porrtal/a-api';
+import { ShellStateService } from '@porrtal/a-shell';
 import { Observable } from 'rxjs';
 import { AuthNInterface } from './auth-n-interface';
 
@@ -39,5 +40,5 @@ export type AuthZProviderInterface = {
   props?: StateObject;
   roles?: string[];
   pendingViews?: AuthZProviderPendingView[];
-  init?: (authN: AuthNInterface) => void;
+  init?: (authN: AuthNInterface, shellStateService: ShellStateService) => void;
 };

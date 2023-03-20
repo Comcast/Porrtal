@@ -14,6 +14,7 @@ limitations under the License.
 */
 import {
   EnvironmentProviders,
+  inject,
   makeEnvironmentProviders,
   Provider,
 } from '@angular/core';
@@ -29,6 +30,7 @@ import { MockAuthZService } from './mock-auth-z.service';
 import { StateObject } from '@porrtal/a-api';
 import { AuthZProvider } from './auth-z-provider';
 import { MockAuthZProvider } from './mock-auth-z-provider';
+import { ShellStateService } from '@porrtal/a-shell';
 
 export interface MockConfiguration {
   authN: {
@@ -56,7 +58,7 @@ export function provideMockOAuthClient(
       provide: AUTH_Z_INTERFACE,
       deps: [AUTH_N_INTERFACE],
       useFactory: (authN: AuthNInterface) =>
-        new MockAuthZService(authN, authConfig.authZ),
+        new MockAuthZService(authN, authConfig.authZ, inject(ShellStateService)),
     },
   ];
 

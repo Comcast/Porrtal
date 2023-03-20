@@ -13,7 +13,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import { inject } from '@angular/core';
 import { StateObject } from '@porrtal/a-api';
+import { ShellStateService } from '@porrtal/a-shell';
 import {
   AuthNInterface,
   AuthZProviderInfo,
@@ -48,7 +50,14 @@ export class MockAuthZProvider implements AuthZProviderInterface {
   private authN?: AuthNInterface;
   private config?: MockAuthZProviderConfig;
 
-  public init = (authN: AuthNInterface) => {
+  private shellStateService?: ShellStateService;
+
+  public init = (
+    authN: AuthNInterface,
+    shellStateService: ShellStateService
+  ) => {
+    this.shellStateService = shellStateService;
+
     if (this.stateSubj.getValue() === '') {
       this.stateSubj.next('init');
       this.authN = authN;
@@ -62,6 +71,21 @@ export class MockAuthZProvider implements AuthZProviderInterface {
 
             if (this.config?.fetchDelay ?? 0 > 0) {
               setTimeout(() => {
+                if (this.config?.shouldFail ?? false) {
+                  // do nothing
+                } else {
+                  this.shellStateService?.dispatch({
+                    type: 'setAuthZReady',
+                    name: this.name,
+                  });
+                  this.shellStateService?.dispatch({
+                    type: 'registerAuthZPermissionCheck',
+                    name: this.name,
+                    checkPermission: (parm) => {
+                      return this.roles?.some((role) => role === parm) ?? false;
+                    },
+                  });
+                }
                 this.stateSubj.next(
                   this.config?.shouldFail ?? false ? 'error' : 'ready'
                 );
