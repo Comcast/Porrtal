@@ -12,12 +12,15 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { View } from '@porrtal/a-api';
 import { BannerData, ShellStateService } from '@porrtal/a-shell';
 import { ShellLayoutComponent } from '@porrtal/a-shell-material';
-import { MockAuthZProvider, provideMockOAuthClient } from '@porrtal/a-user-auth-z';
+import {
+  MockAuthZProvider,
+  provideMockOAuthClient,
+} from '@porrtal/a-user-auth-z';
 
 const views: View[] = [
   {
@@ -64,13 +67,13 @@ const views: View[] = [
   {
     viewId: 'v2',
     paneType: 'bottom',
-    launchAtStartup: true,
+    launchAtStartup: false,
     componentName: 'V2Component',
     componentModule: () => import('../../views/v2/v2.component'),
     key: 'v2',
     displayText: 'v2',
     displayIcon: 'view_in_ar',
-    permissions: 'second:role2'
+    permissions: 'second:role2',
   },
   {
     viewId: 'v3',
@@ -81,7 +84,7 @@ const views: View[] = [
     key: 'v3',
     displayText: 'v3',
     displayIcon: 'view_in_ar',
-    permissions: 'second:role-not-granted'
+    permissions: 'second:role-not-granted',
   },
   {
     viewId: 'v4',
@@ -99,47 +102,49 @@ const views: View[] = [
   selector: 'porrtal-workspace-page-three',
   standalone: true,
   imports: [CommonModule, ShellLayoutComponent],
-  providers: [provideMockOAuthClient({
-    authN: {
-      loginSuccess: false,
-      loginDelay: 4000,
-      loginSuccessCount: 2,
-      errorMessage: 'User not found.'
-    },
-    authZ: {
-      primary: new MockAuthZProvider({
-        fetchDelay: 3000,
-        shouldFail: true,
-        errorInfo: { message: 'silly configuration error...' }
-      }),
-      second: new MockAuthZProvider({
-        fetchDelay: 5000,
-        shouldFail: false,
-        scopes: ['scope1', 'scope2', 'scope3'],
-        warningInfo: { message: 'it is probably ok, but you should know...' },
-        props: {
-          one: 1,
-          two: 2,
-          sub: {
-            sub_one: 1.1
-          }
-        },
-        roles: ['role1', 'role2'],
-        pendingViews: [
-          {
-            type: 'startup',
-            viewId: 'v2',
-            state: { someProperty: 'some value...' }
+  providers: [
+    provideMockOAuthClient({
+      authN: {
+        loginSuccess: false,
+        loginDelay: 4000,
+        loginSuccessCount: 2,
+        errorMessage: 'User not found.',
+      },
+      authZ: {
+        primary: new MockAuthZProvider({
+          fetchDelay: 3000,
+          shouldFail: true,
+          errorInfo: { message: 'silly configuration error...' },
+        }),
+        second: new MockAuthZProvider({
+          fetchDelay: 5000,
+          shouldFail: false,
+          scopes: ['scope1', 'scope2', 'scope3'],
+          warningInfo: { message: 'it is probably ok, but you should know...' },
+          props: {
+            one: 1,
+            two: 2,
+            sub: {
+              sub_one: 1.1,
+            },
           },
-          {
-            type: 'deep-link',
-            viewId: 'v3',
-            state: { anotherProperty: 'another value...' }
-          }
-        ]
-      })
-    }
-  })],
+          roles: ['role1', 'role2'],
+          pendingViews: [
+            {
+              type: 'startup',
+              viewId: 'v2',
+              state: { someProperty: 'some value...' },
+            },
+            {
+              type: 'deep-link',
+              viewId: 'v3',
+              state: { anotherProperty: 'another value...' },
+            },
+          ],
+        }),
+      },
+    }),
+  ],
   templateUrl: './page-three.component.html',
   styleUrls: ['./page-three.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -188,11 +193,14 @@ export class PageThreeComponent {
         displayText: 'eight',
         targetUrl: '/eight',
         displayIcon: 'cyclone',
-      },    
+      },
     ],
   };
 
-  constructor(public shellStateService: ShellStateService) {
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    public shellStateService: ShellStateService
+  ) {
     views.forEach((view) =>
       shellStateService.dispatch({
         type: 'registerView',
@@ -203,5 +211,13 @@ export class PageThreeComponent {
     shellStateService.dispatch({
       type: 'launchStartupViews',
     });
+
+    const q = document.defaultView?.location.search;
+    if (q) {
+      shellStateService.dispatch({
+        type: 'launchDeepLinks',
+        queryString: q,
+      });
+    }
   }
 }
