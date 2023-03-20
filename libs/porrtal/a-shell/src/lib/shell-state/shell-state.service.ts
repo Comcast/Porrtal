@@ -68,6 +68,7 @@ export type ShellAction =
       viewId: string;
       state?: StateObject;
       launchInvoker?: LaunchInvoker;
+      suppressFocus?: boolean;
     }
   | { type: 'launchStartupViews' }
   | { type: 'moveView'; key: string; toPane: PaneType } // prevent when maximize
@@ -210,17 +211,33 @@ export class ShellStateService extends RxState<ShellState> {
 
         // view state's key didn't already exist, so add the view state to the requested pane
         const viewStates = this.get().panes[newViewState.paneType].viewStates;
-        retState = {
-          ...this.get(),
-          panes: {
-            ...this.get().panes,
-            [newViewState.paneType]: {
-              ...this.get().panes[newViewState.paneType],
-              currentKey: newViewState.key,
-              viewStates: [...viewStates, newViewState],
+        if (!action.suppressFocus) {
+          // set focus to new view state
+          retState = {
+            ...this.get(),
+            panes: {
+              ...this.get().panes,
+              [newViewState.paneType]: {
+                ...this.get().panes[newViewState.paneType],
+                currentKey: newViewState.key,
+                viewStates: [...viewStates, newViewState],
+              },
             },
-          },
-        };
+          };
+        } else {
+          // launch but don't set focus
+          retState = {
+            ...this.get(),
+            panes: {
+              ...this.get().panes,
+              [newViewState.paneType]: {
+                ...this.get().panes[newViewState.paneType],
+                viewStates: [...viewStates, newViewState],
+              },
+            },
+          };
+        }
+
         this.set(retState);
         return;
       }
@@ -642,10 +659,11 @@ export class ShellStateService extends RxState<ShellState> {
         viewId: launchItem.viewId,
         launchInvoker: launchItem.launchInvoker,
         state: launchItem.state,
+        suppressFocus: true,
       });
     });
 
-    const updatedAuthZs = this.get().authZs
+    const updatedAuthZs = this.get().authZs;
     this.set({
       authZs: {
         ...updatedAuthZs,
