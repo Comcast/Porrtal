@@ -37,6 +37,12 @@
           >
           <span *ngIf="!view.permissions"></span>
 
+          <!-- entity type -->
+          <mat-icon class="status-icon" *ngIf="view.entityType" [matTooltip]="view.entityType"
+            >category</mat-icon
+          >
+          <span *ngIf="!view.entityType"></span>
+
           <!-- view id -->
           <span class="property-title">{{ view.viewId }}</span>
 

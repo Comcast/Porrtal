@@ -73,6 +73,7 @@ const views: View[] = [
     key: 'v2',
     displayText: 'v2',
     displayIcon: 'view_in_ar',
+    entityType: 'account',
     permissions: 'second:role2',
   },
   {
