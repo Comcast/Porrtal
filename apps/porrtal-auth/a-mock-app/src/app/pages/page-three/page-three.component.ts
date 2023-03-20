@@ -95,6 +95,7 @@ const views: View[] = [
     key: 'v4',
     displayText: 'v4',
     displayIcon: 'view_in_ar',
+    permissions: 'second:role2',
   },
 ];
 
