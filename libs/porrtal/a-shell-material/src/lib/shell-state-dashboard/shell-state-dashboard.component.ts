@@ -1,7 +1,10 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardContainerComponent } from '../card-container/card-container.component';
-import { CardContainerService } from '../card-container/card-container.service';
+import {
+  Card,
+  CardContainerService,
+} from '../card-container/card-container.service';
 import { AuthNCardComponent } from './auth-n-card/auth-n-card.component';
 import {
   AuthNInterface,
@@ -9,6 +12,8 @@ import {
   AUTH_N_INTERFACE,
   AUTH_Z_INTERFACE,
 } from '@porrtal/a-user';
+import { ShellStateService } from '@porrtal/a-shell';
+import { startWith, map } from 'rxjs';
 
 @Component({
   selector: 'porrtal-shell-state-dashboard',
@@ -23,14 +28,18 @@ export class ShellStateDashboardComponent {
   constructor(
     public cardContainerService: CardContainerService,
     @Inject(AUTH_N_INTERFACE) private authN: AuthNInterface,
-    @Inject(AUTH_Z_INTERFACE) private authZService: AuthZInterface
+    @Inject(AUTH_Z_INTERFACE) private authZService: AuthZInterface,
+    private shellStateService: ShellStateService
   ) {
     this.addMockCards();
   }
 
   addMockCards() {
+    const cards: Card[] = [];
+    const providers: string[] = Object.keys(this.authZService.authZProviders);
+
     // authN card
-    this.cardContainerService.addCard({
+    cards.push({
       type: 'authN',
       componentName: 'AuthNCardComponent',
       componentModule: () => import('./auth-n-card/auth-n-card.component'),
@@ -38,10 +47,10 @@ export class ShellStateDashboardComponent {
     });
 
     // authZ cards
-    console.log('auth z provider keys', Object.keys(this.authZService.authZProviders));
-    Object.keys(this.authZService.authZProviders).map((key) => {
+    console.log('auth z provider keys', providers);
+    providers.map((key) => {
       // authZ card
-      this.cardContainerService.addCard({
+      cards.push({
         type: 'authZ',
         componentName: 'AuthZCardComponent',
         componentModule: () => import('./auth-z-card/auth-z-card.component'),
@@ -49,21 +58,41 @@ export class ShellStateDashboardComponent {
       });
     });
 
-    this.cardContainerService.addCard({
+    cards.push({
       type: 'views',
       componentName: 'ViewsCardComponent',
       componentModule: () => import('./views-card/views-card.component'),
-      data: {}
-    })
+      data: {},
+    });
 
+    cards.push({
+      type: 'panes',
+      componentName: 'PaneCardComponent',
+      componentModule: () => import('./pane-card/pane-card.component'),
+      data: {},
+    });
 
-    setTimeout(() => {
-      this.cardContainerService.addCard({
-        type: 'view',
-        componentName: 'ViewCardComponent',
-        componentModule: () => import('./view-card/view-card.component'),
-        data: {},
-      });
-    }, 1000);
+    this.cardContainerService.connect(
+      'cards',
+      this.shellStateService.select('authZs').pipe(
+        map((authZs) => [
+          ...cards,
+          ...Object.keys(authZs)
+            .filter(
+              (key) =>
+                !authZs[key].ready &&
+                !authZs[key].checkPermission &&
+                !providers.some((provider) => provider === key)
+            )
+            .map((key) => ({
+              type: 'orphanAuthZ',
+              componentName: 'OrphanAuthZCardComponent',
+              componentModule: () =>
+                import('./orphan-auth-z-card/orphan-auth-z-card.component'),
+              data: key,
+            })),
+        ])
+      )
+    );
   }
 }

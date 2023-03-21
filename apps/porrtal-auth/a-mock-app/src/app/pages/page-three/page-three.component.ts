@@ -52,6 +52,7 @@ const views: View[] = [
     key: 'profile',
     displayText: 'profile',
     displayIcon: 'account_circle',
+    permissions: 'no-parent:no-role'
   },
   {
     viewId: 'v1',

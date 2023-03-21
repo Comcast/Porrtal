@@ -1,1 +1,63 @@
-<p>pane-card works!</p>
+<mat-card class="container-container" [class.maximize]="isMaximized$ | async">
+  <div class="container">
+    <mat-toolbar class="toolbar" color="accent">
+      <!-- key icon -->
+      <span class="status-icon">
+        <mat-icon>grid_view</mat-icon>
+      </span>
+
+      <!-- card type -->
+      <span class="card-type">panes</span>
+
+      <!-- card maximize button -->
+      <button
+        *ngIf="!(isMaximized$ | async)"
+        mat-button
+        (click)="toggleMax()"
+        class="maximize-button"
+      >
+        <mat-icon class="maximize-icon">north_east</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- card content -->
+    <div class="card-content-container">
+      <div *ngFor="let pane of panes$ | async; let last = last">
+        <div>{{ pane.paneType }}({{ pane.viewStates.length }})</div>
+        <div class="properties-container">
+          <!-- views -->
+          <ng-container *ngFor="let viewState of pane.viewStates">
+            <!-- launch at statup -->
+            <mat-icon class="status-icon" *ngIf="viewState.view.launchAtStartup"
+              >rocket_launch</mat-icon
+            >
+            <span *ngIf="!viewState.view.launchAtStartup"></span>
+
+            <!-- permissions -->
+            <mat-icon
+              class="status-icon"
+              *ngIf="viewState.view.permissions"
+              [matTooltip]="viewState.view.permissions"
+              >lock</mat-icon
+            >
+            <span *ngIf="!viewState.view.permissions"></span>
+
+            <!-- entity type -->
+            <mat-icon
+              class="status-icon"
+              *ngIf="viewState.view.entityType"
+              [matTooltip]="viewState.view.entityType"
+              >category</mat-icon
+            >
+            <span *ngIf="!viewState.view.entityType"></span>
+
+            <!-- view id -->
+            <span class="property-title">{{ viewState.view.viewId }}</span>
+
+        </ng-container>
+        </div>
+        <hr *ngIf="!last" />
+      </div>
+    </div>
+  </div>
+</mat-card>
