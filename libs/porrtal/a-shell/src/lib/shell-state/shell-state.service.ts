@@ -740,7 +740,7 @@ export class ShellStateService extends RxState<ShellState> {
       });
       console.log(
         `Warning: view ('${launchInfo.view.viewId}') has malformed permissions('${launchInfo.view.permissions}').`,
-        { name, parm }
+        { name, parm, authZs: this.get('authZs') }
       );
       return false;
     }
@@ -766,7 +766,7 @@ export class ShellStateService extends RxState<ShellState> {
       });
       console.log(
         `Info: view ('${launchInfo.view.viewId}') --> launchQ ('${launchInfo.view.permissions}').`,
-        { name, parm }
+        { name, parm, authZs: this.get('authZs') }
       );
       return false;
     }

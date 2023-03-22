@@ -74,15 +74,16 @@ export class ShellStateDashboardComponent {
 
     this.cardContainerService.connect(
       'cards',
-      this.shellStateService.select('authZs').pipe(
-        map((authZs) => [
-          ...cards,
+      this.shellStateService.select('authZs'),
+      (state, authZs) => {
+        const newItems = [
           ...Object.keys(authZs)
             .filter(
               (key) =>
                 !authZs[key].ready &&
                 !authZs[key].checkPermission &&
-                !providers.some((provider) => provider === key)
+                !providers.some((provider) => provider === key) &&
+                !cards.some((card) => card.data === key)
             )
             .map((key) => ({
               type: 'orphanAuthZ',
@@ -91,8 +92,10 @@ export class ShellStateDashboardComponent {
                 import('./orphan-auth-z-card/orphan-auth-z-card.component'),
               data: key,
             })),
-        ])
-      )
+        ];
+        cards.push(...newItems);
+        return cards;
+      }
     );
   }
 }
