@@ -34,7 +34,11 @@ import {
 import { SearchDialogComponent } from '../search-dialog/search-dialog.component';
 import { MatLegacyTabBody as MatTabBody } from '@angular/material/legacy-tabs';
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
-import { NgxPopperjsModule, NgxPopperjsContentComponent, NgxPopperjsPlacements } from 'ngx-popperjs';
+import {
+  NgxPopperjsModule,
+  NgxPopperjsContentComponent,
+  NgxPopperjsPlacements,
+} from 'ngx-popperjs';
 import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -48,15 +52,16 @@ import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
     MatInputModule,
     MatDialogModule,
     NgxPopperjsModule,
-    SearchDialogComponent
+    SearchDialogComponent,
   ],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchComponent implements OnDestroy {
-  @ViewChild('searchInput', { read: ElementRef<HTMLElement>}) searchInput?: HTMLElement;
-  @ViewChild('searchDialog', { read: NgxPopperjsContentComponent}) searchDialog?: NgxPopperjsContentComponent;
+  @ViewChild('searchInput', { read: ElementRef }) searchInput?: HTMLElement;
+  @ViewChild('searchDialog', { read: NgxPopperjsContentComponent })
+  searchDialog?: NgxPopperjsContentComponent;
 
   public popperPlacement = NgxPopperjsPlacements.LEFTEND;
   public width = '500px';
@@ -69,7 +74,8 @@ export class SearchComponent implements OnDestroy {
     @Inject(DOCUMENT) public document: Document,
     private el: ElementRef<HTMLElement>
   ) {
-    this.searchStateService.select('isSearchDialogOpen')
+    this.searchStateService
+      .select('isSearchDialogOpen')
       .pipe(takeUntil(this.destroySubject))
       .subscribe((isSearchDialogOpen: boolean) => {
         if (isSearchDialogOpen) {
@@ -77,7 +83,7 @@ export class SearchComponent implements OnDestroy {
         } else {
           this.hideSearch();
         }
-      })
+      });
   }
 
   hideSearch() {
@@ -101,24 +107,24 @@ export class SearchComponent implements OnDestroy {
       searchText: (evt.target as HTMLInputElement).value,
     });
     this.searchStateService.dispatch({
-      type: 'openSearchDialog'
+      type: 'openSearchDialog',
     });
   }
 
   doHidePopper() {
     this.searchStateService.dispatch({
-      type: 'closeSearchDialog'
+      type: 'closeSearchDialog',
     });
   }
 
   doShowPopper() {
     this.searchStateService.dispatch({
-      type: 'openSearchDialog'
+      type: 'openSearchDialog',
     });
   }
 
   ngOnDestroy(): void {
-      this.destroySubject.next(true);
-      this.destroySubject.complete();
+    this.destroySubject.next(true);
+    this.destroySubject.complete();
   }
 }

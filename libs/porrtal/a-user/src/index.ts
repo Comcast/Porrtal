@@ -13,3 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 export * from './lib/auth-n-interface';
+export * from './lib/auth-z-interface';
+export * from './lib/auth-z-provider-interface';
+export * from './lib/auth-z-typed-provider-interface';
+export * from './lib/user-login-data';

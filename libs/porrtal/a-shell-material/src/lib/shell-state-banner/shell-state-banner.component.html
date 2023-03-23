@@ -1,0 +1,61 @@
+<div
+  class="banner-container"
+  (click)="showMenu($event)"
+  [class.banner-container-error]="hasError$ | async"
+  [class.banner-container-success]="allReady$ | async"
+>
+  <mat-icon inline="true">key</mat-icon>
+  <mat-spinner *ngIf="someProcessing$ | async" class="banner-spinner" [diameter]="24"></mat-spinner>
+</div>
+
+<div
+  style="visibility: hidden; position: fixed"
+  [style.left]="menuTopLeftPosition.x"
+  [style.top]="menuTopLeftPosition.y"
+  [matMenuTriggerFor]="shellStateMenu"
+></div>
+
+<!-- standard material menu -->
+<mat-menu #shellStateMenu="matMenu">
+  <ng-template matMenuContent>
+    <ng-container *ngIf="authZService">
+      <button
+        mat-menu-item
+        *ngFor="let authZProvider of authZService.authZProviders | keyvalue"
+        (click)="doLaunch()"
+      >
+        <div class="menu-item-container">
+          <mat-spinner
+            [diameter]="20"
+            *ngIf="(authZProvider.value.state$ | async) === 'init'"
+          ></mat-spinner>
+          <mat-icon
+            *ngIf="(authZProvider.value.state$ | async) === 'error'"
+            color="warn"
+            inline="true"
+            class="menu-close-icon"
+            >report</mat-icon
+          >
+          <mat-icon
+            *ngIf="(authZProvider.value.state$ | async) === 'ready'"
+            color="primary"
+            inline="true"
+            class="menu-close-icon"
+            >check_circle</mat-icon
+          >
+          <mat-icon inline="true" class="menu-close-icon">lock_open</mat-icon>
+          <span>{{ authZProvider.key }}</span>
+        </div>
+      </button>
+    </ng-container>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="doLaunch()">
+      <div class="menu-item-container">
+        <mat-icon inline="true" class="menu-close-icon material-icons-outlined"
+          >info</mat-icon
+        >
+        <span>Dashboard</span>
+      </div>
+    </button>
+  </ng-template>
+</mat-menu>

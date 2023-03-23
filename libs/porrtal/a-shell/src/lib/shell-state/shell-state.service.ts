@@ -27,11 +27,24 @@ import {
   ViewComponentModules,
   ViewComponentProps,
   ViewState,
+  AuthZ,
+  LaunchInvoker,
+  LaunchItem,
 } from '@porrtal/a-api';
 import { RxState } from '@rx-angular/state';
 import { v4 as uuidv4 } from 'uuid';
 import { replaceParameters } from '../shell-utilities/shell-utilities';
 import * as dot from 'dot-object';
+import { state } from '@angular/animations';
+
+export interface MaximizeItem {
+  htmlEl: HTMLElement;
+  parentHtmlEl: HTMLElement;
+  parentHtmlElChildIndex: number;
+  maximizeText: string;
+  zIndex: number;
+  restore?: () => void;
+}
 
 export interface ShellState {
   panes: Panes;
@@ -42,15 +55,26 @@ export interface ShellState {
   navWidth?: number;
   navTabWidth?: number;
   menuItems?: PorrtalMenuItem[];
+  maximizeZIndex: number;
+  maximizeStack: MaximizeItem[];
+  authZs: {
+    [name: string]: AuthZ;
+  };
 }
 
 export type ShellAction =
-  | { type: 'launchView'; viewId: string; state?: StateObject }
+  | {
+      type: 'launchView';
+      viewId: string;
+      state?: StateObject;
+      launchInvoker?: LaunchInvoker;
+      suppressFocus?: boolean;
+    }
   | { type: 'launchStartupViews' }
-  | { type: 'moveView'; key: string; toPane: PaneType }
-  | { type: 'deleteViewState'; key: string }
+  | { type: 'moveView'; key: string; toPane: PaneType } // prevent when maximize
+  | { type: 'deleteViewState'; key: string } // prevent when maximize
   | { type: 'setCurrentViewStateByKey'; key: string; pane: Pane }
-  | { type: 'arrangePane'; pane: Pane; paneArrangement: PaneArrangement }
+  | { type: 'arrangePane'; pane: Pane; paneArrangement: PaneArrangement } // prevent when maximize
   | { type: 'registerModules'; modules: ViewComponentModules }
   | { type: 'registerView'; view: View }
   | { type: 'setShowUserInfo'; show: boolean }
@@ -59,7 +83,20 @@ export type ShellAction =
   | { type: 'toggleNav'; item: ViewState }
   | { type: 'setNavTabWidth'; width: number }
   | { type: 'launchDeepLinks'; queryString: string }
-  | { type: 'copyToClipboard'; viewState: ViewState };
+  | { type: 'copyToClipboard'; viewState: ViewState }
+  | {
+      type: 'maximize';
+      htmlEl: HTMLElement;
+      maximizeText: string;
+      restore?: () => void;
+    }
+  | { type: 'restoreMaximized' }
+  | {
+      type: 'registerAuthZPermissionCheck';
+      name: string;
+      checkPermission: (parm: string) => boolean;
+    }
+  | { type: 'setAuthZReady'; name: string };
 
 @Injectable({
   providedIn: 'root',
@@ -75,6 +112,7 @@ export class ShellStateService extends RxState<ShellState> {
   public dispatch = (action: ShellAction) => {
     switch (action.type) {
       case 'launchView': {
+        // locate view
         const view = this.get().views.find(
           (view) => view.viewId === action.viewId
         );
@@ -83,11 +121,26 @@ export class ShellStateService extends RxState<ShellState> {
           console.log('launchView not found.', action);
           return;
         }
+
+        // execute permissions processing
+        if (
+          !this.okToLaunch({
+            launchInvoker: action.launchInvoker ?? 'direct',
+            view: view,
+            state: action.state,
+          })
+        ) {
+          return;
+        }
+
+        // merge action state with view's state
         let retState: ShellState = this.get();
         const newState = combineViewStateStateAndActionState(
           view.state,
           action.state
         );
+
+        // replace state's replaceable parameters
         const newKey = replaceParameters(view.key ?? uuidv4(), newState ?? {});
         const newDisplayText = replaceParameters(
           view.displayText,
@@ -97,6 +150,8 @@ export class ShellStateService extends RxState<ShellState> {
           view.displayIcon ?? '',
           newState ?? {}
         );
+
+        // lookup component function for the view
         const viewComponentFunction: ViewComponentFunction | undefined =
           retrieveViewComponentFunction(
             view.componentName,
@@ -108,6 +163,8 @@ export class ShellStateService extends RxState<ShellState> {
             `ViewComponentFunction is undefined.  module ('${view.componentModule}') not found for component name('${view.componentName}').)`
           );
         }
+
+        // construct the new view state
         const newViewState: ViewState = {
           key: newKey.replaced,
           displayText: newDisplayText.replaced,
@@ -122,7 +179,7 @@ export class ShellStateService extends RxState<ShellState> {
           view,
         };
 
-        // see if the key exists already (replace it if so)
+        // see if the view state's key exists in a pane (replace it if so)
         if (
           paneTypes.some((paneType) => {
             const ii = this.get().panes[paneType].viewStates.findIndex(
@@ -152,25 +209,49 @@ export class ShellStateService extends RxState<ShellState> {
           return;
         }
 
-        // key didn't exist so add the view state to the requested pane
+        // view state's key didn't already exist, so add the view state to the requested pane
         const viewStates = this.get().panes[newViewState.paneType].viewStates;
-        retState = {
-          ...this.get(),
-          panes: {
-            ...this.get().panes,
-            [newViewState.paneType]: {
-              ...this.get().panes[newViewState.paneType],
-              currentKey: newViewState.key,
-              viewStates: [...viewStates, newViewState],
+        if (!action.suppressFocus) {
+          // set focus to new view state
+          retState = {
+            ...this.get(),
+            panes: {
+              ...this.get().panes,
+              [newViewState.paneType]: {
+                ...this.get().panes[newViewState.paneType],
+                currentKey: newViewState.key,
+                viewStates: [...viewStates, newViewState],
+              },
             },
-          },
-        };
+          };
+        } else {
+          // launch but don't set focus
+          retState = {
+            ...this.get(),
+            panes: {
+              ...this.get().panes,
+              [newViewState.paneType]: {
+                ...this.get().panes[newViewState.paneType],
+                viewStates: [...viewStates, newViewState],
+              },
+            },
+          };
+        }
+
         this.set(retState);
         return;
       }
 
       case 'moveView': {
         let retState = this.get();
+
+        // prevent move view if there are maximized elements
+        if (retState.maximizeStack.length > 0) {
+          throw new Error(
+            'Shell State Service: Cannot "moveView" when elements are maximized.'
+          );
+        }
+
         let foundViewState: ViewState | undefined;
 
         paneTypes.some((paneType) => {
@@ -248,6 +329,14 @@ export class ShellStateService extends RxState<ShellState> {
 
       case 'deleteViewState': {
         let retState = this.get();
+
+        // prevent move view if there are maximized elements
+        if (retState.maximizeStack.length > 0) {
+          throw new Error(
+            'Shell State Service: Cannot "deleteViewState" when elements are maximized.'
+          );
+        }
+
         let foundView: ViewState | undefined;
 
         paneTypes.some((paneType) => {
@@ -284,6 +373,14 @@ export class ShellStateService extends RxState<ShellState> {
       }
 
       case 'arrangePane': {
+        // prevent move view if there are maximized elements
+        const state = this.get();
+        if (state.maximizeStack.length > 0) {
+          throw new Error(
+            'Shell State Service: Cannot "moveView" when elements are maximized.'
+          );
+        }
+
         const retState = {
           ...this.get(),
           panes: {
@@ -337,6 +434,7 @@ export class ShellStateService extends RxState<ShellState> {
             this.dispatch({
               type: 'launchView',
               viewId: view.viewId ?? view.componentName,
+              launchInvoker: 'startup',
             });
           });
 
@@ -458,6 +556,7 @@ export class ShellStateService extends RxState<ShellState> {
             type: 'launchView',
             viewId,
             state: deepLinks[key].state,
+            launchInvoker: 'deepLink',
           });
         }
         break;
@@ -467,8 +566,240 @@ export class ShellStateService extends RxState<ShellState> {
         navigator.clipboard.writeText(getViewStateDeepLink(action.viewState));
         break;
       }
+
+      case 'maximize': {
+        const parentEl = action.htmlEl.parentElement;
+        if (!parentEl) {
+          console.log(
+            'error. called shell state service: maximize with element with no parent element'
+          );
+          return;
+        }
+
+        this.set((state) => ({
+          maximizeZIndex: state.maximizeZIndex + 10,
+          maximizeStack: [
+            ...state.maximizeStack,
+            {
+              htmlEl: action.htmlEl,
+              maximizeText: action.maximizeText,
+              parentHtmlEl: parentEl,
+              parentHtmlElChildIndex: Array.prototype.indexOf.call(
+                parentEl.children,
+                action.htmlEl
+              ),
+              zIndex: state.maximizeZIndex,
+              restore: action.restore,
+            },
+          ],
+        }));
+        break;
+      }
+
+      case 'restoreMaximized': {
+        this.set((state) => {
+          const newMaximizeStack = [...state.maximizeStack];
+          const maximizeItem = newMaximizeStack.pop();
+
+          // parent back to original parent
+          maximizeItem?.parentHtmlEl.insertBefore(
+            maximizeItem.htmlEl,
+            maximizeItem.parentHtmlEl.children[
+              maximizeItem.parentHtmlElChildIndex
+            ]
+          );
+
+          return {
+            maximizeZIndex: state.maximizeZIndex - 10,
+            maximizeStack: newMaximizeStack,
+          };
+        });
+        break;
+      }
+
+      case 'setAuthZReady': {
+        this.set((state) => {
+          return {
+            authZs: {
+              ...state.authZs,
+              [action.name]: {
+                ...state.authZs[action.name],
+                ready: true,
+              },
+            },
+          };
+        });
+        break;
+      }
+
+      case 'registerAuthZPermissionCheck': {
+        const authZs = this.get('authZs');
+        this.set({
+          authZs: {
+            ...authZs,
+            [action.name]: {
+              ...authZs[action.name],
+              checkPermission: action.checkPermission,
+            },
+          },
+        });
+        this.processLaunchQ(action.name);
+        break;
+      }
     }
   };
+
+  processLaunchQ(name: string) {
+    const authZs = this.get().authZs;
+
+    authZs[name].launchQ.forEach((launchItem) => {
+      console.log('launch from launchQ', launchItem);
+      this.dispatch({
+        type: 'launchView',
+        viewId: launchItem.viewId,
+        launchInvoker: launchItem.launchInvoker,
+        state: launchItem.state,
+        suppressFocus: true,
+      });
+    });
+
+    const updatedAuthZs = this.get().authZs;
+    this.set({
+      authZs: {
+        ...updatedAuthZs,
+        [name]: {
+          ...updatedAuthZs[name],
+          launchQ: [],
+        },
+      },
+    });
+  }
+
+  okToLaunch(launchInfo: {
+    launchInvoker: LaunchInvoker;
+    view: View;
+    state?: StateObject;
+  }) {
+    // ------- permissions syntax: --------------
+    //  view.permissions: [<name>:][<parm>]
+    //    if <name>: not provided, use 'primary'
+    // ------------------------------------------
+
+    // if view doesn't require permissions, return true
+    if (
+      !launchInfo.view.permissions ||
+      launchInfo.view.permissions.trim().length < 1
+    ) {
+      return true;
+    }
+
+    const permissions = launchInfo.view.permissions.trim();
+    const [first, ...rest] = permissions.split(':');
+
+    let name = 'primary';
+    let parm = '';
+
+    if (rest.length < 1) {
+      // name: not provided
+      parm = permissions;
+    } else {
+      name = first;
+      parm = rest.join(':');
+    }
+
+    // see if we are tracking this authZ (create if not)
+    const authZs = this.get('authZs');
+    let authZ = authZs[name];
+    if (!authZ) {
+      authZ = {
+        ready: false,
+        checkPermission: undefined,
+        launchQ: [],
+        noPermissionsQ: [],
+      };
+    }
+
+    // handle malformed permissions string
+    if (name.length < 1) {
+      this.set({
+        authZs: {
+          ...authZs,
+          [name]: {
+            ...authZ,
+            noPermissionsQ: [
+              ...authZ.noPermissionsQ,
+              {
+                launchInvoker: launchInfo.launchInvoker,
+                viewId:
+                  launchInfo.view.viewId ?? 'viewId has value at this point',
+                state: launchInfo.state,
+              },
+            ],
+          },
+        },
+      });
+      console.log(
+        `Warning: view ('${launchInfo.view.viewId}') has malformed permissions('${launchInfo.view.permissions}').`,
+        { name, parm, authZs: this.get('authZs') }
+      );
+      return false;
+    }
+
+    // handle not ready or permissions function missing
+    if (!authZ.ready || !authZ.checkPermission) {
+      this.set({
+        authZs: {
+          ...authZs,
+          [name]: {
+            ...authZ,
+            launchQ: [
+              ...authZ.launchQ,
+              {
+                launchInvoker: launchInfo.launchInvoker,
+                viewId:
+                  launchInfo.view.viewId ?? 'viewId has value at this point',
+                state: launchInfo.state,
+              },
+            ],
+          },
+        },
+      });
+      console.log(
+        `Info: view ('${launchInfo.view.viewId}') --> launchQ ('${launchInfo.view.permissions}').`,
+        { name, parm, authZs: this.get('authZs') }
+      );
+      return false;
+    }
+
+    // handle permissions check passed
+    if (authZ.checkPermission(parm)) {
+      return true;
+    }
+
+    // handle permission check not passed
+    this.set({
+      authZs: {
+        ...authZs,
+        [name]: {
+          ...authZ,
+          noPermissionsQ: [
+            ...authZ.noPermissionsQ,
+            {
+              launchInvoker: launchInfo.launchInvoker,
+              viewId:
+                launchInfo.view.viewId ?? 'viewId has value at this point',
+              state: launchInfo.state,
+            },
+          ],
+        },
+      },
+    });
+    console.log(
+      `Info: view ('${launchInfo.view.viewId}') --> noPermissionsQ ('${launchInfo.view.permissions}').`,
+      { name, parm, authZs: this.get('authZs') }
+    );
+    return false;
+  }
 }
 
 export function getViewStateDeepLink(viewState: ViewState): string {
@@ -639,6 +970,9 @@ const emptyUseShellState: ShellState = {
   views: [],
   showUserInfo: true,
   showDevInfo: true,
+  maximizeZIndex: 90,
+  maximizeStack: [],
+  authZs: {},
 };
 
 export function combineViewStateStateAndActionState(

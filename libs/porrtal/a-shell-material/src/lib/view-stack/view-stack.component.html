@@ -6,14 +6,20 @@
     (selectedIndexChange)="doChangeTabIndex($event)"
     [selectedIndex]="selectedTabIndex"
   >
-    <mat-tab *ngFor="let viewState of pane?.viewStates">
+    <mat-tab *ngFor="let viewState of pane?.viewStates; let ii = index">
       <ng-template mat-tab-label>
         <mat-icon
-          (contextmenu)="doContextMenu($event, viewState)"
+          (contextmenu)="doContextMenu($event, viewState, ii)"
           class="tab-icon"
           >{{ viewState.displayIcon }}</mat-icon
         >
-        <span (contextmenu)="doContextMenu($event, viewState)">{{
+        <mat-icon
+          (contextmenu)="doContextMenu($event, viewState, ii)"
+          (click)="doMaximizeTab($event, viewState, ii)"
+          class="tab-icon"
+          >north_east</mat-icon
+        >
+        <span (contextmenu)="doContextMenu($event, viewState, ii)">{{
           viewState.displayText
         }}</span>
         <mat-icon
@@ -23,7 +29,7 @@
           >close</mat-icon
         >
       </ng-template>
-      <porrtal-view-host [viewState]="viewState"></porrtal-view-host>
+      <porrtal-view-host #porrtalViewHost [viewState]="viewState"></porrtal-view-host>
     </mat-tab>
   </mat-tab-group>
 
@@ -36,7 +42,7 @@
             *ngFor="let viewState of pane?.viewStates; let ii = index"
             [ngClass]="{ selected: viewState.key === pane?.currentKey }"
             (click)="doChangeTabIndex(ii)"
-            (contextmenu)="doContextMenu($event, viewState)"
+            (contextmenu)="doContextMenu($event, viewState, ii)"
           >
             <a
               *ngIf="pane?.paneType === 'nav'"
@@ -73,7 +79,7 @@
           *ngFor="let viewState of pane?.viewStates; let ii = index"
           [style.zIndex]="viewState.key === pane?.currentKey ? 10 : 0"
         >
-          <porrtal-view-host [viewState]="viewState"></porrtal-view-host>
+          <porrtal-view-host #porrtalViewHost [viewState]="viewState"></porrtal-view-host>
         </div>
         <div class="vertical-tabs-content-background-div"></div>
       </div>
@@ -95,9 +101,14 @@
               'selected-card-title': viewState.key === pane?.currentKey
             }"
             (click)="doChangeTabIndex(ii)"
-            (contextmenu)="doContextMenu($event, viewState)"
+            (contextmenu)="doContextMenu($event, viewState, ii)"
           >
             <mat-icon class="tab-icon">{{ viewState.displayIcon }}</mat-icon>
+            <mat-icon
+              (click)="doMaximizeTab($event, viewState, ii)"
+              class="tab-icon"
+              >north_east</mat-icon
+            >
             <span>{{ viewState.displayText }}</span>
             <mat-icon
               (click)="doCloseTab($event, viewState)"
@@ -109,7 +120,7 @@
         </mat-card-title>
         <mat-card-content>
           <div class="view-host-container">
-            <porrtal-view-host [viewState]="viewState"></porrtal-view-host>
+            <porrtal-view-host #porrtalViewHost [viewState]="viewState"></porrtal-view-host>
           </div>
         </mat-card-content>
       </mat-card>
@@ -127,7 +138,14 @@
 
 <!-- standard material menu -->
 <mat-menu #rightMenu="matMenu">
-  <ng-template matMenuContent let-viewState="viewState">
+  <ng-template matMenuContent let-viewState="viewState" let-ii="ii">
+    <button mat-menu-item (click)="doMaximizeTab($event, viewState, ii)">
+      <span>
+        <mat-icon inline="true" class="menu-close-icon">north_east</mat-icon>
+        <span>Maximize Tab</span>
+      </span>
+    </button>
+    <mat-divider></mat-divider>
     <button mat-menu-item (click)="doCloseTab($event, viewState)">
       <span>
         <mat-icon inline="true" class="menu-close-icon">close</mat-icon>
@@ -192,10 +210,15 @@
         <span>Move To...</span>
       </span>
     </button>
-    <button mat-menu-item (click)="shellStateService.dispatch({
-      type: 'copyToClipboard',
-      viewState
-    })">
+    <button
+      mat-menu-item
+      (click)="
+        shellStateService.dispatch({
+          type: 'copyToClipboard',
+          viewState: this.viewState
+        })
+      "
+    >
       <span>
         <mat-icon inline="true" class="menu-close-icon">content_copy</mat-icon>
         <span>Copy link</span>

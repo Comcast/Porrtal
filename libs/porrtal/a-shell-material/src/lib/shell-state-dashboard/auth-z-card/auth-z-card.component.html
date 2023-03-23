@@ -1,0 +1,227 @@
+<mat-card class="container-container" [class.maximize]="isMaximized$ | async">
+  <div class="container">
+    <mat-toolbar
+      class="toolbar"
+      [color]="
+        state === 'error'
+          ? 'warn'
+          : state === '' || state === 'init'
+          ? ''
+          : 'accent'
+      "
+    >
+      <!-- key icon -->
+      <span class="status-icon">
+        <mat-icon>lock</mat-icon>
+      </span>
+
+      <!-- card status-->
+      <mat-spinner
+        class="spinner"
+        [diameter]="16"
+        *ngIf="state === 'init'"
+      ></mat-spinner>
+      <span *ngIf="state === 'error'" class="status-icon">
+        <mat-icon>warning</mat-icon>
+      </span>
+      <span *ngIf="state === ''" class="status-icon">
+        <mat-icon>radio_button_unchecked</mat-icon>
+      </span>
+      <span *ngIf="state === 'ready'" class="status-icon">
+        <mat-icon>task_alt</mat-icon>
+      </span>
+
+      <!-- card type -->
+      <span class="card-type">auth z</span>
+
+      <!-- card message -->
+      <span *ngIf="authZSubj | async as auth">
+        {{ auth?.authZ?.name }}
+      </span>
+      <span *ngIf="!(authZSubj | async)"></span>
+
+      <!-- card maximize button -->
+      <button
+        *ngIf="!(isMaximized$ | async)"
+        mat-button
+        (click)="toggleMax()"
+        class="maximize-button"
+      >
+        <mat-icon class="maximize-icon">north_east</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <div class="card-content-container">
+      <!-- authZProvider info -->
+      <div
+        *ngIf="(authZSubj | async)?.authZ as authZProvider"
+        class="properties-container"
+      >
+        <!-- state -->
+        <span class="property-title">state:</span>
+        <span>{{ authZProvider.state$ | async }}</span>
+
+        <!-- error message -->
+        <span
+          *ngIf="
+            (authZProvider.state$ | async) === 'error' &&
+            authZProvider.errorInfo?.message
+          "
+          class="property-title"
+          >error message:</span
+        >
+        <span
+          *ngIf="
+            (authZProvider.state$ | async) === 'error' &&
+            authZProvider.errorInfo?.message
+          "
+          >{{ authZProvider.errorInfo?.message }}</span
+        >
+
+        <!-- warning message -->
+        <span
+          *ngIf="
+            (authZProvider.state$ | async) !== '' &&
+            authZProvider.warningInfo?.message
+          "
+          class="property-title"
+          >warning message:</span
+        >
+        <span
+          *ngIf="
+            (authZProvider.state$ | async) !== '' &&
+            authZProvider.warningInfo?.message
+          "
+          >{{ authZProvider.warningInfo?.message }}</span
+        >
+
+        <!-- roles -->
+        <span
+          *ngIf="authZProvider.roles && authZProvider.roles.length > 0"
+          class="property-title"
+          >roles:</span
+        >
+        <div *ngIf="authZProvider.roles && authZProvider.roles.length > 0">
+          <div *ngFor="let role of authZProvider.roles">
+            {{ role }}
+          </div>
+        </div>
+
+        <!-- scopes -->
+        <span
+          *ngIf="authZProvider.scopes && authZProvider.scopes.length > 0"
+          class="property-title"
+          >scopes:</span
+        >
+        <div *ngIf="authZProvider.scopes && authZProvider.scopes.length > 0">
+          <div *ngFor="let scope of authZProvider.scopes">
+            {{ scope }}
+          </div>
+        </div>
+
+        <!-- init function -->
+        <span class="property-title">defined functions:</span>
+        <div>
+          <div *ngIf="authZProvider.init">init()</div>
+        </div>
+      </div>
+
+      <!-- shell AuthZ Info -->
+      <hr />
+      <div *ngIf="authZ$ | async as authZ" class="properties-container">
+        <!-- authZ.ready -->
+        <span class="property-title">ready:</span>
+        <span>{{ authZ.ready }}</span>
+
+        <!-- authZ.checkPermission -->
+        <span class="property-title">checkPermission():</span>
+        <span>{{ authZ.checkPermission ? 'defined' : 'not defined' }}</span>
+      </div>
+      <div *ngIf="authZ$ | async as authZ">
+        <div class="property-title">launchQ({{ authZ.launchQ.length }}):</div>
+        <div *ngFor="let launchItem of authZ.launchQ">
+          {{ launchItem.viewId }}
+        </div>
+      </div>
+      <div *ngIf="authZ$ | async as authZ">
+        <div class="property-title">noPermissionsQ({{ authZ.noPermissionsQ.length }}):</div>
+        <div *ngFor="let launchItem of authZ.noPermissionsQ">
+          {{ launchItem.viewId }}
+        </div>
+      </div>
+      <div *ngIf="!(authZ$ | async)">No AuthZ Info from Shell.</div>
+
+      <!-- authZProvider info -->
+      <ng-container *ngIf="(authZSubj | async)?.authZ as authZ">
+        <hr />
+        <!-- props -->
+        <div *ngIf="authZ.props as props">
+          <span class="property-title">props:</span>
+          <pre><p>{{ props | json }}</p></pre>
+        </div>
+      </ng-container>
+
+      <!-- login strategy -->
+      <!-- <span class="property-title">login strategy:</span>
+          <span>{{ authN.loginStrategy$ | async }}</span>
+  
+          <hr />
+          <hr /> -->
+
+      <!-- has any functions -->
+      <!-- <span
+            *ngIf="
+              authN.init ||
+              authN.loginWithRedirect ||
+              authN.login ||
+              authN.register ||
+              authN.logout
+            "
+            class="property-title"
+            >defined functions:</span
+          >
+          <span
+            *ngIf="
+              authN.init ||
+              authN.loginWithRedirect ||
+              authN.login ||
+              authN.register ||
+              authN.logout
+            "></span> -->
+
+      <!-- has init -->
+      <!-- <span *ngIf="authN.init"></span>
+          <span *ngIf="authN.init">init()</span> -->
+
+      <!-- has login with redirect -->
+      <!-- <span *ngIf="authN.loginWithRedirect"></span>
+          <span *ngIf="authN.loginWithRedirect">loginWithRedirect()</span> -->
+
+      <!-- has login -->
+      <!-- <span *ngIf="authN.login"></span>
+          <span *ngIf="authN.login">login()</span> -->
+
+      <!-- has register -->
+      <!-- <span *ngIf="authN.register"></span>
+          <span *ngIf="authN.register">register()</span> -->
+
+      <!-- has logout -->
+      <!-- <span *ngIf="authN.logout"></span>
+          <span *ngIf="authN.logout">logout()</span> -->
+
+      <!-- claims -->
+      <!-- <div *ngIf="(authNSubj | async)?.authN?.claims as claims">
+          <hr />
+          <span class="property-title">claims:</span>
+          <pre><p>{{ claims | json }}</p></pre>
+        </div> -->
+
+      <!-- claimsMap -->
+      <!-- <div *ngIf="(authNSubj | async)?.authN?.claimsMap as claimsMap">
+          <hr />
+          <span class="property-title">claims map:</span>
+          <pre><p>{{ claimsMap | json}}</p></pre>
+        </div> -->
+    </div>
+  </div>
+</mat-card>

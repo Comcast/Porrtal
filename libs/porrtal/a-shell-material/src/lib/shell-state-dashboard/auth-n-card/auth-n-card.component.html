@@ -1,0 +1,146 @@
+<mat-card class="container-container" [class.maximize]="isMaximized$ | async">
+  <div class="container">
+    <mat-toolbar
+      class="toolbar"
+      [color]="state === 'error' ? 'warn' : (state === 'initialized' || state === 'authenticating') ? '' : 'accent'"
+    >
+      <!-- key icon -->
+      <span class="status-icon">
+        <mat-icon>key</mat-icon>
+      </span>
+
+      <!-- card status-->
+      <mat-spinner
+        class="spinner"
+        [diameter]="16"
+        *ngIf="state === 'authenticating'"
+      ></mat-spinner>
+      <span *ngIf="state === 'error'" class="status-icon">
+        <mat-icon>warning</mat-icon>
+      </span>
+      <span *ngIf="state === 'initialized'" class="status-icon">
+        <mat-icon>radio_button_unchecked</mat-icon>
+      </span>
+      <span *ngIf="state === 'authenticated'" class="status-icon">
+        <mat-icon>task_alt</mat-icon>
+      </span>
+
+      <!-- card type -->
+      <span class="card-type">auth n</span>
+
+      <!-- card message -->
+      <span *ngIf="authNSubj | async as auth">
+        {{
+          state === 'error'
+            ? auth?.authN?.errorMessage
+            : state === 'authenticated'
+            ? auth?.authN?.user?.name
+            : state
+        }}
+      </span>
+      <span *ngIf="!(authNSubj | async)"></span>
+
+      <!-- card maximize button -->
+      <button
+        *ngIf="!(isMaximized$ | async)"
+        mat-button
+        (click)="toggleMax()"
+        class="maximize-button"
+      >
+        <mat-icon class="maximize-icon">north_east</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- card content -->
+    <div class="card-content-container">
+      <div
+        *ngIf="(authNSubj | async)?.authN as authN"
+        class="auth-n-properties-container"
+      >
+        <!-- state -->
+        <span class="auth-n-property-title">state:</span>
+        <span>{{ authN.state$ | async }}</span>
+
+        <!-- error message -->
+        <span *ngIf="authN.errorMessage" class="auth-n-property-title"
+          >error message:</span
+        >
+        <span *ngIf="authN.errorMessage">{{ authN.errorMessage }}</span>
+
+        <!-- user.name -->
+        <span *ngIf="authN.user?.name" class="auth-n-property-title"
+          >user.name:</span
+        >
+        <span *ngIf="authN.user?.name as name">{{ name }}</span>
+
+        <!-- user.email -->
+        <span *ngIf="authN.user?.email" class="auth-n-property-title"
+          >user.email:</span
+        >
+        <span *ngIf="authN.user?.email as email">{{ email }}</span>
+
+        <!-- login strategy -->
+        <span class="auth-n-property-title">login strategy:</span>
+        <span>{{ authN.loginStrategy$ | async }}</span>
+
+        <hr />
+        <hr />
+
+        <!-- has any functions -->
+        <span
+          *ngIf="
+            authN.init ||
+            authN.loginWithRedirect ||
+            authN.login ||
+            authN.register ||
+            authN.logout
+          "
+          class="auth-n-property-title"
+          >defined functions:</span
+        >
+        <span
+          *ngIf="
+            authN.init ||
+            authN.loginWithRedirect ||
+            authN.login ||
+            authN.register ||
+            authN.logout
+          "></span>
+
+        <!-- has init -->
+        <span *ngIf="authN.init"></span>
+        <span *ngIf="authN.init">init()</span>
+
+        <!-- has login with redirect -->
+        <span *ngIf="authN.loginWithRedirect"></span>
+        <span *ngIf="authN.loginWithRedirect">loginWithRedirect()</span>
+
+        <!-- has login -->
+        <span *ngIf="authN.login"></span>
+        <span *ngIf="authN.login">login()</span>
+
+        <!-- has register -->
+        <span *ngIf="authN.register"></span>
+        <span *ngIf="authN.register">register()</span>
+
+        <!-- has logout -->
+        <span *ngIf="authN.logout"></span>
+        <span *ngIf="authN.logout">logout()</span>
+      </div>
+
+      <!-- claims -->
+      <div *ngIf="(authNSubj | async)?.authN?.claims as claims">
+        <hr />
+        <span class="auth-n-property-title">claims:</span>
+        <pre><p>{{ claims | json }}</p></pre>
+      </div>
+
+      <!-- claimsMap -->
+      <div *ngIf="(authNSubj | async)?.authN?.claimsMap as claimsMap">
+        <hr />
+        <span class="auth-n-property-title">claims map:</span>
+        <pre><p>{{ claimsMap | json}}</p></pre>
+      </div>
+    </div>
+  </div>
+</mat-card>

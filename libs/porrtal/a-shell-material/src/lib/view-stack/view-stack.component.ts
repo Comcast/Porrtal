@@ -34,10 +34,16 @@ import {
 } from '@porrtal/a-api';
 import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyMenuModule as MatMenuModule, MatLegacyMenuTrigger as MatMenuTrigger } from '@angular/material/legacy-menu';
+import {
+  MatLegacyMenuModule as MatMenuModule,
+  MatLegacyMenuTrigger as MatMenuTrigger,
+} from '@angular/material/legacy-menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
-import { MatLegacyCard as MatCard, MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card'
+import {
+  MatLegacyCard as MatCard,
+  MatLegacyCardModule as MatCardModule,
+} from '@angular/material/legacy-card';
 import { ShellStateService, ViewHostComponent } from '@porrtal/a-shell';
 
 @Component({
@@ -64,7 +70,9 @@ export class ViewStackComponent implements AfterContentChecked {
     this.paneTypes = paneTypes.filter(
       (pt) => pt !== 'search' && pt !== (this._pane?.paneType ?? '')
     );
-    const ii = this.pane?.viewStates.findIndex(vs => vs.key === this.pane?.currentKey);
+    const ii = this.pane?.viewStates.findIndex(
+      (vs) => vs.key === this.pane?.currentKey
+    );
     if (ii !== undefined) {
       this.selectedTabIndex = ii;
     }
@@ -74,7 +82,12 @@ export class ViewStackComponent implements AfterContentChecked {
   }
 
   @ViewChild(MatMenuTrigger, { static: true }) matMenuTrigger?: MatMenuTrigger;
-  @ViewChildren('card', { read: ElementRef<HTMLElement>}) cards?: QueryList<ElementRef<HTMLElement>>;
+  @ViewChildren('card', { read: ElementRef }) cards?: QueryList<
+    ElementRef<HTMLElement>
+  >;
+
+  @ViewChildren(ViewHostComponent)
+  portalViewHosts?: QueryList<ViewHostComponent>;
 
   public paneTypes?: string[];
   public selectedTabIndex?: number;
@@ -89,18 +102,24 @@ export class ViewStackComponent implements AfterContentChecked {
   };
 
   constructor(public shellStateService: ShellStateService) {
-    const ii = this.pane?.viewStates.findIndex(vs => vs.key === this.pane?.currentKey)
+    const ii = this.pane?.viewStates.findIndex(
+      (vs) => vs.key === this.pane?.currentKey
+    );
   }
 
   ngAfterContentChecked(): void {
     if (this.cards && this.pane) {
       this.cards.some((card, ii) => {
-        const isSelected = this.pane?.currentKey === this.pane?.viewStates[ii].key
+        const isSelected =
+          this.pane?.currentKey === this.pane?.viewStates[ii].key;
         if (isSelected) {
-          card.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start'});
+          card.nativeElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
         }
         return isSelected;
-      })
+      });
     }
   }
 
@@ -114,7 +133,7 @@ export class ViewStackComponent implements AfterContentChecked {
     }
   }
 
-  doContextMenu(evt: MouseEvent, viewState: ViewState): void {
+  doContextMenu(evt: MouseEvent, viewState: ViewState, ii: number): void {
     evt.preventDefault();
     evt.stopPropagation();
 
@@ -123,7 +142,7 @@ export class ViewStackComponent implements AfterContentChecked {
     this.menuTopLeftPosition.y = evt.clientY + 'px';
 
     if (this.matMenuTrigger) {
-      this.matMenuTrigger.menuData = { viewState };
+      this.matMenuTrigger.menuData = { viewState, ii };
       this.matMenuTrigger.openMenu();
     }
   }
@@ -162,7 +181,11 @@ export class ViewStackComponent implements AfterContentChecked {
     this.shellStateService.dispatch({
       type: 'launchView',
       viewId: viewLaunch.viewId,
-      state: viewLaunch.state
-    })
+      state: viewLaunch.state,
+    });
+  }
+
+  doMaximizeTab(evt: MouseEvent, viewState: ViewState, ii: number) {
+    this.portalViewHosts?.toArray()[ii].maximize();
   }
 }

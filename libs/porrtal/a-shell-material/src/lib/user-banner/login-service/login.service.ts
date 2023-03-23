@@ -14,7 +14,7 @@ limitations under the License.
 */
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { UserLoginData } from '@porrtal/a-api';
+import { UserLoginData } from '@porrtal/a-user';
 import { LoginStrategy } from '@porrtal/a-user';
 import { Observable } from 'rxjs';
 import { LoginFormComponent } from './login-form/login-form.component';

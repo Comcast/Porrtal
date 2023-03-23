@@ -1,0 +1,34 @@
+@import 'ag-grid-community/dist/styles/ag-grid.css';
+@import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+
+.banner-container {
+  display: grid;
+  align-items: center;
+  font-size: 150%;
+  line-height: 1.125;
+  position: relative;
+}
+
+.banner-container-error {
+  border: 2px red solid;
+}
+
+.banner-container-success {
+  background-color: rgb(164, 194, 164);
+}
+
+.banner-spinner {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+}
+
+.menu-close-icon {
+  font-size: 20px !important;
+  font-weight: 900;
+}
+
+.menu-item-container {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+}

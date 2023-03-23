@@ -31,6 +31,8 @@ export interface View {
 
   menu?: string;
 
+  permissions?: string;
+
   userInfo?: ViewLaunch[];
   devInfo?: ViewLaunch[];
 }

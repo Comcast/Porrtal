@@ -23,10 +23,13 @@
           "apps/r/porrtal-app/src/assets"
         ],
         "styles": [
-          "apps/r/porrtal-app/src/styles.scss"
+          "apps/r/porrtal-app/src/styles.scss",
+          "node_modules/ag-grid-community/styles/ag-grid.css",
+          "node_modules/ag-grid-community/styles/ag-theme-balham.css"
         ],
         "scripts": [],
-        "webpackConfig": "@nrwl/react/plugins/webpack"
+        "webpackConfig": "apps/r/porrtal-app/webpack.config.js",
+        "isolatedConfig": true
       },
       "configurations": {
         "production": {

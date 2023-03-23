@@ -18,7 +18,7 @@ import { ViewComponentFunction } from './view-component-function';
 import { ViewLaunch } from './view-launch';
 
 export interface StateObject {
-  [key: string]: string | number | bigint | boolean | StateObject;
+  [key: string]: string | number | bigint | boolean | string[] | StateObject;
 }
 
 export interface ViewState {

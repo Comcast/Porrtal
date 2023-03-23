@@ -1,0 +1,15 @@
+.login-button {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+
+.spinner {
+  margin-right: 8px;
+}
+
+.error-icon {
+  margin-right: 8px;
+  font-size: 20px !important;
+  font-weight: 900;
+}

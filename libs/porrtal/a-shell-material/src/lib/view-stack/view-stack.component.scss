@@ -151,7 +151,7 @@ mat-list-item {
 
 .card-title {
   display: grid;
-  grid-template-columns: auto auto 1fr;
+  grid-template-columns: auto auto auto 1fr;
   align-items: center;
   justify-items: start;
 }

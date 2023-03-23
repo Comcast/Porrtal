@@ -26,21 +26,35 @@ import {
 } from '@porrtal/a-user';
 import { LoginService } from './login-service/login.service';
 import { MatDialogModule } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'porrtal-user-banner',
   standalone: true,
-  imports: [CommonModule, MatDialogModule],
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatTooltipModule,
+  ],
   providers: [LoginService],
   templateUrl: './user-banner.component.html',
   styleUrls: ['./user-banner.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class UserBannerComponent {
   constructor(
-    @Optional() @Inject(AUTH_N_INTERFACE) public authN: AuthNInterface,
+    @Optional() @Inject(AUTH_N_INTERFACE) public authN: AuthNInterface | null,
     public loginService: LoginService
-  ) {}
+  ) {
+    console.log('UserBannerComponent constructor...', authN);
+
+    authN?.init?.();
+  }
 
   login(loginStrategy: LoginStrategy) {
     if (loginStrategy === 'loginWithRedirect') {

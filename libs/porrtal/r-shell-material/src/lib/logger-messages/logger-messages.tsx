@@ -19,9 +19,6 @@ import { ColDef } from 'ag-grid-community';
 import { useState } from 'react';
 import { ViewComponentProps, LoggerEntry } from '@porrtal/r-api';
 
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-balham.css';
-
 export function LoggerMessages(props: ViewComponentProps) {
   const loggerState = useLoggerState();
   const [columnDefs, setColumnDefs] = useState<ColDef<LoggerEntry>[]>([

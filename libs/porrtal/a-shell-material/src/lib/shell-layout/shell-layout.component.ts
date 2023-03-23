@@ -16,7 +16,7 @@ import { ChangeDetectionStrategy, Component, Inject, Input, Optional } from '@an
 import { CommonModule } from '@angular/common';
 import { AngularSplitModule, IOutputData } from 'angular-split';
 import { ViewStackComponent } from '../view-stack/view-stack.component';
-import { ShellState, ShellStateService } from '@porrtal/a-shell';
+import { MaximizeItem, ShellState, ShellStateService } from '@porrtal/a-shell';
 import { Observable } from 'rxjs';
 import { SearchComponent } from '../search/search.component';
 import { LoggerBannerComponent } from '../logger-banner/logger-banner.component';
@@ -26,6 +26,8 @@ import { BannerMenuBarComponent } from '../banner-menu-bar/banner-menu-bar.compo
 import { BannerMenuInlineComponent } from '../banner-menu-inline/banner-menu-inline.component';
 import { AuthNInterface, AUTH_N_INTERFACE } from '@porrtal/a-user';
 import { UserBannerComponent } from '../user-banner/user-banner.component';
+import { ShellStateBannerComponent } from '../shell-state-banner/shell-state-banner.component';
+import { MaximizeHostComponent } from '../maximize-host/maximize-host.component';
 
 @Component({
   selector: 'porrtal-shell-layout',
@@ -39,7 +41,9 @@ import { UserBannerComponent } from '../user-banner/user-banner.component';
     BannerMenuInlineComponent,
     SearchComponent,
     LoggerBannerComponent,
+    ShellStateBannerComponent,
     UserBannerComponent,
+    MaximizeHostComponent,
   ],
   templateUrl: './shell-layout.component.html',
   styleUrls: ['./shell-layout.component.scss'],
@@ -50,12 +54,14 @@ export class ShellLayoutComponent {
   public bannerData?: BannerData;
 
   public state$: Observable<ShellState>;
+  public maximizeStack$: Observable<MaximizeItem[]>;
 
   public navWidthWhenExpanded: number = 320;
 
   constructor(private shellStateService: ShellStateService,
     @Optional() @Inject(AUTH_N_INTERFACE) authNService: AuthNInterface) {
     this.state$ = shellStateService.select();
+    this.maximizeStack$ = shellStateService.select('maximizeStack');
     console.log('AuthNInterface: ', authNService);
   }
 
