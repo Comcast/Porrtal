@@ -12,6 +12,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-export * from './lib/msal-adapter.service';
+export * from './lib/msal-auth-n.service';
 export * from './lib/porrtal-msal.module';
-export * from './lib/provider';
+export * from './lib/msal-provider';

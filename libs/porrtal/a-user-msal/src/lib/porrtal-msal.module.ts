@@ -15,7 +15,7 @@ limitations under the License.
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Configuration } from '@azure/msal-browser';
-import { provideOAuthClient } from './provider';
+import { provideMsalOAuthClient } from './msal-provider';
 import {
   MsalGuardConfiguration,
   MsalInterceptorConfiguration,
@@ -34,7 +34,7 @@ export class PorrtalMsalModule {
   ): ModuleWithProviders<PorrtalMsalModule> {
     return {
       ngModule: PorrtalMsalModule,
-      providers: [provideOAuthClient(authConfig, interceptorConfig, guardConfig)],
+      providers: [provideMsalOAuthClient(authConfig, interceptorConfig, guardConfig)],
     };
   }
 }

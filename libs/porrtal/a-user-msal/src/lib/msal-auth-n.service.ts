@@ -14,7 +14,13 @@ limitations under the License.
 */
 import { Inject, Injectable } from '@angular/core';
 import { MsalBroadcastService, MsalService } from '@azure/msal-angular';
-import { AuthNInterface, LoginStrategy } from '@porrtal/a-user';
+import {
+  AuthNInterface,
+  AuthNState,
+  LoginCreds,
+  LoginStrategy,
+  RegisterUserInfo,
+} from '@porrtal/a-user';
 import { BehaviorSubject, concatMap, filter, map, Observable, of } from 'rxjs';
 import {
   MSAL_INSTANCE,
@@ -27,19 +33,26 @@ import {
   IPublicClientApplication,
 } from '@azure/msal-browser';
 import { RxState } from '@rx-angular/state';
+import { StateObject } from '@porrtal/a-api';
 
 export interface MsalAdapterInterface {
   isAuthenticated: boolean;
   isInitialized: boolean;
   loginStrategy: LoginStrategy;
+  state: AuthNState;
 }
 
 @Injectable()
-export class MsalAdapterService
+export class MsalAuthNService
   extends RxState<MsalAdapterInterface>
   implements AuthNInterface
 {
+  _user?: { name: string; email: string };
   get user(): { name: string; email: string } | undefined {
+    if (this._user) {
+      return this._user;
+    }
+
     let activeAccount = this.msalService.instance.getActiveAccount();
     if (!activeAccount) {
       if (this.msalService.instance.getAllAccounts().length > 0) {
@@ -53,22 +66,29 @@ export class MsalAdapterService
       }
     }
 
-    const claims = this.msalService.instance.getActiveAccount()?.idTokenClaims;
-    if (!claims) {
+    this.claims = this.msalService.instance.getActiveAccount()
+      ?.idTokenClaims as StateObject;
+    if (!this.claims) {
       console.log('MSAL - get user: no claims');
       return undefined;
     }
 
-    console.log('claims: ', claims);
+    console.log('claims: ', { claims: this.claims, activeAccount });
 
-    return {
-      name: claims.name ?? (claims['email'] as string) ?? 'unknown',
-      email:
-        (claims['email'] as string) ??
-        (claims.emails && claims.emails.length > 0
-          ? claims.emails[0]
-          : 'unknown'),
+    const name =
+      (this.claims['name'] as string) ??
+      (this.claims['email'] as string) ??
+      'unknown';
+    const emails = this.claims['emails'] as string[];
+    const email =
+      (this.claims['email'] as string) ??
+      (emails && emails.length > 0 ? emails[0] : 'unknown');
+
+    this._user = {
+      name,
+      email,
     };
+    return this._user;
   }
   isAuthenticated$: Observable<boolean>;
   isInitialized$: Observable<boolean>;
@@ -87,6 +107,8 @@ export class MsalAdapterService
     this.isInitialized$ = this.select('isInitialized');
     this.loginStrategy$ = this.select('loginStrategy');
     this.set({ loginStrategy: 'loginWithRedirect' });
+    this.state$ = this.select('state');
+    this.set({ state: 'initialized' });
 
     this.connect(
       'isAuthenticated',
@@ -107,9 +129,13 @@ export class MsalAdapterService
           console.log('MSAL - broadcast service - msal subject', msg);
           switch (msg.eventType) {
             case EventType.LOGIN_SUCCESS:
+              this.setClaims();
+              this.set({ state: 'authenticated' });
               return true;
 
             case EventType.ACQUIRE_TOKEN_SUCCESS:
+              this.setClaims();
+              this.set({ state: 'authenticated' });
               return true;
 
             default:
@@ -131,6 +157,7 @@ export class MsalAdapterService
           const activeAccount = this.msalService.instance.getActiveAccount();
           if (!activeAccount) {
             return of('not logged in...');
+            this.set({ state: 'initialized' });
           }
 
           return this.msalService.acquireTokenSilent({
@@ -140,6 +167,13 @@ export class MsalAdapterService
       )
       .subscribe();
   }
+  state$: Observable<AuthNState>;
+  errorMessage?: string | undefined;
+  init?: (() => void) | undefined;
+  login?: ((creds: LoginCreds) => void) | undefined;
+  register?: ((userInfo: RegisterUserInfo) => void) | undefined;
+  claims?: StateObject | undefined;
+  claimsMap?: { [fromKey: string]: string } | undefined;
 
   loginWithRedirect?: (() => void) | undefined = () => {
     this.msalService.loginRedirect();
@@ -150,4 +184,21 @@ export class MsalAdapterService
     this.set({ isAuthenticated: false });
     console.log(`isAuthenticated = ${false}`);
   };
+
+  setClaims() {
+    let activeAccount = this.msalService?.instance?.getActiveAccount();
+    if (!activeAccount) {
+      if (this.msalService.instance.getAllAccounts().length > 0) {
+        this.msalService.instance.setActiveAccount(
+          this.msalService.instance.getAllAccounts()[0]
+        );
+        activeAccount = this.msalService.instance.getActiveAccount();
+      } else {
+        console.log('MSAL - get user: no accounts');
+        return;
+      }
+    }
+
+    this.claims = activeAccount?.idTokenClaims as StateObject;
+  }
 }

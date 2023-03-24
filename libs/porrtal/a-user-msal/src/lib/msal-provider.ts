@@ -14,10 +14,16 @@ limitations under the License.
 */
 import {
   EnvironmentProviders,
+  inject,
+  InjectionToken,
   makeEnvironmentProviders,
   Provider,
 } from '@angular/core';
-import { AUTH_N_INTERFACE } from '@porrtal/a-user';
+import {
+  AuthZProviderInterface,
+  AUTH_N_INTERFACE,
+  AUTH_Z_INTERFACE,
+} from '@porrtal/a-user';
 import {
   MsalBroadcastService,
   MsalGuard,
@@ -32,15 +38,30 @@ import {
   MSAL_GUARD_CONFIG,
   MSAL_INTERCEPTOR_CONFIG,
 } from '@azure/msal-angular';
-import { MsalAdapterService } from './msal-adapter.service';
+import { MsalAuthNService } from './msal-auth-n.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MsalAuthZService } from './msal-auth-z.service';
+import { MsalAuthZProvider } from './msal-auth-z-provider';
+import { ShellStateService } from '@porrtal/a-shell';
 
-export function provideOAuthClient(
+export interface PorrtalMsalConfiguration {
+  authZs: {
+    [key: string]: AuthZProviderInterface;
+  };
+}
+
+export const PORRTAL_MSAL_CONFIGURATION =
+  new InjectionToken<PorrtalMsalConfiguration>('PorrtalMsalConfiguration');
+
+export function provideMsalOAuthClient(
   authConfig: Configuration,
   interceptorConfig?: MsalInterceptorConfiguration,
-  guardConfig?: MsalGuardConfiguration
+  guardConfig?: MsalGuardConfiguration,
+  porrtalMsalConfiguration?: PorrtalMsalConfiguration
 ): EnvironmentProviders[] {
-  // const oidcProviders = oidcProvideOAuthClient(interceptorConfig ?? undefined);
+  const authZs = { ...(porrtalMsalConfiguration?.authZs ?? {}) };
+  authZs['primary'] = new MsalAuthZProvider();
+
   const publicClientApplication = new PublicClientApplication(authConfig);
   const providers: Provider[] = [
     {
@@ -49,10 +70,14 @@ export function provideOAuthClient(
     },
     {
       provide: AUTH_N_INTERFACE,
-      useClass: MsalAdapterService,
+      useClass: MsalAuthNService,
     },
     MsalService,
     MsalBroadcastService,
+    {
+      provide: AUTH_Z_INTERFACE,
+      useFactory: () => new MsalAuthZService(inject(AUTH_N_INTERFACE), authZs, inject(ShellStateService)),
+    },
   ];
 
   if (interceptorConfig) {

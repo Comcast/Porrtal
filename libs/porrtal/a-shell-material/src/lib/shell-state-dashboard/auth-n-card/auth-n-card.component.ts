@@ -50,7 +50,7 @@ export class AuthNCardComponent {
     this._authN.state$.subscribe((authNState) => {
       this.state = authNState;
       this.claims = this._authN?.claims;
-      console.log('claims', this.claims);
+      console.log('claims', this.claims, authNState);
       this.authNSubj.next({ authN: this._authN });
     });
   }
