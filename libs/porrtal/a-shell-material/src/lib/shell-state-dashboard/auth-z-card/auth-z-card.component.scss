@@ -43,7 +43,9 @@
   }
   
   .status-icon {
+    display: grid;
     margin-right: 15px;
+    // height: 16px;
   }
   
   .card-type {
