@@ -68,17 +68,28 @@ export class MsalAuthZProvider implements AuthZProviderInterface {
               type: 'setAuthZReady',
               name: this.name,
             });
-            console.log('msal auth z provider - set ready', { state: this.shellStateService?.get() })
-            
-            this.shellStateService?.dispatch({
-              type: 'registerAuthZPermissionCheck',
-              name: this.name,
-              checkPermission: (parm) => {
-                return this.roles?.some((role) => role === parm) ?? false;
-              },
+            console.log('msal auth z provider - set ready', {
+              state: this.shellStateService?.get(),
             });
-            console.log('msal auth z provider - set permission check', { state: this.shellStateService?.get() })
 
+            Promise.resolve(true).then(() => {
+              this.shellStateService?.dispatch({
+                type: 'registerAuthZPermissionCheck',
+                name: this.name,
+                checkPermission: (parm) => {
+                  return this.roles?.some((role) => role === parm) ?? false;
+                },
+              });
+            });
+            console.log('msal auth z provider - set permission check', {
+              state: this.shellStateService?.get(),
+            });
+
+            Promise.resolve(true).then(() => {
+              console.log('msal auth z provider - set permission check', {
+                state: this.shellStateService?.get(),
+              });
+            });
             this.stateSubj.next('ready');
             break;
           }

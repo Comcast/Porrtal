@@ -110,559 +110,578 @@ export class ShellStateService extends RxState<ShellState> {
   }
 
   public dispatch = (action: ShellAction) => {
-    switch (action.type) {
-      case 'launchView': {
-        this.set((state) => {
-        // locate view
-        const view = state.views.find(
-          (view) => view.viewId === action.viewId
-        );
-        if (!view) {
-          // todo: log error: view for viewId not found
-          console.log('launchView not found.', action);
-          return {};
-        }
-
-        // execute permissions processing
-        if (
-          !this.okToLaunch({
-            launchInvoker: action.launchInvoker ?? 'direct',
-            view: view,
-            state: action.state,
-          })
-        ) {
-          return {};
-        }
-
-        // merge action state with view's state
-        const newState = combineViewStateStateAndActionState(
-          view.state,
-          action.state
-        );
-
-        // replace state's replaceable parameters
-        const newKey = replaceParameters(view.key ?? uuidv4(), newState ?? {});
-        const newDisplayText = replaceParameters(
-          view.displayText,
-          newState ?? {}
-        );
-        const newDisplayIcon = replaceParameters(
-          view.displayIcon ?? '',
-          newState ?? {}
-        );
-
-        // lookup component function for the view
-        const viewComponentFunction: ViewComponentFunction | undefined =
-          retrieveViewComponentFunction(
-            view.componentName,
-            view.componentModule,
-            state.viewComponentModules
-          );
-        if (!viewComponentFunction) {
-          throw new Error(
-            `ViewComponentFunction is undefined.  module ('${view.componentModule}') not found for component name('${view.componentName}').)`
-          );
-        }
-
-        // construct the new view state
-        const newViewState: ViewState = {
-          key: newKey.replaced,
-          displayText: newDisplayText.replaced,
-          displayIcon: newDisplayIcon.replaced,
-          state: newState,
-
-          userInfo: view.userInfo,
-          devInfo: view.devInfo,
-
-          paneType: view.paneType ?? 'main',
-          componentImport: viewComponentFunction,
-          view,
-        };
-
-        let retState = {};
-
-        // see if the view state's key exists in a pane (replace it if so)
-        if (
-          paneTypes.some((paneType) => {
-            const ii = state.panes[paneType].viewStates.findIndex(
-              (vs) => vs.key === newViewState.key
+    Promise.resolve(true).then(() => {
+      switch (action.type) {
+        case 'launchView': {
+          this.set((state) => {
+            // locate view
+            const view = state.views.find(
+              (view) => view.viewId === action.viewId
             );
-            if (ii >= 0) {
-              const newArray = [...state.panes[paneType].viewStates];
-              newArray.splice(ii, 1, newViewState);
+            if (!view) {
+              // todo: log error: view for viewId not found
+              console.log('launchView not found.', action);
+              return {};
+            }
+
+            // execute permissions processing
+            if (
+              !this.okToLaunch({
+                launchInvoker: action.launchInvoker ?? 'direct',
+                view: view,
+                state: action.state,
+              })
+            ) {
+              return {};
+            }
+
+            // merge action state with view's state
+            const newState = combineViewStateStateAndActionState(
+              view.state,
+              action.state
+            );
+
+            // replace state's replaceable parameters
+            const newKey = replaceParameters(
+              view.key ?? uuidv4(),
+              newState ?? {}
+            );
+            const newDisplayText = replaceParameters(
+              view.displayText,
+              newState ?? {}
+            );
+            const newDisplayIcon = replaceParameters(
+              view.displayIcon ?? '',
+              newState ?? {}
+            );
+
+            // lookup component function for the view
+            const viewComponentFunction: ViewComponentFunction | undefined =
+              retrieveViewComponentFunction(
+                view.componentName,
+                view.componentModule,
+                state.viewComponentModules
+              );
+            if (!viewComponentFunction) {
+              throw new Error(
+                `ViewComponentFunction is undefined.  module ('${view.componentModule}') not found for component name('${view.componentName}').)`
+              );
+            }
+
+            // construct the new view state
+            const newViewState: ViewState = {
+              key: newKey.replaced,
+              displayText: newDisplayText.replaced,
+              displayIcon: newDisplayIcon.replaced,
+              state: newState,
+
+              userInfo: view.userInfo,
+              devInfo: view.devInfo,
+
+              paneType: view.paneType ?? 'main',
+              componentImport: viewComponentFunction,
+              view,
+            };
+
+            let retState = {};
+
+            // see if the view state's key exists in a pane (replace it if so)
+            if (
+              paneTypes.some((paneType) => {
+                const ii = state.panes[paneType].viewStates.findIndex(
+                  (vs) => vs.key === newViewState.key
+                );
+                if (ii >= 0) {
+                  const newArray = [...state.panes[paneType].viewStates];
+                  newArray.splice(ii, 1, newViewState);
+                  retState = {
+                    ...state,
+                    panes: {
+                      ...state.panes,
+                      [paneType]: {
+                        ...state.panes[paneType],
+                        currentKey: newViewState.key,
+                        viewStates: newArray,
+                        paneType,
+                      },
+                    },
+                  };
+                  return true;
+                }
+                return false;
+              })
+            ) {
+              return retState;
+            }
+
+            // view state's key didn't already exist, so add the view state to the requested pane
+            const viewStates = state.panes[newViewState.paneType].viewStates;
+            if (!action.suppressFocus) {
+              // set focus to new view state
               retState = {
                 ...state,
                 panes: {
                   ...state.panes,
-                  [paneType]: {
-                    ...state.panes[paneType],
+                  [newViewState.paneType]: {
+                    ...state.panes[newViewState.paneType],
                     currentKey: newViewState.key,
-                    viewStates: newArray,
+                    viewStates: [...viewStates, newViewState],
+                  },
+                },
+              };
+            } else {
+              // launch but don't set focus
+              retState = {
+                ...state,
+                panes: {
+                  ...state.panes,
+                  [newViewState.paneType]: {
+                    ...state.panes[newViewState.paneType],
+                    viewStates: [...viewStates, newViewState],
+                  },
+                },
+              };
+            }
+
+            return retState;
+          });
+          break;
+        }
+
+        case 'moveView': {
+          let retState = this.get();
+
+          // prevent move view if there are maximized elements
+          if (retState.maximizeStack.length > 0) {
+            throw new Error(
+              'Shell State Service: Cannot "moveView" when elements are maximized.'
+            );
+          }
+
+          let foundViewState: ViewState | undefined;
+
+          paneTypes.some((paneType) => {
+            foundViewState = this.get().panes[paneType].viewStates.find(
+              (vs) => vs.key === action.key
+            );
+            if (foundViewState) {
+              if (paneType === action.toPane) {
+                // asking to move it to the pane it is already in (do nothing)
+                return true;
+              }
+
+              foundViewState = {
+                ...foundViewState,
+                paneType: action.toPane,
+              };
+
+              retState = {
+                ...this.get(),
+                panes: {
+                  ...this.get().panes,
+                  [paneType]: {
+                    ...this.get().panes[paneType],
+                    currentKey: computeCurrentKey(this.get(), paneType, {
+                      type: 'deleteViewState',
+                      key: action.key,
+                    }),
+                    viewStates: [
+                      ...this.get().panes[paneType].viewStates.filter(
+                        (vs) => vs.key !== action.key
+                      ),
+                    ],
+                    paneType,
+                  },
+                  [action.toPane]: {
+                    ...this.get().panes[action.toPane],
+                    viewStates: [
+                      ...this.get().panes[action.toPane].viewStates,
+                      foundViewState,
+                    ],
+                    currentKey: action.key,
+                    paneType: action.toPane,
+                  },
+                },
+              };
+              return true;
+            } else {
+              return false;
+            }
+          });
+          this.set(retState);
+          return;
+        }
+
+        case 'setCurrentViewStateByKey': {
+          const paneType = Object.keys(this.get().panes).find(
+            (key) => this.get().panes[key as PaneType] === action.pane
+          );
+          if (!paneType) {
+            return;
+          }
+          this.set({
+            ...this.get(),
+            panes: {
+              ...this.get().panes,
+              [paneType]: {
+                ...action.pane,
+                currentKey: action.key,
+                paneType,
+              },
+            },
+          });
+          return;
+        }
+
+        case 'deleteViewState': {
+          let retState = this.get();
+
+          // prevent move view if there are maximized elements
+          if (retState.maximizeStack.length > 0) {
+            throw new Error(
+              'Shell State Service: Cannot "deleteViewState" when elements are maximized.'
+            );
+          }
+
+          let foundView: ViewState | undefined;
+
+          paneTypes.some((paneType) => {
+            foundView = this.get().panes[paneType].viewStates.find(
+              (vs) => vs.key === action.key
+            );
+            if (foundView) {
+              retState = {
+                ...this.get(),
+                panes: {
+                  ...this.get().panes,
+                  [paneType]: {
+                    ...this.get().panes[paneType],
+                    currentKey: computeCurrentKey(this.get(), paneType, {
+                      type: 'deleteViewState',
+                      key: action.key,
+                    }),
+                    viewStates: [
+                      ...this.get().panes[paneType].viewStates.filter(
+                        (vs) => vs.key !== action.key
+                      ),
+                    ],
                     paneType,
                   },
                 },
               };
               return true;
+            } else {
+              return false;
             }
-            return false;
-          })
-        ) {
-          return retState;
-        };
-
-        // view state's key didn't already exist, so add the view state to the requested pane
-        const viewStates = state.panes[newViewState.paneType].viewStates;
-        if (!action.suppressFocus) {
-          // set focus to new view state
-          retState = {
-            ...state,
-            panes: {
-              ...state.panes,
-              [newViewState.paneType]: {
-                ...state.panes[newViewState.paneType],
-                currentKey: newViewState.key,
-                viewStates: [...viewStates, newViewState],
-              },
-            },
-          };
-        } else {
-          // launch but don't set focus
-          retState = {
-            ...state,
-            panes: {
-              ...state.panes,
-              [newViewState.paneType]: {
-                ...state.panes[newViewState.paneType],
-                viewStates: [...viewStates, newViewState],
-              },
-            },
-          };
-        }
-
-        return retState;
-        });
-        break;
-      }
-
-      case 'moveView': {
-        let retState = this.get();
-
-        // prevent move view if there are maximized elements
-        if (retState.maximizeStack.length > 0) {
-          throw new Error(
-            'Shell State Service: Cannot "moveView" when elements are maximized.'
-          );
-        }
-
-        let foundViewState: ViewState | undefined;
-
-        paneTypes.some((paneType) => {
-          foundViewState = this.get().panes[paneType].viewStates.find(
-            (vs) => vs.key === action.key
-          );
-          if (foundViewState) {
-            if (paneType === action.toPane) {
-              // asking to move it to the pane it is already in (do nothing)
-              return true;
-            }
-
-            foundViewState = {
-              ...foundViewState,
-              paneType: action.toPane,
-            };
-
-            retState = {
-              ...this.get(),
-              panes: {
-                ...this.get().panes,
-                [paneType]: {
-                  ...this.get().panes[paneType],
-                  currentKey: computeCurrentKey(this.get(), paneType, {
-                    type: 'deleteViewState',
-                    key: action.key,
-                  }),
-                  viewStates: [
-                    ...this.get().panes[paneType].viewStates.filter(
-                      (vs) => vs.key !== action.key
-                    ),
-                  ],
-                  paneType,
-                },
-                [action.toPane]: {
-                  ...this.get().panes[action.toPane],
-                  viewStates: [
-                    ...this.get().panes[action.toPane].viewStates,
-                    foundViewState,
-                  ],
-                  currentKey: action.key,
-                  paneType: action.toPane,
-                },
-              },
-            };
-            return true;
-          } else {
-            return false;
-          }
-        });
-        this.set(retState);
-        return;
-      }
-
-      case 'setCurrentViewStateByKey': {
-        const paneType = Object.keys(this.get().panes).find(
-          (key) => this.get().panes[key as PaneType] === action.pane
-        );
-        if (!paneType) {
+          });
+          this.set(retState);
           return;
         }
-        this.set({
-          ...this.get(),
-          panes: {
-            ...this.get().panes,
-            [paneType]: {
-              ...action.pane,
-              currentKey: action.key,
-              paneType,
-            },
-          },
-        });
-        return;
-      }
 
-      case 'deleteViewState': {
-        let retState = this.get();
-
-        // prevent move view if there are maximized elements
-        if (retState.maximizeStack.length > 0) {
-          throw new Error(
-            'Shell State Service: Cannot "deleteViewState" when elements are maximized.'
-          );
-        }
-
-        let foundView: ViewState | undefined;
-
-        paneTypes.some((paneType) => {
-          foundView = this.get().panes[paneType].viewStates.find(
-            (vs) => vs.key === action.key
-          );
-          if (foundView) {
-            retState = {
-              ...this.get(),
-              panes: {
-                ...this.get().panes,
-                [paneType]: {
-                  ...this.get().panes[paneType],
-                  currentKey: computeCurrentKey(this.get(), paneType, {
-                    type: 'deleteViewState',
-                    key: action.key,
-                  }),
-                  viewStates: [
-                    ...this.get().panes[paneType].viewStates.filter(
-                      (vs) => vs.key !== action.key
-                    ),
-                  ],
-                  paneType,
-                },
-              },
-            };
-            return true;
-          } else {
-            return false;
+        case 'arrangePane': {
+          // prevent move view if there are maximized elements
+          const state = this.get();
+          if (state.maximizeStack.length > 0) {
+            throw new Error(
+              'Shell State Service: Cannot "moveView" when elements are maximized.'
+            );
           }
-        });
-        this.set(retState);
-        return;
-      }
 
-      case 'arrangePane': {
-        // prevent move view if there are maximized elements
-        const state = this.get();
-        if (state.maximizeStack.length > 0) {
-          throw new Error(
-            'Shell State Service: Cannot "moveView" when elements are maximized.'
-          );
-        }
-
-        const retState = {
-          ...this.get(),
-          panes: {
-            ...this.get().panes,
-            [action.pane.paneType]: {
-              ...this.get().panes[action.pane.paneType],
-              arrange: action.paneArrangement,
+          const retState = {
+            ...this.get(),
+            panes: {
+              ...this.get().panes,
+              [action.pane.paneType]: {
+                ...this.get().panes[action.pane.paneType],
+                arrange: action.paneArrangement,
+              },
             },
-          },
-        };
-        console.log('arrange pane', action, retState);
-        this.set(retState);
-        return;
-      }
-
-      case 'registerModules':
-        this.set({
-          ...this.get(),
-          viewComponentModules: {
-            ...this.get().viewComponentModules,
-            ...action.modules,
-          },
-        });
-        return;
-
-      case 'registerView': {
-        const newView = {
-          ...action.view,
-        };
-        if (!newView.viewId) {
-          newView.viewId = newView.componentName;
+          };
+          console.log('arrange pane', action, retState);
+          this.set(retState);
+          return;
         }
 
-        if (!newView.key) {
-          newView.key = uuidv4();
-        }
-        const menuItems = updateMenus(newView, this.get().menuItems);
-        this.set({
-          ...this.get(),
-          views: [...this.get().views, newView],
-          menuItems,
-        });
-        return;
-      }
+        case 'registerModules':
+          this.set({
+            ...this.get(),
+            viewComponentModules: {
+              ...this.get().viewComponentModules,
+              ...action.modules,
+            },
+          });
+          return;
 
-      case 'launchStartupViews': {
-        this.get()
-          .views.filter((view) => view.launchAtStartup)
-          .forEach((view) => {
-            console.log('launch startup view', view);
-            this.dispatch({
-              type: 'launchView',
-              viewId: view.viewId ?? view.componentName,
-              launchInvoker: 'startup',
+        case 'registerView': {
+          const newView = {
+            ...action.view,
+          };
+          if (!newView.viewId) {
+            newView.viewId = newView.componentName;
+          }
+
+          if (!newView.key) {
+            newView.key = uuidv4();
+          }
+          const menuItems = updateMenus(newView, this.get().menuItems);
+          this.set({
+            ...this.get(),
+            views: [...this.get().views, newView],
+            menuItems,
+          });
+          return;
+        }
+
+        case 'launchStartupViews': {
+          this.get()
+            .views.filter((view) => view.launchAtStartup)
+            .forEach((view) => {
+              console.log('launch startup view', view);
+              // Promise.resolve(true).then(() => {
+              this.dispatch({
+                type: 'launchView',
+                viewId: view.viewId ?? view.componentName,
+                launchInvoker: 'startup',
+              });
+              // });
+            });
+
+          Promise.resolve(true).then(() => {
+            paneTypes.forEach((paneType) => {
+              const pane = this.get().panes[paneType];
+              if (pane.viewStates.length > 0) {
+                // Promise.resolve(true).then(() => {
+                this.dispatch({
+                  type: 'setCurrentViewStateByKey',
+                  key: pane.viewStates[0].key,
+                  pane,
+                });
+                // });
+              }
             });
           });
+          return;
+        }
 
-        paneTypes.forEach((paneType) => {
-          const pane = this.get().panes[paneType];
-          if (pane.viewStates.length > 0) {
-            this.dispatch({
-              type: 'setCurrentViewStateByKey',
-              key: pane.viewStates[0].key,
-              pane,
-            });
-          }
-        });
-        return;
-      }
+        case 'setShowUserInfo':
+          this.set({
+            showUserInfo: action.show,
+          });
+          return;
 
-      case 'setShowUserInfo':
-        this.set({
-          showUserInfo: action.show,
-        });
-        return;
+        case 'setShowDevInfo':
+          this.set({
+            showDevInfo: action.show,
+          });
+          return;
 
-      case 'setShowDevInfo':
-        this.set({
-          showDevInfo: action.show,
-        });
-        return;
+        case 'showNav': {
+          const state = this.get();
+          this.set({
+            ...state,
+            navWidth: undefined,
+          });
+          return;
+        }
 
-      case 'showNav': {
-        const state = this.get();
-        this.set({
-          ...state,
-          navWidth: undefined,
-        });
-        return;
-      }
+        case 'toggleNav': {
+          const state = this.get();
+          const isSelectedTab =
+            state.panes['nav'].currentKey === action.item.key;
+          const navTabWidth = state.navTabWidth ?? 36;
+          this.set({
+            ...state,
+            navWidth: isSelectedTab
+              ? state.navWidth
+                ? undefined
+                : navTabWidth
+              : undefined,
+          });
+          return;
+        }
 
-      case 'toggleNav': {
-        const state = this.get();
-        const isSelectedTab = state.panes['nav'].currentKey === action.item.key;
-        const navTabWidth = state.navTabWidth ?? 36;
-        this.set({
-          ...state,
-          navWidth: isSelectedTab
-            ? state.navWidth
-              ? undefined
-              : navTabWidth
-            : undefined,
-        });
-        return;
-      }
+        case 'setNavTabWidth': {
+          const state = this.get();
+          this.set({
+            ...state,
+            navTabWidth: action.width,
+          });
+          return;
+        }
 
-      case 'setNavTabWidth': {
-        const state = this.get();
-        this.set({
-          ...state,
-          navTabWidth: action.width,
-        });
-        return;
-      }
-
-      case 'launchDeepLinks': {
-        // launch deep links
-        const deepLinks: DeepLinks = {};
-        const queryString = action.queryString;
-        const searchParams = new URLSearchParams(queryString);
-        for (const key of searchParams.keys()) {
-          const parts = key.split('.');
-          if (parts[0] !== 'v') {
-            continue;
-          }
-
-          if (parts.length < 3) {
-            continue;
-          }
-
-          if (parts[2] === 'viewId' || parts[2] === 'regId') {
-            if (deepLinks[parts[1]]) {
-              deepLinks[parts[1]].viewId = searchParams.get(key) ?? '';
-            } else {
-              deepLinks[parts[1]] = { viewId: searchParams.get(key) ?? '' };
-            }
-            continue;
-          }
-
-          if (parts.length < 4) {
-            continue;
-          }
-
-          if (parts[2] === 's') {
-            if (!deepLinks[parts[1]]) {
-              deepLinks[parts[1]] = { state: {} };
+        case 'launchDeepLinks': {
+          // launch deep links
+          const deepLinks: DeepLinks = {};
+          const queryString = action.queryString;
+          const searchParams = new URLSearchParams(queryString);
+          for (const key of searchParams.keys()) {
+            const parts = key.split('.');
+            if (parts[0] !== 'v') {
+              continue;
             }
 
-            if (!deepLinks[parts[1]].state) {
-              deepLinks[parts[1]].state = {};
+            if (parts.length < 3) {
+              continue;
             }
 
-            let s: StateObject = deepLinks[parts[1]].state ?? {};
-            for (let ii = 3; ii < parts.length - 1; ii++) {
+            if (parts[2] === 'viewId' || parts[2] === 'regId') {
+              if (deepLinks[parts[1]]) {
+                deepLinks[parts[1]].viewId = searchParams.get(key) ?? '';
+              } else {
+                deepLinks[parts[1]] = { viewId: searchParams.get(key) ?? '' };
+              }
+              continue;
+            }
+
+            if (parts.length < 4) {
+              continue;
+            }
+
+            if (parts[2] === 's') {
+              if (!deepLinks[parts[1]]) {
+                deepLinks[parts[1]] = { state: {} };
+              }
+
+              if (!deepLinks[parts[1]].state) {
+                deepLinks[parts[1]].state = {};
+              }
+
+              let s: StateObject = deepLinks[parts[1]].state ?? {};
+              for (let ii = 3; ii < parts.length - 1; ii++) {
+                if (s) {
+                  const obj: StateObject = (s[parts[ii]] as StateObject) ?? {};
+                  s[parts[ii]] = obj;
+                  s = obj;
+                }
+              }
               if (s) {
-                const obj: StateObject = (s[parts[ii]] as StateObject) ?? {};
-                s[parts[ii]] = obj;
-                s = obj;
+                s[parts[parts.length - 1]] = searchParams.get(key) ?? '';
               }
             }
-            if (s) {
-              s[parts[parts.length - 1]] = searchParams.get(key) ?? '';
+          }
+          console.log('deep links: ', deepLinks);
+          for (let key of Object.keys(deepLinks)) {
+            const viewId = deepLinks[key].viewId;
+            if (!viewId) {
+              continue;
             }
+            // Promise.resolve(true).then(() => {
+            this.dispatch({
+              type: 'launchView',
+              viewId,
+              state: deepLinks[key].state,
+              launchInvoker: 'deepLink',
+            });
+            // });
           }
+          break;
         }
-        console.log('deep links: ', deepLinks);
-        for (let key of Object.keys(deepLinks)) {
-          const viewId = deepLinks[key].viewId;
-          if (!viewId) {
-            continue;
+
+        case 'copyToClipboard': {
+          navigator.clipboard.writeText(getViewStateDeepLink(action.viewState));
+          break;
+        }
+
+        case 'maximize': {
+          const parentEl = action.htmlEl.parentElement;
+          if (!parentEl) {
+            console.log(
+              'error. called shell state service: maximize with element with no parent element'
+            );
+            return;
           }
-          this.dispatch({
-            type: 'launchView',
-            viewId,
-            state: deepLinks[key].state,
-            launchInvoker: 'deepLink',
+
+          this.set((state) => ({
+            maximizeZIndex: state.maximizeZIndex + 10,
+            maximizeStack: [
+              ...state.maximizeStack,
+              {
+                htmlEl: action.htmlEl,
+                maximizeText: action.maximizeText,
+                parentHtmlEl: parentEl,
+                parentHtmlElChildIndex: Array.prototype.indexOf.call(
+                  parentEl.children,
+                  action.htmlEl
+                ),
+                zIndex: state.maximizeZIndex,
+                restore: action.restore,
+              },
+            ],
+          }));
+          break;
+        }
+
+        case 'restoreMaximized': {
+          this.set((state) => {
+            const newMaximizeStack = [...state.maximizeStack];
+            const maximizeItem = newMaximizeStack.pop();
+
+            // parent back to original parent
+            maximizeItem?.parentHtmlEl.insertBefore(
+              maximizeItem.htmlEl,
+              maximizeItem.parentHtmlEl.children[
+                maximizeItem.parentHtmlElChildIndex
+              ]
+            );
+
+            return {
+              maximizeZIndex: state.maximizeZIndex - 10,
+              maximizeStack: newMaximizeStack,
+            };
           });
-        }
-        break;
-      }
-
-      case 'copyToClipboard': {
-        navigator.clipboard.writeText(getViewStateDeepLink(action.viewState));
-        break;
-      }
-
-      case 'maximize': {
-        const parentEl = action.htmlEl.parentElement;
-        if (!parentEl) {
-          console.log(
-            'error. called shell state service: maximize with element with no parent element'
-          );
-          return;
+          break;
         }
 
-        this.set((state) => ({
-          maximizeZIndex: state.maximizeZIndex + 10,
-          maximizeStack: [
-            ...state.maximizeStack,
-            {
-              htmlEl: action.htmlEl,
-              maximizeText: action.maximizeText,
-              parentHtmlEl: parentEl,
-              parentHtmlElChildIndex: Array.prototype.indexOf.call(
-                parentEl.children,
-                action.htmlEl
-              ),
-              zIndex: state.maximizeZIndex,
-              restore: action.restore,
-            },
-          ],
-        }));
-        break;
-      }
-
-      case 'restoreMaximized': {
-        this.set((state) => {
-          const newMaximizeStack = [...state.maximizeStack];
-          const maximizeItem = newMaximizeStack.pop();
-
-          // parent back to original parent
-          maximizeItem?.parentHtmlEl.insertBefore(
-            maximizeItem.htmlEl,
-            maximizeItem.parentHtmlEl.children[
-              maximizeItem.parentHtmlElChildIndex
-            ]
-          );
-
-          return {
-            maximizeZIndex: state.maximizeZIndex - 10,
-            maximizeStack: newMaximizeStack,
-          };
-        });
-        break;
-      }
-
-      case 'setAuthZReady': {
-        this.set((state) => {
-          const newAuthZs = {
-            authZs: {
-              ...(state.authZs ?? {}),
-              [action.name]: {
-                ...(state.authZs[action.name] ?? {
-                  launchQ: [],
-                  noPermissionsQ: []
-                }),
-                ready: true,
+        case 'setAuthZReady': {
+          this.set((state) => {
+            const newAuthZs = {
+              authZs: {
+                ...(state.authZs ?? {}),
+                [action.name]: {
+                  ...(state.authZs[action.name] ?? {
+                    launchQ: [],
+                    noPermissionsQ: [],
+                  }),
+                  ready: true,
+                },
               },
-            },
-          };
-          this.set(newAuthZs);
-          console.log('shell service - setAuthZReady', { state, newAuthZs });
-          return newAuthZs;
-        });
-        break;
-      }
+            };
+            this.set(newAuthZs);
+            console.log('shell service - setAuthZReady', { state, newAuthZs });
+            return newAuthZs;
+          });
+          break;
+        }
 
-      case 'registerAuthZPermissionCheck': {
-        this.set((state) => {
-          const newAuthZs = {
-            authZs: {
-              ...(state.authZs ?? {}),
-              [action.name]: {
-                ...(state.authZs[action.name] ?? {
-                  ready: false,
-                  launchQ: [],
-                  noPermissionsQ: []
-                }),
-                checkPermission: action.checkPermission,
+        case 'registerAuthZPermissionCheck': {
+          this.set((state) => {
+            const newAuthZs = {
+              authZs: {
+                ...(state.authZs ?? {}),
+                [action.name]: {
+                  ...(state.authZs[action.name] ?? {
+                    ready: false,
+                    launchQ: [],
+                    noPermissionsQ: [],
+                  }),
+                  checkPermission: action.checkPermission,
+                },
               },
-            },
-          };
-          this.set(newAuthZs);
-          console.log('shell service - registerAuthZPermissionCheck', { state, newAuthZs });
-          return newAuthZs;
-        });
-        this.processLaunchQ(action.name);
-        break;
+            };
+            this.set(newAuthZs);
+            console.log('shell service - registerAuthZPermissionCheck', {
+              state,
+              newAuthZs,
+            });
+            return newAuthZs;
+          });
+          Promise.resolve(true).then(() => {
+            this.processLaunchQ(action.name);
+          });
+          break;
+        }
       }
-    }
+    });
   };
 
   processLaunchQ(name: string) {
@@ -674,13 +693,14 @@ export class ShellStateService extends RxState<ShellState> {
         !authZs[name].launchQ ||
         authZs[name].launchQ.length < 1
       ) {
-        console.log('processLaunchQ (do nothing)', { name, state})
+        console.log('processLaunchQ (do nothing)', { name, state });
         return {};
       }
 
-      console.log('processLaunchQ', { name, state})
+      console.log('processLaunchQ', { name, state });
       authZs[name].launchQ.forEach((launchItem) => {
         console.log('launch from launchQ', launchItem);
+        // Promise.resolve(true).then(() => {
         this.dispatch({
           type: 'launchView',
           viewId: launchItem.viewId,
@@ -688,6 +708,7 @@ export class ShellStateService extends RxState<ShellState> {
           state: launchItem.state,
           suppressFocus: true,
         });
+        // });
       });
 
       const newAuthZs = {
