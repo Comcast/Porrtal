@@ -112,14 +112,15 @@ export class ShellStateService extends RxState<ShellState> {
   public dispatch = (action: ShellAction) => {
     switch (action.type) {
       case 'launchView': {
+        this.set((state) => {
         // locate view
-        const view = this.get().views.find(
+        const view = state.views.find(
           (view) => view.viewId === action.viewId
         );
         if (!view) {
           // todo: log error: view for viewId not found
           console.log('launchView not found.', action);
-          return;
+          return {};
         }
 
         // execute permissions processing
@@ -130,11 +131,10 @@ export class ShellStateService extends RxState<ShellState> {
             state: action.state,
           })
         ) {
-          return;
+          return {};
         }
 
         // merge action state with view's state
-        let retState: ShellState = this.get();
         const newState = combineViewStateStateAndActionState(
           view.state,
           action.state
@@ -156,7 +156,7 @@ export class ShellStateService extends RxState<ShellState> {
           retrieveViewComponentFunction(
             view.componentName,
             view.componentModule,
-            this.get().viewComponentModules
+            state.viewComponentModules
           );
         if (!viewComponentFunction) {
           throw new Error(
@@ -179,21 +179,23 @@ export class ShellStateService extends RxState<ShellState> {
           view,
         };
 
+        let retState = {};
+
         // see if the view state's key exists in a pane (replace it if so)
         if (
           paneTypes.some((paneType) => {
-            const ii = this.get().panes[paneType].viewStates.findIndex(
+            const ii = state.panes[paneType].viewStates.findIndex(
               (vs) => vs.key === newViewState.key
             );
             if (ii >= 0) {
-              const newArray = [...this.get().panes[paneType].viewStates];
+              const newArray = [...state.panes[paneType].viewStates];
               newArray.splice(ii, 1, newViewState);
               retState = {
-                ...this.get(),
+                ...state,
                 panes: {
-                  ...this.get().panes,
+                  ...state.panes,
                   [paneType]: {
-                    ...this.get().panes[paneType],
+                    ...state.panes[paneType],
                     currentKey: newViewState.key,
                     viewStates: newArray,
                     paneType,
@@ -205,20 +207,19 @@ export class ShellStateService extends RxState<ShellState> {
             return false;
           })
         ) {
-          this.set(retState);
-          return;
-        }
+          return retState;
+        };
 
         // view state's key didn't already exist, so add the view state to the requested pane
-        const viewStates = this.get().panes[newViewState.paneType].viewStates;
+        const viewStates = state.panes[newViewState.paneType].viewStates;
         if (!action.suppressFocus) {
           // set focus to new view state
           retState = {
-            ...this.get(),
+            ...state,
             panes: {
-              ...this.get().panes,
+              ...state.panes,
               [newViewState.paneType]: {
-                ...this.get().panes[newViewState.paneType],
+                ...state.panes[newViewState.paneType],
                 currentKey: newViewState.key,
                 viewStates: [...viewStates, newViewState],
               },
@@ -227,19 +228,20 @@ export class ShellStateService extends RxState<ShellState> {
         } else {
           // launch but don't set focus
           retState = {
-            ...this.get(),
+            ...state,
             panes: {
-              ...this.get().panes,
+              ...state.panes,
               [newViewState.paneType]: {
-                ...this.get().panes[newViewState.paneType],
+                ...state.panes[newViewState.paneType],
                 viewStates: [...viewStates, newViewState],
               },
             },
           };
         }
 
-        this.set(retState);
-        return;
+        return retState;
+        });
+        break;
       }
 
       case 'moveView': {
@@ -619,29 +621,43 @@ export class ShellStateService extends RxState<ShellState> {
 
       case 'setAuthZReady': {
         this.set((state) => {
-          return {
+          const newAuthZs = {
             authZs: {
-              ...state.authZs,
+              ...(state.authZs ?? {}),
               [action.name]: {
-                ...state.authZs[action.name],
+                ...(state.authZs[action.name] ?? {
+                  launchQ: [],
+                  noPermissionsQ: []
+                }),
                 ready: true,
               },
             },
           };
+          this.set(newAuthZs);
+          console.log('shell service - setAuthZReady', { state, newAuthZs });
+          return newAuthZs;
         });
         break;
       }
 
       case 'registerAuthZPermissionCheck': {
-        const authZs = this.get('authZs');
-        this.set({
-          authZs: {
-            ...authZs,
-            [action.name]: {
-              ...authZs[action.name],
-              checkPermission: action.checkPermission,
+        this.set((state) => {
+          const newAuthZs = {
+            authZs: {
+              ...(state.authZs ?? {}),
+              [action.name]: {
+                ...(state.authZs[action.name] ?? {
+                  ready: false,
+                  launchQ: [],
+                  noPermissionsQ: []
+                }),
+                checkPermission: action.checkPermission,
+              },
             },
-          },
+          };
+          this.set(newAuthZs);
+          console.log('shell service - registerAuthZPermissionCheck', { state, newAuthZs });
+          return newAuthZs;
         });
         this.processLaunchQ(action.name);
         break;
@@ -650,28 +666,41 @@ export class ShellStateService extends RxState<ShellState> {
   };
 
   processLaunchQ(name: string) {
-    const authZs = this.get().authZs;
+    this.set((state) => {
+      const authZs = state.authZs;
+      if (
+        !authZs ||
+        !authZs[name] ||
+        !authZs[name].launchQ ||
+        authZs[name].launchQ.length < 1
+      ) {
+        console.log('processLaunchQ (do nothing)', { name, state})
+        return {};
+      }
 
-    authZs[name].launchQ.forEach((launchItem) => {
-      console.log('launch from launchQ', launchItem);
-      this.dispatch({
-        type: 'launchView',
-        viewId: launchItem.viewId,
-        launchInvoker: launchItem.launchInvoker,
-        state: launchItem.state,
-        suppressFocus: true,
+      console.log('processLaunchQ', { name, state})
+      authZs[name].launchQ.forEach((launchItem) => {
+        console.log('launch from launchQ', launchItem);
+        this.dispatch({
+          type: 'launchView',
+          viewId: launchItem.viewId,
+          launchInvoker: launchItem.launchInvoker,
+          state: launchItem.state,
+          suppressFocus: true,
+        });
       });
-    });
 
-    const updatedAuthZs = this.get().authZs;
-    this.set({
-      authZs: {
-        ...updatedAuthZs,
-        [name]: {
-          ...updatedAuthZs[name],
-          launchQ: [],
+      const newAuthZs = {
+        authZs: {
+          ...authZs,
+          [name]: {
+            ...authZs[name],
+            launchQ: [],
+          },
         },
-      },
+      };
+      console.log('shell service - processLaunchQ', { state, newAuthZs });
+      return newAuthZs;
     });
   }
 

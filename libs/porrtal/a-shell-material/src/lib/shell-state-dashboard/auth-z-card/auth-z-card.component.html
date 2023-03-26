@@ -131,21 +131,29 @@
       <div *ngIf="authZ$ | async as authZ" class="properties-container">
         <!-- authZ.ready -->
         <span class="property-title">ready:</span>
-        <span>{{ authZ.ready }}</span>
+        <span>{{ authZ?.ready ?? false }}</span>
 
         <!-- authZ.checkPermission -->
         <span class="property-title">checkPermission():</span>
-        <span>{{ authZ.checkPermission ? 'defined' : 'not defined' }}</span>
+        <span>{{ authZ?.checkPermission ?? false ? 'defined' : 'not defined' }}</span>
       </div>
       <div *ngIf="authZ$ | async as authZ">
-        <div class="property-title">launchQ({{ authZ.launchQ.length }}):</div>
-        <div *ngFor="let launchItem of authZ.launchQ">
+        <span class="property-title">authZ:</span>
+        <pre><p>{{ authZ | json }}</p></pre>
+      </div>
+      <div *ngIf="authZ$ | async as authZ">
+        <div class="property-title">
+          launchQ({{ authZ?.launchQ?.length ?? 'undefined' }}):
+        </div>
+        <div *ngFor="let launchItem of authZ?.launchQ ?? []">
           {{ launchItem.viewId }}
         </div>
       </div>
       <div *ngIf="authZ$ | async as authZ">
-        <div class="property-title">noPermissionsQ({{ authZ.noPermissionsQ.length }}):</div>
-        <div *ngFor="let launchItem of authZ.noPermissionsQ">
+        <div class="property-title">
+          noPermissionsQ({{ authZ?.noPermissionsQ?.length ?? 'undefined' }}):
+        </div>
+        <div *ngFor="let launchItem of authZ?.noPermissionsQ ?? []">
           {{ launchItem.viewId }}
         </div>
       </div>
