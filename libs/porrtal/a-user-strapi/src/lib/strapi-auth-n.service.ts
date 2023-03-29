@@ -15,6 +15,7 @@ limitations under the License.
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import {
   AuthNInterface,
+  AuthNState,
   LoginCreds,
   LoginStrategy,
   RegisterUserInfo,
@@ -22,6 +23,7 @@ import {
 import { Observable } from 'rxjs';
 import { RxState } from '@rx-angular/state';
 import { HttpClient } from '@angular/common/http';
+import { StateObject } from '@porrtal/a-api';
 
 export interface StrapiAdapterInterface {
   isAuthenticated: boolean;
@@ -31,6 +33,7 @@ export interface StrapiAdapterInterface {
     name: string;
     email: string;
   };
+  state: AuthNState;
 }
 
 export interface StrapiAdapterServiceConfigInterface {
@@ -44,7 +47,7 @@ export const STRAPI_ADAPTER_SERVICE_CONFIG_INJECTION_TOKEN =
   );
 
 @Injectable()
-export class StrapiAdapterService
+export class StrapiAuthNService
   extends RxState<StrapiAdapterInterface>
   implements AuthNInterface
 {
@@ -78,12 +81,15 @@ export class StrapiAdapterService
       loginStrategy,
     });
 
+    this.state$ = this.select('state');
+    this.set({ state: 'initialized' });
+
     const jwt = localStorage.getItem('strapiJwt');
 
     if (jwt) {
       this.httpClient
         .get<{ username: string; email: string }>(
-          `${this.strapiAdapterServiceConfig.strapiUri}/api/users/me`,
+          `${this.strapiAdapterServiceConfig.strapiUri}/api/users/me?populate=porrtal_roles`,
           {
             headers: { Authorization: `Bearer ${jwt}` },
           }
@@ -92,13 +98,17 @@ export class StrapiAdapterService
           next: (response) => {
             console.log('strapi user/me response: ', response);
 
-            this.set({
-              user: {
-                name: response.username,
-                email: response.email,
-              },
-              isAuthenticated: true,
-            });
+            Promise.resolve(true).then(() => {
+              this.claims = response;
+              this.set({
+                user: {
+                  name: response.username,
+                  email: response.email,
+                },
+                isAuthenticated: true,
+                state: 'authenticated',
+              });
+              });
           },
           error: (err) => {
             alert(`strapi login error: ${JSON.stringify(err)}`);
@@ -108,6 +118,11 @@ export class StrapiAdapterService
         });
     }
   }
+  state$: Observable<AuthNState>;
+  errorMessage?: string | undefined;
+  init?: (() => void) | undefined;
+  claims?: StateObject | undefined;
+  claimsMap?: { [fromKey: string]: string } | undefined;
 
   loginWithRedirect?: (() => void) | undefined = () => {};
 

@@ -14,30 +14,61 @@ limitations under the License.
 */
 import {
   EnvironmentProviders,
+  inject,
+  InjectionToken,
   makeEnvironmentProviders,
   Provider,
 } from '@angular/core';
-import { AUTH_N_INTERFACE } from '@porrtal/a-user';
-import { StrapiAuthConfig } from './porrtal-strapi.module';
+import { ShellStateService } from '@porrtal/a-shell';
 import {
-  StrapiAdapterService,
+  AuthZProviderInterface,
+  AUTH_N_INTERFACE,
+  AUTH_Z_INTERFACE,
+} from '@porrtal/a-user';
+import {
+  StrapiAuthNService,
   STRAPI_ADAPTER_SERVICE_CONFIG_INJECTION_TOKEN,
-} from './strapi-adapter.service';
+} from './strapi-auth-n.service';
+import { StrapiAuthZProvider } from './strapi-auth-z-provider';
+import { StrapiAuthZService } from './strapi-auth-z.service';
 
-export function provideOAuthClient(
-  authConfig: StrapiAuthConfig
+export interface PorrtalStrapiConfiguration {
+  allowRegistration: boolean;
+  strapiUri: string;
+  authZs?: {
+    [key: string]: AuthZProviderInterface;
+  };
+}
+
+export const PORRTAL_STRAPI_CONFIGURATION =
+  new InjectionToken<PorrtalStrapiConfiguration>('PorrtalStrapiConfiguration');
+
+export function provideStrapiOAuthClient(
+  porrtalStrapiConfiguration: PorrtalStrapiConfiguration
 ): EnvironmentProviders[] {
+  const authZs = { ...(porrtalStrapiConfiguration?.authZs ?? {}) };
+  authZs['primary'] = new StrapiAuthZProvider();
+
   const providers: Provider[] = [
     {
       provide: AUTH_N_INTERFACE,
-      useClass: StrapiAdapterService,
+      useClass: StrapiAuthNService,
     },
     {
       provide: STRAPI_ADAPTER_SERVICE_CONFIG_INJECTION_TOKEN,
       useValue: {
-        strapiUri: authConfig.strapiUri,
-        allowRegistration: authConfig.allowRegistration,
+        strapiUri: porrtalStrapiConfiguration.strapiUri,
+        allowRegistration: porrtalStrapiConfiguration.allowRegistration,
       },
+    },
+    {
+      provide: AUTH_Z_INTERFACE,
+      useFactory: () =>
+        new StrapiAuthZService(
+          inject(AUTH_N_INTERFACE),
+          authZs,
+          inject(ShellStateService)
+        ),
     },
   ];
 
