@@ -78,6 +78,7 @@ const views: View[] = [
     key: 'v3',
     displayText: 'v3',
     displayIcon: 'view_in_ar',
+    permissions: 'primary:authenticated'
   },
   {
     viewId: 'v4',
@@ -88,6 +89,7 @@ const views: View[] = [
     key: 'v4',
     displayText: 'v4',
     displayIcon: 'view_in_ar',
+    permissions: 'primary:role-not-found'
   },
 ];
 
