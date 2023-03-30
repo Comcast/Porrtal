@@ -49,8 +49,6 @@ export class OidcAuthNService
       return undefined;
     }
 
-    console.log('claims: ', claims);
-
     return {
       name: claims['nickname'] ?? claims['email'],
       email: claims['email'],
