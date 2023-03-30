@@ -48,6 +48,7 @@ const views: View[] = [
     key: 'profile',
     displayText: 'profile',
     displayIcon: 'account_circle',
+    permissions: 'no-parent:no-role'
   },
   {
     viewId: 'v1',
@@ -68,6 +69,7 @@ const views: View[] = [
     key: 'v2',
     displayText: 'v2',
     displayIcon: 'view_in_ar',
+    permissions: 'primary:role 1'
   },
   {
     viewId: 'v3',
@@ -78,6 +80,7 @@ const views: View[] = [
     key: 'v3',
     displayText: 'v3',
     displayIcon: 'view_in_ar',
+    permissions: 'primary:role-not-granted',
   },
   {
     viewId: 'v4',
@@ -88,6 +91,7 @@ const views: View[] = [
     key: 'v4',
     displayText: 'v4',
     displayIcon: 'view_in_ar',
+    permissions: 'primary:role 2',
   },
 ];
 

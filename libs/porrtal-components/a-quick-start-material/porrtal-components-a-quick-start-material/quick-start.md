@@ -1,4 +1,4 @@
-# <img src="../../../../apps/n/porrtal-io-app/public/assets/react.svg" width="32" /> React Quick Start - BlueprintJS
+# <img src="../../../../apps/n/porrtal-io-app/public/assets/angular.svg" width="32" /> Angular Quick Start (Angular Material)
 
 ## [Welcome](./welcome/welcome.md)
 

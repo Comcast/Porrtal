@@ -13,7 +13,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { Inject, Injectable } from '@angular/core';
-import { AuthNInterface, LoginStrategy } from '@porrtal/a-user';
+import { StateObject } from '@porrtal/a-api';
+import { AuthNInterface, AuthNState, LoginStrategy } from '@porrtal/a-user';
+import { RxState } from '@rx-angular/state';
 import {
   AuthConfig,
   AUTH_CONFIG,
@@ -22,12 +24,24 @@ import {
 } from 'angular-oauth2-oidc';
 import { BehaviorSubject, filter, Observable } from 'rxjs';
 
-@Injectable()
-export class OidcAdapterService implements AuthNInterface {
-  private isAuthenticatedSubj = new BehaviorSubject<boolean>(false);
-  private isInitializedSubj = new BehaviorSubject<boolean>(false);
-  private loginStrategySubj = new BehaviorSubject<LoginStrategy>('loginWithRedirect');
+export interface OidcAdapterInterface {
+  isAuthenticated: boolean;
+  isInitialized: boolean;
+  loginStrategy: LoginStrategy;
+  user: {
+    name: string;
+    email: string;
+  };
+  state: AuthNState;
+}
 
+@Injectable()
+export class OidcAuthNService
+  extends RxState<OidcAdapterInterface>
+  implements AuthNInterface
+{
+  public claims?: StateObject;
+  
   get user(): { name: string; email: string } | undefined {
     const claims = this.oAuthService.getIdentityClaims();
     if (!claims) {
@@ -35,24 +49,32 @@ export class OidcAdapterService implements AuthNInterface {
       return undefined;
     }
 
-    console.log('claims: ', claims);
-
     return {
       name: claims['nickname'] ?? claims['email'],
-      email: claims['email']
-    }
-  };
+      email: claims['email'],
+    };
+  }
   isAuthenticated$: Observable<boolean>;
   isInitialized$: Observable<boolean>;
   loginStrategy$: Observable<LoginStrategy>;
+  state$: Observable<AuthNState>;
 
   constructor(
     @Inject(AUTH_CONFIG) private authConfig: AuthConfig,
     private oAuthService: OAuthService
   ) {
-    this.isAuthenticated$ = this.isAuthenticatedSubj.asObservable();
-    this.isInitialized$ = this.isInitializedSubj.asObservable();
-    this.loginStrategy$ = this.loginStrategySubj.asObservable();
+    super();
+
+    this.isAuthenticated$ = this.select('isAuthenticated');
+    this.isInitialized$ = this.select('isInitialized');
+    this.loginStrategy$ = this.select('loginStrategy');
+
+    this.set({
+      loginStrategy: 'loginWithRedirect',
+    });
+
+    this.state$ = this.select('state');
+    this.set({ state: 'initialized' });
 
     console.log('auth config: ', authConfig);
     this.oAuthService.configure(authConfig);
@@ -78,14 +100,26 @@ export class OidcAdapterService implements AuthNInterface {
       console.warn(
         'Noticed changes to access_token (most likely from another tab), updating isAuthenticated'
       );
-      this.isAuthenticatedSubj.next(this.oAuthService.hasValidAccessToken());
+      this.set({ isAuthenticated: this.oAuthService.hasValidAccessToken() });
+      if (this.oAuthService.hasValidAccessToken()) {
+        this.set({ state: 'authenticated' });
+        this.claims = this.oAuthService.getIdentityClaims();
+      } else {
+        this.set({ state: 'initialized' });
+      }
       console.log(
         `isAuthenticated = ${this.oAuthService.hasValidAccessToken()}`
       );
     });
 
     this.oAuthService.events.subscribe((_) => {
-      this.isAuthenticatedSubj.next(this.oAuthService.hasValidAccessToken());
+      this.set({ isAuthenticated: this.oAuthService.hasValidAccessToken() });
+      if (this.oAuthService.hasValidAccessToken()) {
+        this.set({ state: 'authenticated' });
+        this.claims = this.oAuthService.getIdentityClaims();
+      } else {
+        this.set({ state: 'initialized' });
+      }
       console.log(
         `isAuthenticated = ${this.oAuthService.hasValidAccessToken()}`
       );
@@ -103,7 +137,9 @@ export class OidcAdapterService implements AuthNInterface {
         filter((e) => ['session_terminated', 'session_error'].includes(e.type))
       )
       .subscribe((e) => {
-        this.isAuthenticatedSubj.next(false);
+        this.set({ isAuthenticated: false });
+        this.set({ state: 'initialized' });
+
         console.log(`isAuthenticated = ${false}`);
       });
 
@@ -111,7 +147,7 @@ export class OidcAdapterService implements AuthNInterface {
 
     this.oAuthService.setupAutomaticSilentRefresh();
 
-    this.isInitializedSubj.next(true);
+    this.set({ isInitialized: true });
 
     this.runInitialLoginSequence().then(() => {
       console.log('run initial login sequence finished...');
@@ -148,7 +184,7 @@ export class OidcAdapterService implements AuthNInterface {
 
       if (this.oAuthService.hasValidAccessToken()) {
         console.log('has valid access token - isAuthenticated===true ...');
-        this.isAuthenticatedSubj.next(true);
+        this.set({ isAuthenticated: true });
         return Promise.resolve();
       }
 
@@ -231,7 +267,7 @@ export class OidcAdapterService implements AuthNInterface {
       client_id: this.authConfig.clientId,
       returnTo: 'http://localhost:4200',
     });
-    this.isAuthenticatedSubj.next(false);
+    this.set({ isAuthenticated: false });
     console.log(`isAuthenticated = ${false}`);
   };
 }

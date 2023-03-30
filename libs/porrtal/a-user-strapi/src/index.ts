@@ -13,5 +13,5 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 export * from './lib/porrtal-strapi.module';
-export * from './lib/provider';
-export * from './lib/strapi-adapter.service';
+export * from './lib/strapi-provider';
+export * from './lib/strapi-auth-n.service';

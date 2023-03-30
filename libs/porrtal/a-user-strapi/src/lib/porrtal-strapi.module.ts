@@ -14,12 +14,7 @@ limitations under the License.
 */
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { provideOAuthClient } from './provider';
-
-export interface StrapiAuthConfig {
-  allowRegistration: boolean;
-  strapiUri: string;
-}
+import { PorrtalStrapiConfiguration, provideStrapiOAuthClient } from './strapi-provider';
 
 @NgModule({
   imports: [CommonModule],
@@ -28,11 +23,11 @@ export interface StrapiAuthConfig {
 })
 export class PorrtalStrapiModule {
   static forRoot(
-    authConfig: StrapiAuthConfig
+    porrtalStrapiConfiguration: PorrtalStrapiConfiguration
   ): ModuleWithProviders<PorrtalStrapiModule> {
     return {
       ngModule: PorrtalStrapiModule,
-      providers: [provideOAuthClient(authConfig)],
+      providers: [provideStrapiOAuthClient(porrtalStrapiConfiguration)],
     };
   }
 }

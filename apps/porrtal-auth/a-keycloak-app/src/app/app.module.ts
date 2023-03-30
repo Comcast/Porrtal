@@ -18,7 +18,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
-import { OidcModule } from '@porrtal/a-user-oidc';
+import { PorrtalOidcModule } from '@porrtal/a-user-oidc';
 import { ShellLayoutComponent } from '@porrtal/a-shell-material';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,7 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     HttpClientModule,
-    OidcModule.forRoot(
+    PorrtalOidcModule.forRoot(
       {
         issuer: 'http://localhost:8080/realms/porrtal',
         clientId: 'porrtal-app',
