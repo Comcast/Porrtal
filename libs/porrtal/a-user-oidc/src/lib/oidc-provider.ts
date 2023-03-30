@@ -12,8 +12,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
-import { AUTH_N_INTERFACE } from '@porrtal/a-user';
+import { EnvironmentProviders, inject, InjectionToken, makeEnvironmentProviders } from '@angular/core';
+import { ShellStateService } from '@porrtal/a-shell';
+import { AuthZProviderInterface, AUTH_N_INTERFACE, AUTH_Z_INTERFACE } from '@porrtal/a-user';
 import {
   AuthConfig,
   AUTH_CONFIG,
@@ -21,17 +22,33 @@ import {
   OAuthStorage,
   provideOAuthClient as oidcProvideOAuthClient,
 } from 'angular-oauth2-oidc';
-import { OidcAdapterService } from './oidc-adapter.service';
+import { OidcAuthNService } from './oidc-auth-n.service';
+import { OidcAuthZProvider } from './oidc-auth-z-provider';
+import { OidcAuthZService } from './oidc-auth-z.service';
+
+export interface PorrtalOidcConfiguration {
+  authZs?: {
+    [key: string]: AuthZProviderInterface;
+  };
+}
+
+export const PORRTAL_OIDC_CONFIGURATION =
+  new InjectionToken<PorrtalOidcConfiguration>('PorrtalOidcConfiguration');
+
 
 // We need a factory since localStorage is not available at AOT build time
 export function storageFactory(): OAuthStorage {
   return localStorage;
 }
 
-export function provideOAuthClient(
+export function provideOidcOAuthClient(
   authConfig: AuthConfig,
-  interceptorConfig?: OAuthModuleConfig
+  interceptorConfig?: OAuthModuleConfig,
+  porrtalOidcConfiguration?: PorrtalOidcConfiguration
 ): EnvironmentProviders[] {
+  const authZs = { ...(porrtalOidcConfiguration?.authZs ?? {}) };
+  authZs['primary'] = new OidcAuthZProvider();
+
   const oidcProviders = oidcProvideOAuthClient(interceptorConfig ?? undefined);
   const adapterProviders = makeEnvironmentProviders([
     {
@@ -40,7 +57,16 @@ export function provideOAuthClient(
     },
     {
       provide: AUTH_N_INTERFACE,
-      useClass: OidcAdapterService,
+      useClass: OidcAuthNService,
+    },
+    {
+      provide: AUTH_Z_INTERFACE,
+      useFactory: () =>
+        new OidcAuthZService(
+          inject(AUTH_N_INTERFACE),
+          authZs,
+          inject(ShellStateService)
+        ),
     },
     { provide: OAuthStorage, useFactory: storageFactory },
   ]);

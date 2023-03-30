@@ -19,17 +19,17 @@ import {
   AuthZProviderInterface,
 } from '@porrtal/a-user';
 
-export class StrapiAuthZService implements AuthZInterface {
+export class OidcAuthZService implements AuthZInterface {
   constructor(
     public authN: AuthNInterface,
     public authZProviders: { [key: string]: AuthZProviderInterface },
     public shellStateService: ShellStateService
   ) {
-    console.log('strapi-auth-z.service constructor', { authN, authZProviders, shellStateService })
+    console.log('oidc-auth-z.service constructor', { authN, authZProviders, shellStateService })
     authN?.state$.subscribe((state) => {
       if (state === 'initialized') {
         Object.keys(authZProviders).forEach((key) => {
-          console.log(`strapi auth z service: init '${key}'`, { state, authN, authZProviders });
+          console.log(`oidc auth z service: init '${key}'`, { state, authN, authZProviders });
           authZProviders[key].name = key;
           authZProviders[key].init?.(this.authN, shellStateService);
         });

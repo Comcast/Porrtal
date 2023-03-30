@@ -19,7 +19,7 @@ import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { ShellLayoutComponent } from '@porrtal/a-shell-material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { OidcModule, provideOAuthClient } from '@porrtal/a-user-oidc';
+import { PorrtalOidcModule, provideOidcOAuthClient } from '@porrtal/a-user-oidc';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -30,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     BrowserAnimationsModule,
     HttpClientModule,
-    OidcModule.forRoot(
+    PorrtalOidcModule.forRoot(
       {
         issuer: 'https://dev-b6h3bfnp.us.auth0.com/',
         clientId: 'uP4eHSspiDjg6E7GKU5LjdFPn0WwEKTq',

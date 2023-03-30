@@ -16,23 +16,23 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { OAuthModuleConfig, NullValidationHandler, AuthConfig } from 'angular-oauth2-oidc';
-import { provideOAuthClient } from './provider';
+import { provideOidcOAuthClient } from './oidc-provider';
 
 @NgModule({
   imports: [CommonModule],
   declarations: [],
   exports: [],
 })
-export class OidcModule {
+export class PorrtalOidcModule {
   static forRoot(
     authConfig: AuthConfig,
     interceptorConfig?: OAuthModuleConfig,
     validationHandlerClass = NullValidationHandler
-  ): ModuleWithProviders<OidcModule> {
+  ): ModuleWithProviders<PorrtalOidcModule> {
     return {
-      ngModule: OidcModule,
+      ngModule: PorrtalOidcModule,
       providers: [
-        provideOAuthClient(authConfig, interceptorConfig),
+        provideOidcOAuthClient(authConfig, interceptorConfig),
     ],
     };
   }

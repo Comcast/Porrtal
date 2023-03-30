@@ -30,13 +30,13 @@
 
       <!-- card message -->
       <span *ngIf="authNSubj | async as auth">
-        {{
+        <!-- {{
           state === 'error'
             ? auth?.authN?.errorMessage
             : state === 'authenticated'
             ? auth?.authN?.user?.name
             : state
-        }}
+        }} -->
       </span>
       <span *ngIf="!(authNSubj | async)"></span>
 
