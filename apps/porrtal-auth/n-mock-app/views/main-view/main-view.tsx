@@ -1,4 +1,4 @@
-/*
+﻿/*
 Copyright 2022 Comcast Cable Communications Management, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,21 +12,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { AppProps } from 'next/app';
-import Head from 'next/head';
-import './styles.css';
+import styles from './main-view.module.scss';
 
-function CustomApp({ Component, pageProps }: AppProps) {
+/* eslint-disable-next-line */
+export interface MainViewProps {}
+
+export function MainView(props: MainViewProps) {
   return (
-    <>
-      <Head>
-        <title>Welcome to n-mock-app!</title>
-      </Head>
-      <main className="app">
-        <Component {...pageProps} />
-      </main>
-    </>
+    <div className={styles['container']}>
+      <h1>Welcome to MainView!</h1>
+    </div>
   );
 }
 
-export default CustomApp;
+export default MainView;

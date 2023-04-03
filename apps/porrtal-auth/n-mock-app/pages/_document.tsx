@@ -1,4 +1,4 @@
-/*
+﻿/*
 Copyright 2022 Comcast Cable Communications Management, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,21 +12,22 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { AppProps } from 'next/app';
-import Head from 'next/head';
-import './styles.css';
+// pages/_document.js
+import { Html, Head, Main, NextScript } from 'next/document'
 
-function CustomApp({ Component, pageProps }: AppProps) {
+export default function Document() {
   return (
-    <>
+    <Html>
       <Head>
-        <title>Welcome to n-mock-app!</title>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined"
+        />
       </Head>
-      <main className="app">
-        <Component {...pageProps} />
-      </main>
-    </>
-  );
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  )
 }
-
-export default CustomApp;

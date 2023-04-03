@@ -1,4 +1,4 @@
-/*
+﻿/*
 Copyright 2022 Comcast Cable Communications Management, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,21 +12,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { AppProps } from 'next/app';
-import Head from 'next/head';
-import './styles.css';
+import { render } from '@testing-library/react';
 
-function CustomApp({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <Head>
-        <title>Welcome to n-mock-app!</title>
-      </Head>
-      <main className="app">
-        <Component {...pageProps} />
-      </main>
-    </>
-  );
-}
+import V1 from './v1';
 
-export default CustomApp;
+describe('V1', () => {
+  it('should render successfully', () => {
+    const { baseElement } = render(<V1 />);
+    expect(baseElement).toBeTruthy();
+  });
+});
