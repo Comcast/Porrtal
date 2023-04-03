@@ -15,3 +15,4 @@ limitations under the License.
 export * from './lib/auth-n-interface';
 export * from './lib/use-auth-n/use-auth-n';
 export * from './lib/use-auth-n/auth-n-context';
+export * from './lib/auth-z-provider-interface';
