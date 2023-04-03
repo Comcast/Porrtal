@@ -101,31 +101,31 @@ export function Index() {
   }, []);
 
   if (!isSSR) {
-  return (
-    <>
-    <Head>
-      <title>@porrtal - porrtal-auth - n-auth0-app</title>
-    </Head>
+    return (
+      <>
+        <Head>
+          <title>@porrtal - porrtal-auth - n-auth0-app</title>
+        </Head>
 
-    <Auth0Authentication
-      domain="dev-b6h3bfnp.us.auth0.com"
-      clientId="uP4eHSspiDjg6E7GKU5LjdFPn0WwEKTq"
-      redirectUri="http://localhost:4200"
-    >
-      <ShellState views={views}>
-        <ShellMaterial
-          bannerData={{
-            displayText: 'porrtal-auth - nextjs - auth0',
-            displayIcon: 'cyclone',
-          }}
-        />
-      </ShellState>
-    </Auth0Authentication>
-  </>
-);
+        <ShellState views={views}>
+          <Auth0Authentication
+            domain="dev-b6h3bfnp.us.auth0.com"
+            clientId="uP4eHSspiDjg6E7GKU5LjdFPn0WwEKTq"
+            redirectUri="http://localhost:4200"
+          >
+            <ShellMaterial
+              bannerData={{
+                displayText: 'porrtal-auth - nextjs - auth0',
+                displayIcon: 'cyclone',
+              }}
+            />
+          </Auth0Authentication>
+        </ShellState>
+      </>
+    );
   }
-  
-  return(<div>loading...</div>);
+
+  return <div>loading...</div>;
 }
 
 export default Index;
