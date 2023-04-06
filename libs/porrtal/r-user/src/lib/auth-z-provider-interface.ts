@@ -12,10 +12,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { StateObject } from '@porrtal/a-api';
-import { ShellStateService } from '@porrtal/a-shell';
+import { StateObject } from '@porrtal/r-api';
 import { Observable } from 'rxjs';
-import { AuthNInterface } from './auth-n-interface';
 
 export type AuthZProviderState = '' | 'init' | 'ready' | 'error';
 
@@ -40,5 +38,5 @@ export type AuthZProviderInterface = {
   props?: StateObject;
   roles?: string[];
   pendingViews?: AuthZProviderPendingView[];
-  init?: (authN: AuthNInterface, shellStateService: ShellStateService) => void;
+  init?: () => void;
 };

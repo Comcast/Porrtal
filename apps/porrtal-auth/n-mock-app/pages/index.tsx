@@ -19,6 +19,7 @@ import { ShellMaterial } from '@porrtal/r-shell-material';
 import {
   MockAuthentication,
   MockAuthenticationProps,
+  MockAuthZ,
 } from '@porrtal/r-user-mock';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
@@ -97,13 +98,6 @@ const views: View[] = [
   },
 ];
 
-const props: MockAuthenticationProps = {
-  authN: {
-    loginAtStartup: true,
-  },
-  authZ: {},
-};
-
 export function Index() {
   const [isSSR, setIsSSR] = useState(true);
 
@@ -119,13 +113,59 @@ export function Index() {
         </Head>
 
         <ShellState views={views}>
-          <MockAuthentication {...props}>
-            <ShellMaterial
-              bannerData={{
-                displayText: 'porrtal-auth - nextjs - mock',
-                displayIcon: 'cyclone',
+          <MockAuthentication
+            authN={{
+              loginAtStartup: true,
+              loginDelay: 3000,
+            }}
+          >
+            <MockAuthZ
+              name="primary"
+              config={{
+                fetchDelay: 3000,
+                shouldFail: true,
+                errorInfo: { message: 'silly configuration error...' },
               }}
-            />
+            >
+              <MockAuthZ
+                name="second"
+                config={{
+                  fetchDelay: 5000,
+                  shouldFail: false,
+                  scopes: ['scope1', 'scope2', 'scope3'],
+                  warningInfo: {
+                    message: 'it is probably ok, but you should know...',
+                  },
+                  props: {
+                    one: 1,
+                    two: 2,
+                    sub: {
+                      sub_one: 1.1,
+                    },
+                  },
+                  roles: ['role1', 'role2'],
+                  pendingViews: [
+                    {
+                      type: 'startup',
+                      viewId: 'v2',
+                      state: { someProperty: 'some value...' },
+                    },
+                    {
+                      type: 'deep-link',
+                      viewId: 'v3',
+                      state: { anotherProperty: 'another value...' },
+                    },
+                  ],
+                }}
+              >
+                <ShellMaterial
+                  bannerData={{
+                    displayText: 'porrtal-auth - nextjs - mock',
+                    displayIcon: 'cyclone',
+                  }}
+                />
+              </MockAuthZ>
+            </MockAuthZ>
           </MockAuthentication>
         </ShellState>
       </>

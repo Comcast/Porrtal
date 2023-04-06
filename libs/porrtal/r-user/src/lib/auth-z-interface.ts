@@ -1,4 +1,4 @@
-﻿/*
+/*
 Copyright 2022 Comcast Cable Communications Management, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,8 +12,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-export * from './lib/auth-n-interface';
-export * from './lib/use-auth-n/use-auth-n';
-export * from './lib/use-auth-n/auth-n-context';
-export * from './lib/auth-z-provider-interface';
-export * from './lib/auth-zs';
+import { AuthZProviderInterface } from './auth-z-provider-interface';
+
+export type AuthZInterface = {
+  authZs: {
+    [key: string]: AuthZProviderInterface;
+  }
+};
