@@ -14,49 +14,122 @@ limitations under the License.
 */
 import { StateObject } from '@porrtal/r-api';
 import { LoginStrategy } from '@porrtal/r-shell';
-import { AuthNContext, AuthZs } from '@porrtal/r-user';
+import {
+  AuthNAction,
+  AuthNContext,
+  AuthNDispatchContext,
+  AuthZs,
+} from '@porrtal/r-user';
 import { AuthNInterface } from '@porrtal/r-user';
-import { useEffect, useMemo, useState } from 'react';
+import {
+  createContext,
+  Dispatch,
+  Reducer,
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+  useState,
+} from 'react';
+
+export interface AuthNState {
+  authN: AuthNInterface;
+  props: MockAuthenticationProps;
+  localState: {
+    loginCount: number;
+  };
+}
+
+const initalAuthN: AuthNInterface = {
+  user: undefined,
+  loginStrategy: 'loginWithRedirect' as LoginStrategy,
+  authNState: 'initialized',
+
+};
+
+const reducer: Reducer<AuthNState, AuthNAction> = (state, action) => {
+  switch (action.type) {
+    case 'update': {
+      const newState = {
+        ...state,
+        authN: {
+          ...(state.authN ?? initalAuthN),
+          ...action.updateInfo,
+        },
+      };
+      console.log('AuthN Reducer (update)...', { oldState: state, newState });
+      return newState;
+    }
+
+    case 'loginWithRedirect': {
+      const newState = {
+        ...state,
+        authN: {
+          ...state.authN,
+          authNState: 'authenticating',
+        },
+        localState: { loginCount: state.localState.loginCount + 1 },
+      };
+      console.log('AuthN Reducer (loginWithRedirect)...', { oldState: state, newState });
+      return newState;
+    }
+
+    case 'logout': {
+      const newState = {
+        ...state,
+        authN: {
+          ...state.authN,
+          authNState: 'initialized',
+        }
+      }
+      console.log('AuthN Reducer (logout)...', { oldState: state, newState });
+      return newState;
+    }
+
+    default: return state;
+  }
+};
+
+export function useAuthNState(): AuthNInterface {
+  const authZs = useContext(AuthNContext);
+  return authZs;
+}
 
 interface MockAdapterProps {
   children?: React.ReactNode;
 }
 
 function MockAuthenticationAdapter(props: MockAuthenticationProps) {
-  const initalAuthN = {
-    user: undefined,
-    loginStrategy: 'loginWithRedirect' as LoginStrategy,
-    loginWithRedirect: undefined,
-    logout: undefined,
-    isAuthenticated: false,
-    isInitialized: true,
-  };
-
-  const [authN, setAuthN] = useState<AuthNInterface>(initalAuthN);
+  const [state, dispatch] = useReducer(reducer, {
+    authN: initalAuthN,
+    props,
+    localState: { loginCount: 0 },
+  });
 
   useEffect(() => {
-    console.log('MockAdapter...', props.authN);
-    if (props.authN.loginDelay) {
+    console.log('MockAdapter (login count)...', state);
+    if (props.authN.loginDelay && state.localState.loginCount > 0) {
       setTimeout(() => {
-        setAuthN((authNPrev) => {
-          const authNNew = {
-            ...(authNPrev ?? initalAuthN),
-            isAuthenticated: true,
+        dispatch({
+          type: 'update',
+          updateInfo: {
+            authNState: 'authenticated',
             user: {
-              name: 'bill',
-              email: 'bill@a.com'
-            }
-          };
-          console.log('MockAdapter update...', authNNew);
-          return authNNew;
+              name: 'billy',
+              email: 'billy@porrtal.io',
+            },
+          },
         });
+        console.log('MockAdapter update...', state);
       }, props.authN.loginDelay);
     }
-  }, [props.authN]);
+  }, [state.localState.loginCount]);
 
   return (
-    <AuthNContext.Provider value={authN}>
-      <AuthZs>{props.children}</AuthZs>
+    <AuthNContext.Provider value={state.authN}>
+      <AuthNDispatchContext.Provider value={dispatch}>
+        <AuthZs>{props.children}</AuthZs>
+      </AuthNDispatchContext.Provider>
     </AuthNContext.Provider>
   );
 }
