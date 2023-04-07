@@ -20,6 +20,7 @@ import {
   useAuthZsState,
 } from '@porrtal/r-user';
 import { useEffect } from 'react';
+import { useAuthNState } from './mock-authentication';
 
 export interface MockAuthZProps {
   name: string;
@@ -37,17 +38,69 @@ export interface MockAuthZProps {
 }
 
 export function MockAuthZ(props: MockAuthZProps) {
+  const authNState = useAuthNState();
   const authZsDispatch = useAuthZsDispatch();
 
   useEffect(() => {
-    authZsDispatch({
-      type: 'update',
-      name: props.name,
-      updateInfo: {
-        state: 'init',
-      },
-    });
-  }, []);
+    switch (authNState?.authNState) {
+      case 'initialized': {
+        authZsDispatch({
+          type: 'insert',
+          name: props.name,
+          updateInfo: {
+            state: 'init',
+          },
+        });
+            break;
+      }
+      case 'error': {
+        authZsDispatch({
+          type: 'insert',
+          name: props.name,
+          updateInfo: {
+            state: 'error',
+            errorInfo: {
+              message: authNState.errorMessage ?? 'Error in AuthN...',
+            },
+          },
+        });
+        break;
+      }
 
-  return <div>{props.children}</div>;
+      case 'authenticated': {
+        const timeout = setTimeout(() => {
+          if (props.config.shouldFail) {
+            authZsDispatch({
+              type: 'update',
+              name: props.name,
+              updateInfo: {
+                state: 'error',
+                errorInfo: props.config.errorInfo,
+              },
+            });
+          } else {
+            authZsDispatch({
+              type: 'update',
+              name: props.name,
+              updateInfo: {
+                state: 'ready',
+                errorInfo: undefined,
+                scopes: props.config.scopes,
+                warningInfo: props.config.warningInfo,
+                props: props.config.props,
+                roles: props.config.roles,
+                pendingViews: props.config.pendingViews
+              },
+            });
+          }
+        }, props.config.fetchDelay);
+
+        return () => {
+          clearTimeout(timeout);
+        };
+      }
+    }
+  });
+
+  return <>{props.children}</>;
 }

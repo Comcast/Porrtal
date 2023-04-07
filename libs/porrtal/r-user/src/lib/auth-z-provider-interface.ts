@@ -31,7 +31,7 @@ export interface AuthZProviderInfo {
 
 export type AuthZProviderInterface = {
   name: string;
-  state$: Observable<AuthZProviderState>;
+  state: AuthZProviderState;
   scopes?: string[];
   errorInfo?: AuthZProviderInfo;
   warningInfo?: AuthZProviderInfo;

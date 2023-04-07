@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { AuthZProvider } from '@porrtal/a-user-auth-z';
+import { AuthZProviderInterface } from '@porrtal/r-user';
 import {
   createContext,
   Dispatch,
@@ -23,18 +23,24 @@ import {
 } from 'react';
 
 export interface UseAuthZs {
-  [name: string]: AuthZProvider;
+  [name: string]: AuthZProviderInterface;
 }
 
-export type AuthZsAction = {
+export type AuthZsAction = 
+| {
   type: 'update';
   name: string;
-  updateInfo: Partial<AuthZProvider>;
+  updateInfo: Partial<AuthZProviderInterface>;
+}
+| {
+  type: 'insert';
+  name: string;
+  updateInfo: Partial<AuthZProviderInterface>;
 };
 
 const reducer: Reducer<UseAuthZs, AuthZsAction> = (state, action) => {
   switch (action.type) {
-    case 'update':
+    case 'update': {
       const newState = {
         ...state,
         [action.name]: {
@@ -44,6 +50,18 @@ const reducer: Reducer<UseAuthZs, AuthZsAction> = (state, action) => {
       };
       console.log('AuthZs Reducer...', { oldState: state, newState });
       return newState;
+    }
+
+    case 'insert': {
+      const newState = {
+        ...state,
+        [action.name]: {
+          ...action.updateInfo,
+        },
+      };
+      console.log('AuthZs Reducer...', { oldState: state, newState });
+      return newState;
+    }
   }
 };
 

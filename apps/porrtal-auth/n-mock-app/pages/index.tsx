@@ -117,6 +117,7 @@ export function Index() {
             authN={{
               loginAtStartup: true,
               loginDelay: 3000,
+              errorMessage: 'silly error in auth n...',
             }}
           >
             <MockAuthZ
