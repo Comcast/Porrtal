@@ -109,7 +109,7 @@ export function Index() {
     return (
       <>
         <Head>
-          <title>@porrtal - porrtal-auth - n-auth0-app</title>
+          <title>@porrtal - porrtal-auth - n-auth0-app (material)</title>
         </Head>
 
         <ShellState views={views}>
