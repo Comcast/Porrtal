@@ -114,7 +114,7 @@ function MockAuthenticationAdapter(props: MockAuthenticationProps) {
           authNState: 'authenticating',
         },
       });
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         if (state.localState.loginCount === 0) {
           dispatch({
             type: 'update',
@@ -137,6 +137,11 @@ function MockAuthenticationAdapter(props: MockAuthenticationProps) {
         }
         console.log('MockAdapter update...', state);
       }, props.authN.loginDelay);
+
+      // if we created a timer, destroy it if effect gets destroyed
+      return () => {
+        clearTimeout(timeout);
+      }
     }
   }, [state.localState.loginCount]);
 
