@@ -44,7 +44,6 @@ const initalAuthN: AuthNInterface = {
   user: undefined,
   loginStrategy: 'loginWithRedirect' as LoginStrategy,
   authNState: 'initialized',
-
 };
 
 const reducer: Reducer<AuthNState, AuthNAction> = (state, action) => {
@@ -64,13 +63,12 @@ const reducer: Reducer<AuthNState, AuthNAction> = (state, action) => {
     case 'loginWithRedirect': {
       const newState = {
         ...state,
-        authN: {
-          ...state.authN,
-          authNState: 'authenticating',
-        },
         localState: { loginCount: state.localState.loginCount + 1 },
       };
-      console.log('AuthN Reducer (loginWithRedirect)...', { oldState: state, newState });
+      console.log('AuthN Reducer (loginWithRedirect)...', {
+        oldState: state,
+        newState,
+      });
       return newState;
     }
 
@@ -80,13 +78,14 @@ const reducer: Reducer<AuthNState, AuthNAction> = (state, action) => {
         authN: {
           ...state.authN,
           authNState: 'initialized',
-        }
-      }
+        },
+      };
       console.log('AuthN Reducer (logout)...', { oldState: state, newState });
       return newState;
     }
 
-    default: return state;
+    default:
+      return state;
   }
 };
 
@@ -108,18 +107,34 @@ function MockAuthenticationAdapter(props: MockAuthenticationProps) {
 
   useEffect(() => {
     console.log('MockAdapter (login count)...', state);
-    if (props.authN.loginDelay && state.localState.loginCount > 0) {
+    if (props.authN.loginDelay) {
+      dispatch({
+        type: 'update',
+        updateInfo: {
+          authNState: 'authenticating',
+        },
+      });
       setTimeout(() => {
-        dispatch({
-          type: 'update',
-          updateInfo: {
-            authNState: 'authenticated',
-            user: {
-              name: 'billy',
-              email: 'billy@porrtal.io',
+        if (state.localState.loginCount === 0) {
+          dispatch({
+            type: 'update',
+            updateInfo: {
+              authNState: 'error',
+              errorMessage: state.props.authN.errorMessage,
             },
-          },
-        });
+          });
+        } else {
+          dispatch({
+            type: 'update',
+            updateInfo: {
+              authNState: 'authenticated',
+              user: {
+                name: 'billy',
+                email: 'billy@porrtal.io',
+              },
+            },
+          });
+        }
         console.log('MockAdapter update...', state);
       }, props.authN.loginDelay);
     }

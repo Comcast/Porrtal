@@ -37,7 +37,7 @@ export function UserBanner(props: UserBannerProps) {
     return <div></div>;
   }
 
-  if (auth.authNState === 'initialized' || auth.authNState === 'authenticated') {
+  if (auth.authNState === 'initialized' || auth.authNState === 'authenticated' || auth.authNState === 'error') {
     return (
       <div className={styles['container']}>
         {auth.authNState === 'authenticated' && (
@@ -45,6 +45,11 @@ export function UserBanner(props: UserBannerProps) {
             {auth?.user?.name}
           </Typography>
         )}
+        {auth.authNState === 'error' && (
+          <Typography display="inline-block" sx={{ marginRight: '10px' }}>
+          error...
+        </Typography>
+      )}
         {auth.authNState !== 'authenticated' && (
           <Button
             size="small"
@@ -104,11 +109,9 @@ export function UserBanner(props: UserBannerProps) {
         ></LoginDialog>
       </div>
     );
-  } else if (auth.authNState === 'authenticating') {
-    return <div className={styles['container']}>loading...</div>;
   } else {
-    return <div className={styles['container']}>error...</div>;
-  }
+    return <div className={styles['container']}>authenticating...</div>;
+  } 
 }
 
 export default UserBanner;
