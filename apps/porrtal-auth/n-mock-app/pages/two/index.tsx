@@ -14,6 +14,7 @@ import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
 export interface TwoProps {}
 
 export function Two(props: TwoProps) {
+
   const views: View[] = [
     {
       viewId: 'main-view',
@@ -86,6 +87,7 @@ export function Two(props: TwoProps) {
       displayIcon: 'cube',
     },
   ];
+  
   const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {
