@@ -86,8 +86,18 @@ export function Two(props: TwoProps) {
       displayText: 'v4',
       displayIcon: 'cube',
     },
+    {
+      viewId: 'shell-state-dashboard',
+      paneType: 'bottom',
+      launchAtStartup: false,
+      componentName: 'ShellStateDashboard',
+      componentModule: () => import('@porrtal/r-shell-blueprint'),
+      key: 'shell-state-dashboard',
+      displayText: 'Shell State Dashboard',
+      displayIcon: 'key',
+    },
   ];
-  
+
   const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {

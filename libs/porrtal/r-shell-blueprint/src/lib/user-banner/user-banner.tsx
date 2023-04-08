@@ -12,6 +12,8 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+import { Icon } from '@blueprintjs/core';
+import { useShellDispatch } from '@porrtal/r-shell';
 import { useAuthN, useAuthNDispatch } from '@porrtal/r-user';
 import { useState } from 'react';
 import LoginDialog from './login-dialog/login-dialog';
@@ -24,6 +26,7 @@ export function UserBanner(props: UserBannerProps) {
   const auth = useAuthN();
   const authDispatch = useAuthNDispatch();
   const [open, setOpen] = useState(false);
+  const shellDispatch = useShellDispatch();
 
   console.log(
     `UserBanner: auth def'd(${auth ? 'true' : 'false'}), authNState('${
@@ -77,6 +80,16 @@ export function UserBanner(props: UserBannerProps) {
             Logout
           </button>
         )}
+        <Icon
+          icon="key"
+          onClick={() =>
+            shellDispatch({
+              type: 'launchView',
+              viewId: 'shell-state-dashboard',
+            })
+          }
+        />
+
         <LoginDialog
           open={open}
           loginStrategy={

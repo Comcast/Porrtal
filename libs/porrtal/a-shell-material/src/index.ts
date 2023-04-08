@@ -27,27 +27,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 export * from './lib/shell-layout/shell-layout.component';
-
 export * from './lib/view-stack/view-stack.component';
-
 export * from './lib/entity-menu/entity-menu.component';
-
 export * from './lib/search/search.component';
-
 export * from './lib/search-dialog/search-dialog.component';
-
 export * from './lib/logger-banner/logger-banner.component';
-
 export * from './lib/logger-messages/logger-messages.component';
-
 export * from './lib/banner/banner.component';
-
 export * from './lib/banner-menu/banner-menu.component';
-
 export * from './lib/banner-menu-bar/banner-menu-bar.component';
-
 export * from './lib/banner-menu-inline/banner-menu-inline.component';
-
 export * from './lib/banner-menu-item/banner-menu-item.component';
-
 export * from './lib/user-banner/login-service/login.service';
