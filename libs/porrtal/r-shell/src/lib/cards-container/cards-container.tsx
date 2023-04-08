@@ -13,6 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import { Card } from '@blueprintjs/core';
 import { StateObject } from '@porrtal/r-api';
 import React, { Suspense } from 'react';
 import { ComponentType, LazyExoticComponent, useEffect, useState } from 'react';
@@ -22,26 +23,28 @@ export type CardComponentFunction = () => Promise<{
   default: ComponentType<CardContainerProps>;
 }>;
 
-export interface Card {
+export interface CardMeta {
   key: string;
   data: StateObject;
   component: CardComponentFunction;
 }
 
 export interface CardsContainerProps {
-  cards: Card[];
+  cards: CardMeta[];
 }
 
 export interface CardContainerProps {
-  card: Card;
+  card: CardMeta;
 }
 
 export function CardsContainer(props: CardsContainerProps) {
   return (
-    <div className={styles['cards-container']} >
-      {props.cards.map((card) => (
-        <CardContainer card={card} />
-      ))}
+    <div className={styles['container-container']}>
+      <div className={styles['cards-container']}>
+        {props.cards.map((card) => (
+          <CardContainer card={card} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -56,7 +59,7 @@ export function CardContainer(props: CardContainerProps) {
   }, [props.card.component]);
 
   return (
-    <div className={styles['card-container']}>
+    <Card className={styles['card-container']}>
       {DynComp ? (
         <Suspense fallback={<div>loading...</div>}>
           <DynComp card={props.card} />
@@ -64,6 +67,6 @@ export function CardContainer(props: CardContainerProps) {
       ) : (
         <div>loading...</div>
       )}
-    </div>
+    </Card>
   );
 }

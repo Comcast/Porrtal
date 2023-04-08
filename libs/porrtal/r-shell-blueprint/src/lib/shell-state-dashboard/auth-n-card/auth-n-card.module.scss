@@ -1,0 +1,9 @@
+.card-layout {
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.card-content-container {
+    position: relative;
+    overflow: auto;
+}

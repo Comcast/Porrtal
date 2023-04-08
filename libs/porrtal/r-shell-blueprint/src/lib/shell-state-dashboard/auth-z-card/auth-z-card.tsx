@@ -12,13 +12,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import styles from './auth-n-card.module.scss';
+import styles from './auth-z-card.module.scss';
 import { CardContainerProps } from '@porrtal/r-shell';
 
-export function AuthNCard(props: CardContainerProps) {
+export function AuthZCard(props: CardContainerProps) {
   return (
     <div className={styles['card-layout']}>
-      <div>hello from auth-n card...</div>
+      <div>hello from auth-z card...</div>
       <div className={styles['card-content-container']}>
         <pre>{JSON.stringify(props.card.data, null, 2)}</pre>
       </div>
@@ -26,4 +26,4 @@ export function AuthNCard(props: CardContainerProps) {
   );
 }
 
-export default AuthNCard;
+export default AuthZCard;

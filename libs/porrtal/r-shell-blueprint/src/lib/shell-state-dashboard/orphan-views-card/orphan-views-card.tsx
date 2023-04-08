@@ -12,18 +12,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import styles from './auth-n-card.module.scss';
-import { CardContainerProps } from '@porrtal/r-shell';
 
-export function AuthNCard(props: CardContainerProps) {
-  return (
-    <div className={styles['card-layout']}>
-      <div>hello from auth-n card...</div>
-      <div className={styles['card-content-container']}>
-        <pre>{JSON.stringify(props.card.data, null, 2)}</pre>
-      </div>
-    </div>
-  );
+import { CardContainerProps } from "@porrtal/r-shell";
+
+export function ViewsCard(props: CardContainerProps) {
+    return (<div>hello from views card...</div>);
 }
 
-export default AuthNCard;
+export default ViewsCard;

@@ -13,23 +13,49 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-import { Card, CardsContainer } from "@porrtal/r-shell";
+import { StateObject } from "@porrtal/r-api";
+import { CardMeta, CardsContainer, useShellState } from "@porrtal/r-shell";
+import { useAuthZsState } from "@porrtal/r-user";
 import { useAuthNState } from "@porrtal/r-user-mock";
 import { useEffect, useState } from "react";
 
 export function ShellStateDashboard() {
     const authNState = useAuthNState();
-    const [cards, setCards] = useState<Card[]>([]);
+    const shellState = useShellState();
+    const authZsState = useAuthZsState();
+    const [cards, setCards] = useState<CardMeta[]>([]);
 
     useEffect(() => {
-        setCards([
+        const cards = [
             {
                 key: 'auth-n-card',
                 component: () => import('./auth-n-card/auth-n-card'),
+                data: authNState as unknown as StateObject
+            },
+            {
+                key: 'views-card',
+                component: () => import('./views-card/views-card'),
                 data: { myData: 'hello there :)'}
-            }
-        ])
-    }, [authNState]);
+            },
+            {
+                key: 'panes-card',
+                component: () => import('./panes-card/panes-card'),
+                data: { myData: 'hello there :)'}
+            },
+            {
+                key: 'orphan-views-card',
+                component: () => import('./orphan-views-card/orphan-views-card'),
+                data: { myData: 'hello there :)'}
+            },
+            ...Object.keys(authZsState).map(name => ({
+                key: name,
+                component: () => import('./auth-z-card/auth-z-card'),
+                data: authZsState[name] as unknown as StateObject
+            }))
+        ];
+        
+        setCards(cards);
+    }, [authNState, shellState, authZsState]);
 
     return (
         <CardsContainer cards={cards}></CardsContainer>
