@@ -1,0 +1,18 @@
+.card-layout {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    position: absolute;
+    inset: 0;
+    padding: 10px;
+}
+
+.card-content-container {
+    position: relative;
+    overflow: auto;
+}
+
+.views-container {
+    display: grid;
+    grid-template-columns: auto auto auto 1fr;
+    column-gap: 5px;
+}

@@ -12,11 +12,49 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-
-import { CardContainerProps } from "@porrtal/r-shell";
+import styles from './views-card.module.scss';
+import { CardContainerProps, useShellState } from '@porrtal/r-shell';
+import { Icon } from '@blueprintjs/core';
+import { Fragment } from 'react';
+import { Tooltip2 } from '@blueprintjs/popover2';
 
 export function ViewsCard(props: CardContainerProps) {
-    return (<div>hello from views card...</div>);
+  const shellState = useShellState();
+
+  return (
+    <div className={styles['card-layout']}>
+      <div>hello from views card...</div>
+      <div className={styles['card-content-container']}>
+        <div className={styles['views-container']}>
+          {shellState.views.map((view) => (
+            <Fragment key={view.viewId}>
+              <span key="launchAtStartup">
+                {view.launchAtStartup && <Icon icon="rocket-slant" />}
+              </span>
+
+              <span key="permissions">
+                {view.permissions && (
+                  <Tooltip2 content={view.permissions}>
+                    <Icon icon="lock" />
+                  </Tooltip2>
+                )}
+              </span>
+
+              <span key="entityType">
+                {view.entityType && (
+                  <Tooltip2 content={view.entityType}>
+                    <Icon icon="shapes" />
+                  </Tooltip2>
+                )}
+              </span>
+
+              <span key="viewId">{view.viewId}</span>
+            </Fragment>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default ViewsCard;

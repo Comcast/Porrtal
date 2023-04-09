@@ -20,14 +20,19 @@ export interface View {
   viewId?: string;
   launchAtStartup?: boolean;
   paneType?: PaneType;
-  entityType?: string;
+
   componentName: string;
   componentModule: string | (() => Promise<Record<string, unknown>>);
-  state?: StateObject;
 
   key?: string;
   displayText: string;
   displayIcon?: string;
+
+  state?: StateObject;
+
+  entityType?: string;
+
+  permissions?: string;
 
   menu?: string;
 
