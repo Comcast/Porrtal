@@ -13,6 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { StateObject } from '@porrtal/r-api';
+import { useShellDispatch } from '@porrtal/r-shell';
 import {
   AuthZProviderInfo,
   AuthZProviderPendingView,
@@ -40,6 +41,7 @@ export interface MockAuthZProps {
 export function MockAuthZ(props: MockAuthZProps) {
   const authNState = useAuthNState();
   const authZsDispatch = useAuthZsDispatch();
+  const shellDipatch = useShellDispatch();
 
   useEffect(() => {
     switch (authNState?.authNState) {
@@ -51,7 +53,7 @@ export function MockAuthZ(props: MockAuthZProps) {
             state: 'init',
           },
         });
-            break;
+        break;
       }
       case 'error': {
         authZsDispatch({
@@ -89,8 +91,18 @@ export function MockAuthZ(props: MockAuthZProps) {
                 warningInfo: props.config.warningInfo,
                 props: props.config.props,
                 roles: props.config.roles,
-                pendingViews: props.config.pendingViews
+                pendingViews: props.config.pendingViews,
               },
+            });
+            shellDipatch({
+              type: 'setAuthZReady',
+              name: props.name,
+            });
+            shellDipatch({
+              type: 'registerAuthZPermissionCheck',
+              name: props.name,
+              checkPermission: (parm: string) =>
+                (props.config.roles ?? []).some((role) => role === parm),
             });
           }
         }, props.config.fetchDelay);

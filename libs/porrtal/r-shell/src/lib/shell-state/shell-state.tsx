@@ -524,19 +524,18 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
 };
 
 function processLaunchQ(name: string, state: UseShellState) {
-  const authZs = state.authZs;
   if (
-    !authZs ||
-    !authZs[name] ||
-    !authZs[name].launchQ ||
-    authZs[name].launchQ.length < 1
+    !state.authZs ||
+    !state.authZs[name] ||
+    !state.authZs[name].launchQ ||
+    state.authZs[name].launchQ.length < 1
   ) {
     console.log('processLaunchQ (do nothing)', { name, state });
     return state;
   }
 
   console.log('processLaunchQ', { name, state });
-  authZs[name].launchQ.forEach((launchItem) => {
+  state.authZs[name].launchQ.forEach((launchItem) => {
     console.log('launch from launchQ', launchItem);
     state = reducer(state, {
       type: 'launchView',
@@ -551,13 +550,14 @@ function processLaunchQ(name: string, state: UseShellState) {
   state = {
     ...state,
     authZs: {
-      ...authZs,
+      ...state.authZs,
       [name]: {
-        ...authZs[name],
+        ...(state.authZs[name]),
         launchQ: [],
       },
     },
   };
+  console.log('shell service - processLaunchQ', { state });
   return state;
 }
 

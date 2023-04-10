@@ -75,6 +75,7 @@ export function Two(props: TwoProps) {
       componentName: 'V3',
       componentModule: () => import('../../views/v3/v3'),
       key: 'v3',
+      permissions: 'second:role6',
       entityType: 'account',
       displayText: 'v3',
       displayIcon: 'cube',
