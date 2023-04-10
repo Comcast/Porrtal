@@ -13,14 +13,19 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import styles from './auth-z-card.module.scss';
-import { CardContainerProps } from '@porrtal/r-shell';
+import { CardContainerProps, useShellState } from '@porrtal/r-shell';
 
 export function AuthZCard(props: CardContainerProps) {
+  const shellState = useShellState();
+
   return (
     <div className={styles['card-layout']}>
-      <div>hello from auth-z card...</div>
+      <div className={styles['card-header']}>hello from auth-z card...</div>
       <div className={styles['card-content-container']}>
         <pre>{JSON.stringify(props.card.data, null, 2)}</pre>
+        <hr />
+        <div>{(props.card.data as {name: string}).name}</div>
+        <pre>{JSON.stringify(shellState.authZs[(props.card.data as {name: string}).name], null, 2)}</pre>
       </div>
     </div>
   );

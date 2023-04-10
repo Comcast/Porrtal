@@ -46,6 +46,7 @@ const reducer: Reducer<UseAuthZs, AuthZsAction> = (state, action) => {
         [action.name]: {
           ...state[action.name],
           ...action.updateInfo,
+          name: action.name
         },
       };
       console.log('AuthZs Reducer...', { oldState: state, newState });
@@ -57,6 +58,7 @@ const reducer: Reducer<UseAuthZs, AuthZsAction> = (state, action) => {
         ...state,
         [action.name]: {
           ...action.updateInfo,
+          name: action.name
         },
       };
       console.log('AuthZs Reducer...', { oldState: state, newState });

@@ -1,6 +1,16 @@
+@import "@blueprintjs/core/lib/scss/variables";
+
 .card-layout {
     display: grid;
     grid-template-rows: auto 1fr;
+    position: absolute;
+    inset: 0;
+    padding: 10px;
+}
+
+.card-header {
+    color: $pt-dark-text-color;
+    background-color: $pt-intent-primary;
 }
 
 .card-content-container {

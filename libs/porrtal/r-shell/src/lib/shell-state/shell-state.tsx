@@ -25,6 +25,8 @@ import {
   ViewComponentProps,
   PorrtalMenuItem,
   DeepLinks,
+  AuthZ,
+  LaunchInvoker,
 } from '@porrtal/r-api';
 import {
   useReducer,
@@ -53,10 +55,19 @@ export interface UseShellState {
   navWidth?: string;
   navTabWidth?: string;
   menuItems?: PorrtalMenuItem[];
+  authZs: {
+    [name: string]: AuthZ;
+  };
 }
 
 export type ShellAction =
-  | { type: 'launchView'; viewId: string; state?: StateObject }
+  | {
+      type: 'launchView';
+      viewId: string;
+      state?: StateObject;
+      launchInvoker?: LaunchInvoker;
+      suppressFocus?: boolean;
+    }
   | { type: 'launchStartupViews' }
   | { type: 'moveView'; key: string; toPane: PaneType }
   | { type: 'deleteViewState'; key: string }
@@ -70,17 +81,39 @@ export type ShellAction =
   | { type: 'toggleNav'; item: ViewState }
   | { type: 'setNavTabWidth'; width: string }
   | { type: 'launchDeepLinks'; queryString: string }
-  | { type: 'copyToClipboard'; viewState: ViewState };
+  | { type: 'copyToClipboard'; viewState: ViewState }
+  | {
+      type: 'registerAuthZPermissionCheck';
+      name: string;
+      checkPermission: (parm: string) => boolean;
+    }
+  | { type: 'setAuthZReady'; name: string };
 
 const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
   switch (action.type) {
     case 'launchView': {
+      console.log('launchView', {action, state});
       const view = state.views.find((view) => view.viewId === action.viewId);
       if (!view) {
         // todo: log error: view for viewId not found
         return state;
       }
-      let retState: UseShellState = state;
+
+      // execute permissions processing
+      const okToLaunchResult = okToLaunch(
+        {
+          launchInvoker: action.launchInvoker ?? 'direct',
+          view: view,
+          state: action.state,
+        },
+        state
+      );
+
+      if (!okToLaunchResult.okToLaunch) {
+        return okToLaunchResult.state;
+      }
+
+      let retState: UseShellState = okToLaunchResult.state;
       const newState = combineViewStateStateAndActionState(
         view.state,
         action.state
@@ -325,6 +358,7 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
           console.log('launch startup view', view);
           state = reducer(state, {
             type: 'launchView',
+            launchInvoker: 'startup',
             viewId: view.viewId ?? view.componentName,
           });
         });
@@ -431,6 +465,7 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
         state = reducer(state, {
           type: 'launchView',
           viewId,
+          launchInvoker: 'deepLink',
           state: deepLinks[key].state,
         });
       }
@@ -441,9 +476,224 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
       navigator.clipboard.writeText(getViewStateDeepLink(action.viewState));
       break;
     }
+
+    case 'setAuthZReady': {
+      state = {
+        ...state,
+        authZs: {
+          ...(state.authZs ?? {}),
+          [action.name]: {
+            ...(state.authZs[action.name] ?? {
+              launchQ: [],
+              noPermissionsQ: [],
+            }),
+            ready: true,
+          },
+        },
+      };
+      console.log('shell service - setAuthZReady', { state });
+      return state;
+    }
+
+    case 'registerAuthZPermissionCheck': {
+      state = {
+        ...state,
+        authZs: {
+          ...(state.authZs ?? {}),
+          [action.name]: {
+            ...(state.authZs[action.name] ?? {
+              ready: false,
+              launchQ: [],
+              noPermissionsQ: [],
+            }),
+            checkPermission: action.checkPermission,
+          },
+        },
+      };
+
+      console.log('shell service - registerAuthZPermissionCheck', state);
+
+      return processLaunchQ(action.name, state);
+    }
+
+    default: {
+      return state;
+    }
   }
   return state;
 };
+
+function processLaunchQ(name: string, state: UseShellState) {
+  const authZs = state.authZs;
+  if (
+    !authZs ||
+    !authZs[name] ||
+    !authZs[name].launchQ ||
+    authZs[name].launchQ.length < 1
+  ) {
+    console.log('processLaunchQ (do nothing)', { name, state });
+    return state;
+  }
+
+  console.log('processLaunchQ', { name, state });
+  authZs[name].launchQ.forEach((launchItem) => {
+    console.log('launch from launchQ', launchItem);
+    state = reducer(state, {
+      type: 'launchView',
+      viewId: launchItem.viewId,
+      launchInvoker: launchItem.launchInvoker,
+      state: launchItem.state,
+      suppressFocus: true,
+    });
+  });
+
+  console.log('shell service - processLaunchQ', { state });
+  state = {
+    ...state,
+    authZs: {
+      ...authZs,
+      [name]: {
+        ...authZs[name],
+        launchQ: [],
+      },
+    },
+  };
+  return state;
+}
+
+function okToLaunch(
+  launchInfo: {
+    launchInvoker: LaunchInvoker;
+    view: View;
+    state?: StateObject;
+  },
+  state: UseShellState
+): {
+  okToLaunch: boolean;
+  state: UseShellState;
+} {
+  // ------- permissions syntax: --------------
+  //  view.permissions: [<name>:][<parm>]
+  //    if <name>: not provided, use 'primary'
+  // ------------------------------------------
+
+  // if view doesn't require permissions, return true
+  if (
+    !launchInfo.view.permissions ||
+    launchInfo.view.permissions.trim().length < 1
+  ) {
+    return { okToLaunch: true, state };
+  }
+
+  const permissions = launchInfo.view.permissions.trim();
+  const [first, ...rest] = permissions.split(':');
+
+  let name = 'primary';
+  let parm = '';
+
+  if (rest.length < 1) {
+    // name: not provided
+    parm = permissions;
+  } else {
+    name = first;
+    parm = rest.join(':');
+  }
+
+  // see if we are tracking this authZ (create if not)
+  const authZs = state.authZs;
+  let authZ = authZs[name];
+  if (!authZ) {
+    authZ = {
+      ready: false,
+      checkPermission: undefined,
+      launchQ: [],
+      noPermissionsQ: [],
+    };
+  }
+
+  // handle malformed permissions string
+  if (name.length < 1) {
+    state = {
+      ...state,
+      authZs: {
+        ...authZs,
+        [name]: {
+          ...authZ,
+          noPermissionsQ: [
+            ...authZ.noPermissionsQ,
+            {
+              launchInvoker: launchInfo.launchInvoker,
+              viewId:
+                launchInfo.view.viewId ?? 'viewId has value at this point',
+              state: launchInfo.state,
+            },
+          ],
+        },
+      },
+    };
+    console.log(
+      `Warning: view ('${launchInfo.view.viewId}') has malformed permissions('${launchInfo.view.permissions}').`,
+      { name, parm, authZs: state.authZs }
+    );
+    return { okToLaunch: false, state };
+  }
+
+  // handle not ready or permissions function missing
+  if (!authZ.ready || !authZ.checkPermission) {
+    state = {
+      ...state,
+      authZs: {
+        ...authZs,
+        [name]: {
+          ...authZ,
+          launchQ: [
+            ...authZ.launchQ,
+            {
+              launchInvoker: launchInfo.launchInvoker,
+              viewId:
+                launchInfo.view.viewId ?? 'viewId has value at this point',
+              state: launchInfo.state,
+            },
+          ],
+        },
+      },
+    };
+    console.log(
+      `Info: view ('${launchInfo.view.viewId}') --> launchQ ('${launchInfo.view.permissions}').`,
+      { name, parm, authZs: state.authZs }
+    );
+    return { okToLaunch: false, state };
+  }
+
+  // handle permissions check passed
+  if (authZ.checkPermission(parm)) {
+    return { okToLaunch: true, state };
+  }
+
+  // handle permission check not passed
+  state = {
+    ...state,
+    authZs: {
+      ...authZs,
+      [name]: {
+        ...authZ,
+        noPermissionsQ: [
+          ...authZ.noPermissionsQ,
+          {
+            launchInvoker: launchInfo.launchInvoker,
+            viewId: launchInfo.view.viewId ?? 'viewId has value at this point',
+            state: launchInfo.state,
+          },
+        ],
+      },
+    },
+  };
+  console.log(
+    `Info: view ('${launchInfo.view.viewId}') --> noPermissionsQ ('${launchInfo.view.permissions}').`,
+    { name, parm, authZs: state.authZs }
+  );
+  return { okToLaunch: false, state };
+}
 
 export function getViewStateDeepLink(viewState: ViewState): string {
   let ret = `${location.origin}${location.pathname}?`;
@@ -615,6 +865,7 @@ const emptyUseShellState: UseShellState = {
   showUserInfo: true,
   showDevInfo: true,
   navWidth: '320px',
+  authZs: {},
 };
 
 // arg to createContext is used if no provider is defined https://stackoverflow.com/q/49949099/7085047
@@ -687,7 +938,7 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
         type: 'launchDeepLinks',
         queryString,
       });
-      }, 200);
+    }, 200);
   }, []);
 
   return (

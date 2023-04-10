@@ -53,6 +53,7 @@ export function Two(props: TwoProps) {
       componentName: 'V1',
       componentModule: () => import('../../views/v1/v1'),
       key: 'v1',
+      permissions: 'second:role1',
       displayText: 'v1',
       displayIcon: 'cube',
     },
