@@ -22,9 +22,9 @@ export function AuthZCard(props: CardContainerProps) {
     <div className={styles['card-layout']}>
       <div className={styles['card-header']}>hello from auth-z card...</div>
       <div className={styles['card-content-container']}>
+      <div className={styles['pane-header']}>{(props.card.data as {name: string}).name}</div>
         <pre>{JSON.stringify(props.card.data, null, 2)}</pre>
         <hr />
-        <div>{(props.card.data as {name: string}).name}</div>
         <pre>{JSON.stringify(shellState.authZs[(props.card.data as {name: string}).name], null, 2)}</pre>
       </div>
     </div>
