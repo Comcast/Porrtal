@@ -22,9 +22,7 @@ export function ViewsCard(props: CardContainerProps) {
 
   return (
     <div className={styles['card-layout']}>
-      <div className={styles['card-header']}>
-        hello from orphan views card...
-      </div>
+      <div className={styles['card-header']}>orphan views</div>
       <div className={styles['card-content-container']}>
         {Object.keys(shellState.authZs)
           .filter((key) => Object.keys(authZs).every((key2) => key2 !== key))

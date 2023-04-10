@@ -18,7 +18,7 @@ import { CardContainerProps } from '@porrtal/r-shell';
 export function AuthNCard(props: CardContainerProps) {
   return (
     <div className={styles['card-layout']}>
-      <div className={styles['card-header']}>hello from auth-n card...</div>
+      <div className={styles['card-header']}>auth-n</div>
       <div className={styles['card-content-container']}>
         <pre>{JSON.stringify(props.card.data, null, 2)}</pre>
       </div>

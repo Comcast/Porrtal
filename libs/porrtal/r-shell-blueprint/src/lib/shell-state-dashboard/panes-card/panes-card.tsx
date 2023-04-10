@@ -28,7 +28,7 @@ export function PanesCard(props: CardContainerProps) {
 
   return (
     <div className={styles['card-layout']}>
-      <div className={styles['card-header']}>hello from panes card...</div>
+      <div className={styles['card-header']}>panes</div>
       <div className={styles['card-content-container']}>
         <div className={styles['views-container']}>
           {paneArray.map((pane) => (

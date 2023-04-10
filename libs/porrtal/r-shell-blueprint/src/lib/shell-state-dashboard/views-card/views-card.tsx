@@ -23,7 +23,7 @@ export function ViewsCard(props: CardContainerProps) {
 
   return (
     <div className={styles['card-layout']}>
-      <div className={styles['card-header']}>hello from views card...</div>
+      <div className={styles['card-header']}>views</div>
       <div className={styles['card-content-container']}>
         <div className={styles['views-container']}>
           {shellState.views.map((view) => (
