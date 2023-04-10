@@ -21,6 +21,7 @@ import { LoggerBannerComponent } from './logger-banner-props';
 import { SearchComponent } from './search-props';
 import { UserBannerComponent } from './user-banner-props';
 import { ViewStackComponent } from './view-stack-props';
+import { MaximizeHostComponent } from './maximize-host-props';
 
 export interface ShellComponents {
   ViewStack: ViewStackComponent;
@@ -32,6 +33,7 @@ export interface ShellComponents {
   UserBanner?: UserBannerComponent;
   bannerData?: BannerData;
   LoggerBanner: LoggerBannerComponent;
+  MaximizeHost: MaximizeHostComponent;
 }
 
 export const ShellComponentsContext = createContext<

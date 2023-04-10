@@ -13,19 +13,56 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import styles from './auth-z-card.module.scss';
-import { CardContainerProps, useShellState } from '@porrtal/r-shell';
+import {
+  CardContainerProps,
+  useShellDispatch,
+  useShellState,
+} from '@porrtal/r-shell';
+import { Icon } from '@blueprintjs/core';
+import { useRef, useState } from 'react';
 
 export function AuthZCard(props: CardContainerProps) {
   const shellState = useShellState();
+  const shellDispatch = useShellDispatch();
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isMaximized, setIsMaximized] = useState(false);
 
   return (
-    <div className={styles['card-layout']}>
-      <div className={styles['card-header']}>auth-z</div>
+    <div ref={cardRef} className={styles['card-layout']}>
+      {!isMaximized && (
+        <div className={styles['card-header']}>
+          <span>auth-z</span>
+          <Icon
+            icon="arrow-top-right"
+            onClick={() => {
+              if (cardRef.current) {
+                shellDispatch({
+                  type: 'maximize',
+                  htmlEl: cardRef.current,
+                  maximizeText: `auth z: ${
+                    (props.card.data as { name: string }).name
+                  }`,
+                  restore: () => setIsMaximized(false),
+                });
+                setIsMaximized(true);
+              }
+            }}
+          ></Icon>
+        </div>
+      )}
       <div className={styles['card-content-container']}>
-      <div className={styles['pane-header']}>{(props.card.data as {name: string}).name}</div>
+        <div className={styles['pane-header']}>
+          {(props.card.data as { name: string }).name}
+        </div>
         <pre>{JSON.stringify(props.card.data, null, 2)}</pre>
         <hr />
-        <pre>{JSON.stringify(shellState.authZs[(props.card.data as {name: string}).name], null, 2)}</pre>
+        <pre>
+          {JSON.stringify(
+            shellState.authZs[(props.card.data as { name: string }).name],
+            null,
+            2
+          )}
+        </pre>
       </div>
     </div>
   );

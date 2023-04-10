@@ -26,6 +26,7 @@ export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
   const shellComponents = useShellComponents();
   if (shellComponents && typeof window !== 'undefined' && window) {
     return (
+      <>
       <div className={styles['container']}>
         <div className={styles['banner']}>
           <shellComponents.Banner
@@ -111,6 +112,10 @@ export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
         </div>
         <div className={styles['footer']}>footer</div>
       </div>
+      {(shellState.maximizeStack ?? []).map(stackItem => (
+        <shellComponents.MaximizeHost {...stackItem}></shellComponents.MaximizeHost>
+      ))}
+      </>
     );
   } else {
     return <div>no shell components library...</div>;

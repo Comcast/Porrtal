@@ -46,6 +46,15 @@ import SearchState from '../search-state/search-state';
 import { LoggerState } from '../logger-state/logger-state';
 import { v4 as uuidv4 } from 'uuid';
 
+export interface MaximizeItem {
+  htmlEl: HTMLElement;
+  parentHtmlEl: HTMLElement;
+  parentHtmlElChildIndex: number;
+  maximizeText: string;
+  zIndex: number;
+  restore?: () => void;
+}
+
 export interface UseShellState {
   panes: Panes;
   viewComponentModules: ViewComponentModules;
@@ -55,6 +64,8 @@ export interface UseShellState {
   navWidth?: string;
   navTabWidth?: string;
   menuItems?: PorrtalMenuItem[];
+  maximizeZIndex: number;
+  maximizeStack: MaximizeItem[];
   authZs: {
     [name: string]: AuthZ;
   };
@@ -83,6 +94,13 @@ export type ShellAction =
   | { type: 'launchDeepLinks'; queryString: string }
   | { type: 'copyToClipboard'; viewState: ViewState }
   | {
+      type: 'maximize';
+      htmlEl: HTMLElement;
+      maximizeText: string;
+      restore?: () => void;
+    }
+  | { type: 'restoreMaximized' }
+  | {
       type: 'registerAuthZPermissionCheck';
       name: string;
       checkPermission: (parm: string) => boolean;
@@ -92,7 +110,7 @@ export type ShellAction =
 const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
   switch (action.type) {
     case 'launchView': {
-      console.log('launchView', {action, state});
+      console.log('launchView', { action, state });
       const view = state.views.find((view) => view.viewId === action.viewId);
       if (!view) {
         // todo: log error: view for viewId not found
@@ -477,6 +495,54 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
       break;
     }
 
+    case 'maximize': {
+      const parentEl = action.htmlEl.parentElement;
+      if (!parentEl) {
+        console.log(
+          'error. called shell state service: maximize with element with no parent element'
+        );
+        return state;
+      }
+
+      state = {
+        ...state,
+        maximizeZIndex: state.maximizeZIndex + 10,
+        maximizeStack: [
+          ...state.maximizeStack,
+          {
+            htmlEl: action.htmlEl,
+            maximizeText: action.maximizeText,
+            parentHtmlEl: parentEl,
+            parentHtmlElChildIndex: Array.prototype.indexOf.call(
+              parentEl.children,
+              action.htmlEl
+            ),
+            zIndex: state.maximizeZIndex,
+            restore: action.restore,
+          },
+        ],
+      };
+      return state;
+    }
+
+    case 'restoreMaximized': {
+      const newMaximizeStack = [...state.maximizeStack];
+      const maximizeItem = newMaximizeStack.pop();
+
+      // parent back to original parent
+      maximizeItem?.parentHtmlEl.insertBefore(
+        maximizeItem.htmlEl,
+        maximizeItem.parentHtmlEl.children[maximizeItem.parentHtmlElChildIndex]
+      );
+
+      state = {
+        ...state,
+        maximizeZIndex: state.maximizeZIndex - 10,
+        maximizeStack: newMaximizeStack,
+      };
+      return state;
+    }
+
     case 'setAuthZReady': {
       state = {
         ...state,
@@ -552,7 +618,7 @@ function processLaunchQ(name: string, state: UseShellState) {
     authZs: {
       ...state.authZs,
       [name]: {
-        ...(state.authZs[name]),
+        ...state.authZs[name],
         launchQ: [],
       },
     },
@@ -866,6 +932,8 @@ const emptyUseShellState: UseShellState = {
   showDevInfo: true,
   navWidth: '320px',
   authZs: {},
+  maximizeStack: [],
+  maximizeZIndex: 90
 };
 
 // arg to createContext is used if no provider is defined https://stackoverflow.com/q/49949099/7085047
