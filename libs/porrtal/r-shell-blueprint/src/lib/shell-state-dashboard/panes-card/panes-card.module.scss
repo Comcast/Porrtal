@@ -23,3 +23,9 @@
     grid-template-columns: auto auto auto 1fr;
     column-gap: 5px;
 }
+
+.pane-header {
+    grid-column: 1 / -1;
+    color: $pt-dark-text-color;
+    background-color: $pt-intent-warning;
+}
