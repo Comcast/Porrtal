@@ -13,12 +13,38 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import styles from './auth-n-card.module.scss';
-import { CardContainerProps } from '@porrtal/r-shell';
+import { CardContainerProps, useShellDispatch } from '@porrtal/r-shell';
+import { Icon } from '@blueprintjs/core';
+import { useRef, useState } from 'react';
 
 export function AuthNCard(props: CardContainerProps) {
+  const shellDispatch = useShellDispatch();
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isMaximized, setIsMaximized] = useState(false);
+
   return (
-    <div className={styles['card-layout']}>
-      <div className={styles['card-header']}>auth-n</div>
+    <div ref={cardRef} className={styles['card-layout']}>
+      {!isMaximized && (
+        <div className={styles['card-header']}>
+          <span>auth-n</span>
+          <Icon
+            icon="arrow-top-right"
+            onClick={() => {
+              if (cardRef.current) {
+                shellDispatch({
+                  type: 'maximize',
+                  htmlEl: cardRef.current,
+                  maximizeText: `auth z: ${
+                    (props.card.data as { name: string }).name
+                  }`,
+                  restore: () => setIsMaximized(false),
+                });
+                setIsMaximized(true);
+              }
+            }}
+          ></Icon>
+        </div>
+      )}
       <div className={styles['card-content-container']}>
         <pre>{JSON.stringify(props.card.data, null, 2)}</pre>
       </div>

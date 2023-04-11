@@ -11,6 +11,10 @@
 .card-header {
     color: $pt-dark-text-color;
     background-color: $pt-intent-primary;
+    padding: 5px;
+    padding-left: 10px;
+    display: grid;
+    grid-template-columns: 1fr auto;
 }
 
 .card-content-container {

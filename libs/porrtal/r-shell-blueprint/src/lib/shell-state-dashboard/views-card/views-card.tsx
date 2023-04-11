@@ -13,17 +13,40 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import styles from './views-card.module.scss';
-import { CardContainerProps, useShellState } from '@porrtal/r-shell';
+import { CardContainerProps, useShellDispatch, useShellState } from '@porrtal/r-shell';
 import { Icon } from '@blueprintjs/core';
-import { Fragment } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import { Tooltip2 } from '@blueprintjs/popover2';
 
 export function ViewsCard(props: CardContainerProps) {
   const shellState = useShellState();
+  const shellDispatch = useShellDispatch();
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isMaximized, setIsMaximized] = useState(false);
 
   return (
-    <div className={styles['card-layout']}>
-      <div className={styles['card-header']}>views</div>
+    <div ref={cardRef} className={styles['card-layout']}>
+      {!isMaximized && (
+        <div className={styles['card-header']}>
+          <span>views</span>
+          <Icon
+            icon="arrow-top-right"
+            onClick={() => {
+              if (cardRef.current) {
+                shellDispatch({
+                  type: 'maximize',
+                  htmlEl: cardRef.current,
+                  maximizeText: `auth z: ${
+                    (props.card.data as { name: string }).name
+                  }`,
+                  restore: () => setIsMaximized(false),
+                });
+                setIsMaximized(true);
+              }
+            }}
+          ></Icon>
+        </div>
+      )}
       <div className={styles['card-content-container']}>
         <div className={styles['views-container']}>
           {shellState.views.map((view) => (

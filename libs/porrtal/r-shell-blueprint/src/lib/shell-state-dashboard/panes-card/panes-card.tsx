@@ -13,22 +13,46 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import styles from './panes-card.module.scss';
-import { CardContainerProps, useShellState } from '@porrtal/r-shell';
+import { CardContainerProps, useShellDispatch, useShellState } from '@porrtal/r-shell';
 import { Icon } from '@blueprintjs/core';
-import { Fragment } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import { Tooltip2 } from '@blueprintjs/popover2';
 import { Pane, PaneType } from '@porrtal/r-api';
 
 export function PanesCard(props: CardContainerProps) {
   const shellState = useShellState();
+  const shellDispatch = useShellDispatch();
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isMaximized, setIsMaximized] = useState(false);
+
   const paneArray = Object.keys(shellState.panes)
     .map((key) => shellState.panes[key as unknown as PaneType])
     .filter((pane: Pane) => pane.viewStates.length > 0)
     .sort((pane1, pane2) => pane2.viewStates.length - pane1.viewStates.length);
 
   return (
-    <div className={styles['card-layout']}>
-      <div className={styles['card-header']}>panes</div>
+    <div ref={cardRef} className={styles['card-layout']}>
+      {!isMaximized && (
+        <div className={styles['card-header']}>
+          <span>panes</span>
+          <Icon
+            icon="arrow-top-right"
+            onClick={() => {
+              if (cardRef.current) {
+                shellDispatch({
+                  type: 'maximize',
+                  htmlEl: cardRef.current,
+                  maximizeText: `auth z: ${
+                    (props.card.data as { name: string }).name
+                  }`,
+                  restore: () => setIsMaximized(false),
+                });
+                setIsMaximized(true);
+              }
+            }}
+          ></Icon>
+        </div>
+      )}
       <div className={styles['card-content-container']}>
         <div className={styles['views-container']}>
           {paneArray.map((pane) => (
