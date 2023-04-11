@@ -42,7 +42,7 @@ export function CardsContainer(props: CardsContainerProps) {
     <div className={styles['container-container']}>
       <div className={styles['cards-container']}>
         {props.cards.map((card) => (
-          <CardContainer card={card} />
+          <CardContainer key={card.key} card={card} />
         ))}
       </div>
     </div>
@@ -59,7 +59,7 @@ export function CardContainer(props: CardContainerProps) {
   }, [props.card.component]);
 
   return (
-    <Card className={styles['card-container']}>
+    <Card key={props.card.key} className={styles['card-container']}>
       {DynComp ? (
         <Suspense fallback={<div>loading...</div>}>
           <DynComp card={props.card} />

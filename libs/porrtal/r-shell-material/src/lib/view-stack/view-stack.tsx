@@ -142,7 +142,8 @@ function ViewStackTabsTop(
                   showDevInfo={props.showDevInfo}
                   dispatch={props.dispatch}
                   item={item}
-                  viewHostElement={viewHostRef.current?.[index]}
+                  viewHostElements={viewHostRef.current}
+                  viewHostElementIndex={index}
                 ></ViewStackContextMenu>
               }
             ></Tab>
@@ -164,6 +165,7 @@ function ViewStackTabsTop(
             ref={(element) => {
               viewHostRef.current[index] = element;
             }}
+            key={item.key}
           >
             <ViewHost
               key={item.key}
@@ -225,7 +227,8 @@ function ViewStackTabsLeft(
                   showDevInfo={props.showDevInfo}
                   dispatch={props.dispatch}
                   item={item}
-                  viewHostElement={viewHostRef.current?.[index]}
+                  viewHostElements={viewHostRef.current}
+                  viewHostElementIndex={index}
                 ></ViewStackContextMenu>
               }
             ></Tab>
@@ -238,6 +241,7 @@ function ViewStackTabsLeft(
             ref={(element) => {
               viewHostRef.current[index] = element;
             }}
+            key={item.key}
           >
             <ViewHost
               key={item.key}
@@ -247,6 +251,7 @@ function ViewStackTabsLeft(
           </div>
         ))}
         <div
+          key="ind"
           style={{
             zIndex: 5,
             backgroundColor: 'white',
@@ -294,8 +299,9 @@ function ViewStackCards(
                     showDevInfo={props.showDevInfo}
                     dispatch={props.dispatch}
                     item={item}
-                    viewHostElement={viewHostRef.current?.[index]}
-                  ></ViewStackContextMenu>
+                    viewHostElements={viewHostRef.current}
+                    viewHostElementIndex={index}
+                    ></ViewStackContextMenu>
                 </Button>
               }
             ></CardHeader>
@@ -322,7 +328,8 @@ export default ViewStack;
 function ViewStackContextMenu(
   props: ViewStackProps & {
     dispatch: Dispatch<ShellAction>;
-    viewHostElement: HTMLDivElement | null;
+    viewHostElements: (HTMLDivElement | null)[];
+    viewHostElementIndex: number;
   } & {
     item: ViewState;
   }
@@ -341,10 +348,11 @@ function ViewStackContextMenu(
       label: 'maximize tab',
       leftIcon: <Icon>north_east</Icon>,
       callback: () => {
-        if (props.viewHostElement) {
+        const htmlEl = props.viewHostElements[props.viewHostElementIndex];
+        if (htmlEl) {
           props.dispatch({
             type: 'maximize',
-            htmlEl: props.viewHostElement,
+            htmlEl,
             maximizeText: `${props.item.displayText}`,
           });
         }
@@ -481,12 +489,16 @@ function ViewStackContextMenu(
           &nbsp;
           <Icon
             onClick={() => {
-              if (props.viewHostElement) {
+              const htmlEl = props.viewHostElements[props.viewHostElementIndex];
+              if (htmlEl) {
+                console.log('maximize...');
                 props.dispatch({
                   type: 'maximize',
-                  htmlEl: props.viewHostElement,
+                  htmlEl,
                   maximizeText: `${props.item.displayText}`,
                 });
+              } else {
+                console.log('maximize failure: no view host element...');
               }
             }}
             style={{ position: 'relative', top: '5px' }}

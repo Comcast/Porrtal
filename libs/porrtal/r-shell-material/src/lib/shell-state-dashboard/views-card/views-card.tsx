@@ -62,11 +62,11 @@ export function ViewsCard(props: CardContainerProps) {
         <div className={styles['views-container']}>
           {shellState.views.map((view) => (
             <Fragment key={view.viewId}>
-              <span key="launchAtStartup">
+              <span key={`launchAtStartup:${view.viewId}`}>
                 {view.launchAtStartup && <Icon>rocket_launch</Icon>}
               </span>
 
-              <span key="permissions">
+              <span key={`permissions:${view.viewId}`}>
                 {view.permissions && (
                   <Tooltip title={view.permissions}>
                     <Icon>lock</Icon>
@@ -74,7 +74,7 @@ export function ViewsCard(props: CardContainerProps) {
                 )}
               </span>
 
-              <span key="entityType">
+              <span key={`entityType:${view.viewId}`}>
                 {view.entityType && (
                   <Tooltip title={view.entityType}>
                     <Icon>category</Icon>
@@ -82,7 +82,7 @@ export function ViewsCard(props: CardContainerProps) {
                 )}
               </span>
 
-              <span key="viewId">{view.viewId}</span>
+              <span key={`viewId:${view.viewId}`}>{view.viewId}</span>
             </Fragment>
           ))}
         </div>

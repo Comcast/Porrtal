@@ -20,10 +20,10 @@ import {
 } from '@porrtal/r-shell';
 import { useAuthZsState } from '@porrtal/r-user';
 import { Icon } from '@mui/material';
-import { useRef, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import { useTheme } from '@mui/material';
 
-export function ViewsCard(props: CardContainerProps) {
+export function OrphanViewsCard(props: CardContainerProps) {
   const shellState = useShellState();
   const authZs = useAuthZsState();
   const shellDispatch = useShellDispatch();
@@ -63,8 +63,9 @@ export function ViewsCard(props: CardContainerProps) {
         {Object.keys(shellState.authZs)
           .filter((key) => Object.keys(authZs).every((key2) => key2 !== key))
           .map((key) => (
-            <>
+            <Fragment key={key}>
               <div
+                key={key}
                 className={styles['pane-header']}
                 style={{
                   color: theme.palette.secondary.contrastText,
@@ -73,12 +74,12 @@ export function ViewsCard(props: CardContainerProps) {
               >
                 {key}
               </div>
-              <pre>{JSON.stringify(shellState.authZs[key], null, 2)}</pre>
-            </>
+              <pre key={`json:${key}`}>{JSON.stringify(shellState.authZs[key], null, 2)}</pre>
+            </Fragment>
           ))}
       </div>
     </div>
   );
 }
 
-export default ViewsCard;
+export default OrphanViewsCard;
