@@ -124,7 +124,8 @@ function ViewStackTabsTop(
               showDevInfo={props.showDevInfo}
               dispatch={props.dispatch}
               item={item}
-              viewHostElement={viewHostRef.current?.[index]}
+              viewHostElements={viewHostRef.current}
+              viewHostElementIndex={index}
             ></ViewStackContextMenu>
           }
           panel={
@@ -188,7 +189,8 @@ function ViewStackTabsLeft(
               showDevInfo={props.showDevInfo}
               dispatch={props.dispatch}
               item={item}
-              viewHostElement={viewHostRef.current?.[index]}
+              viewHostElements={viewHostRef.current}
+              viewHostElementIndex={index}
             ></ViewStackContextMenu>
           }
           panel={
@@ -248,7 +250,8 @@ function ViewStackCards(
                 showDevInfo={props.showDevInfo}
                 dispatch={props.dispatch}
                 item={item}
-                viewHostElement={viewHostRef.current?.[index]}
+                viewHostElements={viewHostRef.current}
+                viewHostElementIndex={index}
               ></ViewStackContextMenu>
             </Button>
             <div
@@ -271,7 +274,8 @@ export default ViewStack;
 function ViewStackContextMenu(
   props: ViewStackProps & {
     dispatch: Dispatch<ShellAction>;
-    viewHostElement: HTMLDivElement | null;
+    viewHostElements: (HTMLDivElement | null)[];
+    viewHostElementIndex: number;
   } & {
     item: ViewState;
   }
@@ -293,10 +297,11 @@ function ViewStackContextMenu(
             icon={'arrow-top-right'}
             text={`maximize tab`}
             onClick={(evt) => {
-              if (props.viewHostElement) {
+              const htmlEl = props.viewHostElements[props.viewHostElementIndex];
+              if (htmlEl) {
                 props.dispatch({
                   type: 'maximize',
-                  htmlEl: props.viewHostElement,
+                  htmlEl,
                   maximizeText: `${props.item.displayText}`,
                 });
               }
@@ -468,10 +473,11 @@ function ViewStackContextMenu(
             className={styles['maximize-icon']}
             icon="arrow-top-right"
             onClick={() => {
-              if (props.viewHostElement) {
+              const htmlEl = props.viewHostElements[props.viewHostElementIndex];
+              if (htmlEl) {
                 props.dispatch({
                   type: 'maximize',
-                  htmlEl: props.viewHostElement,
+                  htmlEl,
                   maximizeText: `${props.item.displayText}`,
                 });
               }

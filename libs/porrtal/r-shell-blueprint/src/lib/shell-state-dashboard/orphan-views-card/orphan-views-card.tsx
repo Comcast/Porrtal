@@ -13,10 +13,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import styles from './orphan-views-card.module.scss';
-import { CardContainerProps, useShellState, useShellDispatch } from '@porrtal/r-shell';
+import {
+  CardContainerProps,
+  useShellState,
+  useShellDispatch,
+} from '@porrtal/r-shell';
 import { useAuthZsState } from '@porrtal/r-user';
 import { Icon } from '@blueprintjs/core';
-import { useRef, useState } from 'react';
+import { Fragment, useRef, useState } from 'react';
 
 export function ViewsCard(props: CardContainerProps) {
   const shellState = useShellState();
@@ -52,10 +56,10 @@ export function ViewsCard(props: CardContainerProps) {
         {Object.keys(shellState.authZs)
           .filter((key) => Object.keys(authZs).every((key2) => key2 !== key))
           .map((key) => (
-            <>
+            <Fragment key={key}>
               <div className={styles['pane-header']}>{key}</div>
               <pre>{JSON.stringify(shellState.authZs[key], null, 2)}</pre>
-            </>
+            </Fragment>
           ))}
       </div>
     </div>
