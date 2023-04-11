@@ -20,7 +20,7 @@ import {
 } from '@porrtal/r-shell';
 import { Icon } from '@mui/material';
 import { Fragment, useRef, useState } from 'react';
-import { Tooltip2 } from '@blueprintjs/popover2';
+import { Tooltip } from '@mui/material';
 import { useTheme } from '@mui/material';
 
 export function ViewsCard(props: CardContainerProps) {
@@ -68,17 +68,17 @@ export function ViewsCard(props: CardContainerProps) {
 
               <span key="permissions">
                 {view.permissions && (
-                  <Tooltip2 content={view.permissions}>
+                  <Tooltip title={view.permissions}>
                     <Icon>lock</Icon>
-                  </Tooltip2>
+                  </Tooltip>
                 )}
               </span>
 
               <span key="entityType">
                 {view.entityType && (
-                  <Tooltip2 content={view.entityType}>
+                  <Tooltip title={view.entityType}>
                     <Icon>category</Icon>
-                  </Tooltip2>
+                  </Tooltip>
                 )}
               </span>
 
