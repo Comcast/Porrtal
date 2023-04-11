@@ -26,6 +26,11 @@ limitations under the License.
   .header {
     display: grid;
     grid-template-columns: 1fr auto;
+    color: $pt-dark-text-color;
+    background-color: $pt-intent-primary;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   
   .content {
@@ -40,7 +45,6 @@ limitations under the License.
   
   .restore-button {
     position: relative;
-    left: 15px;
     height: 32px !important;
     width: 32px !important;
     min-width: unset !important;

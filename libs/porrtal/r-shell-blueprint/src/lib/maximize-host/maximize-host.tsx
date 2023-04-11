@@ -32,17 +32,15 @@ export function MaximizeHost(props: MaximizeHostProps) {
     <div className={styles['container']} style={{ zIndex: props.zIndex }}>
       <div className={styles['header']}>
         <div>{props.maximizeText}</div>
-        <button
-          onClick={() => {
-            shellDispatch({
-              type: 'restoreMaximized',
-            });
-            props.restore?.();
-          }}
-          className={styles['restore-button']}
-        >
-          <Icon icon="minimize"></Icon>
-        </button>
+          <Icon
+            onClick={() => {
+              shellDispatch({
+                type: 'restoreMaximized',
+              });
+              props.restore?.();
+            }}
+            icon="minimize"
+          ></Icon>
       </div>
       {/* </mat-toolbar> */}
       <div className={styles['content']}>
