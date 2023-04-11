@@ -47,6 +47,7 @@ import { LoggerState } from '../logger-state/logger-state';
 import { v4 as uuidv4 } from 'uuid';
 
 export interface MaximizeItem {
+  key: string;
   htmlEl: HTMLElement;
   parentHtmlEl: HTMLElement;
   parentHtmlElChildIndex: number;
@@ -504,12 +505,15 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
         return state;
       }
 
+      const key = uuidv4();
+
       state = {
         ...state,
         maximizeZIndex: state.maximizeZIndex + 10,
         maximizeStack: [
           ...state.maximizeStack,
           {
+            key,
             htmlEl: action.htmlEl,
             maximizeText: action.maximizeText,
             parentHtmlEl: parentEl,
