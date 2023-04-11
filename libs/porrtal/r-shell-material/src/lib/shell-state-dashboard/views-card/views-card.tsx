@@ -47,9 +47,7 @@ export function ViewsCard(props: CardContainerProps) {
                 shellDispatch({
                   type: 'maximize',
                   htmlEl: cardRef.current,
-                  maximizeText: `auth z: ${
-                    (props.card.data as { name: string }).name
-                  }`,
+                  maximizeText: `views`,
                   restore: () => setIsMaximized(false),
                 });
                 setIsMaximized(true);

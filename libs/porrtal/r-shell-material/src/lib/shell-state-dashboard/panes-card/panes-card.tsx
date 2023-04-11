@@ -53,9 +53,7 @@ export function PanesCard(props: CardContainerProps) {
                 shellDispatch({
                   type: 'maximize',
                   htmlEl: cardRef.current,
-                  maximizeText: `auth z: ${
-                    (props.card.data as { name: string }).name
-                  }`,
+                  maximizeText: `panes`,
                   restore: () => setIsMaximized(false),
                 });
                 setIsMaximized(true);
