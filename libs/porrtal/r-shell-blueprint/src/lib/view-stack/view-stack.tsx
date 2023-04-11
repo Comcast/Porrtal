@@ -218,44 +218,15 @@ function ViewStackTabsLeft(
   );
 }
 
-function ViewStackTab(
-  props: ViewStackProps & { dispatch: Dispatch<ShellAction>; item: ViewState }
-) {
-  const viewHostRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <Tab
-      id={props.item.key}
-      key={props.item.key}
-      title={
-        <ViewStackContextMenu
-          pane={props.pane}
-          showUserInfo={props.showUserInfo}
-          showDevInfo={props.showDevInfo}
-          dispatch={props.dispatch}
-          item={props.item}
-          viewHostElement={viewHostRef.current}
-        ></ViewStackContextMenu>
-      }
-      panel={
-        <div ref={viewHostRef} className={styles['viewHostContainer']}>
-          <ViewHost key={props.item.key} viewState={props.item}></ViewHost>
-        </div>
-      }
-      className={styles['tab']}
-    />
-  );
-}
-
 function ViewStackCards(
   props: ViewStackProps & { dispatch: Dispatch<ShellAction> }
 ) {
-  const viewHostRef = useRef<HTMLDivElement>(null);
+  const viewHostRef = useRef<(HTMLDivElement | null)[]>([]);
 
   return (
     <div className={styles['card-container']}>
       <div className={styles['cards']}>
-        {props.pane.viewStates.map((item) => (
+        {props.pane.viewStates.map((item, index) => (
           <Card id={item.key} key={item.key} className={`${styles['card']}`}>
             <Button
               className={
@@ -277,10 +248,15 @@ function ViewStackCards(
                 showDevInfo={props.showDevInfo}
                 dispatch={props.dispatch}
                 item={item}
-                viewHostElement={viewHostRef.current}
+                viewHostElement={viewHostRef.current?.[index]}
               ></ViewStackContextMenu>
             </Button>
-            <div ref={viewHostRef} className={styles['viewHostContainer']}>
+            <div
+              ref={(element) => {
+                viewHostRef.current[index] = element;
+              }}
+              className={styles['viewHostContainer']}
+            >
               <ViewHost key={item.key} viewState={item}></ViewHost>
             </div>
           </Card>
