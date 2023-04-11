@@ -16,7 +16,8 @@ import { useAuthN, useAuthNDispatch } from '@porrtal/r-user';
 import styles from './user-banner.module.scss';
 import LoginDialog from './login-dialog/login-dialog';
 import { useState } from 'react';
-import { Button, Typography } from '@mui/material';
+import { Button, Icon, Typography } from '@mui/material';
+import { useShellDispatch } from '@porrtal/r-shell';
 
 /* eslint-disable-next-line */
 export interface UserBannerProps {}
@@ -25,6 +26,7 @@ export function UserBanner(props: UserBannerProps) {
   const auth = useAuthN();
   const authDispatch = useAuthNDispatch();
   const [open, setOpen] = useState(false);
+  const shellDispatch = useShellDispatch();
 
   console.log(
     `UserBanner: auth def'd(${auth ? 'true' : 'false'}), authNState('${
@@ -79,6 +81,15 @@ export function UserBanner(props: UserBannerProps) {
             Logout
           </Button>
         )}
+        <Icon
+          onClick={() =>
+            shellDispatch({
+              type: 'launchView',
+              viewId: 'shell-state-dashboard',
+            })
+          }
+        >key</Icon>
+
         <LoginDialog
           open={open}
           loginStrategy={

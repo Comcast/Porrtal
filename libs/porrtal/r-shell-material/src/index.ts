@@ -33,3 +33,4 @@ export * from './lib/entity-menu/entity-menu';
 export * from './lib/search/search';
 export * from './lib/shell-material';
 export * from './lib/context-menu/ContextMenu';
+export * from './lib/shell-state-dashboard/shell-state-dashboard';
