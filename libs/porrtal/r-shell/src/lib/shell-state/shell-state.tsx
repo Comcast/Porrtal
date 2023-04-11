@@ -361,6 +361,14 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
       if (!newView.key) {
         newView.key = uuidv4();
       }
+      if (state.views.some((view) => view.viewId === newView.viewId)) {
+        console.log(`warning: trying to register duplicate view`, {
+          views: state.views,
+          newView,
+        });
+        return state;
+      }
+
       const menuItems = updateMenus(newView, state.menuItems);
 
       return {
@@ -937,7 +945,7 @@ const emptyUseShellState: UseShellState = {
   navWidth: '320px',
   authZs: {},
   maximizeStack: [],
-  maximizeZIndex: 90
+  maximizeZIndex: 90,
 };
 
 // arg to createContext is used if no provider is defined https://stackoverflow.com/q/49949099/7085047

@@ -28,4 +28,3 @@ export * from './lib/shell-utilities/shell-utilities';
 export * from './lib/banner-menu-bar-props';
 export * from './lib/banner-menu-inline-props'
 export * from './lib/login-dialog-state/login-dialog-state';
-export * from './lib/cards-container/cards-container';

@@ -35,3 +35,4 @@ export * from './lib/shell-material';
 export * from './lib/context-menu/ContextMenu';
 export * from './lib/shell-state-dashboard/shell-state-dashboard';
 export * from './lib/maximize-host/maximize-host';
+export * from './lib/cards-container/cards-container';
