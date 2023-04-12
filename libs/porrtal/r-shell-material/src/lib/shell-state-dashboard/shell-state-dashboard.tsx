@@ -16,12 +16,12 @@ limitations under the License.
 import { StateObject } from "@porrtal/r-api";
 import { useShellState } from "@porrtal/r-shell";
 import { useAuthZsState } from "@porrtal/r-user";
-import { useAuthNState } from "@porrtal/r-user-mock";
+import { useAuthNInfo } from "@porrtal/r-user-mock";
 import { useEffect, useState } from "react";
 import { CardMeta, CardsContainer } from "../cards-container/cards-container";
 
 export function ShellStateDashboard() {
-    const authNState = useAuthNState();
+    const authNInfo = useAuthNInfo();
     const shellState = useShellState();
     const authZsState = useAuthZsState();
     const [cards, setCards] = useState<CardMeta[]>([]);
@@ -31,7 +31,7 @@ export function ShellStateDashboard() {
             {
                 key: 'auth-n-card',
                 component: () => import('./auth-n-card/auth-n-card'),
-                data: authNState as unknown as StateObject
+                data: authNInfo as unknown as StateObject
             },
             {
                 key: 'views-card',
@@ -56,7 +56,7 @@ export function ShellStateDashboard() {
         ];
         
         setCards(cards);
-    }, [authNState, shellState, authZsState]);
+    }, [authNInfo, shellState, authZsState]);
 
     return (
         <CardsContainer cards={cards}></CardsContainer>
