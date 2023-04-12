@@ -19,20 +19,17 @@ import {
   AuthNContext,
   AuthNDispatchContext,
   AuthZs,
+  AuthNState,
 } from '@porrtal/r-user';
 import { AuthNInterface } from '@porrtal/r-user';
 import {
-  createContext,
-  Dispatch,
   Reducer,
   useContext,
   useEffect,
-  useMemo,
   useReducer,
-  useState,
 } from 'react';
 
-export interface AuthNState {
+export interface AuthNInfo {
   authN: AuthNInterface;
   props: MockAuthenticationProps;
   localState: {
@@ -43,10 +40,10 @@ export interface AuthNState {
 const initalAuthN: AuthNInterface = {
   user: undefined,
   loginStrategy: 'loginWithRedirect' as LoginStrategy,
-  authNState: 'initialized',
+  authNState: 'initialized' as AuthNState,
 };
 
-const reducer: Reducer<AuthNState, AuthNAction> = (state, action) => {
+const reducer: Reducer<AuthNInfo, AuthNAction> = (state, action) => {
   switch (action.type) {
     case 'update': {
       const newState = {
@@ -77,7 +74,10 @@ const reducer: Reducer<AuthNState, AuthNAction> = (state, action) => {
         ...state,
         authN: {
           ...state.authN,
-          authNState: 'initialized',
+          authNState: 'initialized' as AuthNState,
+          loginStrategy:
+            state.authN?.loginStrategy ??
+            ('loginWithRedirect' as LoginStrategy),
         },
       };
       console.log('AuthN Reducer (logout)...', { oldState: state, newState });
@@ -89,9 +89,9 @@ const reducer: Reducer<AuthNState, AuthNAction> = (state, action) => {
   }
 };
 
-export function useAuthNState(): AuthNInterface {
-  const authZs = useContext(AuthNContext);
-  return authZs;
+export function useAuthNInfo(): AuthNInterface {
+  const authN = useContext(AuthNContext);
+  return authN;
 }
 
 interface MockAdapterProps {
@@ -141,7 +141,7 @@ function MockAuthenticationAdapter(props: MockAuthenticationProps) {
       // if we created a timer, destroy it if effect gets destroyed
       return () => {
         clearTimeout(timeout);
-      }
+      };
     }
   }, [state.localState.loginCount]);
 

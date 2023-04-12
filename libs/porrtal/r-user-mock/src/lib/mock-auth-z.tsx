@@ -21,7 +21,7 @@ import {
   useAuthZsState,
 } from '@porrtal/r-user';
 import { useEffect } from 'react';
-import { useAuthNState } from './mock-authentication';
+import { useAuthNInfo } from './mock-authentication';
 
 export interface MockAuthZProps {
   name: string;
@@ -39,7 +39,7 @@ export interface MockAuthZProps {
 }
 
 export function MockAuthZ(props: MockAuthZProps) {
-  const authNState = useAuthNState();
+  const authNState = useAuthNInfo();
   const authZsDispatch = useAuthZsDispatch();
   const shellDipatch = useShellDispatch();
 
