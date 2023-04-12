@@ -13,10 +13,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import styles from './views-card.module.scss';
-import { CardContainerProps, useShellDispatch, useShellState } from '@porrtal/r-shell';
+import { useShellDispatch, useShellState } from '@porrtal/r-shell';
 import { Icon } from '@blueprintjs/core';
 import { Fragment, useRef, useState } from 'react';
 import { Tooltip2 } from '@blueprintjs/popover2';
+import { CardContainerProps } from '../../cards-container/cards-container';
 
 export function ViewsCard(props: CardContainerProps) {
   const shellState = useShellState();

@@ -13,14 +13,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import styles from './orphan-views-card.module.scss';
-import {
-  CardContainerProps,
-  useShellState,
-  useShellDispatch,
-} from '@porrtal/r-shell';
+import { useShellState, useShellDispatch } from '@porrtal/r-shell';
 import { useAuthZsState } from '@porrtal/r-user';
 import { Icon } from '@blueprintjs/core';
 import { Fragment, useRef, useState } from 'react';
+import { CardContainerProps } from '../../cards-container/cards-container';
 
 export function ViewsCard(props: CardContainerProps) {
   const shellState = useShellState();

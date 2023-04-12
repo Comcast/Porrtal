@@ -13,13 +13,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import styles from './auth-z-card.module.scss';
-import {
-  CardContainerProps,
-  useShellDispatch,
-  useShellState,
-} from '@porrtal/r-shell';
+import { useShellDispatch, useShellState } from '@porrtal/r-shell';
 import { Icon } from '@blueprintjs/core';
 import { useRef, useState } from 'react';
+import { CardContainerProps } from '../../cards-container/cards-container';
 
 export function AuthZCard(props: CardContainerProps) {
   const shellState = useShellState();

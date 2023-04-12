@@ -13,9 +13,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import styles from './auth-n-card.module.scss';
-import { CardContainerProps, useShellDispatch } from '@porrtal/r-shell';
+import { useShellDispatch } from '@porrtal/r-shell';
 import { Icon, useTheme } from '@mui/material';
 import { useRef, useState } from 'react';
+import { CardContainerProps } from '../../cards-container/cards-container';
 
 export function AuthNCard(props: CardContainerProps) {
   const shellDispatch = useShellDispatch();
@@ -26,12 +27,13 @@ export function AuthNCard(props: CardContainerProps) {
   return (
     <div ref={cardRef} className={styles['card-layout']}>
       {!isMaximized && (
-        <div className={styles['card-header']}
-        style={{
-          color: theme.palette.primary.contrastText,
-          backgroundColor: theme.palette.primary.main,
-        }}
->
+        <div
+          className={styles['card-header']}
+          style={{
+            color: theme.palette.primary.contrastText,
+            backgroundColor: theme.palette.primary.main,
+          }}
+        >
           <span>auth-n</span>
           <Icon
             onClick={() => {
@@ -45,7 +47,9 @@ export function AuthNCard(props: CardContainerProps) {
                 setIsMaximized(true);
               }
             }}
-          >north_east</Icon>
+          >
+            north_east
+          </Icon>
         </div>
       )}
       <div className={styles['card-content-container']}>

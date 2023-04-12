@@ -13,15 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import styles from './views-card.module.scss';
-import {
-  CardContainerProps,
-  useShellDispatch,
-  useShellState,
-} from '@porrtal/r-shell';
+import { useShellDispatch, useShellState } from '@porrtal/r-shell';
 import { Icon } from '@mui/material';
 import { Fragment, useRef, useState } from 'react';
 import { Tooltip } from '@mui/material';
 import { useTheme } from '@mui/material';
+import { CardContainerProps } from '../../cards-container/cards-container';
 
 export function ViewsCard(props: CardContainerProps) {
   const shellState = useShellState();

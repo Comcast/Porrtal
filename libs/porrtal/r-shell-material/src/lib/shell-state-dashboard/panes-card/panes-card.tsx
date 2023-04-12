@@ -13,16 +13,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import styles from './panes-card.module.scss';
-import {
-  CardContainerProps,
-  useShellDispatch,
-  useShellState,
-} from '@porrtal/r-shell';
+import { useShellDispatch, useShellState } from '@porrtal/r-shell';
 import { Icon } from '@mui/material';
 import { Fragment, useRef, useState } from 'react';
 import { Tooltip } from '@mui/material';
 import { Pane, PaneType } from '@porrtal/r-api';
 import { useTheme } from '@mui/material';
+import { CardContainerProps } from '../../cards-container/cards-container';
 
 export function PanesCard(props: CardContainerProps) {
   const shellState = useShellState();
@@ -59,7 +56,9 @@ export function PanesCard(props: CardContainerProps) {
                 setIsMaximized(true);
               }
             }}
-          >north_east</Icon>
+          >
+            north_east
+          </Icon>
         </div>
       )}
       <div className={styles['card-content-container']}>

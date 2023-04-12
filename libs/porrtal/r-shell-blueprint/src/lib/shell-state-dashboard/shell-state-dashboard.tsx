@@ -14,11 +14,11 @@ limitations under the License.
 */
 
 import { StateObject } from "@porrtal/r-api";
-import { CardMeta, useShellState } from "@porrtal/r-shell";
+import { useShellState } from "@porrtal/r-shell";
 import { useAuthZsState } from "@porrtal/r-user";
 import { useAuthNState } from "@porrtal/r-user-mock";
 import { useEffect, useState } from "react";
-import { CardsContainer } from "../cards-container/cards-container";
+import { CardMeta, CardsContainer } from "../cards-container/cards-container";
 
 export function ShellStateDashboard() {
     const authNState = useAuthNState();

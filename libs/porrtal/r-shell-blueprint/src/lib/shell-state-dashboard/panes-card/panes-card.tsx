@@ -13,11 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import styles from './panes-card.module.scss';
-import { CardContainerProps, useShellDispatch, useShellState } from '@porrtal/r-shell';
+import { useShellDispatch, useShellState } from '@porrtal/r-shell';
 import { Icon } from '@blueprintjs/core';
 import { Fragment, useRef, useState } from 'react';
 import { Tooltip2 } from '@blueprintjs/popover2';
 import { Pane, PaneType } from '@porrtal/r-api';
+import { CardContainerProps } from '../../cards-container/cards-container';
 
 export function PanesCard(props: CardContainerProps) {
   const shellState = useShellState();

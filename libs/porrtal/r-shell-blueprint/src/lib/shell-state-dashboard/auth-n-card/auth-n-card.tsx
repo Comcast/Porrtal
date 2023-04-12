@@ -13,9 +13,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import styles from './auth-n-card.module.scss';
-import { CardContainerProps, useShellDispatch } from '@porrtal/r-shell';
+import { useShellDispatch } from '@porrtal/r-shell';
 import { Icon } from '@blueprintjs/core';
 import { useRef, useState } from 'react';
+import { CardContainerProps } from '../../cards-container/cards-container';
 
 export function AuthNCard(props: CardContainerProps) {
   const shellDispatch = useShellDispatch();

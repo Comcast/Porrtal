@@ -13,15 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import styles from './orphan-views-card.module.scss';
-import {
-  CardContainerProps,
-  useShellState,
-  useShellDispatch,
-} from '@porrtal/r-shell';
+import { useShellState, useShellDispatch } from '@porrtal/r-shell';
 import { useAuthZsState } from '@porrtal/r-user';
 import { Icon } from '@mui/material';
 import { Fragment, useRef, useState } from 'react';
 import { useTheme } from '@mui/material';
+import { CardContainerProps } from '../../cards-container/cards-container';
 
 export function OrphanViewsCard(props: CardContainerProps) {
   const shellState = useShellState();
@@ -74,7 +71,9 @@ export function OrphanViewsCard(props: CardContainerProps) {
               >
                 {key}
               </div>
-              <pre key={`json:${key}`}>{JSON.stringify(shellState.authZs[key], null, 2)}</pre>
+              <pre key={`json:${key}`}>
+                {JSON.stringify(shellState.authZs[key], null, 2)}
+              </pre>
             </Fragment>
           ))}
       </div>
