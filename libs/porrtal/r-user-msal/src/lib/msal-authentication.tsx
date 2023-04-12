@@ -18,12 +18,98 @@ import {
   PublicClientApplication,
 } from '@azure/msal-browser';
 import { MsalProvider, useMsal } from '@azure/msal-react';
-import { AuthNContext } from '@porrtal/r-user';
+import { LoginStrategy } from '@porrtal/r-shell';
+import { AuthNAction, AuthNContext, AuthNDispatchContext, AuthNState, AuthZs } from '@porrtal/r-user';
 import { AuthNInterface } from '@porrtal/r-user';
-import { useState } from 'react';
+import { Reducer, useContext, useEffect, useReducer, useState } from 'react';
+
+export interface AuthNInfo {
+  authN: AuthNInterface;
+  props: MsalAuthenticationProps;
+  localState: {
+    loginCount: number;
+  };
+}
+
+const initalAuthN: AuthNInterface = {
+  user: undefined,
+  loginStrategy: 'loginWithRedirect' as LoginStrategy,
+  authNState: 'initialized' as AuthNState,
+};
+
+const reducer: Reducer<AuthNInfo, AuthNAction> = (state, action) => {
+  switch (action.type) {
+    case 'update': {
+      const newState = {
+        ...state,
+        authN: {
+          ...(state.authN ?? initalAuthN),
+          ...action.updateInfo,
+        },
+      };
+      console.log('AuthN Reducer (update)...', { oldState: state, newState });
+      return newState;
+    }
+
+    case 'loginWithRedirect': {
+      const newState = {
+        ...state,
+        localState: { loginCount: state.localState.loginCount + 1 },
+      };
+      console.log('AuthN Reducer (loginWithRedirect)...', {
+        oldState: state,
+        newState,
+      });
+      return newState;
+    }
+
+    case 'logout': {
+      const newState = {
+        ...state,
+        authN: {
+          ...state.authN,
+          authNState: 'initialized' as AuthNState,
+          loginStrategy:
+            state.authN?.loginStrategy ??
+            ('loginWithRedirect' as LoginStrategy),
+        },
+      };
+      console.log('AuthN Reducer (logout)...', { oldState: state, newState });
+      return newState;
+    }
+
+    default:
+      return state;
+  }
+};
+
+export function useAuthNInfo(): AuthNInterface {
+  const authN = useContext(AuthNContext);
+  return authN;
+}
 
 interface MsalAdapterProps {
   children?: React.ReactNode;
+}
+
+function MockAuthenticationAdapter(props: MsalAuthenticationProps) {
+  const [state, dispatch] = useReducer(reducer, {
+    authN: initalAuthN,
+    props,
+    localState: { loginCount: 0 },
+  });
+
+  useEffect(() => {
+    console.log('MsalAdapter (login count)...', state);
+  }, [state.localState.loginCount]);
+
+  return (
+    <AuthNContext.Provider value={state.authN}>
+      <AuthNDispatchContext.Provider value={dispatch}>
+        <AuthZs>{props.children}</AuthZs>
+      </AuthNDispatchContext.Provider>
+    </AuthNContext.Provider>
+  );
 }
 
 function MsalAdapter(props: MsalAdapterProps) {
@@ -59,22 +145,8 @@ function MsalAdapter(props: MsalAdapterProps) {
   const activeAccount = msalInstance?.getActiveAccount();
 
   const auth: AuthNInterface = {
-    user:
-      msalContext && msalContext.instance && activeAccount
-        ? ({ name: activeAccount.name, email: activeAccount.username } as {
-            name: string;
-            email: string;
-          })
-        : undefined,
     loginStrategy: 'loginWithRedirect',
-    loginWithRedirect: () => {
-      msalContext?.instance?.loginRedirect();
-    },
-    logout: () => {
-      msalContext?.instance?.logoutRedirect();
-    },
-    isAuthenticated: !!activeAccount,
-    isInitialized: true,
+    authNState: 'initialized'
   };
 
   return (
