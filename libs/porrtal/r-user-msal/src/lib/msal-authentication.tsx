@@ -20,6 +20,7 @@ import {
   PublicClientApplication,
 } from '@azure/msal-browser';
 import { IMsalContext, MsalProvider, useMsal } from '@azure/msal-react';
+import { StateObject } from '@porrtal/r-api';
 import { LoginStrategy } from '@porrtal/r-shell';
 import {
   AuthNAction,
@@ -152,8 +153,9 @@ function MsalAdapter(props: MsalAuthenticationProps) {
               authNState: 'authenticated',
               user: {
                 name: acct.name ?? '',
-                email: acct.username ?? '',
+                email: acct?.idTokenClaims?.['mail'] as string ?? '',
               },
+              claims: acct.idTokenClaims as StateObject | undefined
             },
           });
         }
@@ -180,8 +182,9 @@ function MsalAdapter(props: MsalAuthenticationProps) {
               authNState: 'authenticated',
               user: {
                 name: account?.name ?? '',
-                email: account?.username ?? '',
+                email: account?.idTokenClaims?.['mail'] as string ?? '',
               },
+              claims: account.idTokenClaims as StateObject | undefined,
             },
           });
         }
