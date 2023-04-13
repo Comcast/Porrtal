@@ -120,8 +120,8 @@ export function Two(props: TwoProps) {
           <MsalAuthentication msalConfig={msalConfig}>
             <ShellBlueprint
               bannerData={{
-                displayText: 'porrtal-auth - nextjs - mock (blueprint)',
-                displayIcon: 'cyclone',
+                displayText: 'porrtal-auth - nextjs - msal (blueprint)',
+                displayIcon: 'hurricane',
               }}
             />
           </MsalAuthentication>

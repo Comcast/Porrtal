@@ -125,7 +125,7 @@ export function Index() {
           <MsalAuthentication msalConfig={msalConfig}>
             <ShellMaterial
               bannerData={{
-                displayText: 'porrtal-auth - nextjs - msal',
+                displayText: 'porrtal-auth - nextjs - msal (material)',
                 displayIcon: 'cyclone',
               }}
             />
