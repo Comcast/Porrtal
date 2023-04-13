@@ -31,6 +31,7 @@ import {
 } from '@porrtal/r-user';
 import { AuthNInterface } from '@porrtal/r-user';
 import { Reducer, useContext, useEffect, useReducer, useState } from 'react';
+import { MsalAuthZ } from './msal-auth-z';
 
 interface MsalAuthNInfo {
   authN: AuthNInterface;
@@ -153,9 +154,9 @@ function MsalAdapter(props: MsalAuthenticationProps) {
               authNState: 'authenticated',
               user: {
                 name: acct.name ?? '',
-                email: acct?.idTokenClaims?.['mail'] as string ?? '',
+                email: (acct?.idTokenClaims?.['mail'] as string) ?? '',
               },
-              claims: acct.idTokenClaims as StateObject | undefined
+              claims: acct.idTokenClaims as StateObject | undefined,
             },
           });
         }
@@ -182,7 +183,7 @@ function MsalAdapter(props: MsalAuthenticationProps) {
               authNState: 'authenticated',
               user: {
                 name: account?.name ?? '',
-                email: account?.idTokenClaims?.['mail'] as string ?? '',
+                email: (account?.idTokenClaims?.['mail'] as string) ?? '',
               },
               claims: account.idTokenClaims as StateObject | undefined,
             },
@@ -202,7 +203,9 @@ function MsalAdapter(props: MsalAuthenticationProps) {
     <MsalProvider instance={state.msalInstance}>
       <AuthNContext.Provider value={state.authN}>
         <AuthNDispatchContext.Provider value={dispatch}>
-          <AuthZs>{props.children}</AuthZs>
+          <AuthZs>
+            <MsalAuthZ>{props.children}</MsalAuthZ>
+          </AuthZs>
         </AuthNDispatchContext.Provider>
       </AuthNContext.Provider>
     </MsalProvider>

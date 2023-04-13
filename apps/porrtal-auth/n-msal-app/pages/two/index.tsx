@@ -7,14 +7,14 @@ import { useEffect, useState } from 'react';
 import styles from './index.module.scss';
 import Head from 'next/head';
 import { ShellState } from '@porrtal/r-shell';
-import { MockAuthentication, MockAuthZ } from '@porrtal/r-user-mock';
 import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
+import { MsalAuthentication } from '@porrtal/r-user-msal';
+import { msalConfig } from '../../msal-config';
 
 /* eslint-disable-next-line */
 export interface TwoProps {}
 
 export function Two(props: TwoProps) {
-
   const views: View[] = [
     {
       viewId: 'main-view',
@@ -64,7 +64,7 @@ export function Two(props: TwoProps) {
       componentName: 'V2',
       componentModule: () => import('../../views/v2/v2'),
       key: 'v2',
-      permissions: 'primary:role1',
+      permissions: 'primary:public',
       displayText: 'v2',
       displayIcon: 'cube',
     },
@@ -117,61 +117,14 @@ export function Two(props: TwoProps) {
         </Head>
 
         <ShellState views={views}>
-          <MockAuthentication
-            authN={{
-              loginAtStartup: true,
-              loginDelay: 3000,
-              errorMessage: 'silly error in auth n...',
-            }}
-          >
-            <MockAuthZ
-              name="primary"
-              config={{
-                fetchDelay: 3000,
-                shouldFail: true,
-                errorInfo: { message: 'silly configuration error...' },
+          <MsalAuthentication msalConfig={msalConfig}>
+            <ShellBlueprint
+              bannerData={{
+                displayText: 'porrtal-auth - nextjs - mock (blueprint)',
+                displayIcon: 'cyclone',
               }}
-            >
-              <MockAuthZ
-                name="second"
-                config={{
-                  fetchDelay: 5000,
-                  shouldFail: false,
-                  scopes: ['scope1', 'scope2', 'scope3'],
-                  warningInfo: {
-                    message: 'it is probably ok, but you should know...',
-                  },
-                  props: {
-                    one: 1,
-                    two: 2,
-                    sub: {
-                      sub_one: 1.1,
-                    },
-                  },
-                  roles: ['role1', 'role2'],
-                  pendingViews: [
-                    {
-                      type: 'startup',
-                      viewId: 'v2',
-                      state: { someProperty: 'some value...' },
-                    },
-                    {
-                      type: 'deep-link',
-                      viewId: 'v3',
-                      state: { anotherProperty: 'another value...' },
-                    },
-                  ],
-                }}
-              >
-                <ShellBlueprint
-                  bannerData={{
-                    displayText: 'porrtal-auth - nextjs - mock (blueprint)',
-                    displayIcon: 'cyclone',
-                  }}
-                />
-              </MockAuthZ>
-            </MockAuthZ>
-          </MockAuthentication>
+            />
+          </MsalAuthentication>
         </ShellState>
       </>
     );

@@ -59,6 +59,7 @@ const views: View[] = [
     componentName: 'V1',
     componentModule: () => import('../views/v1/v1'),
     key: 'v1',
+    permissions: 'primary:public',
     displayText: 'v1',
     displayIcon: 'view_in_ar',
   },
@@ -69,6 +70,7 @@ const views: View[] = [
     componentName: 'V2',
     componentModule: () => import('../views/v2/v2'),
     key: 'v2',
+    permissions: 'primary:not-in-role',
     displayText: 'v2',
     displayIcon: 'view_in_ar',
   },
@@ -79,6 +81,7 @@ const views: View[] = [
     componentName: 'V3',
     componentModule: () => import('../views/v3/v3'),
     key: 'v3',
+    permissions: 'orphan-auth-z:role6',
     displayText: 'v3',
     displayIcon: 'view_in_ar',
   },
@@ -118,16 +121,16 @@ export function Index() {
           <title>@porrtal - porrtal-auth - n-auth0-app</title>
         </Head>
 
-        <MsalAuthentication msalConfig={msalConfig}>
-          <ShellState views={views}>
+        <ShellState views={views}>
+          <MsalAuthentication msalConfig={msalConfig}>
             <ShellMaterial
               bannerData={{
                 displayText: 'porrtal-auth - nextjs - msal',
                 displayIcon: 'cyclone',
               }}
             />
-          </ShellState>
-        </MsalAuthentication>
+          </MsalAuthentication>
+        </ShellState>
       </>
     );
   }
