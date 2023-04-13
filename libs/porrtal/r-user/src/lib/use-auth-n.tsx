@@ -19,10 +19,6 @@ export const AuthNContext = createContext<AuthNInterface>(null);
 
 export type AuthNAction =
   | {
-      type: 'update';
-      updateInfo: Partial<AuthNInterface>;
-    }
-  | {
       type: 'loginWithRedirect';
     }
     | {

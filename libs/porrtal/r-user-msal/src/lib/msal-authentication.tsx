@@ -13,18 +13,29 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import {
+  AccountInfo,
   Configuration,
   EventType,
+  IPublicClientApplication,
   PublicClientApplication,
 } from '@azure/msal-browser';
-import { MsalProvider, useMsal } from '@azure/msal-react';
+import { IMsalContext, MsalProvider, useMsal } from '@azure/msal-react';
 import { LoginStrategy } from '@porrtal/r-shell';
-import { AuthNAction, AuthNContext, AuthNDispatchContext, AuthNState, AuthZs } from '@porrtal/r-user';
+import {
+  AuthNAction,
+  AuthNContext,
+  AuthNDispatchContext,
+  AuthNState,
+  AuthZs,
+} from '@porrtal/r-user';
 import { AuthNInterface } from '@porrtal/r-user';
 import { Reducer, useContext, useEffect, useReducer, useState } from 'react';
 
-export interface AuthNInfo {
+interface MsalAuthNInfo {
   authN: AuthNInterface;
+  msalContext: IMsalContext;
+  msalInstance: IPublicClientApplication;
+  activeAccount?: AccountInfo;
   props: MsalAuthenticationProps;
   localState: {
     loginCount: number;
@@ -37,8 +48,25 @@ const initalAuthN: AuthNInterface = {
   authNState: 'initialized' as AuthNState,
 };
 
-const reducer: Reducer<AuthNInfo, AuthNAction> = (state, action) => {
+type MsalAuthNAction =
+  | { type: 'setActiveAccount'; activeAccount: AccountInfo }
+  | {
+      type: 'update';
+      updateInfo: Partial<AuthNInterface>;
+    };
+
+const reducer: Reducer<MsalAuthNInfo, AuthNAction | MsalAuthNAction> = (
+  state,
+  action
+) => {
   switch (action.type) {
+    case 'setActiveAccount': {
+      return {
+        ...state,
+        activeAccount: action.activeAccount,
+      };
+    }
+
     case 'update': {
       const newState = {
         ...state,
@@ -64,6 +92,7 @@ const reducer: Reducer<AuthNInfo, AuthNAction> = (state, action) => {
     }
 
     case 'logout': {
+      state.msalInstance.logout();
       const newState = {
         ...state,
         authN: {
@@ -83,7 +112,7 @@ const reducer: Reducer<AuthNInfo, AuthNAction> = (state, action) => {
   }
 };
 
-export function useAuthNInfo(): AuthNInterface {
+export function useAuthN(): AuthNInterface {
   const authN = useContext(AuthNContext);
   return authN;
 }
@@ -92,65 +121,88 @@ interface MsalAdapterProps {
   children?: React.ReactNode;
 }
 
-function MockAuthenticationAdapter(props: MsalAuthenticationProps) {
+function MsalAdapter(props: MsalAuthenticationProps) {
+  const msalContext = useMsal();
   const [state, dispatch] = useReducer(reducer, {
     authN: initalAuthN,
+    msalContext,
+    msalInstance: new PublicClientApplication(props.msalConfig),
     props,
     localState: { loginCount: 0 },
   });
 
   useEffect(() => {
-    console.log('MsalAdapter (login count)...', state);
-  }, [state.localState.loginCount]);
-
-  return (
-    <AuthNContext.Provider value={state.authN}>
-      <AuthNDispatchContext.Provider value={dispatch}>
-        <AuthZs>{props.children}</AuthZs>
-      </AuthNDispatchContext.Provider>
-    </AuthNContext.Provider>
-  );
-}
-
-function MsalAdapter(props: MsalAdapterProps) {
-  const msalContext = useMsal();
-  const msalInstance = msalContext?.instance;
-  const [msalActiveAccount, setMsalInstance] = useState(msalInstance?.getActiveAccount());
-
-  if (msalInstance) {
-    if (
-      !msalInstance.getActiveAccount() &&
-      msalInstance.getAllAccounts().length > 0
-    ) {
-      // Account selection logic is app dependent. Adjust as needed for different use cases.
-      msalInstance.setActiveAccount(msalInstance.getAllAccounts()[0]);
-      setMsalInstance(msalInstance.getActiveAccount());
-    }
-
-    // Optional - This will update account state if a user signs in from another tab or window
-    msalInstance.enableAccountStorageEvents();
-
-    msalInstance.addEventCallback((event: any) => {
+    state.msalInstance.addEventCallback((event: any) => {
       if (
         event.eventType === EventType.LOGIN_SUCCESS &&
         event.payload.account
       ) {
         const account = event.payload.account;
-        msalInstance.setActiveAccount(account);
-        setMsalInstance(msalInstance.getActiveAccount());
+        state.msalInstance.setActiveAccount(account);
+        const acct = state.msalInstance.getActiveAccount();
+        if (acct) {
+          console.log('msal auth n: event...', acct);
+          dispatch({
+            type: 'setActiveAccount',
+            activeAccount: account,
+          });
+          dispatch({
+            type: 'update',
+            updateInfo: {
+              authNState: 'authenticated',
+              user: {
+                name: acct.name ?? '',
+                email: acct.username ?? '',
+              },
+            },
+          });
+        }
       }
     });
-  }
 
-  const activeAccount = msalInstance?.getActiveAccount();
+    // handle auth redired/do all initial setup for msal
+    state.msalInstance
+      .handleRedirectPromise()
+      .then((authResult) => {
+        // Check if user signed in
+        const account = state.msalInstance.getActiveAccount();
+        if (!account) {
+          // redirect anonymous user to login page
+          state.msalInstance.loginRedirect();
+        } else {
+          dispatch({
+            type: 'setActiveAccount',
+            activeAccount: account,
+          });
+          dispatch({
+            type: 'update',
+            updateInfo: {
+              authNState: 'authenticated',
+              user: {
+                name: account?.name ?? '',
+                email: account?.username ?? '',
+              },
+            },
+          });
+        }
+      })
+      .catch((err) => {
+        // TODO: Handle errors
+        console.log(err);
+      });
 
-  const auth: AuthNInterface = {
-    loginStrategy: 'loginWithRedirect',
-    authNState: 'initialized'
-  };
+    // Optional - This will update account state if a user signs in from another tab or window
+    state.msalInstance.enableAccountStorageEvents();
+  }, []);
 
   return (
-    <AuthNContext.Provider value={auth}>{props.children}</AuthNContext.Provider>
+    <MsalProvider instance={state.msalInstance}>
+      <AuthNContext.Provider value={state.authN}>
+        <AuthNDispatchContext.Provider value={dispatch}>
+          <AuthZs>{props.children}</AuthZs>
+        </AuthNDispatchContext.Provider>
+      </AuthNContext.Provider>
+    </MsalProvider>
   );
 }
 
@@ -160,12 +212,5 @@ export interface MsalAuthenticationProps {
 }
 
 export function MsalAuthentication(props: MsalAuthenticationProps) {
-  const [msalInstance, setMsalInstance] = useState(
-    new PublicClientApplication(props.msalConfig)
-  );
-  return (
-    <MsalProvider instance={msalInstance}>
-      <MsalAdapter>{props.children}</MsalAdapter>
-    </MsalProvider>
-  );
+  return <MsalAdapter {...props}></MsalAdapter>;
 }

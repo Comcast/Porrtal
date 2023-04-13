@@ -37,13 +37,20 @@ export interface AuthNInfo {
   };
 }
 
+type MockAuthNAction = 
+  | { type: 'myCustomAction', blar: { x: string }}
+  | {
+    type: 'update';
+    updateInfo: Partial<AuthNInterface>;
+  }
+
 const initalAuthN: AuthNInterface = {
   user: undefined,
   loginStrategy: 'loginWithRedirect' as LoginStrategy,
   authNState: 'initialized' as AuthNState,
 };
 
-const reducer: Reducer<AuthNInfo, AuthNAction> = (state, action) => {
+const reducer: Reducer<AuthNInfo, AuthNAction | MockAuthNAction> = (state, action) => {
   switch (action.type) {
     case 'update': {
       const newState = {
