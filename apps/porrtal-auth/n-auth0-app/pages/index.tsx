@@ -91,6 +91,16 @@ const views: View[] = [
     displayText: 'v4',
     displayIcon: 'view_in_ar',
   },
+  {
+    viewId: 'shell-state-dashboard',
+    paneType: 'bottom',
+    launchAtStartup: false,
+    componentName: 'ShellStateDashboard',
+    componentModule: () => import('@porrtal/r-shell-material'),
+    key: 'shell-state-dashboard',
+    displayText: 'Shell State Dashboard',
+    displayIcon: 'key',
+  },
 ];
 
 export function Index() {
