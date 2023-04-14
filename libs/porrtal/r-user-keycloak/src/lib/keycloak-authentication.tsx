@@ -201,10 +201,9 @@ function KeycloakAdapter(props: KeycloakAuthAdapterProps) {
   return (
     <AuthNContext.Provider value={props.state.authN}>
       <AuthNDispatchContext.Provider value={props.dispatch}>
-        {/* <AuthZs>
+        <AuthZs>
           <KeycloakAuthZ>{props.children}</KeycloakAuthZ>
-        </AuthZs> */}
-        {props.children}
+        </AuthZs>
       </AuthNDispatchContext.Provider>
     </AuthNContext.Provider>
   );

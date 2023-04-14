@@ -14,9 +14,8 @@ limitations under the License.
 */
 
 import { useShellDispatch } from '@porrtal/r-shell';
-import { useAuthZsDispatch } from '@porrtal/r-user';
+import { useAuthN, useAuthZsDispatch } from '@porrtal/r-user';
 import { useEffect } from 'react';
-import { useAuthN } from './keycloak-authentication';
 
 export interface KeycloakAuthZProps {
   children?: React.ReactNode;
@@ -56,7 +55,7 @@ export function KeycloakAuthZ(props: KeycloakAuthZProps) {
       }
 
       case 'authenticated': {
-        const roles = ['athenticated'];
+        const roles = ['authenticated'];
 
         console.log('msal auth z roles:', {
           roles,
