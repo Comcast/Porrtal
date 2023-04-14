@@ -91,6 +91,16 @@ const views: View[] = [
     displayText: 'v4',
     displayIcon: 'view_in_ar',
   },
+  {
+    viewId: 'shell-state-dashboard',
+    paneType: 'bottom',
+    launchAtStartup: false,
+    componentName: 'ShellStateDashboard',
+    componentModule: () => import('@porrtal/r-shell-material'),
+    key: 'shell-state-dashboard',
+    displayText: 'Shell State Dashboard',
+    displayIcon: 'key',
+  },
 ];
 
 export function Index() {
@@ -107,21 +117,21 @@ export function Index() {
           <title>@porrtal - porrtal-auth - n-auth0-app</title>
         </Head>
 
-        <KeycloakAuthentication
-          uri="http://localhost:8080"
-          realm="porrtal"
-          clientId="porrtal-app"
-          redirectUri="http://localhost:4200"
-        >
-          <ShellState views={views}>
+        <ShellState views={views}>
+          <KeycloakAuthentication
+            uri="http://localhost:8080"
+            realm="porrtal"
+            clientId="porrtal-app"
+            redirectUri="http://localhost:4200"
+          >
             <ShellMaterial
               bannerData={{
                 displayText: 'porrtal-auth - nextjs - keycloak',
                 displayIcon: 'cyclone',
               }}
             />
-          </ShellState>
-        </KeycloakAuthentication>
+          </KeycloakAuthentication>
+        </ShellState>
       </>
     );
   }
