@@ -123,7 +123,7 @@ export function Two(props: TwoProps) {
           >
             <ShellBlueprint
               bannerData={{
-                displayText: 'porrtal-auth - nextjs - msal (blueprint)',
+                displayText: 'porrtal-auth - nextjs - keycloak (blueprint)',
                 displayIcon: 'hurricane',
               }}
             />
