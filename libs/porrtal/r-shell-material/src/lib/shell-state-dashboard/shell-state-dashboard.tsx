@@ -25,9 +25,13 @@ export function ShellStateDashboard() {
     const shellState = useShellState();
     const authZsState = useAuthZsState();
     const [cards, setCards] = useState<CardMeta[]>([]);
+    const [authZCards, setAuthZCards] = useState<CardMeta[]>([]);
+
+    console.log('shell state dashboard', {authZsState});
 
     useEffect(() => {
-        const cards = [
+
+        const cardList = [
             {
                 key: 'auth-n-card',
                 component: () => import('./auth-n-card/auth-n-card'),
@@ -48,6 +52,16 @@ export function ShellStateDashboard() {
                 component: () => import('./orphan-views-card/orphan-views-card'),
                 data: { myData: 'hello there :)'}
             },
+        ];
+        
+        console.log('shell state dashboard - setting cards', {cardList});
+
+        setCards(cardList);
+    }, [authNInfo]);
+
+    useEffect(() => {
+
+        const cardList = [
             ...Object.keys(authZsState).map(name => ({
                 key: name,
                 component: () => import('./auth-z-card/auth-z-card'),
@@ -55,10 +69,12 @@ export function ShellStateDashboard() {
             }))
         ];
         
-        setCards(cards);
-    }, [authNInfo, shellState, authZsState]);
+        console.log('shell state dashboard - setting cards', {authZsState, cardList});
+
+        setAuthZCards(cardList);
+    }, [authZsState]);
 
     return (
-        <CardsContainer cards={cards}></CardsContainer>
+        <CardsContainer cards={[...cards, ...authZCards]}></CardsContainer>
     );
 }

@@ -18,92 +18,43 @@ import {
   User,
   useAuth0,
 } from '@auth0/auth0-react';
-import { StateObject } from '@porrtal/r-api';
 import { LoginStrategy } from '@porrtal/r-shell';
 import {
   AuthNAction,
   AuthNContext,
   AuthNDispatchContext,
   AuthNState,
+  AuthZs,
 } from '@porrtal/r-user';
 import { AuthNInterface } from '@porrtal/r-user';
-import { Dispatch, ReactNode, Reducer, useEffect, useReducer } from 'react';
-
-interface Auth0AdapterProps {
-  children?: React.ReactNode;
-}
+import { ReactNode, Reducer, useEffect, useReducer } from 'react';
+import { Auth0AuthZ } from './auth0-auth-z';
+import { StateObject } from '@porrtal/r-api';
 
 interface Auth0AuthNInfo {
-  authN: AuthNInterface;
-  auth0?: Auth0ContextInterface<User>;
-  config: {
-    domain: string;
-    clientId: string;
-    redirectUri: string;
-  };
   localState: {
     loginCount: number;
     registerCount: number;
     logoutCount: number;
   };
+  claims?: StateObject;
 }
 
-const initalAuthN: AuthNInterface = {
-  user: undefined,
-  loginStrategy: 'loginWithRedirect' as LoginStrategy,
-  authNState: 'initialized' as AuthNState,
+type Auth0AuthNAction = {
+  type: 'setClaims';
+  claims: StateObject;
 };
-
-type Auth0AuthNAction =
-  | {
-      type: 'setAuth0';
-      auth0: Auth0ContextInterface<User>;
-    }
-  | {
-      type: 'processAuth0Authentication';
-    }
-  | {
-      type: 'update';
-      updateInfo: Partial<AuthNInterface>;
-    };
 
 const reducer: Reducer<Auth0AuthNInfo, AuthNAction | Auth0AuthNAction> = (
   state,
   action
 ) => {
   switch (action.type) {
-    case 'processAuth0Authentication': {
+    case 'setClaims': {
       const newState: Auth0AuthNInfo = {
         ...state,
-        authN: {
-          loginStrategy: 'loginWithRedirect',
-          authNState: 'authenticated',
-          user: {
-            name: state.auth0?.user?.nickname ?? '',
-            email: state.auth0?.user?.email ?? '',
-          },
-        },
+        claims: action.claims,
       };
-      return newState;
-    }
-
-    case 'setAuth0': {
-      const newState = {
-        ...state,
-        auth0: action.auth0,
-      };
-      return newState;
-    }
-
-    case 'update': {
-      const newState = {
-        ...state,
-        authN: {
-          ...(state.authN ?? initalAuthN),
-          ...action.updateInfo,
-        },
-      };
-      console.log('AuthN Reducer (update)...', { oldState: state, newState });
       return newState;
     }
 
@@ -115,31 +66,18 @@ const reducer: Reducer<Auth0AuthNInfo, AuthNAction | Auth0AuthNAction> = (
           loginCount: state.localState.loginCount + 1,
         },
       };
-      console.log('AuthN Reducer (loginWithRedirect)...', {
-        oldState: state,
-        newState,
-      });
       return newState;
     }
 
     case 'logout': {
-      // state.msalInstance.logout();
       console.log('logout...');
       const newState: Auth0AuthNInfo = {
         ...state,
-        authN: {
-          ...state.authN,
-          authNState: 'initialized' as AuthNState,
-          loginStrategy:
-            state.authN?.loginStrategy ??
-            ('loginWithRedirect' as LoginStrategy),
-        },
         localState: {
           ...state.localState,
           logoutCount: state.localState.logoutCount + 1,
         },
       };
-      console.log('AuthN Reducer (logout)...', { oldState: state, newState });
       return newState;
     }
 
@@ -149,73 +87,54 @@ const reducer: Reducer<Auth0AuthNInfo, AuthNAction | Auth0AuthNAction> = (
 };
 
 interface Auth0AuthAdapterProps {
-  state: Auth0AuthNInfo;
-  dispatch: Dispatch<AuthNAction | Auth0AuthNAction>;
   children?: ReactNode;
 }
 
-function Auth0Adapter(props: Auth0AuthAdapterProps) {
+function Auth0Adapter(props: Auth0AuthenticationProps) {
   const auth0 = useAuth0();
 
-  useEffect(() => {
-    props.dispatch({
-      type: 'setAuth0',
-      auth0,
-    });
-  }, [auth0]);
+  const [state, dispatch] = useReducer(reducer, {
+    localState: { loginCount: 0, logoutCount: 0, registerCount: 0 },
+  });
+
+  const authN: AuthNInterface = {
+    loginStrategy: 'loginWithRedirect',
+    authNState: auth0?.isAuthenticated
+      ? 'authenticated'
+      : auth0?.isLoading
+      ? 'authenticating'
+      : 'initialized',
+    user: {
+      name: auth0?.user?.nickname ?? '',
+      email: auth0?.user?.email ?? '',
+    },
+    claims: state.claims,
+  };
 
   useEffect(() => {
-    if (auth0.isLoading) {
-      // props.dispatch({
-      //   type: 'update',
-      //   updateInfo: {
-      //     authNState: 'authenticating',
-      //   },
-      // });
-    } else {
-      if (auth0.isAuthenticated) {
-        props.dispatch({
-          type: 'processAuth0Authentication',
-        });
-
-        auth0.getIdTokenClaims().then((token) => {
-          props.dispatch({
-            type: 'update',
-            updateInfo: {
-              claims: token as unknown as StateObject,
-            },
-          });
-        });
-      }
-    }
-  }, [auth0.isAuthenticated, auth0.isLoading]);
-
-  useEffect(() => {
-    if (props.state.localState.loginCount > 0) {
-      props.dispatch({
-        type: 'update',
-        updateInfo: {
-          authNState: 'authenticating',
-        },
-      });
-
+    if (state.localState.loginCount > 0) {
       auth0?.loginWithRedirect();
     }
-  }, [props.state.localState.loginCount]);
+  }, [state.localState.loginCount]);
 
   useEffect(() => {
-    if (props.state.localState.logoutCount > 0) {
+    if (state.localState.logoutCount > 0) {
       auth0?.logout();
     }
-  }, [props.state.localState.logoutCount]);
+  }, [state.localState.logoutCount]);
+
+  useEffect(() => {
+    auth0?.getIdTokenClaims().then((claims) => {
+      dispatch({ type: 'setClaims', claims: claims as unknown as StateObject });
+    });
+  }, [auth0?.isAuthenticated]);
 
   return (
-    <AuthNContext.Provider value={props.state.authN}>
-      <AuthNDispatchContext.Provider value={props.dispatch}>
-        {/* <AuthZs>
-          <KeycloakAuthZ>{props.children}</KeycloakAuthZ>
-        </AuthZs> */}
-        {props.children}
+    <AuthNContext.Provider value={authN}>
+      <AuthNDispatchContext.Provider value={dispatch}>
+        <AuthZs>
+          <Auth0AuthZ>{props.children}</Auth0AuthZ>
+        </AuthZs>
       </AuthNDispatchContext.Provider>
     </AuthNContext.Provider>
   );
@@ -229,25 +148,13 @@ export interface Auth0AuthenticationProps {
 }
 
 export function Auth0Authentication(props: Auth0AuthenticationProps) {
-  const [state, dispatch] = useReducer(reducer, {
-    authN: initalAuthN,
-    config: {
-      domain: props.domain,
-      clientId: props.clientId,
-      redirectUri: props.redirectUri,
-    },
-    localState: { loginCount: 0, logoutCount: 0, registerCount: 0 },
-  });
-
   return (
     <Auth0Provider
       domain={props.domain}
       clientId={props.clientId}
       redirectUri={props.redirectUri}
     >
-      <Auth0Adapter {...props} state={state} dispatch={dispatch}>
-        {props.children}
-      </Auth0Adapter>
+      <Auth0Adapter {...props}>{props.children}</Auth0Adapter>
     </Auth0Provider>
   );
 }

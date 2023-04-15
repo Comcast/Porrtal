@@ -54,9 +54,10 @@ const reducer: Reducer<UseAuthZs, AuthZsAction> = (state, action) => {
     }
 
     case 'insert': {
-      const newState = {
+      const newState: UseAuthZs = {
         ...state,
         [action.name]: {
+          state: 'init',
           ...action.updateInfo,
           name: action.name
         },
@@ -85,6 +86,8 @@ export function useAuthZsDispatch(): Dispatch<AuthZsAction> {
 
 export function AuthZs(props: PropsWithChildren) {
   const [state, dispatch] = useReducer(reducer, {});
+
+  console.log('<AuthZs>', {state});
 
   return (
     <AuthZsStateContext.Provider value={state}>
