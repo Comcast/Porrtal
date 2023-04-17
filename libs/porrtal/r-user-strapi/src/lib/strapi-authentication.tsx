@@ -23,6 +23,7 @@ import {
 } from '@porrtal/r-user';
 import { AuthNInterface } from '@porrtal/r-user';
 import { ReactNode, Reducer, useEffect, useReducer, useState } from 'react';
+import { StrapiAuthZ } from './strapi-auth-z';
 
 interface StrapiAdapterProps {
   children?: React.ReactNode;
@@ -384,10 +385,9 @@ export function StrapiAuthentication(props: StrapiAuthenticationProps) {
   return (
     <AuthNContext.Provider value={state.authN}>
       <AuthNDispatchContext.Provider value={dispatch}>
-        {/* <AuthZs>
+        <AuthZs>
           <StrapiAuthZ>{props.children}</StrapiAuthZ>
-        </AuthZs> */}
-        {props.children}
+        </AuthZs>
       </AuthNDispatchContext.Provider>
     </AuthNContext.Provider>
   );
