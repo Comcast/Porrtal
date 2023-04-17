@@ -12,13 +12,44 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { AuthNContext, LoginCreds, RegisterUserInfo } from '@porrtal/r-user';
+import { StateObject } from '@porrtal/r-api';
+import {
+  AuthNAction,
+  AuthNContext,
+  AuthNDispatchContext,
+  AuthZs,
+  LoginCreds,
+  RegisterUserInfo,
+} from '@porrtal/r-user';
 import { AuthNInterface } from '@porrtal/r-user';
-import { useEffect, useState } from 'react';
+import { ReactNode, Reducer, useEffect, useReducer, useState } from 'react';
 
 interface StrapiAdapterProps {
   children?: React.ReactNode;
 }
+
+interface StrapiAuthNInfo {
+  authN: AuthNInterface;
+  localState: {
+    loginCount: number;
+    loginParams?: {
+      identifier: string;
+      password: string;
+    };
+    registerCount: number;
+    registerParams?: {
+      username: string;
+      email: string;
+      password: string;
+    };
+    logoutCount: number;
+  };
+}
+
+type StrapiAuthNAction = {
+  type: 'update';
+  authN: AuthNInterface;
+};
 
 interface StrapiStateInterface {
   user?: {
@@ -34,6 +65,7 @@ interface StrapiStateInterface {
 type StrapiUserMeResponse = {
   username: string;
   email: string;
+  porrtal_roles: { id: number; name: string }[];
 };
 
 type StrapiLoginAndRegisterResponse = {
@@ -62,49 +94,83 @@ export interface StrapiAuthenticationProps {
   children?: React.ReactNode;
 }
 
-export function StrapiAuthentication(props: StrapiAuthenticationProps) {
-  const [strapiState, setStrapiState] = useState<StrapiStateInterface>({
-    loginStrategy: props.allowRegistration ? 'loginAndRegister' : 'login',
-    isAuthenticated: false,
-    isInitialized: true,
-  });
-
-  useEffect(() => {
-    const jwt = localStorage.getItem('strapiJwt');
-
-    if (jwt) {
-      fetch(`${props.strapiUri}/api/users/me`, {
-        headers: { Authorization: `Bearer ${jwt}` },
-      })
-        .then((response) => response.json())
-        .catch((err) => {
-          console.log(`get user with jwt failed:`, JSON.stringify(err));
-          setStrapiState({
-            user: undefined,
-            loginStrategy: props.allowRegistration
-              ? 'loginAndRegister'
-              : 'login',
-            isAuthenticated: false,
-            isInitialized: true,
-          });
-        })
-        .then((res: StrapiUserMeResponse) => {
-          console.log('strapi user/me response: ', res);
-
-          setStrapiState({
-            user: {
-              name: res.username,
-              email: res.email,
-            },
-            loginStrategy: props.allowRegistration
-              ? 'loginAndRegister'
-              : 'login',
-            isAuthenticated: true,
-            isInitialized: true,
-          });
-        });
+const reducer: Reducer<StrapiAuthNInfo, AuthNAction | StrapiAuthNAction> = (
+  state,
+  action
+) => {
+  switch (action.type) {
+    case 'update': {
+      const newState: StrapiAuthNInfo = {
+        ...state,
+        authN: {
+          authNState: 'initialized',
+          loginStrategy: 'loginAndRegister',
+          ...state.authN,
+          ...action.authN,
+        },
+      };
+      return newState;
     }
-  }, []);
+
+    case 'login': {
+      const newState: StrapiAuthNInfo = {
+        ...state,
+        localState: {
+          ...state.localState,
+          loginCount: state.localState.loginCount + 1,
+          loginParams: {
+            identifier: action.identifier,
+            password: action.password,
+          },
+        },
+      };
+      return newState;
+    }
+
+    case 'register': {
+      const newState: StrapiAuthNInfo = {
+        ...state,
+        localState: {
+          ...state.localState,
+          registerCount: state.localState.registerCount + 1,
+          registerParams: {
+            username: action.username,
+            email: action.email,
+            password: action.password,
+          },
+        },
+      };
+      return newState;
+    }
+
+    case 'logout': {
+      const newState: StrapiAuthNInfo = {
+        ...state,
+        localState: {
+          ...state.localState,
+          logoutCount: state.localState.logoutCount + 1,
+        },
+      };
+      return newState;
+    }
+
+    default:
+      return state;
+  }
+};
+
+interface Auth0AuthAdapterProps {
+  children?: ReactNode;
+}
+
+export function StrapiAuthentication(props: StrapiAuthenticationProps) {
+  const [state, dispatch] = useReducer(reducer, {
+    authN: {
+      authNState: 'initialized',
+      loginStrategy: props.allowRegistration ? 'loginAndRegister' : 'login',
+    },
+    localState: { loginCount: 0, logoutCount: 0, registerCount: 0 },
+  });
 
   const strapiLogin = (creds: LoginCreds) => {
     console.log(`Login: strapi uri: ${props.strapiUri}`);
@@ -124,29 +190,57 @@ export function StrapiAuthentication(props: StrapiAuthenticationProps) {
 
         if (response.error || !response.jwt || !response.user) {
           alert(`strapi login failed: ${JSON.stringify(response.error)}`);
-          setStrapiState({
-            user: undefined,
-            loginStrategy: props.allowRegistration
-              ? 'loginAndRegister'
-              : 'login',
-            isAuthenticated: false,
-            isInitialized: true,
+          dispatch({
+            type: 'update',
+            authN: {
+              user: undefined,
+              authNState: 'error',
+              errorMessage: `error ${response?.error?.status}: ${response?.error?.message}`,
+              loginStrategy: props.allowRegistration
+                ? 'loginAndRegister'
+                : 'login',
+            },
           });
         } else {
           localStorage.setItem('strapiJwt', response.jwt);
 
-          setStrapiState({
-            user: {
-              name: response.user.username,
-              email: response.user.email,
-            },
-            jwt: response.jwt,
-            loginStrategy: props.allowRegistration
-              ? 'loginAndRegister'
-              : 'login',
-            isAuthenticated: true,
-            isInitialized: true,
-          });
+          console.log('login...', response);
+
+          fetch(`${props.strapiUri}/api/users/me?populate=porrtal_roles`, {
+            headers: { Authorization: `Bearer ${response.jwt}` },
+          })
+            .then((response) => response.json())
+            .catch((err) => {
+              console.log(`get user with jwt failed:`, JSON.stringify(err));
+              dispatch({
+                type: 'update',
+                authN: {
+                  user: undefined,
+                  authNState: 'initialized',
+                  loginStrategy: props.allowRegistration
+                    ? 'loginAndRegister'
+                    : 'login',
+                },
+              });
+            })
+            .then((res: StrapiUserMeResponse) => {
+              console.log('strapi user/me response: ', res);
+
+              dispatch({
+                type: 'update',
+                authN: {
+                  user: {
+                    name: res.username,
+                    email: res.email,
+                  },
+                  authNState: 'authenticated',
+                  loginStrategy: props.allowRegistration
+                    ? 'loginAndRegister'
+                    : 'login',
+                  claims: res as unknown as StateObject,
+                },
+              });
+            });
         }
       });
   };
@@ -166,55 +260,135 @@ export function StrapiAuthentication(props: StrapiAuthenticationProps) {
 
         if (response.error || !response.jwt || !response.user) {
           alert(`strapi register failed: ${JSON.stringify(response.error)}`);
-          setStrapiState({
-            user: undefined,
-            loginStrategy: props.allowRegistration
-              ? 'loginAndRegister'
-              : 'login',
-            isAuthenticated: false,
-            isInitialized: true,
+          dispatch({
+            type: 'update',
+            authN: {
+              user: undefined,
+              authNState: 'error',
+              errorMessage: `error ${response?.error?.status}: ${response?.error?.message}`,
+              loginStrategy: props.allowRegistration
+                ? 'loginAndRegister'
+                : 'login',
+            },
           });
         } else {
           localStorage.setItem('strapiJwt', response.jwt);
 
-          setStrapiState({
-            user: {
-              name: response.user.username,
-              email: response.user.email,
-            },
-            jwt: response.jwt,
-            loginStrategy: props.allowRegistration
-              ? 'loginAndRegister'
-              : 'login',
-            isAuthenticated: true,
-            isInitialized: true,
-          });
+          fetch(`${props.strapiUri}/api/users/me?populate=porrtal_roles`, {
+            headers: { Authorization: `Bearer ${response.jwt}` },
+          })
+            .then((response) => response.json())
+            .catch((err) => {
+              console.log(`get user with jwt failed:`, JSON.stringify(err));
+              dispatch({
+                type: 'update',
+                authN: {
+                  user: undefined,
+                  authNState: 'initialized',
+                  loginStrategy: props.allowRegistration
+                    ? 'loginAndRegister'
+                    : 'login',
+                },
+              });
+            })
+            .then((res: StrapiUserMeResponse) => {
+              console.log('strapi user/me response: ', res);
+
+              dispatch({
+                type: 'update',
+                authN: {
+                  user: {
+                    name: res.username,
+                    email: res.email,
+                  },
+                  authNState: 'authenticated',
+                  loginStrategy: props.allowRegistration
+                    ? 'loginAndRegister'
+                    : 'login',
+                  claims: res as unknown as StateObject,
+                },
+              });
+            });
         }
       });
   };
   const strapiLogout = () => {
     localStorage.removeItem('strapiJwt');
 
-    setStrapiState({
-      user: undefined,
-      jwt: undefined,
-      loginStrategy: props.allowRegistration ? 'loginAndRegister' : 'login',
-      isAuthenticated: false,
-      isInitialized: true,
+    dispatch({
+      type: 'update',
+      authN: {
+        user: undefined,
+        authNState: 'initialized',
+        loginStrategy: props.allowRegistration ? 'loginAndRegister' : 'login',
+        claims: undefined,
+        errorMessage: undefined,
+      },
     });
   };
 
-  const auth: AuthNInterface = {
-    user: strapiState.user,
-    login: strapiLogin,
-    register: strapiRegister,
-    logout: strapiLogout,
-    loginStrategy: props.allowRegistration ? 'loginAndRegister' : 'login',
-    isAuthenticated: strapiState.isAuthenticated,
-    isInitialized: strapiState.isInitialized,
-  };
+  useEffect(() => {
+    if (state.localState.loginCount > 0 && state.localState.loginParams) {
+      strapiLogin(state.localState.loginParams);
+    }
+  }, [state.localState.loginCount]);
+
+  useEffect(() => {
+    if (state.localState.logoutCount > 0) {
+      strapiLogout();
+    }
+  }, [state.localState.logoutCount]);
+
+  useEffect(() => {
+    const jwt = localStorage.getItem('strapiJwt');
+
+    if (jwt) {
+      fetch(`${props.strapiUri}/api/users/me?populate=porrtal_roles`, {
+        headers: { Authorization: `Bearer ${jwt}` },
+      })
+        .then((response) => response.json())
+        .catch((err) => {
+          console.log(`get user with jwt failed:`, JSON.stringify(err));
+          dispatch({
+            type: 'update',
+            authN: {
+              user: undefined,
+              authNState: 'initialized',
+              loginStrategy: props.allowRegistration
+                ? 'loginAndRegister'
+                : 'login',
+            },
+          });
+        })
+        .then((res: StrapiUserMeResponse) => {
+          console.log('strapi user/me response: ', res);
+
+          dispatch({
+            type: 'update',
+            authN: {
+              user: {
+                name: res.username,
+                email: res.email,
+              },
+              authNState: 'authenticated',
+              loginStrategy: props.allowRegistration
+                ? 'loginAndRegister'
+                : 'login',
+              claims: res as unknown as StateObject,
+            },
+          });
+        });
+    }
+  }, []);
 
   return (
-    <AuthNContext.Provider value={auth}>{props.children}</AuthNContext.Provider>
+    <AuthNContext.Provider value={state.authN}>
+      <AuthNDispatchContext.Provider value={dispatch}>
+        {/* <AuthZs>
+          <StrapiAuthZ>{props.children}</StrapiAuthZ>
+        </AuthZs> */}
+        {props.children}
+      </AuthNDispatchContext.Provider>
+    </AuthNContext.Provider>
   );
 }

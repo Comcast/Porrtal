@@ -147,7 +147,7 @@ const validate = (loginState: LoginState): LoginState => {
   }
 
   // password
-  const passwordRegex = new RegExp(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/);
+  const passwordRegex = new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/);
   loginState.passwordHasError = false;
   loginState.passwordErrorMessage = '';
   if (loginState.passwordVisited) {
@@ -157,16 +157,16 @@ const validate = (loginState: LoginState): LoginState => {
         'password must be at least 6 characters.  ';
     }
 
-    if (loginState.password && loginState.password.length > 12) {
+    if (loginState.password && loginState.password.length > 24) {
       loginState.passwordHasError = true;
       loginState.passwordErrorMessage +=
-        'password must be not be longer than 12 characters.  ';
+        'password must be not be longer than 24 characters.  ';
     }
 
     if (loginState.password && !passwordRegex.test(loginState.password)) {
       loginState.passwordHasError = true;
       loginState.passwordErrorMessage +=
-        'password must contain a letter and a number.';
+        'password must contain an upper and a lowercase letter and a number.';
     }
   }
 
