@@ -17,6 +17,9 @@ import Head from 'next/head';
 import React from 'react';
 import './styles.css';
 
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-balham.css';
+
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>

@@ -12,4 +12,4 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-export * from './lib/auth0-authentication/auth0-authentication';
+export * from './lib/auth0-authentication';

@@ -12,7 +12,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { useAuthN } from '@porrtal/r-user';
+import { Icon } from '@blueprintjs/core';
+import { useShellDispatch } from '@porrtal/r-shell';
+import { useAuthN, useAuthNDispatch } from '@porrtal/r-user';
 import { useState } from 'react';
 import LoginDialog from './login-dialog/login-dialog';
 import styles from './user-banner.module.scss';
@@ -22,20 +24,35 @@ export interface UserBannerProps {}
 
 export function UserBanner(props: UserBannerProps) {
   const auth = useAuthN();
+  const authDispatch = useAuthNDispatch();
   const [open, setOpen] = useState(false);
+  const shellDispatch = useShellDispatch();
 
   console.log(
-    `UserBanner: auth def'd(${auth ? 'true' : 'false'}), isAuthenticated('${
-      auth?.isAuthenticated
-    }'), isInitialized('${auth?.isInitialized}')`
+    `UserBanner: auth def'd(${auth ? 'true' : 'false'}), authNState('${
+      auth?.authNState
+    }')')`
   );
-  if (auth?.isInitialized) {
+
+  if (!auth) {
+    console.log('No authentication defined for application.');
+    return <div></div>;
+  }
+
+  if (
+    auth.authNState === 'initialized' ||
+    auth.authNState === 'authenticated' ||
+    auth.authNState === 'error'
+  ) {
     return (
       <div className={styles['container']}>
-        {auth?.isAuthenticated && (
+        {auth.authNState === 'authenticated' && (
           <span className={styles['user-name']}>{auth?.user?.name}</span>
         )}
-        {!auth?.isAuthenticated && (
+        {auth.authNState === 'error' && (
+          <span className={styles['user-name']}>error...</span>
+        )}
+        {auth.authNState !== 'authenticated' && (
           <button
             onClick={() => {
               if (!auth) {
@@ -43,7 +60,9 @@ export function UserBanner(props: UserBannerProps) {
               }
               switch (auth.loginStrategy) {
                 case 'loginWithRedirect':
-                  auth?.loginWithRedirect ? auth?.loginWithRedirect() : null;
+                  authDispatch({
+                    type: 'loginWithRedirect',
+                  });
                   break;
 
                 case 'login':
@@ -56,11 +75,21 @@ export function UserBanner(props: UserBannerProps) {
             Login
           </button>
         )}
-        {auth?.isAuthenticated && (
-          <button onClick={() => (auth?.logout ? auth?.logout() : null)}>
+        {auth.authNState === 'authenticated' && (
+          <button onClick={() => authDispatch({ type: 'logout' })}>
             Logout
           </button>
         )}
+        <Icon
+          icon="key"
+          onClick={() =>
+            shellDispatch({
+              type: 'launchView',
+              viewId: 'shell-state-dashboard',
+            })
+          }
+        />
+
         <LoginDialog
           open={open}
           loginStrategy={
@@ -70,20 +99,20 @@ export function UserBanner(props: UserBannerProps) {
           }
           onClose={(result) => {
             if (result.type === 'login') {
-              auth.login &&
-                auth.login({
-                  identifier: result.identifier,
-                  password: result.password,
-                });
+              authDispatch({
+                type: 'login',
+                identifier: result.identifier,
+                password: result.password,
+              });
             }
 
             if (result.type === 'register') {
-              auth.register &&
-                auth.register({
-                  username: result.user,
-                  email: result.email,
-                  password: result.password,
-                });
+              authDispatch({
+                type: 'register',
+                username: result.user,
+                email: result.email,
+                password: result.password,
+              });
             }
 
             setOpen(false);

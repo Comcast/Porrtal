@@ -29,7 +29,12 @@ export interface LoginCreds {
 
 export type LoginStrategy = 'loginWithRedirect' | 'login' | 'loginAndRegister';
 
-export type AuthNState = '' | 'initialized' | 'authenticating' | 'authenticated' | 'error';
+export type AuthNState =
+  | ''
+  | 'initialized'
+  | 'authenticating'
+  | 'authenticated'
+  | 'error';
 
 export type AuthNInterface = {
   state$: Observable<AuthNState>;

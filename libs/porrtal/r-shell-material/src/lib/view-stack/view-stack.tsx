@@ -25,7 +25,7 @@ import {
   Tabs,
   Tooltip,
 } from '@mui/material';
-import React, { Dispatch, useMemo, MouseEvent } from 'react';
+import React, { Dispatch, useMemo, MouseEvent, useRef } from 'react';
 import {
   ShellAction,
   useShellDispatch,
@@ -114,6 +114,8 @@ function ViewStackTabsTop(
     handleChange: (event: React.SyntheticEvent, newIndex: number) => void;
   }
 ) {
+  const viewHostRef = useRef<(HTMLDivElement | null)[]>([]);
+
   return (
     <div className={`${styles['container']} ${styles[props.pane.arrange]}`}>
       <Box
@@ -140,6 +142,8 @@ function ViewStackTabsTop(
                   showDevInfo={props.showDevInfo}
                   dispatch={props.dispatch}
                   item={item}
+                  viewHostElements={viewHostRef.current}
+                  viewHostElementIndex={index}
                 ></ViewStackContextMenu>
               }
             ></Tab>
@@ -157,11 +161,18 @@ function ViewStackTabsTop(
       </Box>
       <div className={styles['view-host-container']}>
         {props.pane.viewStates.map((item, index) => (
-          <ViewHost
+          <div
+            ref={(element) => {
+              viewHostRef.current[index] = element;
+            }}
             key={item.key}
-            viewState={item}
-            zIndex={index === props.currentIndex ? 10 : 0}
-          ></ViewHost>
+          >
+            <ViewHost
+              key={item.key}
+              viewState={item}
+              zIndex={index === props.currentIndex ? 10 : 0}
+            ></ViewHost>
+          </div>
         ))}
         <div
           style={{
@@ -186,6 +197,8 @@ function ViewStackTabsLeft(
     handleChange: (event: React.SyntheticEvent, newIndex: number) => void;
   }
 ) {
+  const viewHostRef = useRef<(HTMLDivElement | null)[]>([]);
+
   return (
     <div className={`${styles['container']} ${styles[props.pane.arrange]}`}>
       <Box
@@ -214,6 +227,8 @@ function ViewStackTabsLeft(
                   showDevInfo={props.showDevInfo}
                   dispatch={props.dispatch}
                   item={item}
+                  viewHostElements={viewHostRef.current}
+                  viewHostElementIndex={index}
                 ></ViewStackContextMenu>
               }
             ></Tab>
@@ -222,13 +237,21 @@ function ViewStackTabsLeft(
       </Box>
       <div className={styles['view-host-container']}>
         {props.pane.viewStates.map((item, index) => (
-          <ViewHost
+          <div
+            ref={(element) => {
+              viewHostRef.current[index] = element;
+            }}
             key={item.key}
-            viewState={item}
-            zIndex={index === props.currentIndex ? 10 : 0}
-          ></ViewHost>
+          >
+            <ViewHost
+              key={item.key}
+              viewState={item}
+              zIndex={index === props.currentIndex ? 10 : 0}
+            ></ViewHost>
+          </div>
         ))}
         <div
+          key="ind"
           style={{
             zIndex: 5,
             backgroundColor: 'white',
@@ -251,6 +274,8 @@ function ViewStackCards(
     handleChange: (event: React.SyntheticEvent, newIndex: number) => void;
   }
 ) {
+  const viewHostRef = useRef<(HTMLDivElement | null)[]>([]);
+
   return (
     <div className={styles['card-container']}>
       <div className={styles['cards']}>
@@ -274,12 +299,19 @@ function ViewStackCards(
                     showDevInfo={props.showDevInfo}
                     dispatch={props.dispatch}
                     item={item}
-                  ></ViewStackContextMenu>
+                    viewHostElements={viewHostRef.current}
+                    viewHostElementIndex={index}
+                    ></ViewStackContextMenu>
                 </Button>
               }
             ></CardHeader>
             <CardContent sx={{ position: 'relative' }}>
-              <div className={styles['viewHostContainer']}>
+              <div
+                ref={(element) => {
+                  viewHostRef.current[index] = element;
+                }}
+                className={styles['viewHostContainer']}
+              >
                 <ViewHost key={item.key} viewState={item}></ViewHost>
               </div>
             </CardContent>
@@ -294,7 +326,13 @@ function ViewStackCards(
 export default ViewStack;
 
 function ViewStackContextMenu(
-  props: ViewStackProps & { dispatch: Dispatch<ShellAction>; item: ViewState }
+  props: ViewStackProps & {
+    dispatch: Dispatch<ShellAction>;
+    viewHostElements: (HTMLDivElement | null)[];
+    viewHostElementIndex: number;
+  } & {
+    item: ViewState;
+  }
 ) {
   const moveIcons: { [key in PaneType]: string } = {
     nav: 'arrow_circle_left_outlined',
@@ -305,14 +343,30 @@ function ViewStackContextMenu(
   };
 
   const menuItemsData: MenuItemData[] = [
+    {
+      uid: 'maximize-tab',
+      label: 'maximize tab',
+      leftIcon: <Icon>north_east</Icon>,
+      callback: () => {
+        const htmlEl = props.viewHostElements[props.viewHostElementIndex];
+        if (htmlEl) {
+          props.dispatch({
+            type: 'maximize',
+            htmlEl,
+            maximizeText: `${props.item.displayText}`,
+          });
+        }
+      },
+    },
     ...(props.pane.paneType !== 'search'
       ? [
           {
             uid: 'close-tab',
             label: 'close tab',
             leftIcon: <Icon>clear</Icon>,
-            callback: () =>
-              props.dispatch({ type: 'deleteViewState', key: props.item.key }),
+            callback: () => {
+              props.dispatch({ type: 'deleteViewState', key: props.item.key });
+            },
           },
         ]
       : []),
@@ -431,6 +485,25 @@ function ViewStackContextMenu(
         <div>
           <Icon style={{ position: 'relative', top: '5px' }}>
             {props.item.displayIcon}
+          </Icon>
+          &nbsp;
+          <Icon
+            onClick={() => {
+              const htmlEl = props.viewHostElements[props.viewHostElementIndex];
+              if (htmlEl) {
+                console.log('maximize...');
+                props.dispatch({
+                  type: 'maximize',
+                  htmlEl,
+                  maximizeText: `${props.item.displayText}`,
+                });
+              } else {
+                console.log('maximize failure: no view host element...');
+              }
+            }}
+            style={{ position: 'relative', top: '5px' }}
+          >
+            north_east
           </Icon>
           &nbsp;
           {props.item.displayText}&nbsp;

@@ -21,3 +21,5 @@ export * from './lib/logger-entry';
 export * from './lib/view-component-modules';
 export * from './lib/porrtal-menu-item';
 export * from './lib/deep-links';
+export * from './lib/auth-z';
+export * from './lib/launch-item';

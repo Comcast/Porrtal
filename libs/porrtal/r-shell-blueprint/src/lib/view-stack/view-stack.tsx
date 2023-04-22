@@ -24,7 +24,7 @@ import {
   Button,
   IconName,
 } from '@blueprintjs/core';
-import { Dispatch, useEffect } from 'react';
+import { Dispatch, useEffect, useRef } from 'react';
 import {
   ShellAction,
   useShellDispatch,
@@ -38,6 +38,7 @@ import {
   paneTypes,
   ViewState,
 } from '@porrtal/r-api';
+import { JsxElement } from 'typescript';
 
 export function ViewStack(props: ViewStackProps) {
   const dispatch = useShellDispatch();
@@ -93,6 +94,8 @@ export function ViewStack(props: ViewStackProps) {
 function ViewStackTabsTop(
   props: ViewStackProps & { dispatch: Dispatch<ShellAction> }
 ) {
+  const viewHostRef = useRef<(HTMLDivElement | null)[]>([]);
+
   return (
     <Tabs
       animate={true}
@@ -110,7 +113,7 @@ function ViewStackTabsTop(
       selectedTabId={props.pane.currentKey}
       className={`${styles['tabs']} ${styles['tabs-top']}`}
     >
-      {props.pane.viewStates.map((item) => (
+      {props.pane.viewStates.map((item, index) => (
         <Tab
           id={item.key}
           key={item.key}
@@ -121,10 +124,17 @@ function ViewStackTabsTop(
               showDevInfo={props.showDevInfo}
               dispatch={props.dispatch}
               item={item}
+              viewHostElements={viewHostRef.current}
+              viewHostElementIndex={index}
             ></ViewStackContextMenu>
           }
           panel={
-            <div className={styles['viewHostContainer']}>
+            <div
+              ref={(element) => {
+                viewHostRef.current[index] = element;
+              }}
+              className={styles['viewHostContainer']}
+            >
               <ViewHost key={item.key} viewState={item}></ViewHost>
             </div>
           }
@@ -149,6 +159,8 @@ function ViewStackTabsTop(
 function ViewStackTabsLeft(
   props: ViewStackProps & { dispatch: Dispatch<ShellAction> }
 ) {
+  const viewHostRef = useRef<(HTMLDivElement | null)[]>([]);
+
   return (
     <Tabs
       animate={true}
@@ -166,7 +178,7 @@ function ViewStackTabsLeft(
       selectedTabId={props.pane.currentKey}
       className={`${styles['tabs']} ${styles['tabs-left']}`}
     >
-      {props.pane.viewStates.map((item) => (
+      {props.pane.viewStates.map((item, index) => (
         <Tab
           id={item.key}
           key={item.key}
@@ -177,10 +189,17 @@ function ViewStackTabsLeft(
               showDevInfo={props.showDevInfo}
               dispatch={props.dispatch}
               item={item}
+              viewHostElements={viewHostRef.current}
+              viewHostElementIndex={index}
             ></ViewStackContextMenu>
           }
           panel={
-            <div className={styles['viewHostContainer']}>
+            <div
+              ref={(element) => {
+                viewHostRef.current[index] = element;
+              }}
+              className={styles['viewHostContainer']}
+            >
               <ViewHost key={item.key} viewState={item}></ViewHost>
             </div>
           }
@@ -204,10 +223,12 @@ function ViewStackTabsLeft(
 function ViewStackCards(
   props: ViewStackProps & { dispatch: Dispatch<ShellAction> }
 ) {
+  const viewHostRef = useRef<(HTMLDivElement | null)[]>([]);
+
   return (
     <div className={styles['card-container']}>
       <div className={styles['cards']}>
-        {props.pane.viewStates.map((item) => (
+        {props.pane.viewStates.map((item, index) => (
           <Card id={item.key} key={item.key} className={`${styles['card']}`}>
             <Button
               className={
@@ -229,9 +250,16 @@ function ViewStackCards(
                 showDevInfo={props.showDevInfo}
                 dispatch={props.dispatch}
                 item={item}
+                viewHostElements={viewHostRef.current}
+                viewHostElementIndex={index}
               ></ViewStackContextMenu>
             </Button>
-            <div className={styles['viewHostContainer']}>
+            <div
+              ref={(element) => {
+                viewHostRef.current[index] = element;
+              }}
+              className={styles['viewHostContainer']}
+            >
               <ViewHost key={item.key} viewState={item}></ViewHost>
             </div>
           </Card>
@@ -244,7 +272,11 @@ function ViewStackCards(
 export default ViewStack;
 
 function ViewStackContextMenu(
-  props: ViewStackProps & { dispatch: Dispatch<ShellAction> } & {
+  props: ViewStackProps & {
+    dispatch: Dispatch<ShellAction>;
+    viewHostElements: (HTMLDivElement | null)[];
+    viewHostElementIndex: number;
+  } & {
     item: ViewState;
   }
 ) {
@@ -260,6 +292,22 @@ function ViewStackContextMenu(
     <ContextMenu2
       content={
         <Menu>
+          <MenuItem
+            key={`maximize`}
+            icon={'arrow-top-right'}
+            text={`maximize tab`}
+            onClick={(evt) => {
+              const htmlEl = props.viewHostElements[props.viewHostElementIndex];
+              if (htmlEl) {
+                props.dispatch({
+                  type: 'maximize',
+                  htmlEl,
+                  maximizeText: `${props.item.displayText}`,
+                });
+              }
+            }}
+          />
+          <MenuDivider />
           {props.pane.paneType !== 'search' && (
             <MenuItem
               key={`close`}
@@ -402,10 +450,12 @@ function ViewStackContextMenu(
               text="Copy link"
               icon="duplicate"
               intent="primary"
-              onClick={() => props.dispatch({
-                type: 'copyToClipboard',
-                viewState: props.item
-              })}
+              onClick={() =>
+                props.dispatch({
+                  type: 'copyToClipboard',
+                  viewState: props.item,
+                })
+              }
             ></MenuItem>
           )}
         </Menu>
@@ -419,6 +469,20 @@ function ViewStackContextMenu(
               icon={props.item.displayIcon as IconName}
             />
           )}
+          <Icon
+            className={styles['maximize-icon']}
+            icon="arrow-top-right"
+            onClick={() => {
+              const htmlEl = props.viewHostElements[props.viewHostElementIndex];
+              if (htmlEl) {
+                props.dispatch({
+                  type: 'maximize',
+                  htmlEl,
+                  maximizeText: `${props.item.displayText}`,
+                });
+              }
+            }}
+          ></Icon>
           <span>{props.item.displayText}</span>
           {props.pane.paneType !== 'search' && (
             <Icon

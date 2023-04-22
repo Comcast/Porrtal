@@ -25,6 +25,8 @@ import {
   ViewComponentProps,
   PorrtalMenuItem,
   DeepLinks,
+  AuthZ,
+  LaunchInvoker,
 } from '@porrtal/r-api';
 import {
   useReducer,
@@ -44,6 +46,16 @@ import SearchState from '../search-state/search-state';
 import { LoggerState } from '../logger-state/logger-state';
 import { v4 as uuidv4 } from 'uuid';
 
+export interface MaximizeItem {
+  key: string;
+  htmlEl: HTMLElement;
+  parentHtmlEl: HTMLElement;
+  parentHtmlElChildIndex: number;
+  maximizeText: string;
+  zIndex: number;
+  restore?: () => void;
+}
+
 export interface UseShellState {
   panes: Panes;
   viewComponentModules: ViewComponentModules;
@@ -53,10 +65,21 @@ export interface UseShellState {
   navWidth?: string;
   navTabWidth?: string;
   menuItems?: PorrtalMenuItem[];
+  maximizeZIndex: number;
+  maximizeStack: MaximizeItem[];
+  authZs: {
+    [name: string]: AuthZ;
+  };
 }
 
 export type ShellAction =
-  | { type: 'launchView'; viewId: string; state?: StateObject }
+  | {
+      type: 'launchView';
+      viewId: string;
+      state?: StateObject;
+      launchInvoker?: LaunchInvoker;
+      suppressFocus?: boolean;
+    }
   | { type: 'launchStartupViews' }
   | { type: 'moveView'; key: string; toPane: PaneType }
   | { type: 'deleteViewState'; key: string }
@@ -70,17 +93,46 @@ export type ShellAction =
   | { type: 'toggleNav'; item: ViewState }
   | { type: 'setNavTabWidth'; width: string }
   | { type: 'launchDeepLinks'; queryString: string }
-  | { type: 'copyToClipboard'; viewState: ViewState };
+  | { type: 'copyToClipboard'; viewState: ViewState }
+  | {
+      type: 'maximize';
+      htmlEl: HTMLElement;
+      maximizeText: string;
+      restore?: () => void;
+    }
+  | { type: 'restoreMaximized' }
+  | {
+      type: 'registerAuthZPermissionCheck';
+      name: string;
+      checkPermission: (parm: string) => boolean;
+    }
+  | { type: 'setAuthZReady'; name: string };
 
 const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
   switch (action.type) {
     case 'launchView': {
+      console.log('launchView', { action, state });
       const view = state.views.find((view) => view.viewId === action.viewId);
       if (!view) {
         // todo: log error: view for viewId not found
         return state;
       }
-      let retState: UseShellState = state;
+
+      // execute permissions processing
+      const okToLaunchResult = okToLaunch(
+        {
+          launchInvoker: action.launchInvoker ?? 'direct',
+          view: view,
+          state: action.state,
+        },
+        state
+      );
+
+      if (!okToLaunchResult.okToLaunch) {
+        return okToLaunchResult.state;
+      }
+
+      let retState: UseShellState = okToLaunchResult.state;
       const newState = combineViewStateStateAndActionState(
         view.state,
         action.state
@@ -309,6 +361,14 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
       if (!newView.key) {
         newView.key = uuidv4();
       }
+      if (state.views.some((view) => view.viewId === newView.viewId)) {
+        console.log(`warning: trying to register duplicate view`, {
+          views: state.views,
+          newView,
+        });
+        return state;
+      }
+
       const menuItems = updateMenus(newView, state.menuItems);
 
       return {
@@ -325,6 +385,7 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
           console.log('launch startup view', view);
           state = reducer(state, {
             type: 'launchView',
+            launchInvoker: 'startup',
             viewId: view.viewId ?? view.componentName,
           });
         });
@@ -431,6 +492,7 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
         state = reducer(state, {
           type: 'launchView',
           viewId,
+          launchInvoker: 'deepLink',
           state: deepLinks[key].state,
         });
       }
@@ -441,9 +503,275 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
       navigator.clipboard.writeText(getViewStateDeepLink(action.viewState));
       break;
     }
+
+    case 'maximize': {
+      const parentEl = action.htmlEl.parentElement;
+      if (!parentEl) {
+        console.log(
+          'error. called shell state service: maximize with element with no parent element'
+        );
+        return state;
+      }
+
+      const key = uuidv4();
+
+      state = {
+        ...state,
+        maximizeZIndex: state.maximizeZIndex + 10,
+        maximizeStack: [
+          ...state.maximizeStack,
+          {
+            key,
+            htmlEl: action.htmlEl,
+            maximizeText: action.maximizeText,
+            parentHtmlEl: parentEl,
+            parentHtmlElChildIndex: Array.prototype.indexOf.call(
+              parentEl.children,
+              action.htmlEl
+            ),
+            zIndex: state.maximizeZIndex,
+            restore: action.restore,
+          },
+        ],
+      };
+      return state;
+    }
+
+    case 'restoreMaximized': {
+      const newMaximizeStack = [...state.maximizeStack];
+      const maximizeItem = newMaximizeStack.pop();
+
+      // parent back to original parent
+      maximizeItem?.parentHtmlEl.insertBefore(
+        maximizeItem.htmlEl,
+        maximizeItem.parentHtmlEl.children[maximizeItem.parentHtmlElChildIndex]
+      );
+
+      state = {
+        ...state,
+        maximizeZIndex: state.maximizeZIndex - 10,
+        maximizeStack: newMaximizeStack,
+      };
+      return state;
+    }
+
+    case 'setAuthZReady': {
+      state = {
+        ...state,
+        authZs: {
+          ...(state.authZs ?? {}),
+          [action.name]: {
+            ...(state.authZs[action.name] ?? {
+              launchQ: [],
+              noPermissionsQ: [],
+            }),
+            ready: true,
+          },
+        },
+      };
+      console.log('shell service - setAuthZReady', { state });
+      return state;
+    }
+
+    case 'registerAuthZPermissionCheck': {
+      state = {
+        ...state,
+        authZs: {
+          ...(state.authZs ?? {}),
+          [action.name]: {
+            ...(state.authZs[action.name] ?? {
+              ready: false,
+              launchQ: [],
+              noPermissionsQ: [],
+            }),
+            checkPermission: action.checkPermission,
+          },
+        },
+      };
+
+      console.log('shell service - registerAuthZPermissionCheck', state);
+
+      return processLaunchQ(action.name, state);
+    }
+
+    default: {
+      return state;
+    }
   }
   return state;
 };
+
+function processLaunchQ(name: string, state: UseShellState) {
+  if (
+    !state.authZs ||
+    !state.authZs[name] ||
+    !state.authZs[name].launchQ ||
+    state.authZs[name].launchQ.length < 1
+  ) {
+    console.log('processLaunchQ (do nothing)', { name, state });
+    return state;
+  }
+
+  console.log('processLaunchQ', { name, state });
+  state.authZs[name].launchQ.forEach((launchItem) => {
+    console.log('launch from launchQ', launchItem);
+    state = reducer(state, {
+      type: 'launchView',
+      viewId: launchItem.viewId,
+      launchInvoker: launchItem.launchInvoker,
+      state: launchItem.state,
+      suppressFocus: true,
+    });
+  });
+
+  console.log('shell service - processLaunchQ', { state });
+  state = {
+    ...state,
+    authZs: {
+      ...state.authZs,
+      [name]: {
+        ...state.authZs[name],
+        launchQ: [],
+      },
+    },
+  };
+  console.log('shell service - processLaunchQ', { state });
+  return state;
+}
+
+function okToLaunch(
+  launchInfo: {
+    launchInvoker: LaunchInvoker;
+    view: View;
+    state?: StateObject;
+  },
+  state: UseShellState
+): {
+  okToLaunch: boolean;
+  state: UseShellState;
+} {
+  // ------- permissions syntax: --------------
+  //  view.permissions: [<name>:][<parm>]
+  //    if <name>: not provided, use 'primary'
+  // ------------------------------------------
+
+  // if view doesn't require permissions, return true
+  if (
+    !launchInfo.view.permissions ||
+    launchInfo.view.permissions.trim().length < 1
+  ) {
+    return { okToLaunch: true, state };
+  }
+
+  const permissions = launchInfo.view.permissions.trim();
+  const [first, ...rest] = permissions.split(':');
+
+  let name = 'primary';
+  let parm = '';
+
+  if (rest.length < 1) {
+    // name: not provided
+    parm = permissions;
+  } else {
+    name = first;
+    parm = rest.join(':');
+  }
+
+  // see if we are tracking this authZ (create if not)
+  const authZs = state.authZs;
+  let authZ = authZs[name];
+  if (!authZ) {
+    authZ = {
+      ready: false,
+      checkPermission: undefined,
+      launchQ: [],
+      noPermissionsQ: [],
+    };
+  }
+
+  // handle malformed permissions string
+  if (name.length < 1) {
+    state = {
+      ...state,
+      authZs: {
+        ...authZs,
+        [name]: {
+          ...authZ,
+          noPermissionsQ: [
+            ...authZ.noPermissionsQ,
+            {
+              launchInvoker: launchInfo.launchInvoker,
+              viewId:
+                launchInfo.view.viewId ?? 'viewId has value at this point',
+              state: launchInfo.state,
+            },
+          ],
+        },
+      },
+    };
+    console.log(
+      `Warning: view ('${launchInfo.view.viewId}') has malformed permissions('${launchInfo.view.permissions}').`,
+      { name, parm, authZs: state.authZs }
+    );
+    return { okToLaunch: false, state };
+  }
+
+  // handle not ready or permissions function missing
+  if (!authZ.ready || !authZ.checkPermission) {
+    state = {
+      ...state,
+      authZs: {
+        ...authZs,
+        [name]: {
+          ...authZ,
+          launchQ: [
+            ...authZ.launchQ,
+            {
+              launchInvoker: launchInfo.launchInvoker,
+              viewId:
+                launchInfo.view.viewId ?? 'viewId has value at this point',
+              state: launchInfo.state,
+            },
+          ],
+        },
+      },
+    };
+    console.log(
+      `Info: view ('${launchInfo.view.viewId}') --> launchQ ('${launchInfo.view.permissions}').`,
+      { name, parm, authZs: state.authZs }
+    );
+    return { okToLaunch: false, state };
+  }
+
+  // handle permissions check passed
+  if (authZ.checkPermission(parm)) {
+    return { okToLaunch: true, state };
+  }
+
+  // handle permission check not passed
+  state = {
+    ...state,
+    authZs: {
+      ...authZs,
+      [name]: {
+        ...authZ,
+        noPermissionsQ: [
+          ...authZ.noPermissionsQ,
+          {
+            launchInvoker: launchInfo.launchInvoker,
+            viewId: launchInfo.view.viewId ?? 'viewId has value at this point',
+            state: launchInfo.state,
+          },
+        ],
+      },
+    },
+  };
+  console.log(
+    `Info: view ('${launchInfo.view.viewId}') --> noPermissionsQ ('${launchInfo.view.permissions}').`,
+    { name, parm, authZs: state.authZs }
+  );
+  return { okToLaunch: false, state };
+}
 
 export function getViewStateDeepLink(viewState: ViewState): string {
   let ret = `${location.origin}${location.pathname}?`;
@@ -615,6 +943,9 @@ const emptyUseShellState: UseShellState = {
   showUserInfo: true,
   showDevInfo: true,
   navWidth: '320px',
+  authZs: {},
+  maximizeStack: [],
+  maximizeZIndex: 90,
 };
 
 // arg to createContext is used if no provider is defined https://stackoverflow.com/q/49949099/7085047
@@ -687,7 +1018,7 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
         type: 'launchDeepLinks',
         queryString,
       });
-      }, 200);
+    }, 200);
   }, []);
 
   return (

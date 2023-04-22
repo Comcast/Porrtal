@@ -12,23 +12,26 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { useAuthN } from '@porrtal/r-user';
+import { useAuthN, useAuthNDispatch } from '@porrtal/r-user';
 import styles from './user-banner.module.scss';
 import LoginDialog from './login-dialog/login-dialog';
 import { useState } from 'react';
-import { Button, Typography } from '@mui/material';
+import { Button, Icon, Typography } from '@mui/material';
+import { useShellDispatch } from '@porrtal/r-shell';
 
 /* eslint-disable-next-line */
 export interface UserBannerProps {}
 
 export function UserBanner(props: UserBannerProps) {
   const auth = useAuthN();
+  const authDispatch = useAuthNDispatch();
   const [open, setOpen] = useState(false);
+  const shellDispatch = useShellDispatch();
 
   console.log(
-    `UserBanner: auth def'd(${auth ? 'true' : 'false'}), isAuthenticated('${
-      auth?.isAuthenticated
-    }'), isInitialized('${auth?.isInitialized}')`
+    `UserBanner: auth def'd(${auth ? 'true' : 'false'}), authNState('${
+      auth?.authNState
+    }')')`
   );
 
   if (!auth) {
@@ -36,15 +39,20 @@ export function UserBanner(props: UserBannerProps) {
     return <div></div>;
   }
 
-  if (auth.isInitialized) {
+  if (auth.authNState === 'initialized' || auth.authNState === 'authenticated' || auth.authNState === 'error') {
     return (
       <div className={styles['container']}>
-        {auth?.isAuthenticated && (
+        {auth.authNState === 'authenticated' && (
           <Typography display="inline-block" sx={{ marginRight: '10px' }}>
             {auth?.user?.name}
           </Typography>
         )}
-        {!auth?.isAuthenticated && (
+        {auth.authNState === 'error' && (
+          <Typography display="inline-block" sx={{ marginRight: '10px' }}>
+          error...
+        </Typography>
+      )}
+        {auth.authNState !== 'authenticated' && (
           <Button
             size="small"
             onClick={() => {
@@ -53,7 +61,9 @@ export function UserBanner(props: UserBannerProps) {
               }
               switch (auth.loginStrategy) {
                 case 'loginWithRedirect':
-                  auth?.loginWithRedirect ? auth?.loginWithRedirect() : null;
+                  authDispatch({
+                    type: 'loginWithRedirect',
+                  });
                   break;
 
                 case 'login':
@@ -66,14 +76,20 @@ export function UserBanner(props: UserBannerProps) {
             Login
           </Button>
         )}
-        {auth?.isAuthenticated && (
-          <Button
-            size="small"
-            onClick={() => (auth?.logout ? auth?.logout() : null)}
-          >
+        {auth.authNState === 'authenticated' && (
+          <Button size="small" onClick={() => authDispatch({ type: 'logout' })}>
             Logout
           </Button>
         )}
+        <Icon
+          onClick={() =>
+            shellDispatch({
+              type: 'launchView',
+              viewId: 'shell-state-dashboard',
+            })
+          }
+        >key</Icon>
+
         <LoginDialog
           open={open}
           loginStrategy={
@@ -83,20 +99,20 @@ export function UserBanner(props: UserBannerProps) {
           }
           onClose={(result) => {
             if (result.type === 'login') {
-              auth.login &&
-                auth.login({
-                  identifier: result.identifier,
-                  password: result.password,
-                });
+              authDispatch({
+                type: 'login',
+                identifier: result.identifier,
+                password: result.password,
+              });
             }
 
             if (result.type === 'register') {
-              auth.register &&
-                auth.register({
-                  username: result.user,
-                  email: result.email,
-                  password: result.password,
-                });
+              authDispatch({
+                type: 'register',
+                username: result.user,
+                email: result.email,
+                password: result.password,
+              });
             }
 
             setOpen(false);
@@ -105,8 +121,8 @@ export function UserBanner(props: UserBannerProps) {
       </div>
     );
   } else {
-    return <div className={styles['container']}>loading...</div>;
-  }
+    return <div className={styles['container']}>authenticating...</div>;
+  } 
 }
 
 export default UserBanner;

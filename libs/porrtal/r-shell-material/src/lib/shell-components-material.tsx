@@ -29,6 +29,7 @@ import Banner from './banner/banner';
 import BannerMenuBar from './banner-menu-bar/banner-menu-bar';
 import BannerMenuInline from './banner-menu-inline/banner-menu-inline';
 import UserBanner from './user-banner/user-banner';
+import { MaximizeHost } from './maximize-host/maximize-host';
 
 export interface ShellComponentsMaterialProps {
   children: ReactNode | undefined;
@@ -47,6 +48,7 @@ export function ShellComponentsMaterial(props: ShellComponentsMaterialProps) {
     bannerData: props.bannerData,
     UserBanner: props?.userBanner ?? UserBanner,
     LoggerBanner,
+    MaximizeHost
   };
   const shellDispatch = useShellDispatch();
 

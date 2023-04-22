@@ -1,0 +1,20 @@
+.container-container {
+    position: absolute;
+    inset: 0;
+}
+
+.cards-container {
+    padding: 10px;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    grid-auto-rows: 250px;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .card-container {
+    position: relative;
+    overflow: auto;
+  }
+  

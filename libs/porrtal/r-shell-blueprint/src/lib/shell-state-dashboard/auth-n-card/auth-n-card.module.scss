@@ -1,0 +1,23 @@
+@import "@blueprintjs/core/lib/scss/variables";
+
+.card-layout {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    position: absolute;
+    inset: 0;
+    padding: 10px;
+}
+
+.card-header {
+    color: $pt-dark-text-color;
+    background-color: $pt-intent-primary;
+    padding: 5px;
+    padding-left: 10px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.card-content-container {
+    position: relative;
+    overflow: auto;
+}

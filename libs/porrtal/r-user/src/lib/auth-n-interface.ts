@@ -13,6 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+import { StateObject } from '@porrtal/r-api';
+
 export interface RegisterUserInfo {
   username: string;
   email: string;
@@ -24,16 +26,23 @@ export interface LoginCreds {
   password: string;
 }
 
+export type AuthNState =
+  | ''
+  | 'initialized'
+  | 'authenticating'
+  | 'authenticated'
+  | 'error';
+
 export type AuthNInterface = {
+  authNState: AuthNState;
+  errorMessage?: string;
+  loginStrategy: 'loginWithRedirect' | 'login' | 'loginAndRegister';
+
   user?: {
     name: string;
     email: string;
   };
-  loginStrategy: 'loginWithRedirect' | 'login' | 'loginAndRegister';
-  loginWithRedirect?: () => void;
-  login?: (creds: LoginCreds) => void;
-  register?: (userInfo: RegisterUserInfo) => void;
-  logout?: () => void;
-  isAuthenticated: boolean;
-  isInitialized: boolean;
+
+  claims?: StateObject;
+  claimsMap?: { [fromKey: string]: string };
 } | null;

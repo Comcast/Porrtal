@@ -58,6 +58,7 @@ const views: View[] = [
     componentName: 'V1',
     componentModule: () => import('../views/v1/v1'),
     key: 'v1',
+    permissions: 'primary:authenticated',
     displayText: 'v1',
     displayIcon: 'view_in_ar',
   },
@@ -68,6 +69,7 @@ const views: View[] = [
     componentName: 'V2',
     componentModule: () => import('../views/v2/v2'),
     key: 'v2',
+    permissions: 'primary:not-in-role',
     displayText: 'v2',
     displayIcon: 'view_in_ar',
   },
@@ -78,6 +80,7 @@ const views: View[] = [
     componentName: 'V3',
     componentModule: () => import('../views/v3/v3'),
     key: 'v3',
+    permissions: 'orphan-auth-z:role6',
     displayText: 'v3',
     displayIcon: 'view_in_ar',
   },
@@ -90,6 +93,16 @@ const views: View[] = [
     key: 'v4',
     displayText: 'v4',
     displayIcon: 'view_in_ar',
+  },
+  {
+    viewId: 'shell-state-dashboard',
+    paneType: 'bottom',
+    launchAtStartup: false,
+    componentName: 'ShellStateDashboard',
+    componentModule: () => import('@porrtal/r-shell-material'),
+    key: 'shell-state-dashboard',
+    displayText: 'Shell State Dashboard',
+    displayIcon: 'key',
   },
 ];
 
@@ -107,21 +120,21 @@ export function Index() {
           <title>@porrtal - porrtal-auth - n-auth0-app</title>
         </Head>
 
-        <KeycloakAuthentication
-          uri="http://localhost:8080"
-          realm="porrtal"
-          clientId="porrtal-app"
-          redirectUri="http://localhost:4200"
-        >
-          <ShellState views={views}>
+        <ShellState views={views}>
+          <KeycloakAuthentication
+            uri="http://localhost:8080"
+            realm="porrtal"
+            clientId="porrtal-app"
+            redirectUri="http://localhost:4200"
+          >
             <ShellMaterial
               bannerData={{
                 displayText: 'porrtal-auth - nextjs - keycloak',
                 displayIcon: 'cyclone',
               }}
             />
-          </ShellState>
-        </KeycloakAuthentication>
+          </KeycloakAuthentication>
+        </ShellState>
       </>
     );
   }

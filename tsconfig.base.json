@@ -79,6 +79,7 @@
       "@porrtal/r-user": ["libs/porrtal/r-user/src/index.ts"],
       "@porrtal/r-user-auth0": ["libs/porrtal/r-user-auth0/src/index.ts"],
       "@porrtal/r-user-keycloak": ["libs/porrtal/r-user-keycloak/src/index.ts"],
+      "@porrtal/r-user-mock": ["libs/porrtal/r-user-mock/src/index.ts"],
       "@porrtal/r-user-msal": ["libs/porrtal/r-user-msal/src/index.ts"],
       "@porrtal/r-user-strapi": ["libs/porrtal/r-user-strapi/src/index.ts"],
       "ngx-markdown": ["libs/ngx-markdown/lib/src/index.ts"]

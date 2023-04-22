@@ -62,6 +62,7 @@ const views: View[] = [
     componentName: 'V1',
     componentModule: () => import('../../views/v1/v1'),
     key: 'v1',
+    permissions: 'primary:role 1',
     displayText: 'v1',
     displayIcon: 'cube',
   },
@@ -72,6 +73,7 @@ const views: View[] = [
     componentName: 'V2',
     componentModule: () => import('../../views/v2/v2'),
     key: 'v2',
+    permissions: 'primary:not-in-role',
     displayText: 'v2',
     displayIcon: 'cube',
   },
@@ -82,6 +84,8 @@ const views: View[] = [
     componentName: 'V3',
     componentModule: () => import('../../views/v3/v3'),
     key: 'v3',
+    entityType: 'account',
+    permissions: 'orphan-auth-z:role6',
     displayText: 'v3',
     displayIcon: 'cube',
   },
@@ -94,6 +98,16 @@ const views: View[] = [
     key: 'v4',
     displayText: 'v4',
     displayIcon: 'cube',
+  },
+  {
+    viewId: 'shell-state-dashboard',
+    paneType: 'bottom',
+    launchAtStartup: false,
+    componentName: 'ShellStateDashboard',
+    componentModule: () => import('@porrtal/r-shell-material'),
+    key: 'shell-state-dashboard',
+    displayText: 'Shell State Dashboard',
+    displayIcon: 'key',
   },
 ];
 
@@ -111,11 +125,11 @@ export function Index() {
           <title>@porrtal - porrtal-auth - n-strapi-app</title>
         </Head>
 
-        <StrapiAuthentication
-          strapiUri="http://localhost:1337"
-          allowRegistration={true}
-        >
-          <ShellState views={views}>
+        <ShellState views={views}>
+          <StrapiAuthentication
+            strapiUri="http://localhost:1337"
+            allowRegistration={true}
+          >
             <ShellBlueprint
               bannerData={{
                 displayText: 'porrtal-auth - nextjs - strapi - blueprint',
@@ -129,8 +143,8 @@ export function Index() {
                 ],
               }}
             />
-          </ShellState>
-        </StrapiAuthentication>
+          </StrapiAuthentication>
+        </ShellState>
       </>
     );
   }
