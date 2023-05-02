@@ -67,7 +67,7 @@ export class ShellStateBannerComponent {
       // hasErrors$
       this.hasError$ = combineLatest(
         Object.keys(authZService.authZProviders).map((key) =>
-          authZService.authZProviders[key].state$.pipe(
+          authZService.authZProviders[key].authZProviderState$.pipe(
             startWith('' as AuthZProviderState)
           )
         )
@@ -80,7 +80,7 @@ export class ShellStateBannerComponent {
       // allReady$
       this.allReady$ = combineLatest(
         Object.keys(authZService.authZProviders).map((key) =>
-          authZService.authZProviders[key].state$.pipe(
+          authZService.authZProviders[key].authZProviderState$.pipe(
             startWith('' as AuthZProviderState)
           )
         )
@@ -93,7 +93,7 @@ export class ShellStateBannerComponent {
       // someProcessing$
       this.someProcessing$ = combineLatest(
         Object.keys(authZService.authZProviders).map((key) =>
-          authZService.authZProviders[key].state$.pipe(
+          authZService.authZProviders[key].authZProviderState$.pipe(
             startWith('' as AuthZProviderState)
           )
         )

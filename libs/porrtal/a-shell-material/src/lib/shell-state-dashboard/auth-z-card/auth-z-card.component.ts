@@ -31,8 +31,6 @@ import { MatCardModule } from '@angular/material/card';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthZCardComponent {
-  authZ$: Observable<AuthZ | undefined>
-  
   isMaximized$ = new BehaviorSubject<boolean>(false);
   // childIndex = -1;
   // parentNativeEl: any;
@@ -43,31 +41,23 @@ export class AuthZCardComponent {
   }>({
     authZ: undefined,
   });
-  _authZ?: AuthZProviderInterface;
-  state: AuthZProviderState = 'init';
+
+  authZShell$: Observable<AuthZ | undefined>;
 
   @Input() public set data(value: AuthZProviderInterface) {
-    this._authZ = value;
     this.authZSubj.next({ authZ: value });
-
-    this._authZ.state$.subscribe((authNState) => {
-      this.state = authNState;
-      this.props = this._authZ?.props;
-      console.log('props', this.props);
-      this.authZSubj.next({ authZ: this._authZ });
-    });
   }
 
   constructor(
     private readonly el: ElementRef,
     private shellStateService: ShellStateService
   ) {
-    this.authZ$ = combineLatest([shellStateService.select('authZs'), this.authZSubj], (authZs, authZ) => {
-      if (!authZs || !authZ || !authZ.authZ?.name) {
+    this.authZShell$ = combineLatest([shellStateService.select('authZs'), this.authZSubj], (authZs, authZ) => {
+      if (!authZs || !authZ || !authZ.authZ?.getAuthZProviderInfo()?.name) {
         return undefined;
       }
 
-      return authZs[authZ.authZ.name];
+      return authZs[authZ.authZ?.getAuthZProviderInfo()?.name];
     });
   }
 

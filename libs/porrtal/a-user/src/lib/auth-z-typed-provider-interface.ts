@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import {
-  AuthZProviderInfo,
+  AuthZProviderMessage,
   AuthZProviderPendingView,
   AuthZProviderState,
 } from './auth-z-provider-interface';
@@ -22,8 +22,8 @@ export type AuthZTypedProviderInterface<TConfig, TProps> = {
   name: string;
   scopes: string[];
   state: AuthZProviderState;
-  errorInfo: AuthZProviderInfo;
-  warningInfo: AuthZProviderInfo;
+  errorInfo: AuthZProviderMessage;
+  warningInfo: AuthZProviderMessage;
   props: TProps;
   roles: string[];
   pendingViews: AuthZProviderPendingView[];

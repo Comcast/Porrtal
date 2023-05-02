@@ -20,20 +20,31 @@ import {
   AuthZProviderInterface,
   AUTH_N_INTERFACE,
 } from '@porrtal/a-user';
+import { Subscription } from 'rxjs';
 
 export class MsalAuthZService implements AuthZInterface {
+  subscription: Subscription;
+  initialized = false;
+
   constructor(
     public authN: AuthNInterface,
     public authZProviders: { [key: string]: AuthZProviderInterface },
     public shellStateService: ShellStateService
   ) {
-    console.log('msal-auth-z.service constructor', { authN, authZProviders, shellStateService })
-    authN?.state$.subscribe((state) => {
-      if (state === 'initialized') {
+    console.log('msal-auth-z.service constructor', {
+      authN,
+      authZProviders,
+      shellStateService,
+    });
+    this.subscription = authN?.authNState$.subscribe((state) => {
+      if (state !== '' && !this.initialized) {
         Object.keys(authZProviders).forEach((key) => {
-          console.log(`msal auth z service: init '${key}'`, { state, authN, authZProviders });
-          authZProviders[key].name = key;
-          authZProviders[key].init?.(this.authN, shellStateService);
+          console.log(`msal auth z service: init '${key}'`, {
+            state,
+            authN,
+            authZProviders,
+          });
+          authZProviders[key].init?.(key, this.authN, shellStateService);
         });
       }
     });

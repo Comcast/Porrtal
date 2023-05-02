@@ -2,7 +2,16 @@
   <div class="container">
     <mat-toolbar
       class="toolbar"
-      [color]="state === 'error' ? 'warn' : (state === 'initialized' || state === 'authenticating') ? '' : 'accent'"
+      [color]="
+        (((authNSubj | async)?.authN?.authNState$ | async) ?? '') === 'error'
+          ? 'warn'
+          : (((authNSubj | async)?.authN?.authNState$ | async) ?? '') ===
+              'initialized' ||
+            (((authNSubj | async)?.authN?.authNState$ | async) ?? '') ===
+              'authenticating'
+          ? ''
+          : 'accent'
+      "
     >
       <!-- key icon -->
       <span class="status-icon">
@@ -13,15 +22,15 @@
       <mat-spinner
         class="spinner"
         [diameter]="16"
-        *ngIf="state === 'authenticating'"
+        *ngIf="(((authNSubj | async)?.authN?.authNState$ | async) ?? '') === 'authenticating'"
       ></mat-spinner>
-      <span *ngIf="state === 'error'" class="status-icon">
+      <span *ngIf="(((authNSubj | async)?.authN?.authNState$ | async) ?? '') === 'error'" class="status-icon">
         <mat-icon>warning</mat-icon>
       </span>
-      <span *ngIf="state === 'initialized'" class="status-icon">
+      <span *ngIf="(((authNSubj | async)?.authN?.authNState$ | async) ?? '') === 'initialized'" class="status-icon">
         <mat-icon>radio_button_unchecked</mat-icon>
       </span>
-      <span *ngIf="state === 'authenticated'" class="status-icon">
+      <span *ngIf="(((authNSubj | async)?.authN?.authNState$ | async) ?? '') === 'authenticated'" class="status-icon">
         <mat-icon>task_alt</mat-icon>
       </span>
 
@@ -59,25 +68,27 @@
       >
         <!-- state -->
         <span class="auth-n-property-title">state:</span>
-        <span>{{ authN.state$ | async }}</span>
+        <span>{{ authN.authNState$ | async }}</span>
 
         <!-- error message -->
-        <span *ngIf="authN.errorMessage" class="auth-n-property-title"
+        <span *ngIf="authN.errorMessage$ | async" class="auth-n-property-title"
           >error message:</span
         >
-        <span *ngIf="authN.errorMessage">{{ authN.errorMessage }}</span>
+        <span *ngIf="authN.errorMessage$ | async">{{
+          authN.errorMessage$ | async
+        }}</span>
 
         <!-- user.name -->
-        <span *ngIf="authN.user?.name" class="auth-n-property-title"
+        <span *ngIf="(authN.user$ | async)?.name" class="auth-n-property-title"
           >user.name:</span
         >
-        <span *ngIf="authN.user?.name as name">{{ name }}</span>
+        <span *ngIf="(authN.user$ | async)?.name as name">{{ name }}</span>
 
         <!-- user.email -->
-        <span *ngIf="authN.user?.email" class="auth-n-property-title"
+        <span *ngIf="(authN.user$ | async)?.email" class="auth-n-property-title"
           >user.email:</span
         >
-        <span *ngIf="authN.user?.email as email">{{ email }}</span>
+        <span *ngIf="(authN.user$ | async)?.email as email">{{ email }}</span>
 
         <!-- login strategy -->
         <span class="auth-n-property-title">login strategy:</span>
@@ -105,7 +116,8 @@
             authN.login ||
             authN.register ||
             authN.logout
-          "></span>
+          "
+        ></span>
 
         <!-- has init -->
         <span *ngIf="authN.init"></span>
@@ -129,14 +141,14 @@
       </div>
 
       <!-- claims -->
-      <div *ngIf="(authNSubj | async)?.authN?.claims as claims">
+      <div *ngIf="(authNSubj | async)?.authN?.claims$ | async as claims">
         <hr />
         <span class="auth-n-property-title">claims:</span>
         <pre><p>{{ claims | json }}</p></pre>
       </div>
 
       <!-- claimsMap -->
-      <div *ngIf="(authNSubj | async)?.authN?.claimsMap as claimsMap">
+      <div *ngIf="(authNSubj | async)?.authN?.claimsMap$ | async as claimsMap">
         <hr />
         <span class="auth-n-property-title">claims map:</span>
         <pre><p>{{ claimsMap | json}}</p></pre>

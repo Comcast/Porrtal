@@ -18,7 +18,7 @@ import { StateObject } from '@porrtal/a-api';
 import { ShellStateService } from '@porrtal/a-shell';
 import {
   AuthNInterface,
-  AuthZProviderInfo,
+  AuthZProviderMessage,
   AuthZProviderInterface,
   AuthZProviderPendingView,
   AuthZProviderState,
@@ -29,8 +29,8 @@ export interface MockAuthZProviderConfig {
   fetchDelay?: number;
   shouldFail?: boolean;
   scopes?: string[];
-  errorInfo?: AuthZProviderInfo;
-  warningInfo?: AuthZProviderInfo;
+  errorInfo?: AuthZProviderMessage;
+  warningInfo?: AuthZProviderMessage;
   props?: StateObject;
   roles?: string[];
   pendingViews?: AuthZProviderPendingView[];
@@ -40,8 +40,8 @@ export class MockAuthZProvider implements AuthZProviderInterface {
   public state$: Observable<AuthZProviderState>;
   public name = 'primary';
   scopes?: string[];
-  errorInfo?: AuthZProviderInfo;
-  warningInfo?: AuthZProviderInfo;
+  errorMessage$?: AuthZProviderMessage;
+  warningMessage$?: AuthZProviderMessage;
   props?: StateObject;
   roles?: string[];
   pendingViews?: AuthZProviderPendingView[];
@@ -63,7 +63,7 @@ export class MockAuthZProvider implements AuthZProviderInterface {
       this.authN = authN;
       this.authN.state$.subscribe((state) => {
         console.log('mock auth z provider: isAuthenticated', state);
-        this.errorInfo = this.config?.errorInfo;
+        this.errorMessage$ = this.config?.errorInfo;
         switch (state) {
           case 'authenticated': {
             this.roles = this.config?.roles;
@@ -103,7 +103,7 @@ export class MockAuthZProvider implements AuthZProviderInterface {
             break;
 
           case 'error':
-            this.errorInfo = { message: 'Auth N Failed.' };
+            this.errorMessage$ = { message: 'Auth N Failed.' };
             this.stateSubj.next('error');
             break;
 
@@ -119,8 +119,8 @@ export class MockAuthZProvider implements AuthZProviderInterface {
     this.state$ = this.stateSubj;
     this.config = config;
 
-    this.errorInfo = config?.errorInfo;
-    this.warningInfo = config?.warningInfo;
+    this.errorMessage$ = config?.errorInfo;
+    this.warningMessage$ = config?.warningInfo;
     this.props = config?.props;
     this.pendingViews = config?.pendingViews;
   }

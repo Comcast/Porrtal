@@ -3,9 +3,15 @@
     <mat-toolbar
       class="toolbar"
       [color]="
-        state === 'error'
+        (((authZSubj | async)?.authZ?.authZProviderState$ | async) ?? '') ===
+        'error'
           ? 'warn'
-          : state === '' || state === 'init'
+          : (((authZSubj | async)?.authZ?.authZProviderState$ | async) ??
+              '') ===
+              '' ||
+            (((authZSubj | async)?.authZ?.authZProviderState$ | async) ??
+              '') ===
+              'init'
           ? ''
           : 'accent'
       "
@@ -19,15 +25,15 @@
       <mat-spinner
         class="spinner"
         [diameter]="16"
-        *ngIf="state === 'init'"
+        *ngIf="(((authZSubj | async)?.authZ?.authZProviderState$ | async) ?? '') === 'init'"
       ></mat-spinner>
-      <span *ngIf="state === 'error'" class="status-icon">
+      <span *ngIf="(((authZSubj | async)?.authZ?.authZProviderState$ | async) ?? '') === 'error'" class="status-icon">
         <mat-icon>warning</mat-icon>
       </span>
-      <span *ngIf="state === ''" class="status-icon">
+      <span *ngIf="(((authZSubj | async)?.authZ?.authZProviderState$ | async) ?? '') === ''" class="status-icon">
         <mat-icon>radio_button_unchecked</mat-icon>
       </span>
-      <span *ngIf="state === 'ready'" class="status-icon">
+      <span *ngIf="(((authZSubj | async)?.authZ?.authZProviderState$ | async) ?? '') === 'ready'" class="status-icon">
         <mat-icon>task_alt</mat-icon>
       </span>
 
@@ -36,7 +42,7 @@
 
       <!-- card message -->
       <span *ngIf="authZSubj | async as auth">
-        {{ auth?.authZ?.name }}
+        {{ auth?.authZ?.name$ | async }}
       </span>
       <span *ngIf="!(authZSubj | async)"></span>
 
@@ -59,62 +65,62 @@
       >
         <!-- state -->
         <span class="property-title">state:</span>
-        <span>{{ authZProvider.state$ | async }}</span>
+        <span>{{ authZProvider.authZProviderState$ | async }}</span>
 
         <!-- error message -->
         <span
           *ngIf="
-            (authZProvider.state$ | async) === 'error' &&
-            authZProvider.errorInfo?.message
+            (authZProvider.authZProviderState$ | async) === 'error' &&
+            (authZProvider.errorMessage$ | async)?.message
           "
           class="property-title"
           >error message:</span
         >
         <span
           *ngIf="
-            (authZProvider.state$ | async) === 'error' &&
-            authZProvider.errorInfo?.message
+            (authZProvider.authZProviderState$ | async) === 'error' &&
+            (authZProvider.errorMessage$ | async)?.message
           "
-          >{{ authZProvider.errorInfo?.message }}</span
+          >{{ (authZProvider.errorMessage$ | async)?.message }}</span
         >
 
         <!-- warning message -->
         <span
           *ngIf="
-            (authZProvider.state$ | async) !== '' &&
-            authZProvider.warningInfo?.message
+            (authZProvider.authZProviderState$ | async) !== '' &&
+            (authZProvider.warningMessage$ | async)?.message
           "
           class="property-title"
           >warning message:</span
         >
         <span
           *ngIf="
-            (authZProvider.state$ | async) !== '' &&
-            authZProvider.warningInfo?.message
+            (authZProvider.authZProviderState$ | async) !== '' &&
+            (authZProvider.warningMessage$ | async)?.message
           "
-          >{{ authZProvider.warningInfo?.message }}</span
+          >{{ (authZProvider.warningMessage$ | async)?.message }}</span
         >
 
         <!-- roles -->
         <span
-          *ngIf="authZProvider.roles && authZProvider.roles.length > 0"
+          *ngIf="(authZProvider.roles$ | async)?.length ?? 0 > 0"
           class="property-title"
           >roles:</span
         >
-        <div *ngIf="authZProvider.roles && authZProvider.roles.length > 0">
-          <div *ngFor="let role of authZProvider.roles">
+        <div *ngIf="(authZProvider.roles$ | async)?.length ?? 0 > 0">
+          <div *ngFor="let role of (authZProvider.roles$ | async) ?? []">
             {{ role }}
           </div>
         </div>
 
         <!-- scopes -->
         <span
-          *ngIf="authZProvider.scopes && authZProvider.scopes.length > 0"
+          *ngIf="(authZProvider.scopes$ | async)?.length ?? 0 > 0"
           class="property-title"
           >scopes:</span
         >
-        <div *ngIf="authZProvider.scopes && authZProvider.scopes.length > 0">
-          <div *ngFor="let scope of authZProvider.scopes">
+        <div *ngIf="(authZProvider.scopes$ | async)?.length ?? 0 > 0">
+          <div *ngFor="let scope of (authZProvider.scopes$ | async) ?? []">
             {{ scope }}
           </div>
         </div>
@@ -128,20 +134,22 @@
 
       <!-- shell AuthZ Info -->
       <hr />
-      <div *ngIf="authZ$ | async as authZ" class="properties-container">
+      <div *ngIf="authZSubj | async as authZ" class="properties-container">
         <!-- authZ.ready -->
         <span class="property-title">ready:</span>
-        <span>{{ authZ?.ready ?? false }}</span>
+        <span>{{ (authZShell$ | async)?.ready ?? false }}</span>
 
         <!-- authZ.checkPermission -->
         <span class="property-title">checkPermission():</span>
-        <span>{{ authZ?.checkPermission ?? false ? 'defined' : 'not defined' }}</span>
+        <span>{{
+          (authZShell$ | async)?.checkPermission ?? false ? 'defined' : 'not defined'
+        }}</span>
       </div>
-      <div *ngIf="authZ$ | async as authZ">
+      <div *ngIf="authZShell$ | async as authZShell">
         <span class="property-title">authZ:</span>
-        <pre><p>{{ authZ | json }}</p></pre>
+        <pre><p>{{ authZShell | json }}</p></pre>
       </div>
-      <div *ngIf="authZ$ | async as authZ">
+      <div *ngIf="authZShell$ | async as authZ">
         <div class="property-title">
           launchQ({{ authZ?.launchQ?.length ?? 'undefined' }}):
         </div>
@@ -149,7 +157,7 @@
           {{ launchItem.viewId }}
         </div>
       </div>
-      <div *ngIf="authZ$ | async as authZ">
+      <div *ngIf="authZShell$ | async as authZ">
         <div class="property-title">
           noPermissionsQ({{ authZ?.noPermissionsQ?.length ?? 'undefined' }}):
         </div>
@@ -157,13 +165,13 @@
           {{ launchItem.viewId }}
         </div>
       </div>
-      <div *ngIf="!(authZ$ | async)">No AuthZ Info from Shell.</div>
+      <div *ngIf="!(authZShell$ | async)">No AuthZ Info from Shell.</div>
 
       <!-- authZProvider info -->
       <ng-container *ngIf="(authZSubj | async)?.authZ as authZ">
         <hr />
         <!-- props -->
-        <div *ngIf="authZ.props as props">
+        <div *ngIf="authZ.props$ | async as props">
           <span class="property-title">props:</span>
           <pre><p>{{ props | json }}</p></pre>
         </div>

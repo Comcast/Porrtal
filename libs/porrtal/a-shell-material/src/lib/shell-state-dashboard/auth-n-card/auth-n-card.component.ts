@@ -35,24 +35,15 @@ export class AuthNCardComponent {
   isMaximized$ = new BehaviorSubject<boolean>(false);
   childIndex = -1;
   parentNativeEl: any;
-  claims?: StateObject;
 
   authNSubj = new BehaviorSubject<{ authN: AuthNInterface | undefined }>({
     authN: undefined,
   });
   _authN?: AuthNInterface;
-  state: AuthNState = 'initialized';
 
   @Input() public set data(value: AuthNInterface) {
     this._authN = value;
     this.authNSubj.next({ authN: value });
-
-    this._authN.state$.subscribe((authNState) => {
-      this.state = authNState;
-      this.claims = this._authN?.claims;
-      console.log('claims', this.claims, authNState);
-      this.authNSubj.next({ authN: this._authN });
-    });
   }
 
   constructor(

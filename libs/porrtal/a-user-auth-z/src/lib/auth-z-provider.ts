@@ -15,7 +15,7 @@ limitations under the License.
 
 import { StateObject } from '@porrtal/a-api';
 import {
-  AuthZProviderInfo,
+  AuthZProviderMessage,
   AuthZProviderInterface,
   AuthZProviderPendingView,
   AuthZProviderState,

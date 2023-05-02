@@ -17,7 +17,7 @@ import { StateObject } from '@porrtal/a-api';
 import { ShellStateService } from '@porrtal/a-shell';
 import {
   AuthNInterface,
-  AuthZProviderInfo,
+  AuthZProviderMessage,
   AuthZProviderInterface,
   AuthZProviderPendingView,
   AuthZProviderState,
@@ -28,8 +28,8 @@ export class OidcAuthZProvider implements AuthZProviderInterface {
   public state$: Observable<AuthZProviderState>;
   public name = 'primary';
   scopes?: string[];
-  errorInfo?: AuthZProviderInfo;
-  warningInfo?: AuthZProviderInfo;
+  errorMessage$?: AuthZProviderMessage;
+  warningMessage$?: AuthZProviderMessage;
   props?: StateObject;
   roles?: string[];
   pendingViews?: AuthZProviderPendingView[];
@@ -91,7 +91,7 @@ export class OidcAuthZProvider implements AuthZProviderInterface {
             break;
 
           case 'error':
-            this.errorInfo = { message: 'Auth N Failed.' };
+            this.errorMessage$ = { message: 'Auth N Failed.' };
             this.stateSubj.next('error');
             break;
 
