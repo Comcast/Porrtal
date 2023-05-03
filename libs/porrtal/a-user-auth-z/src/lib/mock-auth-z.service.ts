@@ -12,12 +12,11 @@ export class MockAuthZService implements AuthZInterface {
     public authZProviders: { [key: string]: AuthZProviderInterface },
     public shellStateService: ShellStateService
   ) {
-    authN?.state$.subscribe((state) => {
-      if (state !== '') {
+    authN?.authNState$.subscribe((authNState) => {
+      if (authNState !== '') {
         Object.keys(authZProviders).forEach((key) => {
           console.log(`mock auth z service: init '${key}'`);
-          authZProviders[key].name = key;
-          authZProviders[key].init?.(this.authN, shellStateService);
+          authZProviders[key].init?.(key, this.authN, shellStateService);
         });
       }
     });
