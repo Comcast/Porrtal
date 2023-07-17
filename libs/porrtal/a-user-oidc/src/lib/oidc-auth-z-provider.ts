@@ -67,7 +67,9 @@ export class OidcAuthZProvider
         });
         switch (authNState) {
           case 'authenticated': {
+            // for oidc, we aren't obtaining embedded roles, so we'll just set the roles to authenticated
             const roles = ['authenticated'];
+            this.set({ roles });
 
             // update the shell for this provider with ready and the permissions check function
             this.shellStateService?.dispatch({
