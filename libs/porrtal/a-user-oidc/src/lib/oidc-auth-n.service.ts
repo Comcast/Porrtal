@@ -42,19 +42,6 @@ export class OidcAuthNService
   claims$ = this.select('claims');
   claimsMap$ = this.select('claimsMap');
 
-  get user(): { name: string; email: string } | undefined {
-    const claims = this.oAuthService.getIdentityClaims();
-    if (!claims) {
-      console.log('claims undefined...');
-      return undefined;
-    }
-
-    return {
-      name: claims['nickname'] ?? claims['email'],
-      email: claims['email'],
-    };
-  }
-
   constructor(
     @Inject(AUTH_CONFIG) private authConfig: AuthConfig,
     private oAuthService: OAuthService
