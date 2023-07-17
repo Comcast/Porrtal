@@ -24,7 +24,7 @@ import {
   OAuthErrorEvent,
   OAuthService,
 } from 'angular-oauth2-oidc';
-import { filter } from 'rxjs';
+import { filter, map } from 'rxjs';
 
 @Injectable()
 export class OidcAuthNService
@@ -60,6 +60,22 @@ export class OidcAuthNService
     private oAuthService: OAuthService
   ) {
     super();
+
+    this.connect('user',
+      this.select('claims').pipe(
+        map((claims) => {
+          if (!claims) {
+            console.log('claims undefined...');
+            return undefined;
+          } else {
+            const userInfo = {
+              name: (claims['nickname'] ?? claims['email'] ?? '') as string,
+              email: (claims['email'] ?? '') as string,
+            };
+            return userInfo;
+          }
+        })
+    ));
 
     this.set({
       loginStrategy: 'loginWithRedirect',
