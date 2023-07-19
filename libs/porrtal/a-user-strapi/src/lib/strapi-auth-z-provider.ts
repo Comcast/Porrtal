@@ -62,12 +62,8 @@ export class StrapiAuthZProvider
         switch (state) {
           case 'authenticated': {
             const authNInfo = this.authN?.getAuthNInfo();
-            const rawRoles = (authNInfo?.claims?.['roles'] ?? []) as string[];
-            const roles = rawRoles?.map((role) =>
-              role.indexOf('_') >= 0
-                ? role.split('_').splice(1).join('_')
-                : role
-            );
+            const rawRoles = (authNInfo?.claims?.['porrtal_roles'] ?? []) as unknown as ({ name: string })[];
+            const roles = rawRoles?.map((role) => role?.name ?? '');
             this.set({
               roles,
             });
