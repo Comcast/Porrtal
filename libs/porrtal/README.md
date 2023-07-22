@@ -4,25 +4,25 @@
 mindmap
   root((@porrtal))
     React((React))
-      r_api["`r-api`"]
-      r_shell["`r-shell`"]
-        r_shell_blueprint["`r-shell-blueprint`"]
-        r_shell_material["`r-shell-material`"]
-      r_user["`r-user`"]
-        r_user_mock["`r-user-mock`"]
-        r_user_msal["`r-user-msal`"]
-        r_user_oidc["`r-user-oidc`"]
-        r_user_strapi["`r-user-strapi`"]
+      r_api["r-api"]
+      r_shell["r-shell"]
+        r_shell_blueprint["r-shell-blueprint"]
+        r_shell_material["r-shell-material"]
+      r_user["r-user"]
+        r_user_mock["r-user-mock"]
+        r_user_msal["r-user-msal"]
+        r_user_oidc["r-user-oidc"]
+        r_user_strapi["r-user-strapi"]
     Angular((Angular))
-      a_api["`a-api`"]
-      a_shell["`a-shell`"]
-        a_shell_bootstrap["`a-shell-bootstrap`"]
-        a_shell_material["`a-shell-material`"]
-      a_user["`a-user`"]
-        a_user_auth_z["`a-user-auth-z`"]
-        a_user_msal["`a-user-msal`"]
-        a_user_oidc["`a-user-oidc`"]
-        a_user_strapi["`a-user-strapi`"]
+      a_api["a-api"]
+      a_shell["a-shell"]
+        a_shell_bootstrap["a-shell-bootstrap"]
+        a_shell_material["a-shell-material"]
+      a_user["a-user"]
+        a_user_auth_z["a-user-auth-z"]
+        a_user_msal["a-user-msal"]
+        a_user_oidc["a-user-oidc"]
+        a_user_strapi["a-user-strapi"]
 ```
 
 ## react (r-*)
