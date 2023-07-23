@@ -52,7 +52,7 @@ This document covers sample applications and technical notes on the porrtal libr
   * [a-strapi-app](#a-strapi-app-sample-angular-application-for-strapi)
 * [Angular User Libraries](#angular-user-libraries)
 
-## `User` Sample Applications
+# `User` Sample Applications
 
 To illustrate the use of the @porrtal `user` libraries for authentication and authorization in porrtal applications, a set of sample applications have been added to the [apps/porrtal-auth](../../apps/porrtal-auth) folder.
 
@@ -76,7 +76,7 @@ The next part of the name indicates the authentication platform demonstrated in 
 
 Let's explore the sample applications for React, NextJS and Angular (starting with React).
 
-## React `User` Sample Applications
+# React `User` Sample Applications
 
 To illustrate the use of the @porrtal/r-user* libraries in React applications, a set of sample React applications (starting with "r-") have been added to the [apps/porrtal-auth](../../apps/porrtal-auth) folder.
 
@@ -89,7 +89,7 @@ Sample Angular applications are shown for
 * Strapi
 * Mock (for testing)
 
-### r-msal-app: Sample React Application for Microsoft Authentication Library (MSAL)
+## r-msal-app: Sample React Application for Microsoft Authentication Library (MSAL)
 
 Microsoft's "MSAL for React" library enables React web applications to authenticate users using Azure AD work and school accounts (AAD), Microsoft personal accounts (MSA) and social identity providers like Facebook, Google, LinkedIn, Microsoft accounts, etc. through Azure AD B2C service. It also enables your app to get tokens to access Microsoft Cloud services such as Microsoft Graph.
 
@@ -107,7 +107,7 @@ The porrtal MSAL React sample application, [r-msal-app](../../apps/porrtal-auth/
 1. [Set Permissions in Views](../../apps/porrtal-auth/a-msal-app/src/app/pages/page-one/page-one.component.ts#L96)
 2. [Create Main Component Class](../../apps/porrtal-auth/a-msal-app/src/app/pages/page-one/page-one.component.ts#L108-L137)
 
-### r-keycloak-app: Sample React Application for Keycloak
+## r-keycloak-app: Sample React Application for Keycloak
 
 Keycloak provides open source identity and access management, so that you can add authentication to applications and secure services with minimum effort.
 
@@ -131,7 +131,7 @@ Support for Keycloak is provided by the Angular porrtal library, [a-user-oidc](a
 1. [Set Permissions in Views](../../apps/porrtal-auth/a-keycloak-app/src/app/pages/page-one/page-one.component.ts#L81)
 2. [Create Main Component Class](../../apps/porrtal-auth/a-keycloak-app/src/app/pages/page-one/page-one.component.ts#L104-L132)
 
-### r-auth0-app: Sample React Application for Auth0
+## r-auth0-app: Sample React Application for Auth0
 
 Define access roles for the end-users of your applications and APIs, and extend your authorization capabilities to implement dynamic access control.
 
@@ -152,7 +152,7 @@ Support for Auth0 is provided by the Angular porrtal library, [a-user-oidc](a-us
 1. [Set Permissions in Views](../../apps/porrtal-auth/a-auth0-app/src/app/pages/page-one/page-one.component.ts#L81)
 2. [Create Main Component Class](../../apps/porrtal-auth/a-auth0-app/src/app/pages/page-one/page-one.component.ts#L104-L132)
 
-### r-strapi-app: Sample React Application for Strapi
+## r-strapi-app: Sample React Application for Strapi
 
 Strapi is an open-source headless CMS. It’s 100% Javascript, fully customizable and developer-first.
 
@@ -174,7 +174,7 @@ Support for Strapi is provided by the Angular porrtal library, [a-user-strapi](a
 1. [Set Permissions in Views](../../apps/porrtal-auth/a-oidc-app/src/app/pages/page-one/page-one.component.ts#L96-L97)
 2. [Create Main Component Class](../../apps/porrtal-auth/a-oidc-app/src/app/pages/page-one/page-one.component.ts#L108-L137)
 
-## NextJS `User` Sample Applications
+# NextJS `User` Sample Applications
 
 To illustrate the use of the @porrtal/r-user* React libraries in NextJS applications, a set of sample NextJS applications (starting with "n-") have been added to the [apps/porrtal-auth](../../apps/porrtal-auth) folder.
 
@@ -187,7 +187,7 @@ Sample Angular applications are shown for
 * Strapi
 * Mock (for testing)
 
-## React `User` Libraries
+# React `User` Libraries
 
 Now let's take a deeper look at the porrtal React `user` libraries that support the above React and NextJS sample applications.
 
@@ -207,7 +207,7 @@ erDiagram
 
 Next, let's switch gears and look at porrtal `user` sample applications and libraries for Angular, starting with the Angular `user` sample applications.
 
-## Angular `User` Sample Applications
+# Angular `User` Sample Applications
 
 To illustrate the use of the porrtal Angular `user` libraries (@porrtal/a-user*), a set of sample Angular applications (starting with "a-") have been added to the [apps/porrtal-auth](../../apps/porrtal-auth) folder.
 
@@ -220,7 +220,7 @@ Sample Angular applications are shown for
 * Strapi
 * Mock (for testing)
 
-### a-msal-app: Sample Angular Application for Microsoft Authentication Library (MSAL)
+## a-msal-app: Sample Angular Application for Microsoft Authentication Library (MSAL)
 
 MSAL for Angular enables Angular web applications to authenticate users using Azure AD work and school accounts (AAD), Microsoft personal accounts (MSA) and social identity providers like Facebook, Google, LinkedIn, Microsoft accounts, etc. through Azure AD B2C service. It also enables your app to get tokens to access Microsoft Cloud services such as Microsoft Graph.
 
@@ -240,7 +240,7 @@ Support for MSAL is provided by the Angular porrtal library, [a-user-msal](a-use
 1. [Set Permissions in Views](../../apps/porrtal-auth/a-msal-app/src/app/pages/page-one/page-one.component.ts#L96)
 2. [Create Main Component Class](../../apps/porrtal-auth/a-msal-app/src/app/pages/page-one/page-one.component.ts#L108-L137)
 
-### a-keycloak-app: Sample Angular Application for Keycloak
+## a-keycloak-app: Sample Angular Application for Keycloak
 
 Keycloak provides open source identity and access management, so that you can add authentication to applications and secure services with minimum effort.
 
@@ -264,7 +264,7 @@ Support for Keycloak is provided by the Angular porrtal library, [a-user-oidc](a
 1. [Set Permissions in Views](../../apps/porrtal-auth/a-keycloak-app/src/app/pages/page-one/page-one.component.ts#L81)
 2. [Create Main Component Class](../../apps/porrtal-auth/a-keycloak-app/src/app/pages/page-one/page-one.component.ts#L104-L132)
 
-### a-auth0-app: Sample Angular Application for Auth0
+## a-auth0-app: Sample Angular Application for Auth0
 
 Define access roles for the end-users of your applications and APIs, and extend your authorization capabilities to implement dynamic access control.
 
@@ -285,7 +285,7 @@ Support for Auth0 is provided by the Angular porrtal library, [a-user-oidc](a-us
 1. [Set Permissions in Views](../../apps/porrtal-auth/a-auth0-app/src/app/pages/page-one/page-one.component.ts#L81)
 2. [Create Main Component Class](../../apps/porrtal-auth/a-auth0-app/src/app/pages/page-one/page-one.component.ts#L104-L132)
 
-### a-strapi-app: Sample Angular Application for Strapi
+## a-strapi-app: Sample Angular Application for Strapi
 
 Strapi is an open-source headless CMS. It’s 100% Javascript, fully customizable and developer-first.
 
@@ -307,7 +307,7 @@ Support for Strapi is provided by the Angular porrtal library, [a-user-strapi](a
 1. [Set Permissions in Views](../../apps/porrtal-auth/a-oidc-app/src/app/pages/page-one/page-one.component.ts#L96-L97)
 2. [Create Main Component Class](../../apps/porrtal-auth/a-oidc-app/src/app/pages/page-one/page-one.component.ts#L108-L137)
 
-## Angular `User` Libraries
+# Angular `User` Libraries
 
 Now that we've seen the Angular authentication and authorization sample applications, lets dig into the technical details of the Angular porrtal libraries that make this possible.
 
