@@ -329,9 +329,9 @@ In the following table, the elements of each Angular porrtal `a-user-*` library 
 |----|----|
 |PorrtalXxxModule|Module to import for apps that use modules|
 |provideXxxOAuthClient|Function that returns an array of providers.  Can be used with stand alone components.  Also used by PorrtalXxxModule to get the providers|
-|XxxAuthNService|microsoft authentication support|
-|XxxAuthZService|angular - auth0 and keycloak|oidc library support (for auth0 and keycloak)|
-|XxxAuthZProvider|angular - strapi|strapi authentication support|
+|XxxAuthNService|authentication support|
+|XxxAuthZService|array of authorization providers|
+|XxxAuthZProvider|authorization support|
 
 #### AuthZProviders and the porrtal shell
 
