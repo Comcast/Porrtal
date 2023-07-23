@@ -133,24 +133,25 @@ Support for Keycloak is provided by the Angular porrtal library, [a-user-oidc](a
 
 ## r-auth0-app: Sample React Application for Auth0
 
-Define access roles for the end-users of your applications and APIs, and extend your authorization capabilities to implement dynamic access control.
+With Auth0's hosted authentication service, you can easily setup and manage authentication and authorization for your organization.
+
+You can define access roles for the end-users of your applications and APIs, and extend your authorization capabilities to implement dynamic access control.
 
 Using Auth0, developers can connect any application written in any language or stack, and define the external identity providers, as well as integrations, that they want to use. 
 
-Auth0 provides unmatched extensibility and support for B2B, B2C, and B2E use cases.
+Auth0 provides extensibility and support for B2B, B2C, and B2E use cases.
 
-Support for Auth0 is provided by the Angular porrtal library, [a-user-oidc](a-user-oidc), which leverages the OIDC Library (linked below).
+Support for Auth0 in porrtal React applications is provided by the React porrtal library, [r-user-auth0](r-user-auth0), which leverages the Auth0 React Library (linked below).
 
-##### OIDC Angular - Auth0 Links
+##### Auth0 React Links
 * [Auth0 Website](https://auth0.com/access-management)
 * [Auth0 Get Started](https://auth0.com/signup?&signUpData=%7B%22category%22%3A%22button%22%7D)
-* [OIDC Library](https://github.com/manfredsteyer/angular-oauth2-oidc#angular-oauth2-oidc)
+* [Auth0 React Library @auth0/auth0-react](https://github.com/auth0/auth0-react#readme)
 
-##### OIDC Angular - Auth0 Code Setup
+##### Auth0 React Code Setup
 
-1. [Create Application Module](../../apps/porrtal-auth/a-auth0-app/src/app/app.module.ts#L25-L55)
-1. [Set Permissions in Views](../../apps/porrtal-auth/a-auth0-app/src/app/pages/page-one/page-one.component.ts#L81)
-2. [Create Main Component Class](../../apps/porrtal-auth/a-auth0-app/src/app/pages/page-one/page-one.component.ts#L104-L132)
+1. [Set Permissions in Views](../../apps/porrtal-auth/r-auth0-app/src/app/app.tsx#L60)
+2. [Create App Component Function](../../apps/porrtal-auth/r-auth0-app/src/app/app.tsx#L108-L125)
 
 ## r-strapi-app: Sample React Application for Strapi
 
@@ -274,12 +275,12 @@ Auth0 provides unmatched extensibility and support for B2B, B2C, and B2E use cas
 
 Support for Auth0 is provided by the Angular porrtal library, [a-user-oidc](a-user-oidc), which leverages the OIDC Library (linked below).
 
-##### OIDC Angular - Auth0 Links
+##### Auth0 Angular Links
 * [Auth0 Website](https://auth0.com/access-management)
 * [Auth0 Get Started](https://auth0.com/signup?&signUpData=%7B%22category%22%3A%22button%22%7D)
 * [OIDC Library](https://github.com/manfredsteyer/angular-oauth2-oidc#angular-oauth2-oidc)
 
-##### OIDC Angular - Auth0 Code Setup
+##### Auth0 Angular Code Setup
 
 1. [Create Application Module](../../apps/porrtal-auth/a-auth0-app/src/app/app.module.ts#L25-L55)
 1. [Set Permissions in Views](../../apps/porrtal-auth/a-auth0-app/src/app/pages/page-one/page-one.component.ts#L81)
