@@ -16,7 +16,7 @@ limitations under the License.
 import { useShellDispatch } from '@porrtal/r-shell';
 import { useAuthZsDispatch } from '@porrtal/r-user';
 import { useEffect } from 'react';
-import { useAuthN } from './msal-authentication';
+import { useAuthN } from '@porrtal/r-user';
 
 export interface MsalAuthZProps {
   children?: React.ReactNode;

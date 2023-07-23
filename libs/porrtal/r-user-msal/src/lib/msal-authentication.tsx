@@ -114,11 +114,6 @@ const reducer: Reducer<MsalAuthNInfo, AuthNAction | MsalAuthNAction> = (
   }
 };
 
-export function useAuthN(): AuthNInterface {
-  const authN = useContext(AuthNContext);
-  return authN;
-}
-
 interface MsalAdapterProps {
   children?: React.ReactNode;
 }
