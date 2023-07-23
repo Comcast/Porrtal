@@ -97,10 +97,10 @@ The porrtal React library, [r-user-msal](r-user-msal), wraps the MSAL for React 
 
 The porrtal MSAL React sample application, [r-msal-app](../../apps/porrtal-auth/r-msal-app) illustrates how to setup a porrtal React application to support Azure AD authentication.
 
-##### MSAL React Links
+### MSAL React Links
 * [Microsoft Authentication Library (MSAL) for React](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react#microsoft-authentication-library-for-react)
 
-##### MSAL Angular Code Setup
+### MSAL React Code Setup
 
 1. [Create Application Module](../../apps/porrtal-auth/a-msal-app/src/app/app.module.ts#L26-L40)
 2. [Create msal-config](../../apps/porrtal-auth/a-msal-app/src/app/msal-config-example.ts#L18-L38)
@@ -119,13 +119,13 @@ This also applies to logout. Keycloak provides single-sign out, which means user
 
 Support for Keycloak is provided by the Angular porrtal library, [a-user-oidc](a-user-oidc), which leverages the OIDC Library (linked below).
 
-##### Keycloak Links
+### Keycloak React Links
 * [Keycloak Website](https://www.keycloak.org/)
 * [Keycloak Guides](https://www.keycloak.org/guides) (Including Getting Started Options)
 * [Configuring Keycloak](https://www.keycloak.org/server/configuration)
 * [OIDC Library](https://github.com/manfredsteyer/angular-oauth2-oidc#angular-oauth2-oidc)
 
-##### OIDC Angular - Keycloak Code Setup
+### Keycloak React Code Setup
 
 1. [Create Application Module](../../apps/porrtal-auth/a-keycloak-app/src/app/app.module.ts#L26-L57)
 1. [Set Permissions in Views](../../apps/porrtal-auth/a-keycloak-app/src/app/pages/page-one/page-one.component.ts#L81)
@@ -143,12 +143,12 @@ Auth0 provides extensibility and support for B2B, B2C, and B2E use cases.
 
 Support for Auth0 in porrtal React applications is provided by the React porrtal library, [r-user-auth0](r-user-auth0), which leverages the Auth0 React Library (linked below).
 
-##### Auth0 React Links
+### Auth0 React Links
 * [Auth0 Website](https://auth0.com/access-management)
 * [Auth0 Get Started](https://auth0.com/signup?&signUpData=%7B%22category%22%3A%22button%22%7D)
 * [Auth0 React Library @auth0/auth0-react](https://github.com/auth0/auth0-react#readme)
 
-##### Auth0 React Code Setup
+### Auth0 React Code Setup
 
 1. [Set Permissions in Views](../../apps/porrtal-auth/r-auth0-app/src/app/app.tsx#L60)
 2. [Create App Component Function](../../apps/porrtal-auth/r-auth0-app/src/app/app.tsx#L108-L125)
@@ -163,12 +163,12 @@ Strapi provides an effective end-user management system, built on a role-based a
 
 Support for Strapi is provided by the Angular porrtal library, [a-user-strapi](a-user-strapi), which leverages the Strapi REST API.
 
-##### Strapi Angular Links
+### Strapi React Links
 * [Strapi Website](https://strapi.io/)
 * [Strapi Quick Start Guide](https://docs.strapi.io/dev-docs/quick-start#_1-install-strapi-and-create-a-new-project)
 * [Managing End-User Accounts](https://docs.strapi.io/user-docs/users-roles-permissions/managing-end-users)
 
-##### Strapi Angular Code Setup
+### Strapi React Code Setup
 
 1. [Create Application Module](../../apps/porrtal-auth/a-keycloak-app/src/app/app.module.ts#L26-L57)
 2. [Create msal-config](../../apps/porrtal-auth/a-oidc-app/src/app/oidc-config-example.ts#L18-L38)
@@ -231,10 +231,10 @@ The porrtal MSAL Angular sample illustrates how to setup a porrtal Angular appli
 
 Support for MSAL is provided by the Angular porrtal library, [a-user-msal](a-user-msal), which leverages the MSAL for Angular library (linked below).
 
-##### MSAL Angular Links
+### MSAL Angular Links
 * [Microsoft Authentication Library (MSAL) for Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular#microsoft-authentication-library-for-angular)
 
-##### MSAL Angular Code Setup
+### MSAL Angular Code Setup
 
 1. [Create Application Module](../../apps/porrtal-auth/a-msal-app/src/app/app.module.ts#L26-L40)
 2. [Create msal-config](../../apps/porrtal-auth/a-msal-app/src/app/msal-config-example.ts#L18-L38)
@@ -253,13 +253,13 @@ This also applies to logout. Keycloak provides single-sign out, which means user
 
 Support for Keycloak is provided by the Angular porrtal library, [a-user-oidc](a-user-oidc), which leverages the OIDC Library (linked below).
 
-##### Keycloak Links
+### Keycloak Angular Links
 * [Keycloak Website](https://www.keycloak.org/)
 * [Keycloak Guides](https://www.keycloak.org/guides) (Including Getting Started Options)
 * [Configuring Keycloak](https://www.keycloak.org/server/configuration)
 * [OIDC Library](https://github.com/manfredsteyer/angular-oauth2-oidc#angular-oauth2-oidc)
 
-##### OIDC Angular - Keycloak Code Setup
+### Keycloak Angular Code Setup
 
 1. [Create Application Module](../../apps/porrtal-auth/a-keycloak-app/src/app/app.module.ts#L26-L57)
 1. [Set Permissions in Views](../../apps/porrtal-auth/a-keycloak-app/src/app/pages/page-one/page-one.component.ts#L81)
@@ -275,12 +275,12 @@ Auth0 provides unmatched extensibility and support for B2B, B2C, and B2E use cas
 
 Support for Auth0 is provided by the Angular porrtal library, [a-user-oidc](a-user-oidc), which leverages the OIDC Library (linked below).
 
-##### Auth0 Angular Links
+### Auth0 Angular Links
 * [Auth0 Website](https://auth0.com/access-management)
 * [Auth0 Get Started](https://auth0.com/signup?&signUpData=%7B%22category%22%3A%22button%22%7D)
 * [OIDC Library](https://github.com/manfredsteyer/angular-oauth2-oidc#angular-oauth2-oidc)
 
-##### Auth0 Angular Code Setup
+### Auth0 Angular Code Setup
 
 1. [Create Application Module](../../apps/porrtal-auth/a-auth0-app/src/app/app.module.ts#L25-L55)
 1. [Set Permissions in Views](../../apps/porrtal-auth/a-auth0-app/src/app/pages/page-one/page-one.component.ts#L81)
@@ -296,12 +296,12 @@ Strapi provides an effective end-user management system, built on a role-based a
 
 Support for Strapi is provided by the Angular porrtal library, [a-user-strapi](a-user-strapi), which leverages the Strapi REST API.
 
-##### Strapi Angular Links
+### Strapi Angular Links
 * [Strapi Website](https://strapi.io/)
 * [Strapi Quick Start Guide](https://docs.strapi.io/dev-docs/quick-start#_1-install-strapi-and-create-a-new-project)
 * [Managing End-User Accounts](https://docs.strapi.io/user-docs/users-roles-permissions/managing-end-users)
 
-##### Strapi Angular Code Setup
+### Strapi Angular Code Setup
 
 1. [Create Application Module](../../apps/porrtal-auth/a-keycloak-app/src/app/app.module.ts#L26-L57)
 2. [Create msal-config](../../apps/porrtal-auth/a-oidc-app/src/app/oidc-config-example.ts#L18-L38)
@@ -320,7 +320,7 @@ Now that we've seen the Angular authentication and authorization sample applicat
 |a-user-oidc|angular - auth0 and keycloak|oidc library support (for auth0 and keycloak)|
 |a-user-strapi|angular - strapi|strapi authentication and authorization support|
 
-### Technical Notes
+## Technical Notes
 
 The goal of the @porrtal/a-user-* libraries is to make it easy (and consistent) to add authentication to an Angular porrtal application.
 
@@ -334,7 +334,7 @@ In the following table, the elements of each Angular porrtal `a-user-*` library 
 |XxxAuthZService|array of authorization providers|
 |XxxAuthZProvider|authorization support|
 
-#### AuthZProviders and the porrtal shell
+## AuthZProviders and the porrtal shell
 
 AuthZProviders perform the authorization function, providing role-based access to porrtal views.  A porrtal app can have multiple AuthZProviders.
 
@@ -348,7 +348,7 @@ Typically, the [required permission] is a role and the checkPermissions function
 
 This is how a porrtal application can load different views depending on the roles of the authenticated user.  The application may look very different for users that are in different roles.
 
-### Diagram
+## Diagram
 
 ```mermaid
 erDiagram
