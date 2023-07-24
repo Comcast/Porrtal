@@ -287,9 +287,96 @@ Now let's take a deeper look at the porrtal React `user` libraries that support 
 |r-user-keycloak|react - keycloak|react keycloak library support|...|
 |r-user-strapi|react - strapi|strapi authentication support|...|
 
+## AuthZProviders and the porrtal shell
+
+AuthZProviders perform the authorization function, providing role-based access to porrtal views.  A porrtal app can have multiple AuthZProviders.
+
+Each AuthZProvider registers itself with the porrtal shell.
+
+At application startup, any porrtal views that define the `permisssions` property (who's syntax is [provider name]:[required permission]), will be held in an array until the corresponding AuthZProvider registers itself with the shell.
+
+Part of the registration includes a "checkPermissions" function that accepts the [required permission] string and returns true if the requirement is satisfied, or false if the required permission is not met.
+
+Typically, the [required permission] is a role and the checkPermissions function returns true if the authenticated user has the role in the authorization (auth z) provider, and false if the user does not have the role.
+
+This is how a porrtal application can load different views depending on the roles of the authenticated user.  The application may look very different for users that are in different roles.
+
 ```mermaid
 erDiagram
-    ReactStuff
+    loginWithRedirect {
+      none none
+    }
+    login {
+      string identifier
+      string password
+    }
+    register {
+      string username
+      string email
+      string password
+    }
+    logout {
+      none none
+    }
+
+    AuthNUser {
+        string name
+        string email
+    }
+
+    AuthNInterface {
+        AuthNState authNState
+        string errorMessage
+        AuthNUser user
+        LoginStrategy loginStrategy
+        StateObject claims
+        string_dictionary claimsMap
+    }
+
+    AuthNContext ||--|| AuthNInterface : "of type"
+    AuthNInterface ||--|| AuthNUser : "contains one"
+
+    AuthNDispatchContext ||--|| loginWithRedirect : "one of"
+    AuthNDispatchContext ||--|| login : "one of"
+    AuthNDispatchContext ||--|| register : "one of"
+    AuthNDispatchContext ||--|| logout : "one of"
+```
+
+```mermaid
+erDiagram
+    AuthZInterface {
+        AuthZProviderInterface_dictionary authZProviders
+    }
+
+    AuthZProviderInterface {
+        AuthZInfo getAuthZInfo_function
+        AuthZInfo_observable authZInfo_dollar
+        string_observable name_dollar
+        AuthZProviderState_observable authZProviderState_dollar
+        string_array_observable scopes_dollar
+        AuthZProviderMessage_observable errorMessage_dollar
+        AuthZProviderMessage_observable warningMessage_dollar
+        StateObject_observable props_dollar
+        string_array_observable roles_dollar
+        AuthZProviderPendingView_array_observable pendingViews_dollar
+    }
+
+    AuthZProviderInfo {
+        string name
+        AuthZProviderState authZProviderState
+        string_array scopes
+        AuthZProviderMessage errorMessage
+        AuthZProviderMessage warningMessage
+        StateObject props
+        string_array roles
+        AuthZProviderPendingView_array pendingViews
+    }
+
+    XxxAuthentication ||--|| 
+
+    XxxAuthZService ||--|| AuthZInterface : implements
+    AuthZInterface ||--o{ AuthZProviderInterface : "contains array"
+    AuthZProviderInterface ||--|| AuthZProviderInfo : "contains one"
 ```
 
 Next, let's switch gears and look at porrtal `user` sample applications and libraries for Angular, starting with the Angular `user` sample applications.

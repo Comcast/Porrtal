@@ -33,15 +33,17 @@ export type AuthNState =
   | 'authenticated'
   | 'error';
 
+export interface AuthNUser {
+  name: string;
+  email: string;
+}
+
 export type AuthNInterface = {
   authNState: AuthNState;
   errorMessage?: string;
   loginStrategy: 'loginWithRedirect' | 'login' | 'loginAndRegister';
 
-  user?: {
-    name: string;
-    email: string;
-  };
+  user?: AuthNUser;
 
   claims?: StateObject;
   claimsMap?: { [fromKey: string]: string };
