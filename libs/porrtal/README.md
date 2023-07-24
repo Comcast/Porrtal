@@ -191,7 +191,7 @@ Sample Angular applications are shown for
 
 Microsoft's "MSAL for React" library enables React web applications to authenticate users using Azure AD work and school accounts (AAD), Microsoft personal accounts (MSA) and social identity providers like Facebook, Google, LinkedIn, Microsoft accounts, etc. through Azure AD B2C service. It also enables your app to get tokens to access Microsoft Cloud services such as Microsoft Graph.
 
-The porrtal React library, [r-user-msal](r-user-msal), wraps the MSAL for React library, simplifying the process of adding Azure AD support to a porrtal application.
+The porrtal React library, [n-user-msal](n-user-msal), wraps the MSAL for React library, simplifying the process of adding Azure AD support to a porrtal application.
 
 The porrtal MSAL React sample application, [n-msal-app](../../apps/porrtal-auth/n-msal-app) illustrates how to setup a porrtal NextJS application to support Azure AD authentication.
 
