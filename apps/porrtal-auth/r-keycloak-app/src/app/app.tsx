@@ -20,6 +20,9 @@ import { KeycloakAuthentication } from '@porrtal/r-user-keycloak';
 import { ShellState } from '@porrtal/r-shell';
 import { ShellMaterial } from '@porrtal/r-shell-material';
 
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-balham.css';
+
 const views: View[] = [
   {
     viewId: 'main-view',

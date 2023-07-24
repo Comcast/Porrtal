@@ -19,6 +19,9 @@ import { ShellMaterial } from '@porrtal/r-shell-material';
 import { Auth0Authentication } from '@porrtal/r-user-auth0';
 import styles from './app.module.scss';
 
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-balham.css';
+
 const views: View[] = [
   {
     viewId: 'main-view',

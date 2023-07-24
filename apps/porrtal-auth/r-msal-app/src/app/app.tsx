@@ -20,6 +20,9 @@ import { View } from '@porrtal/r-api';
 import { MsalAuthentication } from '@porrtal/r-user-msal';
 import { msalConfig } from './msal-config';
 
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-balham.css';
+
 const views: View[] = [
   {
     viewId: 'main-view',
