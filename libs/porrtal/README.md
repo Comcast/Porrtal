@@ -157,23 +157,21 @@ Support for Auth0 in porrtal React applications is provided by the React porrtal
 
 Strapi is an open-source headless CMS. It’s 100% Javascript, fully customizable and developer-first.
 
-Strapi is an open-source headless content management system (CMS) that can be customized to suit any needs. It allows developers to easily build, manage, and distribute content across any device or platform. Being built on JavaScript, it uses Node.js for the backend and can work with any front-end system (React, Angular, Vue, etc.) or mobile applications, thus making it a good option for developers looking to create APIs.
+Strapi can be customized to suit any need. It allows developers to easily build, manage, and distribute content across any device or platform. Being built on JavaScript, it uses Node.js for the backend and can work with any front-end system (React, Angular, Vue, etc.) or mobile applications, thus making it a good option for developers looking to create APIs.
 
 Strapi provides an effective end-user management system, built on a role-based access control (RBAC) model. It includes built-in user authentication (with registration, login, and password reset functions), and supports third-party authentication providers via plugins. User roles and permissions, which define what actions users can perform on different content types, can be easily managed through the admin dashboard. The system offers varying levels of content access control based on these roles and permissions. Additionally, Strapi's authentication and authorization flows are customizable, allowing developers to tailor them to their specific needs.
 
-Support for Strapi is provided by the Angular porrtal library, [a-user-strapi](a-user-strapi), which leverages the Strapi REST API.
+Support for Strapi in React porrtal applications is provided by the React Strapi porrtal library, [r-user-strapi](r-user-strapi), which leverages the Strapi REST API.
 
-### Strapi React Links
+### Strapi Links
 * [Strapi Website](https://strapi.io/)
 * [Strapi Quick Start Guide](https://docs.strapi.io/dev-docs/quick-start#_1-install-strapi-and-create-a-new-project)
 * [Managing End-User Accounts](https://docs.strapi.io/user-docs/users-roles-permissions/managing-end-users)
 
 ### Strapi React Code Setup
 
-1. [Create Application Module](../../apps/porrtal-auth/a-keycloak-app/src/app/app.module.ts#L26-L57)
-2. [Create msal-config](../../apps/porrtal-auth/a-oidc-app/src/app/oidc-config-example.ts#L18-L38)
-1. [Set Permissions in Views](../../apps/porrtal-auth/a-oidc-app/src/app/pages/page-one/page-one.component.ts#L96-L97)
-2. [Create Main Component Class](../../apps/porrtal-auth/a-oidc-app/src/app/pages/page-one/page-one.component.ts#L108-L137)
+1. [Set Permissions in Views](../../apps/porrtal-auth/r-strapi-app/src/app/app.tsx#L62)
+2. [Create App Component Function](../../apps/porrtal-auth/r-strapi-app/src/app/app.tsx#L110-L126)
 
 # NextJS `User` Sample Applications
 
@@ -251,6 +249,26 @@ Support for Auth0 in porrtal React applications is provided by the React porrtal
 
 1. [Set Permissions in Views](../../apps/porrtal-auth/n-auth0-app/pages/index.tsx#L61)
 2. [Create App Component Function](../../apps/porrtal-auth/n-auth0-app/pages/index.tsx#L110-L153)
+
+## n-strapi-app: Sample NextJS Application for Strapi
+
+Strapi is an open-source headless CMS. It’s 100% Javascript, fully customizable and developer-first.
+
+Strapi can be customized to suit any need. It allows developers to easily build, manage, and distribute content across any device or platform. Being built on JavaScript, it uses Node.js for the backend and can work with any front-end system (React, Angular, Vue, etc.) or mobile applications, thus making it a good option for developers looking to create APIs.
+
+Strapi provides an effective end-user management system, built on a role-based access control (RBAC) model. It includes built-in user authentication (with registration, login, and password reset functions), and supports third-party authentication providers via plugins. User roles and permissions, which define what actions users can perform on different content types, can be easily managed through the admin dashboard. The system offers varying levels of content access control based on these roles and permissions. Additionally, Strapi's authentication and authorization flows are customizable, allowing developers to tailor them to their specific needs.
+
+Support for Strapi in NextJS porrtal applications is provided by the React Strapi porrtal library, [r-user-strapi](r-user-strapi), which leverages the Strapi REST API.
+
+### Strapi Links
+* [Strapi Website](https://strapi.io/)
+* [Strapi Quick Start Guide](https://docs.strapi.io/dev-docs/quick-start#_1-install-strapi-and-create-a-new-project)
+* [Managing End-User Accounts](https://docs.strapi.io/user-docs/users-roles-permissions/managing-end-users)
+
+### Strapi NextJS Code Setup
+
+1. [Set Permissions in Views](../../apps/porrtal-auth/n-strapi-app/pages/index.tsx#L61)
+2. [Create App Component Function](../../apps/porrtal-auth/n-strapi-app/pages/index.tsx#L110-L149)
 
 # React `User` Libraries
 
