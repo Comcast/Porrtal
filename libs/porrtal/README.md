@@ -2,7 +2,7 @@
 
 The [@porrtal libraries](https://www.npmjs.com/search?q=%40porrtal) can be found on npmjs.com.
 
-The porrtal libraries that start with "a-user" and "r-user" provide (optional) support for authentication and authorization in porrtal applications.
+The porrtal `user` libraries (libraries that start with the prefix "a-user" and "r-user") provide (optional) support for authentication and authorization in porrtal applications.
 
 The "a-user" libraries support Angular porrtal applications.
 
