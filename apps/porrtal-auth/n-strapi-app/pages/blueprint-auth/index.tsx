@@ -62,7 +62,7 @@ const views: View[] = [
     componentName: 'V1',
     componentModule: () => import('../../views/v1/v1'),
     key: 'v1',
-    permissions: 'primary:role 1',
+    permissions: 'primary:role1',
     displayText: 'v1',
     displayIcon: 'cube',
   },
