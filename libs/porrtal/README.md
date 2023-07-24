@@ -87,7 +87,6 @@ Sample Angular applications are shown for
 * Keycloak
 * Auth0
 * Strapi
-* Mock (for testing)
 
 ## r-msal-app: Sample React Application for Microsoft Authentication Library (MSAL)
 
@@ -109,7 +108,7 @@ The porrtal MSAL React sample application, [r-msal-app](../../apps/porrtal-auth/
 
 ## r-keycloak-app: Sample React Application for Keycloak
 
-Keycloak provides open source identity and access management, so that you can add authentication to applications and secure services with minimum effort.
+Keycloak provides self-hosted open source identity and access management, so that you can add authentication to applications and secure services with minimum effort.
 
 Keycloak provides user federation, strong authentication, user management, fine-grained authorization, and more.
 
@@ -117,19 +116,21 @@ Users authenticate with Keycloak rather than individual applications. This means
 
 This also applies to logout. Keycloak provides single-sign out, which means users only have to logout once to be logged-out of all applications that use Keycloak.
 
-Support for Keycloak is provided by the Angular porrtal library, [a-user-oidc](a-user-oidc), which leverages the OIDC Library (linked below).
+There are a number of hosted Keycloak services also.  A link to Keycloak on Amazon Web Services (linked below).
+
+Support for Keycloak is provided by the React porrtal library, [r-user-keycloak](r-user-keycloak), which leverages the @react-keycloak/web npm package (linked below).
 
 ### Keycloak React Links
 * [Keycloak Website](https://www.keycloak.org/)
 * [Keycloak Guides](https://www.keycloak.org/guides) (Including Getting Started Options)
 * [Configuring Keycloak](https://www.keycloak.org/server/configuration)
-* [OIDC Library](https://github.com/manfredsteyer/angular-oauth2-oidc#angular-oauth2-oidc)
+* [Keycloak on Amazon Web Services](https://www.amazonaws.cn/en/solutions/keycloak-on-aws/)
+* [Keycloak React Library @react-keycloak/web](https://www.npmjs.com/package/@react-keycloak/web)
 
 ### Keycloak React Code Setup
 
-1. [Create Application Module](../../apps/porrtal-auth/a-keycloak-app/src/app/app.module.ts#L26-L57)
-1. [Set Permissions in Views](../../apps/porrtal-auth/a-keycloak-app/src/app/pages/page-one/page-one.component.ts#L81)
-2. [Create Main Component Class](../../apps/porrtal-auth/a-keycloak-app/src/app/pages/page-one/page-one.component.ts#L104-L132)
+1. [Set Permissions in Views](../../apps/porrtal-auth/r-keycloak-app/src/app/app.tsx#L61)
+2. [Create App Component Function](../../apps/porrtal-auth/r-keycloak-app/src/app/app.tsx#L109-L127)
 
 ## r-auth0-app: Sample React Application for Auth0
 
@@ -186,7 +187,54 @@ Sample Angular applications are shown for
 * Keycloak
 * Auth0
 * Strapi
-* Mock (for testing)
+
+## n-keycloak-app: Sample NextJS Application for Keycloak
+
+Keycloak provides self-hosted open source identity and access management, so that you can add authentication to applications and secure services with minimum effort.
+
+Keycloak provides user federation, strong authentication, user management, fine-grained authorization, and more.
+
+Users authenticate with Keycloak rather than individual applications. This means that your applications don't have to deal with login forms, authenticating users, and storing users. Once logged-in to Keycloak, users don't have to login again to access a different application.
+
+This also applies to logout. Keycloak provides single-sign out, which means users only have to logout once to be logged-out of all applications that use Keycloak.
+
+There are a number of hosted Keycloak services also.  A link to Keycloak on Amazon Web Services (linked below).
+
+Support for Keycloak is provided by the React porrtal library, [r-user-keycloak](r-user-keycloak), which leverages the @react-keycloak/web npm package (linked below).
+
+### Keycloak React Links
+* [Keycloak Website](https://www.keycloak.org/)
+* [Keycloak Guides](https://www.keycloak.org/guides) (Including Getting Started Options)
+* [Configuring Keycloak](https://www.keycloak.org/server/configuration)
+* [Keycloak on Amazon Web Services](https://www.amazonaws.cn/en/solutions/keycloak-on-aws/)
+* [@react-keycloak/web](https://www.npmjs.com/package/@react-keycloak/web)
+
+### Keycloak React Code Setup
+
+1. [Set Permissions in Views](../../apps/porrtal-auth/n-keycloak-app/pages/index.tsx#L61)
+2. [Create App Component Function](../../apps/porrtal-auth/n-keycloak-app/pages/index.tsx#L109-L143)
+
+## n-auth0-app: Sample NextJS Application for Auth0
+
+With Auth0's hosted authentication service, you can easily setup and manage authentication and authorization for your organization.
+
+You can define access roles for the end-users of your applications and APIs, and extend your authorization capabilities to implement dynamic access control.
+
+Using Auth0, developers can connect any application written in any language or stack, and define the external identity providers, as well as integrations, that they want to use. 
+
+Auth0 provides extensibility and support for B2B, B2C, and B2E use cases.
+
+Support for Auth0 in porrtal React applications is provided by the React porrtal library, [r-user-auth0](r-user-auth0), which leverages the Auth0 React Library (linked below).
+
+### Auth0 React Links
+* [Auth0 Website](https://auth0.com/access-management)
+* [Auth0 Get Started](https://auth0.com/signup?&signUpData=%7B%22category%22%3A%22button%22%7D)
+* [Auth0 React Library @auth0/auth0-react](https://github.com/auth0/auth0-react#readme)
+
+### Auth0 React Code Setup
+
+1. [Set Permissions in Views](../../apps/porrtal-auth/n-auth0-app/pages/index.tsx#L61)
+2. [Create App Component Function](../../apps/porrtal-auth/n-auth0-app/pages/index.tsx#L110-L153)
 
 # React `User` Libraries
 
