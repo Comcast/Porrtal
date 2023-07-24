@@ -122,6 +122,16 @@ export function Two(props: TwoProps) {
               bannerData={{
                 displayText: 'porrtal-auth - nextjs - msal (blueprint)',
                 displayIcon: 'hurricane',
+                childData: [
+                  {
+                    displayText: 'one',
+                    targetUrl: '/',
+                  },
+                  {
+                    displayText: 'two',
+                    targetUrl: '/two',
+                  },
+                ],
               }}
             />
           </MsalAuthentication>

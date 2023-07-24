@@ -125,6 +125,16 @@ export function Two(props: TwoProps) {
               bannerData={{
                 displayText: 'porrtal-auth - nextjs - keycloak (blueprint)',
                 displayIcon: 'hurricane',
+                childData: [
+                  {
+                    displayText: 'one',
+                    targetUrl: '/',
+                  },
+                  {
+                    displayText: 'two',
+                    targetUrl: '/two',
+                  },
+                ],
               }}
             />
           </KeycloakAuthentication>

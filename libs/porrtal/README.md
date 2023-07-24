@@ -98,13 +98,12 @@ The porrtal MSAL React sample application, [r-msal-app](../../apps/porrtal-auth/
 
 ### MSAL React Links
 * [Microsoft Authentication Library (MSAL) for React](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react#microsoft-authentication-library-for-react)
+* [Microsoft Authentication Library (MSAL) for React - Getting Started](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-react/docs/getting-started.md#getting-started)
 
 ### MSAL React Code Setup
 
-1. [Create Application Module](../../apps/porrtal-auth/a-msal-app/src/app/app.module.ts#L26-L40)
-2. [Create msal-config](../../apps/porrtal-auth/a-msal-app/src/app/msal-config-example.ts#L18-L38)
-1. [Set Permissions in Views](../../apps/porrtal-auth/a-msal-app/src/app/pages/page-one/page-one.component.ts#L96)
-2. [Create Main Component Class](../../apps/porrtal-auth/a-msal-app/src/app/pages/page-one/page-one.component.ts#L108-L137)
+1. [Set Permissions in Views](../../apps/porrtal-auth/r-msal-app/src/app/app.tsx#L61)
+2. [Create App Component Function](../../apps/porrtal-auth/r-msal-app/src/app/app.tsx#L109-L128)
 
 ## r-keycloak-app: Sample React Application for Keycloak
 
@@ -116,7 +115,7 @@ Users authenticate with Keycloak rather than individual applications. This means
 
 This also applies to logout. Keycloak provides single-sign out, which means users only have to logout once to be logged-out of all applications that use Keycloak.
 
-There are a number of hosted Keycloak services also.  A link to Keycloak on Amazon Web Services (linked below).
+There are a number of hosted Keycloak services also.  A link is provided below to Keycloak on Amazon Web Services.
 
 Support for Keycloak is provided by the React porrtal library, [r-user-keycloak](r-user-keycloak), which leverages the @react-keycloak/web npm package (linked below).
 
@@ -188,6 +187,23 @@ Sample Angular applications are shown for
 * Auth0
 * Strapi
 
+## n-msal-app: Sample NextJS Application for Microsoft Authentication Library (MSAL)
+
+Microsoft's "MSAL for React" library enables React web applications to authenticate users using Azure AD work and school accounts (AAD), Microsoft personal accounts (MSA) and social identity providers like Facebook, Google, LinkedIn, Microsoft accounts, etc. through Azure AD B2C service. It also enables your app to get tokens to access Microsoft Cloud services such as Microsoft Graph.
+
+The porrtal React library, [r-user-msal](r-user-msal), wraps the MSAL for React library, simplifying the process of adding Azure AD support to a porrtal application.
+
+The porrtal MSAL React sample application, [n-msal-app](../../apps/porrtal-auth/n-msal-app) illustrates how to setup a porrtal NextJS application to support Azure AD authentication.
+
+### MSAL React Links
+* [Microsoft Authentication Library (MSAL) for React](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react#microsoft-authentication-library-for-react)
+* [Microsoft Authentication Library (MSAL) for React - Getting Started](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-react/docs/getting-started.md#getting-started)
+
+### MSAL React Code Setup
+
+1. [Set Permissions in Views](../../apps/porrtal-auth/n-msal-app/pages/index.tsx#L62)
+2. [Create App Component Function](../../apps/porrtal-auth/n-msal-app/pages/index.tsx#L110-L149)
+
 ## n-keycloak-app: Sample NextJS Application for Keycloak
 
 Keycloak provides self-hosted open source identity and access management, so that you can add authentication to applications and secure services with minimum effort.
@@ -198,7 +214,7 @@ Users authenticate with Keycloak rather than individual applications. This means
 
 This also applies to logout. Keycloak provides single-sign out, which means users only have to logout once to be logged-out of all applications that use Keycloak.
 
-There are a number of hosted Keycloak services also.  A link to Keycloak on Amazon Web Services (linked below).
+There are a number of hosted Keycloak services also.  A link is provided below to Keycloak on Amazon Web Services.
 
 Support for Keycloak is provided by the React porrtal library, [r-user-keycloak](r-user-keycloak), which leverages the @react-keycloak/web npm package (linked below).
 
@@ -267,7 +283,6 @@ Sample Angular applications are shown for
 * Keycloak
 * Auth0
 * Strapi
-* Mock (for testing)
 
 ## a-msal-app: Sample Angular Application for Microsoft Authentication Library (MSAL)
 

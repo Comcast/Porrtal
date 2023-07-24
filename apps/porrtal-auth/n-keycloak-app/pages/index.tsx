@@ -131,6 +131,16 @@ export function Index() {
               bannerData={{
                 displayText: 'porrtal-auth - nextjs - keycloak',
                 displayIcon: 'cyclone',
+                childData: [
+                  {
+                    displayText: 'one',
+                    targetUrl: '/',
+                  },
+                  {
+                    displayText: 'two',
+                    targetUrl: '/two',
+                  },
+                ],
               }}
             />
           </KeycloakAuthentication>
