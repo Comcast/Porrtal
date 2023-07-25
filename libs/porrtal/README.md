@@ -76,7 +76,6 @@ The next part of the name indicates the authentication platform demonstrated in 
 | Keycloak | a-keycloak-app | [Keycloak Website](https://www.keycloak.org/) |
 | Auth0 | a-auth0-app | [Auth0 Website](https://auth0.com/access-management) |
 | Strapi | a-strapi-app | [Strapi Website](https://strapi.io/) |
-| mock | a-mock-app | Mock authentication implementation for testing |
 
 ## Running Sample Applications
 
@@ -303,14 +302,13 @@ Support for Strapi in NextJS porrtal applications is provided by the React Strap
 
 Now let's take a deeper look at the porrtal React `user` libraries that support the above React and NextJS sample applications.
 
-|library|technology|title|description|
-|----|----|----|----|
-|r-user|react|authentication and authorization|...|
-|r-user-mock|react - mock|mock authentication support (for development)|...|
-|r-user-msal|react - azure|microsoft authentication support|...|
-|r-user-auth0|react - auth0|react auth0 library support|...|
-|r-user-keycloak|react - keycloak|react keycloak library support|...|
-|r-user-strapi|react - strapi|strapi authentication support|...|
+|library|technology|title|
+|----|----|----|
+|r-user|react|authentication and authorization|
+|r-user-msal|react - azure|microsoft authentication support|
+|r-user-keycloak|react - keycloak|react keycloak library support|
+|r-user-auth0|react - auth0|react auth0 library support|
+|r-user-strapi|react - strapi|strapi authentication support|
 
 ## AuthZProviders and the porrtal shell
 
@@ -543,7 +541,6 @@ Now that we've seen the Angular authentication and authorization sample applicat
 |library|technology|description|
 |----|----|----|
 |a-user|angular|authentication and authorization interfaces|
-|a-user-auth-z|angular - mock|mock authentication and authorization support|
 |a-user-msal|angular - azure|microsoft authentication and authorization support|
 |a-user-oidc|angular - auth0 and keycloak|oidc library support (for auth0 and keycloak)|
 |a-user-strapi|angular - strapi|strapi authentication and authorization support|
