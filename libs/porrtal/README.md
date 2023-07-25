@@ -37,7 +37,7 @@ mindmap
 
 This document covers sample applications and technical notes on the porrtal libraries that support the applictions.  Very likely, only specific sections will be relevant for your goals.  Here are the various sections that may be of interest:
 
-* [User Sample Applications (Overview)](#user-sample-applications)
+* [User Sample Applications (Overview)](#user-sample-applications-overview)
 * [React User Sample Applications](#react-user-sample-applications)
   * [r-msal-app](#r-msal-app-sample-react-application-for-microsoft-authentication-library-msal)
   * [r-keycloak-app](#r-keycloak-app-sample-react-application-for-keycloak)
@@ -56,7 +56,7 @@ This document covers sample applications and technical notes on the porrtal libr
   * [a-strapi-app](#a-strapi-app-sample-angular-application-for-strapi)
 * [Angular User Libraries](#angular-user-libraries)
 
-# `User` Sample Applications
+# `User` Sample Applications (Overview)
 
 To illustrate the use of the @porrtal `user` libraries for authentication and authorization in porrtal applications, a set of sample applications have been added to the [apps/porrtal-auth](../../apps/porrtal-auth) folder.
 
@@ -72,11 +72,27 @@ The next part of the name indicates the authentication platform demonstrated in 
 
 | name | example | authentication platform |
 |---|---|---|
-| auth0 | a-auth0-app | [Auth0 Website](https://auth0.com/access-management) |
-| keycloak | a-keycloak-app | [Keycloak Website](https://www.keycloak.org/) |
+| Auth0 | a-auth0-app | [Auth0 Website](https://auth0.com/access-management) |
+| Keycloak | a-keycloak-app | [Keycloak Website](https://www.keycloak.org/) |
 | mock | a-mock-app | Mock authentication implementation for testing |
-| msal | a-msal-app | [Microsoft Authentication Library (MSAL) Overview](https://learn.microsoft.com/en-us/azure/active-directory/develop/msal-overview) |
-| strapi | a-strapi-app | [Strapi Website](https://strapi.io/) |
+| MSAL | a-msal-app | [Microsoft Authentication Library (MSAL) Overview](https://learn.microsoft.com/en-us/azure/active-directory/develop/msal-overview) |
+| Strapi | a-strapi-app | [Strapi Website](https://strapi.io/) |
+
+## Running Sample Applications
+
+To try out one of the sample applications, you will first need to setup the authentication platform you'd like to use:
+* [Auth0 Setup](Auth0Setup.md)
+* [Keycloak Setup](KeycloakSetup.md)
+* [MSAL Setup](MsalSetup.md)
+* [Strapi Setup](StrapiSetup.md)
+
+To run a particular sample, you will need to clone this repo, install https://nodejs.com, run `npm install --legacy-peer-deps` (from the cloned repo folder), and then run the sample:
+
+`nx serve porrtal-auth-r-msal-app`
+
+Notice that the name is "porrtal-auth-" plus the name of the application folder.  [Nx](https://nx.dev) concatenates the folders together to get the unique project name.
+
+Now open your browser to https://localhost:4200 
 
 Let's explore the sample applications for React, NextJS and Angular (starting with React).
 
