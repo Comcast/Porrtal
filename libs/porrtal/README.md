@@ -122,8 +122,8 @@ The porrtal MSAL React sample application, [r-msal-app](../../apps/porrtal-auth/
 
 ### MSAL React Code Setup
 
-1. [Set Permissions in Views](../../apps/porrtal-auth/r-msal-app/src/app/app.tsx#L61)
-2. [Create App Component Function](../../apps/porrtal-auth/r-msal-app/src/app/app.tsx#L109-L128)
+1. [Set Permissions in Views](../../apps/porrtal-auth/r-msal-app/src/app/app.tsx#L64)
+2. [Create App Component Function](../../apps/porrtal-auth/r-msal-app/src/app/app.tsx#L112-L131)
 
 ## r-keycloak-app: Sample React Application for Keycloak
 
@@ -148,8 +148,8 @@ Support for Keycloak is provided by the React porrtal library, [r-user-keycloak]
 
 ### Keycloak React Code Setup
 
-1. [Set Permissions in Views](../../apps/porrtal-auth/r-keycloak-app/src/app/app.tsx#L61)
-2. [Create App Component Function](../../apps/porrtal-auth/r-keycloak-app/src/app/app.tsx#L109-L127)
+1. [Set Permissions in Views](../../apps/porrtal-auth/r-keycloak-app/src/app/app.tsx#L64)
+2. [Create App Component Function](../../apps/porrtal-auth/r-keycloak-app/src/app/app.tsx#L112-L130)
 
 ## r-auth0-app: Sample React Application for Auth0
 
@@ -170,8 +170,8 @@ Support for Auth0 in porrtal React applications is provided by the React porrtal
 
 ### Auth0 React Code Setup
 
-1. [Set Permissions in Views](../../apps/porrtal-auth/r-auth0-app/src/app/app.tsx#L60)
-2. [Create App Component Function](../../apps/porrtal-auth/r-auth0-app/src/app/app.tsx#L108-L125)
+1. [Set Permissions in Views](../../apps/porrtal-auth/r-auth0-app/src/app/app.tsx#L63)
+2. [Create App Component Function](../../apps/porrtal-auth/r-auth0-app/src/app/app.tsx#L111-L128)
 
 ## r-strapi-app: Sample React Application for Strapi
 
