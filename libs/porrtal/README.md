@@ -72,18 +72,18 @@ The next part of the name indicates the authentication platform demonstrated in 
 
 | name | example | authentication platform |
 |---|---|---|
-| Auth0 | a-auth0-app | [Auth0 Website](https://auth0.com/access-management) |
-| Keycloak | a-keycloak-app | [Keycloak Website](https://www.keycloak.org/) |
-| mock | a-mock-app | Mock authentication implementation for testing |
 | MSAL | a-msal-app | [Microsoft Authentication Library (MSAL) Overview](https://learn.microsoft.com/en-us/azure/active-directory/develop/msal-overview) |
+| Keycloak | a-keycloak-app | [Keycloak Website](https://www.keycloak.org/) |
+| Auth0 | a-auth0-app | [Auth0 Website](https://auth0.com/access-management) |
 | Strapi | a-strapi-app | [Strapi Website](https://strapi.io/) |
+| mock | a-mock-app | Mock authentication implementation for testing |
 
 ## Running Sample Applications
 
 To try out one of the sample applications, you will first need to setup the authentication platform you'd like to use:
-* [Auth0 Setup](Auth0Setup.md)
-* [Keycloak Setup](KeycloakSetup.md)
 * [MSAL Setup](MsalSetup.md)
+* [Keycloak Setup](KeycloakSetup.md)
+* [Auth0 Setup](Auth0Setup.md)
 * [Strapi Setup](StrapiSetup.md)
 
 To run a particular sample, you will need to clone this repo, install https://nodejs.org, run `npm install --legacy-peer-deps` (from the cloned repo folder), and then run the sample:
@@ -119,6 +119,8 @@ The porrtal MSAL React sample application, [r-msal-app](../../apps/porrtal-auth/
 ### MSAL React Links
 * [Microsoft Authentication Library (MSAL) for React](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react#microsoft-authentication-library-for-react)
 * [Microsoft Authentication Library (MSAL) for React - Getting Started](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-react/docs/getting-started.md#getting-started)
+* [MSAL Setup](MsalSetup.md)
+
 
 ### MSAL React Code Setup
 
@@ -145,6 +147,7 @@ Support for Keycloak is provided by the React porrtal library, [r-user-keycloak]
 * [Configuring Keycloak](https://www.keycloak.org/server/configuration)
 * [Keycloak on Amazon Web Services](https://www.amazonaws.cn/en/solutions/keycloak-on-aws/)
 * [Keycloak React Library @react-keycloak/web](https://www.npmjs.com/package/@react-keycloak/web)
+* [Keycloak Setup](KeycloakSetup.md)
 
 ### Keycloak React Code Setup
 
@@ -167,6 +170,7 @@ Support for Auth0 in porrtal React applications is provided by the React porrtal
 * [Auth0 Website](https://auth0.com/access-management)
 * [Auth0 Get Started](https://auth0.com/signup?&signUpData=%7B%22category%22%3A%22button%22%7D)
 * [Auth0 React Library @auth0/auth0-react](https://github.com/auth0/auth0-react#readme)
+* [Auth0 Setup](Auth0Setup.md)
 
 ### Auth0 React Code Setup
 
@@ -187,6 +191,7 @@ Support for Strapi in React porrtal applications is provided by the React Strapi
 * [Strapi Website](https://strapi.io/)
 * [Strapi Quick Start Guide](https://docs.strapi.io/dev-docs/quick-start#_1-install-strapi-and-create-a-new-project)
 * [Managing End-User Accounts](https://docs.strapi.io/user-docs/users-roles-permissions/managing-end-users)
+* [Strapi Setup](StrapiSetup.md)
 
 ### Strapi React Code Setup
 
@@ -216,6 +221,7 @@ The porrtal MSAL React sample application, [n-msal-app](../../apps/porrtal-auth/
 ### MSAL React Links
 * [Microsoft Authentication Library (MSAL) for React](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react#microsoft-authentication-library-for-react)
 * [Microsoft Authentication Library (MSAL) for React - Getting Started](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-react/docs/getting-started.md#getting-started)
+* [MSAL Setup](MsalSetup.md)
 
 ### MSAL React Code Setup
 
@@ -242,6 +248,7 @@ Support for Keycloak is provided by the React porrtal library, [r-user-keycloak]
 * [Configuring Keycloak](https://www.keycloak.org/server/configuration)
 * [Keycloak on Amazon Web Services](https://www.amazonaws.cn/en/solutions/keycloak-on-aws/)
 * [@react-keycloak/web](https://www.npmjs.com/package/@react-keycloak/web)
+* [Keycloak Setup](KeycloakSetup.md)
 
 ### Keycloak React Code Setup
 
@@ -264,6 +271,7 @@ Support for Auth0 in porrtal React applications is provided by the React porrtal
 * [Auth0 Website](https://auth0.com/access-management)
 * [Auth0 Get Started](https://auth0.com/signup?&signUpData=%7B%22category%22%3A%22button%22%7D)
 * [Auth0 React Library @auth0/auth0-react](https://github.com/auth0/auth0-react#readme)
+* [Auth0 Setup](Auth0Setup.md)
 
 ### Auth0 React Code Setup
 
@@ -284,6 +292,7 @@ Support for Strapi in NextJS porrtal applications is provided by the React Strap
 * [Strapi Website](https://strapi.io/)
 * [Strapi Quick Start Guide](https://docs.strapi.io/dev-docs/quick-start#_1-install-strapi-and-create-a-new-project)
 * [Managing End-User Accounts](https://docs.strapi.io/user-docs/users-roles-permissions/managing-end-users)
+* [Strapi Setup](StrapiSetup.md)
 
 ### Strapi NextJS Code Setup
 
@@ -448,6 +457,7 @@ Support for MSAL is provided by the Angular porrtal library, [a-user-msal](a-use
 
 ### MSAL Angular Links
 * [Microsoft Authentication Library (MSAL) for Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular#microsoft-authentication-library-for-angular)
+* [MSAL Setup](MsalSetup.md)
 
 ### MSAL Angular Code Setup
 
@@ -473,6 +483,7 @@ Support for Keycloak is provided by the Angular porrtal library, [a-user-oidc](a
 * [Keycloak Guides](https://www.keycloak.org/guides) (Including Getting Started Options)
 * [Configuring Keycloak](https://www.keycloak.org/server/configuration)
 * [OIDC Library](https://github.com/manfredsteyer/angular-oauth2-oidc#angular-oauth2-oidc)
+* [Keycloak Setup](KeycloakSetup.md)
 
 ### Keycloak Angular Code Setup
 
@@ -494,6 +505,7 @@ Support for Auth0 is provided by the Angular porrtal library, [a-user-oidc](a-us
 * [Auth0 Website](https://auth0.com/access-management)
 * [Auth0 Get Started](https://auth0.com/signup?&signUpData=%7B%22category%22%3A%22button%22%7D)
 * [OIDC Library](https://github.com/manfredsteyer/angular-oauth2-oidc#angular-oauth2-oidc)
+* [Auth0 Setup](Auth0Setup.md)
 
 ### Auth0 Angular Code Setup
 
@@ -515,6 +527,7 @@ Support for Strapi is provided by the Angular porrtal library, [a-user-strapi](a
 * [Strapi Website](https://strapi.io/)
 * [Strapi Quick Start Guide](https://docs.strapi.io/dev-docs/quick-start#_1-install-strapi-and-create-a-new-project)
 * [Managing End-User Accounts](https://docs.strapi.io/user-docs/users-roles-permissions/managing-end-users)
+* [Strapi Setup](StrapiSetup.md)
 
 ### Strapi Angular Code Setup
 
