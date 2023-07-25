@@ -301,6 +301,8 @@ Typically, the [required permission] is a role and the checkPermissions function
 
 This is how a porrtal application can load different views depending on the roles of the authenticated user.  The application may look very different for users that are in different roles.
 
+## Diagram
+
 ```mermaid
 erDiagram
     loginWithRedirect {
@@ -344,44 +346,69 @@ erDiagram
 
 ```mermaid
 erDiagram
-    AuthZInterface {
-        AuthZProviderInterface_dictionary authZProviders
+    update {
+      string name
+      AuthZProviderInterface_partial updateInfo
+    }
+
+    insert {
+      string name
+      AuthZProviderInterface_partial updateInfo
     }
 
     AuthZProviderInterface {
-        AuthZInfo getAuthZInfo_function
-        AuthZInfo_observable authZInfo_dollar
-        string_observable name_dollar
-        AuthZProviderState_observable authZProviderState_dollar
-        string_array_observable scopes_dollar
-        AuthZProviderMessage_observable errorMessage_dollar
-        AuthZProviderMessage_observable warningMessage_dollar
-        StateObject_observable props_dollar
-        string_array_observable roles_dollar
-        AuthZProviderPendingView_array_observable pendingViews_dollar
+      string name
+      AuthZProviderState state 
+      string_array scopes
+      AuthZProviderInfo errorInfo
+      AuthZProviderInfo warningInfo
+      StateObject props
+      string_array roles
+      AuthZProviderPendingView_array pendingViews
+      function init
     }
 
     AuthZProviderInfo {
-        string name
-        AuthZProviderState authZProviderState
-        string_array scopes
-        AuthZProviderMessage errorMessage
-        AuthZProviderMessage warningMessage
-        StateObject props
-        string_array roles
-        AuthZProviderPendingView_array pendingViews
+      string message
     }
 
-    XxxAuthentication ||--|| 
+    UseAuthZs {
+        AuthZProviderInterface_dictionary dictionary
+    }
 
-    XxxAuthZService ||--|| AuthZInterface : implements
-    AuthZInterface ||--o{ AuthZProviderInterface : "contains array"
-    AuthZProviderInterface ||--|| AuthZProviderInfo : "contains one"
+    AuthZsDispatchContext ||--|| update : "one of"
+    AuthZsDispatchContext ||--|| insert : "one of"
+
+    AuthZsStateContext ||--|| UseAuthZs : "of type"
+    UseAuthZs ||--o{ AuthZProviderInterface : "contains dictionary"
+    AuthZProviderInterface ||--o{ AuthZProviderInfo : "errorInfo and warningInfo"
 ```
 
-Next, let's switch gears and look at porrtal `user` sample applications and libraries for Angular, starting with the Angular `user` sample applications.
+## Hierarchy Produced by XxxAuthentication
+
+To make it easy to consume the various supported authentication and authorization systems (MSAL, Auth0, Keycloak, and Strapi), you just include the XxxAuthentication component, setting the appropriate properties.  To see it in action, have a looka at the React and NextJS sample applications.  Including XxxAuthentication automatically sets up the proper component/context hierarchy as follows:
+
+* XxxAuthentication
+  * CustomProvider (hooks into MSAL, Auth0, Keycloak or Strapi)
+    * XxxAdapter
+      * AuthNContext
+        * AuthNDispatchContext
+          * AuthZs
+            * AuthZsStateContext
+              * AuthZsDispatchContext
+                * XxxAuthZ
+
+The CustomProvider is used by the XxxAdapter to implement the authentication flow, which updates the AuthNContext and AuthNDispatchContext values. AuthNContext and AuthNDispatchContext provide a homogeneous authentication api to the application (one which works for each authentication system: MSAL, Auth0, Keycloak, and Strapi).  Specifically, the shell can display the user name and provide login, logout, register, and other operations appropriate for the chosen authentication system.
+
+The AuthZs component sets up the values for the AuthZsStateContext and AuthZsDispatchContext.  The AuthZsStateContext is a dictionary of AuthZ providers.  The AuthZsDispatchContext is used to update the dictionary.  This allows individual AuthZ providers to register themselves.  Standard AuthZ providers can be automatically registered and additional AuthZ providers can be setup in the outer application component (as needed).
+
+Typically, each authentication system comes with a corresponding AuthZ provider (registered as the "primary" AuthZ entry in the dictionary).
+
+The AuthZ providers register themselves with the shell so that the shell can determine if porrtal views have the required permissions to be loaded.
 
 # Angular `User` Sample Applications
+
+Next, let's switch gears and look at porrtal `user` sample applications and libraries for Angular, starting with the Angular `user` sample applications.
 
 To illustrate the use of the porrtal Angular `user` libraries (@porrtal/a-user*), a set of sample Angular applications (starting with "a-") have been added to the [apps/porrtal-auth](../../apps/porrtal-auth) folder.
 
