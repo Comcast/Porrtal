@@ -102,11 +102,11 @@ To illustrate the use of the @porrtal/r-user* libraries in React applications, a
 
 These React samples show how easy (and consistent) it is to add authentication and authorization to React porrtal applications using the React porrtal authentication and authorization libraries.
 
-Sample Angular applications are shown for
-* Microsoft Authentication Library (MSAL)
-* Keycloak
-* Auth0
-* Strapi
+Sample React applications are shown for
+* [Microsoft Authentication Library (MSAL)](#r-msal-app-sample-react-application-for-microsoft-authentication-library-msal)
+* [Keycloak](#r-keycloak-app-sample-react-application-for-keycloak)
+* [Auth0](#r-auth0-app-sample-react-application-for-auth0)
+* [Strapi](#r-strapi-app-sample-react-application-for-strapi)
 
 ## r-msal-app: Sample React Application for Microsoft Authentication Library (MSAL)
 
@@ -204,11 +204,11 @@ To illustrate the use of the @porrtal/r-user* React libraries in NextJS applicat
 
 These NextJS samples show how easy (and consistent) it is to add authentication and authorization to NextJS porrtal applications using the React porrtal authentication and authorization libraries.
 
-Sample Angular applications are shown for
-* Microsoft Authentication Library (MSAL)
-* Keycloak
-* Auth0
-* Strapi
+Sample NextJS applications are shown for
+* [Microsoft Authentication Library (MSAL)](#n-msal-app-sample-nextjs-application-for-microsoft-authentication-library-msal)
+* [Keycloak](#n-keycloak-app-sample-nextjs-application-for-keycloak)
+* [Auth0](#n-auth0-app-sample-nextjs-application-for-auth0)
+* [Strapi](#n-strapi-app-sample-nextjs-application-for-strapi)
 
 ## n-msal-app: Sample NextJS Application for Microsoft Authentication Library (MSAL)
 
@@ -440,10 +440,10 @@ To illustrate the use of the porrtal Angular `user` libraries (@porrtal/a-user*)
 These Angular samples show how easy (and consistent) it is to add authentication and authorization to Angular porrtal applications using the Angular porrtal authentication and authorization libraries.
 
 Sample Angular applications are shown for
-* Microsoft Authentication Library (MSAL)
-* Keycloak
-* Auth0
-* Strapi
+* [Microsoft Authentication Library (MSAL)](#a-msal-app-sample-angular-application-for-microsoft-authentication-library-msal)
+* [Keycloak](#a-keycloak-app-sample-angular-application-for-keycloak)
+* [Auth0](#a-auth0-app-sample-angular-application-for-auth0)
+* [Strapi](#a-strapi-app-sample-angular-application-for-strapi)
 
 ## a-msal-app: Sample Angular Application for Microsoft Authentication Library (MSAL)
 
