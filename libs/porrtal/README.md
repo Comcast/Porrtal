@@ -86,7 +86,7 @@ To try out one of the sample applications, you will first need to setup the auth
 * [MSAL Setup](MsalSetup.md)
 * [Strapi Setup](StrapiSetup.md)
 
-To run a particular sample, you will need to clone this repo, install https://nodejs.com, run `npm install --legacy-peer-deps` (from the cloned repo folder), and then run the sample:
+To run a particular sample, you will need to clone this repo, install https://nodejs.org, run `npm install --legacy-peer-deps` (from the cloned repo folder), and then run the sample:
 
 `nx serve porrtal-auth-r-msal-app`
 
