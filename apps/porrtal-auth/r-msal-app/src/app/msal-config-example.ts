@@ -12,7 +12,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-// edit and rename to msal-config.ts
+
+// Update MSAL Configuration
+//   1. Edit clientId on line 26
+//   2. Edit authority on line 27
+//   3. Edit redirectUri on line 29
+//   3. Rename this file to "msal-config.ts"
+
 import { BrowserCacheLocation, Configuration, LogLevel } from '@azure/msal-browser';
 
 export const msalConfig: Configuration = {

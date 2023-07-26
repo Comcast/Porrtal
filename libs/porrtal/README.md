@@ -123,7 +123,7 @@ The porrtal MSAL React sample application, [r-msal-app](../../apps/porrtal-auth/
 
 ### MSAL React Code Setup
 
-1. [Create msal-config](../../apps/porrtal-auth/r-msal-app/src/app/msal-config-example.ts#L17-L37)
+1. [Create msal-config](../../apps/porrtal-auth/r-msal-app/src/app/msal-config-example.ts#L16-L43)
 1. [Set Permissions in Views](../../apps/porrtal-auth/r-msal-app/src/app/app.tsx#L64)
 1. [Create App Component Function](../../apps/porrtal-auth/r-msal-app/src/app/app.tsx#L112-L131)
 
@@ -225,7 +225,7 @@ The porrtal MSAL React sample application, [n-msal-app](../../apps/porrtal-auth/
 
 ### MSAL React Code Setup
 
-1. [Create msal-config](../../apps/porrtal-auth/n-msal-app/msal-config-example.ts#L17-L37)
+1. [Create msal-config](../../apps/porrtal-auth/n-msal-app/msal-config-example.ts#L16-L43)
 1. [Set Permissions in Views](../../apps/porrtal-auth/n-msal-app/pages/index.tsx#L62)
 2. [Create App Component Function](../../apps/porrtal-auth/n-msal-app/pages/index.tsx#L110-L149)
 
@@ -462,7 +462,7 @@ Support for MSAL is provided by the Angular porrtal library, [a-user-msal](a-use
 ### MSAL Angular Code Setup
 
 1. [Create Application Module](../../apps/porrtal-auth/a-msal-app/src/app/app.module.ts#L26-L40)
-2. [Create msal-config](../../apps/porrtal-auth/a-msal-app/src/app/msal-config-example.ts#L17-L37)
+2. [Create msal-config](../../apps/porrtal-auth/a-msal-app/src/app/msal-config-example.ts#L16-L43)
 1. [Set Permissions in Views](../../apps/porrtal-auth/a-msal-app/src/app/pages/page-one/page-one.component.ts#L96)
 2. [Create Main Component Class](../../apps/porrtal-auth/a-msal-app/src/app/pages/page-one/page-one.component.ts#L108-L137)
 
