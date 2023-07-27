@@ -50,4 +50,9 @@ The porrtal project adopts a convention when using Strapi to make it easy to set
 
 ### Add Roles to PorrtalRole Collection
 
+![Create-PorrtalRole-role1](./readme-images/Strapi-Create-PorrtalRole-role1.jpg)
+
+### Create user-one
+
+![Create-User](./readme-images/Strapi-Create-User.jpg)
 
