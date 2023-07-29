@@ -6,10 +6,8 @@
   "prefix": "porrtal",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:package",
-      "outputs": [
-        "{workspaceRoot}/dist/libs/porrtal/a-user"
-      ],
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/libs/porrtal/a-user"],
       "options": {
         "project": "libs/porrtal/a-user/ng-package.json"
       },
@@ -24,17 +22,15 @@
       "defaultConfiguration": "production"
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/libs/porrtal/a-user"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/porrtal/a-user"],
       "options": {
         "jestConfig": "libs/porrtal/a-user/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/porrtal/a-user/**/*.ts",

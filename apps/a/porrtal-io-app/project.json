@@ -7,9 +7,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/a/porrtal-io-app",
         "index": "apps/a/porrtal-io-app/src/index.html",
@@ -91,7 +89,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "apps/a/porrtal-io-app/**/*.ts",
@@ -100,10 +98,8 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/apps/a/porrtal-io-app"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/a/porrtal-io-app"],
       "options": {
         "jestConfig": "apps/a/porrtal-io-app/jest.config.ts",
         "passWithNoTests": true

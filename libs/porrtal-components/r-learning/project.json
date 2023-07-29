@@ -14,7 +14,7 @@
         "project": "libs/porrtal-components/r-learning/package.json",
         "entryFile": "libs/porrtal-components/r-learning/src/index.ts",
         "external": ["react/jsx-runtime"],
-        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [
           {
@@ -26,7 +26,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
@@ -35,7 +35,7 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": [
         "{workspaceRoot}/coverage/libs/porrtal-components/r-learning"
       ],
@@ -45,9 +45,8 @@
       }
     },
     "storybook": {
-      "executor": "@nrwl/storybook:storybook",
+      "executor": "@nx/storybook:storybook",
       "options": {
-        "uiFramework": "@storybook/react",
         "port": 4400,
         "configDir": "libs/porrtal-components/r-learning/.storybook"
       },
@@ -58,10 +57,9 @@
       }
     },
     "build-storybook": {
-      "executor": "@nrwl/storybook:build",
+      "executor": "@nx/storybook:build",
       "outputs": ["{options.outputDir}"],
       "options": {
-        "uiFramework": "@storybook/react",
         "configDir": "libs/porrtal-components/r-learning/.storybook",
         "outputDir": "dist/storybook/porrtal-components-r-learning"
       },

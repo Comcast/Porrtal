@@ -7,24 +7,17 @@
   "targets": {
     "build": {
       "executor": "@nrwl/rollup:rollup",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/porrtal/r-shell-blueprint",
         "tsConfig": "libs/porrtal/r-shell-blueprint/tsconfig.lib.json",
         "project": "libs/porrtal/r-shell-blueprint/package.json",
         "entryFile": "libs/porrtal/r-shell-blueprint/src/index.ts",
-        "external": [
-          "react/jsx-runtime"
-        ],
-        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "extractCss": false,
-        "format": [
-          "cjs",
-          "esm"
-        ],
+        "format": ["cjs", "esm"],
         "assets": [
           {
             "glob": "libs/porrtal/r-shell-blueprint/README.md",
@@ -35,10 +28,8 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
           "libs/porrtal/r-shell-blueprint/**/*.{ts,tsx,js,jsx}"
@@ -46,10 +37,8 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/libs/porrtal/r-shell-blueprint"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/porrtal/r-shell-blueprint"],
       "options": {
         "jestConfig": "libs/porrtal/r-shell-blueprint/jest.config.ts",
         "passWithNoTests": true
