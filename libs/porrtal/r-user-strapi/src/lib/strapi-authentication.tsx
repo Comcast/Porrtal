@@ -29,28 +29,58 @@ interface StrapiAdapterProps {
   children?: React.ReactNode;
 }
 
+type RequestStatus = '' | 'request' | 'success' | 'idle' | 'error';
+
 interface StrapiAuthNInfo {
   authN: AuthNInterface;
   localState: {
-    loginCount: number;
+    loginStatus: RequestStatus;
     loginParams?: {
       identifier: string;
       password: string;
     };
-    registerCount: number;
+    registerStatus: RequestStatus;
     registerParams?: {
       username: string;
       email: string;
       password: string;
     };
-    logoutCount: number;
+    logoutStatus: RequestStatus;
   };
 }
 
-type StrapiAuthNAction = {
-  type: 'update';
-  authN: AuthNInterface;
-};
+type StrapiAuthNAction =
+  | {
+      type: 'update';
+      authN: AuthNInterface;
+    }
+  | {
+      type: 'loginSuccess';
+      user: {
+        name: string;
+        email: string;
+      };
+      claims: StateObject;
+    }
+  | {
+      type: 'loginFailure';
+      errorMessage: string;
+    }
+  | {
+      type: 'logoutSuccess';
+    }
+  | {
+      type: 'registerSuccess';
+      user: {
+        name: string;
+        email: string;
+      };
+      claims: StateObject;
+    }
+  | {
+      type: 'registerFailure';
+      errorMessage: string;
+    };
 
 interface StrapiStateInterface {
   user?: {
@@ -118,7 +148,7 @@ const reducer: Reducer<StrapiAuthNInfo, AuthNAction | StrapiAuthNAction> = (
         ...state,
         localState: {
           ...state.localState,
-          loginCount: state.localState.loginCount + 1,
+          loginStatus: 'request',
           loginParams: {
             identifier: action.identifier,
             password: action.password,
@@ -129,11 +159,12 @@ const reducer: Reducer<StrapiAuthNInfo, AuthNAction | StrapiAuthNAction> = (
     }
 
     case 'register': {
+      console.log('register action: ', action);
       const newState: StrapiAuthNInfo = {
         ...state,
         localState: {
           ...state.localState,
-          registerCount: state.localState.registerCount + 1,
+          registerStatus: 'request',
           registerParams: {
             username: action.username,
             email: action.email,
@@ -149,7 +180,129 @@ const reducer: Reducer<StrapiAuthNInfo, AuthNAction | StrapiAuthNAction> = (
         ...state,
         localState: {
           ...state.localState,
-          logoutCount: state.localState.logoutCount + 1,
+          logoutStatus: 'request',
+        },
+      };
+      return newState;
+    }
+
+    case 'loginFailure': {
+      if (state.authN === null) {
+        console.log('loginFailure: authN is null.  should never happen.');
+        return state;
+      }
+
+      const newState: StrapiAuthNInfo = {
+        ...state,
+        localState: {
+          ...state.localState,
+          loginStatus: 'error',
+          logoutStatus: 'idle',
+          registerStatus: 'idle',
+        },
+        authN: {
+          ...state.authN,
+          user: undefined,
+          authNState: 'error',
+          errorMessage: action.errorMessage,
+        },
+      };
+      return newState;
+    }
+
+    case 'loginSuccess': {
+      if (state.authN === null) {
+        console.log('loginSuccess: authN is null.  should never happen.');
+        return state;
+      }
+
+      const newState: StrapiAuthNInfo = {
+        ...state,
+        localState: {
+          ...state.localState,
+          loginStatus: 'success',
+          logoutStatus: 'idle',
+          registerStatus: 'idle',
+        },
+        authN: {
+          ...state.authN,
+          user: action.user,
+          authNState: 'authenticated',
+          claims: action.claims,
+        },
+      };
+      return newState;
+    }
+
+    case 'registerFailure': {
+      if (state.authN === null) {
+        console.log('registerFailure: authN is null.  should never happen.');
+        return state;
+      }
+
+      const newState: StrapiAuthNInfo = {
+        ...state,
+        localState: {
+          ...state.localState,
+          loginStatus: 'error',
+          registerStatus: 'error',
+          logoutStatus: 'idle',
+        },
+        authN: {
+          ...state.authN,
+          user: undefined,
+          authNState: 'error',
+          errorMessage: action.errorMessage,
+        },
+      };
+      return newState;
+    }
+
+    case 'registerSuccess': {
+      if (state.authN === null) {
+        console.log('registerSuccess: authN is null.  should never happen.');
+        return state;
+      }
+
+      const newState: StrapiAuthNInfo = {
+        ...state,
+        localState: {
+          ...state.localState,
+          registerStatus: 'success',
+          loginStatus: 'success',
+          logoutStatus: 'idle',
+        },
+        authN: {
+          ...state.authN,
+          user: action.user,
+          authNState: 'authenticated',
+          claims: action.claims,
+        },
+      };
+      console.log('registerSuccess: newState: ', newState);
+      return newState;
+    }
+
+    case 'logoutSuccess': {
+      if (state.authN === null) {
+        console.log('registerSauthN is null.  should never happen.');
+        return state;
+      }
+
+      const newState: StrapiAuthNInfo = {
+        ...state,
+        localState: {
+          ...state.localState,
+          loginStatus: 'idle',
+          logoutStatus: 'idle',
+          registerStatus: 'idle',
+        },
+        authN: {
+          ...state.authN,
+          user: undefined,
+          authNState: 'initialized',
+          claims: undefined,
+          errorMessage: undefined,
         },
       };
       return newState;
@@ -165,12 +318,14 @@ interface Auth0AuthAdapterProps {
 }
 
 export function StrapiAuthentication(props: StrapiAuthenticationProps) {
-  const [state, dispatch] = useReducer(reducer, {
+  const [state, dispatch] = useReducer<
+    Reducer<StrapiAuthNInfo, AuthNAction | StrapiAuthNAction>
+  >(reducer, {
     authN: {
       authNState: 'initialized',
       loginStrategy: props.allowRegistration ? 'loginAndRegister' : 'login',
     },
-    localState: { loginCount: 0, logoutCount: 0, registerCount: 0 },
+    localState: { loginStatus: '', logoutStatus: '', registerStatus: '' },
   });
 
   const strapiLogin = (creds: LoginCreds) => {
@@ -192,15 +347,8 @@ export function StrapiAuthentication(props: StrapiAuthenticationProps) {
         if (response.error || !response.jwt || !response.user) {
           alert(`strapi login failed: ${JSON.stringify(response.error)}`);
           dispatch({
-            type: 'update',
-            authN: {
-              user: undefined,
-              authNState: 'error',
-              errorMessage: `error ${response?.error?.status}: ${response?.error?.message}`,
-              loginStrategy: props.allowRegistration
-                ? 'loginAndRegister'
-                : 'login',
-            },
+            type: 'loginFailure',
+            errorMessage: `loginFailure: error ${response?.error?.status}: ${response?.error?.message}`,
           });
         } else {
           localStorage.setItem('strapiJwt', response.jwt);
@@ -212,34 +360,24 @@ export function StrapiAuthentication(props: StrapiAuthenticationProps) {
           })
             .then((response) => response.json())
             .catch((err) => {
-              console.log(`get user with jwt failed:`, JSON.stringify(err));
+              alert(`strapi login failed: ${JSON.stringify(response.error)}`);
               dispatch({
-                type: 'update',
-                authN: {
-                  user: undefined,
-                  authNState: 'initialized',
-                  loginStrategy: props.allowRegistration
-                    ? 'loginAndRegister'
-                    : 'login',
-                },
+                type: 'loginFailure',
+                errorMessage: `loginFailure: error retrieving users/me?populate=porrtal_roles ${JSON.stringify(
+                  err
+                )}`,
               });
             })
             .then((res: StrapiUserMeResponse) => {
               console.log('strapi user/me response: ', res);
 
               dispatch({
-                type: 'update',
-                authN: {
-                  user: {
-                    name: res.username,
-                    email: res.email,
-                  },
-                  authNState: 'authenticated',
-                  loginStrategy: props.allowRegistration
-                    ? 'loginAndRegister'
-                    : 'login',
-                  claims: res as unknown as StateObject,
+                type: 'loginSuccess',
+                user: {
+                  name: res.username,
+                  email: res.email,
                 },
+                claims: res as unknown as StateObject,
               });
             });
         }
@@ -262,15 +400,8 @@ export function StrapiAuthentication(props: StrapiAuthenticationProps) {
         if (response.error || !response.jwt || !response.user) {
           alert(`strapi register failed: ${JSON.stringify(response.error)}`);
           dispatch({
-            type: 'update',
-            authN: {
-              user: undefined,
-              authNState: 'error',
-              errorMessage: `error ${response?.error?.status}: ${response?.error?.message}`,
-              loginStrategy: props.allowRegistration
-                ? 'loginAndRegister'
-                : 'login',
-            },
+            type: 'registerFailure',
+            errorMessage: `registerFailure: error ${response?.error?.status}: ${response?.error?.message}`,
           });
         } else {
           localStorage.setItem('strapiJwt', response.jwt);
@@ -282,32 +413,22 @@ export function StrapiAuthentication(props: StrapiAuthenticationProps) {
             .catch((err) => {
               console.log(`get user with jwt failed:`, JSON.stringify(err));
               dispatch({
-                type: 'update',
-                authN: {
-                  user: undefined,
-                  authNState: 'initialized',
-                  loginStrategy: props.allowRegistration
-                    ? 'loginAndRegister'
-                    : 'login',
-                },
+                type: 'registerFailure',
+                errorMessage: `registerFailure: error retrieving users/me?populate=porrtal_roles ${JSON.stringify(
+                  err
+                )}`,
               });
             })
             .then((res: StrapiUserMeResponse) => {
               console.log('strapi user/me response: ', res);
 
               dispatch({
-                type: 'update',
-                authN: {
-                  user: {
-                    name: res.username,
-                    email: res.email,
-                  },
-                  authNState: 'authenticated',
-                  loginStrategy: props.allowRegistration
-                    ? 'loginAndRegister'
-                    : 'login',
-                  claims: res as unknown as StateObject,
+                type: 'registerSuccess',
+                user: {
+                  name: res.username,
+                  email: res.email,
                 },
+                claims: res as unknown as StateObject,
               });
             });
         }
@@ -316,29 +437,36 @@ export function StrapiAuthentication(props: StrapiAuthenticationProps) {
   const strapiLogout = () => {
     localStorage.removeItem('strapiJwt');
 
-    dispatch({
-      type: 'update',
-      authN: {
-        user: undefined,
-        authNState: 'initialized',
-        loginStrategy: props.allowRegistration ? 'loginAndRegister' : 'login',
-        claims: undefined,
-        errorMessage: undefined,
-      },
-    });
+    dispatch({ type: 'logoutSuccess' });
   };
 
   useEffect(() => {
-    if (state.localState.loginCount > 0 && state.localState.loginParams) {
+    if (
+      state.localState.loginStatus === 'request' &&
+      state.localState.loginParams
+    ) {
       strapiLogin(state.localState.loginParams);
     }
-  }, [state.localState.loginCount]);
+  }, [state.localState.loginStatus, dispatch]);
 
   useEffect(() => {
-    if (state.localState.logoutCount > 0) {
+    if (
+      state.localState.registerStatus === 'request' &&
+      state.localState.registerParams
+    ) {
+      strapiRegister(state.localState.registerParams);
+    }
+  }, [
+    state.localState.registerStatus,
+    state.localState.registerParams,
+    dispatch,
+  ]);
+
+  useEffect(() => {
+    if (state.localState.logoutStatus === 'request') {
       strapiLogout();
     }
-  }, [state.localState.logoutCount]);
+  }, [state.localState.logoutStatus, dispatch]);
 
   useEffect(() => {
     const jwt = localStorage.getItem('strapiJwt');
@@ -351,32 +479,20 @@ export function StrapiAuthentication(props: StrapiAuthenticationProps) {
         .catch((err) => {
           console.log(`get user with jwt failed:`, JSON.stringify(err));
           dispatch({
-            type: 'update',
-            authN: {
-              user: undefined,
-              authNState: 'initialized',
-              loginStrategy: props.allowRegistration
-                ? 'loginAndRegister'
-                : 'login',
-            },
+            type: 'loginFailure',
+            errorMessage: `get user with jwt failed: error ${err?.error?.status}: ${err?.error?.message}`,
           });
         })
         .then((res: StrapiUserMeResponse) => {
           console.log('strapi user/me response: ', res);
 
           dispatch({
-            type: 'update',
-            authN: {
-              user: {
-                name: res.username,
-                email: res.email,
-              },
-              authNState: 'authenticated',
-              loginStrategy: props.allowRegistration
-                ? 'loginAndRegister'
-                : 'login',
-              claims: res as unknown as StateObject,
+            type: 'loginSuccess',
+            user: {
+              name: res.username,
+              email: res.email,
             },
+            claims: res as unknown as StateObject,
           });
         });
     }
