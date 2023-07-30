@@ -1,7 +1,7 @@
 import { Icon } from '@mui/material';
 import { useTheme } from '@mui/material';
 import { useShellDispatch } from '@porrtal/r-shell';
-import { MaximizeHostProps } from 'libs/porrtal/r-shell/src/lib/maximize-host-props';
+import { MaximizeHostProps } from '@porrtal/r-shell';
 import { useEffect, useRef } from 'react';
 
 /*

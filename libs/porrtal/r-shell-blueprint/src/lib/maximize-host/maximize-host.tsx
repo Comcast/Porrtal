@@ -1,6 +1,6 @@
 import { Icon } from '@blueprintjs/core';
 import { useShellDispatch } from '@porrtal/r-shell';
-import { MaximizeHostProps } from 'libs/porrtal/r-shell/src/lib/maximize-host-props';
+import { MaximizeHostProps } from '@porrtal/r-shell';
 import { useEffect, useRef } from 'react';
 
 /*

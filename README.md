@@ -21,7 +21,7 @@ You can follow these steps to run the Porrtal website locally:
 
 ```bash
 # clone the repo
-git clone https://github.com/Comcast/Porrtal/porrtal.git
+git clone https://github.com/Comcast/Porrtal/Porrtal.git
 
 # switch to the folder
 cd Porrtal
