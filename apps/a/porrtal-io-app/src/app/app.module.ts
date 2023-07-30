@@ -29,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     RouterModule.forRoot(
       [
+        { path: '', redirectTo: '/quick-start', pathMatch: 'full' },
         {
           path: 'quick-start',
           loadComponent: () =>
