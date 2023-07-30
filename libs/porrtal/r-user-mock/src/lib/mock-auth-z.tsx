@@ -112,6 +112,8 @@ export function MockAuthZ(props: MockAuthZProps) {
         };
       }
     }
+
+    return () => {};
   });
 
   return <>{props.children}</>;
