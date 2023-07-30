@@ -85,9 +85,17 @@ To try out one of the sample applications, you will first need to setup the auth
 * [Auth0 Setup](Auth0Setup.md)
 * [Strapi Setup](StrapiSetup.md)
 
-To run a particular sample, you will need to clone this repo, install https://nodejs.org, run `npm install --legacy-peer-deps` (from the cloned repo folder), and then run the sample:
+To run a particular sample:
+* clone this repo, 
+* install https://nodejs.org, 
+* run `npm install --legacy-peer-deps` (from the cloned repo folder),
+* setup your desired authentication platform from the above list,
+* modify the sample to use your authentication platform settings, and 
+* run the sample:
 
-`nx serve porrtal-auth-r-msal-app`
+```
+nx serve porrtal-auth-r-msal-app
+```
 
 Notice that the name is "porrtal-auth-" plus the name of the application folder.  [Nx](https://nx.dev) concatenates the folders together to get the unique project name.
 
