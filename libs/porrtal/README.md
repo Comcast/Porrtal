@@ -35,7 +35,7 @@ mindmap
         a_user_strapi["a-user-strapi"]
 ```
 
-This document covers sample applications and technical notes on the porrtal libraries that support the applictions.  Very likely, only specific sections will be relevant for your goals.  Here are the various sections that may be of interest:
+This document covers sample applications and technical notes on the porrtal libraries that support the applications.  Very likely, only specific sections will be relevant for your goals.  Here are the various sections that may be of interest:
 
 * [User Sample Applications (Overview)](#user-sample-applications-overview)
 * [React User Sample Applications](#react-user-sample-applications)
