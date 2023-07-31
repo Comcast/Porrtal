@@ -1,0 +1,38 @@
+@azure/msal-angular [MIT]
+@azure/msal-browser [MIT]
+@azure/msal-react [MIT]
+angular-oauth2-oidc [MIT]
+
+dot-object [MIT] (see website: https://github.com/rhalff/dot-object)
+@types/dot-object [MIT]
+
+react-router-dom [MIT]
+@types/react-router-dom [MIT]
+
+@angular-devkit/core [MIT]
+@angular-devkit/schematics [MIT]
+
+@babel/preset-typescript [MIT]
+
+@nrwl/rollup [MIT]
+@nx/js [MIT]
+@nx/webpack [MIT]
+@nx/eslint-plugin [MIT]
+@nx/next [MIT]
+@nx/jest [MIT]
+@nx/angular [MIT]
+
+@pmmmwh/react-refresh-webpack-plugin [MIT]
+
+@rollup/plugin-url [MIT]
+
+@schematics/angular [MIT]
+
+@svgr/rollup
+
+css-loader [MIT]
+style-loader [MIT]
+stylus [MIT]
+stylus-loader [MIT]
+
+webpack-merge [MIT]
