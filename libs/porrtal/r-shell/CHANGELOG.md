@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/Comcast/Porrtal/compare/v0.8.1...v0.9.0) (2023-07-31)
+
+### Bug Fixes
+
+- **@porrtal/r-shell-material:** fix timing issue with maximize tab (pass array and index, not value) ([a998a96](https://github.com/Comcast/Porrtal/commit/a998a96cbf97671bc70c2dfcd698f8122f0a9687))
+- **@porrtal/r-shell:** encapsulate deep link processing in dispatch function ([44eabf0](https://github.com/Comcast/Porrtal/commit/44eabf0dcb6179a0f3b4b6d5b133c17bed243a0f))
+- **a-porrtal-io-app, n-porrtal-io-app:** build and push to cf working ([49a85b2](https://github.com/Comcast/Porrtal/commit/49a85b2e1a1285e5d85694e31cff3f198926110b))
+
+### Features
+
+- **@porrtal/r-shell-blueprint, @porrtal/r-shell-material:** banner image working ([9b50972](https://github.com/Comcast/Porrtal/commit/9b509720cc0001b8838481cff42ff20856889c40))
+- **@porrtal/r-shell-blueprint:** banner menu inline working ([03a2910](https://github.com/Comcast/Porrtal/commit/03a2910c1285fc04b2a410dad2eeae72d2312873))
+- **@porrtal/r-shell-blueprint:** copy deep link working ([4884e4a](https://github.com/Comcast/Porrtal/commit/4884e4af4afcdb8a7d7f0ae37d8cc0b6589177b5))
+- **@porrtal/r-shell-blueprint:** implement nav expand / collapse ([dbf3d54](https://github.com/Comcast/Porrtal/commit/dbf3d54644e91a07c7e4a87c833bd0998f723b65))
+- **@porrtal/r-shell-blueprint:** launch q working ([de8d1f5](https://github.com/Comcast/Porrtal/commit/de8d1f5373e1d25bab2ab6de3616491194dd7f4e))
+- **@porrtal/r-shell-blueprint:** maximize html element working ([88304ca](https://github.com/Comcast/Porrtal/commit/88304ca767d74ccec7e4d2ece2a319c04b5442c2))
+- **@porrtal/r-shell-blueprint:** pass menuItems into banner manu bar and banner menu inline ([20ce0ff](https://github.com/Comcast/Porrtal/commit/20ce0fff8638cf948e529174bacaf6c89ea272ee))
+- **@porrtal/r-shell-blueprint:** rough in banner menu bar and banner menu inline ([b30f322](https://github.com/Comcast/Porrtal/commit/b30f322cac9c04614e544cb77e58c4aab67355d3))
+- **@porrtal/r-shell-blueprint:** rough in cards, show auth n and auth z card data ([15b446b](https://github.com/Comcast/Porrtal/commit/15b446b7386fe8cd496683feed6de85adb21e685))
+- **@porrtal/r-shell-blueprint:** rough in shell state dashboard and auth n card ([1a7f273](https://github.com/Comcast/Porrtal/commit/1a7f2737058d899eaab212c14fe4fd90f0dc2c2a))
+- **@porrtal/r-shell-material:** copy link working ([6aadae4](https://github.com/Comcast/Porrtal/commit/6aadae4d9596ffd94b924f87f0d1d4249941e702))
+- **@porrtal/r-shell, @porrtal/r-shell-material:** refactor shared code into r-shell ([68fa7b8](https://github.com/Comcast/Porrtal/commit/68fa7b8caca960240b94cd619c6e46ed61596fc7))
+- **@porrtal/r-shell:** deep links working ([5c9ceba](https://github.com/Comcast/Porrtal/commit/5c9ceba9fee294dfa006863ed118f4f5f4fff539))
+- **@porrtal/r-shell:** fix keys in shell layout splitter's maximize hosts ([9b7dd02](https://github.com/Comcast/Porrtal/commit/9b7dd025a9013130a95634e59a3be9bec6f809c3))
+- **@porrtal/r-shell:** implement porrtal menu item for view registration ([1ab6567](https://github.com/Comcast/Porrtal/commit/1ab65670a61b441596e7de5e915da204669d068a))
+- **@porrtal/r-shell:** move cards-container to blueprint and material libraries ([881a55a](https://github.com/Comcast/Porrtal/commit/881a55af246c7cf59f89563a8e0f9c3982f60b83))
+- **@porrtal/r-shell:** support spaces in viewId, delay deep link launch for late registered views ([ce8ad57](https://github.com/Comcast/Porrtal/commit/ce8ad579eb7072ad41602b49f86bed3e977bec1e))
+- **@porrtal/r-user-mock:** no permissions q working ([e436cfb](https://github.com/Comcast/Porrtal/commit/e436cfbaa81f43bf15574bf77b01dc25d5ff7b6f))
+- **@porrtal/r-user-strapi:** strapi auth working (and pulling porrtal_roles) ([9d2e644](https://github.com/Comcast/Porrtal/commit/9d2e644e5be9820b9b255944a5e0c9fad347d9b6))
+- **porrtal-auth-a-auth0-app:** rough in views, add angular material ([598a145](https://github.com/Comcast/Porrtal/commit/598a145fc1896971e841776fa30eaa25e4c10949))
+- **porrtal-auth-r-strapi-app:** strapi login and register working ([54aa81e](https://github.com/Comcast/Porrtal/commit/54aa81e2b93442c5159cc64539c7fce8194f612b))
+- **workspace:** upgrade nx (apply migrations) ([549f5c3](https://github.com/Comcast/Porrtal/commit/549f5c353259b49d668ad91397b9b05a7fadb7e7))
+
 ## [0.8.1](https://github.com/Comcast/Porrtal/compare/v0.8.0...v0.8.1) (2022-12-15)
 
 **Note:** Version bump only for package @porrtal/r-shell

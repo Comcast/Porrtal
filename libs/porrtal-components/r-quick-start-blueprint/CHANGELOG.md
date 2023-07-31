@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/Comcast/Porrtal/compare/v0.8.1...v0.9.0) (2023-07-31)
+
+### Bug Fixes
+
+- **@porrtal-components/r-quick-start-blueprint:** accept string or number for account id ([1c093df](https://github.com/Comcast/Porrtal/commit/1c093df4467f9d07dc80347d806ddde6beb4b595))
+- **@porrtal-components/r-quick-start-blueprint:** fix IDs for quick start. views now launching ([8a05eea](https://github.com/Comcast/Porrtal/commit/8a05eeac7229b4dba52e3c1880dec964a96cd67b))
+
+### Features
+
+- **@porrtal/r-shell-material:** copy link working ([6aadae4](https://github.com/Comcast/Porrtal/commit/6aadae4d9596ffd94b924f87f0d1d4249941e702))
+- **porrtal-auth-a-auth0-app:** rough in views, add angular material ([598a145](https://github.com/Comcast/Porrtal/commit/598a145fc1896971e841776fa30eaa25e4c10949))
+- **workspace:** upgrade nx (apply migrations) ([549f5c3](https://github.com/Comcast/Porrtal/commit/549f5c353259b49d668ad91397b9b05a7fadb7e7))
+
 ## [0.8.1](https://github.com/Comcast/Porrtal/compare/v0.8.0...v0.8.1) (2022-12-15)
 
 **Note:** Version bump only for package @porrtal-components/r-quick-start-blueprint

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/Comcast/Porrtal/compare/v0.8.1...v0.9.0) (2023-07-31)
+
+### Features
+
+- **@porrtal/r-shell-blueprint:** launch q working ([de8d1f5](https://github.com/Comcast/Porrtal/commit/de8d1f5373e1d25bab2ab6de3616491194dd7f4e))
+- **@porrtal/r-shell-blueprint:** shell state dashboard views card working ([351e3d9](https://github.com/Comcast/Porrtal/commit/351e3d99d5ab2ece208b868fa143054ac9db52c3))
+- **@porrtal/r-shell:** deep links working ([5c9ceba](https://github.com/Comcast/Porrtal/commit/5c9ceba9fee294dfa006863ed118f4f5f4fff539))
+- **@porrtal/r-shell:** implement porrtal menu item for view registration ([1ab6567](https://github.com/Comcast/Porrtal/commit/1ab65670a61b441596e7de5e915da204669d068a))
+- **porrtal-auth-a-auth0-app:** rough in views, add angular material ([598a145](https://github.com/Comcast/Porrtal/commit/598a145fc1896971e841776fa30eaa25e4c10949))
+- **workspace:** upgrade nx (apply migrations) ([549f5c3](https://github.com/Comcast/Porrtal/commit/549f5c353259b49d668ad91397b9b05a7fadb7e7))
+
 ## [0.8.1](https://github.com/Comcast/Porrtal/compare/v0.8.0...v0.8.1) (2022-12-15)
 
 **Note:** Version bump only for package @porrtal/r-api

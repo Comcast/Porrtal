@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/Comcast/Porrtal/compare/v0.8.1...v0.9.0) (2023-07-31)
+
+### Bug Fixes
+
+- **@porrtal/a-shell-material:** change z-index so entity menu shows (defaults to z 1000) ([a2dc0df](https://github.com/Comcast/Porrtal/commit/a2dc0df9599e95f8e5ac674d4ca719d80943508f))
+- **@porrtal/a-shell-material:** fix duplicate orphan auth z cards in shell dashboard ([bed4bf8](https://github.com/Comcast/Porrtal/commit/bed4bf8dcaa69e527e9f89d7ad5c73e7b07452c7))
+- **@porrtal/a-shell-material:** remove log messages ([4bcff79](https://github.com/Comcast/Porrtal/commit/4bcff7974cdc966b84ff59977b20429748fcc9aa))
+- **@porrtal/a-shell:** accomodate issue in @rx-angular/state where updates to state are delayed ([24f247d](https://github.com/Comcast/Porrtal/commit/24f247d8e60c8b5d1246a246591d4e3094ab5fdd))
+
+### Features
+
+- **@porrtal/a-api, @porrtal/a-shell:** add types for auth z support in shell ([3bf48bb](https://github.com/Comcast/Porrtal/commit/3bf48bb7fe9d432b4dbaf5c70f0d2903a5f2998e))
+- **@porrtal/a-shell-material:** banner image working ([366b723](https://github.com/Comcast/Porrtal/commit/366b723cf66eb761cf1e1f8e428879cc6e648cca))
+- **@porrtal/a-shell-material:** copy link working ([6cf0131](https://github.com/Comcast/Porrtal/commit/6cf0131ae052c3c903a99080c1286d85608df279))
+- **@porrtal/a-shell-material:** implement maximize and restore ([87fd4f5](https://github.com/Comcast/Porrtal/commit/87fd4f5cb2d3a4fa74be55a37c8f3a733b89ce0b))
+- **@porrtal/a-shell-material:** implement nav expand / collapse ([28a7693](https://github.com/Comcast/Porrtal/commit/28a769353f4347ab8529992fe458ac6455fd85e4))
+- **@porrtal/a-shell-material:** maximize tab working ([cfa49f8](https://github.com/Comcast/Porrtal/commit/cfa49f8ad8caef521f0715d6d6740c8177c17099))
+- **@porrtal/a-shell-material:** shell state service updates to use callback instead of imperative calls ([a758ea8](https://github.com/Comcast/Porrtal/commit/a758ea8887867cb5bdeadcdd41af600910c7d511))
+- **@porrtal/a-shell:** deep links working ([9992bdb](https://github.com/Comcast/Porrtal/commit/9992bdbb80b0d71e1748e99199162eb39d6e9775))
+- **@porrtal/a-shell:** permissions caching working ([7e652a6](https://github.com/Comcast/Porrtal/commit/7e652a6107c9db7af9ecbc2f7474a639a311d7bc))
+- **@porrtal/a-shell:** populate menuItems when registering views ([a155af9](https://github.com/Comcast/Porrtal/commit/a155af94047ea12d63a01c6680586f2682c7b6be))
+- **@porrtal/a-shell:** prevent actions that might destroy a component when elements are maximized ([b0b1514](https://github.com/Comcast/Porrtal/commit/b0b1514c9024fc47a986a2944b71fd6c3c2984a0))
+- **@porrtal/a-shell:** shell service 'setAuthZReady' and 'registerAuthZPermissionCheck' working ([795eb1f](https://github.com/Comcast/Porrtal/commit/795eb1f2cacd08ee02cb963f8860298f73664f07))
+- **@porrtal/a-shell:** support spaces in viewId, delay deep link launch for late registered views ([f2e45e5](https://github.com/Comcast/Porrtal/commit/f2e45e59f3e707561daa8f8bf6727989c8382452))
+- **@porrtal/a-shell:** suppress focus for delayed launch tabs ([84313bb](https://github.com/Comcast/Porrtal/commit/84313bb95aff8cda0d0b0eeb19f8edff2c9ba7b1))
+- **@porrtal/a-user-auth-z:** wire up mock auth n and mock auth z ([cdf2d0d](https://github.com/Comcast/Porrtal/commit/cdf2d0de49f8b3a3f434d971715f1409d76ae796))
+- **porrtal-auth-a-auth0-app:** rough in views, add angular material ([598a145](https://github.com/Comcast/Porrtal/commit/598a145fc1896971e841776fa30eaa25e4c10949))
+- **workspace:** upgrade nx (apply migrations) ([549f5c3](https://github.com/Comcast/Porrtal/commit/549f5c353259b49d668ad91397b9b05a7fadb7e7))
+
 ## [0.8.1](https://github.com/Comcast/Porrtal/compare/v0.8.0...v0.8.1) (2022-12-15)
 
 **Note:** Version bump only for package @porrtal/a-shell

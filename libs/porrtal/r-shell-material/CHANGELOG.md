@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/Comcast/Porrtal/compare/v0.8.1...v0.9.0) (2023-07-31)
+
+### Bug Fixes
+
+- **@porrtal/r-shell-\*:** fix shell state dashboard property naming ([37a37dc](https://github.com/Comcast/Porrtal/commit/37a37dcd7555aaa727e3f1d8808e2e94f27d2ba0))
+- **@porrtal/r-shell-\*:** update references ([42a5090](https://github.com/Comcast/Porrtal/commit/42a50901a2faebf99ff3d0162a4b5ed41ca667aa))
+- **@porrtal/r-shell-material:** change login / logout buttons to angular material style ([a94500e](https://github.com/Comcast/Porrtal/commit/a94500ede4cd6cc85f9b0355e40d097e4aae0cb0))
+- **@porrtal/r-shell-material:** fix font for user name ([b24c634](https://github.com/Comcast/Porrtal/commit/b24c6340d08eb5653a6315d82ea514b19f768f6b))
+- **@porrtal/r-shell-material:** fix shell state dashboard - views card - tooltips ([1043386](https://github.com/Comcast/Porrtal/commit/1043386ba1e6b1c4fbf1458c8ea2c332e9a4a57e))
+- **@porrtal/r-shell-material:** fix timing issue with maximize tab (pass array and index, not value) ([a998a96](https://github.com/Comcast/Porrtal/commit/a998a96cbf97671bc70c2dfcd698f8122f0a9687))
+- **a-porrtal-io-app, n-porrtal-io-app:** build and push to cf working ([49a85b2](https://github.com/Comcast/Porrtal/commit/49a85b2e1a1285e5d85694e31cff3f198926110b))
+- **workspace:** fix next and react css imports for ag-grid ([57dcc38](https://github.com/Comcast/Porrtal/commit/57dcc38eeacbe7cc04f5d28338ede01587976043))
+
+### Features
+
+- **@porrtal/r-shell-blueprint, @porrtal/r-shell-material:** banner image working ([9b50972](https://github.com/Comcast/Porrtal/commit/9b509720cc0001b8838481cff42ff20856889c40))
+- **@porrtal/r-shell-blueprint:** login and register working ([9e33b59](https://github.com/Comcast/Porrtal/commit/9e33b5905057c503edc126abe05822e03ff8016b))
+- **@porrtal/r-shell-material:** banner menu bar working ([514933f](https://github.com/Comcast/Porrtal/commit/514933f05c58560e9cb04bb0d2a59e1c90dbf4fd))
+- **@porrtal/r-shell-material:** banner menu inline working ([ec7d861](https://github.com/Comcast/Porrtal/commit/ec7d861374524435cb296a85e299ab8f29641b75))
+- **@porrtal/r-shell-material:** copy link working ([6aadae4](https://github.com/Comcast/Porrtal/commit/6aadae4d9596ffd94b924f87f0d1d4249941e702))
+- **@porrtal/r-shell-material:** implement nav expand / collapse ([e859b29](https://github.com/Comcast/Porrtal/commit/e859b2935192f57dd367a0302e3fa6f5131f9fb2))
+- **@porrtal/r-shell-material:** maximize tab working ([c28d6d1](https://github.com/Comcast/Porrtal/commit/c28d6d1cb9c16e12d3245973d5ac115b1aff2478))
+- **@porrtal/r-shell-material:** move login and logout buttons into user-banner ([0177b6f](https://github.com/Comcast/Porrtal/commit/0177b6fc232ef7b128e52e4f3cd61d9c8eea67c4))
+- **@porrtal/r-shell-material:** rough in banner menu bar and banner menu inline (and test cases) ([137c948](https://github.com/Comcast/Porrtal/commit/137c9481706a1203364302a1c7a6819de2f1a71b))
+- **@porrtal/r-shell-material:** shell state card maximize working ([9ba5edb](https://github.com/Comcast/Porrtal/commit/9ba5edb5ce234da2087c13349e3599688535bb69))
+- **@porrtal/r-shell-material:** shell state dashboard and cards working ([c08eea9](https://github.com/Comcast/Porrtal/commit/c08eea9064a41d1e70f09b5304ceb107e29a415e))
+- **@porrtal/r-shell, @porrtal/r-shell-material:** refactor shared code into r-shell ([68fa7b8](https://github.com/Comcast/Porrtal/commit/68fa7b8caca960240b94cd619c6e46ed61596fc7))
+- **@porrtal/r-shell:** move cards-container to blueprint and material libraries ([881a55a](https://github.com/Comcast/Porrtal/commit/881a55af246c7cf59f89563a8e0f9c3982f60b83))
+- **@porrtal/r-user-auth0:** auth0 auth z working ([1167b6c](https://github.com/Comcast/Porrtal/commit/1167b6c2aa83e721dd536d4ee744c766962f232b))
+- **@porrtal/r-user-mock:** error on first login, success on 2nd (with 3 sec delay) ([176628c](https://github.com/Comcast/Porrtal/commit/176628c08ffe154af5962843bec749c8d2ebe3ee))
+- **@porrtal/r-user-mock:** update auth n interface and login sequence ([80b2839](https://github.com/Comcast/Porrtal/commit/80b28393c2cfff4f6b5b37d66d28ffd8f881d468))
+- **@porrtal/r-user-strapi:** login and registration working ([9be5de5](https://github.com/Comcast/Porrtal/commit/9be5de528354a928e7a7fe4085525022100c2a15))
+- **@porrtal/r-user:** move user-banner into material and blueprint libs (to prep for strapi login) ([3003f70](https://github.com/Comcast/Porrtal/commit/3003f7041275da22f813c23429bee96ee6ea0966))
+- **@porrtal/r-user:** useAuth --> useAuthN to prep for AuthZ (N: authorization, Z: authorization) ([ff41b80](https://github.com/Comcast/Porrtal/commit/ff41b8031be8f92846227d037a90ab5802d6a315))
+- **@r-shell-\*:** support enter key for login and register dialogs ([268949a](https://github.com/Comcast/Porrtal/commit/268949afbd5c8060cf13719019007028b367e6f9))
+- **porrtal-auth-a-auth0-app:** rough in views, add angular material ([598a145](https://github.com/Comcast/Porrtal/commit/598a145fc1896971e841776fa30eaa25e4c10949))
+- **porrtal-auth-r-auth0-app:** rough in views ([db0ef0a](https://github.com/Comcast/Porrtal/commit/db0ef0a7d1f762982b377dcfcb4642a44388572a))
+- **workspace:** add copyright notices ([81f576f](https://github.com/Comcast/Porrtal/commit/81f576fee5bfbb6cb9ca18fcc12678cabe21a086))
+- **workspace:** upgrade nx (apply migrations) ([549f5c3](https://github.com/Comcast/Porrtal/commit/549f5c353259b49d668ad91397b9b05a7fadb7e7))
+
 ## [0.8.1](https://github.com/Comcast/Porrtal/compare/v0.8.0...v0.8.1) (2022-12-15)
 
 **Note:** Version bump only for package @porrtal/r-shell-material

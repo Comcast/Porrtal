@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/datumgeek/porrtal/compare/v0.8.1...v0.9.0) (2023-07-31)
+
+### Bug Fixes
+
+- **a-porrtal-io-app, n-porrtal-io-app:** build and push to cf working ([49a85b2](https://github.com/datumgeek/porrtal/commit/49a85b2e1a1285e5d85694e31cff3f198926110b))
+- **n-porrtal-io-app:** fix build error ([c6efabc](https://github.com/datumgeek/porrtal/commit/c6efabc210766a7923e927deca55a64704f13217))
+- **n-porrtal-io-app:** update banner image size ([841a864](https://github.com/datumgeek/porrtal/commit/841a86483ae0884fbeb9e9cd2344b6631ad5b2b9))
+- **workspace:** fix next and react css imports for ag-grid ([57dcc38](https://github.com/datumgeek/porrtal/commit/57dcc38eeacbe7cc04f5d28338ede01587976043))
+
+### Features
+
+- **@porrtal/a-user-\*:** rough in angular msal, oidc, and strapi libraries ([e863bfc](https://github.com/datumgeek/porrtal/commit/e863bfc5ffaa3767d3886ecdc3fce049eb3c7ad7))
+- **@porrtal/r-shell-blueprint, @porrtal/r-shell-material:** banner image working ([9b50972](https://github.com/datumgeek/porrtal/commit/9b509720cc0001b8838481cff42ff20856889c40))
+- **@porrtal/r-shell-blueprint:** banner menu bar working ([fe5fa37](https://github.com/datumgeek/porrtal/commit/fe5fa371f5d0ebd6567b14a41be21525da54b6e3))
+- **@porrtal/r-shell-blueprint:** banner menu inline working ([03a2910](https://github.com/datumgeek/porrtal/commit/03a2910c1285fc04b2a410dad2eeae72d2312873))
+- **@porrtal/r-shell-blueprint:** rough in banner menu bar and banner menu inline ([b30f322](https://github.com/datumgeek/porrtal/commit/b30f322cac9c04614e544cb77e58c4aab67355d3))
+- **@porrtal/r-shell-material:** banner menu inline working ([ec7d861](https://github.com/datumgeek/porrtal/commit/ec7d861374524435cb296a85e299ab8f29641b75))
+- **@porrtal/r-shell-material:** rough in banner menu bar and banner menu inline (and test cases) ([137c948](https://github.com/datumgeek/porrtal/commit/137c9481706a1203364302a1c7a6819de2f1a71b))
+- **@porrtal/r-shell:** deep links working ([5c9ceba](https://github.com/datumgeek/porrtal/commit/5c9ceba9fee294dfa006863ed118f4f5f4fff539))
+- **a-porrtal-io-app:** add default route for regression testing ([7c106c0](https://github.com/datumgeek/porrtal/commit/7c106c08d4ea2bdcd1e0d6960f8e1be871bea883))
+- **n-porrtal-io-app:** build and copy angular app into nextjs app ([5b4b27a](https://github.com/datumgeek/porrtal/commit/5b4b27a34a3092fa935968209828dd38cef9a095))
+- **n-porrtal-io-app:** demonstrate inline settings menu ([cf8274f](https://github.com/datumgeek/porrtal/commit/cf8274f4e60f9c8cc9445d386c5282af8f238493))
+- **n-porrtal-io-app:** update a-porrtal-io-app from build ([253b530](https://github.com/datumgeek/porrtal/commit/253b5302b5612b262738e923327390f4e8de410c))
+- **n-porrtal-io-app:** update angular application ([9f60cc5](https://github.com/datumgeek/porrtal/commit/9f60cc5f5620a4ed067fd5fa0ef5cf0ee77b97b9))
+- **porrtal-auth-a-auth0-app:** rough in views, add angular material ([598a145](https://github.com/datumgeek/porrtal/commit/598a145fc1896971e841776fa30eaa25e4c10949))
+- **workspace:** upgrade nx (apply migrations) ([549f5c3](https://github.com/datumgeek/porrtal/commit/549f5c353259b49d668ad91397b9b05a7fadb7e7))
+
 ## [0.8.1](https://github.com/datumgeek/porrtal/compare/v0.8.0...v0.8.1) (2022-12-15)
 
 ### Bug Fixes

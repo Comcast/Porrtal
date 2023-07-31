@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/Comcast/Porrtal/compare/v0.8.1...v0.9.0) (2023-07-31)
+
+### Features
+
+- **@porrtal/a-api, @porrtal/a-shell:** add types for auth z support in shell ([3bf48bb](https://github.com/Comcast/Porrtal/commit/3bf48bb7fe9d432b4dbaf5c70f0d2903a5f2998e))
+- **@porrtal/a-api:** add permissions to view interface ([836fb7d](https://github.com/Comcast/Porrtal/commit/836fb7d30bb1542233453a46c64a68958a382190))
+- **@porrtal/a-shell-material:** refactor login service and configuration ([931a1b9](https://github.com/Comcast/Porrtal/commit/931a1b97d87d47bf2a275c44f01dbf7748ed6af0))
+- **@porrtal/a-shell:** deep links working ([9992bdb](https://github.com/Comcast/Porrtal/commit/9992bdbb80b0d71e1748e99199162eb39d6e9775))
+- **@porrtal/a-shell:** permissions caching working ([7e652a6](https://github.com/Comcast/Porrtal/commit/7e652a6107c9db7af9ecbc2f7474a639a311d7bc))
+- **@porrtal/a-shell:** populate menuItems when registering views ([a155af9](https://github.com/Comcast/Porrtal/commit/a155af94047ea12d63a01c6680586f2682c7b6be))
+- **@porrtal/a-user-auth-z:** wire up mock auth n and mock auth z ([cdf2d0d](https://github.com/Comcast/Porrtal/commit/cdf2d0de49f8b3a3f434d971715f1409d76ae796))
+- **@porrtal/a-user-strapi:** rough in strapi authentication support ([b535081](https://github.com/Comcast/Porrtal/commit/b5350815f8267319c1c5e41738e8427a8908821a))
+- **@porrtal/a-user:** add auth z types, move user-login, increase build limits ([f1ca290](https://github.com/Comcast/Porrtal/commit/f1ca2903b0edc01297bbc3b9c98b38e3943192f9))
+- **porrtal-auth-a-auth0-app:** rough in views, add angular material ([598a145](https://github.com/Comcast/Porrtal/commit/598a145fc1896971e841776fa30eaa25e4c10949))
+- **workspace:** upgrade nx (apply migrations) ([549f5c3](https://github.com/Comcast/Porrtal/commit/549f5c353259b49d668ad91397b9b05a7fadb7e7))
+
 ## [0.8.1](https://github.com/Comcast/Porrtal/compare/v0.8.0...v0.8.1) (2022-12-15)
 
 **Note:** Version bump only for package @porrtal/a-api
