@@ -36,25 +36,39 @@ export type AuthNState =
   | 'authenticated'
   | 'error';
 
-export type AuthNInterface = {
-  state$: Observable<AuthNState>;
+export interface AuthNUser {
+  name: string;
+  email: string;
+}
+
+export interface AuthNInfo {
+  authNState: AuthNState;
   errorMessage?: string;
+  user?: AuthNUser;
+  loginStrategy: LoginStrategy;
+  claims?: StateObject;
+  claimsMap?: { [key: string]: string };
+}
 
+export interface AuthNFunctions {
   init?: () => void;
-
-  user?: {
-    name: string;
-    email: string;
-  };
-
-  loginStrategy$: Observable<LoginStrategy>;
   loginWithRedirect?: () => void;
   login?: (creds: LoginCreds) => void;
   register?: (userInfo: RegisterUserInfo) => void;
   logout?: () => void;
+}
 
-  claims?: StateObject;
-  claimsMap?: { [fromKey: string]: string };
+export interface AuthNInterface extends AuthNFunctions {
+  getAuthNInfo: () => AuthNInfo;
+
+  authNInfo$: Observable<AuthNInfo>;
+  
+  authNState$: Observable<AuthNState>;
+  errorMessage$: Observable<string | undefined>;
+  user$: Observable<AuthNUser | undefined>;
+  loginStrategy$: Observable<LoginStrategy>;
+  claims$: Observable<StateObject | undefined>;
+  claimsMap$: Observable<{ [key: string]: string } | undefined>;
 };
 
 export const AUTH_N_INTERFACE = new InjectionToken<AuthNInterface>(

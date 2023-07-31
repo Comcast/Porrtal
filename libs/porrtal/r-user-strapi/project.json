@@ -1,34 +1,27 @@
 {
   "name": "porrtal-r-user-strapi",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/porrtal/r-user-strapi/src",
   "projectType": "library",
   "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/porrtal/r-user-strapi/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["libs/porrtal/r-user-strapi/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "build": {
       "executor": "@nrwl/rollup:rollup",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/porrtal/r-user-strapi",
         "tsConfig": "libs/porrtal/r-user-strapi/tsconfig.lib.json",
         "project": "libs/porrtal/r-user-strapi/package.json",
         "entryFile": "libs/porrtal/r-user-strapi/src/index.ts",
-        "external": [
-          "react/jsx-runtime"
-        ],
-        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [
           {
@@ -40,10 +33,8 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "libs/porrtal/r-user-strapi/jest.config.ts",
         "passWithNoTests": true

@@ -12,7 +12,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-export * from './lib/auth-z-provider';
 export * from './lib/auth-z-service.service';
 export * from './lib/mock-auth-n.service';
 export * from './lib/mock-auth-z-provider';

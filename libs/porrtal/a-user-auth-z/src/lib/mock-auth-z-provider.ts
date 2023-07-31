@@ -18,97 +18,150 @@ import { StateObject } from '@porrtal/a-api';
 import { ShellStateService } from '@porrtal/a-shell';
 import {
   AuthNInterface,
-  AuthZProviderInfo,
+  AuthZProviderMessage,
   AuthZProviderInterface,
   AuthZProviderPendingView,
   AuthZProviderState,
+  AuthZProviderInfo,
 } from '@porrtal/a-user';
+import { AuthZ } from '@porrtal/r-api';
+import { RxState } from '@rx-angular/state';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 
 export interface MockAuthZProviderConfig {
   fetchDelay?: number;
   shouldFail?: boolean;
   scopes?: string[];
-  errorInfo?: AuthZProviderInfo;
-  warningInfo?: AuthZProviderInfo;
+  errorInfo?: AuthZProviderMessage;
+  warningInfo?: AuthZProviderMessage;
   props?: StateObject;
   roles?: string[];
   pendingViews?: AuthZProviderPendingView[];
 }
 
-export class MockAuthZProvider implements AuthZProviderInterface {
-  public state$: Observable<AuthZProviderState>;
-  public name = 'primary';
-  scopes?: string[];
-  errorInfo?: AuthZProviderInfo;
-  warningInfo?: AuthZProviderInfo;
-  props?: StateObject;
-  roles?: string[];
-  pendingViews?: AuthZProviderPendingView[];
-
-  private stateSubj = new BehaviorSubject<AuthZProviderState>('');
-  private authN?: AuthNInterface;
+export class MockAuthZProvider
+  extends RxState<AuthZProviderInfo>
+  implements AuthZProviderInterface
+{
+  private shellStateService?: ShellStateService;
   private config?: MockAuthZProviderConfig;
 
-  private shellStateService?: ShellStateService;
+  authZProviderInfo$ = this.select();
+
+  name$ = this.select('name');
+  authZProviderState$ = this.select('authZProviderState');
+  scopes$ = this.select('scopes');
+  errorMessage$ = this.select('errorMessage');
+  warningMessage$ = this.select('warningMessage');
+  props$ = this.select('props');
+  roles$ = this.select('roles');
+  pendingViews$ = this.select('pendingViews');
+
+  authN?: AuthNInterface;
+
+  public getAuthZProviderInfo = () => {
+    return this.get();
+  };
 
   public init = (
+    name: string,
     authN: AuthNInterface,
     shellStateService: ShellStateService
   ) => {
     this.shellStateService = shellStateService;
 
-    if (this.stateSubj.getValue() === '') {
-      this.stateSubj.next('init');
+    if (this.get('authZProviderState') === '') {
+      console.log(`setting name: ${name}`);
+      this.set({ name, authZProviderState: 'init' });
       this.authN = authN;
-      this.authN.state$.subscribe((state) => {
-        console.log('mock auth z provider: isAuthenticated', state);
-        this.errorInfo = this.config?.errorInfo;
-        switch (state) {
-          case 'authenticated': {
-            this.roles = this.config?.roles;
-            this.scopes = this.config?.scopes;
+      this.authN.authNState$.subscribe((authNState) => {
+        console.log('mock auth z provider: isAuthenticated', authNState);
 
+        switch (authNState) {
+          case 'authenticated': {
             if (this.config?.fetchDelay ?? 0 > 0) {
               setTimeout(() => {
                 if (this.config?.shouldFail ?? false) {
-                  // do nothing
+                  this.set({
+                    name,
+                    authZProviderState: 'error',
+                    roles: this.config?.roles ?? [],
+                    scopes: this.config?.scopes,
+                    errorMessage: this.config?.errorInfo,
+                    warningMessage: this.config?.warningInfo,
+                  });
                 } else {
                   this.shellStateService?.dispatch({
                     type: 'setAuthZReady',
-                    name: this.name,
+                    name,
                   });
-                  this.shellStateService?.dispatch({
-                    type: 'registerAuthZPermissionCheck',
-                    name: this.name,
-                    checkPermission: (parm) => {
-                      return this.roles?.some((role) => role === parm) ?? false;
-                    },
+                  Promise.resolve(true).then(() => {
+                    this.shellStateService?.dispatch({
+                      type: 'registerAuthZPermissionCheck',
+                      name,
+                      checkPermission: (parm) => {
+                        return (
+                          (this.config?.roles ?? []).some(
+                            (role) => role === parm
+                          ) ?? false
+                        );
+                      },
+                    });
+                    Promise.resolve(true).then(() => {
+                      this.set({
+                        name,
+                        authZProviderState: 'ready',
+                        roles: this.config?.roles ?? [],
+                        scopes: this.config?.scopes,
+                        errorMessage: undefined,
+                        warningMessage: this.config?.warningInfo,
+                      });
+                    });
                   });
                 }
-                this.stateSubj.next(
-                  this.config?.shouldFail ?? false ? 'error' : 'ready'
-                );
               }, this.config?.fetchDelay);
             } else {
-              this.stateSubj.next(
-                this.config?.shouldFail ?? false ? 'error' : 'ready'
-              );
+              this.set({
+                authZProviderState:
+                  this.config?.shouldFail ?? false ? 'error' : 'ready',
+                roles: this.config?.roles ?? [],
+                scopes: this.config?.scopes,
+                errorMessage: undefined,
+              });
             }
             break;
           }
 
           case 'authenticating':
-            this.stateSubj.next('init');
+            this.set({
+              name,
+              authZProviderState: 'init',
+              roles: this.config?.roles ?? [],
+              scopes: this.config?.scopes,
+              errorMessage: undefined,
+            });
             break;
 
           case 'error':
-            this.errorInfo = { message: 'Auth N Failed.' };
-            this.stateSubj.next('error');
+            this.set({
+              name,
+              authZProviderState: 'error',
+              roles: this.config?.roles ?? [],
+              scopes: this.config?.scopes,
+              errorMessage: { message: 'Auth N Failed.' },
+              warningMessage: this.config?.warningInfo,
+            });
             break;
 
           default:
-            this.stateSubj.next('');
+            this.set({
+              name,
+              authZProviderState: '',
+              roles: undefined,
+              scopes: undefined,
+              errorMessage: undefined,
+              warningMessage: undefined,
+            });
             break;
         }
       });
@@ -116,12 +169,18 @@ export class MockAuthZProvider implements AuthZProviderInterface {
   };
 
   constructor(config?: MockAuthZProviderConfig) {
-    this.state$ = this.stateSubj;
+    super();
     this.config = config;
 
-    this.errorInfo = config?.errorInfo;
-    this.warningInfo = config?.warningInfo;
-    this.props = config?.props;
-    this.pendingViews = config?.pendingViews;
+    this.set({
+      authZProviderState: '',
+      errorMessage: config?.errorInfo?.message as
+        | AuthZProviderMessage
+        | undefined,
+      warningMessage: config?.warningInfo?.message as
+        | AuthZProviderMessage
+        | undefined,
+      pendingViews: config?.pendingViews,
+    });
   }
 }

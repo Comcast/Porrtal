@@ -47,7 +47,7 @@ const sharedEntryComponents = [
   imports: [CommonModule],
   exports: sharedDeclarations,
   declarations: sharedDeclarations,
-  entryComponents: sharedEntryComponents,
+  // entryComponents: sharedEntryComponents,
 })
 export class MarkdownModule {
   static forRoot(markdownModuleConfig?: MarkdownModuleConfig): ModuleWithProviders<MarkdownModule> {

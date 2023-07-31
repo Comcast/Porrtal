@@ -27,17 +27,17 @@
         <div class="menu-item-container">
           <mat-spinner
             [diameter]="20"
-            *ngIf="(authZProvider.value.state$ | async) === 'init'"
+            *ngIf="(authZProvider.value.authZProviderState$ | async) === 'init'"
           ></mat-spinner>
           <mat-icon
-            *ngIf="(authZProvider.value.state$ | async) === 'error'"
+            *ngIf="(authZProvider.value.authZProviderState$ | async) === 'error'"
             color="warn"
             inline="true"
             class="menu-close-icon"
             >report</mat-icon
           >
           <mat-icon
-            *ngIf="(authZProvider.value.state$ | async) === 'ready'"
+            *ngIf="(authZProvider.value.authZProviderState$ | async) === 'ready'"
             color="primary"
             inline="true"
             class="menu-close-icon"

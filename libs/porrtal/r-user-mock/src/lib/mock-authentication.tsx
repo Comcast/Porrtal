@@ -150,6 +150,8 @@ function MockAuthenticationAdapter(props: MockAuthenticationProps) {
         clearTimeout(timeout);
       };
     }
+
+    return () => {};
   }, [state.localState.loginCount]);
 
   return (

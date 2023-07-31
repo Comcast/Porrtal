@@ -15,6 +15,7 @@ limitations under the License.
 import { Injectable } from '@angular/core';
 import { StateObject } from '@porrtal/a-api';
 import {
+  AuthNInfo,
   AuthNInterface,
   AuthNState,
   LoginCreds,
@@ -23,31 +24,26 @@ import {
 } from '@porrtal/a-user';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { MockConfiguration } from './mock-provider';
+import { RxState } from '@rx-angular/state';
 
-export class MockAuthNService implements AuthNInterface {
+export class MockAuthNService
+  extends RxState<AuthNInfo>
+  implements AuthNInterface
+{
+  getAuthNInfo = () => this.get();
+
+  authNInfo$ = this.select();
+
+  authNState$ = this.select('authNState');
+  errorMessage$ = this.select('errorMessage');
+  user$ = this.select('user');
+  loginStrategy$ = this.select('loginStrategy');
+  claims$ = this.select('claims');
+  claimsMap$ = this.select('claimsMap');
+
   private authConfig: MockConfiguration;
   private loginCount = 0;
 
-  // user
-  get user(): { name: string; email: string } | undefined {
-    if (this.stateSubj.getValue() === 'authenticated') {
-      return {
-        name: 'billy',
-        email: 'billy@porrtal.io',
-      };
-    }
-    return undefined;
-  }
-
-  // errorMessage
-  get errorMessage() {
-    if (this.stateSubj.getValue() === 'error') {
-      return this.authConfig.authN.errorMessage;
-    }
-    return undefined;
-  }
-
-  loginStrategy$: Observable<LoginStrategy>;
   loginWithRedirect?: (() => void) | undefined = () => {
     this.loginCount++;
 
@@ -61,25 +57,19 @@ export class MockAuthNService implements AuthNInterface {
     }
 
     if (this.authConfig && this.authConfig.authN.loginDelay) {
-      this.stateSubj.next('authenticating');
+      this.setInfo('authenticating');
       setTimeout(() => {
-        this.setClaims(newState);
-        this.stateSubj.next(newState);
+        this.setInfo(newState);
       }, this.authConfig.authN.loginDelay);
     } else {
-      if (newState === 'authenticated') {
-        this.setClaims(newState);
-        console.log('set claims...', this.claims);
-      }
-      this.stateSubj.next(newState);
+      this.setInfo(newState);
     }
   };
   logout?: (() => void) | undefined = () => {
-    this.stateSubj.next('initialized');
+    this.setInfo('initialized');
   };
   init?: () => void = () => {
-    if (this.stateSubj.getValue() === '') {
-      this.stateSubj.next('initialized');
+    if (this.get('authNState') === '') {
       console.log('init mock-auth-n service', this.authConfig);
 
       let newState: AuthNState =
@@ -98,50 +88,75 @@ export class MockAuthNService implements AuthNInterface {
           this.authConfig.authN.loginDelay &&
           this.authConfig.authN.loginDelay > 0
         ) {
-          this.stateSubj.next('authenticating');
+          this.setInfo('authenticating');
           setTimeout(() => {
             console.log('login', this.authConfig.authN.loginSuccess ?? true);
-            this.setClaims(newState);
-            this.stateSubj.next(newState);
+            this.setInfo(newState);
           }, this.authConfig.authN.loginDelay);
         } else {
-          this.setClaims(newState);
-          console.log('set claims...', this.claims);
-          this.stateSubj.next(newState);
+          this.setInfo(newState);
         }
+      } else {
+        this.setInfo('initialized');
       }
     }
   };
 
-  public state$: Observable<AuthNState>;
-  public claims?: StateObject | undefined;
-  public claimsMap?: { [fromKey: string]: string } | undefined;
-
-  stateSubj = new BehaviorSubject<AuthNState>('');
-  loginStrategySubj = new BehaviorSubject<LoginStrategy>('loginWithRedirect');
-
   constructor(config: MockConfiguration) {
+    super();
     this.authConfig = config;
-    this.loginStrategy$ = this.loginStrategySubj;
-    this.state$ = this.stateSubj;
+    this.set({
+      authNState: 'initialized',
+      loginStrategy: 'loginWithRedirect',
+    })
     console.log('mock-auth-n service constructor...');
   }
 
-  private setClaims(newState: string) {
-    if (newState === 'authenticated') {
-      this.claims = {
-        one: 1,
-        two: 2,
-        message: 'hello there...',
-        nest: {
-          nested: 'im a nested message',
-        },
-      };
-      this.claimsMap = {
-        one: 'hello',
-        two: 'there',
-      };
-      console.log('set claims...', this.claims);
+  private setInfo(newState: string) {
+    switch (newState) {
+      case 'authenticated':
+        this.set({
+          authNState: 'authenticated',
+          user: {
+            name: 'billy',
+            email: 'billy@porrtal.io',
+          },
+          claims: {
+            one: 1,
+            two: 2,
+            message: 'hello there...',
+            nest: {
+              nested: 'im a nested message',
+            },
+          },
+          claimsMap: {
+            one: 'hello',
+            two: 'there',
+          },
+          errorMessage: undefined,
+        });
+        console.log('set claims...', this.get());
+        break;
+
+      case 'error':
+        this.set({
+          authNState: newState as AuthNState,
+          user: undefined,
+          claims: undefined,
+          claimsMap: undefined,
+          errorMessage: this.authConfig.authN.errorMessage,
+        });
+        break;
+
+      default:
+        this.set({
+          authNState: newState as AuthNState,
+          user: undefined,
+          claims: undefined,
+          claimsMap: undefined,
+          errorMessage: undefined,
+        });
+        break;
     }
   }
 }

@@ -14,6 +14,7 @@ limitations under the License.
 */
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import {
+  AuthNInfo,
   AuthNInterface,
   AuthNState,
   LoginCreds,
@@ -48,17 +49,20 @@ export const STRAPI_ADAPTER_SERVICE_CONFIG_INJECTION_TOKEN =
 
 @Injectable()
 export class StrapiAuthNService
-  extends RxState<StrapiAdapterInterface>
+  extends RxState<AuthNInfo>
   implements AuthNInterface
 {
-  get user(): { name: string; email: string } | undefined {
-    return this.get('user');
-  }
+  getAuthNInfo = () => this.get();
 
-  isAuthenticated$: Observable<boolean>;
-  isInitialized$: Observable<boolean>;
-  loginStrategy$: Observable<LoginStrategy>;
+  authNInfo$ = this.select();
 
+  authNState$ = this.select('authNState');
+  errorMessage$ = this.select('errorMessage');
+  user$ = this.select('user');
+  loginStrategy$ = this.select('loginStrategy');
+  claims$ = this.select('claims');
+  claimsMap$ = this.select('claimsMap');
+  
   constructor(
     @Inject(STRAPI_ADAPTER_SERVICE_CONFIG_INJECTION_TOKEN)
     private strapiAdapterServiceConfig: StrapiAdapterServiceConfigInterface,
@@ -68,8 +72,6 @@ export class StrapiAuthNService
 
     super();
 
-    this.isAuthenticated$ = this.select('isAuthenticated');
-    this.isInitialized$ = this.select('isInitialized');
     this.loginStrategy$ = this.select('loginStrategy');
     const loginStrategy = this.strapiAdapterServiceConfig.allowRegistration
       ? 'loginAndRegister'
@@ -81,8 +83,7 @@ export class StrapiAuthNService
       loginStrategy,
     });
 
-    this.state$ = this.select('state');
-    this.set({ state: 'initialized' });
+    this.set({ authNState: 'initialized' });
 
     const jwt = localStorage.getItem('strapiJwt');
 
@@ -99,30 +100,25 @@ export class StrapiAuthNService
             console.log('strapi user/me response: ', response);
 
             Promise.resolve(true).then(() => {
-              this.claims = response;
               this.set({
                 user: {
                   name: response.username,
                   email: response.email,
                 },
-                isAuthenticated: true,
-                state: 'authenticated',
+                claims: response,
+                authNState: 'authenticated',
               });
               });
           },
           error: (err) => {
             alert(`strapi login error: ${JSON.stringify(err)}`);
-            this.set({ isAuthenticated: false });
+            this.set({ authNState: 'initialized' });
           },
           complete: () => {},
         });
     }
   }
-  state$: Observable<AuthNState>;
-  errorMessage?: string | undefined;
   init?: (() => void) | undefined;
-  claims?: StateObject | undefined;
-  claimsMap?: { [fromKey: string]: string } | undefined;
 
   loginWithRedirect?: (() => void) | undefined = () => {};
 
@@ -147,12 +143,12 @@ export class StrapiAuthNService
               name: response.user.username,
               email: response.user.email,
             },
-            isAuthenticated: true,
+            authNState: 'authenticated',
           });
         },
         error: (err) => {
           alert(`strapi login error: ${JSON.stringify(err)}`);
-          this.set({ isAuthenticated: false });
+          this.set({ authNState: 'error' });
         },
         complete: () => {},
       });
@@ -181,19 +177,19 @@ export class StrapiAuthNService
               name: response.user.username,
               email: response.user.email,
             },
-            isAuthenticated: true,
+            authNState: 'authenticated',
           });
         },
         error: (err) => {
           alert(`strapi registration error: ${JSON.stringify(err)}`);
-          this.set({ isAuthenticated: false });
+          this.set({ authNState: 'error' });
         },
         complete: () => {},
       });
   };
 
   logout?: (() => void) | undefined = () => {
-    this.set({ user: undefined, isAuthenticated: false });
+    this.set({ user: undefined, authNState: 'initialized' });
     localStorage.removeItem('strapiJwt');
   };
 }

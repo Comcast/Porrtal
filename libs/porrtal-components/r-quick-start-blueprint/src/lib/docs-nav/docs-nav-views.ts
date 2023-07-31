@@ -29,7 +29,7 @@ export const docsNavViews: View[] = [
     },
   },
   {
-    viewId: 'SetupYourWorkstation',
+    viewId: 'Setup Your Workstation',
     displayText: 'Setup Your Workstation',
     displayIcon: 'clean',
     componentName: 'MarkdownViewer',
@@ -41,7 +41,7 @@ export const docsNavViews: View[] = [
     },
   },
   {
-    viewId: 'CreatetheApp',
+    viewId: 'Create the App',
     displayText: 'Create the App',
     displayIcon: 'clean',
     componentName: 'MarkdownViewer',

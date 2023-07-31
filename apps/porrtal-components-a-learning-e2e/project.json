@@ -5,7 +5,7 @@
   "projectType": "application",
   "targets": {
     "e2e": {
-      "executor": "@nrwl/cypress:cypress",
+      "executor": "@nx/cypress:cypress",
       "options": {
         "cypressConfig": "apps/porrtal-components-a-learning-e2e/cypress.json",
         "devServerTarget": "porrtal-components-a-learning:storybook",
@@ -18,10 +18,8 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
           "apps/porrtal-components-a-learning-e2e/**/*.{js,ts}"
@@ -30,7 +28,5 @@
     }
   },
   "tags": [],
-  "implicitDependencies": [
-    "porrtal-components-a-learning"
-  ]
+  "implicitDependencies": ["porrtal-components-a-learning"]
 }

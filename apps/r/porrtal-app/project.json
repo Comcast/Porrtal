@@ -5,10 +5,8 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/webpack:webpack",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
         "compiler": "babel",
@@ -55,7 +53,7 @@
       }
     },
     "serve": {
-      "executor": "@nrwl/webpack:dev-server",
+      "executor": "@nx/webpack:dev-server",
       "options": {
         "buildTarget": "r-porrtal-app:build",
         "hmr": true
@@ -72,21 +70,15 @@
       "defaultConfiguration": "development"
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/r/porrtal-app/**/*.{ts,tsx,js,jsx}"
-        ]
+        "lintFilePatterns": ["apps/r/porrtal-app/**/*.{ts,tsx,js,jsx}"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/apps/r/porrtal-app"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/r/porrtal-app"],
       "options": {
         "jestConfig": "apps/r/porrtal-app/jest.config.ts",
         "passWithNoTests": true

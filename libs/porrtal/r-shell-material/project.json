@@ -7,24 +7,17 @@
   "targets": {
     "build": {
       "executor": "@nrwl/rollup:rollup",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/porrtal/r-shell-material",
         "tsConfig": "libs/porrtal/r-shell-material/tsconfig.lib.json",
         "project": "libs/porrtal/r-shell-material/package.json",
         "entryFile": "libs/porrtal/r-shell-material/src/index.ts",
-        "external": [
-          "react/jsx-runtime"
-        ],
-        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "extractCss": false,
-        "format": [
-          "cjs",
-          "esm"
-        ],
+        "format": ["cjs", "esm"],
         "assets": [
           {
             "glob": "libs/porrtal/r-shell-material/README.md",
@@ -35,10 +28,8 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
           "libs/porrtal/r-shell-material/**/*.{ts,tsx,js,jsx}"
@@ -46,10 +37,8 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/libs/porrtal/r-shell-material"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/porrtal/r-shell-material"],
       "options": {
         "jestConfig": "libs/porrtal/r-shell-material/jest.config.ts",
         "passWithNoTests": true

@@ -5,7 +5,7 @@
   "projectType": "application",
   "targets": {
     "e2e": {
-      "executor": "@nrwl/cypress:cypress",
+      "executor": "@nx/cypress:cypress",
       "options": {
         "cypressConfig": "apps/n/porrtal-app-e2e/cypress.json",
         "devServerTarget": "n-porrtal-app:serve"
@@ -17,19 +17,13 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "apps/n/porrtal-app-e2e/**/*.{js,ts}"
-        ]
+        "lintFilePatterns": ["apps/n/porrtal-app-e2e/**/*.{js,ts}"]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": [
-    "n-porrtal-app"
-  ]
+  "implicitDependencies": ["n-porrtal-app"]
 }

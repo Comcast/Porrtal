@@ -1,3 +1,17 @@
+﻿/*
+Copyright 2022 Comcast Cable Communications Management, LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 import {
   ChangeDetectionStrategy,
   Component,
@@ -31,8 +45,6 @@ import { MatCardModule } from '@angular/material/card';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthZCardComponent {
-  authZ$: Observable<AuthZ | undefined>
-  
   isMaximized$ = new BehaviorSubject<boolean>(false);
   // childIndex = -1;
   // parentNativeEl: any;
@@ -43,31 +55,23 @@ export class AuthZCardComponent {
   }>({
     authZ: undefined,
   });
-  _authZ?: AuthZProviderInterface;
-  state: AuthZProviderState = 'init';
+
+  authZShell$: Observable<AuthZ | undefined>;
 
   @Input() public set data(value: AuthZProviderInterface) {
-    this._authZ = value;
     this.authZSubj.next({ authZ: value });
-
-    this._authZ.state$.subscribe((authNState) => {
-      this.state = authNState;
-      this.props = this._authZ?.props;
-      console.log('props', this.props);
-      this.authZSubj.next({ authZ: this._authZ });
-    });
   }
 
   constructor(
     private readonly el: ElementRef,
     private shellStateService: ShellStateService
   ) {
-    this.authZ$ = combineLatest([shellStateService.select('authZs'), this.authZSubj], (authZs, authZ) => {
-      if (!authZs || !authZ || !authZ.authZ?.name) {
+    this.authZShell$ = combineLatest([shellStateService.select('authZs'), this.authZSubj], (authZs, authZ) => {
+      if (!authZs || !authZ || !authZ.authZ?.getAuthZProviderInfo()?.name) {
         return undefined;
       }
 
-      return authZs[authZ.authZ.name];
+      return authZs[authZ.authZ?.getAuthZProviderInfo()?.name];
     });
   }
 

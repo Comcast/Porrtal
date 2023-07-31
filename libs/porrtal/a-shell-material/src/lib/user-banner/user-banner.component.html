@@ -1,26 +1,26 @@
-<span *ngIf="authN && (authN.state$ | async) === 'authenticated'">
-  <span style="margin-right: 6px">{{ authN.user?.name }}</span>
+<span *ngIf="authN && (authN.authNState$ | async) === 'authenticated'">
+  <span style="margin-right: 6px">{{ (authN.user$ | async)?.name }}</span>
   <button (click)="authN.logout?.()">logout</button>
 </span>
-<ng-container *ngIf="authN && (authN.state$ | async) !== 'authenticated'">
+<ng-container *ngIf="authN && (authN.authNState$ | async) !== 'authenticated'">
   <ng-container *ngIf="authN.loginStrategy$ | async as loginStrategy">
-    <button (click)="login(loginStrategy)" class="login-button" [disabled]="(authN.state$ | async) === 'authenticating'">
+    <button (click)="login(loginStrategy)" class="login-button" [disabled]="(authN.authNState$ | async) === 'authenticating'">
       <mat-spinner
         class="spinner"
         [diameter]="16"
-        *ngIf="(authN.state$ | async) === 'authenticating'"
+        *ngIf="(authN.authNState$ | async) === 'authenticating'"
       ></mat-spinner>
       <mat-icon
         class="error-icon"
-        *ngIf="(authN.state$ | async) === 'error'"
+        *ngIf="(authN.authNState$ | async) === 'error'"
         color="warn"
         inline="true"
-        [matTooltip]="authN.errorMessage ?? ''"
+        [matTooltip]="(authN.errorMessage$ | async) ?? ''"
         >report</mat-icon
       >
       <div
         *ngIf="
-          !['authenticating', 'error'].includes((authN.state$ | async) ?? '')
+          !['authenticating', 'error'].includes((authN.authNState$ | async) ?? '')
         "
       ></div>
       <span> login </span>

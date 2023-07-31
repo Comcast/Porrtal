@@ -27,18 +27,36 @@ export interface AuthZProviderPendingView {
   type: AuthZProviderPendingViewType;
 }
 
-export interface AuthZProviderInfo {
+export interface AuthZProviderMessage {
   message: string;
 }
 
-export type AuthZProviderInterface = {
+export interface AuthZProviderInfo {
   name: string;
-  state$: Observable<AuthZProviderState>;
+  authZProviderState: AuthZProviderState;
   scopes?: string[];
-  errorInfo?: AuthZProviderInfo;
-  warningInfo?: AuthZProviderInfo;
+  errorMessage?: AuthZProviderMessage;
+  warningMessage?: AuthZProviderMessage;
   props?: StateObject;
   roles?: string[];
   pendingViews?: AuthZProviderPendingView[];
-  init?: (authN: AuthNInterface, shellStateService: ShellStateService) => void;
+}
+
+export interface AuthZProviderFunctions {
+  init?: (name: string, authN: AuthNInterface, shellStateService: ShellStateService) => void;
+}
+
+export interface AuthZProviderInterface extends AuthZProviderFunctions {
+  getAuthZProviderInfo: () => AuthZProviderInfo;
+
+  authZProviderInfo$: Observable<AuthZProviderInfo>;
+
+  name$: Observable<string>;
+  authZProviderState$: Observable<AuthZProviderState>;
+  scopes$: Observable<string[] | undefined>;
+  errorMessage$: Observable<AuthZProviderMessage | undefined>;
+  warningMessage$: Observable<AuthZProviderMessage | undefined>;
+  props$: Observable<StateObject | undefined>;
+  roles$: Observable<string[] | undefined>;
+  pendingViews$: Observable<AuthZProviderPendingView[] | undefined>;
 };

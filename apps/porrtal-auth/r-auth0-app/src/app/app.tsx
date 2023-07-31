@@ -19,6 +19,9 @@ import { ShellMaterial } from '@porrtal/r-shell-material';
 import { Auth0Authentication } from '@porrtal/r-user-auth0';
 import styles from './app.module.scss';
 
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-balham.css';
+
 const views: View[] = [
   {
     viewId: 'main-view',
@@ -57,6 +60,7 @@ const views: View[] = [
     componentName: 'V1',
     componentModule: () => import('../views/v1/v1'),
     key: 'v1',
+    permissions: 'primary:authenticated',
     displayText: 'v1',
     displayIcon: 'view_in_ar',
   },
@@ -67,6 +71,7 @@ const views: View[] = [
     componentName: 'V2',
     componentModule: () => import('../views/v2/v2'),
     key: 'v2',
+    permissions: 'primary:not-in-role',
     displayText: 'v2',
     displayIcon: 'view_in_ar',
   },
@@ -77,6 +82,7 @@ const views: View[] = [
     componentName: 'V3',
     componentModule: () => import('../views/v3/v3'),
     key: 'v3',
+    permissions: 'orphan-auth-z:role6',
     displayText: 'v3',
     displayIcon: 'view_in_ar',
   },
@@ -90,24 +96,34 @@ const views: View[] = [
     displayText: 'v4',
     displayIcon: 'view_in_ar',
   },
+  {
+    viewId: 'shell-state-dashboard',
+    paneType: 'bottom',
+    launchAtStartup: false,
+    componentName: 'ShellStateDashboard',
+    componentModule: () => import('@porrtal/r-shell-material'),
+    key: 'shell-state-dashboard',
+    displayText: 'Shell State Dashboard',
+    displayIcon: 'key',
+  },
 ];
 
 export function App() {
   return (
-    <Auth0Authentication
-      domain="dev-b6h3bfnp.us.auth0.com"
-      clientId="uP4eHSspiDjg6E7GKU5LjdFPn0WwEKTq"
-      redirectUri="http://localhost:4200"
-    >
-      <ShellState views={views}>
+    <ShellState views={views}>
+      <Auth0Authentication
+        domain="dev-b6h3bfnp.us.auth0.com"
+        clientId="uP4eHSspiDjg6E7GKU5LjdFPn0WwEKTq"
+        redirectUri="http://localhost:4200"
+      >
         <ShellMaterial
           bannerData={{
             displayText: 'porrtal-auth - react - auth0',
             displayIcon: 'cyclone',
           }}
         />
-      </ShellState>
-    </Auth0Authentication>
+      </Auth0Authentication>
+    </ShellState>
   );
 }
 

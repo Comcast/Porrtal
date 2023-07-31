@@ -69,7 +69,7 @@ const views: View[] = [
     key: 'v2',
     displayText: 'v2',
     displayIcon: 'view_in_ar',
-    permissions: 'primary:role 1'
+    permissions: 'primary:role1'
   },
   {
     viewId: 'v3',
@@ -91,7 +91,7 @@ const views: View[] = [
     key: 'v4',
     displayText: 'v4',
     displayIcon: 'view_in_ar',
-    permissions: 'primary:role 2',
+    permissions: 'primary:role2',
   },
 ];
 

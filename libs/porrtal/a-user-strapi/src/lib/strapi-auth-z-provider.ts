@@ -17,62 +17,68 @@ import { StateObject } from '@porrtal/a-api';
 import { ShellStateService } from '@porrtal/a-shell';
 import {
   AuthNInterface,
-  AuthZProviderInfo,
+  AuthZProviderMessage,
   AuthZProviderInterface,
   AuthZProviderPendingView,
   AuthZProviderState,
+  AuthZProviderInfo,
 } from '@porrtal/a-user';
+import { RxState } from '@rx-angular/state';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-export class StrapiAuthZProvider implements AuthZProviderInterface {
-  public state$: Observable<AuthZProviderState>;
-  public name = 'primary';
-  scopes?: string[];
-  errorInfo?: AuthZProviderInfo;
-  warningInfo?: AuthZProviderInfo;
-  props?: StateObject;
-  roles?: string[];
-  pendingViews?: AuthZProviderPendingView[];
-
-  private stateSubj = new BehaviorSubject<AuthZProviderState>('');
-  private authN?: AuthNInterface;
-
+export class StrapiAuthZProvider
+  extends RxState<AuthZProviderInfo>
+  implements AuthZProviderInterface
+{
   private shellStateService?: ShellStateService;
 
-  public init(authN: AuthNInterface, shellStateService: ShellStateService) {
-    this.shellStateService = shellStateService;
+  authZProviderInfo$ = this.select();
+  name$ = this.select('name');
+  authZProviderState$ = this.select('authZProviderState');
+  scopes$ = this.select('scopes');
+  errorMessage$ = this.select('errorMessage');
+  warningMessage$ = this.select('warningMessage');
+  props$ = this.select('props');
+  roles$ = this.select('roles');
+  pendingViews$ = this.select('pendingViews');
 
+  authN?: AuthNInterface;
+
+  public getAuthZProviderInfo = () => {
+    return this.get();
+  };
+
+  public init(name: string, authN: AuthNInterface, shellStateService: ShellStateService) {
+    this.shellStateService = shellStateService;
     this.authN = authN;
 
-    if (this.stateSubj.getValue() === '') {
-      this.stateSubj.next('init');
-      this.authN.state$.subscribe((state) => {
+    if (this.get('authZProviderState') === '') {
+      this.set({ name, authZProviderState: 'init' });
+      this.authN.authNState$.subscribe((state) => {
         console.log('strapi auth z provider init:', {
           state,
           authN: this.authN,
         });
         switch (state) {
           case 'authenticated': {
-            const rawRoles = (this.authN?.claims?.['roles'] ?? []) as string[];
-            // this.roles = rawRoles.map((role) =>
-            //   role.indexOf('_') >= 0
-            //     ? role.split('_').splice(1).join('_')
-            //     : role
-            // );
-            this.roles = (
-              (this.authN?.claims?.['porrtal_roles'] ?? []) as unknown as { name: string }[]
-            ).map((roleObj) => roleObj['name']);
+            const authNInfo = this.authN?.getAuthNInfo();
+            const rawRoles = (authNInfo?.claims?.['porrtal_roles'] ?? []) as unknown as ({ name: string })[];
+            const roles = rawRoles?.map((role) => role?.name ?? '');
+            this.set({
+              roles,
+            });
+            const authZProviderInfo = this.getAuthZProviderInfo();
             console.log('strapi auth z roles:', {
-              // rawRoles,
-              roles: this.roles,
-              claims: this.authN?.claims,
+              rawRoles,
+              roles: roles,
+              claims: authNInfo?.claims,
               authN: this.authN,
             });
 
             // update the shell for this provider with ready and the permissions check function
             this.shellStateService?.dispatch({
               type: 'setAuthZReady',
-              name: this.name,
+              name,
             });
             console.log('strapi auth z provider - set ready', {
               state: this.shellStateService?.get(),
@@ -81,9 +87,9 @@ export class StrapiAuthZProvider implements AuthZProviderInterface {
             Promise.resolve(true).then(() => {
               this.shellStateService?.dispatch({
                 type: 'registerAuthZPermissionCheck',
-                name: this.name,
+                name,
                 checkPermission: (parm) => {
-                  return this.roles?.some((role) => role === parm) ?? false;
+                  return roles?.some((role) => role === parm) ?? false;
                 },
               });
             });
@@ -96,28 +102,33 @@ export class StrapiAuthZProvider implements AuthZProviderInterface {
                 state: this.shellStateService?.get(),
               });
             });
-            this.stateSubj.next('ready');
+            this.set({ authZProviderState: 'ready' });
             break;
           }
 
           case 'authenticating':
-            this.stateSubj.next('init');
+            this.set({ authZProviderState: 'init' });
             break;
 
           case 'error':
-            this.errorInfo = { message: 'Auth N Failed.' };
-            this.stateSubj.next('error');
+            this.set({
+              errorMessage: { message: 'Auth N Failed.' },
+              authZProviderState: 'error',
+            });
             break;
 
           default:
-            this.stateSubj.next('');
+            this.set({ authZProviderState: '' });
             break;
         }
       });
+    } else {
+      this.set({ name });
     }
   }
 
   constructor() {
-    this.state$ = this.stateSubj;
+    super();
+    this.set({ authZProviderState: '' });
   }
 }

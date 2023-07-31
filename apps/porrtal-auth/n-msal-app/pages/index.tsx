@@ -127,6 +127,16 @@ export function Index() {
               bannerData={{
                 displayText: 'porrtal-auth - nextjs - msal (material)',
                 displayIcon: 'cyclone',
+                childData: [
+                  {
+                    displayText: 'one',
+                    targetUrl: '/',
+                  },
+                  {
+                    displayText: 'two',
+                    targetUrl: '/two',
+                  },
+                ],
               }}
             />
           </MsalAuthentication>

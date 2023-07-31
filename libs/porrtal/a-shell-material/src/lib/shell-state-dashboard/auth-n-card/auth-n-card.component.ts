@@ -1,3 +1,17 @@
+﻿/*
+Copyright 2022 Comcast Cable Communications Management, LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 import {
   ChangeDetectionStrategy,
   Component,
@@ -35,24 +49,15 @@ export class AuthNCardComponent {
   isMaximized$ = new BehaviorSubject<boolean>(false);
   childIndex = -1;
   parentNativeEl: any;
-  claims?: StateObject;
 
   authNSubj = new BehaviorSubject<{ authN: AuthNInterface | undefined }>({
     authN: undefined,
   });
   _authN?: AuthNInterface;
-  state: AuthNState = 'initialized';
 
   @Input() public set data(value: AuthNInterface) {
     this._authN = value;
     this.authNSubj.next({ authN: value });
-
-    this._authN.state$.subscribe((authNState) => {
-      this.state = authNState;
-      this.claims = this._authN?.claims;
-      console.log('claims', this.claims, authNState);
-      this.authNSubj.next({ authN: this._authN });
-    });
   }
 
   constructor(

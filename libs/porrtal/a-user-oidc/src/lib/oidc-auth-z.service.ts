@@ -26,12 +26,11 @@ export class OidcAuthZService implements AuthZInterface {
     public shellStateService: ShellStateService
   ) {
     console.log('oidc-auth-z.service constructor', { authN, authZProviders, shellStateService })
-    authN?.state$.subscribe((state) => {
-      if (state === 'initialized') {
+    authN?.authNState$.subscribe((authNState) => {
+      if (authNState === 'initialized') {
         Object.keys(authZProviders).forEach((key) => {
-          console.log(`oidc auth z service: init '${key}'`, { state, authN, authZProviders });
-          authZProviders[key].name = key;
-          authZProviders[key].init?.(this.authN, shellStateService);
+          console.log(`oidc auth z service: init '${key}'`, { authNState, authN, authZProviders });
+          authZProviders[key].init?.(key, this.authN, shellStateService);
         });
       }
     });

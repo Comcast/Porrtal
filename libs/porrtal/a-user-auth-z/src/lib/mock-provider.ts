@@ -28,7 +28,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MockAuthNService } from './mock-auth-n.service';
 import { MockAuthZService } from './mock-auth-z.service';
 import { StateObject } from '@porrtal/a-api';
-import { AuthZProvider } from './auth-z-provider';
 import { MockAuthZProvider } from './mock-auth-z-provider';
 import { ShellStateService } from '@porrtal/a-shell';
 

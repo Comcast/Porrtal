@@ -12,18 +12,15 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { MockAuthZProvider } from '@porrtal/a-user-auth-z';
 import { View } from '@porrtal/r-api';
 import { ShellState } from '@porrtal/r-shell';
 import { ShellMaterial } from '@porrtal/r-shell-material';
 import {
   MockAuthentication,
-  MockAuthenticationProps,
   MockAuthZ,
 } from '@porrtal/r-user-mock';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import styles from './index.module.scss';
 
 const views: View[] = [
   {

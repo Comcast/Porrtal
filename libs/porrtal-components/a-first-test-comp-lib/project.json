@@ -6,7 +6,7 @@
   "prefix": "porrtal",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:package",
+      "executor": "@nx/angular:package",
       "outputs": [
         "{workspaceRoot}/dist/libs/porrtal-components/a-first-test-comp-lib"
       ],
@@ -24,7 +24,7 @@
       "defaultConfiguration": "production"
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": [
         "{workspaceRoot}/coverage/libs/porrtal-components/a-first-test-comp-lib"
       ],
@@ -34,7 +34,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/porrtal-components/a-first-test-comp-lib/**/*.ts",

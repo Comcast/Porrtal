@@ -131,6 +131,16 @@ export function Index() {
               bannerData={{
                 displayText: 'porrtal-auth - nextjs - auth0',
                 displayIcon: 'cyclone',
+                childData: [
+                  {
+                    displayText: 'one',
+                    targetUrl: '/',
+                  },
+                  {
+                    displayText: 'two',
+                    targetUrl: '/two',
+                  },
+                ],
               }}
             />
           </Auth0Authentication>
