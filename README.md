@@ -83,6 +83,10 @@ To see the search pane, start typing some text in top right text box. The search
 
 A Porrtal view can be dynamically launched by the code in a component. Porrtal also provides a more advanced launch feature where an (entity) menu of launch options is displayed. You can see more about the Entity Menu in the Quick Starts above.
 
+## Porrtal Apps - Adding Authentication
+
+[See "Porrtal Libraries" Readme](./libs/porrtal/README.md)
+
 # Porrtal Development
 
 This project was generated using [Nx](https://nx.dev).
