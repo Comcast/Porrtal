@@ -1,10 +1,4 @@
-import { Icon } from '@mui/material';
-import { useTheme } from '@mui/material';
-import { useShellDispatch } from '@porrtal/r-shell';
-import { MaximizeHostProps } from '@porrtal/r-shell';
-import { useEffect, useRef } from 'react';
-
-/*
+﻿/*
 Copyright 2022 Comcast Cable Communications Management, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,6 +12,12 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+import { Icon } from '@mui/material';
+import { useTheme } from '@mui/material';
+import { useShellDispatch } from '@porrtal/r-shell';
+import { MaximizeHostProps } from '@porrtal/r-shell';
+import { useEffect, useRef } from 'react';
+
 import styles from './maximize-host.module.scss';
 
 export function MaximizeHost(props: MaximizeHostProps) {
