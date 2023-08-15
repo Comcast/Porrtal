@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/Comcast/Porrtal/compare/v0.9.0...v0.9.1) (2023-08-15)
+
+### Bug Fixes
+
+- **@porrtal/r-shell-blueprint, @porrtal/r-shell-material:** remove mock dependency ([faabeb4](https://github.com/Comcast/Porrtal/commit/faabeb4506173719ed83bf24fe0b3857a40aba1e))
+
 # [0.9.0](https://github.com/Comcast/Porrtal/compare/v0.8.1...v0.9.0) (2023-07-31)
 
 ### Bug Fixes

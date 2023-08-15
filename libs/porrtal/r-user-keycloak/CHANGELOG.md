@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/Comcast/Porrtal/compare/v0.9.0...v0.9.1) (2023-08-15)
+
+### Bug Fixes
+
+- **@porrtal/\*:** fix package.json license and repository info ([4229a6a](https://github.com/Comcast/Porrtal/commit/4229a6ae297b5686316f2a4fc1e51fa3d73ff863))
+
 # [0.9.0](https://github.com/datumgeek/porrtal/compare/v0.8.1...v0.9.0) (2023-07-31)
 
 ### Bug Fixes
