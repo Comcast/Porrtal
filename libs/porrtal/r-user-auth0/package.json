@@ -1,12 +1,10 @@
 {
   "name": "@porrtal/r-user-auth0",
   "version": "0.9.0",
-  "main": "./index.js",
-  "module": "./index.mjs",
-  "exports": {
-    ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
-    }
-  }
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Comcast/Porrtal.git"
+  },
+  "author": "Comcast_Open_Source_Services@comcast.com",
+  "license": "Apache-2.0"
 }
