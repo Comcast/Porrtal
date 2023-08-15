@@ -96,11 +96,6 @@ const reducer: Reducer<AuthNInfo, AuthNAction | MockAuthNAction> = (state, actio
   }
 };
 
-export function useAuthNInfo(): AuthNInterface {
-  const authN = useContext(AuthNContext);
-  return authN;
-}
-
 interface MockAdapterProps {
   children?: React.ReactNode;
 }
