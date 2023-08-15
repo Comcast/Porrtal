@@ -15,13 +15,13 @@ limitations under the License.
 import { StateObject } from '@porrtal/r-api';
 import { useShellDispatch } from '@porrtal/r-shell';
 import {
+  useAuthN,
   AuthZProviderInfo,
   AuthZProviderPendingView,
   useAuthZsDispatch,
   useAuthZsState,
 } from '@porrtal/r-user';
 import { useEffect } from 'react';
-import { useAuthNInfo } from './mock-authentication';
 
 export interface MockAuthZProps {
   name: string;
@@ -39,7 +39,7 @@ export interface MockAuthZProps {
 }
 
 export function MockAuthZ(props: MockAuthZProps) {
-  const authNState = useAuthNInfo();
+  const authNState = useAuthN();
   const authZsDispatch = useAuthZsDispatch();
   const shellDipatch = useShellDispatch();
 
