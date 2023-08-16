@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.3](https://github.com/Comcast/Porrtal/compare/v0.9.2...v0.9.3) (2023-08-16)
+
+### Bug Fixes
+
+- **@porrtal/\*:** fix circular dependencies and external dependencies ([63a855d](https://github.com/Comcast/Porrtal/commit/63a855d723f1d4170438f3e861fe339a55f03493))
+
 ## [0.9.2](https://github.com/Comcast/Porrtal/compare/v0.9.1...v0.9.2) (2023-08-16)
 
 **Note:** Version bump only for package @porrtal/r-split
