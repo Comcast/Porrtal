@@ -13,7 +13,10 @@
         "tsConfig": "libs/porrtal/r-split/tsconfig.lib.json",
         "project": "libs/porrtal/r-split/package.json",
         "entryFile": "libs/porrtal/r-split/src/index.ts",
-        "external": ["react/jsx-runtime"],
+        "external": [
+          "react/jsx-runtime",
+          "react-measure"
+        ],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "extractCss": false,

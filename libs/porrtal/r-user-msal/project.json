@@ -20,7 +20,11 @@
         "tsConfig": "libs/porrtal/r-user-msal/tsconfig.lib.json",
         "project": "libs/porrtal/r-user-msal/package.json",
         "entryFile": "libs/porrtal/r-user-msal/src/index.ts",
-        "external": ["react/jsx-runtime"],
+        "external": [
+          "react/jsx-runtime",
+          "@porrtal/r-user",
+          "@porrtal/r-shell"
+        ],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [

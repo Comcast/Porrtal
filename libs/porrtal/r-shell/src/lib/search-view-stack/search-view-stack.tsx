@@ -12,11 +12,9 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import {
-  useSearchAction,
-  useShellComponents,
-  useShellState,
-} from '@porrtal/r-shell';
+import { useSearchAction } from '../search-state/search-state';
+import { useShellComponents } from '../shell-components';
+import { useShellState } from '../shell-state/shell-state';
 import styles from './search-view-stack.module.scss';
 
 /* eslint-disable-next-line */

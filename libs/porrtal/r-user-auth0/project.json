@@ -20,7 +20,13 @@
         "tsConfig": "libs/porrtal/r-user-auth0/tsconfig.lib.json",
         "project": "libs/porrtal/r-user-auth0/package.json",
         "entryFile": "libs/porrtal/r-user-auth0/src/index.ts",
-        "external": ["react/jsx-runtime"],
+        "external": [
+          "react/jsx-runtime",
+          "@porrtal/r-api",
+          "@porrtal/r-user",
+          "@porrtal/r-shell",
+          "@auth0/auth0-react"
+        ],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [
