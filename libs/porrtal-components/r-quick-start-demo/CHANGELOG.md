@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.4](https://github.com/Comcast/Porrtal/compare/v0.9.3...v0.9.4) (2023-08-17)
+
+### Bug Fixes
+
+- **workspace:** update from nx 16.5.5 --> 16.7.1 ([e14769a](https://github.com/Comcast/Porrtal/commit/e14769acf2e498d4c0b19ab1b6c47687b828ddd5))
+
 ## [0.9.3](https://github.com/Comcast/Porrtal/compare/v0.9.2...v0.9.3) (2023-08-16)
 
 **Note:** Version bump only for package @porrtal-components/r-quick-start-demo
