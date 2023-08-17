@@ -9,7 +9,8 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/porrtal/a-shell-bootstrap"],
       "options": {
-        "project": "libs/porrtal/a-shell-bootstrap/ng-package.json"
+        "project": "libs/porrtal/a-shell-bootstrap/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": true
       },
       "configurations": {
         "production": {

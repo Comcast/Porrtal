@@ -83,10 +83,10 @@
     "@angular-eslint/eslint-plugin": "16.0.3",
     "@angular-eslint/eslint-plugin-template": "16.0.3",
     "@angular-eslint/template-parser": "16.0.3",
-    "@angular/cli": "~16.1.0",
+    "@angular/cli": "~16.2.0",
     "@angular/compiler-cli": "16.2.1",
     "@angular/language-service": "16.2.1",
-    "@babel/core": "7.12.13",
+    "@babel/core": "^7.14.5",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "7.12.13",
     "@commitlint/cli": "^17.0.0",
@@ -169,4 +169,3 @@
     "packages/*"
   ]
 }
-

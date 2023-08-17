@@ -9,7 +9,8 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/porrtal-components/a-learning"],
       "options": {
-        "project": "libs/porrtal-components/a-learning/ng-package.json"
+        "project": "libs/porrtal-components/a-learning/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": true
       },
       "configurations": {
         "production": {
