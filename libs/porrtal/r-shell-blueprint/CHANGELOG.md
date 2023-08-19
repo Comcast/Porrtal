@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.5](https://github.com/Comcast/Porrtal/compare/v0.9.4...v0.9.5) (2023-08-19)
+
+### Bug Fixes
+
+- **@porrtal/r-shell-blueprint, @porrtal/r-shell-material:** remove import --> Component ([b4500ef](https://github.com/Comcast/Porrtal/commit/b4500ef48238a05d499f21303f32ac63e6f7b4c5))
+
 ## [0.9.4](https://github.com/Comcast/Porrtal/compare/v0.9.3...v0.9.4) (2023-08-17)
 
 ### Bug Fixes
