@@ -15,18 +15,13 @@ limitations under the License.
 
 import { Card } from '@mui/material';
 import { StateObject } from '@porrtal/r-api';
-import React, { Suspense } from 'react';
-import { ComponentType, LazyExoticComponent, useEffect, useState } from 'react';
+import { ComponentType } from 'react';
 import styles from './cards-container.module.scss';
-
-export type CardComponentFunction = () => Promise<{
-  default: ComponentType<CardContainerProps>;
-}>;
 
 export interface CardMeta {
   key: string;
   data: StateObject;
-  component: CardComponentFunction;
+  component: ComponentType<CardContainerProps>;
 }
 
 export interface CardsContainerProps {
@@ -50,23 +45,9 @@ export function CardsContainer(props: CardsContainerProps) {
 }
 
 export function CardContainer(props: CardContainerProps) {
-  const [DynComp, setDynComp] =
-    useState<LazyExoticComponent<ComponentType<CardContainerProps>>>();
-
-  useEffect(() => {
-    setDynComp(React.lazy(props.card.component));
-    console.log(`in card container's use effect...`);
-  }, [props.card.component]);
-
   return (
     <Card key={props.card.key} className={styles['card-container']}>
-      {DynComp ? (
-        <Suspense fallback={<div>loading...</div>}>
-          <DynComp card={props.card} />
-        </Suspense>
-      ) : (
-        <div>loading...</div>
-      )}
+      <props.card.component card={props.card} />
     </Card>
   );
 }
