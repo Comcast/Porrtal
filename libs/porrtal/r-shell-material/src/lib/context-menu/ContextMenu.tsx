@@ -29,12 +29,12 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-import React, { useState, forwardRef } from 'react';
+import { MouseEvent, useState, forwardRef, ReactNode } from 'react';
 import Menu from '@mui/material/Menu';
 import { MenuItemData, nestedMenuItemsFromObject } from 'mui-nested-menu';
 
 export interface ContextMenuProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
   menuItemsData?: MenuItemData[];
 }
 
@@ -49,7 +49,7 @@ export const ContextMenu = forwardRef<HTMLDivElement, ContextMenuProps>(
 
     const handleItemClick = () => setMenuPosition(null);
 
-    const handleContextMenu = (e: React.MouseEvent) => {
+    const handleContextMenu = (e: MouseEvent) => {
       e.preventDefault();
       setMenuPosition({ top: e.clientY, left: e.clientX });
     };

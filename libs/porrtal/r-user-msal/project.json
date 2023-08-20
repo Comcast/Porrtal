@@ -22,8 +22,8 @@
         "entryFile": "libs/porrtal/r-user-msal/src/index.ts",
         "external": [
           "react/jsx-runtime",
-          "@porrtal/r-user",
-          "@porrtal/r-shell"
+          "react",
+          "react-dom"
         ],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",

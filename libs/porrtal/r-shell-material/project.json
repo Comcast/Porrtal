@@ -15,9 +15,8 @@
         "entryFile": "libs/porrtal/r-shell-material/src/index.ts",
         "external": [
           "react/jsx-runtime",
-          "@porrtal/r-shell",
-          "@porrtal/r-api",
-          "@porrtal/r-user"
+          "react",
+          "react-dom"
         ],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",

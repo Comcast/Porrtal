@@ -22,6 +22,7 @@ import {
 import { MenuItemData } from 'mui-nested-menu';
 import { NestedDropdown } from '../nested-dropdown/NestedDropdown';
 import styles from './banner-menu-inline.module.scss';
+import { Dispatch } from 'react';
 
 export function BannerMenuInline(props: BannerMenuInlineProps) {
   const dispatch = useShellDispatch();
@@ -76,7 +77,7 @@ export function BannerMenuInline(props: BannerMenuInlineProps) {
 
 function getItems(
   menuItems: PorrtalMenuItem[] | undefined,
-  dispatch: React.Dispatch<ShellAction>
+  dispatch: Dispatch<ShellAction>
 ): MenuItemData[] | undefined {
   const ret: MenuItemData[] = [];
   if (!menuItems || menuItems.length < 1) {

@@ -17,6 +17,7 @@ import { PorrtalMenuItem } from '@porrtal/r-api';
 import { BannerMenuBarProps, ShellAction, useShellDispatch } from '@porrtal/r-shell';
 import { MenuItemData, NestedDropdown } from 'mui-nested-menu';
 import styles from './banner-menu-bar.module.scss';
+import { Dispatch } from 'react';
 
 export function BannerMenuBar(props: BannerMenuBarProps) {
   const dispatch = useShellDispatch();
@@ -62,7 +63,7 @@ export function BannerMenuBar(props: BannerMenuBarProps) {
 
 function getItems(
   menuItems: PorrtalMenuItem[] | undefined,
-  dispatch: React.Dispatch<ShellAction>
+  dispatch: Dispatch<ShellAction>
 ): MenuItemData[] | undefined {
   const ret: MenuItemData[] = [];
   if (!menuItems || menuItems.length < 1) {

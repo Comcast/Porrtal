@@ -22,9 +22,8 @@
         "entryFile": "libs/porrtal/r-user-auth0/src/index.ts",
         "external": [
           "react/jsx-runtime",
-          "@porrtal/r-api",
-          "@porrtal/r-user",
-          "@porrtal/r-shell",
+          "react",
+          "react-dom",
           "@auth0/auth0-react"
         ],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",

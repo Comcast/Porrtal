@@ -25,7 +25,7 @@ import {
   Tabs,
   Tooltip,
 } from '@mui/material';
-import React, { Dispatch, useMemo, MouseEvent, useRef } from 'react';
+import { Dispatch, useMemo, MouseEvent, useRef, SyntheticEvent } from 'react';
 import {
   ShellAction,
   useShellDispatch,
@@ -55,7 +55,7 @@ export function ViewStack(props: ViewStackProps) {
     return -1;
   }, [props.pane]);
 
-  const handleChange = (event: React.SyntheticEvent, newIndex: number) => {
+  const handleChange = (event: SyntheticEvent, newIndex: number) => {
     dispatch({
       type: 'setCurrentViewStateByKey',
       key: props.pane.viewStates[newIndex].key,
@@ -111,7 +111,7 @@ function ViewStackTabsTop(
   props: ViewStackProps & {
     dispatch: Dispatch<ShellAction>;
     currentIndex: number;
-    handleChange: (event: React.SyntheticEvent, newIndex: number) => void;
+    handleChange: (event: SyntheticEvent, newIndex: number) => void;
   }
 ) {
   const viewHostRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -194,7 +194,7 @@ function ViewStackTabsLeft(
   props: ViewStackProps & {
     dispatch: Dispatch<ShellAction>;
     currentIndex: number;
-    handleChange: (event: React.SyntheticEvent, newIndex: number) => void;
+    handleChange: (event: SyntheticEvent, newIndex: number) => void;
   }
 ) {
   const viewHostRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -271,7 +271,7 @@ function ViewStackCards(
   props: ViewStackProps & {
     dispatch: Dispatch<ShellAction>;
     currentIndex: number;
-    handleChange: (event: React.SyntheticEvent, newIndex: number) => void;
+    handleChange: (event: SyntheticEvent, newIndex: number) => void;
   }
 ) {
   const viewHostRef = useRef<(HTMLDivElement | null)[]>([]);

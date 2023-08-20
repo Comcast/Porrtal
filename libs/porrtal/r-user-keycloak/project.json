@@ -22,7 +22,11 @@
         "tsConfig": "libs/porrtal/r-user-keycloak/tsconfig.lib.json",
         "project": "libs/porrtal/r-user-keycloak/package.json",
         "entryFile": "libs/porrtal/r-user-keycloak/src/index.ts",
-        "external": ["react/jsx-runtime"],
+        "external": [
+          "react/jsx-runtime",
+          "react",
+          "react-dom"
+        ],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [
