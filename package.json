@@ -148,7 +148,7 @@
     "minimatch": "^3.1.2",
     "ng-packagr": "16.2.0",
     "nx": "16.7.1",
-    "postcss": "8.4.16",
+    "postcss": "8.4.31",
     "postcss-import": "~14.1.0",
     "postcss-preset-env": "~7.5.0",
     "postcss-url": "~10.1.3",
