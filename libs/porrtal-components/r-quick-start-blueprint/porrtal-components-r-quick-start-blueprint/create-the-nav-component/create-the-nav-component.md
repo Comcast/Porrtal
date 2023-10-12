@@ -23,7 +23,7 @@ npm install ag-grid-community ag-grid-react uuid react-measure --save --legacy-p
 ```
 
 ```bash
-npm install @types/uuid @types/react-measure --save-dev
+npm install @types/uuid @types/react-measure --save-dev --legacy-peer-deps
 ```
 
 ## Modify App.tsx
