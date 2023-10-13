@@ -9,7 +9,7 @@ Next, we will turn our generic React app into a Porrtal app with a simple Nav vi
 From the terminal (in the porrtal-react-blueprint-quick-start directory):
 
 ```bash
-npm install @blueprintjs/core @blueprintjs/icons @blueprintjs/popover2 --save
+npm install @blueprintjs/core@4.20.2 @blueprintjs/icons@4.16.0 @blueprintjs/popover2@1.4.11 --save
 ```
 
 ### Install porrtal npm packages
