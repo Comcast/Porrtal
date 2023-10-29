@@ -131,6 +131,18 @@ The porrtal MSAL React sample application, [r-msal-app](../../apps/porrtal-auth/
 
 ### MSAL React Code Setup
 
+1. Install Azure MSAL NPM Packages
+  
+    ```bash
+    npm install @azure/msal-browser@^2.32.1 @azure/msal-react@^1.5.1 --save --legacy-peer-deps
+    ```
+
+1. Install Porrtal MSAL NPM Package
+
+    ```
+    npm install @porrtal/r-user-msal --save --legacy-peer-deps
+    ```
+
 1. [Create msal-config](../../apps/porrtal-auth/r-msal-app/src/app/msal-config-example.ts#L16-L43)
 1. [Set Permissions in Views](../../apps/porrtal-auth/r-msal-app/src/app/app.tsx#L64)
 1. [Create App Component Function](../../apps/porrtal-auth/r-msal-app/src/app/app.tsx#L112-L131)
@@ -232,6 +244,18 @@ The porrtal MSAL React sample application, [n-msal-app](../../apps/porrtal-auth/
 * [MSAL Setup](MsalSetup.md)
 
 ### MSAL React Code Setup
+
+1. Install Azure MSAL NPM Packages
+  
+    ```bash
+    npm install @azure/msal-browser@^2.32.1 @azure/msal-react@^1.5.1 --save --legacy-peer-deps
+    ```
+
+1. Install Porrtal MSAL NPM Package
+
+    ```
+    npm install @porrtal/r-user-msal --save --legacy-peer-deps
+    ```
 
 1. [Create msal-config](../../apps/porrtal-auth/n-msal-app/msal-config-example.ts#L16-L43)
 1. [Set Permissions in Views](../../apps/porrtal-auth/n-msal-app/pages/index.tsx#L62)
