@@ -11,8 +11,7 @@
         "{workspaceRoot}/dist/libs/porrtal-components/a-first-test-comp-lib"
       ],
       "options": {
-        "project": "libs/porrtal-components/a-first-test-comp-lib/ng-package.json",
-        "updateBuildableProjectDepsInPackageJson": true
+        "project": "libs/porrtal-components/a-first-test-comp-lib/ng-package.json"
       },
       "configurations": {
         "production": {

@@ -11,8 +11,7 @@
         "{workspaceRoot}/dist/libs/porrtal-components/a-quick-start-demo"
       ],
       "options": {
-        "project": "libs/porrtal-components/a-quick-start-demo/ng-package.json",
-        "updateBuildableProjectDepsInPackageJson": true
+        "project": "libs/porrtal-components/a-quick-start-demo/ng-package.json"
       },
       "configurations": {
         "production": {
