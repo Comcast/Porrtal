@@ -42,3 +42,4 @@ Thumbs.db
 .next
 
 .angular
+.nx/cache

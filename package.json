@@ -98,7 +98,6 @@
     "@nx/eslint-plugin": "17.0.2",
     "@nx/jest": "17.0.2",
     "@nx/js": "17.0.2",
-    "@nx/linter": "17.0.2",
     "@nx/next": "17.0.2",
     "@nx/react": "17.0.2",
     "@nx/storybook": "17.0.2",
@@ -130,7 +129,7 @@
     "babel-jest": "29.4.3",
     "babel-loader": "8.1.0",
     "css-loader": "^6.4.0",
-    "cypress": "12.17.2",
+    "cypress": "^13.0.0",
     "eslint": "8.46.0",
     "eslint-config-next": "13.1.1",
     "eslint-config-prettier": "9.0.0",
@@ -163,10 +162,10 @@
     "typescript": "5.1.6",
     "url-loader": "^4.1.1",
     "webpack": "5.88.2",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.8.0",
+    "@nx/eslint": "17.0.2"
   },
   "workspaces": [
     "packages/*"
   ]
 }
-
