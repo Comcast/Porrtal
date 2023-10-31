@@ -27,7 +27,7 @@ npm install ag-grid-community ag-grid-angular --save --legacy-peer-deps
 ### Install @rx-angular/state local state management npm package
 
 ```bash
-npm install @rx-angular/state --save --legacy-peer-deps
+npm install @rx-angular/state --save --legacy-peer-deps --legacy-peer-deps
 ```
 
 ### Install supporting npm packages
