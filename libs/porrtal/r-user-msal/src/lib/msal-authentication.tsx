@@ -26,11 +26,19 @@ import {
   AuthNAction,
   AuthNContext,
   AuthNDispatchContext,
+  AuthNGetTokenContext,
   AuthNState,
   AuthZs,
 } from '@porrtal/r-user';
 import { AuthNInterface } from '@porrtal/r-user';
-import { Reducer, useContext, useEffect, useReducer, useState } from 'react';
+import {
+  Reducer,
+  useContext,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from 'react';
 import { MsalAuthZ } from './msal-auth-z';
 
 interface MsalAuthNInfo {
@@ -41,6 +49,12 @@ interface MsalAuthNInfo {
   props: MsalAuthenticationProps;
   localState: {
     loginCount: number;
+  };
+  accessTokensByScopeKey: {
+    [scopeKey: string]: string;
+  };
+  errorsByScopeKey: {
+    [scopeKey: string]: any;
   };
 }
 
@@ -55,6 +69,16 @@ type MsalAuthNAction =
   | {
       type: 'update';
       updateInfo: Partial<AuthNInterface>;
+    }
+  | {
+      type: 'fetchAccessTokenSuccess';
+      scopeKey: string;
+      accessToken: string;
+    }
+  | {
+      type: 'fetchAccessTokenFailure';
+      scopeKey: string;
+      error: any;
     };
 
 const reducer: Reducer<MsalAuthNInfo, AuthNAction | MsalAuthNAction> = (
@@ -109,14 +133,58 @@ const reducer: Reducer<MsalAuthNInfo, AuthNAction | MsalAuthNAction> = (
       return newState;
     }
 
+    case 'fetchAccessTokenSuccess': {
+      // add an entry for the access token key
+      const newState = {
+        ...state,
+        accessTokensByScopeKey: {
+          ...state.accessTokensByScopeKey,
+          [action.scopeKey]: action.accessToken,
+        },
+      };
+      console.log('AuthN Reducer (fetchAccessTokenSuccess)...', {
+        oldState: state,
+        newState,
+      });
+      return newState;
+    }
+
+    case 'fetchAccessTokenFailure': {
+      // add an entry to the errors for the access token key
+      const newState = {
+        ...state,
+        errorByScopeKey: {
+          ...state.errorsByScopeKey,
+          [action.scopeKey]: (
+            state.errorsByScopeKey[action.scopeKey] ?? []
+          ).push(action.error),
+        },
+      };
+      console.log('AuthN Reducer (fetchAccessTokenFailure)...', {
+        oldState: state,
+        newState,
+      });
+      return newState;
+    }
+
     default:
       return state;
   }
 };
 
+export interface MsalAuthenticationProps {
+  msalConfig: Configuration;
+  children?: React.ReactNode;
+}
+
 interface MsalAdapterProps {
   children?: React.ReactNode;
 }
+
+type RequestResolver = {
+  resolve: (value: string | PromiseLike<string>) => void;
+  reject: (reason?: any) => void;
+};
 
 function MsalAdapter(props: MsalAuthenticationProps) {
   const msalContext = useMsal();
@@ -126,9 +194,21 @@ function MsalAdapter(props: MsalAuthenticationProps) {
     msalInstance: new PublicClientApplication(props.msalConfig),
     props,
     localState: { loginCount: 0 },
+    accessTokensByScopeKey: {},
+    errorsByScopeKey: {},
   });
 
+  const pendingAccessTokenRequestsRef = useRef<{
+    [scopesKey: string]: Promise<string> | undefined;
+  }>({});
+  const accessTokenRequestResolversRef = useRef<{
+    [scopesKey: string]: RequestResolver | undefined;
+  }>({});
+
   useEffect(() => {
+    const pendingAccessTokenRequests = pendingAccessTokenRequestsRef.current;
+    const accessTokenRequestResolvers = accessTokenRequestResolversRef.current;
+
     state.msalInstance.addEventCallback((event: any) => {
       if (
         event.eventType === EventType.LOGIN_SUCCESS &&
@@ -183,6 +263,16 @@ function MsalAdapter(props: MsalAuthenticationProps) {
               claims: account.idTokenClaims as StateObject | undefined,
             },
           });
+
+          Object.keys(pendingAccessTokenRequests).forEach((scopeKey) => {
+            getToken(JSON.parse(scopeKey))
+              .then((token) =>
+                accessTokenRequestResolvers[scopeKey]?.resolve(token ?? '')
+              )
+              .catch((error) =>
+                accessTokenRequestResolvers[scopeKey]?.reject(error)
+              );
+          });
         }
       })
       .catch((err) => {
@@ -194,23 +284,80 @@ function MsalAdapter(props: MsalAuthenticationProps) {
     state.msalInstance.enableAccountStorageEvents();
   }, []);
 
+  const getToken = async (scopes: string[]) => {
+    const scopeKey = JSON.stringify(scopes.sort());
+    const pendingAccessTokenRequests = pendingAccessTokenRequestsRef.current;
+    const accessTokenRequestResolvers = accessTokenRequestResolversRef.current;
+
+    // Return cached token if it exists
+    if (state.accessTokensByScopeKey[scopeKey]) {
+      return state.accessTokensByScopeKey[scopeKey];
+    }
+
+    // If a request is already pending, return the existing promise
+    if (pendingAccessTokenRequests[scopeKey]) {
+      return pendingAccessTokenRequests[scopeKey];
+    }
+
+    // If authentication is not complete, queue the token request
+    if (state.authN?.authNState !== 'authenticated') {
+      if (!pendingAccessTokenRequests[scopeKey]) {
+        pendingAccessTokenRequests[scopeKey] = new Promise<string>(
+          (resolve, reject) => {
+            // Queue up a function to call once authentication is complete
+            accessTokenRequestResolvers[scopeKey] = {
+              resolve,
+              reject,
+            };
+          }
+        );
+      }
+      return pendingAccessTokenRequests[scopeKey];
+    }
+
+    // No pending request, and authentication is complete, fetch the token
+    const tokenPromise = fetchToken(state, scopes)
+      .then((token) => {
+        dispatch({
+          type: 'fetchAccessTokenSuccess',
+          accessToken: token,
+          scopeKey,
+        });
+        return token;
+      })
+      .catch((error) => {
+        dispatch({ type: 'fetchAccessTokenFailure', scopeKey, error });
+        throw error;
+      })
+      .finally(() => {
+        // Once the request is completed, remove it from pending requests
+        delete pendingAccessTokenRequests[scopeKey];
+      });
+
+    pendingAccessTokenRequests[scopeKey] = tokenPromise;
+    return tokenPromise;
+  };
+
   return (
     <MsalProvider instance={state.msalInstance}>
       <AuthNContext.Provider value={state.authN}>
-        <AuthNDispatchContext.Provider value={dispatch}>
-          <AuthZs>
-            <MsalAuthZ>{props.children}</MsalAuthZ>
-          </AuthZs>
-        </AuthNDispatchContext.Provider>
+        <AuthNGetTokenContext.Provider value={getToken}>
+          <AuthNDispatchContext.Provider value={dispatch}>
+            <AuthZs>
+              <MsalAuthZ>{props.children}</MsalAuthZ>
+            </AuthZs>
+          </AuthNDispatchContext.Provider>
+        </AuthNGetTokenContext.Provider>
       </AuthNContext.Provider>
     </MsalProvider>
   );
 }
 
-export interface MsalAuthenticationProps {
-  msalConfig: Configuration;
-  children?: React.ReactNode;
-}
+const fetchToken = async (state: MsalAuthNInfo, scopes: string[]) => {
+  return state.msalInstance.acquireTokenSilent({ scopes }).then((response) => {
+    return response.accessToken;
+  });
+};
 
 export function MsalAuthentication(props: MsalAuthenticationProps) {
   return <MsalAdapter {...props}></MsalAdapter>;

@@ -16,6 +16,7 @@ import { createContext, Dispatch, useContext } from 'react';
 import { AuthNInterface } from './auth-n-interface';
 
 export const AuthNContext = createContext<AuthNInterface>(null);
+export const AuthNGetTokenContext = createContext<(scopes: string[]) => Promise<string | undefined>>(() => Promise.resolve(''));
 
 export type AuthNAction =
   | {
@@ -48,6 +49,11 @@ export function useAuthNDispatch(): Dispatch<AuthNAction> {
 export function useAuthN(): AuthNInterface {
   const authN = useContext(AuthNContext);
   return authN;
+}
+
+export function useAuthNGetToken(): (scopes: string[]) => Promise<string | undefined> {
+  const authNGetToken = useContext(AuthNGetTokenContext);
+  return authNGetToken;
 }
 
 export default useAuthN;

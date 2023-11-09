@@ -12,15 +12,34 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+import { useAuthNGetToken } from '@porrtal/r-user';
 import styles from './v1.module.scss';
+import { useEffect, useState } from 'react';
 
 /* eslint-disable-next-line */
 export interface V1Props {}
 
 export function V1(props: V1Props) {
+  const getToken = useAuthNGetToken();
+
+  // add a state variable to hold the token
+  const [token, setToken] = useState<string | undefined>(undefined);
+
+  // add an effect to get the token into a state variable
+  useEffect(() => {
+    getToken(['api://5fc81598-8a0d-41a8-b2d9-df887fedf2a6/basic-access'])
+      .then((token) => {
+        setToken(token);
+      });
+  });
+
+
   return (
     <div className={styles['container']}>
       <h1>Welcome to V1!</h1>
+      <p>
+        {token ? `Your token is ${token}` : 'You are not logged in'}
+      </p>
     </div>
   );
 }
