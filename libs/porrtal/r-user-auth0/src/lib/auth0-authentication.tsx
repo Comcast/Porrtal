@@ -23,11 +23,12 @@ import {
   AuthNAction,
   AuthNContext,
   AuthNDispatchContext,
+  AuthNGetTokenContext,
   AuthNState,
   AuthZs,
 } from '@porrtal/r-user';
 import { AuthNInterface } from '@porrtal/r-user';
-import { ReactNode, Reducer, useEffect, useReducer } from 'react';
+import { ReactNode, Reducer, useEffect, useReducer, useRef } from 'react';
 import { Auth0AuthZ } from './auth0-auth-z';
 import { StateObject } from '@porrtal/r-api';
 
@@ -38,12 +39,29 @@ interface Auth0AuthNInfo {
     logoutCount: number;
   };
   claims?: StateObject;
+  accessTokensByScopeKey: {
+    [scopeKey: string]: string;
+  };
+  errorsByScopeKey: {
+    [scopeKey: string]: any;
+  };
 }
 
-type Auth0AuthNAction = {
-  type: 'setClaims';
-  claims: StateObject;
-};
+type Auth0AuthNAction =
+  | {
+      type: 'setClaims';
+      claims: StateObject;
+    }
+  | {
+      type: 'fetchAccessTokenSuccess';
+      scopeKey: string;
+      accessToken: string;
+    }
+  | {
+      type: 'fetchAccessTokenFailure';
+      scopeKey: string;
+      error: any;
+    };
 
 const reducer: Reducer<Auth0AuthNInfo, AuthNAction | Auth0AuthNAction> = (
   state,
@@ -81,6 +99,40 @@ const reducer: Reducer<Auth0AuthNInfo, AuthNAction | Auth0AuthNAction> = (
       return newState;
     }
 
+    case 'fetchAccessTokenSuccess': {
+      // add an entry for the access token key
+      const newState = {
+        ...state,
+        accessTokensByScopeKey: {
+          ...state.accessTokensByScopeKey,
+          [action.scopeKey]: action.accessToken,
+        },
+      };
+      console.log('AuthN Reducer (fetchAccessTokenSuccess)...', {
+        oldState: state,
+        newState,
+      });
+      return newState;
+    }
+
+    case 'fetchAccessTokenFailure': {
+      // add an entry to the errors for the access token key
+      const newState = {
+        ...state,
+        errorByScopeKey: {
+          ...state.errorsByScopeKey,
+          [action.scopeKey]: (
+            state.errorsByScopeKey[action.scopeKey] ?? []
+          ).push(action.error),
+        },
+      };
+      console.log('AuthN Reducer (fetchAccessTokenFailure)...', {
+        oldState: state,
+        newState,
+      });
+      return newState;
+    }
+
     default:
       return state;
   }
@@ -90,12 +142,26 @@ interface Auth0AuthAdapterProps {
   children?: ReactNode;
 }
 
+type RequestResolver = {
+  resolve: (value: string | PromiseLike<string>) => void;
+  reject: (reason?: any) => void;
+};
+
 function Auth0Adapter(props: Auth0AuthenticationProps) {
   const auth0 = useAuth0();
 
   const [state, dispatch] = useReducer(reducer, {
     localState: { loginCount: 0, logoutCount: 0, registerCount: 0 },
+    accessTokensByScopeKey: {},
+    errorsByScopeKey: {},
   });
+
+  const pendingAccessTokenRequestsRef = useRef<{
+    [scopesKey: string]: Promise<string> | undefined;
+  }>({});
+  const accessTokenRequestResolversRef = useRef<{
+    [scopesKey: string]: RequestResolver | undefined;
+  }>({});
 
   const authN: AuthNInterface = {
     loginStrategy: 'loginWithRedirect',
@@ -124,21 +190,116 @@ function Auth0Adapter(props: Auth0AuthenticationProps) {
   }, [state.localState.logoutCount]);
 
   useEffect(() => {
+    const pendingAccessTokenRequests = pendingAccessTokenRequestsRef.current;
+    const accessTokenRequestResolvers = accessTokenRequestResolversRef.current;
+
     auth0?.getIdTokenClaims().then((claims) => {
       dispatch({ type: 'setClaims', claims: claims as unknown as StateObject });
+
+      console.log('getIdTokenClaims response', claims);
+      Object.keys(pendingAccessTokenRequests).forEach((scopeKey) => {
+        console.log('getToken for', scopeKey);
+        getToken(JSON.parse(scopeKey))
+          .then((token) => {
+            console.log('getToken response', token);
+            accessTokenRequestResolvers[scopeKey]?.resolve(token ?? '');
+          })
+          .catch((error) => {
+            console.error('Error fetching access token', error);
+            accessTokenRequestResolvers[scopeKey]?.reject(error);
+          });
+      });
     });
   }, [auth0?.isAuthenticated]);
 
+  const getToken = async (scopes: string[]) => {
+    const scopeKey = JSON.stringify(scopes.sort());
+    const pendingAccessTokenRequests = pendingAccessTokenRequestsRef.current;
+    const accessTokenRequestResolvers = accessTokenRequestResolversRef.current;
+
+    // Return cached token if it exists
+    if (state.accessTokensByScopeKey[scopeKey]) {
+      return state.accessTokensByScopeKey[scopeKey];
+    }
+
+    // If a request is already pending, return the existing promise
+    if (pendingAccessTokenRequests[scopeKey]) {
+      return pendingAccessTokenRequests[scopeKey];
+    }
+
+    // If authentication is not complete, queue the token request
+    if (authN?.authNState !== 'authenticated') {
+      if (!pendingAccessTokenRequests[scopeKey]) {
+        pendingAccessTokenRequests[scopeKey] = new Promise<string>(
+          (resolve, reject) => {
+            // Queue up a function to call once authentication is complete
+            accessTokenRequestResolvers[scopeKey] = {
+              resolve,
+              reject,
+            };
+          }
+        );
+      }
+      return pendingAccessTokenRequests[scopeKey];
+    }
+
+    // No pending request, and authentication is complete, fetch the token
+    const tokenPromise = fetchToken(auth0, state, scopes)
+      .then((token) => {
+        dispatch({
+          type: 'fetchAccessTokenSuccess',
+          accessToken: token,
+          scopeKey,
+        });
+        console.log('fetchAccessTokenSuccess', { token, scopeKey });
+        return token;
+      })
+      .catch((error) => {
+        dispatch({ type: 'fetchAccessTokenFailure', scopeKey, error });
+        console.error('Error fetching access token', error);
+        throw error;
+      })
+      .finally(() => {
+        // Once the request is completed, remove it from pending requests
+        delete pendingAccessTokenRequests[scopeKey];
+      });
+
+    pendingAccessTokenRequests[scopeKey] = tokenPromise;
+    return tokenPromise;
+  };
+
   return (
     <AuthNContext.Provider value={authN}>
-      <AuthNDispatchContext.Provider value={dispatch}>
-        <AuthZs>
-          <Auth0AuthZ>{props.children}</Auth0AuthZ>
-        </AuthZs>
-      </AuthNDispatchContext.Provider>
+      <AuthNGetTokenContext.Provider value={getToken}>
+        <AuthNDispatchContext.Provider value={dispatch}>
+          <AuthZs>
+            <Auth0AuthZ>{props.children}</Auth0AuthZ>
+          </AuthZs>
+        </AuthNDispatchContext.Provider>
+      </AuthNGetTokenContext.Provider>
     </AuthNContext.Provider>
   );
 }
+
+const fetchToken = async (
+  auth0: Auth0ContextInterface<User>,
+  state: Auth0AuthNInfo,
+  scopes: string[]
+) => {
+  return auth0
+    .getAccessTokenSilently({
+      audience: 'https://my-fake-api.com/api',
+      // scope: scopes.join(' '),
+    })
+    .then((response) => {
+      console.log('fetchToken response', response);
+      return response;
+    })
+    .catch((error) => {
+      console.error('Error fetching access token', error);
+      throw error;
+    });
+};
 
 export interface Auth0AuthenticationProps {
   domain: string;
@@ -153,6 +314,8 @@ export function Auth0Authentication(props: Auth0AuthenticationProps) {
       domain={props.domain}
       clientId={props.clientId}
       redirectUri={props.redirectUri}
+      audience='https://my-fake-api.com/api'
+      scope='read:stuff'
     >
       <Auth0Adapter {...props}>{props.children}</Auth0Adapter>
     </Auth0Provider>
