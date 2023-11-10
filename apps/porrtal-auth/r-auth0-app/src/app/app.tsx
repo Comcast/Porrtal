@@ -115,6 +115,8 @@ export function App() {
         domain="dev-b6h3bfnp.us.auth0.com"
         clientId="uP4eHSspiDjg6E7GKU5LjdFPn0WwEKTq"
         redirectUri="http://localhost:4200"
+        audience="https://my-fake-api.com/api"
+        scope="read:stuff"
       >
         <ShellMaterial
           bannerData={{

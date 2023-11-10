@@ -306,6 +306,8 @@ export interface Auth0AuthenticationProps {
   clientId: string;
   redirectUri: string;
   children?: React.ReactNode;
+  audience?: string;
+  scope?: string;
 }
 
 export function Auth0Authentication(props: Auth0AuthenticationProps) {
@@ -314,8 +316,8 @@ export function Auth0Authentication(props: Auth0AuthenticationProps) {
       domain={props.domain}
       clientId={props.clientId}
       redirectUri={props.redirectUri}
-      audience='https://my-fake-api.com/api'
-      scope='read:stuff'
+      audience={props.audience}
+      scope={props.scope}
     >
       <Auth0Adapter {...props}>{props.children}</Auth0Adapter>
     </Auth0Provider>
