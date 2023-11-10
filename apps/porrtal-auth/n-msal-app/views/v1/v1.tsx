@@ -15,6 +15,7 @@ limitations under the License.
 import { useAuthNGetToken } from '@porrtal/r-user';
 import styles from './v1.module.scss';
 import { useEffect, useState } from 'react';
+import { msalConfig } from '../../msal-config';
 
 /* eslint-disable-next-line */
 export interface V1Props {}
@@ -27,7 +28,7 @@ export function V1(props: V1Props) {
 
   // add an effect to get the token into a state variable
   useEffect(() => {
-    getToken(['api://5fc81598-8a0d-41a8-b2d9-df887fedf2a6/basic-access'])
+    getToken([`api://${msalConfig.auth.clientId}/basic-access`])
       .then((token) => {
         setToken(token);
       });

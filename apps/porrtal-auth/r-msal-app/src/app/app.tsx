@@ -18,7 +18,7 @@ import { ShellState } from '@porrtal/r-shell';
 import { ShellMaterial } from '@porrtal/r-shell-material';
 import { View } from '@porrtal/r-api';
 import { MsalAuthentication } from '@porrtal/r-user-msal';
-import { msalConfig } from './msal-config';
+import { msalConfig } from '../../msal-config';
 
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-balham.css';
