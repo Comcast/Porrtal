@@ -126,6 +126,7 @@ export function Index() {
             realm="porrtal"
             clientId="porrtal-app"
             redirectUri="http://localhost:4200"
+            scope="openid profile email read:stuff"
           >
             <ShellMaterial
               bannerData={{

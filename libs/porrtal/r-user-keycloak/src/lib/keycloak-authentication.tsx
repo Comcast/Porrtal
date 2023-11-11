@@ -17,6 +17,7 @@ import {
   AuthNAction,
   AuthNContext,
   AuthNDispatchContext,
+  AuthNGetTokenContext,
   AuthNInterface,
   AuthNState,
   AuthZs,
@@ -28,6 +29,7 @@ import {
   Reducer,
   useEffect,
   useReducer,
+  useRef,
   useState,
 } from 'react';
 import { LoginStrategy } from '@porrtal/r-shell';
@@ -47,6 +49,12 @@ interface KeycloakAuthNInfo {
     loginCount: number;
     registerCount: number;
     logoutCount: number;
+  };
+  accessTokensByScopeKey: {
+    [scopeKey: string]: string;
+  };
+  errorsByScopeKey: {
+    [scopeKey: string]: any;
   };
 }
 
@@ -71,6 +79,16 @@ type KeycloakAuthNAction =
   | {
       type: 'update';
       updateInfo: Partial<AuthNInterface>;
+    }
+  | {
+      type: 'fetchAccessTokenSuccess';
+      scopeKey: string;
+      accessToken: string;
+    }
+  | {
+      type: 'fetchAccessTokenFailure';
+      scopeKey: string;
+      error: any;
     };
 
 const reducer: Reducer<KeycloakAuthNInfo, AuthNAction | KeycloakAuthNAction> = (
@@ -158,6 +176,40 @@ const reducer: Reducer<KeycloakAuthNInfo, AuthNAction | KeycloakAuthNAction> = (
       return newState;
     }
 
+    case 'fetchAccessTokenSuccess': {
+      // add an entry for the access token key
+      const newState = {
+        ...state,
+        accessTokensByScopeKey: {
+          ...state.accessTokensByScopeKey,
+          [action.scopeKey]: action.accessToken,
+        },
+      };
+      console.log('AuthN Reducer (fetchAccessTokenSuccess)...', {
+        oldState: state,
+        newState,
+      });
+      return newState;
+    }
+
+    case 'fetchAccessTokenFailure': {
+      // add an entry to the errors for the access token key
+      const newState = {
+        ...state,
+        errorByScopeKey: {
+          ...state.errorsByScopeKey,
+          [action.scopeKey]: (
+            state.errorsByScopeKey[action.scopeKey] ?? []
+          ).push(action.error),
+        },
+      };
+      console.log('AuthN Reducer (fetchAccessTokenFailure)...', {
+        oldState: state,
+        newState,
+      });
+      return newState;
+    }
+
     default:
       return state;
   }
@@ -166,11 +218,24 @@ const reducer: Reducer<KeycloakAuthNInfo, AuthNAction | KeycloakAuthNAction> = (
 interface KeycloakAuthAdapterProps {
   state: KeycloakAuthNInfo;
   dispatch: Dispatch<AuthNAction | KeycloakAuthNAction>;
+  scope?: string;
   children?: ReactNode;
 }
 
+type RequestResolver = {
+  resolve: (value: string | PromiseLike<string>) => void;
+  reject: (reason?: any) => void;
+};
+
 function KeycloakAdapter(props: KeycloakAuthAdapterProps) {
   const { keycloak, initialized } = useKeycloak();
+
+  const pendingAccessTokenRequestsRef = useRef<{
+    [scopesKey: string]: Promise<string> | undefined;
+  }>({});
+  const accessTokenRequestResolversRef = useRef<{
+    [scopesKey: string]: RequestResolver | undefined;
+  }>({});
 
   useEffect(() => {
     props.dispatch({
@@ -188,7 +253,32 @@ function KeycloakAdapter(props: KeycloakAuthAdapterProps) {
 
   useEffect(() => {
     if (props.state.localState.loginCount > 0) {
-      keycloak?.login();
+      keycloak
+        ?.login()
+        .then((tokens) => {
+          console.log('onKeycloakTokens', tokens);
+
+          const pendingAccessTokenRequests =
+            pendingAccessTokenRequestsRef.current;
+          const accessTokenRequestResolvers =
+            accessTokenRequestResolversRef.current;
+
+          Object.keys(pendingAccessTokenRequests).forEach((scopeKey) => {
+            console.log('getToken for', scopeKey);
+            getToken(JSON.parse(scopeKey))
+              .then((token) => {
+                console.log('getToken response', token);
+                accessTokenRequestResolvers[scopeKey]?.resolve(token ?? '');
+              })
+              .catch((error) => {
+                console.error('Error fetching access token', error);
+                accessTokenRequestResolvers[scopeKey]?.reject(error);
+              });
+          });
+        })
+        .catch((err) => {
+          console.error('onKeycloakTokens error', err);
+        });
     }
   }, [props.state.localState.loginCount]);
 
@@ -198,22 +288,94 @@ function KeycloakAdapter(props: KeycloakAuthAdapterProps) {
     }
   }, [props.state.localState.logoutCount]);
 
+  const getToken = async (scopes: string[]) => {
+    const scopeKey = JSON.stringify(scopes.sort());
+    const pendingAccessTokenRequests = pendingAccessTokenRequestsRef.current;
+    const accessTokenRequestResolvers = accessTokenRequestResolversRef.current;
+
+    // Return cached token if it exists
+    if (props.state.accessTokensByScopeKey[scopeKey]) {
+      return props.state.accessTokensByScopeKey[scopeKey];
+    }
+
+    // If a request is already pending, return the existing promise
+    if (pendingAccessTokenRequests[scopeKey]) {
+      return pendingAccessTokenRequests[scopeKey];
+    }
+
+    // If authentication is not complete, queue the token request
+    if (props.state.authN?.authNState !== 'authenticated') {
+      if (!pendingAccessTokenRequests[scopeKey]) {
+        pendingAccessTokenRequests[scopeKey] = new Promise<string>(
+          (resolve, reject) => {
+            // Queue up a function to call once authentication is complete
+            accessTokenRequestResolvers[scopeKey] = {
+              resolve,
+              reject,
+            };
+          }
+        );
+      }
+      return pendingAccessTokenRequests[scopeKey];
+    }
+
+    // No pending request, and authentication is complete, fetch the token
+    const tokenPromise = fetchToken(keycloak, props.state, props.scope ?? '')
+      .then((token) => {
+        props.dispatch({
+          type: 'fetchAccessTokenSuccess',
+          accessToken: token,
+          scopeKey,
+        });
+        console.log('fetchAccessTokenSuccess', { token, scopeKey });
+        return token;
+      })
+      .catch((error) => {
+        props.dispatch({ type: 'fetchAccessTokenFailure', scopeKey, error });
+        console.error('Error fetching access token', error);
+        throw error;
+      })
+      .finally(() => {
+        // Once the request is completed, remove it from pending requests
+        delete pendingAccessTokenRequests[scopeKey];
+      });
+
+    pendingAccessTokenRequests[scopeKey] = tokenPromise;
+    return tokenPromise;
+  };
+
   return (
     <AuthNContext.Provider value={props.state.authN}>
-      <AuthNDispatchContext.Provider value={props.dispatch}>
-        <AuthZs>
-          <KeycloakAuthZ>{props.children}</KeycloakAuthZ>
-        </AuthZs>
-      </AuthNDispatchContext.Provider>
+      <AuthNGetTokenContext.Provider value={getToken}>
+        <AuthNDispatchContext.Provider value={props.dispatch}>
+          <AuthZs>
+            <KeycloakAuthZ>{props.children}</KeycloakAuthZ>
+          </AuthZs>
+        </AuthNDispatchContext.Provider>
+      </AuthNGetTokenContext.Provider>
     </AuthNContext.Provider>
   );
 }
+
+const fetchToken = async (
+  keycloak: Keycloak,
+  state: KeycloakAuthNInfo,
+  scopes: string
+) => {
+  return Promise.resolve(keycloak.token).then((token) => {
+    if (token) {
+      return token;
+    }
+    throw new Error('No token');
+  });
+};
 
 export interface KeycloakAuthenticationProps {
   uri: string;
   realm: string;
   clientId: string;
   redirectUri: string;
+  scope?: string;
   children?: ReactNode;
 }
 
@@ -236,6 +398,8 @@ export function KeycloakAuthentication(props: KeycloakAuthenticationProps) {
       redirectUri: props.redirectUri,
     },
     localState: { loginCount: 0, logoutCount: 0, registerCount: 0 },
+    accessTokensByScopeKey: {},
+    errorsByScopeKey: {},
   });
 
   useEffect(() => {
@@ -270,13 +434,13 @@ export function KeycloakAuthentication(props: KeycloakAuthenticationProps) {
           });
         }
       }}
-      initOptions={{ scope: 'profile email' }}
+      initOptions={{ scope: props.scope }}
     >
       <KeycloakAdapter state={state} dispatch={dispatch}>
         {props.children}
       </KeycloakAdapter>
     </ReactKeycloakProvider>
   ) : (
-    <div>{props.children}</div>
+    <div>loading...</div>
   );
 }

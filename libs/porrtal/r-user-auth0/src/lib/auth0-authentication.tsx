@@ -138,8 +138,13 @@ const reducer: Reducer<Auth0AuthNInfo, AuthNAction | Auth0AuthNAction> = (
   }
 };
 
-interface Auth0AuthAdapterProps {
-  children?: ReactNode;
+export interface Auth0AuthenticationProps {
+  domain: string;
+  clientId: string;
+  redirectUri: string;
+  children?: React.ReactNode;
+  audience?: string;
+  scope?: string;
 }
 
 type RequestResolver = {
@@ -300,15 +305,6 @@ const fetchToken = async (
       throw error;
     });
 };
-
-export interface Auth0AuthenticationProps {
-  domain: string;
-  clientId: string;
-  redirectUri: string;
-  children?: React.ReactNode;
-  audience?: string;
-  scope?: string;
-}
 
 export function Auth0Authentication(props: Auth0AuthenticationProps) {
   return (
