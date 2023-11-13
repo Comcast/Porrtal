@@ -1,0 +1,50 @@
+{
+  "name": "r-user-axios",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/porrtal/r-user-axios/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/porrtal/r-user-axios/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/porrtal/r-user-axios",
+        "tsConfig": "libs/porrtal/r-user-axios/tsconfig.lib.json",
+        "project": "libs/porrtal/r-user-axios/package.json",
+        "entryFile": "libs/porrtal/r-user-axios/src/index.ts",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/porrtal/r-user-axios/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/porrtal/r-user-axios/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  }
+}
