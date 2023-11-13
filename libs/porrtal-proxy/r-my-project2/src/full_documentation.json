@@ -8,7 +8,7 @@
     "contact": {
       "name": "TEAM",
       "email": "contact-email@something.io",
-      "url": "mywebsite.io"
+      "url": "https://mywebsite.io"
     },
     "license": {
       "name": "Apache 2.0",
@@ -1251,12 +1251,12 @@
         }
       }
     },
-    "/upload?id={id}": {
+    "/upload/{id}": {
       "post": {
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
             "description": "File id",
             "required": true,
             "schema": {
