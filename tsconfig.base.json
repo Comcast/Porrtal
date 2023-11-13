@@ -54,6 +54,9 @@
       "@porrtal-components/r-test": [
         "libs/porrtal-components/r-test/src/index.ts"
       ],
+      "@porrtal-proxy/r-my-project2": [
+        "libs/porrtal-proxy/r-my-project2/src/index.ts"
+      ],
       "@porrtal/a-api": ["libs/porrtal/a-api/src/index.ts"],
       "@porrtal/a-shell": ["libs/porrtal/a-shell/src/index.ts"],
       "@porrtal/a-shell-bootstrap": [
