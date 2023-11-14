@@ -19,6 +19,8 @@ import { StrapiAuthentication } from '@porrtal/r-user-strapi';
 import { ShellState } from '@porrtal/r-shell';
 import { ShellMaterial } from '@porrtal/r-shell-material';
 import { View } from '@porrtal/r-api';
+import { AxiosProxy } from '@porrtal/r-user-axios';
+import { Configuration, PorrtalRoleApi } from '@porrtal-proxy/r-my-project2';
 
 const views: View[] = [
   {
@@ -126,19 +128,30 @@ export function Index() {
             strapiUri="http://localhost:1337"
             allowRegistration={true}
           >
-            <ShellMaterial
-              bannerData={{
-                displayText: 'porrtal-auth - nextjs - strapi - material',
-                displayIcon: 'cyclone',
-                childData: [
-                  {
-                    displayText: 'strapi-blueprint',
-                    displayIcon: 'cyclone',
-                    targetUrl: '/blueprint-auth',
-                  },
-                ],
-              }}
-            />
+            <AxiosProxy
+              config={[
+                {
+                  baseUrl: 'http://localhost:1337/api',
+                  scopes: ['read:stuff'],
+                  apiClasses: [PorrtalRoleApi],
+                  configuration: Configuration,
+                },
+              ]}
+            >
+              <ShellMaterial
+                bannerData={{
+                  displayText: 'porrtal-auth - nextjs - strapi - material',
+                  displayIcon: 'cyclone',
+                  childData: [
+                    {
+                      displayText: 'strapi-blueprint',
+                      displayIcon: 'cyclone',
+                      targetUrl: '/blueprint-auth',
+                    },
+                  ],
+                }}
+              />
+            </AxiosProxy>
           </StrapiAuthentication>
         </ShellState>
       </>
