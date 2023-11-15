@@ -15,8 +15,8 @@ limitations under the License.
 import { useAuthNGetToken } from '@porrtal/r-user';
 import styles from './v1.module.scss';
 import { useEffect, useState } from 'react';
-import { PorrtalRoleApi } from '@porrtal-proxy/r-my-project2';
-import { useAxiosApi } from '@porrtal/r-user-axios';
+import { Configuration, PorrtalRoleApi } from '@porrtal-proxy/r-my-project2';
+import { useAxiosApi, useAxiosProxy } from '@porrtal/r-user-axios';
 
 /* eslint-disable-next-line */
 export interface V1Props {}
@@ -24,6 +24,19 @@ export interface V1Props {}
 export function V1(props: V1Props) {
   const getToken = useAuthNGetToken();
   const porrtalRoleApi = useAxiosApi(PorrtalRoleApi);
+  const axiosProxy = useAxiosProxy();
+
+  // add an effect to initialize the axios proxy (not used, initialized in app)
+  // useEffect(() => {
+  //   axiosProxy.registerLibraryEntries([
+  //     {
+  //       baseUrl: 'http://localhost:1337',
+  //       scopes: ['read:stuff'],
+  //       configuration: Configuration,
+  //       apiClasses: [PorrtalRoleApi],
+  //     },
+  //   ]);
+  // }, []);
 
   // add a state variable to hold the token
   const [token, setToken] = useState<string | undefined>(undefined);
@@ -57,6 +70,7 @@ export function V1(props: V1Props) {
   return (
     <div className={styles['container']}>
       <h1>Welcome to V1!</h1>
+      <hr />
       <p>{token ? `Your token is ${token}` : 'You are not logged in'}</p>
       <p>
         {roles
@@ -64,6 +78,22 @@ export function V1(props: V1Props) {
             ? `Your roles are ${roles.join(', ')}`
             : 'You have no roles'
           : 'loading roles...'}
+      </p>
+      <hr />
+      <p>
+        {axiosProxy
+          .generateReport()
+          .split('\n')
+          .map((line, index) => {
+            const match = line.match(/^(\s*)/);
+            const indent = match ? match[0].length : 0;
+            return (
+              <span style={{ marginLeft: `${indent*8}px`}} key={index}>
+                {line}
+                <br />
+              </span>
+            );
+          })}
       </p>
     </div>
   );
