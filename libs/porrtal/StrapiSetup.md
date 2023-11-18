@@ -56,3 +56,12 @@ The porrtal project adopts a convention when using Strapi to make it easy to set
 
 ![Create-User](./readme-images/Strapi-Create-User.jpg)
 
+## Configure OpenAPI Swagger Documentation
+
+The [Documentation plugin](https://docs.strapi.io/dev-docs/plugins/documentation) is useful to document the available endpoints once you created an API.
+
+The OpenAPI Swagger Documentation can be used to generate TypeScript proxy classes make it easy to programmatically interract with Strapi content in a Porrtal application.
+
+If installed, the Documentation plugin will inspect content types and routes found on all APIs in your project and any plugin specified in the configuration. The plugin will then programmatically generate documentation to match the [OpenAPI specification](https://swagger.io/specification/). The Documentation plugin generates the [paths objects](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#paths-object) and [schema objects](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#schema-object) and converts all Strapi types to [OpenAPI data types](https://swagger.io/docs/specification/data-models/data-types/).
+
+The generated documentation can be found in your application at the following path: `src/extensions/documentation/documentation/<version>/full_documentation.json`
