@@ -420,3 +420,107 @@ export function Main2(props: Main2Props) {
 
 export default Main2;
 ```
+
+# Advanced use of @porrtal/r-user and @porrtal/r-user-axios
+
+## useAxiosProxy and useAuthNGetToken React Hooks
+
+The `useAxiosProxy` React hook from the `@porrtal/r-user-axios` package provides two methods: `registerLibraryEntries` and `generateReport`.
+
+* `registerLibraryEntries` can be used to register additional REST API endpoints programmatically.
+* `generateReport` can be used to generate a report of the registered endpoints.
+
+The `useAuthNGetToken` React hook from the `@porrtal/r-user` package provides the `getToken` method that can be used to directly obtain an access token.
+
+The following code illustrates the use of these hooks and their methods:
+
+```tsx
+import { useAuthNGetToken } from '@porrtal/r-user';
+import styles from './v1.module.scss';
+import { useEffect, useState } from 'react';
+import { Configuration, PorrtalRoleApi } from '@porrtal-proxy/r-my-project2';
+import { useAxiosApi, useAxiosProxy } from '@porrtal/r-user-axios';
+
+/* eslint-disable-next-line */
+export interface V1Props {}
+
+export function V1(props: V1Props) {
+  const getToken = useAuthNGetToken();
+  const porrtalRoleApi = useAxiosApi(PorrtalRoleApi);
+  const axiosProxy = useAxiosProxy();
+
+  // add an effect to initialize the axios proxy (not used, initialized in app)
+  // useEffect(() => {
+  //   axiosProxy.registerLibraryEntries([
+  //     {
+  //       baseUrl: 'http://localhost:1337',
+  //       scopes: ['read:stuff'],
+  //       configuration: Configuration,
+  //       apiClasses: [PorrtalRoleApi],
+  //     },
+  //   ]);
+  // }, []);
+
+  // add a state variable to hold the token
+  const [token, setToken] = useState<string | undefined>(undefined);
+  const [roles, setRoles] = useState<string[] | undefined>(undefined);
+
+  // add an effect to get the token into a state variable
+  useEffect(() => {
+    getToken(['read:stuff'])
+      .then((token) => {
+        setToken(token);
+      })
+      .catch((err) => {
+        console.error(err);
+        setToken(JSON.stringify(err));
+      });
+  }, []);
+
+  // add an effect to get the roles into a state variable
+  useEffect(() => {
+    porrtalRoleApi
+      .getPorrtalRoles()
+      .then((data) => {
+        setRoles(data.data.data.map((role) => role.attributes.name));
+      })
+      .catch((err) => {
+        console.error(err);
+        setRoles([JSON.stringify(err)]);
+      });
+  }, []);
+
+  return (
+    <div className={styles['container']}>
+      <h1>Welcome to V1!</h1>
+      <hr />
+      <p>{token ? `Your token is ${token}` : 'You are not logged in'}</p>
+      <p>
+        {roles
+          ? roles.length > 0
+            ? `Your roles are ${roles.join(', ')}`
+            : 'You have no roles'
+          : 'loading roles...'}
+      </p>
+      <hr />
+      <p>
+        {axiosProxy
+          .generateReport()
+          .split('\n')
+          .map((line, index) => {
+            const match = line.match(/^(\s*)/);
+            const indent = match ? match[0].length : 0;
+            return (
+              <span style={{ marginLeft: `${indent*8}px`}} key={index}>
+                {line}
+                <br />
+              </span>
+            );
+          })}
+      </p>
+    </div>
+  );
+}
+
+export default V1;
+```
