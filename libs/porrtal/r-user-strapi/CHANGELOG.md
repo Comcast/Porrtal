@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/Comcast/Porrtal/compare/v0.9.6...v0.10.0) (2023-11-19)
+
+### Bug Fixes
+
+- **workspace:** remove invalid project property ([650435f](https://github.com/Comcast/Porrtal/commit/650435f27eedeeece9649ea542b4b798a707b37e))
+
+### Features
+
+- **porrtal-auth-n-strapi-app, porrtal-auth-r-strapi-app, @porrtal/r-user-strapi:** getToken working ([e95e049](https://github.com/Comcast/Porrtal/commit/e95e049ba4ccec85b1931ad0d876ea99ae972b6b))
+- **workspace:** apply migrations --> nx 17.0.2 ([87ae5aa](https://github.com/Comcast/Porrtal/commit/87ae5aa23058da6d4f7de095914de2f355e7855c))
+
 ## [0.9.6](https://github.com/Comcast/Porrtal/compare/v0.9.5...v0.9.6) (2023-08-20)
 
 ### Bug Fixes

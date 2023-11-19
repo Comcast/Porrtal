@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/Comcast/Porrtal/compare/v0.9.6...v0.10.0) (2023-11-19)
+
+### Bug Fixes
+
+- **@porrtal-components/r-quick-start-blueprint:** fix install instructions for blueprint packages ([477ec0f](https://github.com/Comcast/Porrtal/commit/477ec0f31b1db232b8e30ab6d5642741248f7a28))
+- **@porrtal-proxy/r-my-project2:** fix codegen errors in openapi json file ([bf39495](https://github.com/Comcast/Porrtal/commit/bf39495908fc98337055fae7bae905f81dc6d781))
+- **@porrtal/a-shell-material:** fix search dialog popup location ([4a9adf7](https://github.com/Comcast/Porrtal/commit/4a9adf76d1cb5fed8ab2b33971b98cf2acffa0c0))
+- **a-porrtal-app, a-porrtal-io-app, @porrtal/a-shell-material:** fix ag-grid css references ([b986e94](https://github.com/Comcast/Porrtal/commit/b986e94c7269756ece514da77e46b4d13f6de1e9))
+- **docs:** fix npm install issues in quick start docs ([f4bd645](https://github.com/Comcast/Porrtal/commit/f4bd64576cd0b6c8d0f629d0f0d4745a9d51174d))
+- **workspace:** remove invalid project property ([650435f](https://github.com/Comcast/Porrtal/commit/650435f27eedeeece9649ea542b4b798a707b37e))
+
+### Features
+
+- **@porrtal-proxy/r-my-project2:** copy in strapi openapi json ([4e989bd](https://github.com/Comcast/Porrtal/commit/4e989bdec01cdf29b7535f97093c3235efdf7499))
+- **@porrtal-proxy/r-my-project2:** generate proxy code ([ca9e29b](https://github.com/Comcast/Porrtal/commit/ca9e29b39b8c0d83975cc7db9706a5518cd5060d))
+- **@porrtal-proxy/r-my-project2:** rough in library for strapi rest api proxy ([0ded868](https://github.com/Comcast/Porrtal/commit/0ded868a333634342e365378d276bd682c88462b))
+- **@porrtal/r-user-\*:** update msal quickstart instructions ([ac7690a](https://github.com/Comcast/Porrtal/commit/ac7690af889a50d881496bc35fbde43ed34f6b4d))
+- **@porrtal/r-user-axios:** axios-proxy working ([f99c6da](https://github.com/Comcast/Porrtal/commit/f99c6da75beca89b0e6cd393699b27802fc48013))
+- **@porrtal/r-user-axios:** rough in library that supports react axios rest api development ([adbbf95](https://github.com/Comcast/Porrtal/commit/adbbf956464d6f411a777a505e81b7a90ee46814))
+- **@porrtal:** improve docs ([0b03734](https://github.com/Comcast/Porrtal/commit/0b03734d6056966bd0c52497575b9aeaf28e8bde))
+- **@porrtal:** update docs ([66f5bf0](https://github.com/Comcast/Porrtal/commit/66f5bf00cbe0378222c8f5a8322df27295ccc5cb))
+- **n-porrtal-io-app:** update angular app ([df20713](https://github.com/Comcast/Porrtal/commit/df20713306c077dcda2ac2b7a844b59e49b622be))
+- **porrtal-auth-n-auth0-app, @porrtal/r-user-auth0:** getToken working ([8250b1f](https://github.com/Comcast/Porrtal/commit/8250b1f147eef00abe2b70cade2cf19b4a70f359))
+- **porrtal-auth-n-auth0-app:** add audience and scope to Auth0Authentication ([4297da6](https://github.com/Comcast/Porrtal/commit/4297da68617622ecffebb59150c39925e74879d9))
+- **porrtal-auth-n-keycloak-app, @porrtal/r-user-keycloak:** getToken working ([7d290d0](https://github.com/Comcast/Porrtal/commit/7d290d09073b243366d2841d0789597d3b17ddf0))
+- **porrtal-auth-n-msal-app, @porrtal/r-user, @porrtal/r-user-msal:** getToken returns access token ([a4d9f84](https://github.com/Comcast/Porrtal/commit/a4d9f846b80fbc0d8a18a689fa4101f0f7837b7c))
+- **porrtal-auth-n-strapi-api:** useAxiosProxy and registerLibraryEnties and generateReport methods ([50fe8a9](https://github.com/Comcast/Porrtal/commit/50fe8a9519e36ff78765bf1cb951cb187a775b64))
+- **porrtal-auth-n-strapi-app, porrtal-auth-r-strapi-app, @porrtal/r-user-strapi:** getToken working ([e95e049](https://github.com/Comcast/Porrtal/commit/e95e049ba4ccec85b1931ad0d876ea99ae972b6b))
+- **porrtal-auth-r-auth0-app, @porrtal/r-user-auth0:** provide audience+scope in app. getToken works ([004a844](https://github.com/Comcast/Porrtal/commit/004a844e82ce88eee7e499775c551079283e3977))
+- **porrtal-auth-r-keycloak-app:** getToken working ([a5a597c](https://github.com/Comcast/Porrtal/commit/a5a597c811711bcb58d91fc78ba2319323524fd8))
+- **porrtal-auth-r-msal-app:** getToken working ([4160684](https://github.com/Comcast/Porrtal/commit/4160684f59ab3c6bc599d99cade445bbf4a8663d))
+- **workspace:** apply migrations --> nx 17.0.2 ([87ae5aa](https://github.com/Comcast/Porrtal/commit/87ae5aa23058da6d4f7de095914de2f355e7855c))
+- **workspace:** upgrade to nx 17.0.2 ([f08750b](https://github.com/Comcast/Porrtal/commit/f08750bf79a5d95abeb7a1f110c2e74063f7e770))
+
 ## [0.9.6](https://github.com/Comcast/Porrtal/compare/v0.9.5...v0.9.6) (2023-08-20)
 
 ### Bug Fixes

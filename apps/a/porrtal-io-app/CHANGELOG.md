@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/comcast-porrtal/porrtal/compare/v0.9.6...v0.10.0) (2023-11-19)
+
+### Bug Fixes
+
+- **@porrtal/a-shell-material:** fix search dialog popup location ([4a9adf7](https://github.com/comcast-porrtal/porrtal/commit/4a9adf76d1cb5fed8ab2b33971b98cf2acffa0c0))
+- **a-porrtal-app, a-porrtal-io-app, @porrtal/a-shell-material:** fix ag-grid css references ([b986e94](https://github.com/comcast-porrtal/porrtal/commit/b986e94c7269756ece514da77e46b4d13f6de1e9))
+
+### Features
+
+- **workspace:** apply migrations --> nx 17.0.2 ([87ae5aa](https://github.com/comcast-porrtal/porrtal/commit/87ae5aa23058da6d4f7de095914de2f355e7855c))
+
 ## [0.9.6](https://github.com/comcast-porrtal/porrtal/compare/v0.9.5...v0.9.6) (2023-08-20)
 
 **Note:** Version bump only for package a-porrtal-io-app

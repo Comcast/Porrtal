@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/comcast-porrtal/porrtal/compare/v0.9.6...v0.10.0) (2023-11-19)
+
+### Bug Fixes
+
+- **@porrtal-components/r-quick-start-blueprint:** fix install instructions for blueprint packages ([477ec0f](https://github.com/comcast-porrtal/porrtal/commit/477ec0f31b1db232b8e30ab6d5642741248f7a28))
+- **docs:** fix npm install issues in quick start docs ([f4bd645](https://github.com/comcast-porrtal/porrtal/commit/f4bd64576cd0b6c8d0f629d0f0d4745a9d51174d))
+
+### Features
+
+- **n-porrtal-io-app:** update angular app ([df20713](https://github.com/comcast-porrtal/porrtal/commit/df20713306c077dcda2ac2b7a844b59e49b622be))
+- **workspace:** apply migrations --> nx 17.0.2 ([87ae5aa](https://github.com/comcast-porrtal/porrtal/commit/87ae5aa23058da6d4f7de095914de2f355e7855c))
+
 ## [0.9.6](https://github.com/comcast-porrtal/porrtal/compare/v0.9.5...v0.9.6) (2023-08-20)
 
 **Note:** Version bump only for package n-porrtal-io-app

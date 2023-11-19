@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/comcast-porrtal/porrtal/compare/v0.9.6...v0.10.0) (2023-11-19)
+
+### Features
+
+- **porrtal-auth-n-auth0-app, @porrtal/r-user-auth0:** getToken working ([8250b1f](https://github.com/comcast-porrtal/porrtal/commit/8250b1f147eef00abe2b70cade2cf19b4a70f359))
+- **porrtal-auth-n-auth0-app:** add audience and scope to Auth0Authentication ([4297da6](https://github.com/comcast-porrtal/porrtal/commit/4297da68617622ecffebb59150c39925e74879d9))
+- **workspace:** apply migrations --> nx 17.0.2 ([87ae5aa](https://github.com/comcast-porrtal/porrtal/commit/87ae5aa23058da6d4f7de095914de2f355e7855c))
+
 ## [0.9.6](https://github.com/comcast-porrtal/porrtal/compare/v0.9.5...v0.9.6) (2023-08-20)
 
 **Note:** Version bump only for package porrtal-auth-n-auth0-app
