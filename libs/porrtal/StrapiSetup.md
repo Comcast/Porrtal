@@ -8,7 +8,7 @@ Strapi can be used as a complete backend for porrtal applications including mana
 
 ## Strapi Quick Start
 
-The [Strapi Quick Start Guid](https://docs.strapi.io/dev-docs/quick-start) will help you get up and running quickly.
+The [Strapi Quick Start Guide](https://docs.strapi.io/dev-docs/quick-start) will help you get up and running quickly.
 
 Steps include:
 * Install [NodeJS](https://nodejs.org)
@@ -58,10 +58,30 @@ The porrtal project adopts a convention when using Strapi to make it easy to set
 
 ## Configure OpenAPI Swagger Documentation
 
-The [Documentation plugin](https://docs.strapi.io/dev-docs/plugins/documentation) is useful to document the available endpoints once you created an API.
+The [Strapi Documentation Plugin](https://docs.strapi.io/dev-docs/plugins/documentation) is useful to document the available endpoints once you have created a Strapi Project and some Strapi Content Types.
 
 The OpenAPI Swagger Documentation can be used to generate TypeScript proxy classes make it easy to programmatically interract with Strapi content in a Porrtal application.
 
 If installed, the Documentation plugin will inspect content types and routes found on all APIs in your project and any plugin specified in the configuration. The plugin will then programmatically generate documentation to match the [OpenAPI specification](https://swagger.io/specification/). The Documentation plugin generates the [paths objects](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#paths-object) and [schema objects](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#schema-object) and converts all Strapi types to [OpenAPI data types](https://swagger.io/docs/specification/data-models/data-types/).
 
-The generated documentation can be found in your application at the following path: `src/extensions/documentation/documentation/<version>/full_documentation.json`
+The generated documentation can be found in your Strapi Project at the following path: `src/extensions/documentation/documentation/<version>/full_documentation.json`
+
+### Install the Strapi Documentation Plugin
+
+To install the Strapi Documentation Plugin, you will need to run the following command from the folder containing your Strapi Project:
+
+```
+npm run strapi install documentation
+```
+
+### Visit the Documentation URL
+
+You should now be able to visit the Strapi OpenAPI URL to see your REST API
+
+http://localhost:1337/documentation/v1.0.0
+
+### Next Steps
+
+The Strapi Project should now be configured for use.  
+
+You can now follow the Strapi authentication samples for the platform of your choice.
