@@ -212,6 +212,8 @@ Use of the strongly-typed proxy code simplifies accessing the Strapi REST API an
 
 ## Add Library For Strapi REST API Proxy
 
+Add Library @my-scope/my-strapi-proxy
+
 ```
 nx g @nx/react:library --name=my-strapi-proxy --unitTestRunner=jest --bundler=rollup --directory=libs/my-scope/my-strapi-proxy --importPath=@my-scope/my-strapi-proxy --projectNameAndRootFormat=as-provided
 ```
@@ -249,6 +251,15 @@ openapi-generator generate -i ./libs/my-scope/my-strapi-proxy/src/full_documenta
 
 You can choose to edit the JSON file to remove the errors.  This will allow you to remove the `--skip-validate-spec` flag from the above command.
 
+## Update the index.ts for the @my-scope/my-strapi-proxy Library
+
+Update `libs/my-scope/my-strapi-proxy/src/index.ts`:
+
+```ts
+export * from "./lib/api";
+export * from "./lib/configuration";
+```
+
 ## Instal @porrtal/r-user-axios
 
 The `@porrtal/r-user-axios` package provides support for REST API authentication by adding the access token to outgoing REST API http calls.
@@ -259,6 +270,153 @@ npm install @porrtal/r-user-axios --save --legacy-peer-deps
 
 ## Update Wrapper.tsx with AxiosProxy Configuration
 
+```tsx
+'use client';
+
+import '@blueprintjs/core/lib/css/blueprint.css';
+import '@blueprintjs/icons/lib/css/blueprint-icons.css';
+import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
+import { Configuration, PorrtalRoleApi } from '@my-scope/my-strapi-proxy';
+
+import { View } from '@porrtal/r-api';
+import { BannerData, ShellState } from '@porrtal/r-shell';
+import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
+import { AxiosProxy } from '@porrtal/r-user-axios';
+import { StrapiAuthentication } from '@porrtal/r-user-strapi';
+
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-balham.css';
+import { useEffect, useState } from 'react';
+
+export default function Wrapper() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const porrtalViews: View[] = [
+    {
+      key: 'Nav',
+      launchAtStartup: true,
+      displayText: 'Nav',
+      paneType: 'nav',
+      displayIcon: 'updated',
+      componentName: 'Nav',
+      componentModule: () => import('@my-scope/my-lib'),
+    },
+    {
+      key: 'Main1',
+      launchAtStartup: true,
+      displayText: 'Main1',
+      paneType: 'main',
+      displayIcon: 'updated',
+      componentName: 'Main1',
+      componentModule: () => import('@my-scope/my-lib'),
+    },
+    {
+      key: 'Main2',
+      launchAtStartup: true,
+      displayText: 'Main2',
+      paneType: 'main',
+      displayIcon: 'updated',
+      componentName: 'Main2',
+      componentModule: () => import('@my-scope/my-lib'),
+    },
+    {
+      viewId: 'shell-state-dashboard',
+      paneType: 'bottom',
+      launchAtStartup: false,
+      componentName: 'ShellStateDashboard',
+      componentModule: () => import('@porrtal/r-shell-blueprint'),
+      key: 'shell-state-dashboard',
+      displayText: 'Shell State Dashboard',
+      displayIcon: 'key',
+    },
+  ];
+  const porrtalBanner: BannerData = {
+    // uncomment and edit this code if you would like a banner image
+    // bannerImageUrl: './assets/my-banner.png',
+    // bannerImageHeight: 63,
+    // bannerImageWidth: 500,
+    displayText: 'My App',
+    displayIcon: 'build',
+    childData: [],
+  };
+
+  return (
+    <div>
+      {isClient ? (
+        <ShellState views={porrtalViews}>
+          <StrapiAuthentication
+            strapiUri="http://localhost:1337"
+            allowRegistration={true}
+          >
+            <AxiosProxy
+              config={[
+                {
+                  baseUrl: 'http://localhost:1337/api',
+                  // scopes are not needed for Strapi
+                  scopes: ['read:stuff'],
+                  apiClasses: [PorrtalRoleApi],
+                  configuration: Configuration,
+                },
+              ]}
+            >
+              <ShellBlueprint bannerData={porrtalBanner} />
+            </AxiosProxy>
+          </StrapiAuthentication>
+        </ShellState>
+      ) : (
+        <div />
+      )}
+    </div>
+  );
+}
+```
+
 ## Update Main2.tsx to Use Strapi REST API
 
+```tsx
+import styles from './main2.module.scss';
+import { PorrtalRoleApi } from '@my-scope/my-strapi-proxy';
+import { useAxiosApi } from '@porrtal/r-user-axios';
+import { useEffect, useState } from 'react';
 
+/* eslint-disable-next-line */
+export interface Main2Props {}
+
+export function Main2(props: Main2Props) {
+  const porrtalRoleApi = useAxiosApi(PorrtalRoleApi);
+  const [roles, setRoles] = useState<string[] | undefined>(undefined);
+
+  useEffect(() => {
+    porrtalRoleApi
+      .getPorrtalRoles()
+      .then((data) => {
+        setRoles(
+          data.data.data?.map((role) => role?.attributes?.name ?? '') ?? []
+        );
+      })
+      .catch((err) => {
+        console.error(err);
+        setRoles([JSON.stringify(err)]);
+      });
+  }, [porrtalRoleApi]);
+
+  return (
+    <div className={styles['container']}>
+      <h1>Welcome to Main2!</h1>
+      <p>
+        {roles
+          ? roles.length > 0
+            ? `Your roles are ${roles.join(', ')}`
+            : 'You have no roles'
+          : 'loading roles...'}
+      </p>
+    </div>
+  );
+}
+
+export default Main2;
+```
