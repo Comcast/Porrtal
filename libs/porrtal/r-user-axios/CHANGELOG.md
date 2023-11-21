@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/comcast-porrtal/porrtal/compare/v0.10.0...v0.11.0) (2023-11-21)
+
+
+### Bug Fixes
+
+* **@porrtal/r-user-axios:** fix name in project ([ce63ce4](https://github.com/comcast-porrtal/porrtal/commit/ce63ce4a4c35f08727bb1609c422786e88b71c8c))
+
+
+### Features
+
+* **workspace:** migrate to nx 17.1.2 ([1cc3048](https://github.com/comcast-porrtal/porrtal/commit/1cc3048b60a9eb41bb1512fc4f448ee6feb85dff))
+
+
+
+
+
 # [0.10.0](https://github.com/comcast-porrtal/porrtal/compare/v0.9.6...v0.10.0) (2023-11-19)
 
 ### Features

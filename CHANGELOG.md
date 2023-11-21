@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/Comcast/Porrtal/compare/v0.10.0...v0.11.0) (2023-11-21)
+
+
+### Bug Fixes
+
+* **@porrtal/a-shell-material:** fix legacy material component issues ([c638f99](https://github.com/Comcast/Porrtal/commit/c638f995b95e1e19d391f9508b55d016ecc650c6))
+* **@porrtal/r-user-axios:** fix name in project ([ce63ce4](https://github.com/Comcast/Porrtal/commit/ce63ce4a4c35f08727bb1609c422786e88b71c8c))
+
+
+### Features
+
+* **@porrtal/r-user-msal, workspace:** upgrade msal to current, fix react msal ([b487b70](https://github.com/Comcast/Porrtal/commit/b487b7090edd3a94be7411cbb868d3e85650a90c))
+* **@porrtal:** NextJS React OpenAPI Recipe working ([f5159fc](https://github.com/Comcast/Porrtal/commit/f5159fc54177283733eaa0abd405bb440dea78a8))
+* **@porrtal:** update angular docs ([7932f01](https://github.com/Comcast/Porrtal/commit/7932f01254a6cbcf5588e4aa0c731020f218992c))
+* **@porrtal:** update docs to illustrate useAxiosProxy and useAuthNGetToken React hooks ([d36d3fc](https://github.com/Comcast/Porrtal/commit/d36d3fce2423861c83d2b92368418b233c684f3f))
+* **n-porrtal-io-app:** update angular static web application ([1ea15b7](https://github.com/Comcast/Porrtal/commit/1ea15b778b929eaee291c301d1f0fc757886d2d5))
+* **workspace:** migrate to nx 17.1.2 ([1cc3048](https://github.com/Comcast/Porrtal/commit/1cc3048b60a9eb41bb1512fc4f448ee6feb85dff))
+* **workspace:** update nx to 17.1.2 (and angular to 17.0.3) ([1ae057d](https://github.com/Comcast/Porrtal/commit/1ae057d96a67713334d3e580faed2e7535fd810c))
+
+
+
+
+
 # [0.10.0](https://github.com/Comcast/Porrtal/compare/v0.9.6...v0.10.0) (2023-11-19)
 
 ### Bug Fixes
