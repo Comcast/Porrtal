@@ -209,79 +209,81 @@ function MsalAdapter(props: MsalAuthenticationProps) {
     const pendingAccessTokenRequests = pendingAccessTokenRequestsRef.current;
     const accessTokenRequestResolvers = accessTokenRequestResolversRef.current;
 
-    state.msalInstance.addEventCallback((event: any) => {
-      if (
-        event.eventType === EventType.LOGIN_SUCCESS &&
-        event.payload.account
-      ) {
-        const account = event.payload.account;
-        state.msalInstance.setActiveAccount(account);
-        const acct = state.msalInstance.getActiveAccount();
-        if (acct) {
-          console.log('msal auth n: event...', acct);
-          dispatch({
-            type: 'setActiveAccount',
-            activeAccount: account,
-          });
-          dispatch({
-            type: 'update',
-            updateInfo: {
-              authNState: 'authenticated',
-              user: {
-                name: acct.name ?? '',
-                email: (acct?.idTokenClaims?.['mail'] as string) ?? '',
+    state.msalInstance.initialize().then(() => {
+      state.msalInstance.addEventCallback((event: any) => {
+        if (
+          event.eventType === EventType.LOGIN_SUCCESS &&
+          event.payload.account
+        ) {
+          const account = event.payload.account;
+          state.msalInstance.setActiveAccount(account);
+          const acct = state.msalInstance.getActiveAccount();
+          if (acct) {
+            console.log('msal auth n: event...', acct);
+            dispatch({
+              type: 'setActiveAccount',
+              activeAccount: account,
+            });
+            dispatch({
+              type: 'update',
+              updateInfo: {
+                authNState: 'authenticated',
+                user: {
+                  name: acct.name ?? '',
+                  email: (acct?.idTokenClaims?.['mail'] as string) ?? '',
+                },
+                claims: acct.idTokenClaims as StateObject | undefined,
               },
-              claims: acct.idTokenClaims as StateObject | undefined,
-            },
-          });
+            });
+          }
         }
-      }
-    });
-
-    // handle auth redired/do all initial setup for msal
-    state.msalInstance
-      .handleRedirectPromise()
-      .then((authResult) => {
-        // Check if user signed in
-        const account = state.msalInstance.getActiveAccount();
-        if (!account) {
-          // redirect anonymous user to login page
-          state.msalInstance.loginRedirect();
-        } else {
-          dispatch({
-            type: 'setActiveAccount',
-            activeAccount: account,
-          });
-          dispatch({
-            type: 'update',
-            updateInfo: {
-              authNState: 'authenticated',
-              user: {
-                name: account?.name ?? '',
-                email: (account?.idTokenClaims?.['mail'] as string) ?? '',
-              },
-              claims: account.idTokenClaims as StateObject | undefined,
-            },
-          });
-
-          Object.keys(pendingAccessTokenRequests).forEach((scopeKey) => {
-            getToken(JSON.parse(scopeKey))
-              .then((token) =>
-                accessTokenRequestResolvers[scopeKey]?.resolve(token ?? '')
-              )
-              .catch((error) =>
-                accessTokenRequestResolvers[scopeKey]?.reject(error)
-              );
-          });
-        }
-      })
-      .catch((err) => {
-        // TODO: Handle errors
-        console.log(err);
       });
 
-    // Optional - This will update account state if a user signs in from another tab or window
-    state.msalInstance.enableAccountStorageEvents();
+      // handle auth redired/do all initial setup for msal
+      state.msalInstance
+        .handleRedirectPromise()
+        .then((authResult) => {
+          // Check if user signed in
+          const account = state.msalInstance.getActiveAccount();
+          if (!account) {
+            // redirect anonymous user to login page
+            state.msalInstance.loginRedirect();
+          } else {
+            dispatch({
+              type: 'setActiveAccount',
+              activeAccount: account,
+            });
+            dispatch({
+              type: 'update',
+              updateInfo: {
+                authNState: 'authenticated',
+                user: {
+                  name: account?.name ?? '',
+                  email: (account?.idTokenClaims?.['mail'] as string) ?? '',
+                },
+                claims: account.idTokenClaims as StateObject | undefined,
+              },
+            });
+
+            Object.keys(pendingAccessTokenRequests).forEach((scopeKey) => {
+              getToken(JSON.parse(scopeKey))
+                .then((token) =>
+                  accessTokenRequestResolvers[scopeKey]?.resolve(token ?? '')
+                )
+                .catch((error) =>
+                  accessTokenRequestResolvers[scopeKey]?.reject(error)
+                );
+            });
+          }
+        })
+        .catch((err) => {
+          // TODO: Handle errors
+          console.log(err);
+        });
+
+      // Optional - This will update account state if a user signs in from another tab or window
+      state.msalInstance.enableAccountStorageEvents();
+    });
   }, []);
 
   const getToken = async (scopes: string[]) => {
