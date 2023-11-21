@@ -40,8 +40,7 @@
         "{workspaceRoot}/coverage/libs/porrtal-components/r-learning"
       ],
       "options": {
-        "jestConfig": "libs/porrtal-components/r-learning/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/porrtal-components/r-learning/jest.config.ts"
       }
     },
     "storybook": {

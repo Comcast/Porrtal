@@ -40,8 +40,7 @@
         "{workspaceRoot}/coverage/libs/porrtal-components/r-quick-start-blueprint"
       ],
       "options": {
-        "jestConfig": "libs/porrtal-components/r-quick-start-blueprint/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/porrtal-components/r-quick-start-blueprint/jest.config.ts"
       }
     }
   }

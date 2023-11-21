@@ -40,8 +40,7 @@
         "{workspaceRoot}/coverage/libs/porrtal-components/r-first-test-comp-lib"
       ],
       "options": {
-        "jestConfig": "libs/porrtal-components/r-first-test-comp-lib/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/porrtal-components/r-first-test-comp-lib/jest.config.ts"
       }
     }
   }

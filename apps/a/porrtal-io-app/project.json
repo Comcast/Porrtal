@@ -74,10 +74,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "a-porrtal-io-app:build:production"
+          "buildTarget": "a-porrtal-io-app:build:production"
         },
         "development": {
-          "browserTarget": "a-porrtal-io-app:build:development"
+          "buildTarget": "a-porrtal-io-app:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -85,7 +85,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "a-porrtal-io-app:build"
+        "buildTarget": "a-porrtal-io-app:build"
       }
     },
     "lint": {
@@ -101,8 +101,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/a/porrtal-io-app"],
       "options": {
-        "jestConfig": "apps/a/porrtal-io-app/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/a/porrtal-io-app/jest.config.ts"
       }
     },
     "build-and-copy": {

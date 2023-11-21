@@ -53,10 +53,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "porrtal-auth-a-mock-app:build:production"
+          "buildTarget": "porrtal-auth-a-mock-app:build:production"
         },
         "development": {
-          "browserTarget": "porrtal-auth-a-mock-app:build:development"
+          "buildTarget": "porrtal-auth-a-mock-app:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -64,7 +64,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "porrtal-auth-a-mock-app:build"
+        "buildTarget": "porrtal-auth-a-mock-app:build"
       }
     },
     "lint": {
@@ -81,8 +81,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/porrtal-auth/a-mock-app/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/porrtal-auth/a-mock-app/jest.config.ts"
       }
     }
   },

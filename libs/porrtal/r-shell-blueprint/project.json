@@ -40,8 +40,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/porrtal/r-shell-blueprint"],
       "options": {
-        "jestConfig": "libs/porrtal/r-shell-blueprint/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/porrtal/r-shell-blueprint/jest.config.ts"
       }
     }
   }

@@ -27,8 +27,7 @@
         "{workspaceRoot}/coverage/libs/porrtal-components/a-learning"
       ],
       "options": {
-        "jestConfig": "libs/porrtal-components/a-learning/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/porrtal-components/a-learning/jest.config.ts"
       }
     },
     "lint": {

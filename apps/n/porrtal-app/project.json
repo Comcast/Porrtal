@@ -46,8 +46,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/n/porrtal-app"],
       "options": {
-        "jestConfig": "apps/n/porrtal-app/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/n/porrtal-app/jest.config.ts"
       }
     },
     "lint": {

@@ -38,8 +38,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/porrtal/r-user"],
       "options": {
-        "jestConfig": "libs/porrtal/r-user/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/porrtal/r-user/jest.config.ts"
       }
     }
   }

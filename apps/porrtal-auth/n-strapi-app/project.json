@@ -46,8 +46,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/porrtal-auth/n-strapi-app/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/porrtal-auth/n-strapi-app/jest.config.ts"
       }
     },
     "lint": {

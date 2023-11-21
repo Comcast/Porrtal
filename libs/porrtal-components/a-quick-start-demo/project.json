@@ -29,8 +29,7 @@
         "{workspaceRoot}/coverage/libs/porrtal-components/a-quick-start-demo"
       ],
       "options": {
-        "jestConfig": "libs/porrtal-components/a-quick-start-demo/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/porrtal-components/a-quick-start-demo/jest.config.ts"
       }
     },
     "lint": {

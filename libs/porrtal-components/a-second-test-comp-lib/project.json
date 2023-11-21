@@ -29,8 +29,7 @@
         "{workspaceRoot}/coverage/libs/porrtal-components/a-second-test-comp-lib"
       ],
       "options": {
-        "jestConfig": "libs/porrtal-components/a-second-test-comp-lib/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/porrtal-components/a-second-test-comp-lib/jest.config.ts"
       }
     },
     "lint": {

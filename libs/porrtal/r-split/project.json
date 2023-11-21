@@ -43,8 +43,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/porrtal/r-split"],
       "options": {
-        "jestConfig": "libs/porrtal/r-split/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/porrtal/r-split/jest.config.ts"
       }
     }
   }

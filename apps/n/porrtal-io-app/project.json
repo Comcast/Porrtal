@@ -83,8 +83,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/n/porrtal-io-app"],
       "options": {
-        "jestConfig": "apps/n/porrtal-io-app/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/n/porrtal-io-app/jest.config.ts"
       }
     },
     "lint": {
