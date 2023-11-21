@@ -4,7 +4,7 @@
   [class.banner-container-error]="hasError$ | async"
   [class.banner-container-success]="allReady$ | async"
 >
-  <mat-icon inline="true">key</mat-icon>
+  <mat-icon *ngIf="authZService" inline="true">key</mat-icon>
   <mat-spinner *ngIf="someProcessing$ | async" class="banner-spinner" [diameter]="24"></mat-spinner>
 </div>
 

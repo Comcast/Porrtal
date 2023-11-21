@@ -20,10 +20,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  MatLegacyMenuModule as MatMenuModule,
-  MatLegacyMenuTrigger as MatMenuTrigger,
-} from '@angular/material/legacy-menu';
+import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { StateObject, View } from '@porrtal/a-api';
 import { SearchStateService, ShellStateService } from '@porrtal/a-shell';
 import { map, Observable } from 'rxjs';

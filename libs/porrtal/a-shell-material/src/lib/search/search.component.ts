@@ -23,23 +23,20 @@ import {
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
-import { MatLegacyFormFieldModule as MatFormFieldModule } from '@angular/material/legacy-form-field';
-import { SearchStateService } from '@porrtal/a-shell';
+import { MatInputModule } from '@angular/material/input';
 import {
-  MatLegacyDialog as MatDialog,
-  MatLegacyDialogConfig as MatDialogConfig,
-  MatLegacyDialogModule as MatDialogModule,
-} from '@angular/material/legacy-dialog';
+  MatFormFieldModule,
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+} from '@angular/material/form-field';
+import { SearchStateService } from '@porrtal/a-shell';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { SearchDialogComponent } from '../search-dialog/search-dialog.component';
-import { MatLegacyTabBody as MatTabBody } from '@angular/material/legacy-tabs';
-import { NoopScrollStrategy } from '@angular/cdk/overlay';
 import {
   NgxPopperjsModule,
   NgxPopperjsContentComponent,
   NgxPopperjsPlacements,
 } from 'ngx-popperjs';
-import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'porrtal-search',
@@ -57,6 +54,12 @@ import { BehaviorSubject, Subject, takeUntil } from 'rxjs';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { subscriptSizing: 'dynamic' },
+    },
+  ],
 })
 export class SearchComponent implements OnDestroy {
   @ViewChild('searchInput', { read: ElementRef }) searchInput?: HTMLElement;

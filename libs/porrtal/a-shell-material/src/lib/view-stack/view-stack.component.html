@@ -1,6 +1,8 @@
 <ng-container [ngSwitch]="pane?.arrange ?? 'tabs-top'">
   <!-- tabs-top -->
   <mat-tab-group
+    mat-stretch-tabs="false"
+    mat-align-tabs="start"
     preserveContent
     *ngSwitchCase="'tabs-top'"
     (selectedIndexChange)="doChangeTabIndex($event)"
@@ -29,7 +31,10 @@
           >close</mat-icon
         >
       </ng-template>
-      <porrtal-view-host #porrtalViewHost [viewState]="viewState"></porrtal-view-host>
+      <porrtal-view-host
+        #porrtalViewHost
+        [viewState]="viewState"
+      ></porrtal-view-host>
     </mat-tab>
   </mat-tab-group>
 
@@ -79,7 +84,10 @@
           *ngFor="let viewState of pane?.viewStates; let ii = index"
           [style.zIndex]="viewState.key === pane?.currentKey ? 10 : 0"
         >
-          <porrtal-view-host #porrtalViewHost [viewState]="viewState"></porrtal-view-host>
+          <porrtal-view-host
+            #porrtalViewHost
+            [viewState]="viewState"
+          ></porrtal-view-host>
         </div>
         <div class="vertical-tabs-content-background-div"></div>
       </div>
@@ -120,7 +128,10 @@
         </mat-card-title>
         <mat-card-content>
           <div class="view-host-container">
-            <porrtal-view-host #porrtalViewHost [viewState]="viewState"></porrtal-view-host>
+            <porrtal-view-host
+              #porrtalViewHost
+              [viewState]="viewState"
+            ></porrtal-view-host>
           </div>
         </mat-card-content>
       </mat-card>

@@ -32,18 +32,12 @@ import {
   PaneArrangement,
   ViewLaunch,
 } from '@porrtal/a-api';
-import { MatLegacyTabsModule as MatTabsModule } from '@angular/material/legacy-tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
-import {
-  MatLegacyMenuModule as MatMenuModule,
-  MatLegacyMenuTrigger as MatMenuTrigger,
-} from '@angular/material/legacy-menu';
+import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
-import {
-  MatLegacyCard as MatCard,
-  MatLegacyCardModule as MatCardModule,
-} from '@angular/material/legacy-card';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 import { ShellStateService, ViewHostComponent } from '@porrtal/a-shell';
 
 @Component({
