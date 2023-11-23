@@ -21,7 +21,9 @@
         ],
         "styles": [
           "@angular/material/prebuilt-themes/purple-green.css",
-          "apps/porrtal-auth/a-auth0-app/src/styles.scss"
+          "apps/porrtal-auth/a-auth0-app/src/styles.scss",
+          "ag-grid-community/styles/ag-grid.css",
+          "ag-grid-community/styles/ag-theme-balham.css"
         ],
         "scripts": []
       },
