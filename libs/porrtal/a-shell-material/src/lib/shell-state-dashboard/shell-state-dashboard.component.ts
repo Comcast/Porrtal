@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardContainerComponent } from '../card-container/card-container.component';
 import {
@@ -28,6 +28,7 @@ import {
 } from '@porrtal/a-user';
 import { ShellStateService } from '@porrtal/a-shell';
 import { startWith, map } from 'rxjs';
+import { ViewState } from '@porrtal/a-api';
 
 @Component({
   selector: 'porrtal-shell-state-dashboard',
@@ -39,6 +40,8 @@ import { startWith, map } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShellStateDashboardComponent {
+  @Input() viewState?: ViewState;
+  
   constructor(
     public cardContainerService: CardContainerService,
     @Inject(AUTH_N_INTERFACE) private authN: AuthNInterface,

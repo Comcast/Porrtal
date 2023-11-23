@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { ChangeDetectionStrategy, Component, ElementRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -41,6 +41,8 @@ import { ShellStateService } from '@porrtal/a-shell';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PaneCardComponent {
+  @Input() data?: any;
+  
   isMaximized$ = new BehaviorSubject<boolean>(false);
   childIndex = -1;
   parentNativeEl: any;

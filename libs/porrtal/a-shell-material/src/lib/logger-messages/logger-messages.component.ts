@@ -12,10 +12,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoggerStateService } from '@porrtal/a-shell';
-import { LoggerEntry } from '@porrtal/a-api';
+import { LoggerEntry, ViewState } from '@porrtal/a-api';
 import { Observable } from 'rxjs';
 import { AgGridModule } from 'ag-grid-angular';
 import { ColDef } from 'ag-grid-community';
@@ -29,6 +29,8 @@ import { ColDef } from 'ag-grid-community';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoggerMessagesComponent {
+  @Input() viewState?: ViewState;
+  
   public entries$: Observable<LoggerEntry[]>;
 
   public columnDefs: ColDef<LoggerEntry>[] = [
