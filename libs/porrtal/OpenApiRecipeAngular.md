@@ -186,6 +186,51 @@ export class AppComponent {
 }
 ```
 
+## Add ag-grid Styles to project.json
+
+Update file: `apps/my-angular-app/project.json` (add to the `styles` array)
+
+```json
+{
+  "name": "my-angular-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "my-angular-workspace",
+  "sourceRoot": "apps/my-angular-app/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/my-angular-app",
+        "index": "apps/my-angular-app/src/index.html",
+        "browser": "apps/my-angular-app/src/main.ts",
+        "polyfills": [
+          "zone.js"
+        ],
+        "tsConfig": "apps/my-angular-app/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/my-angular-app/src/favicon.ico",
+          "apps/my-angular-app/src/assets"
+        ],
+        "styles": [
+          "@angular/material/prebuilt-themes/deeppurple-amber.css",
+          "apps/my-angular-app/src/styles.scss",
+          "ag-grid-community/styles/ag-grid.css",
+          "ag-grid-community/styles/ag-theme-balham.css"
+        ],
+        "scripts": []
+      },
+      // ...
+    }
+  }
+}
+```
+
 # Add Strapi Authentication to Porrtal App
 
 The rest of the recipe assumes that you followed the instructions here [Strapi Project Setup](StrapiSetup.md) and that you have Strapi running on the default port `http://localhost:1337`.
