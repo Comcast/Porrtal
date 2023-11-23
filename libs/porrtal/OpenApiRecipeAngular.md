@@ -407,16 +407,6 @@ export default function Wrapper() {
       componentName: 'Main2',
       componentModule: () => import('@my-scope/my-lib'),
     },
-    {
-      viewId: 'shell-state-dashboard',
-      paneType: 'bottom',
-      launchAtStartup: false,
-      componentName: 'ShellStateDashboard',
-      componentModule: () => import('@porrtal/r-shell-blueprint'),
-      key: 'shell-state-dashboard',
-      displayText: 'Shell State Dashboard',
-      displayIcon: 'key',
-    },
   ];
   const porrtalBanner: BannerData = {
     // uncomment and edit this code if you would like a banner image
