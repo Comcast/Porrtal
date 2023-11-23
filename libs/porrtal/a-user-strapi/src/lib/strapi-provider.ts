@@ -24,6 +24,7 @@ import {
   AuthZProviderInterface,
   AUTH_N_INTERFACE,
   AUTH_Z_INTERFACE,
+  AUTH_Zs,
 } from '@porrtal/a-user';
 import {
   StrapiAuthNService,
@@ -47,7 +48,6 @@ export function provideStrapiOAuthClient(
   porrtalStrapiConfiguration: PorrtalStrapiConfiguration
 ): EnvironmentProviders[] {
   const authZs = { ...(porrtalStrapiConfiguration?.authZs ?? {}) };
-  authZs['primary'] = new StrapiAuthZProvider();
 
   const providers: Provider[] = [
     {
@@ -62,13 +62,18 @@ export function provideStrapiOAuthClient(
       },
     },
     {
+      provide: AUTH_Zs,
+      useValue: authZs,
+    },
+    {
       provide: AUTH_Z_INTERFACE,
-      useFactory: () =>
-        new StrapiAuthZService(
-          inject(AUTH_N_INTERFACE),
-          authZs,
-          inject(ShellStateService)
-        ),
+      useClass: StrapiAuthZService,
+      // useFactory: () =>
+      //   new StrapiAuthZService(
+      //     inject(AUTH_N_INTERFACE),
+      //     authZs,
+      //     inject(ShellStateService)
+      //   ),
     },
   ];
 

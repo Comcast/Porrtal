@@ -18,9 +18,13 @@ import { AuthZProviderInterface } from './auth-z-provider-interface';
 export type AuthZInterface = {
   authZProviders: {
     [key: string]: AuthZProviderInterface;
-  }
+  };
 };
 
 export const AUTH_Z_INTERFACE = new InjectionToken<AuthZInterface>(
   'AuthZInterface'
 );
+
+export type AuthZs = { [x: string]: AuthZProviderInterface };
+
+export const AUTH_Zs = new InjectionToken<AuthZs>('AuthZs');

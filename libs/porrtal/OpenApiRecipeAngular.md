@@ -66,7 +66,9 @@ Questions answered as follows:
 ## Add Porrtal Packages
 
 ```
-npm install @porrtal/a-api @porrtal/a-shell @porrtal/a-shell-material ag-grid-community ag-grid-angular @rx-angular/state angular-split ngx-popperjs uuid --save --legacy-peer-deps
+npm install @porrtal/a-api @porrtal/a-shell @porrtal/a-shell-material ag-grid-community ag-grid-angular @rx-angular/state angular-split ngx-popperjs uuid dot-object --save --legacy-peer-deps
+
+npm install @porrtal/a-user @porrtal/a-user-msal --save --legacy-peer-deps
 
 npm install @types/uuid --save-dev --legacy-peer-deps
 ```
@@ -79,48 +81,54 @@ nx g @nx/angular:library --name=my-lib --unitTestRunner=jest --directory=libs/my
 
 ## Create Components
 
+These components will become porrtal "views" (by referencing them in the porrtal "views" array in `app.component.ts` below).
+
 ```
 nx g @nx/angular:component --name=nav --directory=libs/my-scope/my-lib/src/lib/nav --export=true --nameAndDirectoryFormat=as-provided
 nx g @nx/angular:component --name=main1 --directory=libs/my-scope/my-lib/src/lib/main1 --export=true --nameAndDirectoryFormat=as-provided
 nx g @nx/angular:component --name=main2 --directory=libs/my-scope/my-lib/src/lib/main2 --export=true --nameAndDirectoryFormat=as-provided
 ```
 
+## Update app.component.html
 
------------------------------------ modify the below --------------------------------------
-## Add Wrapper to App
+Modify the file: `apps/my-angular-app/src/app/app.component.html`:
 
-Create a file `apps/my-angular-app/app/Wrapper.tsx` with this code:
+```html
+<porrtal-shell-layout [bannerData]="porrtalBanner"> </porrtal-shell-layout>
+```
 
-```tsx
-'use client'
+## Update app.component.ts
 
-import '@blueprintjs/core/lib/css/blueprint.css';
-import '@blueprintjs/icons/lib/css/blueprint-icons.css';
-import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
+Modify the file: `apps/my-angular-app/src/app/app.component.ts`:
 
-import { View } from '@porrtal/r-api';
-import { BannerData, ShellState } from '@porrtal/r-shell';
-import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
+```ts
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { BannerData, ShellStateService } from '@porrtal/a-shell';
+import { View } from '@porrtal/a-api';
+import { ShellLayoutComponent } from '@porrtal/a-shell-material';
 
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-balham.css';
-import { useEffect, useState } from 'react';
 
-export default function Wrapper() {
-  const [isClient, setIsClient] = useState(false);
+@Component({
+  standalone: true,
+  imports: [RouterModule, ShellLayoutComponent],
+  selector: 'my-angular-workspace-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+})
+export class AppComponent {
+  title = 'my-angular-app';
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  const porrtalViews: View[] = [
+  porrtalViews: View[] = [
     {
       key: 'Nav',
       launchAtStartup: true,
       displayText: 'Nav',
       paneType: 'nav',
       displayIcon: 'updated',
-      componentName: 'Nav',
+      componentName: 'NavComponent',
       componentModule: () => import('@my-scope/my-lib'),
     },
     {
@@ -129,7 +137,7 @@ export default function Wrapper() {
       displayText: 'Main1',
       paneType: 'main',
       displayIcon: 'updated',
-      componentName: 'Main1',
+      componentName: 'Main1Component',
       componentModule: () => import('@my-scope/my-lib'),
     },
     {
@@ -138,52 +146,43 @@ export default function Wrapper() {
       displayText: 'Main2',
       paneType: 'main',
       displayIcon: 'updated',
-      componentName: 'Main2',
+      componentName: 'Main2Component',
       componentModule: () => import('@my-scope/my-lib'),
     },
     {
       viewId: 'shell-state-dashboard',
       paneType: 'bottom',
       launchAtStartup: false,
-      componentName: 'ShellStateDashboard',
-      componentModule: () => import('@porrtal/r-shell-blueprint'),
+      componentName: 'ShellStateDashboardComponent',
+      componentModule: () => import('@porrtal/a-shell-material'),
       key: 'shell-state-dashboard',
       displayText: 'Shell State Dashboard',
       displayIcon: 'key',
     },
   ];
-  const porrtalBanner: BannerData = {
+
+  porrtalBanner: BannerData = {
     // uncomment and edit this code if you would like a banner image
     // bannerImageUrl: './assets/my-banner.png',
     // bannerImageHeight: 63,
     // bannerImageWidth: 500,
     displayText: 'My App',
-    displayIcon: 'build',
+    displayIcon: 'cyclone',
     childData: [],
   };
 
-  return (
-    <div>
-      {isClient ? (
-        <ShellState views={porrtalViews}>
-          <ShellBlueprint bannerData={porrtalBanner} />
-        </ShellState>
-      ) : (
-        <div />
-      )}
-    </div>
-  );
-}
-```
-## Update page.tsx
+  constructor(public shellStateService: ShellStateService) {
+    this.porrtalViews.forEach((view) =>
+      shellStateService.dispatch({
+        type: 'registerView',
+        view,
+      })
+    );
 
-Update the file `apps/my-angular-app/app/page.tsx`:
-
-```tsx
-import Wrapper from "./Wrapper";
-
-export default async function Index() {
-  return (<Wrapper />);
+    shellStateService.dispatch({
+      type: 'launchStartupViews',
+    });
+  }
 }
 ```
 
@@ -191,7 +190,7 @@ export default async function Index() {
 
 The rest of the recipe assumes that you followed the instructions here [Strapi Project Setup](StrapiSetup.md) and that you have Strapi running on the default port `http://localhost:1337`.
 
-## Install @porrtal/r-user-strapi Library
+## Install @porrtal/a-user-strapi Library
 
 From the `my-angular-workspace` folder, install the porrtal React library for Strapi:
 
@@ -199,17 +198,47 @@ From the `my-angular-workspace` folder, install the porrtal React library for St
 npm install @porrtal/r-user-strapi --save --legacy-peer-deps
 ```
 
-## Update Wrapper.tsx with Strapi Authentication
+## Update app.config.ts
+
+Update the file: `apps/my-angular-app/src/app/app.config.ts`
+
+This will enable the porrtal "strapi" authentication pointing at the strapi instance created above.
+
+```ts
+import { ApplicationConfig } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { appRoutes } from './app.routes';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import {
+  PorrtalStrapiConfiguration,
+  provideStrapiOAuthClient,
+} from '@porrtal/a-user-strapi';
+
+const porrtalStrapiConfiguration: PorrtalStrapiConfiguration = {
+  allowRegistration: true,
+  strapiUri: 'http://localhost:1337',
+};
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideRouter(appRoutes),
+    provideAnimations(),
+    provideStrapiOAuthClient(porrtalStrapiConfiguration),
+  ],
+};
+```
+
+## Update App.ts
 
 ```tsx
-        <ShellState views={porrtalViews}>
-          <StrapiAuthentication
-            strapiUri="http://localhost:1337"
-            allowRegistration={true}
-          >
-            <ShellBlueprint bannerData={porrtalBanner} />
-          </StrapiAuthentication>
-        </ShellState>
+<ShellState views={porrtalViews}>
+  <StrapiAuthentication
+    strapiUri="http://localhost:1337"
+    allowRegistration={true}
+  >
+    <ShellBlueprint bannerData={porrtalBanner} />
+  </StrapiAuthentication>
+</ShellState>
 ```
 
 You should now see the Strapi login / logout button and user info in the banner.
