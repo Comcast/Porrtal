@@ -31,7 +31,9 @@ export interface CardContainer {
   cards: Card[];
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class CardContainerService extends RxState<CardContainer> {
   constructor() {
     super();

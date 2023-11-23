@@ -39,3 +39,5 @@ export * from './lib/banner-menu-bar/banner-menu-bar.component';
 export * from './lib/banner-menu-inline/banner-menu-inline.component';
 export * from './lib/banner-menu-item/banner-menu-item.component';
 export * from './lib/user-banner/login-service/login.service';
+export * from './lib/card-container/card-container.service';
+export * from './lib/shell-state-dashboard/shell-state-dashboard.component';
