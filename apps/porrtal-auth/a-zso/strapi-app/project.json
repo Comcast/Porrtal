@@ -8,19 +8,26 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/porrtal-auth/a-zso/strapi-app",
         "index": "apps/porrtal-auth/a-zso/strapi-app/src/index.html",
         "browser": "apps/porrtal-auth/a-zso/strapi-app/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/porrtal-auth/a-zso/strapi-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/porrtal-auth/a-zso/strapi-app/src/favicon.ico",
           "apps/porrtal-auth/a-zso/strapi-app/src/assets"
         ],
-        "styles": ["apps/porrtal-auth/a-zso/strapi-app/src/styles.scss"],
+        "styles": [
+          "@angular/material/prebuilt-themes/deeppurple-amber.css",
+          "apps/porrtal-auth/a-zso/strapi-app/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -67,7 +74,9 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
         "lintFilePatterns": [
           "apps/porrtal-auth/a-zso/strapi-app/**/*.ts",
@@ -77,7 +86,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/porrtal-auth/a-zso/strapi-app/jest.config.ts"
       }
