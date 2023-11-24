@@ -54,6 +54,9 @@
       "@porrtal-components/r-test": [
         "libs/porrtal-components/r-test/src/index.ts"
       ],
+      "@porrtal-proxy/a-my-project2": [
+        "libs/porrtal-proxy/a-my-project2/src/index.ts"
+      ],
       "@porrtal-proxy/r-my-project2": [
         "libs/porrtal-proxy/r-my-project2/src/index.ts"
       ],

@@ -209,6 +209,5 @@ export class StrapiAuthNService
         })
       )
     );
-    // Promise.resolve(localStorage.getItem('strapiJwt') || 'not logged in yet...');
   };
 }
