@@ -25,6 +25,8 @@ import { Observable } from 'rxjs';
 import { RxState } from '@rx-angular/state';
 import { HttpClient } from '@angular/common/http';
 import { StateObject } from '@porrtal/a-api';
+import { firstValueFrom } from 'rxjs';
+import { filter, map, tap } from 'rxjs/operators';
 
 export interface StrapiAdapterInterface {
   isAuthenticated: boolean;
@@ -62,7 +64,7 @@ export class StrapiAuthNService
   loginStrategy$ = this.select('loginStrategy');
   claims$ = this.select('claims');
   claimsMap$ = this.select('claimsMap');
-  
+
   constructor(
     @Inject(STRAPI_ADAPTER_SERVICE_CONFIG_INJECTION_TOKEN)
     private strapiAdapterServiceConfig: StrapiAdapterServiceConfigInterface,
@@ -108,7 +110,7 @@ export class StrapiAuthNService
                 claims: response,
                 authNState: 'authenticated',
               });
-              });
+            });
           },
           error: (err) => {
             alert(`strapi login error: ${JSON.stringify(err)}`);
@@ -191,5 +193,22 @@ export class StrapiAuthNService
   logout?: (() => void) | undefined = () => {
     this.set({ user: undefined, authNState: 'initialized' });
     localStorage.removeItem('strapiJwt');
+  };
+
+  getAccessToken?: ((scopes: string[]) => Promise<string>) | undefined = (
+    scopes: string[]
+  ) => {
+    return firstValueFrom(
+      this.authNState$.pipe(
+        tap((val) => console.log(`authNState: ${val}`)),
+        filter((authNState) => authNState === 'authenticated'),
+        map(() => {
+          const jwt = localStorage.getItem('strapiJwt');
+          console.log(`strapi jwt: ${jwt}`);
+          return jwt ?? 'no strapi token...';
+        })
+      )
+    );
+    // Promise.resolve(localStorage.getItem('strapiJwt') || 'not logged in yet...');
   };
 }

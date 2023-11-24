@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { View } from '@porrtal/a-api';
 import { BannerData, ShellStateService } from '@porrtal/a-shell';
 import { ShellLayoutComponent } from '@porrtal/a-shell-material';
+import { AUTH_N_INTERFACE, AuthNInterface } from '@porrtal/a-user';
 
 @Component({
   selector: 'app-one',
@@ -41,7 +42,7 @@ export class OneComponent {
       componentModule: () => import('../../views/main2/main2.component'),
     },
   ];
-  
+
   porrtalBanner: BannerData = {
     // uncomment and edit this code if you would like a banner image
     // bannerImageUrl: './assets/my-banner.png',
@@ -58,7 +59,9 @@ export class OneComponent {
     ],
   };
 
-  constructor(public shellStateService: ShellStateService) {
+  constructor(
+    public shellStateService: ShellStateService,
+  ) {
     this.porrtalViews.forEach((view) =>
       shellStateService.dispatch({
         type: 'registerView',
