@@ -276,19 +276,6 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-## Update App.ts
-
-```tsx
-<ShellState views={porrtalViews}>
-  <StrapiAuthentication
-    strapiUri="http://localhost:1337"
-    allowRegistration={true}
-  >
-    <ShellBlueprint bannerData={porrtalBanner} />
-  </StrapiAuthentication>
-</ShellState>
-```
-
 You should now see the Strapi login / logout button and user info in the banner.
 
 # Integrate Strapi REST API into Porrtal App
@@ -302,7 +289,7 @@ Use of the strongly-typed proxy code simplifies accessing the Strapi REST API an
 Add Library @my-scope/my-strapi-proxy
 
 ```
-nx g @nx/react:library --name=my-strapi-proxy --unitTestRunner=jest --bundler=rollup --directory=libs/my-scope/my-strapi-proxy --importPath=@my-scope/my-strapi-proxy --projectNameAndRootFormat=as-provided
+nx g @nx/angular:library --name=my-strapi-proxy --unitTestRunner=jest --bundler=rollup --directory=libs/my-scope/my-strapi-proxy --importPath=@my-scope/my-strapi-proxy --projectNameAndRootFormat=as-provided
 ```
 
 Questions answerd as follows:

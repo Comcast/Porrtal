@@ -56,6 +56,7 @@ export interface AuthNFunctions {
   login?: (creds: LoginCreds) => void;
   register?: (userInfo: RegisterUserInfo) => void;
   logout?: () => void;
+  getAccessToken?: (scopes: string[]) => Promise<string>;
 }
 
 export interface AuthNInterface extends AuthNFunctions {

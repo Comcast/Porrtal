@@ -19,6 +19,7 @@ import {
   makeEnvironmentProviders,
   Provider,
 } from '@angular/core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ShellStateService } from '@porrtal/a-shell';
 import {
   AuthZProviderInterface,
@@ -32,10 +33,12 @@ import {
 } from './strapi-auth-n.service';
 import { StrapiAuthZProvider } from './strapi-auth-z-provider';
 import { StrapiAuthZService } from './strapi-auth-z.service';
+import { STRAPI_INTERCEPTOR_CONFIG, StrapiInterceptor } from './strapi-interceptor';
 
 export interface PorrtalStrapiConfiguration {
   allowRegistration: boolean;
   strapiUri: string;
+  protectedResourceMap?: Map<string, string[]>;
   authZs?: {
     [key: string]: AuthZProviderInterface;
   };
@@ -68,28 +71,22 @@ export function provideStrapiOAuthClient(
     {
       provide: AUTH_Z_INTERFACE,
       useClass: StrapiAuthZService,
-      // useFactory: () =>
-      //   new StrapiAuthZService(
-      //     inject(AUTH_N_INTERFACE),
-      //     authZs,
-      //     inject(ShellStateService)
-      //   ),
     },
   ];
 
-  // if (interceptorConfig) {
-  //   providers.push(
-  //     {
-  //       provide: MSAL_INTERCEPTOR_CONFIG,
-  //       useValue: interceptorConfig,
-  //     },
-  //     {
-  //       provide: HTTP_INTERCEPTORS,
-  //       useClass: MsalInterceptor,
-  //       multi: true,
-  //     }
-  //   );
-  // }
+  if (porrtalStrapiConfiguration.protectedResourceMap) {
+    providers.push(
+      {
+        provide: STRAPI_INTERCEPTOR_CONFIG,
+        useValue: { protectedResourceMap: porrtalStrapiConfiguration.protectedResourceMap },
+      },
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: StrapiInterceptor,
+        multi: true,
+      }
+    );
+  }
 
   // if (guardConfig) {
   //   providers.push(
