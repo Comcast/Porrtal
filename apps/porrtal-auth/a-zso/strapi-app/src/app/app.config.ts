@@ -12,6 +12,9 @@ import {
 const porrtalStrapiConfiguration: PorrtalStrapiConfiguration = {
   allowRegistration: true,
   strapiUri: 'http://localhost:1337',
+  protectedResourceMap: new Map<string, string[]>([
+    ['http://localhost:1337/api', ['place-holder']],
+  ]),
 };
 
 export const appConfig: ApplicationConfig = {

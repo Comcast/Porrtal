@@ -21,6 +21,7 @@ export const STRAPI_INTERCEPTOR_CONFIG =
     'StrapiInterceptorConfiguration'
   );
 
+@Injectable()
 export class StrapiInterceptor implements HttpInterceptor {
   private tokenCache = new Map<string, { token: string; expiration: Date }>();
 
@@ -107,7 +108,7 @@ export class StrapiInterceptor implements HttpInterceptor {
         }
       }
     }
-    
+
     // If no match is found in the protectedResourceMap
     return next.handle(req);
   }
