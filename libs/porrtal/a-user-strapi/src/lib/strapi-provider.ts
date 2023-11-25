@@ -33,7 +33,7 @@ import {
 } from './strapi-auth-n.service';
 import { StrapiAuthZProvider } from './strapi-auth-z-provider';
 import { StrapiAuthZService } from './strapi-auth-z.service';
-import { STRAPI_INTERCEPTOR_CONFIG, StrapiInterceptor } from './strapi-interceptor';
+import { AUTH_N_INTERCEPTOR_CONFIG, AuthNInterceptor } from '@porrtal/a-user';
 
 export interface PorrtalStrapiConfiguration {
   allowRegistration: boolean;
@@ -77,12 +77,12 @@ export function provideStrapiOAuthClient(
   if (porrtalStrapiConfiguration.protectedResourceMap) {
     providers.push(
       {
-        provide: STRAPI_INTERCEPTOR_CONFIG,
+        provide: AUTH_N_INTERCEPTOR_CONFIG,
         useValue: { protectedResourceMap: porrtalStrapiConfiguration.protectedResourceMap },
       },
       {
         provide: HTTP_INTERCEPTORS,
-        useClass: StrapiInterceptor,
+        useClass: AuthNInterceptor,
         multi: true,
       }
     );

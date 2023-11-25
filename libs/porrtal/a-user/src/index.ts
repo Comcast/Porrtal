@@ -17,3 +17,4 @@ export * from './lib/auth-z-interface';
 export * from './lib/auth-z-provider-interface';
 export * from './lib/auth-z-typed-provider-interface';
 export * from './lib/user-login-data';
+export * from './lib/auth-n-interceptor';

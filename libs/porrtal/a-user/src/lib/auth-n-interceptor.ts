@@ -12,22 +12,22 @@ import {
 import { AUTH_N_INTERFACE } from '@porrtal/a-user';
 import { AuthNInterface } from '@porrtal/a-user';
 
-export interface StrapiInterceptorConfiguration {
+export interface AuthNInterceptorConfiguration {
   protectedResourceMap: Map<string, string[]>;
 }
 
-export const STRAPI_INTERCEPTOR_CONFIG =
-  new InjectionToken<StrapiInterceptorConfiguration>(
-    'StrapiInterceptorConfiguration'
+export const AUTH_N_INTERCEPTOR_CONFIG =
+  new InjectionToken<AuthNInterceptorConfiguration>(
+    'AuthNInterceptorConfiguration'
   );
 
 @Injectable()
-export class StrapiInterceptor implements HttpInterceptor {
+export class AuthNInterceptor implements HttpInterceptor {
   private tokenCache = new Map<string, { token: string; expiration: Date }>();
 
   constructor(
-    @Inject(STRAPI_INTERCEPTOR_CONFIG)
-    private strapiInterceptorConfig: StrapiInterceptorConfiguration,
+    @Inject(AUTH_N_INTERCEPTOR_CONFIG)
+    private authNInterceptorConfig: AuthNInterceptorConfiguration,
     @Inject(AUTH_N_INTERFACE) private authN: AuthNInterface
   ) {}
 
@@ -47,7 +47,7 @@ export class StrapiInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    for (let [pattern, scopes] of this.strapiInterceptorConfig
+    for (let [pattern, scopes] of this.authNInterceptorConfig
       .protectedResourceMap) {
       if (this.isUrlMatch(req.url, pattern)) {
         if (scopes.length > 0) {
@@ -64,7 +64,7 @@ export class StrapiInterceptor implements HttpInterceptor {
             // if getAccessToken is not implemented, throw error
             if (!this.authN?.getAccessToken) {
               return throwError(
-                'Internal Error: Strapi AuthN Service does not implement getAccessToken()'
+                'Internal Error in AuthNInterceptor: AuthN Service does not implement getAccessToken()'
               );
             }
 
