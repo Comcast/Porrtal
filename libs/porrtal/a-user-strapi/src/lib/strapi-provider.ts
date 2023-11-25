@@ -78,7 +78,9 @@ export function provideStrapiOAuthClient(
     providers.push(
       {
         provide: AUTH_N_INTERCEPTOR_CONFIG,
-        useValue: { protectedResourceMap: porrtalStrapiConfiguration.protectedResourceMap },
+        useValue: {
+          protectedResourceMap: porrtalStrapiConfiguration.protectedResourceMap,
+        },
       },
       {
         provide: HTTP_INTERCEPTORS,
