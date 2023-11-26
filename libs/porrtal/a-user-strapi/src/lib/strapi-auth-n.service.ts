@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { Inject, Injectable, InjectionToken } from '@angular/core';
+import { Inject, Injectable, InjectionToken, Injector } from '@angular/core';
 import {
   AuthNInfo,
   AuthNInterface,
@@ -54,6 +54,8 @@ export class StrapiAuthNService
   extends RxState<AuthNInfo>
   implements AuthNInterface
 {
+  private httpClient?: HttpClient;
+
   getAuthNInfo = () => this.get();
 
   authNInfo$ = this.select();
@@ -65,10 +67,22 @@ export class StrapiAuthNService
   claims$ = this.select('claims');
   claimsMap$ = this.select('claimsMap');
 
+  private get http(): HttpClient {
+    if (!this.httpClient) {
+      this.httpClient = this.injector.get(HttpClient);
+    }
+
+    if (!this.httpClient) {
+      throw new Error('Internal Error: HttpClient not found');
+    }
+
+    return this.httpClient;
+  }
+
   constructor(
     @Inject(STRAPI_ADAPTER_SERVICE_CONFIG_INJECTION_TOKEN)
     private strapiAdapterServiceConfig: StrapiAdapterServiceConfigInterface,
-    private httpClient: HttpClient
+    private injector: Injector
   ) {
     console.log('creating msal-adapter.service...');
 
@@ -90,34 +104,45 @@ export class StrapiAuthNService
     const jwt = localStorage.getItem('strapiJwt');
 
     if (jwt) {
-      this.httpClient
-        .get<{ username: string; email: string }>(
-          `${this.strapiAdapterServiceConfig.strapiUri}/api/users/me?populate=porrtal_roles`,
-          {
-            headers: { Authorization: `Bearer ${jwt}` },
-          }
-        )
-        .subscribe({
-          next: (response) => {
-            console.log('strapi user/me response: ', response);
+      console.log('jwt in local storage.  strapi jwt: ', jwt);
 
-            Promise.resolve(true).then(() => {
-              this.set({
-                user: {
-                  name: response.username,
-                  email: response.email,
-                },
-                claims: response,
-                authNState: 'authenticated',
+      Promise.resolve(true).then(() => {
+        console.log('getting user info.  strapi jwt: ', jwt);
+        const httpClient = this.http;
+        if (!httpClient) {
+          console.log('strapi-auth-n.service (constructor): http client not found');
+          return;
+        }
+
+        httpClient
+          .get<{ username: string; email: string }>(
+            `${this.strapiAdapterServiceConfig.strapiUri}/api/users/me?populate=porrtal_roles`,
+            {
+              headers: { Authorization: `Bearer ${jwt}` },
+            }
+          )
+          .subscribe({
+            next: (response) => {
+              console.log('strapi user/me response: ', response);
+
+              Promise.resolve(true).then(() => {
+                this.set({
+                  user: {
+                    name: response.username,
+                    email: response.email,
+                  },
+                  claims: response,
+                  authNState: 'authenticated',
+                });
               });
-            });
-          },
-          error: (err) => {
-            alert(`strapi login error: ${JSON.stringify(err)}`);
-            this.set({ authNState: 'initialized' });
-          },
-          complete: () => {},
-        });
+            },
+            error: (err) => {
+              alert(`strapi login error: ${JSON.stringify(err)}`);
+              this.set({ authNState: 'initialized' });
+            },
+            complete: () => {},
+          });
+      });
     }
   }
   init?: (() => void) | undefined;
@@ -129,7 +154,13 @@ export class StrapiAuthNService
       `Login: strapi uri: ${this.strapiAdapterServiceConfig.strapiUri}`
     );
 
-    this.httpClient
+    const httpClient = this.http;
+    if (!httpClient) {
+      console.log('strapi-auth-n.service (login): http client not found');
+      return;
+    }
+
+    httpClient
       .post<{ user: { username: string; email: string }; jwt: string }>(
         `${this.strapiAdapterServiceConfig.strapiUri}/api/auth/local`,
         creds
@@ -163,8 +194,13 @@ export class StrapiAuthNService
       `Register: strapi uri: ${this.strapiAdapterServiceConfig.strapiUri}`
     );
 
-    this.httpClient
-      .post<{ user: { username: string; email: string }; jwt: string }>(
+    const httpClient = this.http;
+    if (!httpClient) {
+      console.log('strapi-auth-n.service (register): http client not found');
+      return;
+    }
+
+    httpClient.post<{ user: { username: string; email: string }; jwt: string }>(
         `${this.strapiAdapterServiceConfig.strapiUri}/api/auth/local/register`,
         userInfo
       )

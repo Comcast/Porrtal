@@ -1,4 +1,4 @@
-import { InjectionToken, Inject, Injectable } from '@angular/core';
+import { InjectionToken, Inject, Injectable, Injector } from '@angular/core';
 import { Observable, from, throwError } from 'rxjs';
 import { switchMap, catchError } from 'rxjs/operators';
 
@@ -24,12 +24,10 @@ export const AUTH_N_INTERCEPTOR_CONFIG =
 @Injectable()
 export class AuthNInterceptor implements HttpInterceptor {
   private tokenCache = new Map<string, { token: string; expiration: Date }>();
+  private authN?: AuthNInterface;
+  private authNInterceptorConfig?: AuthNInterceptorConfiguration;
 
-  constructor(
-    @Inject(AUTH_N_INTERCEPTOR_CONFIG)
-    private authNInterceptorConfig: AuthNInterceptorConfiguration,
-    @Inject(AUTH_N_INTERFACE) private authN: AuthNInterface
-  ) {}
+  constructor(private injector: Injector) {}
 
   private isUrlMatch(url: string, pattern: string): boolean {
     const regex = new RegExp('^' + pattern.replace(/\*/g, '.*') + '$');
@@ -47,10 +45,52 @@ export class AuthNInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    console.log('AuthNInterceptor: intercept: req: ', req);
+
+    if (!this.authN) {
+      this.authN = this.injector.get(AUTH_N_INTERFACE);
+    }
+
+    if (!this.authN) {
+      console.log('AuthNInterceptor: intercept: this.authN is null.');
+      return throwError(
+        'Internal Error in AuthNInterceptor: AuthN Service not found'
+      );
+    }
+
+    if (!this.authNInterceptorConfig) {
+      this.authNInterceptorConfig = this.injector.get(
+        AUTH_N_INTERCEPTOR_CONFIG
+      );
+    }
+
+    if (!this.authNInterceptorConfig) {
+      console.log(
+        'AuthNInterceptor: intercept: this.authNInterceptorConfig is null.'
+      );
+
+      return throwError(
+        'Internal Error in AuthNInterceptor: AuthNInterceptorConfiguration not found'
+      );
+    }
+
     for (let [pattern, scopes] of this.authNInterceptorConfig
       .protectedResourceMap) {
       if (this.isUrlMatch(req.url, pattern)) {
+        console.log(
+          'AuthNInterceptor: intercept: req.url: ',
+          req.url,
+          ' matches pattern: ',
+          pattern
+        );
+
         if (scopes.length > 0) {
+          console.log(
+            'AuthNInterceptor: intercept: scopes: ',
+            scopes,
+            ' is not empty'
+          );
+
           // Sort the scopes to ensure consistent cache key
           const sortedScopes = scopes.sort().join('|');
           const cachedTokenInfo = this.tokenCache.get(sortedScopes);
@@ -105,11 +145,16 @@ export class AuthNInterceptor implements HttpInterceptor {
               return throwError(error);
             })
           );
+        } else {
+          break;
         }
       }
     }
 
     // If no match is found in the protectedResourceMap
+    console.log(
+      'AuthNInterceptor: intercept: no match found in protectedResourceMap.'
+    );
     return next.handle(req);
   }
 }

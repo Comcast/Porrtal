@@ -16,6 +16,7 @@ import {
   EnvironmentProviders,
   inject,
   InjectionToken,
+  Injector,
   makeEnvironmentProviders,
   Provider,
 } from '@angular/core';
@@ -75,6 +76,11 @@ export function provideStrapiOAuthClient(
   ];
 
   if (porrtalStrapiConfiguration.protectedResourceMap) {
+    console.log(
+      'provideStrapiOAuthClient: porrtalStrapiConfiguration.protectedResourceMap: ',
+      porrtalStrapiConfiguration.protectedResourceMap
+    );
+
     providers.push(
       {
         provide: AUTH_N_INTERCEPTOR_CONFIG,
@@ -84,7 +90,8 @@ export function provideStrapiOAuthClient(
       },
       {
         provide: HTTP_INTERCEPTORS,
-        useClass: AuthNInterceptor,
+        useFactory: (injector: Injector) => new AuthNInterceptor(injector),
+        deps: [Injector],
         multi: true,
       }
     );
