@@ -73,29 +73,26 @@ export function provideStrapiOAuthClient(
       provide: AUTH_Z_INTERFACE,
       useClass: StrapiAuthZService,
     },
-  ];
-
-  if (porrtalStrapiConfiguration.protectedResourceMap) {
-    console.log(
-      'provideStrapiOAuthClient: porrtalStrapiConfiguration.protectedResourceMap: ',
-      porrtalStrapiConfiguration.protectedResourceMap
-    );
-
-    providers.push(
-      {
-        provide: AUTH_N_INTERCEPTOR_CONFIG,
-        useValue: {
-          protectedResourceMap: porrtalStrapiConfiguration.protectedResourceMap,
-        },
+    {
+      provide: AUTH_N_INTERCEPTOR_CONFIG,
+      useValue: {
+        // we disable the interceptor for the first two URLs as they are
+        //    used to authenticate the user (which happens before
+        //    the interceptor can resolve the "getAccessToken" call)
+        protectedResourceMap: new Map<string, string[]>([
+          [`${porrtalStrapiConfiguration.strapiUri}/api/auth/local*`, []],
+          [`${porrtalStrapiConfiguration.strapiUri}/api/users/me*`, []],
+          [`${porrtalStrapiConfiguration.strapiUri}/api/*`, ['place-holder']],
+        ]),
       },
-      {
-        provide: HTTP_INTERCEPTORS,
-        useFactory: (injector: Injector) => new AuthNInterceptor(injector),
-        deps: [Injector],
-        multi: true,
-      }
-    );
-  }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useFactory: (injector: Injector) => new AuthNInterceptor(injector),
+      deps: [Injector],
+      multi: true,
+    }
+  ];
 
   // if (guardConfig) {
   //   providers.push(

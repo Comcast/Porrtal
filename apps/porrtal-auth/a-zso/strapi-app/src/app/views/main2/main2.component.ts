@@ -1,8 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AUTH_N_INTERFACE, AuthNInterface } from '@porrtal/a-user';
 import { BehaviorSubject, map, startWith } from 'rxjs';
 import { PorrtalRoleService } from '@porrtal-proxy/a-my-project2';
+import { ViewState } from '@porrtal/a-api';
 
 @Component({
   selector: 'app-main2',
@@ -12,6 +13,8 @@ import { PorrtalRoleService } from '@porrtal-proxy/a-my-project2';
   styleUrls: ['./main2.component.scss'],
 })
 export class Main2Component {
+  @Input() viewState?: ViewState;
+
   accessToken = new BehaviorSubject('loading...');
   roles$;
 

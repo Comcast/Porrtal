@@ -84,7 +84,6 @@ export class StrapiAuthNService
     private strapiAdapterServiceConfig: StrapiAdapterServiceConfigInterface,
     private injector: Injector
   ) {
-    console.log('creating msal-adapter.service...');
 
     super();
 
@@ -104,13 +103,10 @@ export class StrapiAuthNService
     const jwt = localStorage.getItem('strapiJwt');
 
     if (jwt) {
-      console.log('jwt in local storage.  strapi jwt: ', jwt);
-
       Promise.resolve(true).then(() => {
-        console.log('getting user info.  strapi jwt: ', jwt);
         const httpClient = this.http;
         if (!httpClient) {
-          console.log('strapi-auth-n.service (constructor): http client not found');
+          console.error('strapi-auth-n.service (constructor): http client not found');
           return;
         }
 
@@ -123,8 +119,6 @@ export class StrapiAuthNService
           )
           .subscribe({
             next: (response) => {
-              console.log('strapi user/me response: ', response);
-
               Promise.resolve(true).then(() => {
                 this.set({
                   user: {
@@ -167,8 +161,6 @@ export class StrapiAuthNService
       )
       .subscribe({
         next: (response) => {
-          console.log('strapi login response: ', response);
-
           localStorage.setItem('strapiJwt', response.jwt);
 
           this.set({
@@ -206,8 +198,6 @@ export class StrapiAuthNService
       )
       .subscribe({
         next: (response) => {
-          console.log('strapi login response: ', response);
-
           localStorage.setItem('strapiJwt', response.jwt);
 
           this.set({
@@ -236,12 +226,13 @@ export class StrapiAuthNService
   ) => {
     return firstValueFrom(
       this.authNState$.pipe(
-        tap((val) => console.log(`authNState: ${val}`)),
         filter((authNState) => authNState === 'authenticated'),
         map(() => {
           const jwt = localStorage.getItem('strapiJwt');
-          console.log(`strapi jwt: ${jwt}`);
-          return jwt ?? 'no strapi token...';
+          if (!jwt) {
+            throw new Error('Internal Error in getAccessToken.  strapi token not found in local storage.');
+          }
+          return jwt;
         })
       )
     );

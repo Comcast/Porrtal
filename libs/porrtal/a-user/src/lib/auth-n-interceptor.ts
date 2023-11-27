@@ -45,17 +45,8 @@ export class AuthNInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log('AuthNInterceptor: intercept: req: ', req);
-
     if (!this.authN) {
       this.authN = this.injector.get(AUTH_N_INTERFACE);
-    }
-
-    if (!this.authN) {
-      console.log('AuthNInterceptor: intercept: this.authN is null.');
-      return throwError(
-        'Internal Error in AuthNInterceptor: AuthN Service not found'
-      );
     }
 
     if (!this.authNInterceptorConfig) {
@@ -64,33 +55,10 @@ export class AuthNInterceptor implements HttpInterceptor {
       );
     }
 
-    if (!this.authNInterceptorConfig) {
-      console.log(
-        'AuthNInterceptor: intercept: this.authNInterceptorConfig is null.'
-      );
-
-      return throwError(
-        'Internal Error in AuthNInterceptor: AuthNInterceptorConfiguration not found'
-      );
-    }
-
     for (let [pattern, scopes] of this.authNInterceptorConfig
       .protectedResourceMap) {
       if (this.isUrlMatch(req.url, pattern)) {
-        console.log(
-          'AuthNInterceptor: intercept: req.url: ',
-          req.url,
-          ' matches pattern: ',
-          pattern
-        );
-
         if (scopes.length > 0) {
-          console.log(
-            'AuthNInterceptor: intercept: scopes: ',
-            scopes,
-            ' is not empty'
-          );
-
           // Sort the scopes to ensure consistent cache key
           const sortedScopes = scopes.sort().join('|');
           const cachedTokenInfo = this.tokenCache.get(sortedScopes);
@@ -104,7 +72,10 @@ export class AuthNInterceptor implements HttpInterceptor {
             // if getAccessToken is not implemented, throw error
             if (!this.authN?.getAccessToken) {
               return throwError(
-                'Internal Error in AuthNInterceptor: AuthN Service does not implement getAccessToken()'
+                () =>
+                  new Error(
+                    'Internal Error in AuthNInterceptor: AuthN Service does not implement getAccessToken()'
+                  )
               );
             }
 
@@ -152,9 +123,6 @@ export class AuthNInterceptor implements HttpInterceptor {
     }
 
     // If no match is found in the protectedResourceMap
-    console.log(
-      'AuthNInterceptor: intercept: no match found in protectedResourceMap.'
-    );
     return next.handle(req);
   }
 }
