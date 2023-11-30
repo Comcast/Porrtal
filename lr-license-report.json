@@ -7,9 +7,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/angular.git",
-    "remoteVersion": "16.1.7",
-    "installedVersion": "16.1.7",
-    "definedVersion": "16.1.7",
+    "remoteVersion": "17.0.3",
+    "installedVersion": "17.0.3",
+    "definedVersion": "17.0.3",
     "author": "angular"
   },
   {
@@ -20,9 +20,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/components.git",
-    "remoteVersion": "16.1.6",
-    "installedVersion": "16.1.6",
-    "definedVersion": "16.1.6",
+    "remoteVersion": "17.0.1",
+    "installedVersion": "17.0.1",
+    "definedVersion": "17.0.1",
     "author": "n/a"
   },
   {
@@ -33,9 +33,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/angular.git",
-    "remoteVersion": "16.1.7",
-    "installedVersion": "16.1.7",
-    "definedVersion": "16.1.7",
+    "remoteVersion": "17.0.3",
+    "installedVersion": "17.0.3",
+    "definedVersion": "17.0.3",
     "author": "angular"
   },
   {
@@ -46,9 +46,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/angular.git",
-    "remoteVersion": "16.1.7",
-    "installedVersion": "16.1.7",
-    "definedVersion": "16.1.7",
+    "remoteVersion": "17.0.3",
+    "installedVersion": "17.0.3",
+    "definedVersion": "17.0.3",
     "author": "angular"
   },
   {
@@ -59,9 +59,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/angular.git",
-    "remoteVersion": "16.1.7",
-    "installedVersion": "16.1.7",
-    "definedVersion": "16.1.7",
+    "remoteVersion": "17.0.3",
+    "installedVersion": "17.0.3",
+    "definedVersion": "17.0.3",
     "author": "angular"
   },
   {
@@ -72,9 +72,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/angular.git",
-    "remoteVersion": "16.1.7",
-    "installedVersion": "16.1.7",
-    "definedVersion": "16.1.7",
+    "remoteVersion": "17.0.3",
+    "installedVersion": "17.0.3",
+    "definedVersion": "17.0.3",
     "author": "angular"
   },
   {
@@ -85,9 +85,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/components.git",
-    "remoteVersion": "16.1.6",
-    "installedVersion": "16.1.6",
-    "definedVersion": "16.1.6",
+    "remoteVersion": "17.0.1",
+    "installedVersion": "17.0.1",
+    "definedVersion": "^17.0.1",
     "author": "n/a"
   },
   {
@@ -98,9 +98,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/angular.git",
-    "remoteVersion": "16.1.7",
-    "installedVersion": "16.1.7",
-    "definedVersion": "16.1.7",
+    "remoteVersion": "17.0.3",
+    "installedVersion": "17.0.3",
+    "definedVersion": "17.0.3",
     "author": "angular"
   },
   {
@@ -111,9 +111,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/angular.git",
-    "remoteVersion": "16.1.7",
-    "installedVersion": "16.1.7",
-    "definedVersion": "16.1.7",
+    "remoteVersion": "17.0.3",
+    "installedVersion": "17.0.3",
+    "definedVersion": "17.0.3",
     "author": "angular"
   },
   {
@@ -124,9 +124,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/angular.git",
-    "remoteVersion": "16.1.7",
-    "installedVersion": "16.1.7",
-    "definedVersion": "16.1.7",
+    "remoteVersion": "17.0.3",
+    "installedVersion": "17.0.3",
+    "definedVersion": "17.0.3",
     "author": "angular"
   },
   {
@@ -163,9 +163,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/AzureAD/microsoft-authentication-library-for-js.git",
-    "remoteVersion": "2.5.9",
-    "installedVersion": "2.5.1",
-    "definedVersion": "^2.5.1",
+    "remoteVersion": "3.0.8",
+    "installedVersion": "3.0.7",
+    "definedVersion": "^3.0.7",
     "author": "Microsoft nugetaad@microsoft.com https://www.microsoft.com"
   },
   {
@@ -176,9 +176,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/AzureAD/microsoft-authentication-library-for-js.git",
-    "remoteVersion": "2.38.0",
-    "installedVersion": "2.32.1",
-    "definedVersion": "^2.32.1",
+    "remoteVersion": "3.5.0",
+    "installedVersion": "3.5.0",
+    "definedVersion": "^3.5.0",
     "author": "Microsoft nugetaad@microsoft.com https://www.microsoft.com"
   },
   {
@@ -189,9 +189,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/AzureAD/microsoft-authentication-library-for-js.git",
-    "remoteVersion": "1.5.9",
-    "installedVersion": "1.5.1",
-    "definedVersion": "^1.5.1",
+    "remoteVersion": "2.0.7",
+    "installedVersion": "2.0.7",
+    "definedVersion": "^2.0.7",
     "author": "Microsoft nugetaad@microsoft.com https://www.microsoft.com"
   },
   {
@@ -254,7 +254,7 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/mui/material-ui.git",
-    "remoteVersion": "5.14.2",
+    "remoteVersion": "5.14.19",
     "installedVersion": "5.11.1",
     "definedVersion": "^5.11.1",
     "author": "MUI Team"
@@ -268,7 +268,7 @@
     "licenseType": "MIT",
     "link": "https://github.com/popperjs/popper-core.git",
     "remoteVersion": "2.11.8",
-    "installedVersion": "2.11.6",
+    "installedVersion": "2.11.8",
     "definedVersion": "^2.11.6",
     "author": "Federico Zivolo <federico.zivolo@gmail.com>"
   },
@@ -319,9 +319,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/ag-grid/ag-grid.git",
-    "remoteVersion": "28.2.1",
-    "installedVersion": "28.2.1",
-    "definedVersion": "^28.1.1",
+    "remoteVersion": "30.2.1",
+    "installedVersion": "30.0.6",
+    "definedVersion": "^30.0.6",
     "author": "n/a"
   },
   {
@@ -332,9 +332,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/ag-grid/ag-grid.git",
-    "remoteVersion": "28.2.1",
-    "installedVersion": "28.2.1",
-    "definedVersion": "^28.1.1",
+    "remoteVersion": "30.2.1",
+    "installedVersion": "30.0.6",
+    "definedVersion": "^30.0.6",
     "author": "Niall Crosby <niall.crosby@ag-grid.com>"
   },
   {
@@ -345,9 +345,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/ag-grid/ag-grid.git",
-    "remoteVersion": "28.2.1",
-    "installedVersion": "28.2.1",
-    "definedVersion": "^28.1.1",
+    "remoteVersion": "30.2.1",
+    "installedVersion": "30.0.6",
+    "definedVersion": "^30.0.6",
     "author": "Niall Crosby <niall.crosby@ag-grid.com>"
   },
   {
@@ -379,12 +379,25 @@
   {
     "department": "kessler",
     "relatedTo": "stuff",
+    "name": "axios",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/axios/axios.git",
+    "remoteVersion": "1.6.2",
+    "installedVersion": "1.6.1",
+    "definedVersion": "^1.6.1",
+    "author": "Matt Zabriskie"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
     "name": "core-js",
     "licensePeriod": "perpetual",
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/zloirock/core-js.git",
-    "remoteVersion": "3.32.0",
+    "remoteVersion": "3.33.3",
     "installedVersion": "3.26.1",
     "definedVersion": "^3.6.5",
     "author": "Denis Pushkarev zloirock@zloirock.ru http://zloirock.ru"
@@ -540,9 +553,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/tonysamperi/ngx-popperjs.git",
-    "remoteVersion": "14.1.6",
-    "installedVersion": "14.1.2",
-    "definedVersion": "^14.1.2",
+    "remoteVersion": "16.0.7",
+    "installedVersion": "16.0.7",
+    "definedVersion": "^16.0.7",
     "author": "Tony Samperi github@tonysamperi.it"
   },
   {
@@ -696,8 +709,8 @@
     "material": "material",
     "licenseType": "0BSD",
     "link": "git+https://github.com/Microsoft/tslib.git",
-    "remoteVersion": "2.6.1",
-    "installedVersion": "2.5.3",
+    "remoteVersion": "2.6.2",
+    "installedVersion": "2.6.2",
     "definedVersion": "^2.3.0",
     "author": "Microsoft Corp."
   },
@@ -722,9 +735,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git://github.com/angular/angular.git",
-    "remoteVersion": "0.13.1",
-    "installedVersion": "0.13.1",
-    "definedVersion": "0.13.1",
+    "remoteVersion": "0.14.2",
+    "installedVersion": "0.14.2",
+    "definedVersion": "0.14.2",
     "author": "Brian Ford"
   },
   {
@@ -735,9 +748,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/angular-cli.git",
-    "remoteVersion": "16.1.6",
-    "installedVersion": "16.1.6",
-    "definedVersion": "16.1.6",
+    "remoteVersion": "17.0.1",
+    "installedVersion": "17.0.1",
+    "definedVersion": "17.0.1",
     "author": "Angular Authors"
   },
   {
@@ -748,9 +761,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/angular-cli.git",
-    "remoteVersion": "16.1.6",
-    "installedVersion": "16.1.6",
-    "definedVersion": "16.1.6",
+    "remoteVersion": "17.0.1",
+    "installedVersion": "17.0.1",
+    "definedVersion": "17.0.1",
     "author": "Angular Authors"
   },
   {
@@ -761,9 +774,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/angular-cli.git",
-    "remoteVersion": "16.1.6",
-    "installedVersion": "16.1.6",
-    "definedVersion": "16.1.6",
+    "remoteVersion": "17.0.1",
+    "installedVersion": "17.0.1",
+    "definedVersion": "17.0.1",
     "author": "Angular Authors"
   },
   {
@@ -774,9 +787,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular-eslint/angular-eslint.git",
-    "remoteVersion": "16.0.3",
-    "installedVersion": "16.0.3",
-    "definedVersion": "16.0.3",
+    "remoteVersion": "17.0.1",
+    "installedVersion": "17.0.1",
+    "definedVersion": "17.0.1",
     "author": "n/a"
   },
   {
@@ -787,9 +800,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular-eslint/angular-eslint.git",
-    "remoteVersion": "16.0.3",
-    "installedVersion": "16.0.3",
-    "definedVersion": "16.0.3",
+    "remoteVersion": "17.0.1",
+    "installedVersion": "17.0.1",
+    "definedVersion": "17.0.1",
     "author": "n/a"
   },
   {
@@ -800,9 +813,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular-eslint/angular-eslint.git",
-    "remoteVersion": "16.0.3",
-    "installedVersion": "16.0.3",
-    "definedVersion": "16.0.3",
+    "remoteVersion": "17.0.1",
+    "installedVersion": "17.0.1",
+    "definedVersion": "17.0.1",
     "author": "n/a"
   },
   {
@@ -813,9 +826,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/angular-cli.git",
-    "remoteVersion": "16.1.6",
-    "installedVersion": "16.1.6",
-    "definedVersion": "~16.1.0",
+    "remoteVersion": "17.0.5",
+    "installedVersion": "17.0.2",
+    "definedVersion": "~17.0.0",
     "author": "Angular Authors"
   },
   {
@@ -826,9 +839,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/angular.git",
-    "remoteVersion": "16.1.7",
-    "installedVersion": "16.1.7",
-    "definedVersion": "16.1.7",
+    "remoteVersion": "17.0.3",
+    "installedVersion": "17.0.3",
+    "definedVersion": "17.0.3",
     "author": "n/a"
   },
   {
@@ -839,9 +852,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/angular.git",
-    "remoteVersion": "16.1.7",
-    "installedVersion": "16.1.7",
-    "definedVersion": "16.1.7",
+    "remoteVersion": "17.0.3",
+    "installedVersion": "17.0.3",
+    "definedVersion": "17.0.3",
     "author": "angular"
   },
   {
@@ -852,10 +865,10 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "https://github.com/babel/babel.git",
-    "remoteVersion": "7.12.13",
-    "installedVersion": "7.12.13",
-    "definedVersion": "7.12.13",
-    "author": "Sebastian McKenzie <sebmck@gmail.com>"
+    "remoteVersion": "7.23.5",
+    "installedVersion": "7.23.2",
+    "definedVersion": "^7.14.5",
+    "author": "The Babel Team (https://babel.dev/team)"
   },
   {
     "department": "kessler",
@@ -865,7 +878,7 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "https://github.com/babel/babel.git",
-    "remoteVersion": "7.22.5",
+    "remoteVersion": "7.23.3",
     "installedVersion": "7.18.6",
     "definedVersion": "^7.14.5",
     "author": "The Babel Team (https://babel.dev/team)"
@@ -891,7 +904,7 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/conventional-changelog/commitlint.git",
-    "remoteVersion": "17.6.7",
+    "remoteVersion": "17.8.1",
     "installedVersion": "17.3.0",
     "definedVersion": "^17.0.0",
     "author": "Mario Nebl hello@herebecode.com"
@@ -904,7 +917,7 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/conventional-changelog/commitlint.git",
-    "remoteVersion": "17.6.7",
+    "remoteVersion": "17.8.1",
     "installedVersion": "17.3.0",
     "definedVersion": "^17.0.0",
     "author": "Mario Nebl <hello@herebecode.com>"
@@ -930,9 +943,22 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/nrwl/nx.git",
-    "remoteVersion": "16.5.5",
-    "installedVersion": "16.5.5",
-    "definedVersion": "16.5.5",
+    "remoteVersion": "17.1.2",
+    "installedVersion": "17.1.2",
+    "definedVersion": "17.1.2",
+    "author": "Victor Savkin"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "@nx/angular",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/nrwl/nx.git",
+    "remoteVersion": "17.1.2",
+    "installedVersion": "17.1.2",
+    "definedVersion": "17.1.2",
     "author": "Victor Savkin"
   },
   {
@@ -943,9 +969,48 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/nrwl/nx.git",
-    "remoteVersion": "16.5.5",
-    "installedVersion": "16.5.5",
-    "definedVersion": "16.5.5",
+    "remoteVersion": "17.1.2",
+    "installedVersion": "17.1.2",
+    "definedVersion": "17.1.2",
+    "author": "Victor Savkin"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "@nx/eslint",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/nrwl/nx.git",
+    "remoteVersion": "17.1.2",
+    "installedVersion": "17.1.2",
+    "definedVersion": "17.1.2",
+    "author": "Victor Savkin"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "@nx/eslint-plugin",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/nrwl/nx.git",
+    "remoteVersion": "17.1.2",
+    "installedVersion": "17.1.2",
+    "definedVersion": "17.1.2",
+    "author": "Victor Savkin"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "@nx/jest",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/nrwl/nx.git",
+    "remoteVersion": "17.1.2",
+    "installedVersion": "17.1.2",
+    "definedVersion": "17.1.2",
     "author": "Victor Savkin"
   },
   {
@@ -956,22 +1021,22 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/nrwl/nx.git",
-    "remoteVersion": "16.5.5",
-    "installedVersion": "16.5.5",
-    "definedVersion": "16.5.5",
+    "remoteVersion": "17.1.2",
+    "installedVersion": "17.1.2",
+    "definedVersion": "17.1.2",
     "author": "n/a"
   },
   {
     "department": "kessler",
     "relatedTo": "stuff",
-    "name": "@nx/eslint",
+    "name": "@nx/next",
     "licensePeriod": "perpetual",
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/nrwl/nx.git",
-    "remoteVersion": "16.5.5",
-    "installedVersion": "16.5.5",
-    "definedVersion": "16.5.5",
+    "remoteVersion": "17.1.2",
+    "installedVersion": "17.1.2",
+    "definedVersion": "17.1.2",
     "author": "Victor Savkin"
   },
   {
@@ -982,9 +1047,22 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/nrwl/nx.git",
-    "remoteVersion": "16.5.5",
-    "installedVersion": "16.5.5",
-    "definedVersion": "16.5.5",
+    "remoteVersion": "17.1.2",
+    "installedVersion": "17.1.2",
+    "definedVersion": "17.1.2",
+    "author": "Victor Savkin"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "@nx/rollup",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/nrwl/nx.git",
+    "remoteVersion": "17.1.2",
+    "installedVersion": "17.1.2",
+    "definedVersion": "17.1.2",
     "author": "Victor Savkin"
   },
   {
@@ -995,9 +1073,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/nrwl/nx.git",
-    "remoteVersion": "16.5.5",
-    "installedVersion": "16.5.5",
-    "definedVersion": "16.5.5",
+    "remoteVersion": "17.1.2",
+    "installedVersion": "17.1.2",
+    "definedVersion": "17.1.2",
     "author": "Isaac Mann"
   },
   {
@@ -1008,9 +1086,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/nrwl/nx.git",
-    "remoteVersion": "16.5.5",
-    "installedVersion": "16.5.5",
-    "definedVersion": "16.5.5",
+    "remoteVersion": "17.1.2",
+    "installedVersion": "17.1.2",
+    "definedVersion": "17.1.2",
     "author": "Victor Savkin"
   },
   {
@@ -1021,9 +1099,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/nrwl/nx.git",
-    "remoteVersion": "16.5.5",
-    "installedVersion": "16.5.5",
-    "definedVersion": "16.5.5",
+    "remoteVersion": "17.1.2",
+    "installedVersion": "17.1.2",
+    "definedVersion": "17.1.2",
     "author": "Victor Savkin"
   },
   {
@@ -1034,9 +1112,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/nrwl/nx.git",
-    "remoteVersion": "16.5.5",
-    "installedVersion": "16.5.5",
-    "definedVersion": "16.5.5",
+    "remoteVersion": "17.1.2",
+    "installedVersion": "17.1.2",
+    "definedVersion": "17.1.2",
     "author": "Victor Savkin"
   },
   {
@@ -1047,7 +1125,7 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/pmmmwh/react-refresh-webpack-plugin.git",
-    "remoteVersion": "0.5.10",
+    "remoteVersion": "0.5.11",
     "installedVersion": "0.5.10",
     "definedVersion": "^0.5.7",
     "author": "Michael Mok"
@@ -1073,9 +1151,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/angular/angular-cli.git",
-    "remoteVersion": "16.1.6",
-    "installedVersion": "16.1.6",
-    "definedVersion": "16.1.6",
+    "remoteVersion": "17.0.1",
+    "installedVersion": "17.0.1",
+    "definedVersion": "17.0.1",
     "author": "Angular Authors"
   },
   {
@@ -1086,9 +1164,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "https://github.com/storybookjs/storybook.git",
-    "remoteVersion": "7.1.1",
-    "installedVersion": "7.1.1",
-    "definedVersion": "7.1.1",
+    "remoteVersion": "7.5.3",
+    "installedVersion": "7.5.3",
+    "definedVersion": "7.5.3",
     "author": "n/a"
   },
   {
@@ -1099,9 +1177,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "https://github.com/storybookjs/storybook.git",
-    "remoteVersion": "7.1.1",
-    "installedVersion": "7.1.1",
-    "definedVersion": "7.1.1",
+    "remoteVersion": "7.5.3",
+    "installedVersion": "7.5.3",
+    "definedVersion": "7.5.3",
     "author": "n/a"
   },
   {
@@ -1112,9 +1190,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "https://github.com/storybookjs/storybook.git",
-    "remoteVersion": "7.1.1",
-    "installedVersion": "7.1.1",
-    "definedVersion": "7.1.1",
+    "remoteVersion": "7.5.3",
+    "installedVersion": "7.5.3",
+    "definedVersion": "7.5.3",
     "author": "n/a"
   },
   {
@@ -1125,9 +1203,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "https://github.com/storybookjs/storybook.git",
-    "remoteVersion": "7.1.1",
-    "installedVersion": "7.1.1",
-    "definedVersion": "7.1.1",
+    "remoteVersion": "7.5.3",
+    "installedVersion": "7.5.3",
+    "definedVersion": "7.5.3",
     "author": "n/a"
   },
   {
@@ -1159,6 +1237,32 @@
   {
     "department": "kessler",
     "relatedTo": "stuff",
+    "name": "@swc-node/register",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/swc-project/swc-node.git",
+    "remoteVersion": "1.6.8",
+    "installedVersion": "1.6.8",
+    "definedVersion": "~1.6.7",
+    "author": "LongYinan <github@lyn.one>"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "@swc/core",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "Apache-2.0",
+    "link": "git+https://github.com/swc-project/swc.git",
+    "remoteVersion": "1.3.100",
+    "installedVersion": "1.3.95",
+    "definedVersion": "~1.3.85",
+    "author": "강동윤 <kdy1997.dev@gmail.com>"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
     "name": "@testing-library/react",
     "licensePeriod": "perpetual",
     "material": "material",
@@ -1177,7 +1281,7 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
-    "remoteVersion": "7.4.0",
+    "remoteVersion": "7.4.3",
     "installedVersion": "7.4.0",
     "definedVersion": "^7.4.0",
     "author": "n/a"
@@ -1190,7 +1294,7 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
-    "remoteVersion": "2.1.2",
+    "remoteVersion": "2.1.6",
     "installedVersion": "2.1.2",
     "definedVersion": "^2.1.2",
     "author": "n/a"
@@ -1216,7 +1320,7 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
-    "remoteVersion": "4.3.1",
+    "remoteVersion": "4.3.2",
     "installedVersion": "4.0.8",
     "definedVersion": "^4.0.7",
     "author": "n/a"
@@ -1242,9 +1346,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
-    "remoteVersion": "18.2.14",
-    "installedVersion": "18.2.14",
-    "definedVersion": "18.2.14",
+    "remoteVersion": "18.2.24",
+    "installedVersion": "18.2.24",
+    "definedVersion": "18.2.24",
     "author": "n/a"
   },
   {
@@ -1255,9 +1359,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
-    "remoteVersion": "18.2.6",
-    "installedVersion": "18.2.6",
-    "definedVersion": "18.2.6",
+    "remoteVersion": "18.2.9",
+    "installedVersion": "18.2.9",
+    "definedVersion": "18.2.9",
     "author": "n/a"
   },
   {
@@ -1268,7 +1372,7 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
-    "remoteVersion": "2.0.8",
+    "remoteVersion": "2.0.12",
     "installedVersion": "2.0.8",
     "definedVersion": "^2.0.8",
     "author": "n/a"
@@ -1294,7 +1398,7 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
-    "remoteVersion": "15.5.7",
+    "remoteVersion": "15.5.10",
     "installedVersion": "15.5.5",
     "definedVersion": "^15.5.5",
     "author": "n/a"
@@ -1307,9 +1411,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/typescript-eslint/typescript-eslint.git",
-    "remoteVersion": "5.62.0",
-    "installedVersion": "5.62.0",
-    "definedVersion": "5.62.0",
+    "remoteVersion": "6.11.0",
+    "installedVersion": "6.11.0",
+    "definedVersion": "6.11.0",
     "author": "n/a"
   },
   {
@@ -1320,9 +1424,9 @@
     "material": "material",
     "licenseType": "BSD-2-Clause",
     "link": "git+https://github.com/typescript-eslint/typescript-eslint.git",
-    "remoteVersion": "5.62.0",
-    "installedVersion": "5.62.0",
-    "definedVersion": "5.62.0",
+    "remoteVersion": "6.11.0",
+    "installedVersion": "6.11.0",
+    "definedVersion": "6.11.0",
     "author": "n/a"
   },
   {
@@ -1372,9 +1476,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/cypress-io/cypress.git",
-    "remoteVersion": "12.17.2",
-    "installedVersion": "12.17.2",
-    "definedVersion": "12.17.2",
+    "remoteVersion": "13.6.0",
+    "installedVersion": "13.3.3",
+    "definedVersion": "^13.0.0",
     "author": "n/a"
   },
   {
@@ -1385,9 +1489,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/eslint/eslint.git",
-    "remoteVersion": "8.15.0",
-    "installedVersion": "8.15.0",
-    "definedVersion": "8.15.0",
+    "remoteVersion": "8.46.0",
+    "installedVersion": "8.46.0",
+    "definedVersion": "8.46.0",
     "author": "Nicholas C. Zakas <nicholas+npm@nczconsulting.com>"
   },
   {
@@ -1411,9 +1515,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/prettier/eslint-config-prettier.git",
-    "remoteVersion": "8.1.0",
-    "installedVersion": "8.1.0",
-    "definedVersion": "8.1.0",
+    "remoteVersion": "9.0.0",
+    "installedVersion": "9.0.0",
+    "definedVersion": "9.0.0",
     "author": "Simon Lydell"
   },
   {
@@ -1424,10 +1528,10 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/cypress-io/eslint-plugin-cypress.git",
-    "remoteVersion": "2.13.3",
-    "installedVersion": "2.12.1",
-    "definedVersion": "^2.10.3",
-    "author": "Chris Breiding (chris@cypress.io)"
+    "remoteVersion": "2.14.0",
+    "installedVersion": "2.14.0",
+    "definedVersion": "2.14.0",
+    "author": "Cypress-io"
   },
   {
     "department": "kessler",
@@ -1489,7 +1593,7 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/storybookjs/eslint-plugin-storybook.git",
-    "remoteVersion": "0.6.13",
+    "remoteVersion": "0.6.15",
     "installedVersion": "0.6.13",
     "definedVersion": "^0.6.13",
     "author": "yannbf@gmail.com"
@@ -1541,10 +1645,23 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/thymikee/jest-preset-angular.git",
-    "remoteVersion": "13.1.1",
-    "installedVersion": "13.1.1",
-    "definedVersion": "13.1.1",
+    "remoteVersion": "13.1.4",
+    "installedVersion": "13.1.4",
+    "definedVersion": "13.1.4",
     "author": "Michał Pierzchała <thymikee@gmail.com>"
+  },
+  {
+    "department": "kessler",
+    "relatedTo": "stuff",
+    "name": "jsonc-eslint-parser",
+    "licensePeriod": "perpetual",
+    "material": "material",
+    "licenseType": "MIT",
+    "link": "git+https://github.com/ota-meshi/jsonc-eslint-parser.git",
+    "remoteVersion": "2.4.0",
+    "installedVersion": "2.3.0",
+    "definedVersion": "^2.1.0",
+    "author": "Yosuke Ota"
   },
   {
     "department": "kessler",
@@ -1580,9 +1697,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/ng-packagr/ng-packagr.git",
-    "remoteVersion": "16.1.0",
-    "installedVersion": "16.1.0",
-    "definedVersion": "16.1.0",
+    "remoteVersion": "17.0.1",
+    "installedVersion": "17.0.1",
+    "definedVersion": "17.0.1",
     "author": "David Herges <david@spektrakel.de>"
   },
   {
@@ -1593,9 +1710,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/nrwl/nx.git",
-    "remoteVersion": "16.5.5",
-    "installedVersion": "16.5.5",
-    "definedVersion": "16.5.5",
+    "remoteVersion": "17.1.2",
+    "installedVersion": "17.1.2",
+    "definedVersion": "17.1.2",
     "author": "Victor Savkin"
   },
   {
@@ -1762,9 +1879,9 @@
     "material": "material",
     "licenseType": "Apache-2.0",
     "link": "git+https://github.com/Microsoft/TypeScript.git",
-    "remoteVersion": "5.1.6",
-    "installedVersion": "5.1.6",
-    "definedVersion": "5.1.6",
+    "remoteVersion": "5.2.2",
+    "installedVersion": "5.2.2",
+    "definedVersion": "5.2.2",
     "author": "Microsoft Corp."
   },
   {
@@ -1801,61 +1918,9 @@
     "material": "material",
     "licenseType": "MIT",
     "link": "git+https://github.com/survivejs/webpack-merge.git",
-    "remoteVersion": "5.9.0",
-    "installedVersion": "5.9.0",
+    "remoteVersion": "5.10.0",
+    "installedVersion": "5.10.0",
     "definedVersion": "^5.8.0",
     "author": "Juho Vepsalainen <bebraw@gmail.com>"
-  },
-  {
-    "department": "kessler",
-    "relatedTo": "stuff",
-    "name": "@nx/eslint-plugin",
-    "licensePeriod": "perpetual",
-    "material": "material",
-    "licenseType": "MIT",
-    "link": "git+https://github.com/nrwl/nx.git",
-    "remoteVersion": "16.5.5",
-    "installedVersion": "16.5.5",
-    "definedVersion": "16.5.5",
-    "author": "Victor Savkin"
-  },
-  {
-    "department": "kessler",
-    "relatedTo": "stuff",
-    "name": "@nx/next",
-    "licensePeriod": "perpetual",
-    "material": "material",
-    "licenseType": "MIT",
-    "link": "git+https://github.com/nrwl/nx.git",
-    "remoteVersion": "16.5.5",
-    "installedVersion": "16.5.5",
-    "definedVersion": "16.5.5",
-    "author": "Victor Savkin"
-  },
-  {
-    "department": "kessler",
-    "relatedTo": "stuff",
-    "name": "@nx/jest",
-    "licensePeriod": "perpetual",
-    "material": "material",
-    "licenseType": "MIT",
-    "link": "git+https://github.com/nrwl/nx.git",
-    "remoteVersion": "16.5.5",
-    "installedVersion": "16.5.5",
-    "definedVersion": "16.5.5",
-    "author": "Victor Savkin"
-  },
-  {
-    "department": "kessler",
-    "relatedTo": "stuff",
-    "name": "@nx/angular",
-    "licensePeriod": "perpetual",
-    "material": "material",
-    "licenseType": "MIT",
-    "link": "git+https://github.com/nrwl/nx.git",
-    "remoteVersion": "16.5.5",
-    "installedVersion": "16.5.5",
-    "definedVersion": "16.5.5",
-    "author": "Victor Savkin"
   }
 ]
