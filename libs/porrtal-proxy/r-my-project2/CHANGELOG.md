@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/comcast-porrtal/porrtal/compare/v0.11.0...v0.12.0) (2023-11-30)
+
+
+### Features
+
+* **workspace:** add copyright info to new files ([1cfc3a8](https://github.com/comcast-porrtal/porrtal/commit/1cfc3a84beccd061c93ad2b723ab0e6041f357f1))
+
+
+
+
+
 # [0.11.0](https://github.com/comcast-porrtal/porrtal/compare/v0.10.0...v0.11.0) (2023-11-21)
 
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/Comcast/Porrtal/compare/v0.11.0...v0.12.0) (2023-11-30)
+
+
+### Bug Fixes
+
+* **@porrtal/a-shell-material:** fix card-container loading in angular app ([20e4c07](https://github.com/Comcast/Porrtal/commit/20e4c075339e298f0b881d0c588e0805acb1dcda))
+* **@porrtal/a-shell-material:** fix typo in orphan auth z card ([34c722b](https://github.com/Comcast/Porrtal/commit/34c722b8d81b28dd24162158e0f0713397cf8f17))
+* **@porrtal/a-shell-material:** fix viewState inputs and data inputs ([e5fc3c2](https://github.com/Comcast/Porrtal/commit/e5fc3c266ea26450b12ee5bcc7d74dc6c443e7ac))
+* **@porrtal/a-shell-material:** remove ag-grid styles from lib,  define in app to give style control ([acc15ea](https://github.com/Comcast/Porrtal/commit/acc15eabc5ca6e050b30974358bd4468b63ef2cf))
+
+
+
+
+
 # [0.11.0](https://github.com/Comcast/Porrtal/compare/v0.10.0...v0.11.0) (2023-11-21)
 
 
