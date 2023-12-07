@@ -23,8 +23,8 @@ import {
   HttpInterceptor,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { AUTH_N_INTERFACE } from '@porrtal/a-user';
-import { AuthNInterface } from '@porrtal/a-user';
+import { AUTH_N_INTERFACE } from './auth-n-interface';
+import { AuthNInterface } from './auth-n-interface';
 
 export interface AuthNInterceptorConfiguration {
   protectedResourceMap: Map<string, string[]>;
