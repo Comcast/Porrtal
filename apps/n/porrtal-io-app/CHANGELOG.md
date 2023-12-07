@@ -3,25 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/comcast-porrtal/porrtal/compare/v0.12.0...v0.12.1) (2023-12-07)
+
+**Note:** Version bump only for package n-porrtal-io-app
+
 # [0.12.0](https://github.com/comcast-porrtal/porrtal/compare/v0.11.0...v0.12.0) (2023-11-30)
 
 **Note:** Version bump only for package n-porrtal-io-app
 
-
-
-
-
 # [0.11.0](https://github.com/comcast-porrtal/porrtal/compare/v0.10.0...v0.11.0) (2023-11-21)
-
 
 ### Features
 
-* **n-porrtal-io-app:** update angular static web application ([1ea15b7](https://github.com/comcast-porrtal/porrtal/commit/1ea15b778b929eaee291c301d1f0fc757886d2d5))
-* **workspace:** migrate to nx 17.1.2 ([1cc3048](https://github.com/comcast-porrtal/porrtal/commit/1cc3048b60a9eb41bb1512fc4f448ee6feb85dff))
-
-
-
-
+- **n-porrtal-io-app:** update angular static web application ([1ea15b7](https://github.com/comcast-porrtal/porrtal/commit/1ea15b778b929eaee291c301d1f0fc757886d2d5))
+- **workspace:** migrate to nx 17.1.2 ([1cc3048](https://github.com/comcast-porrtal/porrtal/commit/1cc3048b60a9eb41bb1512fc4f448ee6feb85dff))
 
 # [0.10.0](https://github.com/comcast-porrtal/porrtal/compare/v0.9.6...v0.10.0) (2023-11-19)
 

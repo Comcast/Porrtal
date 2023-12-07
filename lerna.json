@@ -1,19 +1,14 @@
 {
-  "packages": [
-    "apps/**",
-    "libs/*/*"
-  ],
+  "packages": ["apps/**", "libs/*/*"],
   "command": {
     "publish": {
       "conventionalCommits": true
     },
     "version": {
-      "allowBranch": [
-        "main"
-      ],
+      "allowBranch": ["main"],
       "message": "chore(release): release"
     }
   },
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
-  "version": "0.12.0"
+  "version": "0.12.1"
 }

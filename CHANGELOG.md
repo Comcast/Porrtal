@@ -3,71 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.12.0](https://github.com/Comcast/Porrtal/compare/v0.11.0...v0.12.0) (2023-11-30)
-
+## [0.12.1](https://github.com/Comcast/Porrtal/compare/v0.12.0...v0.12.1) (2023-12-07)
 
 ### Bug Fixes
 
-* **@porrtal/a-shell-material:** fix card-container loading in angular app ([20e4c07](https://github.com/Comcast/Porrtal/commit/20e4c075339e298f0b881d0c588e0805acb1dcda))
-* **@porrtal/a-shell-material:** fix typo in orphan auth z card ([34c722b](https://github.com/Comcast/Porrtal/commit/34c722b8d81b28dd24162158e0f0713397cf8f17))
-* **@porrtal/a-shell-material:** fix viewState inputs and data inputs ([e5fc3c2](https://github.com/Comcast/Porrtal/commit/e5fc3c266ea26450b12ee5bcc7d74dc6c443e7ac))
-* **@porrtal/a-shell-material:** remove ag-grid styles from lib,  define in app to give style control ([acc15ea](https://github.com/Comcast/Porrtal/commit/acc15eabc5ca6e050b30974358bd4468b63ef2cf))
-* **@porrtal/a-user-strapi:** fix strapi interceptor injection issue ([bc56f87](https://github.com/Comcast/Porrtal/commit/bc56f87d590c8a989f52cdbe69f61c690ef99ef6))
-* **porrtal-auth-a-auth0-app:** add ag-grid styles ([debf95a](https://github.com/Comcast/Porrtal/commit/debf95ac32a39e4c04a7e2e133baf3e79a0943aa))
-* **porrtal-auth-a-keycloak-app:** add ag-grid styles ([1a91d20](https://github.com/Comcast/Porrtal/commit/1a91d2065561d5eae2799cf5bff09eec3460bc61))
-* **porrtal-auth-a-msal-app:** add ag-grid styles ([38dec93](https://github.com/Comcast/Porrtal/commit/38dec932189df02768e3e7fa6d7581b78bf898c4))
-* **porrtal-auth-a-strapi-app:** add ag-grid styles ([45ba49b](https://github.com/Comcast/Porrtal/commit/45ba49b3443fbb8c1f776a6a771ab0d6486327a8))
+- **@porrtal/r-user-axios:** fix configuration strategy for axios-generated openapi proxy libraries ([582306e](https://github.com/Comcast/Porrtal/commit/582306e394e4e9a18c534dbeecbc48cda9d72d93))
+- **porrtal-auth-n-msal-app:** modify permission for test ([b71a078](https://github.com/Comcast/Porrtal/commit/b71a078e9a1f54f5a3c074ffce7dbd5cba1e409e))
 
+# [0.12.0](https://github.com/Comcast/Porrtal/compare/v0.11.0...v0.12.0) (2023-11-30)
+
+### Bug Fixes
+
+- **@porrtal/a-shell-material:** fix card-container loading in angular app ([20e4c07](https://github.com/Comcast/Porrtal/commit/20e4c075339e298f0b881d0c588e0805acb1dcda))
+- **@porrtal/a-shell-material:** fix typo in orphan auth z card ([34c722b](https://github.com/Comcast/Porrtal/commit/34c722b8d81b28dd24162158e0f0713397cf8f17))
+- **@porrtal/a-shell-material:** fix viewState inputs and data inputs ([e5fc3c2](https://github.com/Comcast/Porrtal/commit/e5fc3c266ea26450b12ee5bcc7d74dc6c443e7ac))
+- **@porrtal/a-shell-material:** remove ag-grid styles from lib, define in app to give style control ([acc15ea](https://github.com/Comcast/Porrtal/commit/acc15eabc5ca6e050b30974358bd4468b63ef2cf))
+- **@porrtal/a-user-strapi:** fix strapi interceptor injection issue ([bc56f87](https://github.com/Comcast/Porrtal/commit/bc56f87d590c8a989f52cdbe69f61c690ef99ef6))
+- **porrtal-auth-a-auth0-app:** add ag-grid styles ([debf95a](https://github.com/Comcast/Porrtal/commit/debf95ac32a39e4c04a7e2e133baf3e79a0943aa))
+- **porrtal-auth-a-keycloak-app:** add ag-grid styles ([1a91d20](https://github.com/Comcast/Porrtal/commit/1a91d2065561d5eae2799cf5bff09eec3460bc61))
+- **porrtal-auth-a-msal-app:** add ag-grid styles ([38dec93](https://github.com/Comcast/Porrtal/commit/38dec932189df02768e3e7fa6d7581b78bf898c4))
+- **porrtal-auth-a-strapi-app:** add ag-grid styles ([45ba49b](https://github.com/Comcast/Porrtal/commit/45ba49b3443fbb8c1f776a6a771ab0d6486327a8))
 
 ### Features
 
-* **@porrtal-proxy/a-my-project2:** copy open api json file from strapi project ([31755f6](https://github.com/Comcast/Porrtal/commit/31755f610035a1f86636877b7bf581baa273f149))
-* **@porrtal-proxy/a-my-project2:** generate proxy classes ([4f12958](https://github.com/Comcast/Porrtal/commit/4f12958bc5e74f6d9dc831633758955220491a99))
-* **@porrtal-proxy/a-my-project2:** remove boilerplate ([a2eb6d4](https://github.com/Comcast/Porrtal/commit/a2eb6d4431c6d493e609a99db461afe02db787d4))
-* **@porrtal-proxy/a-my-project2:** rough in strapi angular proxy library ([50ccc2e](https://github.com/Comcast/Porrtal/commit/50ccc2ee36794dea70cb21b4c782e40b9a9e8ba0))
-* **@porrtal/a-user-strapi, @porrtal/a-user:** add support for angular stand alone component apps ([6ed0c23](https://github.com/Comcast/Porrtal/commit/6ed0c23cf50fcb351adf89c0b9476a4fddef3784))
-* **@porrtal/a-user-strapi:** getAccessToken working ([40e61ee](https://github.com/Comcast/Porrtal/commit/40e61ee8e28e0887e14522d2f4e4c9aaa7ab07fe))
-* **@porrtal/a-user, @porrtal/a-user-strapi:** auth n interceptor working with strapi auth ([2ccc51d](https://github.com/Comcast/Porrtal/commit/2ccc51dcfe66ea9d3dd357487995ff925c8b58c8))
-* **@porrtal/a-user, @porrtal/a-user-strapi:** code cleanup and auto configure protectedResourceMap ([3dae00b](https://github.com/Comcast/Porrtal/commit/3dae00b24fdd6f8937b1a00bf0514ab68986734f))
-* **@porrtal/a-user, @porrtal/a-user-strapi:** rough in getAccessToken, protectedResourceMap config ([2e66300](https://github.com/Comcast/Porrtal/commit/2e66300981061396ace524e2ba2f2a87aeeff5cb))
-* **@porrtal/a-user:** add unit tests for auth-n-interceptor ([bbc1369](https://github.com/Comcast/Porrtal/commit/bbc1369584ebb6d5b07b8a292c80ebc8901436db))
-* **@porrtal/a-user:** strapi-interceptor --> auth-n-interceptor ([0a03e34](https://github.com/Comcast/Porrtal/commit/0a03e34d9562fdb6a761bf417dde336a7a13be88))
-* **@porrtal:** add docs for porrtal-io hybrid nextjs / angular app ([91ea771](https://github.com/Comcast/Porrtal/commit/91ea7710abaa0998ede1c48accdd5d75023745b2))
-* **@porrtal:** update angular api recipe docs ([2738527](https://github.com/Comcast/Porrtal/commit/2738527d89028e6eb01deea66e1f101520f2c876))
-* **porrtal-auth-a-zso-strapi-app:** add angular material to app ([feb1e44](https://github.com/Comcast/Porrtal/commit/feb1e44223a67dbbbf45f9246b46f434cb4b0c54))
-* **porrtal-auth-a-zso-strapi-app:** basic porrtal working ([2c1c48c](https://github.com/Comcast/Porrtal/commit/2c1c48c5d7e094a8125a45b435d28c7f8bbc5f6e))
-* **porrtal-auth-a-zso-strapi-app:** porrtal auth working ([f2544fa](https://github.com/Comcast/Porrtal/commit/f2544fa22b7be2d0dd04f8401a31c4cb0c750023))
-* **porrtal-auth-a-zso-strapi-app:** rough in stand alone component application ([6f952b2](https://github.com/Comcast/Porrtal/commit/6f952b2c7e95677f78b69e3560a4744fa88c027e))
-* **porrtal-auth-a-zso-strapi-app:** rough in views and route pages (and update router) ([62074bd](https://github.com/Comcast/Porrtal/commit/62074bd7f7e2fc82fec85cd58f7ddc6fc7665a41))
-* **workspace:** add copyright info to new files ([1cfc3a8](https://github.com/Comcast/Porrtal/commit/1cfc3a84beccd061c93ad2b723ab0e6041f357f1))
-* **workspace:** update package.json angular material to v17 ([458ce47](https://github.com/Comcast/Porrtal/commit/458ce4783084ed8a05b75bf7b188c9ddeecd20e1))
-
-
-
-
+- **@porrtal-proxy/a-my-project2:** copy open api json file from strapi project ([31755f6](https://github.com/Comcast/Porrtal/commit/31755f610035a1f86636877b7bf581baa273f149))
+- **@porrtal-proxy/a-my-project2:** generate proxy classes ([4f12958](https://github.com/Comcast/Porrtal/commit/4f12958bc5e74f6d9dc831633758955220491a99))
+- **@porrtal-proxy/a-my-project2:** remove boilerplate ([a2eb6d4](https://github.com/Comcast/Porrtal/commit/a2eb6d4431c6d493e609a99db461afe02db787d4))
+- **@porrtal-proxy/a-my-project2:** rough in strapi angular proxy library ([50ccc2e](https://github.com/Comcast/Porrtal/commit/50ccc2ee36794dea70cb21b4c782e40b9a9e8ba0))
+- **@porrtal/a-user-strapi, @porrtal/a-user:** add support for angular stand alone component apps ([6ed0c23](https://github.com/Comcast/Porrtal/commit/6ed0c23cf50fcb351adf89c0b9476a4fddef3784))
+- **@porrtal/a-user-strapi:** getAccessToken working ([40e61ee](https://github.com/Comcast/Porrtal/commit/40e61ee8e28e0887e14522d2f4e4c9aaa7ab07fe))
+- **@porrtal/a-user, @porrtal/a-user-strapi:** auth n interceptor working with strapi auth ([2ccc51d](https://github.com/Comcast/Porrtal/commit/2ccc51dcfe66ea9d3dd357487995ff925c8b58c8))
+- **@porrtal/a-user, @porrtal/a-user-strapi:** code cleanup and auto configure protectedResourceMap ([3dae00b](https://github.com/Comcast/Porrtal/commit/3dae00b24fdd6f8937b1a00bf0514ab68986734f))
+- **@porrtal/a-user, @porrtal/a-user-strapi:** rough in getAccessToken, protectedResourceMap config ([2e66300](https://github.com/Comcast/Porrtal/commit/2e66300981061396ace524e2ba2f2a87aeeff5cb))
+- **@porrtal/a-user:** add unit tests for auth-n-interceptor ([bbc1369](https://github.com/Comcast/Porrtal/commit/bbc1369584ebb6d5b07b8a292c80ebc8901436db))
+- **@porrtal/a-user:** strapi-interceptor --> auth-n-interceptor ([0a03e34](https://github.com/Comcast/Porrtal/commit/0a03e34d9562fdb6a761bf417dde336a7a13be88))
+- **@porrtal:** add docs for porrtal-io hybrid nextjs / angular app ([91ea771](https://github.com/Comcast/Porrtal/commit/91ea7710abaa0998ede1c48accdd5d75023745b2))
+- **@porrtal:** update angular api recipe docs ([2738527](https://github.com/Comcast/Porrtal/commit/2738527d89028e6eb01deea66e1f101520f2c876))
+- **porrtal-auth-a-zso-strapi-app:** add angular material to app ([feb1e44](https://github.com/Comcast/Porrtal/commit/feb1e44223a67dbbbf45f9246b46f434cb4b0c54))
+- **porrtal-auth-a-zso-strapi-app:** basic porrtal working ([2c1c48c](https://github.com/Comcast/Porrtal/commit/2c1c48c5d7e094a8125a45b435d28c7f8bbc5f6e))
+- **porrtal-auth-a-zso-strapi-app:** porrtal auth working ([f2544fa](https://github.com/Comcast/Porrtal/commit/f2544fa22b7be2d0dd04f8401a31c4cb0c750023))
+- **porrtal-auth-a-zso-strapi-app:** rough in stand alone component application ([6f952b2](https://github.com/Comcast/Porrtal/commit/6f952b2c7e95677f78b69e3560a4744fa88c027e))
+- **porrtal-auth-a-zso-strapi-app:** rough in views and route pages (and update router) ([62074bd](https://github.com/Comcast/Porrtal/commit/62074bd7f7e2fc82fec85cd58f7ddc6fc7665a41))
+- **workspace:** add copyright info to new files ([1cfc3a8](https://github.com/Comcast/Porrtal/commit/1cfc3a84beccd061c93ad2b723ab0e6041f357f1))
+- **workspace:** update package.json angular material to v17 ([458ce47](https://github.com/Comcast/Porrtal/commit/458ce4783084ed8a05b75bf7b188c9ddeecd20e1))
 
 # [0.11.0](https://github.com/Comcast/Porrtal/compare/v0.10.0...v0.11.0) (2023-11-21)
 
-
 ### Bug Fixes
 
-* **@porrtal/a-shell-material:** fix legacy material component issues ([c638f99](https://github.com/Comcast/Porrtal/commit/c638f995b95e1e19d391f9508b55d016ecc650c6))
-* **@porrtal/r-user-axios:** fix name in project ([ce63ce4](https://github.com/Comcast/Porrtal/commit/ce63ce4a4c35f08727bb1609c422786e88b71c8c))
-
+- **@porrtal/a-shell-material:** fix legacy material component issues ([c638f99](https://github.com/Comcast/Porrtal/commit/c638f995b95e1e19d391f9508b55d016ecc650c6))
+- **@porrtal/r-user-axios:** fix name in project ([ce63ce4](https://github.com/Comcast/Porrtal/commit/ce63ce4a4c35f08727bb1609c422786e88b71c8c))
 
 ### Features
 
-* **@porrtal/r-user-msal, workspace:** upgrade msal to current, fix react msal ([b487b70](https://github.com/Comcast/Porrtal/commit/b487b7090edd3a94be7411cbb868d3e85650a90c))
-* **@porrtal:** NextJS React OpenAPI Recipe working ([f5159fc](https://github.com/Comcast/Porrtal/commit/f5159fc54177283733eaa0abd405bb440dea78a8))
-* **@porrtal:** update angular docs ([7932f01](https://github.com/Comcast/Porrtal/commit/7932f01254a6cbcf5588e4aa0c731020f218992c))
-* **@porrtal:** update docs to illustrate useAxiosProxy and useAuthNGetToken React hooks ([d36d3fc](https://github.com/Comcast/Porrtal/commit/d36d3fce2423861c83d2b92368418b233c684f3f))
-* **n-porrtal-io-app:** update angular static web application ([1ea15b7](https://github.com/Comcast/Porrtal/commit/1ea15b778b929eaee291c301d1f0fc757886d2d5))
-* **workspace:** migrate to nx 17.1.2 ([1cc3048](https://github.com/Comcast/Porrtal/commit/1cc3048b60a9eb41bb1512fc4f448ee6feb85dff))
-* **workspace:** update nx to 17.1.2 (and angular to 17.0.3) ([1ae057d](https://github.com/Comcast/Porrtal/commit/1ae057d96a67713334d3e580faed2e7535fd810c))
-
-
-
-
+- **@porrtal/r-user-msal, workspace:** upgrade msal to current, fix react msal ([b487b70](https://github.com/Comcast/Porrtal/commit/b487b7090edd3a94be7411cbb868d3e85650a90c))
+- **@porrtal:** NextJS React OpenAPI Recipe working ([f5159fc](https://github.com/Comcast/Porrtal/commit/f5159fc54177283733eaa0abd405bb440dea78a8))
+- **@porrtal:** update angular docs ([7932f01](https://github.com/Comcast/Porrtal/commit/7932f01254a6cbcf5588e4aa0c731020f218992c))
+- **@porrtal:** update docs to illustrate useAxiosProxy and useAuthNGetToken React hooks ([d36d3fc](https://github.com/Comcast/Porrtal/commit/d36d3fce2423861c83d2b92368418b233c684f3f))
+- **n-porrtal-io-app:** update angular static web application ([1ea15b7](https://github.com/Comcast/Porrtal/commit/1ea15b778b929eaee291c301d1f0fc757886d2d5))
+- **workspace:** migrate to nx 17.1.2 ([1cc3048](https://github.com/Comcast/Porrtal/commit/1cc3048b60a9eb41bb1512fc4f448ee6feb85dff))
+- **workspace:** update nx to 17.1.2 (and angular to 17.0.3) ([1ae057d](https://github.com/Comcast/Porrtal/commit/1ae057d96a67713334d3e580faed2e7535fd810c))
 
 # [0.10.0](https://github.com/Comcast/Porrtal/compare/v0.9.6...v0.10.0) (2023-11-19)
 

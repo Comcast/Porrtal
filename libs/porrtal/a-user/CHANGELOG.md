@@ -3,33 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.12.0](https://github.com/Comcast/Porrtal/compare/v0.11.0...v0.12.0) (2023-11-30)
+## [0.12.1](https://github.com/Comcast/Porrtal/compare/v0.12.0...v0.12.1) (2023-12-07)
 
+**Note:** Version bump only for package @porrtal/a-user
+
+# [0.12.0](https://github.com/Comcast/Porrtal/compare/v0.11.0...v0.12.0) (2023-11-30)
 
 ### Features
 
-* **@porrtal/a-user-strapi, @porrtal/a-user:** add support for angular stand alone component apps ([6ed0c23](https://github.com/Comcast/Porrtal/commit/6ed0c23cf50fcb351adf89c0b9476a4fddef3784))
-* **@porrtal/a-user, @porrtal/a-user-strapi:** auth n interceptor working with strapi auth ([2ccc51d](https://github.com/Comcast/Porrtal/commit/2ccc51dcfe66ea9d3dd357487995ff925c8b58c8))
-* **@porrtal/a-user, @porrtal/a-user-strapi:** code cleanup and auto configure protectedResourceMap ([3dae00b](https://github.com/Comcast/Porrtal/commit/3dae00b24fdd6f8937b1a00bf0514ab68986734f))
-* **@porrtal/a-user, @porrtal/a-user-strapi:** rough in getAccessToken, protectedResourceMap config ([2e66300](https://github.com/Comcast/Porrtal/commit/2e66300981061396ace524e2ba2f2a87aeeff5cb))
-* **@porrtal/a-user:** add unit tests for auth-n-interceptor ([bbc1369](https://github.com/Comcast/Porrtal/commit/bbc1369584ebb6d5b07b8a292c80ebc8901436db))
-* **@porrtal/a-user:** strapi-interceptor --> auth-n-interceptor ([0a03e34](https://github.com/Comcast/Porrtal/commit/0a03e34d9562fdb6a761bf417dde336a7a13be88))
-* **workspace:** add copyright info to new files ([1cfc3a8](https://github.com/Comcast/Porrtal/commit/1cfc3a84beccd061c93ad2b723ab0e6041f357f1))
-
-
-
-
+- **@porrtal/a-user-strapi, @porrtal/a-user:** add support for angular stand alone component apps ([6ed0c23](https://github.com/Comcast/Porrtal/commit/6ed0c23cf50fcb351adf89c0b9476a4fddef3784))
+- **@porrtal/a-user, @porrtal/a-user-strapi:** auth n interceptor working with strapi auth ([2ccc51d](https://github.com/Comcast/Porrtal/commit/2ccc51dcfe66ea9d3dd357487995ff925c8b58c8))
+- **@porrtal/a-user, @porrtal/a-user-strapi:** code cleanup and auto configure protectedResourceMap ([3dae00b](https://github.com/Comcast/Porrtal/commit/3dae00b24fdd6f8937b1a00bf0514ab68986734f))
+- **@porrtal/a-user, @porrtal/a-user-strapi:** rough in getAccessToken, protectedResourceMap config ([2e66300](https://github.com/Comcast/Porrtal/commit/2e66300981061396ace524e2ba2f2a87aeeff5cb))
+- **@porrtal/a-user:** add unit tests for auth-n-interceptor ([bbc1369](https://github.com/Comcast/Porrtal/commit/bbc1369584ebb6d5b07b8a292c80ebc8901436db))
+- **@porrtal/a-user:** strapi-interceptor --> auth-n-interceptor ([0a03e34](https://github.com/Comcast/Porrtal/commit/0a03e34d9562fdb6a761bf417dde336a7a13be88))
+- **workspace:** add copyright info to new files ([1cfc3a8](https://github.com/Comcast/Porrtal/commit/1cfc3a84beccd061c93ad2b723ab0e6041f357f1))
 
 # [0.11.0](https://github.com/Comcast/Porrtal/compare/v0.10.0...v0.11.0) (2023-11-21)
 
-
 ### Features
 
-* **workspace:** migrate to nx 17.1.2 ([1cc3048](https://github.com/Comcast/Porrtal/commit/1cc3048b60a9eb41bb1512fc4f448ee6feb85dff))
-
-
-
-
+- **workspace:** migrate to nx 17.1.2 ([1cc3048](https://github.com/Comcast/Porrtal/commit/1cc3048b60a9eb41bb1512fc4f448ee6feb85dff))
 
 # [0.10.0](https://github.com/Comcast/Porrtal/compare/v0.9.6...v0.10.0) (2023-11-19)
 
