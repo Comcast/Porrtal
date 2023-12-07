@@ -20,7 +20,7 @@ import { ShellState } from '@porrtal/r-shell';
 import { ShellMaterial } from '@porrtal/r-shell-material';
 import { View } from '@porrtal/r-api';
 import { AxiosProxy } from '@porrtal/r-user-axios';
-import { Configuration, PorrtalRoleApi } from '@porrtal-proxy/r-my-project2';
+import { Configuration, PorrtalRoleApiFactory } from '@porrtal-proxy/r-my-project2';
 
 const views: View[] = [
   {
@@ -131,10 +131,9 @@ export function Index() {
             <AxiosProxy
               config={[
                 {
-                  baseUrl: 'http://localhost:1337/api',
                   scopes: ['read:stuff'],
-                  apiClasses: [PorrtalRoleApi],
-                  configuration: Configuration,
+                  apiClasses: [PorrtalRoleApiFactory],
+                  configuration: { basePath: 'http://localhost:1337/api' },
                 },
               ]}
             >

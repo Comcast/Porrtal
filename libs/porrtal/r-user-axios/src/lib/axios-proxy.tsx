@@ -2,22 +2,40 @@ import styles from './axios-proxy.module.scss';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useAuthNGetToken } from '@porrtal/r-user';
 
+interface ConfigurationParameters {
+  apiKey?:
+    | string
+    | Promise<string>
+    | ((name: string) => string)
+    | ((name: string) => Promise<string>);
+  username?: string;
+  password?: string;
+  accessToken?:
+    | string
+    | Promise<string>
+    | ((name?: string, scopes?: string[]) => string)
+    | ((name?: string, scopes?: string[]) => Promise<string>);
+  basePath?: string;
+  baseOptions?: any;
+  formDataCtor?: new () => any;
+}
+
+type ApiFactory = (configuration: ConfigurationParameters) => any;
 interface SimpleLibraryEntry {
-  baseUrl: string;
   scopes: string[];
-  configuration: new (...args: any[]) => any;
-  apiClasses: (new (...args: any[]) => any)[];
+  configuration: ConfigurationParameters;
+  apiClasses: ((configuration: ConfigurationParameters) => any)[];
 }
 
 interface LibraryEntry {
-  baseUrl: string;
   scopes: string[];
-  apiInstances: Map<new (...args: any[]) => any, ApiInstanceWrapper>;
+  apiInstances: Map<ApiFactory, ApiInstanceWrapper>;
+  configuration: ConfigurationParameters;
 }
 
 interface ApiInstanceWrapper {
   apiInstance: any | undefined;
-  configuration: new (...args: any[]) => any;
+  configuration: ConfigurationParameters;
 }
 
 function registerLibraryEntries(
@@ -27,7 +45,7 @@ function registerLibraryEntries(
   newSimpleEntries.forEach((newEntry) => {
     const existingEntry = existingEntries.find(
       (entry) =>
-        entry.baseUrl === newEntry.baseUrl &&
+        entry.configuration.basePath === newEntry.configuration.basePath &&
         arrayEquals(entry.scopes, newEntry.scopes)
     );
 
@@ -42,7 +60,7 @@ function registerLibraryEntries(
       });
     } else {
       const newLibraryEntry: LibraryEntry = {
-        baseUrl: newEntry.baseUrl,
+        configuration: newEntry.configuration,
         scopes: newEntry.scopes,
         apiInstances: new Map(
           newEntry.apiClasses.map((apiClass) => [
@@ -63,7 +81,7 @@ function generateReport(libraryEntries: LibraryEntry[]): string {
 
   libraryEntries.forEach((entry, index) => {
     report += `Entry ${index + 1}:\n`;
-    report += `  Base URL: ${entry.baseUrl}\n`;
+    report += `  Base URL: ${entry.configuration.basePath}\n`;
     report += `  Scopes: ${entry.scopes.join(', ')}\n`;
     report += `  Registered APIs: ${
       Array.from(entry.apiInstances.keys())
@@ -105,9 +123,7 @@ export function AxiosProxy(props: AxiosProxyProps) {
 }
 
 // function to return an api class instance for a particaular api class
-export function useAxiosApi<T extends new (...args: any[]) => any>(
-  apiClass: T
-): InstanceType<T> {
+export function useAxiosApi(apiClass: ApiFactory): any {
   const getToken = useAuthNGetToken();
   const libraryEntries = useContext(libraryEntriesContext);
 
@@ -135,17 +151,17 @@ export function useAxiosApi<T extends new (...args: any[]) => any>(
   let apiInstance = apiInstanceWrapper.apiInstance;
 
   if (!apiInstance) {
-    const configuration = new apiInstanceWrapper.configuration({
-      baseUrl: libraryEntry.baseUrl,
+    const configuration: ConfigurationParameters = {
+      basePath: libraryEntry.configuration.basePath,
       accessToken: async () => {
-        return await getToken(libraryEntry.scopes);
+        return await getToken(libraryEntry.scopes).then((token) => token ?? '');
       },
-    });
+    };
 
-    apiInstanceWrapper.apiInstance = new apiClass(configuration);
+    apiInstanceWrapper.apiInstance = apiClass(configuration);
 
     console.log(
-      `Created new instance of ${apiClass.name} for base url ${libraryEntry.baseUrl}`
+      `Created new instance of ${apiClass.name} for base url ${libraryEntry.configuration.basePath}`
     );
   }
 

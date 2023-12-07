@@ -15,7 +15,7 @@ limitations under the License.
 import { useAuthNGetToken } from '@porrtal/r-user';
 import styles from './v1.module.scss';
 import { useEffect, useState } from 'react';
-import { Configuration, PorrtalRoleApi } from '@porrtal-proxy/r-my-project2';
+import { PorrtalRoleApiFactory } from '@porrtal-proxy/r-my-project2';
 import { useAxiosApi, useAxiosProxy } from '@porrtal/r-user-axios';
 
 /* eslint-disable-next-line */
@@ -23,20 +23,19 @@ export interface V1Props {}
 
 export function V1(props: V1Props) {
   const getToken = useAuthNGetToken();
-  const porrtalRoleApi = useAxiosApi(PorrtalRoleApi);
+  const porrtalRoleApi = useAxiosApi(PorrtalRoleApiFactory);
   const axiosProxy = useAxiosProxy();
 
   // add an effect to initialize the axios proxy (not used, initialized in app)
-  // useEffect(() => {
-  //   axiosProxy.registerLibraryEntries([
-  //     {
-  //       baseUrl: 'http://localhost:1337',
-  //       scopes: ['read:stuff'],
-  //       configuration: Configuration,
-  //       apiClasses: [PorrtalRoleApi],
-  //     },
-  //   ]);
-  // }, []);
+  useEffect(() => {
+    axiosProxy.registerLibraryEntries([
+      {
+        scopes: ['read:stuff'],
+        configuration: { basePath: 'http://localhost:1337/api' },
+        apiClasses: [PorrtalRoleApiFactory],
+      },
+    ]);
+  }, []);
 
   // add a state variable to hold the token
   const [token, setToken] = useState<string | undefined>(undefined);
