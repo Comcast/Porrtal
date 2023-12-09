@@ -133,7 +133,7 @@ export function Index() {
                 {
                   scopes: ['read:stuff'],
                   apiClasses: [PorrtalRoleApiFactory],
-                  configuration: { basePath: 'http://localhost:1337/api' },
+                  configurationParameters: { basePath: 'http://localhost:1337/api' },
                 },
               ]}
             >

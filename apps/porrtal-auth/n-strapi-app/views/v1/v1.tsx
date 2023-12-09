@@ -31,7 +31,7 @@ export function V1(props: V1Props) {
     axiosProxy.registerLibraryEntries([
       {
         scopes: ['read:stuff'],
-        configuration: { basePath: 'http://localhost:1337/api' },
+        configurationParameters: { basePath: 'http://localhost:1337/api' },
         apiClasses: [PorrtalRoleApiFactory],
       },
     ]);

@@ -1,41 +1,24 @@
 import styles from './axios-proxy.module.scss';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { useAuthNGetToken } from '@porrtal/r-user';
+import { Configuration, ConfigurationParameters } from './configuration';
 
-interface ConfigurationParameters {
-  apiKey?:
-    | string
-    | Promise<string>
-    | ((name: string) => string)
-    | ((name: string) => Promise<string>);
-  username?: string;
-  password?: string;
-  accessToken?:
-    | string
-    | Promise<string>
-    | ((name?: string, scopes?: string[]) => string)
-    | ((name?: string, scopes?: string[]) => Promise<string>);
-  basePath?: string;
-  baseOptions?: any;
-  formDataCtor?: new () => any;
-}
-
-type ApiFactory = (configuration: ConfigurationParameters) => any;
+type ApiFactory = (configuration: Configuration) => any;
 interface SimpleLibraryEntry {
   scopes: string[];
-  configuration: ConfigurationParameters;
-  apiClasses: ((configuration: ConfigurationParameters) => any)[];
+  configurationParameters: ConfigurationParameters;
+  apiClasses: ((configuration: Configuration) => any)[];
 }
 
 interface LibraryEntry {
   scopes: string[];
   apiInstances: Map<ApiFactory, ApiInstanceWrapper>;
-  configuration: ConfigurationParameters;
+  configurationParameters: ConfigurationParameters;
 }
 
 interface ApiInstanceWrapper {
   apiInstance: any | undefined;
-  configuration: ConfigurationParameters;
+  configurationParameters: ConfigurationParameters;
 }
 
 function registerLibraryEntries(
@@ -45,7 +28,7 @@ function registerLibraryEntries(
   newSimpleEntries.forEach((newEntry) => {
     const existingEntry = existingEntries.find(
       (entry) =>
-        entry.configuration.basePath === newEntry.configuration.basePath &&
+        entry.configurationParameters.basePath === newEntry.configurationParameters.basePath &&
         arrayEquals(entry.scopes, newEntry.scopes)
     );
 
@@ -54,18 +37,18 @@ function registerLibraryEntries(
         if (!existingEntry.apiInstances.has(apiClass)) {
           existingEntry.apiInstances.set(apiClass, {
             apiInstance: undefined,
-            configuration: newEntry.configuration,
+            configurationParameters: newEntry.configurationParameters,
           });
         }
       });
     } else {
       const newLibraryEntry: LibraryEntry = {
-        configuration: newEntry.configuration,
+        configurationParameters: newEntry.configurationParameters,
         scopes: newEntry.scopes,
         apiInstances: new Map(
           newEntry.apiClasses.map((apiClass) => [
             apiClass,
-            { apiInstance: undefined, configuration: newEntry.configuration },
+            { apiInstance: undefined, configurationParameters: newEntry.configurationParameters },
           ])
         ),
       };
@@ -81,7 +64,7 @@ function generateReport(libraryEntries: LibraryEntry[]): string {
 
   libraryEntries.forEach((entry, index) => {
     report += `Entry ${index + 1}:\n`;
-    report += `  Base URL: ${entry.configuration.basePath}\n`;
+    report += `  Base URL: ${entry.configurationParameters.basePath}\n`;
     report += `  Scopes: ${entry.scopes.join(', ')}\n`;
     report += `  Registered APIs: ${
       Array.from(entry.apiInstances.keys())
@@ -151,17 +134,17 @@ export function useAxiosApi(apiClass: ApiFactory): any {
   let apiInstance = apiInstanceWrapper.apiInstance;
 
   if (!apiInstance) {
-    const configuration: ConfigurationParameters = {
-      basePath: libraryEntry.configuration.basePath,
+    const configurationParameters: ConfigurationParameters = {
+      basePath: libraryEntry.configurationParameters.basePath,
       accessToken: async () => {
         return await getToken(libraryEntry.scopes).then((token) => token ?? '');
       },
     };
 
-    apiInstanceWrapper.apiInstance = apiClass(configuration);
+    apiInstanceWrapper.apiInstance = apiClass(new Configuration(configurationParameters));
 
     console.log(
-      `Created new instance of ${apiClass.name} for base url ${libraryEntry.configuration.basePath}`
+      `Created new instance of ${apiClass.name} for base url ${libraryEntry.configurationParameters.basePath}`
     );
   }
 
