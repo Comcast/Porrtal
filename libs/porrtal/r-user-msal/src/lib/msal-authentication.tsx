@@ -17,6 +17,7 @@ import {
   Configuration,
   EventType,
   IPublicClientApplication,
+  InteractionStatus,
   PublicClientApplication,
 } from '@azure/msal-browser';
 import { IMsalContext, MsalProvider, useMsal } from '@azure/msal-react';
@@ -44,6 +45,7 @@ import { MsalAuthZ } from './msal-auth-z';
 interface MsalAuthNInfo {
   authN: AuthNInterface;
   msalContext: IMsalContext;
+  usePopup?: boolean;
   msalInstance: IPublicClientApplication;
   activeAccount?: AccountInfo;
   props: MsalAuthenticationProps;
@@ -174,6 +176,7 @@ const reducer: Reducer<MsalAuthNInfo, AuthNAction | MsalAuthNAction> = (
 
 export interface MsalAuthenticationProps {
   msalConfig: Configuration;
+  usePopup?: boolean;
   children?: React.ReactNode;
 }
 
@@ -186,11 +189,14 @@ type RequestResolver = {
   reject: (reason?: any) => void;
 };
 
+let alreadyInvokedLoginPopupOrRedirect = false;
+
 function MsalAdapter(props: MsalAuthenticationProps) {
   const msalContext = useMsal();
   const [state, dispatch] = useReducer(reducer, {
     authN: initalAuthN,
     msalContext,
+    usePopup: props.usePopup,
     msalInstance: new PublicClientApplication(props.msalConfig),
     props,
     localState: { loginCount: 0 },
@@ -212,7 +218,8 @@ function MsalAdapter(props: MsalAuthenticationProps) {
     state.msalInstance.initialize().then(() => {
       state.msalInstance.addEventCallback((event: any) => {
         if (
-          event.eventType === EventType.LOGIN_SUCCESS &&
+          (event.eventType === EventType.LOGIN_SUCCESS ||
+            event.eventType === EventType.ACQUIRE_TOKEN_SUCCESS) &&
           event.payload.account
         ) {
           const account = event.payload.account;
@@ -246,8 +253,36 @@ function MsalAdapter(props: MsalAuthenticationProps) {
           // Check if user signed in
           const account = state.msalInstance.getActiveAccount();
           if (!account) {
-            // redirect anonymous user to login page
-            state.msalInstance.loginRedirect();
+            // don't do anything if we are already in the middle of a redirect or popup
+            if (
+              state.msalContext.inProgress === InteractionStatus.None &&
+              !alreadyInvokedLoginPopupOrRedirect
+            ) {
+              alreadyInvokedLoginPopupOrRedirect = true;
+
+              // see if we are configured to use popup (vs redirect)
+              if (state.usePopup) {
+                // we are in popup mode, so open a popup
+                state.msalInstance
+                  .loginPopup()
+                  .then((response) => {
+                    alreadyInvokedLoginPopupOrRedirect = false;
+                  })
+                  .catch((error) => {
+                    console.log('msal auth n: login popup error...', error);
+                  });
+              } else {
+                // we are in redirect mode, so redirect to login
+                state.msalInstance
+                  .loginRedirect()
+                  .then((response) => {
+                    alreadyInvokedLoginPopupOrRedirect = false;
+                  })
+                  .catch((error) => {
+                    console.log('msal auth n: login redirect error...', error);
+                  });
+              }
+            }
           } else {
             dispatch({
               type: 'setActiveAccount',

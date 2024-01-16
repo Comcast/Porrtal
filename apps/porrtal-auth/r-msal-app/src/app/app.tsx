@@ -117,7 +117,7 @@ export function App() {
       </Head>
 
       <ShellState views={views}>
-        <MsalAuthentication msalConfig={msalConfig}>
+        <MsalAuthentication msalConfig={msalConfig} usePopup>
           <ShellMaterial
             bannerData={{
               displayText: 'porrtal-auth - react - msal',
