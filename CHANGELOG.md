@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/Comcast/Porrtal/compare/v0.12.1...v0.13.0) (2024-03-02)
+
+
+### Bug Fixes
+
+* **@porrtal/a-user:** fix circular references ([4e358be](https://github.com/Comcast/Porrtal/commit/4e358be524b8d37681a4cbd83108bb48cdea0efa))
+
+
+### Features
+
+* **@porrtal/r-user-axios:** update axios interceptor feature with proper configuration ([e98e238](https://github.com/Comcast/Porrtal/commit/e98e238c4e8069d81fc0af43853d5a69c4e8e6a1))
+* **@porrtal/r-user-msal:** add popup option to MsalAuthentication component (vs redirect) ([26f4e6a](https://github.com/Comcast/Porrtal/commit/26f4e6a61de5145b35f335cf8dc9a3b787b206a5))
+
+
+
+
+
 ## [0.12.1](https://github.com/Comcast/Porrtal/compare/v0.12.0...v0.12.1) (2023-12-07)
 
 ### Bug Fixes

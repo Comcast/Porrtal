@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/Comcast/Porrtal/compare/v0.12.1...v0.13.0) (2024-03-02)
+
+
+### Bug Fixes
+
+* **@porrtal/a-user:** fix circular references ([4e358be](https://github.com/Comcast/Porrtal/commit/4e358be524b8d37681a4cbd83108bb48cdea0efa))
+
+
+
+
+
 ## [0.12.1](https://github.com/Comcast/Porrtal/compare/v0.12.0...v0.12.1) (2023-12-07)
 
 **Note:** Version bump only for package @porrtal/a-user

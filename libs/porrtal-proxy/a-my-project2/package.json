@@ -1,6 +1,6 @@
 {
   "name": "@porrtal-proxy/a-my-project2",
-  "version": "0.12.1",
+  "version": "0.13.0",
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0"

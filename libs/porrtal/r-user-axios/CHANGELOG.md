@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/comcast-porrtal/porrtal/compare/v0.12.1...v0.13.0) (2024-03-02)
+
+
+### Features
+
+* **@porrtal/r-user-axios:** update axios interceptor feature with proper configuration ([e98e238](https://github.com/comcast-porrtal/porrtal/commit/e98e238c4e8069d81fc0af43853d5a69c4e8e6a1))
+
+
+
+
+
 ## [0.12.1](https://github.com/comcast-porrtal/porrtal/compare/v0.12.0...v0.12.1) (2023-12-07)
 
 ### Bug Fixes
