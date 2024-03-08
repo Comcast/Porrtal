@@ -775,11 +775,13 @@ function okToLaunch(
 
 export function getViewStateDeepLink(viewState: ViewState): string {
   let ret = `${location.origin}${location.pathname}?`;
-  ret = `${ret}v.1.viewId=${viewState.view.viewId?.split(' ').join('+')}&`;
+  ret = `${ret}v.1.viewId=${viewState.view.viewId?.split(' ').join('+')}`;
   if (viewState.state) {
     const s = dot.dot(viewState.state);
     for (const key in s) {
-      ret = `${ret}v.1.s.${key}=${s[key].split(' ').join('+')}`;
+      ret = `${ret}&v.1.s.${key}=${
+        typeof s[key] === 'string' ? s[key].split(' ').join('+') : s[key]
+      }`;
     }
   }
   return ret;
@@ -1018,7 +1020,7 @@ export function ShellState(props: PropsWithChildren<ShellStateProps>) {
         type: 'launchDeepLinks',
         queryString,
       });
-    }, 200);
+    }, 500);
   }, []);
 
   return (
