@@ -23,7 +23,7 @@ import { CommonModule } from '@angular/common';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { StateObject, View } from '@porrtal/a-api';
 import { SearchStateService, ShellStateService } from '@porrtal/a-shell';
-import { map, Observable } from 'rxjs';
+import { map, Observable, take } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import { replaceParameters } from '@porrtal/a-shell';
 
@@ -84,7 +84,14 @@ export class EntityMenuComponent {
       y: evt?.clientY ? `${evt?.clientY}px` : '0px',
     };
 
-    this.menuTrigger.openMenu();
+    // if there is only one menu item, call launchView, otherwise open the menu
+    this.entityViews$?.pipe(take(1)).subscribe((vArr) => {
+      if (vArr.length === 1) {
+        this.launchView(vArr[0], evt?.shiftKey ?? false);
+      } else {
+        this.menuTrigger.openMenu();
+      }
+    });
   }
 
   createEntityViewObs() {
@@ -103,7 +110,10 @@ export class EntityMenuComponent {
             .map((v) => ({
               ...v,
               displayText: this.state
-                ? replaceParameters(v.entityTypeMenuText ?? v.displayText, this.state).replaced
+                ? replaceParameters(
+                    v.entityTypeMenuText ?? v.displayText,
+                    this.state
+                  ).replaced
                 : v.entityTypeMenuText ?? v.displayText,
             })),
         ] as View[];

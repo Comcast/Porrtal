@@ -22,11 +22,13 @@ import {
   ShellStateService,
 } from '@porrtal/a-shell';
 import { Observable } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
+import { EntityMenuComponent } from '@porrtal/a-shell-material';
 
 @Component({
   selector: 'porrtal-test-comps-first-test-comp',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule, EntityMenuComponent],
   templateUrl: './test-comps-first-test-comp.component.html',
   styleUrls: ['./test-comps-first-test-comp.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

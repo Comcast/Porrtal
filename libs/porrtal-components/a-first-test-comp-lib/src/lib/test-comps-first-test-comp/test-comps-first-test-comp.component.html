@@ -122,6 +122,21 @@
   <h4>state:</h4>
   <pre [innerHtml]="viewState?.state ?? '(no state)' | json"></pre>
 
+  <div style="margin-top: 10px; margin-bottom: 10px;">
+    <porrtal-entity-menu
+    entityType="appointment"
+    [state]="{ someKey: 'someValue' }"
+  >
+    <span
+      class="link-button"
+      style="display: grid; grid-template-columns: 24px auto; cursor: pointer;"
+    >
+      <mat-icon>account_box</mat-icon>
+      <span style="margin-left: 5px">{{ 'appointment entity menu launcher' }}</span>
+    </span>
+  </porrtal-entity-menu>
+
+  </div>
   <div>
     logger:&nbsp;
     <button

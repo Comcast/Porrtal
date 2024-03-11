@@ -18,6 +18,7 @@ import {
   useSearchAction,
   useShellDispatch,
   useLoggerDispatch,
+  EntityMenu,
 } from '@porrtal/r-shell';
 import styles from './test-comps-first-test-comp.module.scss';
 import { v4 as uuidv4 } from 'uuid';
@@ -227,6 +228,17 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       <hr />
       <div>search text: {searchText}</div>
       <div>state: {JSON.stringify(props.viewState?.state)}</div>
+      <div style={{ marginTop: '10px', marginBottom: '10px' }}>
+        <EntityMenu
+          key={`menu-7`}
+          entityType="appointment"
+          state={{ someKey: 'someValue' }}
+        >
+          <span style={{ cursor: 'pointer' }}>
+            {'appointment entity menu launcher'}
+          </span>
+        </EntityMenu>
+      </div>
       <div>
         logger:&nbsp;
         <button

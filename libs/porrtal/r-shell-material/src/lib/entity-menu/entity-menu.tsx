@@ -40,66 +40,97 @@ export function EntityMenu(props: EntityMenuProps) {
 
   const open = Boolean(anchorEl);
 
-  return (
-    <>
+  if (
+    shellState.views.filter((view) => view.entityType === props.entityType)
+      .length > 1
+  ) {
+    return (
+      <>
+        <span
+          id="entity-menu-trigger"
+          aria-controls={open ? 'basic-menu' : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? 'true' : undefined}
+          onClick={handleClick}
+        >
+          {props.children}
+        </span>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }}
+        >
+          {shellState.views
+            .filter((view) => view.entityType === props.entityType)
+            .map((view) => {
+              const newState = combineViewStateStateAndActionState(
+                view.state,
+                props.state
+              );
+
+              const newKey = replaceParameters(
+                view.key ?? uuidv4(),
+                newState ?? {}
+              ).replaced;
+              const newEntityMenuText = replaceParameters(
+                view.entityTypeMenuText ?? view.displayText ?? '',
+                newState ?? {}
+              ).replaced;
+              const newDisplayIcon = replaceParameters(
+                view.displayIcon ?? '',
+                newState ?? {}
+              ).replaced;
+
+              return (
+                <IconMenuItem
+                  key={newKey}
+                  leftIcon={<Icon>{newDisplayIcon}</Icon>}
+                  label={newEntityMenuText}
+                  onClick={() => {
+                    dispatch({
+                      type: 'launchView',
+                      viewId: view.viewId ?? view.componentName,
+                      state: newState,
+                    });
+                    setAnchorEl(null);
+                  }}
+                />
+              );
+            })}
+        </Menu>
+      </>
+    );
+  } else if (
+    shellState.views.filter((view) => view.entityType === props.entityType)
+      .length === 1
+  ) {
+    const view = shellState.views.filter(
+      (view) => view.entityType === props.entityType
+    )[0];
+    return (
       <span
-        id="entity-menu-trigger"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick}
+        onClick={() => {
+          const newState = combineViewStateStateAndActionState(
+            view.state,
+            props.state
+          );
+          dispatch({
+            type: 'launchView',
+            viewId: view.viewId ?? view.componentName,
+            state: newState,
+          });
+        }}
       >
         {props.children}
       </span>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        {shellState.views
-          .filter((view) => view.entityType === props.entityType)
-          .map((view) => {
-            const newState = combineViewStateStateAndActionState(
-              view.state,
-              props.state
-            );
-
-            const newKey = replaceParameters(
-              view.key ?? uuidv4(),
-              newState ?? {}
-            ).replaced;
-            const newEntityMenuText = replaceParameters(
-              view.entityTypeMenuText ?? view.displayText ?? '',
-              newState ?? {}
-            ).replaced;
-          const newDisplayIcon = replaceParameters(
-              view.displayIcon ?? '',
-              newState ?? {}
-            ).replaced;
-
-          return (
-              <IconMenuItem
-                key={newKey}
-                leftIcon={<Icon>{newDisplayIcon}</Icon>}
-                label={newEntityMenuText}
-                onClick={() => {
-                  dispatch({
-                    type: 'launchView',
-                    viewId: view.viewId ?? view.componentName,
-                    state: newState,
-                  });
-                  setAnchorEl(null);
-                }}
-              />
-            );
-          })}
-      </Menu>
-    </>
-  );
+    );
+  } else {
+    return <>{props.children}</>;
+  }
 }
 
 export default EntityMenu;

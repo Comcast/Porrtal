@@ -27,52 +27,83 @@ export function EntityMenu(props: EntityMenuProps) {
   const shellState = useShellState();
   const dispatch = useShellDispatch();
 
-  return (
-    <Popover2
-      content={
-        <Menu className={Classes.POPOVER2_DISMISS}>
-          {shellState.views
-            .filter((view) => view.entityType === props.entityType)
-            .map((view) => {
-              const newState = combineViewStateStateAndActionState(
-                view.state,
-                props.state
-              );
+  if (
+    shellState.views.filter((view) => view.entityType === props.entityType)
+      .length > 1
+  ) {
+    return (
+      <Popover2
+        content={
+          <Menu className={Classes.POPOVER2_DISMISS}>
+            {shellState.views
+              .filter((view) => view.entityType === props.entityType)
+              .map((view) => {
+                const newState = combineViewStateStateAndActionState(
+                  view.state,
+                  props.state
+                );
 
-              const newKey = replaceParameters(
-                view.key ?? uuidv4(),
-                newState ?? {}
-              ).replaced;
-              const newEntityMenuText = replaceParameters(
-                view.entityTypeMenuText ?? view.displayText ?? '',
-                newState ?? {}
-              ).replaced;
-              const newDisplayIcon = replaceParameters(
-                view.displayIcon ?? '',
-                newState ?? {}
-              ).replaced;
+                const newKey = replaceParameters(
+                  view.key ?? uuidv4(),
+                  newState ?? {}
+                ).replaced;
+                const newEntityMenuText = replaceParameters(
+                  view.entityTypeMenuText ?? view.displayText ?? '',
+                  newState ?? {}
+                ).replaced;
+                const newDisplayIcon = replaceParameters(
+                  view.displayIcon ?? '',
+                  newState ?? {}
+                ).replaced;
 
-              return (
-                <MenuItem
-                  key={newKey}
-                  icon={newDisplayIcon as IconName}
-                  text={newEntityMenuText}
-                  onClick={(evt) => {
-                    dispatch({
-                      type: 'launchView',
-                      viewId: view.viewId ?? view.componentName,
-                      state: newState,
-                    });
-                  }}
-                />
-              );
-            })}
-        </Menu>
-      }
-    >
-      {props.children}
-    </Popover2>
-  );
+                return (
+                  <MenuItem
+                    key={newKey}
+                    icon={newDisplayIcon as IconName}
+                    text={newEntityMenuText}
+                    onClick={(evt) => {
+                      dispatch({
+                        type: 'launchView',
+                        viewId: view.viewId ?? view.componentName,
+                        state: newState,
+                      });
+                    }}
+                  />
+                );
+              })}
+          </Menu>
+        }
+      >
+        {props.children}
+      </Popover2>
+    );
+  } else if (
+    shellState.views.filter((view) => view.entityType === props.entityType)
+      .length === 1
+  ) {
+    const view = shellState.views.filter(
+      (view) => view.entityType === props.entityType
+    )[0];
+    return (
+      <span
+        onClick={() => {
+          const newState = combineViewStateStateAndActionState(
+            view.state,
+            props.state
+          );
+          dispatch({
+            type: 'launchView',
+            viewId: view.viewId ?? view.componentName,
+            state: newState,
+          });
+        }}
+      >
+        {props.children}
+      </span>
+    );
+  } else {
+    return <>{props.children}</>;
+  }
 }
 
 export default EntityMenu;
