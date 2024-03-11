@@ -38,6 +38,7 @@ const views: View[] = [
   {
     key: 'Account {accountId}',
     displayText: 'Account {accountId}',
+    entityTypeMenuText: 'Acct {accountId}',
     displayIcon: 'account_box',
     componentName: 'AccountDetailComponent',
     entityType: 'account',

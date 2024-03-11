@@ -22,6 +22,10 @@ export default AccountDetail;
 
 ### Register AccountBilling and AccountDetail views in `App.tsx`
 
+There may be times when you would like the text in the entity menu to be different from the text displayed in the 
+tab for the view.  An example of this is shown for the Account view in the following code.  Notice that the 
+Billing view does not define entityTypeMenuText, so displayText is used for its entity menu.
+
 ```tsx
 import { View } from "@porrtal/r-api";
 import { BannerData, ShellState } from "@porrtal/r-shell";
@@ -50,9 +54,10 @@ function App() {
       componentModule: () => import("./Account/NewAccount"),
     },
     {
-      viewId: "AccountDetail",
-      key: 'Account Detail {accountId}',
-      displayText: 'Account Detail {accountId}',
+      viewId: "Account",
+      key: 'Account {accountId}',
+      displayText: 'Account {accountId}',
+      entityTypeMenuText: 'Acct {accountId}',
       paneType: "main",
       displayIcon: "mugshot",
       componentName: "AccountDetail",
@@ -60,9 +65,9 @@ function App() {
       componentModule: () => import("./Account/AccountDetail"),
     },
     {
-      viewId: "AccountBilling",
-      key: 'Account Billing {accountId}',
-      displayText: 'Account Billing {accountId}',
+      viewId: "Billing",
+      key: 'Billing {accountId}',
+      displayText: 'Billing {accountId}',
       paneType: "main",
       displayIcon: "mugshot",
       componentName: "AccountBilling",

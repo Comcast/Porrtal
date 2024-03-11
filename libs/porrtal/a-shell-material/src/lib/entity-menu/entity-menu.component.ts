@@ -103,8 +103,8 @@ export class EntityMenuComponent {
             .map((v) => ({
               ...v,
               displayText: this.state
-                ? replaceParameters(v.displayText, this.state).replaced
-                : v.displayText,
+                ? replaceParameters(v.entityTypeMenuText ?? v.displayText, this.state).replaced
+                : v.entityTypeMenuText ?? v.displayText,
             })),
         ] as View[];
       })

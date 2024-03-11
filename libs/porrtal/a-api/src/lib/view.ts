@@ -27,6 +27,7 @@ export interface View {
 
   key?: string;
   displayText: string;
+  entityTypeMenuText?: string;
   displayIcon?: string;
 
   menu?: string;

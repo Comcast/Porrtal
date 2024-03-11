@@ -72,11 +72,11 @@ export function EntityMenu(props: EntityMenuProps) {
               view.key ?? uuidv4(),
               newState ?? {}
             ).replaced;
-            const newDisplayText = replaceParameters(
-              view.displayText,
+            const newEntityMenuText = replaceParameters(
+              view.entityTypeMenuText ?? view.displayText ?? '',
               newState ?? {}
             ).replaced;
-            const newDisplayIcon = replaceParameters(
+          const newDisplayIcon = replaceParameters(
               view.displayIcon ?? '',
               newState ?? {}
             ).replaced;
@@ -85,7 +85,7 @@ export function EntityMenu(props: EntityMenuProps) {
               <IconMenuItem
                 key={newKey}
                 leftIcon={<Icon>{newDisplayIcon}</Icon>}
-                label={newDisplayText}
+                label={newEntityMenuText}
                 onClick={() => {
                   dispatch({
                     type: 'launchView',

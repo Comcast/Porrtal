@@ -46,6 +46,7 @@ export const getQuickStartViews = (uiLib: string): View[] => {
     {
       key: 'Account {accountId}',
       displayText: 'Account {accountId}',
+      entityTypeMenuText: 'Acct {accountId}',
       displayIcon: personIconName,
       componentName: 'AccountDetail',
       entityType: 'account',

@@ -14,6 +14,10 @@ ng generate component account/account-detail
 
 ### Register `account` "entityType views" in `app.component.ts`
 
+There may be times when you would like the text in the entity menu to be different from the text displayed in the 
+tab for the view.  An example of this is shown for the Account view in the following code.  Notice that the 
+Billing view does not define entityTypeMenuText, so displayText is used for its entity menu.
+
 ```ts
 import { Component } from '@angular/core';
 import { BannerData, ShellStateService } from '@porrtal/a-shell';
@@ -40,6 +44,7 @@ const views: View[] = [
   {
     key: 'Account {accountId}',
     displayText: 'Account {accountId}',
+    entityTypeMenuText: 'Acct {accountId}',
     displayIcon: 'account_box',
     componentName: 'AccountDetailComponent',
     entityType: 'account',
