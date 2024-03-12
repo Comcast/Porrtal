@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/Comcast/Porrtal/compare/v0.13.0...v0.14.0) (2024-03-12)
+
+
+### Features
+
+* **@porrtal/*-shell-*:** entity type menu direct launch when only one entity type menu item ([01223ee](https://github.com/Comcast/Porrtal/commit/01223ee3da446b7fc4c253320b0d0bbb69915195))
+
+
+
+
+
 # [0.13.0](https://github.com/Comcast/Porrtal/compare/v0.12.1...v0.13.0) (2024-03-02)
 
 **Note:** Version bump only for package @porrtal-components/r-first-test-comp-lib

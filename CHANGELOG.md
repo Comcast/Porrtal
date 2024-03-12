@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/Comcast/Porrtal/compare/v0.13.0...v0.14.0) (2024-03-12)
+
+
+### Bug Fixes
+
+* **@porrtal/r-shell, @porrtal/a-shell:** fix bug in "copy link" and increase deep link launch delay for react ([9c63638](https://github.com/Comcast/Porrtal/commit/9c63638d8c8287437e8a806efa6c7af5b5cc97d3))
+
+
+### Features
+
+* **@porrtal/*-shell-*:** entity type menu direct launch when only one entity type menu item ([01223ee](https://github.com/Comcast/Porrtal/commit/01223ee3da446b7fc4c253320b0d0bbb69915195))
+* **porrtal-io-app, @porrtal/*:** add support for entityTypeMenuText and update quick starts to show usage ([2c14e95](https://github.com/Comcast/Porrtal/commit/2c14e957f4c52b81def2ae356796aeb3a1af113d))
+
+
+
+
+
 # [0.13.0](https://github.com/Comcast/Porrtal/compare/v0.12.1...v0.13.0) (2024-03-02)
 
 
