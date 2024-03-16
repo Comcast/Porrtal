@@ -17,6 +17,8 @@ import { CommonModule } from '@angular/common';
 import { View } from '@porrtal/a-api';
 import { BannerData, ShellStateService } from '@porrtal/a-shell';
 import { ShellLayoutComponent } from '@porrtal/a-shell-material';
+import { provideMsalOAuthClient } from '@porrtal/a-user-msal';
+import { msalConfig } from '../../msal-config';
 
 const views: View[] = [
   {
