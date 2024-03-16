@@ -556,7 +556,7 @@ Support for MSAL is provided by the Angular porrtal library, [a-user-msal](a-use
 ### MSAL Angular Code Setup
 
 1. [Modify app.config](../../apps/porrtal-auth/a-msal-stand-alone-app/src/app/app.config.ts#L9-L16)
-2. [Modify main.ts](../../apps/porrtal-auth/a-msal-stand-alone-app/src/main.ts#L16-L43)
+2. [Modify main.ts](../../apps/porrtal-auth/a-msal-stand-alone-app/src/main.ts#L5-L7)
 2. [Create msal-config](../../apps/porrtal-auth/a-msal-stand-alone-app/src/app/msal-config-example.ts#L16-L43)
 1. [Set Permissions in Views](../../apps/porrtal-auth/a-msal-stand-alone-app/src/app/pages/page-one/page-one.component.ts#L98)
 2. [Create Main Component Class](../../apps/porrtal-auth/a-msal-stand-alone-app/src/app/pages/page-one/page-one.component.ts#L102-L138)
