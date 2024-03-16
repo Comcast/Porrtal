@@ -507,6 +507,7 @@ These Angular samples show how easy (and consistent) it is to add authentication
 
 Sample Angular applications are shown for
 * [Microsoft Authentication Library (MSAL)](#a-msal-app-sample-angular-application-for-microsoft-authentication-library-msal)
+* [Microsoft Authentication Library (MSAL) - Stand Alone Client App](#a-msal-stand-alone-app-sample-angular-application-for-microsoft-authentication-library-msal)
 * [Keycloak](#a-keycloak-app-sample-angular-application-for-keycloak)
 * [Auth0](#a-auth0-app-sample-angular-application-for-auth0)
 * [Strapi](#a-strapi-app-sample-angular-application-for-strapi)
@@ -537,6 +538,28 @@ Support for MSAL is provided by the Angular porrtal library, [a-user-msal](a-use
 2. [Create msal-config](../../apps/porrtal-auth/a-msal-app/src/app/msal-config-example.ts#L16-L43)
 1. [Set Permissions in Views](../../apps/porrtal-auth/a-msal-app/src/app/pages/page-one/page-one.component.ts#L96)
 2. [Create Main Component Class](../../apps/porrtal-auth/a-msal-app/src/app/pages/page-one/page-one.component.ts#L108-L137)
+
+## a-msal-stand-alone-app: Sample Angular Application for Microsoft Authentication Library (MSAL)
+
+MSAL for Angular enables Angular web applications to authenticate users using Azure AD work and school accounts (AAD), Microsoft personal accounts (MSA) and social identity providers like Facebook, Google, LinkedIn, Microsoft accounts, etc. through Azure AD B2C service. It also enables your app to get tokens to access Microsoft Cloud services such as Microsoft Graph.
+
+The porrtal Angular library, [a-user-msal](a-user-msal), wraps the MSAL for Angular library, simplifying the process of adding Azure AD support to a porrtal application.
+
+The porrtal MSAL Angular sample illustrates how to setup a porrtal Angular application to support Azure AD authentication.
+
+Support for MSAL is provided by the Angular porrtal library, [a-user-msal](a-user-msal), which leverages the MSAL for Angular library (linked below).
+
+### MSAL Angular Links
+* [Microsoft Authentication Library (MSAL) for Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular#microsoft-authentication-library-for-angular)
+* [MSAL Setup](MsalSetup.md)
+
+### MSAL Angular Code Setup
+
+1. [Modify app.config](../../apps/porrtal-auth/a-msal-stand-alone-app/src/app/app.config.ts#L9-L16)
+2. [Modify main.ts](../../apps/porrtal-auth/a-msal-stand-alone-app/src/app/main.ts#L16-L43)
+2. [Create msal-config](../../apps/porrtal-auth/a-msal-stand-alone-app/src/app/msal-config-example.ts#L16-L43)
+1. [Set Permissions in Views](../../apps/porrtal-auth/a-msal-stand-alone-app/src/app/pages/page-one/page-one.component.ts#L98)
+2. [Create Main Component Class](../../apps/porrtal-auth/a-msal-app/src/app/pages/page-one/page-one.component.ts#L102-L138)
 
 ## a-keycloak-app: Sample Angular Application for Keycloak
 
