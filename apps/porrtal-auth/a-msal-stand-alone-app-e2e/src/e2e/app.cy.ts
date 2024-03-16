@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('a-msal-stand-alone-app-e2e', () => {
+describe('porrtal-auth-a-msal-stand-alone-app-e2e', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {

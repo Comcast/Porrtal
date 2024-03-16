@@ -1,5 +1,5 @@
 {
-  "name": "a-msal-stand-alone-app-e2e",
+  "name": "porrtal-auth-a-msal-stand-alone-app-e2e",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/porrtal-auth/a-msal-stand-alone-app-e2e/src",
@@ -9,14 +9,14 @@
       "options": {
         "cypressConfig": "apps/porrtal-auth/a-msal-stand-alone-app-e2e/cypress.config.ts",
         "testingType": "e2e",
-        "devServerTarget": "a-msal-stand-alone-app:serve:development"
+        "devServerTarget": "porrtal-auth-a-msal-stand-alone-app:serve:development"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "a-msal-stand-alone-app:serve:production"
+          "devServerTarget": "porrtal-auth-a-msal-stand-alone-app:serve:production"
         },
         "ci": {
-          "devServerTarget": "a-msal-stand-alone-app:serve-static"
+          "devServerTarget": "porrtal-auth-a-msal-stand-alone-app:serve-static"
         }
       }
     },
@@ -25,11 +25,11 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "apps/porrtal-auth/a-msal-stand-alone-app-e2e/**/*.{js,ts}"
+          "apps/porrtal-auth/porrtal-auth-a-msal-stand-alone-app-e2e/**/*.{js,ts}"
         ]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["a-msal-stand-alone-app"]
+  "implicitDependencies": ["porrtal-auth-a-msal-stand-alone-app"]
 }
