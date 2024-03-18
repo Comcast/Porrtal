@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.1](https://github.com/Comcast/Porrtal/compare/v0.14.0...v0.14.1) (2024-03-18)
+
+
+### Bug Fixes
+
+* **@porrtal/r-*:** specify all dependencies are external (peer) dependencies ([4f68dc5](https://github.com/Comcast/Porrtal/commit/4f68dc5605154110aa3683d2dad67f04fca8f896))
+
+
+
+
+
 # [0.14.0](https://github.com/Comcast/Porrtal/compare/v0.13.0...v0.14.0) (2024-03-12)
 
 **Note:** Version bump only for package @porrtal-components/r-porrtal-io

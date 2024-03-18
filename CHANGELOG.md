@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.1](https://github.com/Comcast/Porrtal/compare/v0.14.0...v0.14.1) (2024-03-18)
+
+
+### Bug Fixes
+
+* **@porrtal/*:** update readme links for angular stand alone msal app ([41f5540](https://github.com/Comcast/Porrtal/commit/41f5540db2e4d4f200804453d010215607add333))
+* **@porrtal/*:** update readme links for angular stand alone msal app ([920c1dd](https://github.com/Comcast/Porrtal/commit/920c1dd8ef45385d98013effdfe5bee21829d627))
+* **@porrtal/r-*:** specify all dependencies are external (peer) dependencies ([4f68dc5](https://github.com/Comcast/Porrtal/commit/4f68dc5605154110aa3683d2dad67f04fca8f896))
+* **porrtal-auth-a-msal-stand-alone-app:** fix project name ([b68991e](https://github.com/Comcast/Porrtal/commit/b68991e7e24d9ca78c4c2599ef1c3431a9c88b06))
+
+
+### Features
+
+* **@porrtal/*:** update readme to document stand-alone angular msal app ([aa6a3c9](https://github.com/Comcast/Porrtal/commit/aa6a3c92d9ed4e09d8bec5e787a94152f6d685b4))
+* **porrtal-auth-a-msal-stand-alone-app:** app working with msal :) ([f98966a](https://github.com/Comcast/Porrtal/commit/f98966af9e29aa9a3ee38c9777cce716f0022dc8))
+* **porrtal-auth-a-msal-stand-alone-app:** remove boilerplate from app ([4f1f8a6](https://github.com/Comcast/Porrtal/commit/4f1f8a68f0b1bf7bb20519ffd2e954e55b9d6cc0))
+* **porrtal-auth-a-msal-stand-alone-app:** rough in pages and views ([5fb2411](https://github.com/Comcast/Porrtal/commit/5fb2411275d43c1e700ceaea07ad83753ce03157))
+* **porrtal-auth-a-msal-stand-alone-app:** rough in stand alone app ([abe71b1](https://github.com/Comcast/Porrtal/commit/abe71b1db35aa63ed2d22aa04e693b5748164959))
+
+
+
+
+
 # [0.14.0](https://github.com/Comcast/Porrtal/compare/v0.13.0...v0.14.0) (2024-03-12)
 
 
