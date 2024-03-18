@@ -22,7 +22,7 @@
         "tsConfig": "libs/porrtal-proxy/r-my-project2/tsconfig.lib.json",
         "project": "libs/porrtal-proxy/r-my-project2/package.json",
         "entryFile": "libs/porrtal-proxy/r-my-project2/src/index.ts",
-        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "external": "all",
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [

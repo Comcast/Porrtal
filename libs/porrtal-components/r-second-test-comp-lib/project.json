@@ -13,7 +13,7 @@
         "tsConfig": "libs/porrtal-components/r-second-test-comp-lib/tsconfig.lib.json",
         "project": "libs/porrtal-components/r-second-test-comp-lib/package.json",
         "entryFile": "libs/porrtal-components/r-second-test-comp-lib/src/index.ts",
-        "external": ["react/jsx-runtime"],
+        "external": "all",
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [

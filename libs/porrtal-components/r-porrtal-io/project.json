@@ -13,7 +13,7 @@
         "tsConfig": "libs/porrtal-components/r-porrtal-io/tsconfig.lib.json",
         "project": "libs/porrtal-components/r-porrtal-io/package.json",
         "entryFile": "libs/porrtal-components/r-porrtal-io/src/index.ts",
-        "external": ["react/jsx-runtime"],
+        "external": "all",
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [

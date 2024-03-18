@@ -13,7 +13,7 @@
         "tsConfig": "libs/porrtal/r-shell-material/tsconfig.lib.json",
         "project": "libs/porrtal/r-shell-material/package.json",
         "entryFile": "libs/porrtal/r-shell-material/src/index.ts",
-        "external": ["react/jsx-runtime", "react", "react-dom"],
+        "external": "all",
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "extractCss": false,

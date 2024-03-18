@@ -13,7 +13,7 @@
         "tsConfig": "libs/porrtal-components/r-learning/tsconfig.lib.json",
         "project": "libs/porrtal-components/r-learning/package.json",
         "entryFile": "libs/porrtal-components/r-learning/src/index.ts",
-        "external": ["react/jsx-runtime"],
+        "external": "all",
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [

@@ -20,7 +20,7 @@
         "tsConfig": "libs/porrtal/r-user-axios/tsconfig.lib.json",
         "project": "libs/porrtal/r-user-axios/package.json",
         "entryFile": "libs/porrtal/r-user-axios/src/index.ts",
-        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "external": "all",
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [
