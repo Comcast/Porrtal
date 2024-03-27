@@ -59,7 +59,7 @@
     "moment": "^2.29.4",
     "mui-nested-menu": "2.1.0",
     "ncp": "2.0.0",
-    "next": "13.3.0",
+    "next": "13.5.0",
     "ngx-markdown": "^15.0.0",
     "ngx-popperjs": "^16.0.7",
     "react": "18.2.0",
