@@ -218,6 +218,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               key: '7',
               launchAtStartup: false,
               paneType: 'right',
+              menu: 'two',
               componentName: 'TestCompsSecondTestComp',
               componentModule: '@porrtal-components/r-second-test-comp-lib',
               displayText: 'Seven-Second',

@@ -24,7 +24,7 @@ import {
   Button,
   IconName,
 } from '@blueprintjs/core';
-import { Dispatch, useEffect, useRef } from 'react';
+import { Dispatch, useEffect, useMemo, useRef } from 'react';
 import {
   ShellAction,
   useShellDispatch,
@@ -51,6 +51,16 @@ export function ViewStack(props: ViewStackProps) {
       });
     }
   }, [props.pane, dispatch]);
+
+  const currentIndex = useMemo(() => {
+    for (let ii = 0; ii < props.pane.viewStates.length; ii++) {
+      if (props.pane.viewStates[ii].key === props.pane.currentKey) {
+        return ii;
+      }
+    }
+    return -1;
+  }, [props.pane, props.pane.currentKey]);
+
 
   switch (props.pane.arrange) {
     case 'tabs-top':
@@ -84,6 +94,17 @@ export function ViewStack(props: ViewStackProps) {
           dispatch={dispatch}
         />
       );
+
+    case 'hidden':
+      return (
+        <ViewStackHidden
+          pane={props.pane}
+          showUserInfo={props.showUserInfo}
+          showDevInfo={props.showDevInfo}
+          dispatch={dispatch}
+          currentIndex={currentIndex}
+        />
+      );
   }
 
   return (
@@ -92,7 +113,7 @@ export function ViewStack(props: ViewStackProps) {
 }
 
 function ViewStackTabsTop(
-  props: ViewStackProps & { dispatch: Dispatch<ShellAction> }
+  props: ViewStackProps & { dispatch: Dispatch<ShellAction>}
 ) {
   const viewHostRef = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -265,6 +286,27 @@ function ViewStackCards(
           </Card>
         ))}
       </div>
+    </div>
+  );
+}
+
+function ViewStackHidden(
+  props: ViewStackProps & { dispatch: Dispatch<ShellAction>;
+    currentIndex: number;  }
+) {
+  const viewHostRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  return (
+    <div className={`${styles['tabs-hidden']}`}>
+        {props.pane.viewStates.map((item, index) => (
+          <div
+            ref={(element) => {
+              viewHostRef.current[index] = element;
+            }}
+            className={`${styles['tabs-hidden']} ${index === props.currentIndex ? styles['onTop'] : ''}`}          >
+            <ViewHost key={item.key} viewState={item}></ViewHost>
+          </div>
+        ))}
     </div>
   );
 }

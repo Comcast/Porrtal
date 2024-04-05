@@ -42,9 +42,7 @@ export function ViewHost(props: ViewHostProps) {
   return (
     <div
       key={props.viewState.key}
-      className={`${styles['container']} ${
-        props.onTop ? styles['onTop'] : ''
-      }`}
+      className={`${styles['container']} ${props.onTop ? styles['onTop'] : ''}`}
     >
       <div className={styles['innerContainer']}>
         {DynComp ? (

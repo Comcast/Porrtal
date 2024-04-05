@@ -5,6 +5,10 @@
   margin-top: 0;
 }
 
+.onTop {
+  z-index: 10;
+}
+
 .tabs {
   position: absolute;
   top: 0;
@@ -39,7 +43,14 @@
 .tabs > :global(.bp4-tab-panel) {
   flex: 1 1 auto;
   padding-left: 0 !important;
-  margin-top:0 !important;
+  margin-top: 0 !important;
+}
+
+.tabs-hidden {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .maximize-icon {
