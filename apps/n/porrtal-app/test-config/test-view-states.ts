@@ -51,6 +51,7 @@ export const testViews: View[] = [
     key: 'one-main',
     displayText: 'one',
     displayIcon: 'home',
+    menu: 'one',
     userInfo: [
       {
         viewId: 'info-markdown',
