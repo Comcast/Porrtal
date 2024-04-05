@@ -346,7 +346,6 @@ function ViewStackHidden(
 
   return (
     <div className={`${styles['container']} ${styles[props.pane.arrange]}`}>
-      <div className={styles['view-host-container']}>
         {props.pane.viewStates.map((item, index) => (
           <div
             ref={(element) => {
@@ -373,7 +372,6 @@ function ViewStackHidden(
             right: 0,
           }}
         ></div>
-      </div>
     </div>
   );
 }
