@@ -114,7 +114,7 @@ export function ShellLayoutSplitter(props: ShellLayoutSplitterProps) {
               </Split>
             </Split>
           </div>
-          <div className={styles['footer']}>footer</div>
+          <div className={styles['footer']} style={{height: 0}}></div>
         </div>
         {(shellState.maximizeStack ?? []).map((stackItem) => (
           <Fragment key={stackItem.key}>
