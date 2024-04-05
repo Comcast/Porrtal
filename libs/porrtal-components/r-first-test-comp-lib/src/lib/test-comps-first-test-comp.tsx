@@ -22,6 +22,7 @@ import {
 } from '@porrtal/r-shell';
 import styles from './test-comps-first-test-comp.module.scss';
 import { v4 as uuidv4 } from 'uuid';
+import { useRef, useState } from 'react';
 
 export interface TestCompsFirstTestCompProps {
   viewState: ViewState;
@@ -32,12 +33,47 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
   const searchAction = useSearchAction();
   const searchText = useDebouncedSearchText();
   const loggerDispatch = useLoggerDispatch();
+  const [expandSection, setExpandSection] = useState<boolean>(false);
+  const refExpandSection2 = useRef<HTMLDivElement>(null);
+
+  let expandSection2 = false;
 
   console.log('test comp', props.viewState.key, searchText);
 
   return (
     <div className={styles['container']}>
       <h1>Welcome to TestCompsFirstTestComp!</h1>
+      <div>
+        <button
+          onClick={() => {
+            setExpandSection((val) => !val);
+          }}
+        >
+          Toggle Expansion (with state)
+        </button>
+        {expandSection && (
+          <div>
+            <p>Expanded Section</p>
+          </div>
+        )}
+      </div>
+      <div>
+        <button
+          onClick={() => {
+            expandSection2 = !expandSection2;
+            if (refExpandSection2.current) {
+              refExpandSection2.current.style.display = expandSection2
+                ? 'block'
+                : 'none';
+            }
+          }}
+        >
+          Toggle Expansion (no state)
+        </button>
+        <div ref={refExpandSection2} style={{display: 'none'}}>
+          <p>Expanded Section - no state</p>
+        </div>
+      </div>
       <button
         onClick={() => {
           const newViewId = uuidv4();

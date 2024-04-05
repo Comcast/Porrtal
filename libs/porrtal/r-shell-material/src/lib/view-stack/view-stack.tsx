@@ -100,6 +100,18 @@ export function ViewStack(props: ViewStackProps) {
           handleChange={handleChange}
         />
       );
+
+    case 'hidden':
+      return (
+        <ViewStackHidden
+          pane={props.pane}
+          showUserInfo={props.showUserInfo}
+          showDevInfo={props.showDevInfo}
+          currentIndex={currentIndex}
+          dispatch={dispatch}
+          handleChange={handleChange}
+        />
+      );
   }
 
   return (
@@ -301,7 +313,7 @@ function ViewStackCards(
                     item={item}
                     viewHostElements={viewHostRef.current}
                     viewHostElementIndex={index}
-                    ></ViewStackContextMenu>
+                  ></ViewStackContextMenu>
                 </Button>
               }
             ></CardHeader>
@@ -318,6 +330,49 @@ function ViewStackCards(
             <CardActions></CardActions>
           </Card>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function ViewStackHidden(
+  props: ViewStackProps & {
+    dispatch: Dispatch<ShellAction>;
+    currentIndex: number;
+    handleChange: (event: SyntheticEvent, newIndex: number) => void;
+  }
+) {
+  const viewHostRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  return (
+    <div className={`${styles['container']} ${styles[props.pane.arrange]}`}>
+      <div className={styles['view-host-container']}>
+        {props.pane.viewStates.map((item, index) => (
+          <div
+            ref={(element) => {
+              viewHostRef.current[index] = element;
+            }}
+            key={item.key}
+          >
+            <ViewHost
+              key={item.key}
+              viewState={item}
+              zIndex={index === props.currentIndex ? 10 : 0}
+            ></ViewHost>
+          </div>
+        ))}
+        <div
+          key="ind"
+          style={{
+            zIndex: 5,
+            backgroundColor: 'white',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+          }}
+        ></div>
       </div>
     </div>
   );
