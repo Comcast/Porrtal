@@ -24,7 +24,7 @@ import styles from './view-host.module.scss';
 
 export interface ViewHostProps {
   viewState: ViewState;
-  zIndex?: number;
+  onTop?: boolean;
 }
 
 export function ViewHost(props: ViewHostProps) {
@@ -42,14 +42,13 @@ export function ViewHost(props: ViewHostProps) {
   return (
     <div
       key={props.viewState.key}
-      className={styles['container']}
-      style={props.zIndex === undefined ? {} : { zIndex: props.zIndex }}
+      className={`${styles['container']} ${
+        props.onTop ? styles['onTop'] : ''
+      }`}
     >
       <div className={styles['innerContainer']}>
         {DynComp ? (
-          <Suspense fallback={<div>loading...</div>}>
-            <DynComp viewState={props.viewState} />
-          </Suspense>
+          <DynComp viewState={props.viewState} />
         ) : (
           <div>loading...</div>
         )}

@@ -13,11 +13,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import { ShellState } from '@porrtal/r-shell';
-import { ShellMaterial } from '@porrtal/r-shell-material';
 import { KeycloakAuthentication } from '@porrtal/r-user-keycloak';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { testModules, testViews } from '../../test-config/test-view-states';
+import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
+
+import '@blueprintjs/core/lib/css/blueprint.css';
+import '@blueprintjs/icons/lib/css/blueprint-icons.css';
+import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 
 export function Index() {
   const [isSSR, setIsSSR] = useState(true);
@@ -40,10 +44,10 @@ export function Index() {
           redirectUri="http://localhost:4200/second-page"
         >
           <ShellState modules={testModules} views={testViews}>
-            <ShellMaterial
+            <ShellBlueprint
               bannerData={{
                 displayText: 'Second Page',
-                displayIcon: 'cyclone',
+                displayIcon: 'hurricane',
                 childData: [
                   {
                     displayText: 'First Page',
@@ -53,13 +57,13 @@ export function Index() {
                   {
                     displayText: 'Third Page',
                     displayImage: '/assets/angular.svg',
-                    displayIcon: 'cyclone',
+                    displayIcon: 'hurricane',
                     targetUrl: '/third-page',
                   },
                   {
                     displayText: 'Quick Start Demo',
                     displayImage: '/assets/react.svg',
-                    displayIcon: 'cyclone',
+                    displayIcon: 'hurricane',
                     targetUrl: '/quick-start-demo',
                   },
                 ],

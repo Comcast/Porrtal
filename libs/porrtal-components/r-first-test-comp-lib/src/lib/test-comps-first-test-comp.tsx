@@ -35,8 +35,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
   const loggerDispatch = useLoggerDispatch();
   const [expandSection, setExpandSection] = useState<boolean>(false);
   const refExpandSection2 = useRef<HTMLDivElement>(null);
-
-  let expandSection2 = false;
+  const refExpandSection3 = useRef<HTMLDivElement>(null);
 
   console.log('test comp', props.viewState.key, searchText);
 
@@ -60,18 +59,18 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       <div>
         <button
           onClick={() => {
-            expandSection2 = !expandSection2;
             if (refExpandSection2.current) {
-              refExpandSection2.current.style.display = expandSection2
-                ? 'block'
-                : 'none';
+              refExpandSection2.current.style.display =
+                refExpandSection2.current.style.display === 'none'
+                  ? 'block'
+                  : 'none';
             }
           }}
         >
-          Toggle Expansion (no state)
+          Toggle Expansion (useRef element state)
         </button>
-        <div ref={refExpandSection2} style={{display: 'none'}}>
-          <p>Expanded Section - no state</p>
+        <div ref={refExpandSection2} style={{ display: 'none' }}>
+          <p>Expanded Section - ref element state</p>
         </div>
       </div>
       <button

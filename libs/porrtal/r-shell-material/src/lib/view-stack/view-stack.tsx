@@ -173,7 +173,7 @@ function ViewStackTabsTop(
       </Box>
       <div className={styles['view-host-container']}>
         {props.pane.viewStates.map((item, index) => (
-          <div
+          <div style={{position: 'absolute', inset: 0}}
             ref={(element) => {
               viewHostRef.current[index] = element;
             }}
@@ -182,7 +182,7 @@ function ViewStackTabsTop(
             <ViewHost
               key={item.key}
               viewState={item}
-              zIndex={index === props.currentIndex ? 10 : 0}
+              onTop={index === props.currentIndex}
             ></ViewHost>
           </div>
         ))}
@@ -258,7 +258,7 @@ function ViewStackTabsLeft(
             <ViewHost
               key={item.key}
               viewState={item}
-              zIndex={index === props.currentIndex ? 10 : 0}
+              onTop={index === props.currentIndex}
             ></ViewHost>
           </div>
         ))}
@@ -357,7 +357,7 @@ function ViewStackHidden(
             <ViewHost
               key={item.key}
               viewState={item}
-              zIndex={index === props.currentIndex ? 10 : 0}
+              onTop={index === props.currentIndex}
             ></ViewHost>
           </div>
         ))}
