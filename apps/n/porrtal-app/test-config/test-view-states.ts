@@ -131,6 +131,7 @@ export const testViews: View[] = [
     componentName: 'TestCompsFirstTestComp',
     componentModule: '@porrtal-components/r-first-test-comp-lib',
     key: 'three-main',
+    menu: 'inline.three',
     displayText: 'three',
     displayIcon: 'account_circle',
   },
