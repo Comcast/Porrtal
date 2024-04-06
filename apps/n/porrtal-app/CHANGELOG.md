@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/comcast-porrtal/porrtal/compare/v0.14.1...v0.15.0) (2024-04-06)
+
+
+### Features
+
+* **@porrtal/r-shell, @porrtal/r-shell-material:** cleanup approach for making tabs visible ([45bf003](https://github.com/comcast-porrtal/porrtal/commit/45bf0039590aa698aa072d18ab2b80bf42f5d004))
+* **n-porrtal-app:** add menus to test config for testing tab arrangement 'hidden' ([ef7ba3f](https://github.com/comcast-porrtal/porrtal/commit/ef7ba3fe6978d0cc1520488ec195b3352ac97361))
+* **n-porrtal-app:** test inline menu ([ed7b47e](https://github.com/comcast-porrtal/porrtal/commit/ed7b47e395d9b0b4858ae57b949920fabd935ba0))
+
+
+
+
+
 ## [0.14.1](https://github.com/comcast-porrtal/porrtal/compare/v0.14.0...v0.14.1) (2024-03-18)
 
 **Note:** Version bump only for package n-porrtal-app

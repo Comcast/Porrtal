@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/Comcast/Porrtal/compare/v0.14.1...v0.15.0) (2024-04-06)
+
+
+### Features
+
+* **@porrtal/r-shell-material:** 'hidden' pane arrangement working ([aa23a5f](https://github.com/Comcast/Porrtal/commit/aa23a5fbf45a3b4e322cf0642f33618fd1d15735))
+* **@porrtal/r-shell-material:** remove redundant div ([ca21515](https://github.com/Comcast/Porrtal/commit/ca21515a6e75e003bce0e3989ca71be050a3c01e))
+* **@porrtal/r-shell, @porrtal/r-shell-material:** cleanup approach for making tabs visible ([45bf003](https://github.com/Comcast/Porrtal/commit/45bf0039590aa698aa072d18ab2b80bf42f5d004))
+
+
+
+
+
 ## [0.14.1](https://github.com/Comcast/Porrtal/compare/v0.14.0...v0.14.1) (2024-03-18)
 
 

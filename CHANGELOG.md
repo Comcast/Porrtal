@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/Comcast/Porrtal/compare/v0.14.1...v0.15.0) (2024-04-06)
+
+
+### Bug Fixes
+
+* **porrtal-auth-n-strapi-app:** add material font to app ([6ac7cd9](https://github.com/Comcast/Porrtal/commit/6ac7cd9495d54501e2509bdc10d6aeeafa3ce83c))
+
+
+### Features
+
+* **@porrtal/r-shell-blueprint:** tab arrangement 'hidden' working ([8180d34](https://github.com/Comcast/Porrtal/commit/8180d34f3c8e407dd2bd695b883ce2992c015cc7))
+* **@porrtal/r-shell-material:** 'hidden' pane arrangement working ([aa23a5f](https://github.com/Comcast/Porrtal/commit/aa23a5fbf45a3b4e322cf0642f33618fd1d15735))
+* **@porrtal/r-shell-material:** remove redundant div ([ca21515](https://github.com/Comcast/Porrtal/commit/ca21515a6e75e003bce0e3989ca71be050a3c01e))
+* **@porrtal/r-shell, @porrtal/r-shell-material:** cleanup approach for making tabs visible ([45bf003](https://github.com/Comcast/Porrtal/commit/45bf0039590aa698aa072d18ab2b80bf42f5d004))
+* **@porrtal/r-shell:** hide footer until it is implemented ([21029e9](https://github.com/Comcast/Porrtal/commit/21029e9cecf146264e1316cb217e8ebb31a227b8))
+* **n-porrtal-app:** add menus to test config for testing tab arrangement 'hidden' ([ef7ba3f](https://github.com/Comcast/Porrtal/commit/ef7ba3fe6978d0cc1520488ec195b3352ac97361))
+* **n-porrtal-app:** test inline menu ([ed7b47e](https://github.com/Comcast/Porrtal/commit/ed7b47e395d9b0b4858ae57b949920fabd935ba0))
+
+
+
+
+
 ## [0.14.1](https://github.com/Comcast/Porrtal/compare/v0.14.0...v0.14.1) (2024-03-18)
 
 

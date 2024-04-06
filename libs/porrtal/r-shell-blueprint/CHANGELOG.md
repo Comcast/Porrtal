@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/Comcast/Porrtal/compare/v0.14.1...v0.15.0) (2024-04-06)
+
+
+### Features
+
+* **@porrtal/r-shell-blueprint:** tab arrangement 'hidden' working ([8180d34](https://github.com/Comcast/Porrtal/commit/8180d34f3c8e407dd2bd695b883ce2992c015cc7))
+
+
+
+
+
 ## [0.14.1](https://github.com/Comcast/Porrtal/compare/v0.14.0...v0.14.1) (2024-03-18)
 
 
