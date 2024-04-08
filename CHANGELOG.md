@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/Comcast/Porrtal/compare/v0.15.0...v0.16.0) (2024-04-08)
+
+
+### Features
+
+* **@porrtal/r-shell-material, @porrtal/r-shell-blueprint:** allow override (and suppression) of banner elements ([fc2f5d6](https://github.com/Comcast/Porrtal/commit/fc2f5d67a0bb47b4761b28da5046a3fc403911d1))
+
+
+
+
+
 # [0.15.0](https://github.com/Comcast/Porrtal/compare/v0.14.1...v0.15.0) (2024-04-06)
 
 

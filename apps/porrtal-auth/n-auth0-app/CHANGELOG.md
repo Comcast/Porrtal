@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/comcast-porrtal/porrtal/compare/v0.15.0...v0.16.0) (2024-04-08)
+
+**Note:** Version bump only for package porrtal-auth-n-auth0-app
+
+
+
+
+
 # [0.15.0](https://github.com/comcast-porrtal/porrtal/compare/v0.14.1...v0.15.0) (2024-04-06)
 
 **Note:** Version bump only for package porrtal-auth-n-auth0-app
