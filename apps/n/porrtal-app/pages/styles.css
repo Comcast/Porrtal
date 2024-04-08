@@ -12,3 +12,11 @@ body {
 html {
   line-height: 1.5;
 }
+
+.selected {
+  background-color: #d5d2d2; /* Change to the desired shade of gray */
+}
+
+.selected:active {
+  background-color: #d0d0d0; /* Change to the desired shade of gray */
+}

@@ -25,54 +25,201 @@ import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 
 export function Index() {
   const [isSSR, setIsSSR] = useState(true);
+  const [selectedButton, setSelectedButton] = useState('noBanner');
 
   useEffect(() => {
     setIsSSR(false);
   }, []);
 
   if (!isSSR) {
-    return (
-      <>
-        <Head>
-          <title>@porrtal - second page</title>
-        </Head>
-
-        <KeycloakAuthentication
-          uri="http://localhost:8080"
-          realm="porrtal"
-          clientId="porrtal-app"
-          redirectUri="http://localhost:4200/second-page"
-        >
-          <ShellState modules={testModules} views={testViews}>
-            <ShellBlueprint
-              bannerData={{
-                displayText: 'Second Page',
-                displayIcon: 'hurricane',
-                childData: [
-                  {
-                    displayText: 'First Page',
-                    displayImage: '/assets/react.svg',
-                    targetUrl: '/',
-                  },
-                  {
-                    displayText: 'Third Page',
-                    displayImage: '/assets/angular.svg',
-                    displayIcon: 'hurricane',
-                    targetUrl: '/third-page',
-                  },
-                  {
-                    displayText: 'Quick Start Demo',
-                    displayImage: '/assets/react.svg',
-                    displayIcon: 'hurricane',
-                    targetUrl: '/quick-start-demo',
-                  },
-                ],
-              }}
-            />
-          </ShellState>
-        </KeycloakAuthentication>
-      </>
+    const headerButtons = (
+      <div style={{ padding: '20px' }}>
+        <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+          <button
+            className={selectedButton === 'noBanner' ? 'selected' : ''}
+            onClick={() => setSelectedButton('noBanner')}
+          >
+            no banner
+          </button>
+          <button
+            className={selectedButton === 'normalBanner' ? 'selected' : ''}
+            onClick={() => setSelectedButton('normalBanner')}
+          >
+            normal banner
+          </button>
+          <button
+            className={selectedButton === 'customBanner' ? 'selected' : ''}
+            onClick={() => setSelectedButton('customBanner')}
+          >
+            custom banner
+          </button>
+        </div>
+      </div>
     );
+
+    switch (selectedButton) {
+      case 'noBanner':
+        return (
+          <div
+            style={{
+              display: 'grid',
+              position: 'absolute',
+              inset: 0,
+              gridTemplateRows: 'auto 1fr',
+              margin: 0,
+              padding: 0,
+              backgroundColor: 'darkgray',
+            }}
+          >
+            {' '}
+            {headerButtons}
+            <div style={{ position: 'relative' }}>
+              <div style={{ position: 'absolute', inset: 0 }}>
+                <KeycloakAuthentication
+                  uri="http://localhost:8080"
+                  realm="porrtal"
+                  clientId="porrtal-app"
+                  redirectUri="http://localhost:4200/second-page"
+                >
+                  {' '}
+                  <ShellState modules={testModules} views={testViews}>
+                    <ShellBlueprint
+                      banner={() => <></>}
+                      bannerMenuInline={() => <></>}
+                      loggerBanner={() => <></>}
+                      search={() => <></>}
+                      bannerMenuBar={() => <></>}
+                      userBanner={() => <></>}
+                    />
+                  </ShellState>
+                </KeycloakAuthentication>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'normalBanner':
+        return (
+          <div
+            style={{
+              display: 'grid',
+              position: 'absolute',
+              inset: 0,
+              gridTemplateRows: 'auto 1fr',
+              margin: 0,
+              padding: 0,
+              backgroundColor: 'darkgray',
+            }}
+          >
+            {' '}
+            {headerButtons}
+            <div style={{ position: 'relative' }}>
+              <div style={{ position: 'absolute', inset: 0 }}>
+                <KeycloakAuthentication
+                  uri="http://localhost:8080"
+                  realm="porrtal"
+                  clientId="porrtal-app"
+                  redirectUri="http://localhost:4200/second-page"
+                >
+                  {' '}
+                  <ShellState modules={testModules} views={testViews}>
+                    <ShellBlueprint
+                      bannerData={{
+                        displayText: 'Quick Start Demo',
+                        displayIcon: 'cyclone',
+                        childData: [
+                          {
+                            displayText: 'First Page',
+                            displayImage: '/assets/react.svg',
+                            targetUrl: '/',
+                          },
+                          {
+                            displayText: 'Second Page',
+                            displayImage: '/assets/angular.svg',
+                            displayIcon: 'cyclone',
+                            targetUrl: '/second-page',
+                          },
+                          {
+                            displayText: 'Quick Start Demo',
+                            displayImage: '/assets/react.svg',
+                            displayIcon: 'cyclone',
+                            targetUrl: '/quick-start-demo',
+                          },
+                        ],
+                      }}
+                    />
+                  </ShellState>
+                </KeycloakAuthentication>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'customBanner':
+        return (
+          <div
+            style={{
+              display: 'grid',
+              position: 'absolute',
+              inset: 0,
+              gridTemplateRows: 'auto 1fr',
+              margin: 0,
+              padding: 0,
+              backgroundColor: 'darkgray',
+            }}
+          >
+            {' '}
+            {headerButtons}
+            <div style={{ position: 'relative' }}>
+              <div style={{ position: 'absolute', inset: 0 }}>
+                <KeycloakAuthentication
+                  uri="http://localhost:8080"
+                  realm="porrtal"
+                  clientId="porrtal-app"
+                  redirectUri="http://localhost:4200/second-page"
+                >
+                  {' '}
+                  <ShellState modules={testModules} views={testViews}>
+                    <ShellBlueprint
+                      banner={() => (
+                        <div style={{ paddingLeft: '20px' }}>
+                          MU HA HA HA HA !!! :) :)
+                        </div>
+                      )}
+                      bannerMenuInline={() => <></>}
+                      loggerBanner={() => <></>}
+                      search={() => <></>}
+                      bannerMenuBar={() => <></>}
+                      userBanner={() => <></>}
+                    />
+                  </ShellState>
+                </KeycloakAuthentication>
+              </div>
+            </div>
+          </div>
+        );
+
+      default:
+        return (
+          <div
+            style={{
+              display: 'grid',
+              position: 'absolute',
+              inset: 0,
+              gridTemplateRows: 'auto 1fr',
+              margin: 0,
+              padding: 0,
+              backgroundColor: 'darkgray',
+            }}
+          >
+            {' '}
+            {headerButtons}
+            <div style={{ padding: '20px', backgroundColor: 'white' }}>
+              Banner type '{selectedButton}' not supported
+            </div>
+          </div>
+        );
+    }
   }
 
   return <div>loading...</div>;

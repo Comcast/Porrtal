@@ -13,42 +13,52 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 import {
+  BannerComponent,
   BannerData,
+  BannerMenuInlineComponent,
+  LoggerBannerComponent,
   ShellComponents,
   ShellComponentsContext,
   ShellLayoutSplitter,
   UserBannerComponent,
+  SearchComponent,
+  BannerMenuBarComponent,
   useShellDispatch,
 } from '@porrtal/r-shell';
 import ViewStack from './view-stack/view-stack';
 import { ReactNode, useEffect } from 'react';
-import Search from './search/search';
 import EntityMenu from './entity-menu/entity-menu';
 import LoggerBanner from './logger-banner/logger-banner';
 import Banner from './banner/banner';
 import BannerMenuBar from './banner-menu-bar/banner-menu-bar';
 import BannerMenuInline from './banner-menu-inline/banner-menu-inline';
 import UserBanner from './user-banner/user-banner';
+import Search from './search/search';
 import { MaximizeHost } from './maximize-host/maximize-host';
 
 export interface ShellComponentsMaterialProps {
   children: ReactNode | undefined;
   bannerData?: BannerData;
+  banner?: BannerComponent;
+  bannerMenuInline?: BannerMenuInlineComponent;
+  loggerBanner?: LoggerBannerComponent;
   userBanner?: UserBannerComponent;
+  search?: SearchComponent;
+  bannerMenuBar?: BannerMenuBarComponent;
 }
 
 export function ShellComponentsMaterial(props: ShellComponentsMaterialProps) {
   const shellComponents: ShellComponents = {
     ViewStack,
-    Search,
     EntityMenu,
-    Banner,
-    BannerMenuBar,
-    BannerMenuInline,
-    bannerData: props.bannerData,
+    Banner: props.banner ?? Banner,
+    BannerMenuInline: props?.bannerMenuInline ?? BannerMenuInline,
     UserBanner: props?.userBanner ?? UserBanner,
-    LoggerBanner,
-    MaximizeHost
+    LoggerBanner: props?.loggerBanner ?? LoggerBanner,
+    Search: props?.search ?? Search,
+    BannerMenuBar: props?.bannerMenuBar ?? BannerMenuBar,
+    MaximizeHost,
+    bannerData: props.bannerData
   };
   const shellDispatch = useShellDispatch();
 

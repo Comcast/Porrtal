@@ -12,22 +12,39 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import { BannerData } from '@porrtal/r-shell';
-import { UserBannerComponent } from '@porrtal/r-shell';
+import {
+  BannerComponent,
+  BannerData,
+  BannerMenuBarComponent,
+  BannerMenuInlineComponent,
+  LoggerBannerComponent,
+  SearchComponent,
+  UserBannerComponent,
+} from '@porrtal/r-shell';
 import { ReactNode } from 'react';
 import ShellComponentsBlueprint from '../shell-components-blueprint/shell-components-blueprint';
 
 export interface ShellBlueprintProps {
   children?: ReactNode;
   bannerData?: BannerData;
+  banner?: BannerComponent;
+  bannerMenuInline?: BannerMenuInlineComponent;
+  loggerBanner?: LoggerBannerComponent;
   userBanner?: UserBannerComponent;
+  search?: SearchComponent;
+  bannerMenuBar?: BannerMenuBarComponent;
 }
 
 export function ShellBlueprint(props: ShellBlueprintProps) {
   return (
     <ShellComponentsBlueprint
       bannerData={props.bannerData}
+      banner={props.banner}
+      bannerMenuInline={props.bannerMenuInline}
+      loggerBanner={props.loggerBanner}
       userBanner={props.userBanner}
+      search={props.search}
+      bannerMenuBar={props.bannerMenuBar}
     >
       {props.children}
     </ShellComponentsBlueprint>
