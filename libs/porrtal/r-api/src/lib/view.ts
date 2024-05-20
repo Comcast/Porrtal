@@ -26,13 +26,14 @@ export interface View {
 
   key?: string;
   displayText: string;
-  entityTypeMenuText?: string;
   displayIcon?: string;
 
   state?: StateObject;
 
   entityType?: string;
-
+  entityTypeMenuText?: string;
+  entityTypeRelaunch?: boolean;
+  
   permissions?: string;
 
   menu?: string;

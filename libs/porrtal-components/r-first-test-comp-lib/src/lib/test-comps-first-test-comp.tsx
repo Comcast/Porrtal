@@ -42,6 +42,8 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
   return (
     <div className={styles['container']}>
       <h1>Welcome to TestCompsFirstTestComp!</h1>
+      <textarea
+      />
       <div>
         <button
           onClick={() => {
@@ -157,6 +159,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
       <button
         onClick={() => {
           const newViewId = uuidv4();
+          const stateObj = { a: newViewId };
           shellDispatch({
             type: 'registerView',
             view: {
@@ -168,7 +171,7 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
               componentModule: '@porrtal-components/r-first-test-comp-lib',
               displayText: 'Seven-First',
               displayIcon: 'home',
-              state: {},
+              state: stateObj,
             },
           });
           shellDispatch({
@@ -178,6 +181,34 @@ export function TestCompsFirstTestComp(props: TestCompsFirstTestCompProps) {
         }}
       >
         launch key=7 right
+      </button>
+      &nbsp;
+      <button
+        onClick={() => {
+          const newViewId = uuidv4();
+          const stateObj = { a: newViewId };
+          shellDispatch({
+            type: 'registerView',
+            view: {
+              viewId: newViewId,
+              key: '7',
+              launchAtStartup: false,
+              paneType: 'right',
+              componentName: 'TestCompsFirstTestComp',
+              componentModule: '@porrtal-components/r-first-test-comp-lib',
+              displayText: 'Seven-First',
+              displayIcon: 'home',
+              state: stateObj,
+            },
+          });
+          shellDispatch({
+            type: 'launchView',
+            viewId: newViewId,
+            justSetFocusIfExists: true,
+          });
+        }}
+      >
+        launch or focus key=7 right
       </button>
       &nbsp;
       <button

@@ -94,6 +94,7 @@ export function EntityMenu(props: EntityMenuProps) {
                     dispatch({
                       type: 'launchView',
                       viewId: view.viewId ?? view.componentName,
+                      justSetFocusIfExists: !view.entityTypeRelaunch,
                       state: newState,
                     });
                     setAnchorEl(null);

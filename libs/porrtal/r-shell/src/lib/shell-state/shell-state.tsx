@@ -79,6 +79,7 @@ export type ShellAction =
       state?: StateObject;
       launchInvoker?: LaunchInvoker;
       suppressFocus?: boolean;
+      justSetFocusIfExists?: boolean;
     }
   | { type: 'launchStartupViews' }
   | { type: 'moveView'; key: string; toPane: PaneType }
@@ -178,21 +179,37 @@ const reducer: Reducer<UseShellState, ShellAction> = (state, action) => {
             (vs) => vs.key === newViewState.key
           );
           if (ii >= 0) {
-            const newArray = [...state.panes[paneType].viewStates];
-            newArray.splice(ii, 1, newViewState);
-            retState = {
-              ...state,
-              panes: {
-                ...state.panes,
-                [paneType]: {
-                  ...state.panes[paneType],
-                  currentKey: newViewState.key,
-                  viewStates: newArray,
-                  paneType,
+            if (!action.justSetFocusIfExists) {
+              // re-launch the found tab
+              const newArray = [...state.panes[paneType].viewStates];
+              newArray.splice(ii, 1, newViewState);
+              retState = {
+                ...state,
+                panes: {
+                  ...state.panes,
+                  [paneType]: {
+                    ...state.panes[paneType],
+                    currentKey: newViewState.key,
+                    viewStates: newArray,
+                    paneType,
+                  },
                 },
-              },
-            };
-            return true;
+              };
+              return true;
+            } else {
+              // just set the focus to the found tab
+              retState = {
+                ...state,
+                panes: {
+                  ...state.panes,
+                  [paneType]: {
+                    ...state.panes[paneType],
+                    currentKey: newViewState.key,
+                  },
+                },
+              };
+              return true;
+            }
           }
           return false;
         })
