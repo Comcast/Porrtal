@@ -41,7 +41,7 @@ const views: View[] = [
 })
 export class PageTwoComponent {
   public bannerData: BannerData = {
-    displayText: 'porrtal-auth - angular - msal',
+    displayText: 'porrtal-auth - angular - msal - stand-alone',
     displayIcon: 'cyclone',
     childData: [
       {
