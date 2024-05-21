@@ -12,48 +12,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import '@blueprintjs/core/lib/css/blueprint.css';
-import '@blueprintjs/icons/lib/css/blueprint-icons.css';
-import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
-
-import { ShellState } from '@porrtal/r-shell';
-
-import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
-import { useEffect, useState } from 'react';
-import Head from 'next/head';
-import styles from './index.module.scss';
-import { getBannerData, getReactUiLibrary } from '../page-data/data';
-import { porrtalIoViews } from '../page-data/porrtal-io-views';
+import { MainClient } from '../components/main-client';
 
 export function Index() {
-  const [isSSR, setIsSSR] = useState(true);
-
-  const reactUiLibrary = isSSR ? '' : getReactUiLibrary();
-
-  useEffect(() => {
-    setIsSSR(false);
-  }, []);
-
-  const quickStartBannerData = {
-    ...getBannerData('blueprint'),
-    // displayText: `porrtal.io`,
-  };
-
-  if (!isSSR) {
-    return (
-      <>
-        <Head>
-          <title>porrtal.io</title>
-        </Head>
-
-        <ShellState views={porrtalIoViews}>
-          <ShellBlueprint bannerData={quickStartBannerData} />
-        </ShellState>
-      </>
-    );
-  }
-
-  return <div>loading...</div>;
+  return <MainClient />;
 }
 
 export default Index;
