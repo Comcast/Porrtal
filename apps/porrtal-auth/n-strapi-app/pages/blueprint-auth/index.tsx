@@ -23,6 +23,11 @@ import { ShellBlueprint } from '@porrtal/r-shell-blueprint';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
+import { AxiosProxy } from '@porrtal/r-user-axios';
+import {
+  Configuration,
+  PorrtalRoleApiFactory,
+} from '@porrtal-proxy/r-my-project2';
 
 const views: View[] = [
   {
@@ -130,19 +135,31 @@ export function Index() {
             strapiUri="http://localhost:1337"
             allowRegistration={true}
           >
-            <ShellBlueprint
-              bannerData={{
-                displayText: 'porrtal-auth - nextjs - strapi - blueprint',
-                displayIcon: 'hurricane',
-                childData: [
-                  {
-                    displayText: 'strapi-material',
-                    displayIcon: 'hurricane',
-                    targetUrl: '/',
+            <AxiosProxy
+              config={[
+                {
+                  scopes: ['read:stuff'],
+                  apiClasses: [PorrtalRoleApiFactory],
+                  configurationParameters: {
+                    basePath: 'http://localhost:1337/api',
                   },
-                ],
-              }}
-            />
+                },
+              ]}
+            >
+              <ShellBlueprint
+                bannerData={{
+                  displayText: 'porrtal-auth - nextjs - strapi - blueprint',
+                  displayIcon: 'hurricane',
+                  childData: [
+                    {
+                      displayText: 'strapi-material',
+                      displayIcon: 'hurricane',
+                      targetUrl: '/',
+                    },
+                  ],
+                }}
+              />
+            </AxiosProxy>
           </StrapiAuthentication>
         </ShellState>
       </>
