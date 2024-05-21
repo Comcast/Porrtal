@@ -37,6 +37,10 @@ import type { RequestArgs } from './base';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError } from './base';
 
+export interface UploadIdPostRequestFileInfo {
+    // not sure we need any props...  just here to fix build issues...
+}
+
 /**
  * 
  * @export
