@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/Comcast/Porrtal/compare/v0.16.0...v0.17.0) (2024-05-21)
+
+
+### Bug Fixes
+
+* **@porrtal-proxy/r-my-project2:** fix build error in generated code for strapi rest api proxy library ([3aac2f5](https://github.com/Comcast/Porrtal/commit/3aac2f58ad09687c3487c5b054d98b5bdf97759b))
+* **porrtal-auth-n-strapi-app:** fix blueprint page (add AxiosProxy) ([7a56a6a](https://github.com/Comcast/Porrtal/commit/7a56a6abcd860ea8cef316f43c34167947409eb2))
+
+
+### Features
+
+* **@porrtal-components/r-learning:** add i-frame-host and document parameters in readme for i-frame-host, markdown-viewer, and youtube-player ([6569e23](https://github.com/Comcast/Porrtal/commit/6569e2351a4ef58510562e163a79f0e793fd3bb3))
+* **@porrtal/r-shell:** add option to set focus only when launching views.  option to view to override set focus setting for entity menu.  add code to test feature. ([c669a22](https://github.com/Comcast/Porrtal/commit/c669a22d9a14040471c8cb8d251e56ceee8f7241))
+* **n-porrtal-io-app:** extract client components for nextjs pages ([36c8f22](https://github.com/Comcast/Porrtal/commit/36c8f22f53e6a5a73c6eec0370caf3f2017b537d))
+* **n-porrtal-io-app:** update angular static web content ([b20ab9a](https://github.com/Comcast/Porrtal/commit/b20ab9a7e538babfb0015de5c4ffda4b4e752c96))
+* **porrtal-auth-a-msal-stand-alone-app:** increase production build budgets and update banner display text ([cdfa167](https://github.com/Comcast/Porrtal/commit/cdfa167aa11fdeda137b2710d32d6e660df0383f))
+* **workspace:** add copyright to new files ([ff9a781](https://github.com/Comcast/Porrtal/commit/ff9a78138a2e3ab3ac102d655da5b0c54360a4ec))
+* **workspace:** update Copyright to 2024 ([6af8029](https://github.com/Comcast/Porrtal/commit/6af80293b8e2cef0beadad24f2d99cb67429e710))
+* **workspace:** update lr license report ([05e15a0](https://github.com/Comcast/Porrtal/commit/05e15a0d8a674f89c2646260a027a67f6892dd70))
+* **workspace:** update repolinter output ([d354c11](https://github.com/Comcast/Porrtal/commit/d354c11719b0167a4fcce4bc27d196213afb1a8e))
+
+
+
+
+
 # [0.16.0](https://github.com/Comcast/Porrtal/compare/v0.15.0...v0.16.0) (2024-04-08)
 
 

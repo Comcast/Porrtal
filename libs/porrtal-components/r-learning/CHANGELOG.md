@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/Comcast/Porrtal/compare/v0.16.0...v0.17.0) (2024-05-21)
+
+
+### Features
+
+* **@porrtal-components/r-learning:** add i-frame-host and document parameters in readme for i-frame-host, markdown-viewer, and youtube-player ([6569e23](https://github.com/Comcast/Porrtal/commit/6569e2351a4ef58510562e163a79f0e793fd3bb3))
+* **workspace:** add copyright to new files ([ff9a781](https://github.com/Comcast/Porrtal/commit/ff9a78138a2e3ab3ac102d655da5b0c54360a4ec))
+* **workspace:** update Copyright to 2024 ([6af8029](https://github.com/Comcast/Porrtal/commit/6af80293b8e2cef0beadad24f2d99cb67429e710))
+
+
+
+
+
 # [0.16.0](https://github.com/Comcast/Porrtal/compare/v0.15.0...v0.16.0) (2024-04-08)
 
 **Note:** Version bump only for package @porrtal-components/r-learning
